@@ -1,0 +1,165 @@
+.price {
+  & del {
+    opacity: 0.55;
+  }
+}
+
+h3:empty {
+  display: none;
+}
+
+.woocommerce-result-count {
+  width: 100%;
+  color: var(--dark);
+
+  @media (--s) {
+    width: auto;
+  }
+}
+
+.woocommerce-ordering {
+  @mixin select-wrapper;
+
+  width: 100%;
+  margin-top: 1em;
+
+  @media (--s) {
+    width: auto;
+    margin-top: 0;
+  }
+}
+
+.woocommerce-products-header {
+  display: none;
+}
+
+/** Product Quantity **/
+.quantity {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 40px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: var(--white);
+  border-radius: 6px;
+
+  & .product-qty {
+    @mixin flex-center;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    cursor: pointer;
+
+    & svg {
+      width: 14px;
+      height: 14px;
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      @media (--m) {
+        & svg {
+          fill: var(--primary);
+        }
+      }
+    }
+  }
+
+  & .qty {
+    text-align: center;
+    border: 0;
+    font-size: 14px;
+    background-color: rgba(0, 0, 0, 0);
+    flex-grow: 1;
+    height: 40px;
+    -moz-appearance: textfield;
+
+    @media (--m) {
+      font-size: 15px;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  & [data-qty='minus'] {
+    left: 0;
+    border-radius: 10px 0 0 10px;
+  }
+
+  & [data-qty='plus'] {
+    right: 0;
+    border-radius: 10px 10px 0 0;
+  }
+}
+
+.woocommerce-privacy-policy-text {
+  @mixin wysiwyg;
+
+  opacity: 0.85;
+
+  & p {
+    font-size: 0.85rem;
+  }
+}
+
+.ui-slider {
+  position: relative;
+  text-align: left;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+
+  & .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+    width: 1em;
+    height: 1em;
+    background-color: var(--primary);
+    border-radius: 1em;
+    cursor: ew-resize;
+    outline: none;
+    top: -0.3em;
+    margin-left: -0.5em;
+  }
+
+  & .ui-slider-range {
+    position: absolute;
+    z-index: 1;
+    font-size: 0.7em;
+    display: block;
+    border: 0;
+    border-radius: 1em;
+    background-color: var(--primary);
+  }
+}
+
+.price_slider_wrapper .ui-widget-content {
+  border-radius: 1em;
+  background-color: var(--light);
+  border: 0;
+}
+
+.ui-slider-horizontal {
+  height: 0.5em;
+
+  & .ui-slider-range {
+    top: 0;
+    height: 100%;
+  }
+
+  & .ui-slider-range-min {
+    left: -1px;
+  }
+
+  & .ui-slider-range-max {
+    right: -1px;
+  }
+}

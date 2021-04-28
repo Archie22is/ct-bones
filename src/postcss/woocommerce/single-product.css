@@ -1,0 +1,427 @@
+body.single-product {
+  & .message-block {
+    padding: 1em 0;
+    background: var(--white);
+  }
+
+  & .message-block__container {
+    max-width: 100%;
+    padding: 0;
+  }
+}
+
+.single-product__top {
+  margin-bottom: 2em;
+}
+
+.single-product-top__grid {
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (--s) {
+    margin: 0 -1em;
+  }
+}
+
+.single-product-top__col {
+  @mixin column-item 1, 1em;
+
+  @media (--s) {
+    margin: 0;
+    padding: 0 1em;
+  }
+
+  &:nth-child(1) {
+    @media (--s) {
+      width: 35%;
+    }
+
+    @media (--m) {
+      width: 40%;
+    }
+  }
+
+  &:nth-child(2) {
+    @media (--s) {
+      width: 65%;
+    }
+
+    @media (--m) {
+      width: 60%;
+    }
+  }
+}
+
+.page-block--product.sidebar-left,
+.page-block--product.sidebar-right {
+  & .single-product-top__col {
+    width: 100%;
+
+    &:nth-child(1) {
+      @media (--s) {
+        width: 35%;
+      }
+
+      @media (--m) {
+        width: 40%;
+      }
+    }
+
+    &:nth-child(2) {
+      @media (--s) {
+        width: 65%;
+      }
+
+      @media (--m) {
+        width: 60%;
+      }
+    }
+  }
+}
+
+.single-product-top {
+  & .product_title {
+    font-size: 21px;
+  }
+
+  & .flex-active-slide {
+    padding-bottom: 10px;
+    text-align: center;
+  }
+
+  & .flex-control-thumbs {
+    @mixin list-reset;
+    @mixin flex-center;
+
+    flex-direction: row;
+
+    & li {
+      display: flex;
+      margin-right: 10px;
+      cursor: pointer;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    & img {
+      opacity: 0.5;
+      border: 2px solid var(--border);
+      transition: opacity 0.3s;
+      border-radius: 5px;
+    }
+
+    & img.flex-active {
+      opacity: 1;
+      border-color: var(--primary);
+    }
+  }
+
+  & .entry-summary {
+    & form.cart {
+      transition: opacity 0.3s;
+
+      &.is-loading {
+        opacity: 0.75;
+        pointer-events: none;
+      }
+    }
+
+    & .quantity {
+      margin-top: 0.5em;
+      margin-right: 0.5em;
+
+      & + .button {
+        @mixin button-large;
+
+        margin-top: 0.5em;
+
+        @media (--m) {
+          min-width: 200px;
+        }
+
+        & + .added_to_cart {
+          @mixin button-link;
+          @mixin button-large;
+
+          display: inline-flex;
+          align-items: center;
+          margin-top: 0.5em;
+          margin-left: 1em;
+          padding-left: 0;
+          padding-right: 0;
+
+          @media (--m) {
+            &:hover {
+              color: var(--primary);
+            }
+          }
+        }
+      }
+    }
+
+    & .price {
+      @mixin h3;
+
+      font-weight: var(--font-bold);
+
+      & del {
+        opacity: 0.65;
+        font-weight: var(--font-normal);
+      }
+    }
+
+    & .product_meta {
+      margin-top: 1em;
+      margin-bottom: 1em;
+
+      & > span {
+        display: block;
+      }
+
+      & a {
+        color: var(--primary);
+        text-decoration: underline;
+
+        &:hover {
+          color: var(--secondary);
+        }
+      }
+
+      & .sku {
+        color: var(--primary);
+      }
+    }
+  }
+
+  & .woocommerce-product-details__short-description {
+    @mixin wysiwyg;
+
+    padding: 10px 0;
+
+    & img {
+      display: none;
+    }
+  }
+}
+
+.woocommerce-product-gallery {
+  position: relative;
+}
+
+.woocommerce-product-gallery__trigger {
+  @mixin flex-center;
+
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 35px;
+  height: 35px;
+  background: var(--light);
+  color: var(--black);
+  border-radius: 50%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.single-product-top__header {
+  margin-bottom: 1em;
+}
+
+.modal-product-buttons {
+  margin-top: 1.5em;
+}
+
+.button-modal-product {
+  margin-right: 20px;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.95rem;
+  transition: all 0.4s;
+
+  & .button-modal-product__icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+
+    & svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    & path {
+      fill: var(--primary);
+      transition: all 0.4s;
+    }
+  }
+
+  &:hover {
+    color: var(--dark);
+
+    & path {
+      fill: var(--dark);
+    }
+  }
+}
+
+.single-product-main__col--description {
+  width: 100%;
+
+  @media (--m) {
+    width: 75%;
+  }
+}
+
+.single-product-main__sidebar {
+  display: none;
+
+  & .widget_text {
+    border: 1px dashed #999;
+    background: #f4f4f4;
+    padding: 20px;
+
+    & ul li {
+      padding: 5px 0;
+      color: #333;
+      line-height: 1.5;
+    }
+  }
+
+  @media (--m) {
+    display: block;
+    width: 25%;
+  }
+}
+
+.single-product-main {
+  margin-top: 50px;
+}
+
+.woocommerce-tabs {
+  & .tabs {
+    display: flex;
+    flex-wrap: wrap;
+
+    & li {
+      min-width: 100px;
+      padding: 0 1em;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      background: var(--light);
+      border-radius: 3px;
+      margin-right: 10px;
+      transition: all 0.3s;
+
+      @media (--s) {
+        min-width: 190px;
+      }
+
+      & a {
+        display: inherit;
+        transition: all 0.3s;
+      }
+
+      &.active,
+      &:hover {
+        background: var(--primary);
+
+        & a {
+          color: var(--white);
+        }
+      }
+    }
+  }
+
+  & .woocommerce-Tabs-panel {
+    margin-top: 1.5em;
+  }
+
+  & .woocommerce-Tabs-panel--description {
+    @mixin wysiwyg;
+  }
+}
+
+.single-product-meta {
+  & .sku,
+  & a {
+    color: var(--primary);
+  }
+}
+
+.single-product-tag {
+  margin-top: 0.5em;
+  font-size: 0.9rem;
+
+  & a {
+    color: var(--gray);
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}
+
+.crosssell-products {
+  margin-top: 1.5em;
+
+  & h2 {
+    margin-bottom: 10px;
+    color: var(--dark-3);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1rem;
+  }
+}
+
+.crosssell-products__items {
+  margin: 0 -4px;
+}
+
+.crosssell-products__item {
+  width: 100px;
+  padding: 0 4px;
+
+  & a {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.5s;
+    border: 1px dashed transparent;
+
+    &:hover {
+      border-color: var(--primary);
+    }
+  }
+}
+
+.crosssell-products__image {
+  @mixin ratio 1/1;
+}
+
+.variations_form {
+  margin: 1em 0;
+
+  & .variations {
+    margin: 1em 0;
+  }
+
+  & .value {
+    & select {
+      height: 40px;
+      line-height: 1;
+      border: 1px solid var(--gray);
+      border-radius: 5px;
+    }
+  }
+
+  & .reset_variations {
+    margin-left: 0.5em;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}

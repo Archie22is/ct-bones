@@ -1,0 +1,160 @@
+@define-mixin small {
+  font-size: 0.75rem;
+
+  @media (--m) {
+    font-size: 0.85rem;
+  }
+}
+
+@define-mixin large {
+  font-size: 1.05rem;
+
+  @media (--m) {
+    font-size: 1.15rem;
+  }
+}
+
+@define-mixin heading {
+  letter-spacing: 0;
+}
+
+@define-mixin h1 {
+  @mixin heading;
+
+  font-size: 1.5rem;
+
+  @media (--s) {
+    font-size: 2.5rem;
+  }
+
+  @media (--m) {
+    font-size: 4.209rem;
+  }
+}
+
+@define-mixin h2 {
+  font-size: 1.5rem;
+
+  @media (--s) {
+    font-size: 1.75rem;
+  }
+
+  @media (--m) {
+    font-size: 1.8rem;
+  }
+}
+
+@define-mixin h3 {
+  font-size: 1.3rem;
+
+  @media (--s) {
+    font-size: 1.5rem;
+  }
+
+  @media (--m) {
+    font-size: 1.7rem;
+  }
+}
+
+@define-mixin label-text {
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+@define-mixin large-text {
+  font-size: 1.05rem;
+
+  @media (--s) {
+    font-size: 1.15rem;
+  }
+}
+
+@define-mixin small-text {
+  font-size: 0.75rem;
+
+  @media (--s) {
+    font-size: 0.85rem;
+  }
+}
+
+@define-mixin wysiwyg {
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6,
+  & blockquote,
+  & ul,
+  & p {
+    margin-top: 1em;
+    word-break: break-word;
+  }
+
+  & a {
+    color: var(--primary);
+    text-decoration: underline;
+    word-break: break-word;
+
+    &:hover {
+      color: var(--dark);
+    }
+  }
+
+  & p > img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  & ol {
+    margin-left: 1em;
+    padding-left: 0.5em;
+
+    & ol {
+      margin-top: 0.25em;
+
+      & > li {
+        font-size: 0.95rem;
+      }
+    }
+  }
+
+  & ul {
+    list-style-type: disc;
+    margin-left: 1em;
+    padding-left: 0.5em;
+
+    & ul {
+      margin-top: 0.25em;
+
+      & > li {
+        font-size: 0.95rem;
+      }
+    }
+  }
+
+  & li {
+    margin-top: 0.25em;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  & .small {
+    @mixin small;
+  }
+
+  & .large {
+    @mixin large;
+  }
+
+  & iframe {
+    max-width: 100% !important;
+    height: auto;
+  }
+
+  & .gform_wrapper {
+    margin-top: 1em;
+  }
+}

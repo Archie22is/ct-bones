@@ -1,0 +1,78 @@
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+
+  &:focus {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    clip: auto !important;
+    color: #21759b;
+    display: block;
+    font-size: 14px;
+    height: auto;
+    left: 5px;
+    padding: 15px 23px 14px;
+    top: 5px;
+    width: auto;
+    z-index: 100000; /* Above WP toolbar. */
+  }
+}
+
+.aligncenter,
+.alignleft,
+.alignright {
+  display: block;
+  padding: 0;
+}
+
+img.aligncenter,
+img.alignleft,
+img.alignright {
+  max-width: 100%;
+  height: auto;
+}
+
+.aligncenter {
+  float: none;
+  margin: 0.5em auto 1em;
+}
+
+.alignright {
+  float: right;
+  margin: 0.5em 0 1em 1em;
+}
+
+.alignleft {
+  float: left;
+  margin: 0.5em 1em 1em 0;
+}
+
+.wp-caption {
+  max-width: 100%;
+  margin-top: 1em;
+
+  &.aligncenter {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+}
+
+.wp-caption img {
+  display: inline;
+  max-width: 100%;
+  height: auto;
+}
+
+.wp-caption-text {
+  @mixin small;
+
+  display: inline-block;
+  margin: 5px 0 0;
+  padding: 0;
+  font-style: normal;
+  color: var(--gray);
+}

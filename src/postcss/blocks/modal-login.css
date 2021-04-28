@@ -1,0 +1,43 @@
+.modal--login {
+  & .modal__wrapper {
+    @mixin scrollbar;
+
+    padding: 1.5em;
+    width: calc(100vw - 40px);
+    overflow: auto;
+    max-height: 100vh;
+    background-color: var(--white);
+    position: relative;
+    z-index: 2;
+    border-radius: 4px;
+
+    @media (--s) {
+      width: 300px;
+    }
+
+    @media (--m) {
+      width: 450px;
+    }
+  }
+
+  & .woocommerce-form {
+    &.woocommerce-form-login {
+      background: unset;
+      box-shadow: unset;
+      border: unset;
+      padding: 0;
+
+      & .form-row {
+        margin-top: 0.25em;
+
+        & label {
+          font-weight: var(--font-normal);
+        }
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}

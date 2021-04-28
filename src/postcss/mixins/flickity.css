@@ -1,0 +1,228 @@
+@define-mixin prev-next-button {
+  & .flickity-prev-next-button {
+    z-index: 5;
+    background: transparent;
+    transition: all 0.5s;
+
+    @media (--m) {
+      width: 40px;
+      height: 40px;
+    }
+
+    & svg {
+      transition: all 0.5s;
+      fill: var(--white);
+      top: 25%;
+      width: 50%;
+      height: 50%;
+    }
+
+    &.next {
+      right: 10px;
+    }
+
+    &.previous {
+      left: 10px;
+    }
+  }
+}
+
+@define-mixin slider-button-circle {
+  & .flickity-prev-next-button {
+    border: 1px solid var(--white);
+    border-radius: 50%;
+
+    &.next {
+      & svg {
+        left: 20%;
+      }
+    }
+
+    &.previous {
+      & svg {
+        left: 28%;
+      }
+    }
+
+    &:hover {
+      border-color: var(--primary);
+      background-color: var(--primary);
+    }
+  }
+}
+
+@define-mixin slider-button-simple {
+  & .flickity-prev-next-button {
+    & svg {
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    &:hover {
+      & svg {
+        fill: var(--primary);
+      }
+    }
+  }
+}
+
+@define-mixin slider-button-square {
+  & .flickity-prev-next-button {
+    border: 2px solid var(--primary);
+    background-color: var(--primary);
+    opacity: 0.5;
+
+    &.next {
+      & svg {
+        left: 20%;
+      }
+    }
+
+    &.previous {
+      & svg {
+        left: 28%;
+      }
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+@define-mixin slider-button-dashes {
+  & .flickity-page-dots {
+    & .dot {
+      width: 50px;
+      height: 10px;
+      border-radius: 0;
+      background: var(--primary);
+      opacity: 0.5;
+
+      &.is-selected {
+        width: 50px;
+        height: 10px;
+        border-radius: 0;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@define-mixin slider-dots-square {
+  & .flickity-page-dots {
+    & .dot {
+      border-radius: 0;
+      background: var(--primary);
+      opacity: 0.5;
+
+      &.is-selected {
+        border-radius: 0;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@define-mixin slider-dots-left {
+  & .flickity-page-dots {
+    justify-content: flex-start;
+  }
+}
+
+@define-mixin slider-dots-right {
+  & .flickity-page-dots {
+    justify-content: flex-end;
+  }
+}
+
+@define-mixin slider-button-top-left {
+  & .flickity-prev-next-button {
+    top: 10px !important;
+    transform: unset;
+
+    &.next {
+      right: unset;
+      left: 55px;
+    }
+  }
+}
+
+@define-mixin slider-button-bottom-left {
+  & .flickity-prev-next-button {
+    top: unset !important;
+    transform: unset;
+    bottom: 10px;
+
+    &.next {
+      right: unset;
+      left: 55px;
+    }
+  }
+}
+
+@define-mixin slider-button-top-right {
+  & .flickity-prev-next-button {
+    top: 10px !important;
+    transform: unset;
+
+    &.previous {
+      left: unset;
+      right: 55px;
+    }
+  }
+}
+
+@define-mixin slider-button-bottom-right {
+  & .flickity-prev-next-button {
+    top: unset !important;
+    transform: unset;
+    bottom: 10px;
+
+    &.previous {
+      left: unset;
+      right: 55px;
+    }
+  }
+}
+
+@define-mixin flickity-page-dots $color {
+  bottom: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (--m) {
+    bottom: 30px;
+  }
+
+  & .dot {
+    @mixin fade-in;
+
+    width: 12px;
+    height: 12px;
+    border: 1px solid $color;
+    background-color: transparent;
+    margin: 0 0.25em;
+    transition: all 0.3s;
+
+    @media (--m) {
+      height: 15px;
+      width: 15px;
+      margin: 0 0.35em;
+    }
+
+    &.is-selected {
+      width: 14px;
+      height: 14px;
+      background-color: $color;
+
+      @media (--m) {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}

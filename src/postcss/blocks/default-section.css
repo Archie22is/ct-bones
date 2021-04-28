@@ -1,0 +1,65 @@
+.default-section__header {
+  margin-bottom: 1em;
+
+  @media (--m) {
+    margin-bottom: 2em;
+  }
+}
+
+.default-section__description {
+  margin-top: 0.5em;
+}
+
+.default-section__footer {
+  margin-top: 1em;
+}
+
+.default-section__col {
+  @mixin column-item 1, 1em;
+}
+
+.default-section.has-2-columns .default-section__col {
+  @media (--xs) {
+    @mixin column-item 2, 1em;
+  }
+}
+
+.default-section.has-3-columns .default-section__col {
+  @media (--m) {
+    @mixin column-item 3, 1em;
+  }
+}
+
+.default-section.has-4-columns .default-section__col {
+  @media (--xs) {
+    @mixin column-item 2, 1em;
+  }
+
+  @media (--m) {
+    @mixin column-item 4, 1em;
+  }
+}
+
+.default-section.is-header-center .default-section__header {
+  text-align: center;
+
+  & .section-header {
+    text-align: center;
+  }
+}
+
+.default-section.is-header-right .default-section__header {
+  text-align: right;
+
+  & .section-header {
+    text-align: right;
+  }
+}
+
+.default-section.is-footer-center .default-section__footer {
+  text-align: center;
+}
+
+.default-section.is-footer-right .default-section__footer {
+  text-align: right;
+}

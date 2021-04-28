@@ -1,0 +1,30 @@
+.f {
+  display: flex;
+}
+.d-inline-flex {
+  display: inline-flex;
+}
+.fw {
+  flex-wrap: wrap;
+}
+.fdc {
+  flex-direction: column;
+}
+.aic {
+  align-items: center;
+}
+.aie {
+  align-items: flex-end;
+}
+.jcc {
+  justify-content: center;
+}
+.jce {
+  justify-content: flex-end;
+}
+.jcb {
+  justify-content: space-between;
+}
+.fa1 {
+  flex-grow: 1;
+}

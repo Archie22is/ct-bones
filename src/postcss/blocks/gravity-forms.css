@@ -1,0 +1,74 @@
+.gfield {
+  margin-top: 1em;
+
+  & [type='checkbox'],
+  & [type='radio'] {
+    height: 15px;
+    width: 15px;
+  }
+
+  & [type='text'],
+  & [type='tel'],
+  & [type='email'] {
+    @mixin input-field;
+  }
+
+  & textarea {
+    @mixin input-field;
+
+    min-height: 100px;
+  }
+
+  & select {
+    @mixin input-field;
+  }
+
+  & [multiple='multiple'] {
+    height: 120px;
+  }
+
+  & .gfield_checkbox,
+  & .gfield_radio {
+    display: flex;
+    flex-wrap: wrap;
+
+    & > li {
+      margin-right: 1rem;
+
+      & input {
+        margin-right: 5px;
+        width: unset;
+      }
+    }
+  }
+}
+
+form {
+  & .gform_footer,
+  & .gform_page_footer {
+    margin-top: 1em;
+  }
+
+  & input[type='button'] {
+    @mixin button-default;
+    @mixin button-normal;
+    @mixin button-style-primary;
+
+    width: auto;
+  }
+
+  & .validation_message {
+    color: var(--red);
+  }
+
+  & .gfield_label {
+    margin-bottom: 0.25em;
+    display: block;
+  }
+}
+
+.hidden_label {
+  & .gfield_label {
+    display: none;
+  }
+}

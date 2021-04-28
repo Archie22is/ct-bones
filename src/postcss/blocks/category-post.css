@@ -1,0 +1,17 @@
+.category-post {
+  & .post-grid {
+    margin-top: 0;
+  }
+
+  & .page-header + .post-grid {
+    margin-top: 2em;
+  }
+
+  &.page-block {
+    margin-top: 1em;
+
+    @media (--m) {
+      margin-top: 2em;
+    }
+  }
+}

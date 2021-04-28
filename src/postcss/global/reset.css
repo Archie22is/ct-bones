@@ -1,0 +1,75 @@
+figure,
+blockquote,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input[type='button'],
+input[type='submit'] {
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+address {
+  font-style: normal;
+}
+
+ins,
+abbr[title] {
+  text-decoration: none;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  & legend {
+    display: block;
+    margin: 1em 0 0;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+svg {
+  width: 24px;
+  height: 24px;
+}
+
+.widget ul,
+ul.gform_fields {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}

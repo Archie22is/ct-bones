@@ -1,0 +1,38 @@
+.wpcf7-form {
+  & p {
+    margin-top: 1em;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  & .wpcf7-not-valid-tip {
+    margin-top: 0.25em;
+    font-size: 0.85rem;
+  }
+
+  & .wpcf7-text {
+    @mixin input-field;
+  }
+
+  & .wpcf7-textarea {
+    @mixin input-field;
+
+    min-height: 100px;
+  }
+
+  & input[type='submit'] {
+    @mixin button-default;
+    @mixin button-normal;
+    @mixin button-style-primary;
+  }
+}
+
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.unaccepted .wpcf7-response-output {
+  margin: 1em 0 0 0;
+  padding: 0;
+  color: var(--red);
+  border: none;
+}

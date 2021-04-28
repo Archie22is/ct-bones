@@ -1,0 +1,69 @@
+.image {
+  position: relative;
+  display: flex;
+
+  & source,
+  & img {
+    @mixin abs-full;
+
+    z-index: 1;
+  }
+}
+
+.image--default {
+  & source,
+  & img,
+  & .image__img {
+    position: static;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.image--cover {
+  & source,
+  & img,
+  & .image__img {
+    object-fit: cover;
+  }
+}
+
+.image--contain {
+  & source,
+  & img,
+  & .image__img {
+    object-fit: contain;
+  }
+}
+
+.image--square {
+  @mixin ratio 1/1;
+}
+
+.image-placeholder {
+  background: var(--light);
+
+  & source,
+  & img,
+  & .image__img {
+    object-fit: contain;
+  }
+}
+
+.image--hd {
+  @mixin ratio 9/16;
+}
+
+.image-placeholder__icon,
+.image-placeholder__image {
+  @mixin abs-full;
+}
+
+.image-placeholder__icon {
+  @mixin flex-center;
+
+  & svg {
+    width: 40px;
+    height: 40px;
+  }
+}

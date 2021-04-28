@@ -1,0 +1,7 @@
+.message-block {
+  padding: 0.5em 0;
+}
+
+.message-block__container {
+  @mixin container;
+}

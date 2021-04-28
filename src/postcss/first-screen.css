@@ -1,0 +1,36 @@
+@import url('global/normalize.css');
+@import url('global/reset.css');
+@import url('global/helpers.css');
+@import url('global/typography.css');
+@import url('global/buttons.css');
+@import url('global/colors.css');
+@import url('global/container.css');
+@import url('global/flexbox.css');
+@import url('global/grid.css');
+@import url('global/animate.css');
+@import url('global/form.css');
+@import url('blocks/image.css'); /** High priority **/
+@import url('wp/widgets.css');
+@import url('wp/content.css');
+@import url('others/cf7.css');
+@import url('others/flickity.css');
+@import url('others/nouislider.css');
+
+/** Header **/
+@import url('blocks/header.css');
+@import url('blocks/header-topbar.css');
+@import url('blocks/page-header.css');
+@import url('blocks/breadcrumbs.css');
+@import url('blocks/search-form.css');
+
+/** Pages **/
+@import url('blocks/page-block.css');
+
+/** Layout **/
+@import url('blocks/sidebar-section.css');
+@import url('blocks/default-section.css');
+@import url('blocks/section-header.css');
+
+/** Default Sections **/
+@import url('blocks/post-card.css');
+@import url('blocks/category-post.css');

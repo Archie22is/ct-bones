@@ -1,0 +1,32 @@
+.container {
+  @mixin container;
+  @mixin container-from-s;
+}
+
+.container--xxs {
+  max-width: var(--xxs);
+}
+
+.container--xs {
+  max-width: var(--xs);
+}
+
+.container--s {
+  max-width: var(--s);
+}
+
+.container--m {
+  max-width: var(--m);
+}
+
+.container--ml {
+  max-width: var(--ml);
+}
+
+.container--l {
+  max-width: var(--l);
+}
+
+.container--fullwidth {
+  max-width: 100%;
+}

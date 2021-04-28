@@ -1,0 +1,249 @@
+.slideout-menu {
+  @mixin fade-out;
+
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: opacity 0.25s, visibility 0s 0.25s;
+
+  @media (--m) {
+    display: none;
+  }
+
+  & .header__vertical--logo {
+    width: 100%;
+    max-width: 120px;
+    margin: 0 auto 1em;
+
+    & * {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  & .header__vertical-header {
+    color: var(--white);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+    background-color: var(--primary);
+    padding: 0.25em 1.5em;
+
+    & svg {
+      fill: var(--white);
+      width: 1em;
+      height: 1em;
+    }
+
+    & .header__vertical-title {
+      margin-left: 0.5em;
+    }
+  }
+
+  & li {
+    list-style: none;
+    font-size: 0.85rem;
+    font-weight: var(--font-normal);
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.25em;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  & .sub-menu {
+    padding-top: 0.5em;
+
+    & li {
+      font-weight: 500;
+      font-size: 12px;
+      margin-bottom: 0.25em;
+      padding-bottom: 0.15em;
+      border-bottom: 0;
+    }
+  }
+
+  & .slideout-menu__inner {
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+  }
+}
+
+.is-slideout-visible .slideout-menu {
+  @mixin fade-in;
+
+  & .slideout-menu__wrapper {
+    transform: translate(0, 0);
+  }
+}
+
+.has-header-layout-2 {
+  & .slideout-menu {
+    @media (--m) {
+      display: block;
+    }
+  }
+}
+
+.slideout-menu__overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.slideout-menu__close-button {
+  @mixin button-reset;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5em 0.85em;
+  font-size: 1.5rem;
+
+  & * {
+    pointer-events: none;
+  }
+
+  & svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--white);
+  }
+}
+
+.slideout-menu__wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  transform: translate(-100%, 0);
+  max-width: calc(100% - 4rem);
+  width: 300px;
+  overflow-y: auto;
+  backface-visibility: hidden;
+  transition: transform 0.25s 125ms;
+  z-index: 2;
+}
+
+.slideout-menu__inner {
+  @mixin scrollbar;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: var(--white);
+  padding: 1em;
+  z-index: 1;
+}
+
+.slideout-menu__menu {
+  @mixin list-reset;
+
+  display: flex;
+  flex-direction: column;
+
+  & > .menu-item {
+    padding: 0.5em 0;
+
+    & > a {
+      display: block;
+      font-weight: 700;
+    }
+  }
+
+  & > .menu-item-has-children {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    & > .icon-toggle {
+      display: block;
+      position: relative;
+      width: 20px;
+      height: 20px;
+      background: var(--primary);
+
+      &::before {
+        content: '';
+        position: absolute;
+        height: 10px;
+        width: 2px;
+        top: 5px;
+        left: 9px;
+        background: var(--white);
+        transition: all 0.3s;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 10px;
+        top: 9px;
+        left: 5px;
+        background: var(--white);
+      }
+
+      &.is-active {
+        &::before {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    & > .sub-menu {
+      padding-left: 10px;
+      height: 0;
+      overflow: hidden;
+      width: 100%;
+      transition: height 15s ease;
+
+      & > .menu-item {
+        padding: 0.25em 0;
+      }
+
+      & > .menu-item-has-children {
+        & > .sub-menu {
+          display: none;
+        }
+      }
+    }
+
+    &.is-active {
+      & > .sub-menu {
+        height: auto;
+      }
+    }
+  }
+}
+
+.slideout-menu__loader {
+  @mixin fade-out;
+  @mixin flex-center;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--white);
+  z-index: 3;
+}
+
+.is-loading .slideout-menu__loader {
+  @mixin fade-in;
+}

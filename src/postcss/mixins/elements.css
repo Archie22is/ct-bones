@@ -1,0 +1,318 @@
+@define-mixin video-wrapper {
+  position: relative;
+  width: 100%;
+
+  &::before {
+    content: '';
+    display: block;
+    padding-top: 56.25%;
+  }
+
+  & img,
+  & iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+}
+
+@define-mixin image-overlay $value {
+  &::after {
+    content: '';
+
+    @mixin abs-full;
+
+    background: rgba(0, 0, 0, $value);
+    z-index: 1;
+    transition: background-color 0.3s;
+  }
+}
+
+@define-mixin ratio $ratio {
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    padding-top: calc($ratio * 100%);
+  }
+
+  & .image__img {
+    @mixin abs-full;
+
+    z-index: 1;
+  }
+}
+
+@define-mixin select-in-wrapper {
+  appearance: none;
+  width: 100%;
+  height: 44px;
+  margin: 0;
+  padding: 0 10px;
+  border: 0;
+  background: none;
+  line-height: 44px;
+  color: var(--dark);
+
+  &:focus {
+    outline: var(--white);
+  }
+}
+
+@define-mixin select-wrapper {
+  position: relative;
+  height: 44px;
+  padding-right: 15px;
+  border: 1px solid var(--gray);
+  border-radius: 6px;
+  background-color: var(--white);
+  background-image: url("data:image/svg+xml;utf8,<svg width='12' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 490.688 490.688'><path fill='gray' d='M472.328 120.529L245.213 347.665 18.098 120.529c-4.237-4.093-10.99-3.975-15.083.262-3.992 4.134-3.992 10.687 0 14.82l234.667 234.667c4.165 4.164 10.917 4.164 15.083 0l234.667-234.667c4.237-4.093 4.354-10.845.262-15.083-4.093-4.237-10.845-4.354-15.083-.262-.089.086-.176.173-.262.262l-.021.001z'/><path d='M245.213 373.415a10.663 10.663 0 01-7.552-3.115L2.994 135.633c-4.093-4.237-3.975-10.99.262-15.083 4.134-3.992 10.687-3.992 14.82 0l227.136 227.115 227.115-227.136c4.093-4.237 10.845-4.354 15.083-.262 4.237 4.093 4.354 10.845.262 15.083-.086.089-.173.176-.262.262L252.744 370.279a10.672 10.672 0 01-7.531 3.136z'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: 15px;
+}
+
+@define-mixin list-reset {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+@define-mixin icon $size {
+  width: $size;
+  height: $size;
+
+  & svg {
+    width: $size;
+    height: $size;
+  }
+}
+
+@define-mixin scrollbar {
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #f5f5f5;
+  }
+  &::-webkit-scrollbar {
+    width: 12px;
+    background-color: #f5f5f5;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #777;
+  }
+}
+
+@define-mixin fade-in {
+  opacity: 1;
+  visibility: visible;
+}
+
+@define-mixin fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@define-mixin bottom-line $color {
+  position: relative;
+  padding-bottom: 0.5em;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2px;
+    width: 150px;
+    background-color: $color;
+  }
+}
+
+@define-mixin input-field {
+  width: 100%;
+  height: 44px;
+  padding: 7px 10px;
+  border: 1px solid var(--gray);
+  border-radius: 6px;
+  color: var(--gray);
+}
+
+@define-mixin modal {
+  @mixin fade-out;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  z-index: 1001;
+  pointer-events: none;
+}
+
+@define-mixin custom-checkbox {
+  appearance: none;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  color: var(--dark);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  outline: 0;
+  cursor: pointer;
+  transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
+
+  &::before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: 3px;
+    left: 6px;
+    width: 4px;
+    height: 8px;
+    border-style: solid;
+    border-color: var(--white);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+  }
+
+  &:checked {
+    color: var(--white);
+    border-color: var(--primary);
+    background: var(--primary);
+
+    &::before {
+      opacity: 1;
+    }
+
+    & ~ span::before,
+    & ~ label::before {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+}
+
+@define-mixin email-form {
+  align-items: center;
+  padding: 1em 0;
+  line-height: 1.25;
+  margin: auto;
+  width: 100%;
+  font-size: 0.8rem;
+
+  @media (--s) {
+    margin: auto 0 auto auto;
+    font-size: 1rem;
+  }
+
+  & li,
+  & .gform_footer {
+    margin: 0;
+  }
+
+  & .gform_footer {
+    height: max-content;
+    position: relative;
+    margin-top: 0.5em;
+
+    @media (--s) {
+      width: auto;
+    }
+
+    & input {
+      background-color: var(--primary);
+      border-top-right-radius: 30px !important;
+      border-bottom-right-radius: 30px !important;
+      padding: 0 1em 0 0.75em;
+    }
+
+    & img {
+      position: absolute;
+      top: calc(50% - 0.5em);
+      right: -1.25em;
+    }
+  }
+
+  & .gfield_label {
+    margin: 0;
+  }
+
+  & .gform_fields {
+    & input {
+      padding: 0 2em;
+    }
+  }
+
+  & .gform_wrapper {
+    width: 100%;
+  }
+
+  & form {
+    display: flex;
+  }
+
+  & input {
+    height: 40px !important;
+    border-radius: 0 !important;
+    border: none !important;
+
+    @media (--s) {
+      height: 50px !important;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  & .gform_body {
+    flex: 1 1 auto;
+    margin-top: 0.5em;
+
+    @media (--s) {
+      width: auto;
+    }
+
+    & .ginput_container {
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
+      overflow: hidden;
+      margin-bottom: 0.5em;
+    }
+  }
+
+  & a {
+    transition: 0.4s;
+    display: inline-block;
+
+    &:hover {
+      transform: translateX(2px);
+      text-decoration: none !important;
+    }
+  }
+
+  & p {
+    margin-top: 0 !important;
+  }
+
+  & .footer__top {
+    padding-bottom: 0;
+  }
+
+  & .footer__bottom {
+    border-top: 1px solid rgb(255, 255, 255, 0.11);
+  }
+}

@@ -1,0 +1,42 @@
+.sidebar-section__block {
+  @mixin column-item 1, 1em;
+
+  @media (--m) {
+    width: auto;
+    margin: 0;
+  }
+}
+
+.sidebar-section__block--sidebar {
+  @media (--m) {
+    width: var(--sidebar-width);
+  }
+}
+
+.sidebar-section__block--content {
+  @media (--m) {
+    flex: 1 1 0;
+  }
+}
+
+.sidebar-section.has-2-columns .sidebar-section__col {
+  @media (--s) {
+    @mixin column-item 2, 1em;
+  }
+}
+
+.sidebar-section.has-3-columns .sidebar-section__col {
+  @media (--m) {
+    @mixin column-item 3, 1em;
+  }
+}
+
+.sidebar-section.has-4-columns .sidebar-section__col {
+  @media (--s) {
+    @mixin column-item 2, 1em;
+  }
+
+  @media (--m) {
+    @mixin column-item 4, 1em;
+  }
+}

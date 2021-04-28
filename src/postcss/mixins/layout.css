@@ -1,0 +1,43 @@
+@define-mixin container {
+  margin: 0 auto;
+  padding: 0 var(--container-gutter);
+}
+
+@define-mixin container-from-s {
+  @media (--s) {
+    padding: 0 var(--container-gutter-s);
+  }
+
+  @media (--m) {
+    padding: 0 var(--container-gutter-m);
+  }
+
+  @media (--ml) {
+    padding: 0 var(--container-gutter-ml);
+    max-width: var(--container-max);
+  }
+}
+
+@define-mixin abs-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@define-mixin flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@define-mixin column-item $number, $spacing {
+  width: calc(100% / $number);
+  margin-top: $spacing;
+
+  &:nth-child(-n + $number) {
+    margin-top: 0;
+  }
+}
