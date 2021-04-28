@@ -37,6 +37,10 @@ require_once CODETOT_ADMIN_DIR . '/ct-data.php';
 require_once CODETOT_ADMIN_DIR . '/theme-sync.php';
 require_once CODETOT_ADMIN_DIR . '/page-settings.php';
 
+/** Custom widgets */
+require_once CODETOT_DIR . '/widgets/ct-icon-box.php';
+require_once CODETOT_DIR . '/widgets/ct-company-info.php';
+
 add_action('wp', function() {
   // Layout hooks
   require_once CODETOT_DIR . '/layout.php';
