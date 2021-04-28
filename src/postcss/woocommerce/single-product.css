@@ -11,6 +11,7 @@ body.single-product {
 }
 
 .single-product__top {
+  margin-top: 2em;
   margin-bottom: 2em;
 }
 
@@ -80,10 +81,6 @@ body.single-product {
 }
 
 .single-product-top {
-  & .product_title {
-    font-size: 21px;
-  }
-
   & .flex-active-slide {
     padding-bottom: 10px;
     text-align: center;
