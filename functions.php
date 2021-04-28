@@ -10,7 +10,7 @@
 
 if (!defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define('_S_VERSION', '1.0.0');
+	define('CODETOT_VERSION', wp_get_theme()->Get('Version'));
 }
 
 define('CODETOT_DIR', get_template_directory() . '/codetot');
@@ -27,6 +27,11 @@ require_once CODETOT_DIR . '/theme-init.php';
 require_once CODETOT_ADMIN_DIR . '/init.php';
 require_once CODETOT_ADMIN_DIR . '/ct-theme.php';
 require_once CODETOT_ADMIN_DIR . '/ct-data.php';
+require_once CODETOT_ADMIN_DIR . '/theme-sync.php';
+require_once CODETOT_ADMIN_DIR . '/page-settings.php';
+
+// Features
+require_once CODETOT_DIR . '/features/multiple-headers.php';
 
 require get_template_directory() . '/inc/custom-header.php';
 require get_template_directory() . '/inc/template-tags.php';
@@ -40,5 +45,6 @@ if (defined('JETPACK__VERSION')) {
 if (class_exists('WooCommerce')) {
 	require get_template_directory() . '/inc/woocommerce.php';
 
+  require_once CODETOT_DIR . '/woocommerce/init.php';
 	require_once CODETOT_DIR . '/woocommerce/ct-theme.php';
 }

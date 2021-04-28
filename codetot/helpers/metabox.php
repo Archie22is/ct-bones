@@ -1,4 +1,22 @@
 <?php
+// Prevent direct access.
+if (!defined('ABSPATH')) exit;
+
+if (!function_exists('get_global_option')) {
+  function get_global_option($field_name) {
+    $options = get_option('ct_theme');
+
+    return !empty($options[$field_name]) ? $options[$field_name] : null;
+  }
+}
+
+if (!function_exists('get_codetot_data')) {
+  function get_codetot_data($field_name) {
+    $options = get_option('ct_data');
+
+    return !empty($options[$field_name]) ? $options[$field_name] : null;
+  }
+}
 
 function codetot_get_color_options()
 {
