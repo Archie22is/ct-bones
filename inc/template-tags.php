@@ -188,7 +188,7 @@ if ( ! function_exists( 'codetot_header_class' ) ) {
 
     $class = implode( ' ', array_filter( $class ) );
 
-    echo esc_attr( $class );
+    return esc_attr( $class );
   }
 }
 
@@ -214,9 +214,4 @@ if ( !function_exists('codetot_logo_or_site_title') ) {
 
     echo $html; // phpcs:ignore
   }
-}
-
-function codetot_theme_is_localhost()
-{
-  return !empty($_SERVER['HTTP_X_CODETOT_HEADER']) && $_SERVER['HTTP_X_CODETOT_HEADER'] === 'development';
 }
