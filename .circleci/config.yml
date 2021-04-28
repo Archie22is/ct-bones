@@ -1,0 +1,81 @@
+version: 2
+jobs:
+  test_code:
+    docker:
+      # specify the version you desire here
+      # - image: circleci/php:7.0-fpm-node-browsers
+      - image: cimg/node:12.18
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies and Test
+          command: |
+            npm ci
+            npm run test
+
+  deploy:
+    docker:
+      - image: cimg/node:12.18
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "f2:c2:4b:d3:72:1b:b7:b2:3f:6b:4b:41:78:e8:f4:ba"
+      - run:
+          name: Install dependencies and Build assets
+          command: |
+            npm ci
+            npm run build
+            if [ -n "$(git status --porcelain)" ]; then
+              git config user.email "dev@codetot.com"
+              git config user.name "CODE TOT JSC"
+              git add .
+              git commit -m "Process styles and scripts [skip ci]"
+              git push origin HEAD:${CIRCLE_BRANCH}
+              exit 0
+            else
+              exit 0
+            fi
+  release:
+    docker:
+      - image: cimg/node:12.18
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "f2:c2:4b:d3:72:1b:b7:b2:3f:6b:4b:41:78:e8:f4:ba"
+      - run:
+          name: Install dependencies and Build assets
+          command: |
+            git config user.email "dev@codetot.com"
+            git config user.name "CODE TOT JSC"
+            rm -rf assets/js/*.js.LICENSE.txt
+            rm -rf src/
+            rm -rf postcss.config.js
+            rm -rf package*.json
+            rm -rf .babelrc .browserslistrc .editorconfig .eslintrc.js .prettierignore .stylelintrc
+            git add .
+            git commit -m "Release package"
+            git push origin HEAD:production-temp --force
+            git reset --hard origin/production
+            git merge origin/production-temp --no-ff --no-edit
+            git push origin HEAD:production
+            git push origin :production-temp
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - test_code:
+          filters:
+            branches:
+              only: /(feature|bugfix|hotfix)\/?(.*)/
+      - deploy:
+          filters:
+            branches:
+              only: /(develop|feature\/ci)/
+
+      - release:
+          filters:
+            branches:
+              only: master
