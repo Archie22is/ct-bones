@@ -136,7 +136,7 @@ class Codetot_Assets
 
     wp_enqueue_script(
       'codetot-global-script',
-      get_template_directory_uri() . '/js/global' . $this->theme_environment . '.js',
+      get_template_directory_uri() . '/assets/js/global' . $this->theme_environment . '.js',
       ['jquery'],
       $this->theme_version,
       true
