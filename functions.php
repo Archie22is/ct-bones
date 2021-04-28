@@ -25,7 +25,6 @@ include_once CODETOT_DIR . '/helpers/generator.php';
 
 include_once get_template_directory() . '/inc/template-tags.php';
 include_once get_template_directory() . '/inc/template-functions.php';
-include_once get_template_directory() . '/inc/customizer.php';
 
 require_once CODETOT_DIR . '/theme-init.php';
 require_once CODETOT_DIR . '/assets.php';

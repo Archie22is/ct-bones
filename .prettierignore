@@ -10,3 +10,6 @@ dynamic-assets/
 variables.css
 .circleci/
 .github/
+composer.json
+vendor/
+*.md
