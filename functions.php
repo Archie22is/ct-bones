@@ -50,7 +50,10 @@ if (class_exists('WooCommerce')) {
 	require get_template_directory() . '/inc/woocommerce.php';
 
   require_once CODETOT_DIR . '/woocommerce/init.php';
-	require_once CODETOT_DIR . '/woocommerce/ct-theme.php';
+  require_once CODETOT_DIR . '/woocommerce/ct-theme.php';
+
+  // Custom Layout
+  require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
 }
 
 require_once CODETOT_DIR . '/optimize.php';
