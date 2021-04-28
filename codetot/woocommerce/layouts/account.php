@@ -57,6 +57,13 @@ class Codetot_Woocommerce_Layout_Account
       add_action('woocommerce_after_customer_login_form', array($this, 'guest_page_close'), 10);
     }
 
+    if (is_account_page() && is_user_logged_in()) {
+      add_filter('codetot_display_page_breadcrumbs', '__return_false');
+      add_filter('codetot_display_page_header', '__return_false');
+
+      add_action('codetot_page', 'woocommerce_breadcrumbs', 100);
+    }
+
     add_action('woocommerce_before_account_navigation', array($this, 'account_page_open'), 10);
     add_action('woocommerce_after_account_navigation', array($this, 'account_page_between'), 60);
 
@@ -118,12 +125,11 @@ class Codetot_Woocommerce_Layout_Account
     } elseif ( is_wc_endpoint_url( 'lost-password' ) ) {
       $title = esc_html__( 'Lost password' );
     } else {
-      $title = '';
+      $title = esc_html__('My Account');
     }
 
     echo '<div class="page-block page-block--account" data-block="page-block">';
     echo '<div class="page-block__header">';
-    echo '<div class="container page-block___container">';
     echo '<div class="grid page-block__grid page-block__grid page-block__grid--header">';
     echo '<div class="grid__col page-block__col page-block__col--header-left">';
     echo '<h1 class="h2 align-c page-block__title">' . esc_attr($title) . '</h1>';
@@ -136,10 +142,8 @@ class Codetot_Woocommerce_Layout_Account
     ));
     echo '</div>'; // Close .page-block__col--header-right
     echo '</div>'; // Close .page-block__grid--header
-    echo '</div>'; // Close .container
     echo '</div>'; // Close .page-block__header
     echo '<div class="page-block__main">';
-    echo '<div class="container page-block___container">';
     echo '<div class="grid page-block__grid">';
     echo '<div class="grid__col page-block__col page-block__col--sidebar">';
   }
@@ -153,7 +157,6 @@ class Codetot_Woocommerce_Layout_Account
     if (is_account_page()) {
       echo '</div>'; // Close .page-block__col--main
       echo '</div>'; // Close .page-block__grid
-      echo '</div>'; // Close .container
       echo '</div>'; // Close .page-block__main
       echo '</div>'; // Close .page-block
     }

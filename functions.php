@@ -37,8 +37,12 @@ require_once CODETOT_ADMIN_DIR . '/ct-data.php';
 require_once CODETOT_ADMIN_DIR . '/theme-sync.php';
 require_once CODETOT_ADMIN_DIR . '/page-settings.php';
 
-// Features
-require_once CODETOT_DIR . '/features/multiple-headers.php';
+add_action('wp', function() {
+  // Layout hooks
+  require_once CODETOT_DIR . '/layout.php';
+  require_once CODETOT_DIR . '/features/multiple-headers.php';
+  require_once CODETOT_DIR . '/features/breadcrumbs.php';
+}, 10);
 
 if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
@@ -57,7 +61,7 @@ if (class_exists('WooCommerce')) {
     require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
     require_once CODETOT_DIR . '/woocommerce/layouts/product.php';
     require_once CODETOT_DIR . '/woocommerce/layouts/account.php';
-  });
+  }, 5);
 }
 
 require_once CODETOT_DIR . '/optimize.php';

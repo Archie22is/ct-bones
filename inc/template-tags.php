@@ -250,3 +250,68 @@ if ( !function_exists('codetot_logo_or_site_title') ) {
     echo $html; // phpcs:ignore
   }
 }
+
+if (! function_exists('codetot_page_breadcrumbs') ) {
+  function codetot_page_breadcrumbs() {
+    the_block('breadcrumbs');
+  }
+}
+
+if (! function_exists('codetot_page_header')) {
+    /**
+     * Display the post title
+     */
+    function codetot_page_header()
+    {
+      the_block('page-header', array(
+        'title' => get_the_title()
+      ));
+    }
+}
+
+if ( ! function_exists( 'codetot_page_content' ) ) {
+	/**
+	 * Display the post content
+	 */
+	function codetot_page_content() {
+    ob_start();
+		the_content();
+
+		wp_link_pages(
+			array(
+				'before'      => '<div class="page-links">' . __( 'Pages:', 'ct-theme' ),
+				'after'       => '</div>',
+				'link_before' => '<span>',
+				'link_after'  => '</span>',
+			)
+		);
+
+    $content = ob_get_clean();
+
+    the_block('default-section', array(
+      'class' => 'section page-content',
+      'content' => $content
+    ));
+	}
+}
+
+if ( ! function_exists( 'codetot_display_comments' ) ) {
+	/**
+	 * Display comments
+	 */
+	function codetot_display_comments() {
+		if ( is_single() || is_page() ) {
+      ob_start();
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
+
+      $content = ob_get_clean();
+
+      the_block('default-section', array(
+        'class' => 'section page-comments',
+        'content' => $content
+      ));
+		}
+	}
+}

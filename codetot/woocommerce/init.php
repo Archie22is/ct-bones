@@ -88,7 +88,7 @@ class Codetot_WooCommerce_Init {
   }
 
   public function breadcrumbs_container($args) {
-    $args['wrap_before'] = '<div class="woo-breadcrumbs"><div class="container woo-breadcrumbs__container"><div class="woo-breadcrumbs__list">';
+    $args['wrap_before'] = '<div class="breadcrumbs breadcrumbs--woocommerce"><div class="container breadcrumbs__container"><div class="breadcrumbs__list">';
     $args['wrap_after'] = '</div></div></div>';
 
     return $args;

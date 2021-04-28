@@ -1,12 +1,13 @@
 .page-block {
   padding: 1em 0;
+  transition: height 0.3s;
 }
 
 .page-block__col--sidebar {
   width: 100%;
   display: none;
 
-  @media (--m) {
+  @media (--s) {
     width: 25%;
     display: block;
   }
@@ -60,9 +61,27 @@
   overflow: hidden;
 }
 
+.page-block__col--header-right {
+  display: flex;
+  align-items: center;
+
+  @media (--s) {
+    display: none;
+  }
+}
+
 .page-block--account {
   margin-top: 0;
   margin-bottom: 4em;
+
+  & .page-block__header {
+    margin-bottom: 1em;
+  }
+
+  & .page-block__grid--header {
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 .page-block--guest {
@@ -81,4 +100,27 @@
 
 .page-block--category {
   margin: 2em 0;
+}
+
+.page-block--mobile-visible {
+  & .page-block__col--sidebar {
+    display: block;
+  }
+}
+
+.page-block__mobile-trigger {
+  display: inline-flex;
+  align-items: center;
+
+  & .button__icon {
+    @mixin icon 20px;
+
+    & + .button__text {
+      margin-left: 0.5em;
+    }
+  }
+
+  @media (--s) {
+    display: none;
+  }
 }
