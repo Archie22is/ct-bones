@@ -164,6 +164,41 @@ if ( ! function_exists( 'wp_body_open' ) ) :
 	}
 endif;
 
+/**
+ * @param null $id
+ * @param string $alt
+ * @param bool $placeholder
+ * @return mixed|string
+ */
+function codetot_image_alt( $id = null, $alt = '', $placeholder = false ) {
+  if ( ! $id ) {
+    if ( $placeholder ) {
+      return esc_attr__( 'Placeholder image', 'ct-theme' );
+    }
+    return esc_attr__( 'Error image', 'ct-theme' );
+  }
+
+  $data    = get_post_meta( $id, '_wp_attachment_image_alt', true );
+  $img_alt = ! empty( $data ) ? $data : $alt;
+
+  return $img_alt;
+}
+
+/**
+ * codetot_excerpt
+ */
+function codetot_excerpt($limit) {
+  $excerpt = explode(' ', get_the_excerpt(), $limit);
+  if (count($excerpt)>=$limit) {
+    array_pop($excerpt);
+    $excerpt = implode(" ",$excerpt).'...';
+  } else {
+    $excerpt = implode(" ",$excerpt);
+  }
+  $excerpt = preg_replace('`[[^]]*]`','',$excerpt);
+  return $excerpt;
+}
+
 if ( ! function_exists( 'codetot_header_class' ) ) {
   /**
    * Header class
