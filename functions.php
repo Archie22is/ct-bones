@@ -57,6 +57,7 @@ if (class_exists('WooCommerce')) {
     // Custom Layout
     require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
     require_once CODETOT_DIR . '/woocommerce/layouts/product.php';
+    require_once CODETOT_DIR . '/woocommerce/layouts/account.php';
   });
 }
 
