@@ -23,6 +23,10 @@ include_once CODETOT_DIR . '/helpers/acf.php';
 include_once CODETOT_DIR . '/helpers/metabox.php';
 include_once CODETOT_DIR . '/helpers/generator.php';
 
+include_once get_template_directory() . '/inc/template-tags.php';
+include_once get_template_directory() . '/inc/template-functions.php';
+include_once get_template_directory() . '/inc/customizer.php';
+
 require_once CODETOT_DIR . '/theme-init.php';
 require_once CODETOT_DIR . '/assets.php';
 
@@ -36,11 +40,6 @@ require_once CODETOT_ADMIN_DIR . '/page-settings.php';
 
 // Features
 require_once CODETOT_DIR . '/features/multiple-headers.php';
-
-require get_template_directory() . '/inc/custom-header.php';
-require get_template_directory() . '/inc/template-tags.php';
-require get_template_directory() . '/inc/template-functions.php';
-require get_template_directory() . '/inc/customizer.php';
 
 if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
