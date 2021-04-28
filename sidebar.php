@@ -1,4 +1,9 @@
 <?php
+
+if (function_exists('is_product_category') && is_product_category()) {
+  $sidebar = 'product-category-sidebar';
+}
+
 /**
  * The sidebar containing the main widget area
  *
@@ -7,11 +12,11 @@
  * @package CT_Bones
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+if ( ! is_active_sidebar( $sidebar ) ) {
 	return;
 }
 ?>
 
 <aside id="secondary" class="widget-area">
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
+	<?php dynamic_sidebar( $sidebar ); ?>
 </aside><!-- #secondary -->
