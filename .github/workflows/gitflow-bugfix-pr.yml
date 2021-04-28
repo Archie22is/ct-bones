@@ -1,0 +1,15 @@
+name: Create a new Pull Request (bugfix)
+on:
+  push:
+    branches:
+      - 'bugfix/**'
+jobs:
+  auto-pull-request-develop-bugfix:
+    name: bugfix => develop
+    runs-on: ubuntu-latest
+    steps:
+      - name: pull-request-action
+        uses: vsoch/pull-request-action@1.0.12
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PULL_REQUEST_BRANCH: "develop"
