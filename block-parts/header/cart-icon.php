@@ -1,6 +1,6 @@
 <?php
-$hide_cart_icon = codetot_hide_header_cart_icon();
-if (class_exists('WooCommerce') && !$hide_cart_icon) : ?>
+$hide_icon = get_global_option('codetot_header_hide_cart_icon') ?? false;
+if (!$hide_icon && class_exists('WooCommerce')) : ?>
   <?php $cart_url = wc_get_cart_url(); ?>
   <a class="header__menu-icons__item header__menu-icons__item--cart header__menu-icons__link js-minicart-trigger" href="<?php echo $cart_url; ?>">
     <span class="header__menu-icons__icon">
