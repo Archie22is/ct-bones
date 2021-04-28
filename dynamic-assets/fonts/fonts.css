@@ -1,0 +1,192 @@
+@font-face {
+    font-family: 'Averta';
+    src: url('averta/Averta-Black.eot');
+    src: url('averta/Averta-Black.eot?#iefix') format('embedded-opentype'),
+        url('averta/Averta-Black.woff2') format('woff2'),
+        url('averta/Averta-Black.woff') format('woff'),
+        url('averta/Averta-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Averta';
+    src: url('averta/Averta-Bold.eot');
+    src: url('averta/Averta-Bold.eot?#iefix') format('embedded-opentype'),
+        url('averta/Averta-Bold.woff2') format('woff2'),
+        url('averta/Averta-Bold.woff') format('woff'),
+        url('averta/Averta-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Averta';
+    src: url('averta/Averta-BlackItalic.eot');
+    src: url('averta/Averta-BlackItalic.eot?#iefix') format('embedded-opentype'),
+        url('averta/Averta-BlackItalic.woff2') format('woff2'),
+        url('averta/Averta-BlackItalic.woff') format('woff'),
+        url('averta/Averta-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Averta';
+    src: url('averta/Averta-Light.eot');
+    src: url('averta/Averta-Light.eot?#iefix') format('embedded-opentype'),
+        url('averta/Averta-Light.woff2') format('woff2'),
+        url('averta/Averta-Light.woff') format('woff'),
+        url('averta/Averta-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Averta';
+    src: url('averta/Averta-ExtraBoldItalic.eot');
+    src: url('averta/Averta-ExtraBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('averta/Averta-ExtraBoldItalic.woff2') format('woff2'),
+        url('averta/Averta-ExtraBoldItalic.woff') format('woff'),
+        url('averta/Averta-ExtraBoldItalic.ttf') format('truetype');
+    font-weight: 800;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Averta Extrathin';
+    src: url('averta/Averta-ExtrathinItalic.eot');
+    src: url('averta/Averta-ExtrathinItalic.eot?#iefix') format('embedded-opentype'),
+        url('averta/Averta-ExtrathinItalic.woff2') format('woff2'),
+        url('averta/Averta-ExtrathinItalic.woff') format('woff'),
+        url('averta/Averta-ExtrathinItalic.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Averta';
+    src: url('averta/Averta-BoldItalic.eot');
+    src: url('averta/Averta-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('averta/Averta-BoldItalic.woff2') format('woff2'),
+        url('averta/Averta-BoldItalic.woff') format('woff'),
+        url('averta/Averta-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Averta';
+    src: url('averta/Averta-ExtraBold.eot');
+    src: url('averta/Averta-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('averta/Averta-ExtraBold.woff2') format('woff2'),
+        url('averta/Averta-ExtraBold.woff') format('woff'),
+        url('averta/Averta-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Averta Extrathin';
+    src: url('averta/Averta-Extrathin.eot');
+    src: url('averta/Averta-Extrathin.eot?#iefix') format('embedded-opentype'),
+        url('averta/Averta-Extrathin.woff2') format('woff2'),
+        url('averta/Averta-Extrathin.woff') format('woff'),
+        url('averta/Averta-Extrathin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Averta';
+    src: url('averta/Averta-Regular.eot');
+    src: url('averta/Averta-Regular.eot?#iefix') format('embedded-opentype'),
+        url('averta/Averta-Regular.woff2') format('woff2'),
+        url('averta/Averta-Regular.woff') format('woff'),
+        url('averta/Averta-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Averta';
+    src: url('averta/Averta-Semibold.eot');
+    src: url('averta/Averta-Semibold.eot?#iefix') format('embedded-opentype'),
+        url('averta/Averta-Semibold.woff2') format('woff2'),
+        url('averta/Averta-Semibold.woff') format('woff'),
+        url('averta/Averta-Semibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Averta';
+    src: url('averta/Averta-LightItalic.eot');
+    src: url('averta/Averta-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('averta/Averta-LightItalic.woff2') format('woff2'),
+        url('averta/Averta-LightItalic.woff') format('woff'),
+        url('averta/Averta-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Averta';
+    src: url('averta/Averta-SemiboldItalic.eot');
+    src: url('averta/Averta-SemiboldItalic.eot?#iefix') format('embedded-opentype'),
+        url('averta/Averta-SemiboldItalic.woff2') format('woff2'),
+        url('averta/Averta-SemiboldItalic.woff') format('woff'),
+        url('averta/Averta-SemiboldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Averta';
+    src: url('averta/Averta-RegularItalic.eot');
+    src: url('averta/Averta-RegularItalic.eot?#iefix') format('embedded-opentype'),
+        url('averta/Averta-RegularItalic.woff2') format('woff2'),
+        url('averta/Averta-RegularItalic.woff') format('woff'),
+        url('averta/Averta-RegularItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Averta';
+    src: url('averta/Averta-ThinItalic.eot');
+    src: url('averta/Averta-ThinItalic.eot?#iefix') format('embedded-opentype'),
+        url('averta/Averta-ThinItalic.woff2') format('woff2'),
+        url('averta/Averta-ThinItalic.woff') format('woff'),
+        url('averta/Averta-ThinItalic.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Averta';
+    src: url('averta/Averta-Thin.eot');
+    src: url('averta/Averta-Thin.eot?#iefix') format('embedded-opentype'),
+        url('averta/Averta-Thin.woff2') format('woff2'),
+        url('averta/Averta-Thin.woff') format('woff'),
+        url('averta/Averta-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+

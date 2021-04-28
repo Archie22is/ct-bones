@@ -188,3 +188,62 @@ function codetot_get_social_media_options()
     ]
   ));
 }
+
+/**
+ * @return string
+ */
+function codetot_get_footer_copyright()
+{
+  return !empty(get_codetot_data('codetot_footer_copyright'))
+    ? get_codetot_data('codetot_footer_copyright')
+    : '<p>' . sprintf(
+      __('Copyright &copy; by <strong>%1$s</strong>. Built with <a href="%2$s" target="_blank">%3$s</a> (version: %4$s).', 'ct-theme') . '</p>',
+      get_bloginfo('name'),
+      esc_url('https://codetot.com'),
+      esc_html__('CT Web Builder', 'ct-theme'),
+      CODETOT_VERSION
+    )
+  ;
+}
+
+function codetot_get_google_maps_api_key() {
+  return get_codetot_data('codetot_google_maps_api_key');
+}
+
+function codetot_get_social_links() {
+  $items = [];
+  $setting_prefix = 'codetot_company_';
+  $keys = apply_filters('codetot_social_link_types', ['facebook', 'youtube', 'zalo', 'instagram',' pinterest', 'linkedin']);
+
+  foreach ($keys as $key) {
+    $value = get_codetot_data($setting_prefix . $key);
+
+    if (!empty($value)) {
+      $items[] = array(
+        'type' => $key,
+        'url' => $value
+      );
+    }
+  }
+
+  return $items;
+}
+
+function codetot_get_contact_info() {
+  $items = [];
+  $setting_prefix = 'codetot_company_';
+  $keys = ['hotline', 'address', 'email'];
+
+  foreach ($keys as $key) {
+    $value = get_codetot_data($setting_prefix . $key);
+
+    if (!empty($value)) {
+      $items[] = array(
+        'type' => $key,
+        'url' => $value
+      );
+    }
+  }
+
+  return $items;
+}

@@ -1,0 +1,24 @@
+.wpcvt-variations {
+  overflow-y: inherit !important;
+  max-height: 100% !important;
+}
+
+.wpcvt-variation-actions .quantity {
+  margin-top: 0 !important;
+}
+
+.wpcvt-variations .wpcvt-variation {
+  align-items: stretch;
+}
+
+.wpcvt-variations .wpcvt-variation > div {
+  padding: 5px;
+}
+
+.wpcvt-variation {
+  border-top: 1px solid var(--border);
+}
+
+.wpcvt-variation:first-child {
+  border-top: 0;
+}

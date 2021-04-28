@@ -215,3 +215,8 @@ if ( !function_exists('codetot_logo_or_site_title') ) {
     echo $html; // phpcs:ignore
   }
 }
+
+function codetot_theme_is_localhost()
+{
+  return !empty($_SERVER['HTTP_X_CODETOT_HEADER']) && $_SERVER['HTTP_X_CODETOT_HEADER'] === 'development';
+}

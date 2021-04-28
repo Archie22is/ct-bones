@@ -3,31 +3,20 @@
 if ( ! function_exists( 'ct_bones_setup' ) ) :
 	function ct_bones_setup() {
 		load_theme_textdomain( 'ct-bones', get_template_directory() . '/languages' );
-
-		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
-
-		/*
-		 * Let WordPress manage the document title.
-		 * By adding theme support, we declare that this theme does not use a
-		 * hard-coded <title> tag in the document head, and expect WordPress to
-		 * provide it for us.
-		 */
 		add_theme_support( 'title-tag' );
 
-		/*
-		 * Enable support for Post Thumbnails on posts and pages.
-		 *
-		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		 */
-		add_theme_support( 'post-thumbnails' );
+    // Thumbnail and image sizes
+    add_theme_support('post-thumbnails');
+    add_image_size('codetot-mobile', 360, 9999, false);
+    add_image_size('codetot-tablet', 600, 9999, false);
+    add_image_size('codetot-large-tablet', 1024, 9999, false);
+    add_image_size('codetot-desktop', 1440, 9999, false);
 
 		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus(
-			array(
-				'menu-1' => esc_html__( 'Primary', 'ct-bones' ),
-			)
-		);
+    register_nav_menus(array(
+      'primary' => __('Primary Menu', 'ct-theme')
+    ));
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
@@ -58,14 +47,8 @@ if ( ! function_exists( 'ct_bones_setup' ) ) :
 			)
 		);
 
-		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
-		/**
-		 * Add support for core custom logo.
-		 *
-		 * @link https://codex.wordpress.org/Theme_Logo
-		 */
 		add_theme_support(
 			'custom-logo',
 			array(
@@ -115,13 +98,93 @@ add_action( 'widgets_init', 'ct_bones_widgets_init' );
  * Enqueue scripts and styles.
  */
 function ct_bones_scripts() {
-	wp_enqueue_style( 'ct-bones-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'ct-bones-style', 'rtl', 'replace' );
-
-	wp_enqueue_script( 'ct-bones-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_style( 'ct-bones-default-style', get_stylesheet_uri(), array(), CODETOT_VERSION );
+	wp_enqueue_script( 'ct-bones-navigation', get_template_directory_uri() . '/js/navigation.js', array(), CODETOT_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'ct_bones_scripts' );
+
+function ct_bones_register_sidebars() {
+  register_sidebar(
+    array(
+      'id' => 'post-sidebar',
+      'name' => __('Post Sidebar', 'ct-theme'),
+      'before_widget' => '<div id="%1$s" class="widget widget--post %2$s">',
+      'after_widget' => '</div>',
+      'before_title' => '<p class="widget__title">',
+      'after_title' => '</p>'
+    )
+  );
+
+  register_sidebar(
+    array(
+      'id' => 'page-sidebar',
+      'name' => __('Page Sidebar', 'ct-theme'),
+      'before_widget' => '<div id="%1$s" class="widget widget--page %2$s">',
+      'after_widget' => '</div>',
+      'before_title' => '<p class="widget__title">',
+      'after_title' => '</p>'
+    )
+  );
+
+  register_sidebar(
+    array(
+      'id' => 'category-sidebar',
+      'name' => __('Category Sidebar', 'ct-theme'),
+      'before_widget' => '<div id="%1$s" class="widget widget--category %2$s">',
+      'after_widget' => '</div>',
+      'before_title' => '<p class="widget__title">',
+      'after_title' => '</p>'
+    )
+  );
+  $footer_column = get_global_option('codetot_footer_columns') ? str_replace('-columns', '', get_global_option('codetot_footer_columns')) : 3;
+  for ($i = 1; $i <= $footer_column; $i++) {
+    register_sidebar(
+      array(
+        'name' => sprintf(__('Footer Column #%s', 'ct-theme'), $i),
+        'description' => __('Add widgets to display in footer column.', 'ct-theme'),
+        'id' => 'footer-column-' . $i,
+        'before_widget' => '<div id="%1$s" class="widget widget--footer %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<p class="widget__title">',
+        'after_title' => '</p>',
+      ));
+  }
+}
+add_action('widgets_init', 'ct_bones_register_sidebars');
+
+function codetot_add_arrow_to_menu( $output, $item, $depth, $args ){
+  if('primary' == $args->theme_location && $depth === 0 ){
+      if (in_array("menu-item-has-children", $item->classes)) {
+          $output .='<span class="icon-toggle js-toggle-sub-menu"></span>';
+      }
+  }
+    return $output;
+}
+add_filter( 'walker_nav_menu_start_el', 'codetot_add_arrow_to_menu', 10, 4);
+
+add_action('wp_footer', 'codetot_bottom_blocks');
+function codetot_bottom_blocks() {
+  the_block_part('footer');
+
+  // Sticky blocks
+  the_block('slideout-menu');
+  the_block_part('modal-search-form');
+}
+
+
+function codetot_page_body_class($classes) {
+  if (!function_exists('rwmb_meta')) {
+    return $classes;
+  }
+
+  if (is_page() && !empty(rwmb_meta('codetot_page_class'))) {
+    $classes[] = esc_attr(rwmb_meta('codetot_page_class'));
+  }
+
+  return $classes;
+}
+add_filter('body_class', 'codetot_page_body_class');
