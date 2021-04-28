@@ -83,3 +83,90 @@ function codetot_get_header_options()
 
     return $header_options;
 }
+
+function codetot_get_company_info_inputs()
+{
+  $prefix = 'codetot_';
+
+  return array(
+    [
+      'name' => __('Company Name', 'ct-theme'),
+      'id'   => $prefix . 'company_name',
+      'type' => 'text',
+    ],
+    [
+      'name' => __('Company Address', 'ct-theme'),
+      'id'   => $prefix . 'company_address',
+      'type' => 'text',
+    ],
+    [
+      'name' => __('Company Hotline', 'ct-theme'),
+      'id'   => $prefix . 'company_hotline',
+      'type' => 'text',
+    ],
+    [
+      'name' => __('Company Email', 'ct-theme'),
+      'id'   => $prefix . 'company_email',
+      'type' => 'email',
+    ],
+    [
+      'name' => __('Company Google Maps Link', 'ct-theme'),
+      'id'   => $prefix . 'company_google_maps_link',
+      'type' => 'text',
+      'desc' => __('When visiting a Contact page, the direcction link will point user directly to app Google Maps.', 'ct-theme')
+    ],
+    [
+      'type'=> 'wysiwyg',
+      'name' => __('Header Topbar Content', 'ct-theme'),
+      'id'   => $prefix . 'header_topbar_content',
+      'std' => 1,
+      'desc' => sprintf(__('Available shortcodes: %s', 'ct-theme'), '[social-link], [contact]')
+    ],
+    [
+      'name'    => __('Footer Copyright', 'ct-pro-toolkit'),
+      'id'      => $prefix . 'footer_copyright',
+      'type'    => 'wysiwyg',
+    ]
+  );
+}
+
+/**
+ * @return array
+ */
+function codetot_get_social_media_options()
+{
+  $prefix = 'codetot_';
+
+  return apply_filters('codetot_social_links', array(
+    [
+      'name' => __('Facebook URL', 'ct-theme'),
+      'id'   => $prefix . 'company_facebook',
+      'type' => 'url',
+    ],
+    [
+      'name' => __('Youtube URL', 'ct-theme'),
+      'id'   => $prefix . 'company_youtube',
+      'type' => 'url',
+    ],
+    [
+      'name' => __('Zalo Official URL', 'ct-theme'),
+      'id'   => $prefix . 'company_zalo',
+      'type' => 'url',
+    ],
+    [
+      'name' => __('Instagram URL', 'ct-theme'),
+      'id'   => $prefix . 'company_instagram',
+      'type' => 'url',
+    ],
+    [
+      'name' => __('Pinterest URL', 'ct-theme'),
+      'id'   => $prefix . 'company_pinterest',
+      'type' => 'url',
+    ],
+    [
+      'name' => __('LinkedIn URL', 'ct-theme'),
+      'id'   => $prefix . 'company_linkedin',
+      'type' => 'url',
+    ]
+  ));
+}

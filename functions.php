@@ -20,13 +20,13 @@ define('CODETOT_ADMIN_ASSETS_URI', get_template_directory_uri() . '/codetot/admi
 
 include_once CODETOT_DIR . '/helpers/acf.php';
 include_once CODETOT_DIR . '/helpers/metabox.php';
-include_once CODETOT_DIR . '/helpers/blocks.php';
 
 require_once CODETOT_DIR . '/theme-init.php';
 
 // Admin
 require_once CODETOT_ADMIN_DIR . '/init.php';
 require_once CODETOT_ADMIN_DIR . '/ct-theme.php';
+require_once CODETOT_ADMIN_DIR . '/ct-data.php';
 
 require get_template_directory() . '/inc/custom-header.php';
 require get_template_directory() . '/inc/template-tags.php';
