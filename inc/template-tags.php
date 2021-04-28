@@ -163,3 +163,55 @@ if ( ! function_exists( 'wp_body_open' ) ) :
 		do_action( 'wp_body_open' );
 	}
 endif;
+
+if ( ! function_exists( 'codetot_header_class' ) ) {
+  /**
+   * Header class
+   */
+  function codetot_header_class() {
+    $class[] = 'header';
+
+    $header_layout = !empty(get_global_option('codetot_header_layout')) ? str_replace('header-', '', get_global_option('codetot_header_layout')) : '1';
+    $header_style_number = !empty($header_layout) ? str_replace('style-', '', esc_attr($header_layout)) : '1';
+    $class[] = apply_filters( 'codetot_header_layout_classes', 'header--layout-' . $header_style_number );
+
+    $enable_header_transparent = is_page() && function_exists('rwmb_meta') ? rwmb_meta('codetot_enable_header_transparent') : false;
+    if ($enable_header_transparent) {
+      $class[] = 'header--transparent';
+    }
+
+    $header_background_color = get_global_option('codetot_header_background_color') ?? 'white';
+    $class[] = !empty($header_background_color) && $header_background_color !== 'bg-white' ? 'header--has-bg bg-' . esc_attr($header_background_color) : 'bg-white';
+
+    $text_contract_color = get_global_option('codetot_header_color_contract') ?? 'light';
+    $class[] = !empty($text_contract_color) ? 'header--' . esc_attr($text_contract_color) . '-contract' : 'header--dark-contract';
+
+    $class = implode( ' ', array_filter( $class ) );
+
+    echo esc_attr( $class );
+  }
+}
+
+if ( !function_exists('codetot_logo_or_site_title') ) {
+  /**
+   * @param bool $echo
+   * @return string
+   */
+  function codetot_logo_or_site_title($echo = false) {
+    if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) {
+      // Image logo.
+      $logo = get_custom_logo();
+      $html = is_home() ? '<h1 class="logo">' . $logo . '</h1>' : $logo;
+    } else {
+      $tag = is_home() ? 'h1' : 'div';
+
+      $html  = '<' . esc_attr( $tag ) . ' class="site-title"><a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . esc_html( get_bloginfo( 'name' ) ) . '</a></' . esc_attr( $tag ) . '>';
+    }
+
+    if ( ! $echo ) {
+      return $html;
+    }
+
+    echo $html; // phpcs:ignore
+  }
+}
