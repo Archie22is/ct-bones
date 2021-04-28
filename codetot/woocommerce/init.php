@@ -38,6 +38,7 @@ class Codetot_WooCommerce_Init {
 
     add_action('widgets_init', array($this, 'register_woocommerce_sidebars'));
     add_action('wp_enqueue_scripts', array($this, 'load_woocommerce_css'), 90);
+    add_filter('woocommerce_breadcrumb_defaults', array($this, 'breadcrumbs_container'));
   }
 
   public function register_woocommerce_sidebars() {
@@ -84,6 +85,13 @@ class Codetot_WooCommerce_Init {
       CODETOT_VERSION,
       true
     );
+  }
+
+  public function breadcrumbs_container($args) {
+    $args['wrap_before'] = '<div class="woo-breadcrumbs"><div class="container woo-breadcrumbs__container"><div class="woo-breadcrumbs__list">';
+    $args['wrap_after'] = '</div></div></div>';
+
+    return $args;
   }
 
   public function is_localhost()
