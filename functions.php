@@ -23,6 +23,9 @@ include_once CODETOT_DIR . '/helpers/metabox.php';
 include_once CODETOT_DIR . '/helpers/blocks.php';
 
 require_once CODETOT_DIR . '/theme-init.php';
+
+// Admin
+require_once CODETOT_ADMIN_DIR . '/init.php';
 require_once CODETOT_ADMIN_DIR . '/ct-theme.php';
 
 require get_template_directory() . '/inc/custom-header.php';
@@ -36,4 +39,6 @@ if (defined('JETPACK__VERSION')) {
 
 if (class_exists('WooCommerce')) {
 	require get_template_directory() . '/inc/woocommerce.php';
+
+	require_once CODETOT_DIR . '/woocommerce/ct-theme.php';
 }
