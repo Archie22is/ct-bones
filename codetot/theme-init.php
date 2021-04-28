@@ -98,9 +98,6 @@ add_action( 'widgets_init', 'ct_bones_widgets_init' );
  * Enqueue scripts and styles.
  */
 function ct_bones_scripts() {
-	wp_enqueue_style( 'ct-bones-default-style', get_stylesheet_uri(), array(), CODETOT_VERSION );
-	wp_enqueue_script( 'ct-bones-navigation', get_template_directory_uri() . '/js/navigation.js', array(), CODETOT_VERSION, true );
-
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
