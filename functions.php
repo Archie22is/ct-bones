@@ -48,11 +48,16 @@ if (defined('JETPACK__VERSION')) {
 if (class_exists('WooCommerce')) {
 	require get_template_directory() . '/inc/woocommerce.php';
 
+  include_once CODETOT_DIR . '/helpers/woocommerce.php';
+
   require_once CODETOT_DIR . '/woocommerce/init.php';
   require_once CODETOT_DIR . '/woocommerce/ct-theme.php';
 
-  // Custom Layout
-  require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
+  add_action('wp', function() {
+    // Custom Layout
+    require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
+    require_once CODETOT_DIR . '/woocommerce/layouts/product.php';
+  });
 }
 
 require_once CODETOT_DIR . '/optimize.php';
