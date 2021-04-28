@@ -38,6 +38,7 @@ class Codetot_WooCommerce_Init {
 
     add_action('widgets_init', array($this, 'register_woocommerce_sidebars'));
     add_action('wp_enqueue_scripts', array($this, 'load_woocommerce_css'), 90);
+    add_action('wp_enqueue_scripts', array($this, 'load_woocommerce_js'), 91);
     add_filter('woocommerce_breadcrumb_defaults', array($this, 'breadcrumbs_container'));
   }
 
@@ -76,7 +77,7 @@ class Codetot_WooCommerce_Init {
     wp_enqueue_style('codetot-woocommerce', get_template_directory_uri() . '/assets/css/woocommerce-style' . $this->theme_environment . '.css', array(), CODETOT_VERSION);
   }
 
-  public function ct_bones_load_woocommerce_js() {
+  public function load_woocommerce_js() {
     wp_enqueue_script('wc-add-to-cart-variation');
     wp_enqueue_script(
       'codetot-woocommerce',
