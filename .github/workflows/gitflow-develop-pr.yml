@@ -1,0 +1,16 @@
+name: Create a new Pull Request (develop)
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  auto-pull-request-master-develop:
+    name: develop => master
+    runs-on: ubuntu-latest
+    steps:
+      - name: pull-request-action
+        uses: vsoch/pull-request-action@1.0.12
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_PREFIX: "develop"
+          PULL_REQUEST_BRANCH: "master"
