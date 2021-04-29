@@ -73,6 +73,21 @@ class Codetot_WooCommerce_Init {
     ));
   }
 
+  public function fix_load_country_edit_address() {
+    if (is_account_page()) :
+    ?>
+    <script>
+    (function($){
+      var $country = $('select[name="billing_country"]')
+
+      if ($country.length) {
+        $country.select2()
+      }
+    })(jQuery);
+    </script>
+    <?php endif;
+  }
+
   public function load_woocommerce_css() {
     wp_enqueue_style('codetot-woocommerce', get_template_directory_uri() . '/assets/css/woocommerce-style' . $this->theme_environment . '.css', array(), CODETOT_VERSION);
   }
