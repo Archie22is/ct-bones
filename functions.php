@@ -70,6 +70,7 @@ if (class_exists('WooCommerce')) {
     require_once CODETOT_DIR . '/woocommerce/features/modal-login.php';
     require_once CODETOT_DIR . '/woocommerce/features/quick-view.php';
     require_once CODETOT_DIR . '/woocommerce/features/viewed-products.php';
+    require_once CODETOT_DIR . '/woocommerce/features/single-product-ajax-cart.php';
 
     require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
     require_once CODETOT_DIR . '/woocommerce/layouts/product.php';

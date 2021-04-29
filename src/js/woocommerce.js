@@ -2,6 +2,7 @@
 import { select, selectAll, on, trigger } from 'lib/dom'
 import { customQuantity } from './woocommerce/quantity'
 import { widgetProductCategories } from './woocommerce/widget-product-categories'
+import { initAddToCartSingleProduct } from './woocommerce/cart.js'
 
 const $ = jQuery
 
@@ -68,7 +69,6 @@ $(document.body).on('wc_fragments_loaded', initImageHoverProductCard)
 document.addEventListener('DOMContentLoaded', () => {
   customQuantity()
   widgetProductCategories()
-  singleProduct()
-  init()
   initBlocks()
+  initAddToCartSingleProduct()
 })
