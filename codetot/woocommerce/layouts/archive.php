@@ -161,8 +161,17 @@ class Codetot_Woocommerce_Layout_Archive
   }
 
   public function page_block_open() {
+    if ( is_shop() ) :
+      $sidebar_layout = get_global_option('codetot_shop_layout') ?? 'sidebar-left';
+    elseif( is_product_category() ) :
+      $sidebar_layout = get_global_option('codetot_product_category_layout') ?? 'sidebar-left';
+    endif;
+
     if (is_shop() || is_product_category()) :
-      echo '<div class="page-block page-block--archive">';
+      $class = 'page-block page-block--archive';
+      $class .= ' ' . esc_attr($sidebar_layout);
+
+      echo '<div class="' . esc_attr($class) . '">';
       echo '<div class="container page-block__container">';
       echo '<div class="grid page-block__grid">';
       echo '<div class="grid__col page-block__col page-block__col--main">';
