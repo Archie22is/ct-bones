@@ -132,6 +132,13 @@ class Codetot_CT_Theme_WooCommerce_Settings
         'id'   => $this->prefix . 'woocommerce_enable_product_star_rating_in_list',
         'std'  => 0
       ),
+      array(
+        'type' => 'switch',
+        'name' => __('Cross-Selling Products', 'ct-theme'),
+        'desc' => __('Display cross-sell products below Add to cart button on single product page.', 'ct-theme'),
+        'id'   => $this->prefix . 'woocommerce_enable_cross_selling_products',
+        'std'  => 0
+      ),
     );
 
     $meta_boxes[] = [
