@@ -80,6 +80,7 @@
 
     & header {
       order: 2;
+      margin-top: 0.5em;
 
       & .entry-title {
         line-height: 1;
