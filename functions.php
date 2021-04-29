@@ -65,6 +65,11 @@ if (class_exists('WooCommerce')) {
     // Custom Layout
     require_once CODETOT_DIR . '/woocommerce/layouts/abstract.php';
 
+    require_once CODETOT_DIR . '/woocommerce/features/mini-cart.php';
+    require_once CODETOT_DIR . '/woocommerce/features/modal-login.php';
+    require_once CODETOT_DIR . '/woocommerce/features/quick-view.php';
+    require_once CODETOT_DIR . '/woocommerce/features/viewed-products.php';
+
     require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
     require_once CODETOT_DIR . '/woocommerce/layouts/product.php';
     require_once CODETOT_DIR . '/woocommerce/layouts/account.php';
