@@ -2,7 +2,6 @@
 import { select, selectAll, on, trigger } from 'lib/dom'
 import { customQuantity } from './woocommerce/quantity'
 import { widgetProductCategories } from './woocommerce/widget-product-categories'
-import { singleProduct } from './woocommerce/single-product'
 
 const $ = jQuery
 
