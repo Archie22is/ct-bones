@@ -68,9 +68,9 @@ class Codetot_Woocommerce_Layout_Archive
 
   public function build_wrapper()
   {
+    add_action('codetot_product_archive_after_page_block_main', array($this, 'archive_title'), 10);
+    add_action('codetot_product_archive_after_page_block_main', 'woocommerce_taxonomy_archive_description', 20);
     add_action('codetot_after_header', 'woocommerce_breadcrumb', 20);
-    add_action('codetot_after_header', array($this, 'archive_title'), 30);
-    add_action('codetot_after_header', 'woocommerce_taxonomy_archive_description', 40);
     add_action('codetot_after_header', array($this, 'page_block_open'), 50);
     add_action('codetot_before_sidebar', array($this, 'page_block_between'), 10);
     add_action('codetot_after_sidebar', array($this, 'page_block_close'), 90);
@@ -117,7 +117,7 @@ class Codetot_Woocommerce_Layout_Archive
       }
 
       the_block('page-header', array(
-        'class' => 'page-header--archive',
+        'class' => 'page-header--no-container page-header--archive',
         'title' => $title
       ));
     }
@@ -160,6 +160,8 @@ class Codetot_Woocommerce_Layout_Archive
 
     $class .= ' ' . esc_attr($sidebar_layout);
 
+    do_action('codetot_product_archive_before_page_block');
+
     if (is_shop() || is_product_category()) :
       echo '<div class="' . esc_attr($class) . '" data-block="page-block">';
       echo '<div class="container page-block__container">';
@@ -170,6 +172,7 @@ class Codetot_Woocommerce_Layout_Archive
       ));
       echo '<div class="grid page-block__grid">';
       echo '<div class="grid__col page-block__col page-block__col--main">';
+      do_action('codetot_product_archive_after_page_block_main');
     endif;
   }
 
