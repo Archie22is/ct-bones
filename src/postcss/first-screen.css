@@ -12,9 +12,7 @@
 @import url('blocks/image.css'); /** High priority **/
 @import url('wp/widgets.css');
 @import url('wp/content.css');
-@import url('others/cf7.css');
 @import url('others/flickity.css');
-@import url('others/nouislider.css');
 
 /** Header **/
 @import url('blocks/header.css');
