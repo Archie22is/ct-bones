@@ -106,7 +106,7 @@ if (!class_exists('Codetot_Woocommerce_Viewed_Products')) {
     public function render_section()
     {
       $query = $this->get_query();
-      $_class = 'section product-grid product-grid--no-container product-grid--viewed-products';
+      $_class = 'product-grid--viewed-products';
       the_block('product-grid', array(
         'class' => $_class,
         'title' => esc_html__('Recently Viewed Products', 'ct-theme'),
