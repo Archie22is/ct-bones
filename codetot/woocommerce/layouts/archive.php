@@ -107,17 +107,6 @@ class Codetot_Woocommerce_Layout_Archive
     add_action('woocommerce_after_shop_loop_item', array($this, 'loop_product_content_close'), 50);
   }
 
-  public function filter_button()
-  {
-    echo '<div class="page-block__filter">';
-    the_block('button', array(
-      'button' => __('Filters', 'ct-theme'),
-      'type' => 'outline',
-      'class' => 'page-block__filter-button js-sidebar-toggle'
-    ));
-    echo '</div>';
-  }
-
   public function archive_title()
   {
     if (is_shop() || is_product_category()) {
@@ -161,18 +150,26 @@ class Codetot_Woocommerce_Layout_Archive
   }
 
   public function page_block_open() {
+    $class = 'page-block';
+
     if ( is_shop() ) :
+      $class .= ' page-block--shop';
       $sidebar_layout = get_global_option('codetot_shop_layout') ?? 'sidebar-left';
     elseif( is_product_category() ) :
+      $class .= ' page-block--product-category';
       $sidebar_layout = get_global_option('codetot_product_category_layout') ?? 'sidebar-left';
     endif;
 
-    if (is_shop() || is_product_category()) :
-      $class = 'page-block page-block--archive';
-      $class .= ' ' . esc_attr($sidebar_layout);
+    $class .= ' ' . esc_attr($sidebar_layout);
 
-      echo '<div class="' . esc_attr($class) . '">';
+    if (is_shop() || is_product_category()) :
+      echo '<div class="' . esc_attr($class) . '" data-block="page-block">';
       echo '<div class="container page-block__container">';
+      the_block('page-block-mobile-trigger', array(
+        'class' => 'has-icon',
+        'button_icon' => codetot_svg('menu', false),
+        'button_text' => esc_html__('Filter', 'woocommerce')
+      ));
       echo '<div class="grid page-block__grid">';
       echo '<div class="grid__col page-block__col page-block__col--main">';
     endif;
