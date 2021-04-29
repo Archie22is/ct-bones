@@ -62,7 +62,7 @@ class Codetot_Woocommerce_Layout_Account
     if (is_account_page() && is_user_logged_in()) {
       add_filter('codetot_display_page_breadcrumbs', '__return_false');
 
-      add_action('codetot_page', 'woocommerce_breadcrumbs', 100);
+      add_action('codetot_page', 'woocommerce_breadcrumb', 1);
     }
 
     add_action('woocommerce_before_account_navigation', array($this, 'account_page_open'), 10);
