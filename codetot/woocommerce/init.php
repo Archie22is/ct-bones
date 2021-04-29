@@ -6,17 +6,13 @@ class Codetot_WooCommerce_Init {
    */
   private static $instance;
   /**
-   * @var array|false|string
+   * @var string
    */
   private $theme_version;
   /**
    * @var string
    */
   private $theme_environment;
-  /**
-   * @var array
-   */
-  private $premium_fonts;
 
   /**
    * Get singleton instance.
@@ -37,9 +33,13 @@ class Codetot_WooCommerce_Init {
     $this->theme_environment = $this->is_localhost() ? '' : '.min';
 
     add_action('widgets_init', array($this, 'register_woocommerce_sidebars'));
+
+    add_filter('woocommerce_breadcrumb_defaults', array($this, 'breadcrumbs_container'));
+    add_action('pre_get_posts', array($this, 'search_product_only'));
+
     add_action('wp_enqueue_scripts', array($this, 'load_woocommerce_css'), 90);
     add_action('wp_enqueue_scripts', array($this, 'load_woocommerce_js'), 91);
-    add_filter('woocommerce_breadcrumb_defaults', array($this, 'breadcrumbs_container'));
+    add_action('wp_footer', array($this, 'fix_load_country_edit_address'), 90);
   }
 
   public function register_woocommerce_sidebars() {
@@ -93,6 +93,13 @@ class Codetot_WooCommerce_Init {
     $args['wrap_after'] = '</div></div></div>';
 
     return $args;
+  }
+
+  public function search_product_only($query)
+  {
+    if (apply_filters('codetot_is_search_product_only', true) === true &&  !is_admin() && $query->is_main_query() && $query->is_search) {
+      $query->set('post_type', 'product');
+    }
   }
 
   public function is_localhost()

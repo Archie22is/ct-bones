@@ -63,9 +63,14 @@ if (class_exists('WooCommerce')) {
 
   add_action('wp', function() {
     // Custom Layout
+    require_once CODETOT_DIR . '/woocommerce/layouts/abstract.php';
+
     require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
     require_once CODETOT_DIR . '/woocommerce/layouts/product.php';
     require_once CODETOT_DIR . '/woocommerce/layouts/account.php';
+    require_once CODETOT_DIR . '/woocommerce/layouts/cart.php';
+    require_once CODETOT_DIR . '/woocommerce/layouts/checkout.php';
+    require_once CODETOT_DIR . '/woocommerce/layouts/thankhyou.php';
   }, 5);
 }
 
