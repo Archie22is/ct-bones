@@ -10,7 +10,7 @@ body.single-product {
   }
 }
 
-.single-product__top {
+.single-product-top {
   margin-top: 2em;
   margin-bottom: 2em;
 }
@@ -307,8 +307,8 @@ body.single-product {
       height: 40px;
       text-align: center;
       line-height: 40px;
-      background: var(--light);
-      border-radius: 3px;
+      border-bottom: 2px solid var(--border);
+      border-radius: 0;
       margin-right: 10px;
       transition: all 0.3s;
 
@@ -323,10 +323,10 @@ body.single-product {
 
       &.active,
       &:hover {
-        background: var(--primary);
+        border-bottom-color: var(--primary);
 
         & a {
-          color: var(--white);
+          color: var(--primary);
         }
       }
     }
