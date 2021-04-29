@@ -192,6 +192,7 @@ class Codetot_CT_Theme_Settings
                     'inline'  => false
                 ]
             ),
+            array(
             [
                 'type' => 'heading',
                 'name' => __('Category Layout', 'ct-theme'),
@@ -220,7 +221,7 @@ class Codetot_CT_Theme_Settings
                     'style-3' => __('Style 3', 'ct-theme'),
                     'style-4' => __('Style 4', 'ct-theme'),
                 ],
-            ],
+            ])
         );
 
         $meta_boxes[] = [
