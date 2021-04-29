@@ -45,10 +45,6 @@ class Codetot_Multiple_Headers
       return;
     }
 
-    add_action('codetot_header', function () {
-      the_block_part('header/header-topbar');
-    }, 1);
-
     switch ($this->layout):
       case '1':
       case '2':

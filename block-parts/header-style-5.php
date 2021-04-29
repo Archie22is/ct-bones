@@ -2,6 +2,7 @@
 $container = codetot_site_container();
 $has_woocommerce = class_exists('WooCommerce');
 ?>
+<?php the_block_part('header/header-topbar');?>
 <div class="header__wrapper">
   <div class="header__row header__row--main">
     <div class="<?php echo $container; ?> header__container">
