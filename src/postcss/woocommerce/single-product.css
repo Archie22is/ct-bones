@@ -306,8 +306,8 @@ body.single-product {
     flex-wrap: wrap;
 
     & li {
-      min-width: 100px;
-      padding: 0 1em;
+      min-width: 3em;
+      padding: 0;
       height: 40px;
       text-align: center;
       line-height: 40px;
