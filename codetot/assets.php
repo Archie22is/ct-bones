@@ -34,14 +34,14 @@ class Codetot_Assets
 
   public function __construct()
   {
-    $this->theme_version = $this->is_localhost() ? substr(sha1(rand()), 0, 6) : wp_get_theme()->get('Version');
+    $this->theme_version = $this->is_localhost() ? substr(sha1(rand()), 0, 6) : CODETOT_VERSION;
     $this->theme_environment = $this->is_localhost() ? '' : '.min';
     $this->premium_fonts = array_keys(codetot_premium_fonts());
 
+    add_action('wp_enqueue_scripts', array($this, 'load_fonts'), 1);
     add_action('wp_enqueue_scripts', array($this, 'load_frontend_css'), 10);
-    add_action('wp_enqueue_scripts', array($this, 'load_frontend_js'), 10);
+    add_action('wp_enqueue_scripts', array($this, 'load_frontend_js'), 20);
     add_action('wp_head', array($this, 'output_inline_styles'), 100);
-    add_action('wp_enqueue_scripts', array($this, 'load_fonts'));
 
     // Frontend inline css
     add_action('codetot_custom_style_css_before', array($this, 'default_variables_css_inline'));
@@ -51,8 +51,13 @@ class Codetot_Assets
 
   public function load_frontend_css()
   {
-    if (is_404()) {
-      wp_enqueue_style('codetot-404', CODETOT_DYNAMIC_ASSETS . '/pages/404' . $this->theme_environment . '.css', array());
+    if (is_404() || is_search()) {
+      wp_enqueue_style(
+        'codetot-page-not-found',
+        get_template_directory_uri() . '/dynamic-assets/pages/404' . $this->theme_environment . '.css',
+        array(),
+        $this->theme_version
+      );
     }
   }
 
