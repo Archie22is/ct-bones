@@ -23,19 +23,17 @@
 }
 
 .page-block.sidebar-left {
+  & .page-block__grid {
+    @media (--s) {
+      flex-direction: row-reverse;
+    }
+  }
+
   & .page-block__col--main {
     margin-top: 1em;
 
     @media (--s) {
       margin-top: 0;
-    }
-  }
-}
-
-.page-block.sidebar-right {
-  & .page-block__grid {
-    @media (--s) {
-      flex-direction: row-reverse;
     }
   }
 }
