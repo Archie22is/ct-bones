@@ -165,8 +165,15 @@
     empty-cells: show;
     border: 1px solid var(--border);
 
+    & tr {
+      padding: 0.5em 1em;
+      background: var(--light);
+      font-weight: 700;
+    }
+
     & th,
     & td {
+      padding: 0.5em 1em;
       border-left: 1px solid var(--border);
       border-bottom-width: 0;
       border-right-width: 0;
@@ -174,6 +181,10 @@
       font-size: inherit;
       margin: 0;
       overflow: visible;
+
+      & p {
+        margin: 0;
+      }
     }
   }
 }
