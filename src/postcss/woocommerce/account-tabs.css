@@ -37,7 +37,7 @@
 
 .account-tabs {
   max-width: var(--xs);
-  margin: 0 auto;
+  margin: 1em auto 0;
   overflow: hidden;
 
   & .u-columns {
