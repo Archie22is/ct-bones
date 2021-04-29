@@ -106,21 +106,12 @@ if (!class_exists('Codetot_Woocommerce_Viewed_Products')) {
     public function render_section()
     {
       $query = $this->get_query();
-      $section_path = get_stylesheet_directory() . '/blocks/product-grid.php';
-      $is_section_available = file_exists($section_path);
-      $_class = 'section product-grid product-grid--no-container product-grid--viewed-products';
-
-      if ($is_section_available) {
-        the_block('product-grid', array(
-          'class' => $_class,
-          'title' => esc_html__('Recently Viewed Products', 'ct-theme'),
-          'query' => $query
-        ));
-      } else {
-        if (defined('WP_DEBUG') && WP_DEBUG) {
-          echo '<-- There is no viewed products -->';
-        }
-      }
+      $_class = 'product-grid--viewed-products';
+      the_block('product-grid', array(
+        'class' => $_class,
+        'title' => esc_html__('Recently Viewed Products', 'ct-theme'),
+        'query' => $query
+      ));
     }
   }
 

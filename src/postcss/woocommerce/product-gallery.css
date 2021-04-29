@@ -1,3 +1,13 @@
+.product-gallery__inner {
+  max-width: var(--xs);
+  margin: 0 auto;
+
+  @media (--m) {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
 .product-gallery__slider {
   padding: 0 5px;
   width: 100%;

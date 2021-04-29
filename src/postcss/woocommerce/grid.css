@@ -11,16 +11,8 @@
       }
     }
 
-    & .product__image-hover-wrapper {
-      @media (--m) {
-        @mixin fade-in;
-      }
-    }
-
-    & .product__image {
-      @media (--m) {
-        @mixin fade-out;
-      }
+    & .product__image-hover {
+      transform: translateX(0);
     }
   }
 
@@ -248,8 +240,6 @@
 }
 
 .product__image-hover-wrapper {
-  @mixin fade-out;
-
   transition: all 0.3s cubic-bezier(0.25, 0.25, 0.75, 0.75);
 }
 
@@ -258,12 +248,15 @@
 
   object-fit: contain;
   transition: all 0.3s ease-in-out;
+  z-index: 1;
+  transform: translateX(110%);
 }
 
 .product__image-wrapper {
   @mixin ratio 1/1;
 
   display: flex;
+  overflow: hidden;
 
   & .woocommerce-loop-product__link {
     @mixin abs-full;
