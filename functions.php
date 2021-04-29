@@ -28,6 +28,7 @@ include_once get_template_directory() . '/inc/template-functions.php';
 
 require_once CODETOT_DIR . '/theme-init.php';
 require_once CODETOT_DIR . '/assets.php';
+require_once CODETOT_DIR . '/api.php';
 
 // Admin
 require_once CODETOT_ADMIN_DIR . '/init.php';
