@@ -114,6 +114,8 @@ class Codetot_Woocommerce_Layout_Account
   public function account_page_open() {
     if ( is_wc_endpoint_url( 'orders' ) ) {
       $title = esc_html__( 'Orders', 'woocommerce' );
+    } elseif ( is_wc_endpoint_url( 'view-order' ) ) {
+      $title = esc_html__( 'Order Detail', 'ct-theme' );
     } elseif ( is_wc_endpoint_url( 'downloads' ) ) {
       $title = esc_html__( 'Downloads', 'woocommerce' );
     } elseif ( is_wc_endpoint_url( 'edit-account' ) ) {
@@ -125,10 +127,12 @@ class Codetot_Woocommerce_Layout_Account
     } elseif ( is_wc_endpoint_url( 'lost-password' ) ) {
       $title = esc_html__( 'Lost password' );
     } else {
-      $title = esc_html__('My Account');
+      $title = esc_html__('Dashboard', 'woocommerce');
     }
 
-    echo '<div class="page-block page-block--account" data-block="page-block">';
+    $page_block_class = sanitize_title_with_dashes($title);
+
+    echo '<div class="page-block page-block--account page-block--' . esc_attr($page_block_class) . '" data-block="page-block">';
     echo '<div class="page-block__header">';
     echo '<div class="grid page-block__grid page-block__grid page-block__grid--header">';
     echo '<div class="grid__col page-block__col page-block__col--header-left">';
