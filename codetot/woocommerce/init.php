@@ -35,6 +35,7 @@ class Codetot_WooCommerce_Init {
     add_action('widgets_init', array($this, 'register_woocommerce_sidebars'));
 
     add_filter('woocommerce_breadcrumb_defaults', array($this, 'breadcrumbs_container'));
+    add_filter('woocommerce_get_breadcrumb', array($this, 'woocommerce_breadcrumb'), 10, 2);
     add_action('pre_get_posts', array($this, 'search_product_only'));
 
     add_action('wp_enqueue_scripts', array($this, 'load_woocommerce_css'), 90);
@@ -115,6 +116,18 @@ class Codetot_WooCommerce_Init {
     if (apply_filters('codetot_is_search_product_only', true) === true &&  !is_admin() && $query->is_main_query() && $query->is_search) {
       $query->set('post_type', 'product');
     }
+  }
+
+  public function woocommerce_breadcrumb($crumbs, $Breadcrumb){
+    $shop_page_id = wc_get_page_id('shop');
+    if($shop_page_id > 0 && !is_shop()) {
+        $new_breadcrumb = [
+            _x( 'Shop', 'breadcrumb', 'woocommerce' ), //Title
+            get_permalink(wc_get_page_id('shop')) // URL
+        ];
+        array_splice($crumbs, 1, 0, [$new_breadcrumb]);
+    }
+    return $crumbs;
   }
 
   public function is_localhost()
