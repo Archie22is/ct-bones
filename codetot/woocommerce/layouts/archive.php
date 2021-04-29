@@ -38,8 +38,6 @@ class Codetot_Woocommerce_Layout_Archive
   {
     $this->remove_default_hooks();
 
-    $this->container_class = function_exists('codetot_site_container') ? codetot_site_container() : 'container';
-
     if (is_shop() || is_product_category()) :
 
       // Change pagination to Previous + Next text
