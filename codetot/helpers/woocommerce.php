@@ -49,3 +49,99 @@ function codetot_get_upsell_products( $limit = '-1', $columns = 4, $orderby = 'r
 
   return $upsells;
 }
+
+function codetot_get_product_query_by_type($attr) {
+  if (empty($attr)) {
+    return new WP_Error(400, __FUNCTION__ . ': ' . __('No attribute was defined for query.', 'ct-theme'));
+  }
+
+  switch($attr):
+
+    case 'normal':
+
+      return array(
+        'post_type' => 'product',
+        'orderby'   => 'DESC',
+      );
+
+      break;
+
+    case 'featured':
+
+      return array(
+        'post_type'   => 'product',
+        'tax_query'   => array(
+          'relation'  => 'AND',
+          array(
+            'taxonomy' => 'product_visibility',
+            'field'    => 'name',
+            'terms'    => 'featured',
+          ),
+        )
+      );
+
+      break;
+
+    case 'on_sale':
+
+      return array(
+        'post_type'   => 'product',
+        'meta_query'  => array(
+          'relation'  => 'OR',
+          array(
+            'key'     => '_sale_price',
+            'value'   => 0,
+            'compare' => '>',
+            'type'    => 'numeric'
+          ),
+          array(
+            'key'     => '_min_variation_sale_price',
+            'value'   => 0,
+            'compare' => '>',
+            'type'    => 'numeric'
+          )
+        )
+      );
+
+      break;
+
+    case 'random':
+
+      return array(
+        'post_type' => 'product',
+        'orderby'   => 'rand',
+      );
+
+      break;
+
+    case 'top_rated':
+      return array(
+        'post_status'    => 'publish',
+        'post_type'      => 'product',
+        'meta_key'       => '_wc_average_rating',
+        'orderby'        => 'meta_value_num',
+        'order'          => 'DESC',
+      );
+
+      break;
+
+    case 'total_sales':
+
+      return array(
+        'post_type'      => 'product',
+        'meta_key'       => 'total_sales',
+        'orderby'        => 'meta_value_num',
+        'order'          => 'DESC',
+        'meta_query'     => WC()->query->get_meta_query(),
+      );
+
+      break;
+
+    default :
+
+      return array(
+        'post_type' => 'product'
+      );
+
+  endswitch;
+}
