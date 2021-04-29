@@ -46,6 +46,8 @@ class Codetot_Woocommerce_Layout_Account
 
     $this->enable_register_form = get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes';
 
+    add_filter('codetot_display_page_header', '__return_false');
+
     if ($this->enable_register_form) {
       add_action('woocommerce_before_customer_login_form', array($this, 'guest_page_open'), 5);
       add_action('woocommerce_before_customer_login_form', array($this, 'login_title'), 10);
@@ -59,14 +61,12 @@ class Codetot_Woocommerce_Layout_Account
 
     if (is_account_page() && is_user_logged_in()) {
       add_filter('codetot_display_page_breadcrumbs', '__return_false');
-      add_filter('codetot_display_page_header', '__return_false');
 
       add_action('codetot_page', 'woocommerce_breadcrumbs', 100);
     }
 
     add_action('woocommerce_before_account_navigation', array($this, 'account_page_open'), 10);
     add_action('woocommerce_after_account_navigation', array($this, 'account_page_between'), 60);
-
     add_action('woocommerce_after_main_content', array($this, 'account_page_close'), 90);
   }
 
