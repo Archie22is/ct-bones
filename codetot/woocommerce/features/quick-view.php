@@ -58,7 +58,7 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
   public function quick_view_button()
   {
     global $product;
-    $product_card_style = get_global_option('codetot_woocommerce_product_card_style');
+    $product_card_style = get_global_option('codetot_woocommerce_product_card_style') ?? 1;
     ?>
     <div class="product__quick-view">
         <span title="<?php esc_attr_e('Quick view', 'ct-theme'); ?>"
