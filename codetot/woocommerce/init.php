@@ -34,6 +34,8 @@ class Codetot_WooCommerce_Init {
 
     add_action('widgets_init', array($this, 'register_woocommerce_sidebars'));
 
+    add_filter('woocommerce_product_add_to_cart_text', array($this, 'update_add_to_cart_button_text'));
+
     add_filter('woocommerce_breadcrumb_defaults', array($this, 'breadcrumbs_container'));
     add_filter('woocommerce_get_breadcrumb', array($this, 'woocommerce_breadcrumb'), 10, 2);
     add_action('pre_get_posts', array($this, 'search_product_only'));
@@ -73,6 +75,22 @@ class Codetot_WooCommerce_Init {
       'before_title' => '<p class="widget__title">',
       'after_title' => '</p>'
     ));
+  }
+
+  public function update_add_to_cart_button_text($text) {
+    global $product;
+
+    if ($product->is_type( 'variable' )) {
+      $variations = $product->get_available_variations();
+
+      if (!empty($variations) && count($variations) > 1) {
+        return esc_html__('View product', 'ct-theme');
+      } else {
+        return esc_html__('Add to cart', 'woocommerce');
+      }
+    }
+
+    return $text;
   }
 
   public function fix_load_country_edit_address() {
