@@ -84,6 +84,8 @@ class Codetot_Woocommerce_Layout_Archive
 
   public function build_product_column()
   {
+    add_filter('codetot_woocommerce_archive_loop_button', array($this, 'loop_product_add_to_cart_button_text'));
+
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_image_wrapper_open'), 20);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'print_out_of_stock_label'), 22);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'change_sale_flash'), 23);
@@ -272,23 +274,36 @@ class Codetot_Woocommerce_Layout_Archive
     echo '</div>';
   }
 
+  public function loop_product_add_to_cart_button_text($button) {
+    $product_card_style = get_global_option('codetot_woocommerce_product_card_style');
+
+    if (!in_array($product_card_style, array('2', '3'))) {
+      return $button;
+    }
+
+    global $product;
+
+    ob_start();
+    printf('<a class="add-to-cart-icon button" href="%1$s">%2$s</a>',
+      $product->get_permalink(),
+      $product_card_style === 2 ? codetot_svg('cart', false) : apply_filters('woocommerce_product_add_to_cart_text', null)
+    );
+    return ob_get_clean();
+  }
+
   public function loop_product_add_to_cart_button()
   {
     global $product;
     $out_of_stock = codetot_is_product_out_of_stock($product);
-    $product_card_style = get_global_option('codetot_woocommerce_product_card_style');
+
 
     if (!$out_of_stock) {
-      if (in_array($product_card_style, array('2', '3'))) {
-        global $product;
-        $link = $product->get_permalink();
-        echo '<a href="' . $link . '" class="add-to-card-icon button">';
-        if ($product_card_style === 2) codetot_svg('cart', true);
-        else echo __('Add to cart', 'ct-theme');
-        echo '</a>';
-      } else {
-        woocommerce_template_loop_add_to_cart();
-      }
+      ob_start();
+      woocommerce_template_loop_add_to_cart();
+      $button = ob_get_clean();
+
+      echo apply_filters('codetot_woocommerce_archive_loop_button', $button);
+
     } else {
       echo '<span class="button product__button button--disabled">' . __('Out of stock', 'woocommerce') . '</span>';
     }
