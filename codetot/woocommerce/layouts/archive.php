@@ -341,7 +341,7 @@ class Codetot_Woocommerce_Layout_Archive
       'data-src' => $img_ori,
       'data-srcset' => $img_srcset,
       'data-sizes' => 'auto',
-      'class' => 'attachment-' . $size . ' size-' . $size . ' product__image lazyload',
+      'class' => 'wp-post-image attachment-' . $size . ' size-' . $size . ' product__image lazyload',
     );
 
     echo $product->get_image($size, $image_attr);
