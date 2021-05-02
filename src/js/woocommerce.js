@@ -68,7 +68,5 @@ $(document.body).on('wc_fragments_loaded', initImageHoverProductCard)
 document.addEventListener('DOMContentLoaded', () => {
   customQuantity()
   widgetProductCategories()
-  singleProduct()
-  init()
   initBlocks()
 })
