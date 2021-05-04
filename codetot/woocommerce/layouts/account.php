@@ -59,15 +59,29 @@ class Codetot_Woocommerce_Layout_Account
       add_action('woocommerce_after_customer_login_form', array($this, 'guest_page_close'), 10);
     }
 
-    if (is_account_page() && is_user_logged_in()) {
-      add_filter('codetot_display_page_breadcrumbs', '__return_false');
-
-      add_action('codetot_page', 'woocommerce_breadcrumb', 1);
+    if (is_account_page()) {
+      add_action('codetot_page', array($this, 'container_open'), 1);
+      add_action('codetot_page', array($this, 'account_content'), 10);
+      add_action('codetot_page', array($this, 'container_close'), 90);
     }
 
     add_action('woocommerce_before_account_navigation', array($this, 'account_page_open'), 10);
     add_action('woocommerce_after_account_navigation', array($this, 'account_page_between'), 60);
     add_action('woocommerce_after_main_content', array($this, 'account_page_close'), 90);
+  }
+
+  public function account_content() {
+    the_content();
+  }
+
+  public function container_open() {
+    echo '<div class="page-block page-block--woocommerce-default">';
+    echo '<div class="container page-block__container">';
+  }
+
+  public function container_close() {
+    echo '</div>';
+    echo '</div>';
   }
 
   public function login_title()
