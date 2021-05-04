@@ -45,9 +45,10 @@ class Codetot_Theme_Layout
       if (is_category()) {
         add_action('codetot_after_header', array($this, 'category_block_open'), 10);
         add_action('codetot_before_sidebar', array($this, 'category_block_between'), 10);
+        // add_action('codetot_after_sidebar', array($this, 'category_block_close'), 10);
       }
 
-      if (is_singular() && !is_product()) {
+      if (is_single()) {
         add_action('codetot_after_header', array($this, 'single_block_open'), 10);
         add_action('codetot_before_sidebar', array($this, 'single_block_between'), 10);
         add_action('codetot_after_sidebar', array($this, 'single_block_close'), 10);
@@ -98,10 +99,8 @@ class Codetot_Theme_Layout
 
     public function search_block_open() {
       the_block('breadcrumbs');
-      echo  '<div class="container sidebar-section__container">';
-      echo  '<div class="grid sidebar-section__block-grid">';
-      echo '<div class="grid__col sidebar-section__block sidebar-section__block--content">';
-      echo '<div class="sidebar-section__inner">';
+      echo '<div class="search-block">';
+      echo '<div class="container search-block__container">';
     }
 
     public function search_block_close() {
