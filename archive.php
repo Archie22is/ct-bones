@@ -14,11 +14,12 @@ get_header();
 
 		<?php if ( have_posts() ) : ?>
 
-      <?php
-        the_block('page-header', array(
-          'title' =>  single_cat_title( '', false )
-        ));
-      ?>
+			<header class="page-header">
+				<?php
+				the_archive_title( '<h1 class="page-title">', '</h1>' );
+				the_archive_description( '<div class="archive-description">', '</div>' );
+				?>
+			</header><!-- .page-header -->
 
 			<?php
 			/* Start the Loop */
@@ -45,6 +46,7 @@ get_header();
 
 	</main><!-- #main -->
 
+  <?php do_action('codetot_sidebar'); ?>
+
 <?php
-get_sidebar();
 get_footer();

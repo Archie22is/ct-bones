@@ -5,6 +5,10 @@
 
 .page-block__grid {
   flex-direction: column-reverse;
+
+  @media (--sm) {
+    flex-direction: row;
+  }
 }
 
 .page-block__col--sidebar {
