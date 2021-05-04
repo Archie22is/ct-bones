@@ -179,7 +179,7 @@
     }
 
     &::before {
-      content: attr(data-title) ': ';
+      content: attr(data-title) ": ";
       font-weight: var(--font-bold);
 
       @media (--m) {
