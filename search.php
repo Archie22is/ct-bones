@@ -48,6 +48,7 @@ get_header();
 
 	</main><!-- #main -->
 
+  <?php do_action('codetot_sidebar'); ?>
+
 <?php
-get_sidebar();
 get_footer();

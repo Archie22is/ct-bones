@@ -315,3 +315,81 @@ if ( ! function_exists( 'codetot_display_comments' ) ) {
 		}
 	}
 }
+
+if ( ! function_exists( 'codetot_is_product_archive' ) ) {
+	/**
+	 * Checks if the current page is a product archive
+	 *
+	 * @return boolean
+	 */
+	function codetot_is_product_archive() {
+		if ( !class_exists( 'woocommerce' ) ) {
+			return false;
+		}
+
+		if ( is_product_taxonomy() || is_product_category() || is_product_tag() ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+
+if ( ! function_exists( 'codetot_sidebar_id' ) ) {
+	/**
+	 * Get sidebar class
+	 *
+	 * @return string $sidebar Class name
+	 */
+	function codetot_sidebar_id() {
+		$sidebar             = '';
+
+		if ( is_404() || ( class_exists( 'woocommerce' ) && ( is_cart() || is_checkout() || is_account_page() ) ) ) {
+			return $sidebar;
+		}
+
+		if ( class_exists( 'woocommerce' ) && ( is_shop() || is_product_taxonomy() ) ) {
+			if (is_product_taxonomy()) {
+        $sidebar_layout = get_global_option('codetot_product_category_layout') ?? 'no-sidebar';
+        return $sidebar_layout !=='no-sidebar' ? 'product-category-sidebar' : 'no-sidebar';
+      } elseif (is_shop()) {
+        $sidebar_layout = get_global_option('codetot_shop_layout') ?? 'no-sidebar';
+        return $sidebar_layout !=='no-sidebar' ? 'shop-sidebar' : 'no-sidebar';
+      }
+		} elseif ( class_exists( 'woocommerce' ) && is_singular( 'product' ) ) {
+      $sidebar_layout = get_global_option('codetot_product_layout') ?? 'no-sidebar';
+
+			// Product page.
+			return $sidebar_layout !== 'no-sidebar' ? 'product-sidebar' : 'no-sidebar';
+		} elseif ( is_page() ) {
+      $sidebar_layout = get_global_option('codetot_page_layout') ?? 'no-sidebar';
+
+			// Page.
+			return $sidebar_layout !== 'no-sidebar' ? 'page-sidebar' : 'no-sidebar';
+		} elseif ( is_singular( 'post' ) ) {
+      $sidebar_layout = get_global_option('codetot_post_layout') ?? 'no-sidebar';
+
+			// Post page.
+			return 'post-sidebar';
+		}
+
+		return $sidebar;
+	}
+}
+
+if ( ! function_exists( 'codetot_get_sidebar' ) ) {
+	/**
+	 * Display woostify sidebar
+	 *
+	 * @uses get_sidebar()
+	 */
+	function codetot_get_sidebar() {
+		$sidebar             = codetot_sidebar_id();
+
+		if ( false !== strpos( $sidebar, 'no-sidebar' ) || ! $sidebar ) {
+			return;
+		}
+
+		get_sidebar();
+	}
+}
