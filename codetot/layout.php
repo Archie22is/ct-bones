@@ -45,7 +45,10 @@ class Codetot_Theme_Layout
     $sidebar_layout = get_global_option('codetot_page_layout');
 
     add_action('codetot_after_header', function() use($sidebar_layout) {
-      the_block('breadcrumbs');
+
+      if ( !is_front_page() ) {
+        the_block('breadcrumbs');
+      }
 
       if ($sidebar_layout !== 'no-sidebar') {
         echo $this->page_block_open('page-block--page ' . $sidebar_layout, false);
