@@ -39,6 +39,10 @@ class Codetot_Theme_Layout
     if (is_singular('post')) {
       $this->generate_post_layout();
     }
+
+    if (is_search()) {
+      $this->generate_search_layout();
+    }
   }
 
   public function generate_page_layout() {
@@ -137,6 +141,20 @@ class Codetot_Theme_Layout
       endif;
 
    return ob_get_clean();
+  }
+
+  public function generate_search_layout() {
+    add_action('codetot_after_header', function() {
+      the_block('breadcrumbs');
+
+      printf('<div class="page-block page-block--search">');
+      echo '<div class="container page-block__container">';
+    });
+
+    add_action('codetot_footer', function() {
+      echo '</div>'; // Close .page-block__container
+      echo '</div>'; // Close .page-block
+    });
   }
 
   public function page_block_open($available_class = '')
