@@ -71,7 +71,9 @@ class Codetot_WooCommerce_Countdown_Price
       $attributes .= sprintf(' data-labels=\'%s\'', json_encode($labels));
 
       $price_output_html = sprintf('<span class="single-product__price single-product__price--has-discount" %s>', $attributes);
+      $price_output_html .= '<span class="single-product__price__top">';
       $price_output_html .= apply_filters('woocommerce_get_price', $price);
+      $price_output_html .= '</span>'; // Close .single-product__price__top
       $price_output_html .= '<span class="single-product__price__bottom">';
       $price_output_html .= '<span class="single-product__price__label">' . __('Sale ended after', 'ct-theme') . '</span>';
       $price_output_html .= '<span class="single-product__price__countdown js-countdown">';
