@@ -8,6 +8,7 @@
 @import url('blocks/post-meta-list.css');
 @import url('blocks/ct-widget-icon.css');
 @import url('blocks/single.css');
+@import url('blocks/search.css');
 
 /** Modals **/
 @import url('blocks/modal.css');

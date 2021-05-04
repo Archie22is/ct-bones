@@ -1,0 +1,24 @@
+.search.search-results {
+  & .site-main {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2em 0;
+  }
+
+  & .page-header {
+    width: 100%;
+    padding-bottom: 1em;
+  }
+
+  & .product-card {
+    @mixin column-item 1, 1em;
+
+    @media (--xs) {
+      @mixin column-item 2, 1em;
+    }
+
+    @media (--s) {
+      @mixin column-item 4, 1em;
+    }
+  }
+}
