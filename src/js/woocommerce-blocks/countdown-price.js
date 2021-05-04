@@ -1,4 +1,4 @@
-import { select, getData } from 'lib/dom'
+import { select, getData, addClass } from 'lib/dom'
 
 const getTimeRemaining = endtime => {
   const total = Date.parse(endtime) - Date.parse(new Date())
@@ -26,6 +26,14 @@ export default el => {
     return `<span class="number">${number}</span> <span class="unit">${matchingLabel}</span>`
   }
 
+  const getMessage = messageType => labels['message'][messageType]
+  const displayMessage = messageType => {
+    if (noticeEl && getMessage(messageType)) {
+      noticeEl.innerHTML = getMessage(messageType)
+    }
+  }
+
+  const noticeEl = select('.js-notice', el)
   const daysEl = select('.js-days', el)
   const hoursEl = select('.js-hours', el)
   const minutesEl = select('.js-minutes', el)
@@ -36,10 +44,18 @@ export default el => {
 
     if (daysEl && days) {
       daysEl.innerHTML = getLabels(days, 'days')
+
+      if (days < 1) {
+        displayMessage('less_day')
+      }
     }
 
     if (hoursEl && hours) {
       hoursEl.innerHTML = getLabels(hours, 'hours')
+
+      if (hours < 1) {
+        displayMessage('less_hour')
+      }
     }
 
     if (minutesEl && minutes) {
@@ -51,6 +67,8 @@ export default el => {
     }
 
     if (total <= 0) {
+      displayMessage('expired')
+      addClass('is-hide', el)
       clearInterval(timeinterval)
     }
   }

@@ -55,6 +55,11 @@ class Codetot_WooCommerce_Countdown_Price
         'seconds' => array(
           'singular' => esc_html__('Second', 'ct-theme'),
           'plural' => esc_html__('Seconds', 'ct-theme')
+        ),
+        'message' => array(
+          'expired' => esc_html__('The sale has ended.', 'ct-theme'),
+          'less_day' => esc_html__('The sale will end after less than a day.', 'ct-theme'),
+          'less_hour' => esc_html__('Hurry up! The sale will end after less than a hour.', 'ct-theme')
         )
       );
 
@@ -69,12 +74,13 @@ class Codetot_WooCommerce_Countdown_Price
       $price_output_html .= apply_filters('woocommerce_get_price', $price);
       $price_output_html .= '<span class="single-product__price__bottom">';
       $price_output_html .= '<span class="single-product__price__label">' . __('Sale ended after', 'ct-theme') . '</span>';
-      $price_output_html .= '<span class="single-product__price__countdown">';
+      $price_output_html .= '<span class="single-product__price__countdown js-countdown">';
       $price_output_html .= '<span class="single-product__price__days js-days"></span>';
       $price_output_html .= '<span class="single-product__price__hours js-hours"></span>';
       $price_output_html .= '<span class="single-product__price__minutes js-minutes"></span>';
       $price_output_html .= '<span class="single-product__price__seconds js-seconds"></span>';
       $price_output_html .= '</span>'; // Close .single-product__price__countdown
+      $price_output_html .= '<span class="single-product__price__notice js-notice"></span>';
       $price_output_html .= '</span>'; // Close .single-product__price__bottom
       $price_output_html .= '</span>'; // Close .single-product__price--has-discount
 
