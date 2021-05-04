@@ -43,7 +43,7 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
 
     if ($this->enable) {
       // Add elements
-      add_action('woocommerce_before_shop_loop_item_title', array($this, 'quick_view_button'), 20);
+      add_action('woocommerce_before_shop_loop_item_title', array($this, 'quick_view_button'), 21);
       add_action('wp_footer', array($this, 'quick_view_modal'));
 
       // Load JSON content
