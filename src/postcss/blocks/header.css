@@ -4,6 +4,10 @@
   transition: all 0.3s;
 }
 
+.header__grid {
+  position: relative;
+}
+
 .header--transparent {
   background-color: transparent;
 }
