@@ -32,7 +32,7 @@ class Codetot_Theme_Layout
   {
     add_action( 'codetot_sidebar', 'codetot_get_sidebar', 10 );
 
-    if (is_page()) {
+    if (is_page() && get_page_template_slug( get_the_ID()) === '') {
       $this->generate_page_layout();
     }
 
