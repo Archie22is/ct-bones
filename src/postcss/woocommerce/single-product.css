@@ -8,6 +8,12 @@ body.single-product {
     max-width: 100%;
     padding: 0;
   }
+
+  &.no-sidebar {
+    & .sidebar-section__block--sidebar {
+      display: none;
+    }
+  }
 }
 
 .single-product-top {

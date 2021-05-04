@@ -28,6 +28,10 @@ if (function_exists('is_product_category') && is_product_category()) {
   $sidebar = 'product-category-sidebar';
 }
 
+if (function_exists('is_product') &&  is_product()) {
+  $sidebar = 'product-sidebar';
+}
+
 ?>
 
 <aside id="secondary" class="widget-area">
