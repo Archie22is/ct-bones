@@ -73,6 +73,7 @@ if (class_exists('WooCommerce')) {
     require_once CODETOT_DIR . '/woocommerce/features/modal-login.php';
     require_once CODETOT_DIR . '/woocommerce/features/quick-view.php';
     require_once CODETOT_DIR . '/woocommerce/features/viewed-products.php';
+    require_once CODETOT_DIR . '/woocommerce/features/countdown-price.php';
 
     require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
     require_once CODETOT_DIR . '/woocommerce/layouts/product.php';
