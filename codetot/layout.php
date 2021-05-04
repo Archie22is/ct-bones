@@ -109,7 +109,7 @@ class Codetot_Theme_Layout
       echo $this->page_block_between();
     }, 10);
 
-    add_action('codetot_after_sidebar', function() {
+    add_action('codetot_footer', function() {
       echo $this->page_block_close();
     }, 10);
   }
@@ -129,7 +129,7 @@ class Codetot_Theme_Layout
       echo $this->page_block_between();
     }, 10);
 
-    add_action('codetot_after_sidebar', function() {
+    add_action('codetot_footer', function() {
       echo $this->page_block_close();
     }, 10);
   }

@@ -73,7 +73,7 @@ class Codetot_Woocommerce_Layout_Archive
     add_action('codetot_after_header', 'woocommerce_breadcrumb', 20);
     add_action('codetot_after_header', array($this, 'page_block_open'), 50);
     add_action('codetot_before_sidebar', array($this, 'page_block_between'), 10);
-    add_action('codetot_after_sidebar', array($this, 'page_block_close'), 90);
+    add_action('codetot_footer', array($this, 'page_block_close'), 90);
 
     add_action('woocommerce_before_shop_loop', array($this, 'sorting_open'), 12);
     add_action('woocommerce_before_shop_loop', array($this, 'sorting_close'), 31);
