@@ -67,7 +67,7 @@ class Codetot_Woocommerce_Layout_Product
     remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
     add_action('woocommerce_single_product_summary',  array($this, 'woocommerce_single_meta'), 6);
     add_action('woocommerce_single_product_summary',  array($this, 'woocommerce_single_meta_tag'), 40);
-    add_action('woocommerce_single_product_summary', array($this, 'render_cross_sell_product'), 32);
+    add_action('woocommerce_after_single_product', array($this, 'render_cross_sell_products'), 10);
     add_action('woocommerce_after_single_product', array($this, 'render_upsell_sections'), 20);
     add_action('woocommerce_after_single_product_summary', array($this,'open_content_single_product'), 5);
     add_action('woocommerce_after_single_product_summary', array($this,'close_content_single_product'), 25);
@@ -75,7 +75,11 @@ class Codetot_Woocommerce_Layout_Product
 
   public function page_block_open() {
     if (is_product()) :
-      echo '<div class="page-block page-block--archive">';
+      $class = 'page-block page-block--product';
+      $sidebar_layout = get_global_option('codetot_product_layout') ?? 'sidebar-left';
+      $class .= ' ' . esc_attr($sidebar_layout);
+
+      echo '<div class="' . esc_attr($class) . '">';
       echo '<div class="container page-block__container">';
       echo '<div class="grid page-block__grid">';
       echo '<div class="grid__col page-block__col page-block__col--main">';
@@ -111,21 +115,6 @@ class Codetot_Woocommerce_Layout_Product
       wp_enqueue_style('fancybox-style', '//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css', null, '3.5.7', 'all');
       wp_enqueue_script('fancybox-script', '//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', array('jquery'), '3.5.7', true);
     }
-  }
-
-  public function woo_custom_description_tab( $tabs ) {
-    $content = get_the_content();
-    if( $content) {
-      $tabs['description']['callback'] = array($this,'woo_custom_description_tab_content');
-      return $tabs;
-    }
-  }
-
-  public function woo_custom_description_tab_content() {
-   $content = get_the_content();
-      the_block('product-description', array(
-        'content' => $content
-      ));
   }
 
   public function single_product_grid_open() {
@@ -174,42 +163,30 @@ class Codetot_Woocommerce_Layout_Product
 
   }
 
-  public function render_cross_sell_product() {
+  public function render_cross_sell_products() {
     global $post;
-    $crosssells = get_post_meta( $post->ID, '_crosssell_ids',true);
-    $heading = apply_filters( 'woocommerce_product_related_products_heading', __( 'Related products', 'woocommerce' ) );
-    if($crosssells) {
-      echo '<div class="crosssell-products">';
-      echo '<h2>'. $heading .'</h2>';
-      echo '<div class="f fw crosssell-products__items">';
-      foreach ($crosssells as $item) {
-        $args = array (
-          'p'                      => $item,
-          'post_type'              => array( 'product' ),
-          'post_status'            => array( 'publish' ),
-        );
-        $related = new WP_Query( $args );
-        if ( $related->have_posts() ) {
-          while ( $related->have_posts() ) {
-            $related->the_post();
-            ?>
-            <div class="crosssell-products__item"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-              <?php
-              the_block('image', array(
-                'image' => get_post_thumbnail_id(),
-                'class' => 'crosssell-products__image',
-                'size' => 'thumbnail'
-            ));?>
-            </a>
-             </div>
-            <?php
-          }
-        }
-        wp_reset_postdata();
-      }
-      echo '</div>';
-      echo '</div>';
+    $cross_sell_product_ids = get_post_meta( $post->ID, '_crosssell_ids',true);
+
+    if (empty($cross_sell_product_ids)) {
+      return '';
     }
+
+    $post_args = array(
+      'post_type' => 'product',
+      'post_status' => 'publish',
+      'posts_per_page' => apply_filters('codetot_related_products_number', 4),
+      'post__in' => $cross_sell_product_ids
+    );
+
+    $post_query = new WP_Query($post_args);
+
+    if ($post_query->have_posts()) :
+      the_block('product-grid', array(
+        'class' => 'product-grid--related-products product-grid--4-columns',
+        'title' => apply_filters( 'woocommerce_product_related_products_heading', __( 'Related products', 'woocommerce' ) ),
+        'query' => $post_query
+      ));
+    endif;
   }
 
   public function single_product_column_close() {

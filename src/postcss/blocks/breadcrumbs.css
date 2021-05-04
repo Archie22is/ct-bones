@@ -1,6 +1,11 @@
 .breadcrumbs {
+  display: none;
   padding: 5px 0;
   background: var(--light);
+
+  @media (--s) {
+    display: block;
+  }
 
   & ul {
     @mixin list-reset;

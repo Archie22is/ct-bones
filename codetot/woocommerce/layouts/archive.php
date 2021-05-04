@@ -36,10 +36,9 @@ class Codetot_Woocommerce_Layout_Archive
    */
   private function __construct()
   {
+    $this->remove_default_hooks();
+
     if (is_shop() || is_product_category()) :
-      $this->container_class = function_exists('codetot_site_container') ? codetot_site_container() : 'container';
-      $this->shop_layout = get_option('woocommerce_shop_page_display');
-      $this->remove_default_hooks();
 
       // Change pagination to Previous + Next text
       add_filter('woocommerce_pagination_args', array($this, 'change_woocommerce_arrow_pagination'));
@@ -57,7 +56,6 @@ class Codetot_Woocommerce_Layout_Archive
     // Move out header to outside of .main
     remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
     remove_action('woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10);
-
     remove_action('woocommerce_before_shop_loop', 'woocommerce_output_all_notices', 10);
     remove_action('woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10);
     remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5);
@@ -70,9 +68,9 @@ class Codetot_Woocommerce_Layout_Archive
 
   public function build_wrapper()
   {
+    add_action('codetot_product_archive_after_page_block_main', array($this, 'archive_title'), 10);
+    add_action('codetot_product_archive_after_page_block_main', 'woocommerce_taxonomy_archive_description', 20);
     add_action('codetot_after_header', 'woocommerce_breadcrumb', 20);
-    add_action('codetot_after_header', array($this, 'archive_title'), 30);
-    add_action('codetot_after_header', 'woocommerce_taxonomy_archive_description', 40);
     add_action('codetot_after_header', array($this, 'page_block_open'), 50);
     add_action('codetot_before_sidebar', array($this, 'page_block_between'), 10);
     add_action('codetot_after_sidebar', array($this, 'page_block_close'), 90);
@@ -86,6 +84,8 @@ class Codetot_Woocommerce_Layout_Archive
 
   public function build_product_column()
   {
+    add_filter('codetot_woocommerce_archive_loop_button', array($this, 'loop_product_add_to_cart_button_text'));
+
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_image_wrapper_open'), 20);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'print_out_of_stock_label'), 22);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'change_sale_flash'), 23);
@@ -107,17 +107,6 @@ class Codetot_Woocommerce_Layout_Archive
     add_action('woocommerce_after_shop_loop_item', array($this, 'loop_product_content_close'), 50);
   }
 
-  public function filter_button()
-  {
-    echo '<div class="page-block__filter">';
-    the_block('button', array(
-      'button' => __('Filters', 'ct-theme'),
-      'type' => 'outline',
-      'class' => 'page-block__filter-button js-sidebar-toggle'
-    ));
-    echo '</div>';
-  }
-
   public function archive_title()
   {
     if (is_shop() || is_product_category()) {
@@ -130,7 +119,7 @@ class Codetot_Woocommerce_Layout_Archive
       }
 
       the_block('page-header', array(
-        'class' => 'page-header--archive',
+        'class' => 'page-header--no-container page-header--archive',
         'title' => $title
       ));
     }
@@ -161,11 +150,31 @@ class Codetot_Woocommerce_Layout_Archive
   }
 
   public function page_block_open() {
+    $class = 'page-block';
+
+    if ( is_shop() ) :
+      $class .= ' page-block--shop';
+      $sidebar_layout = get_global_option('codetot_shop_layout') ?? 'sidebar-left';
+    elseif( is_product_category() ) :
+      $class .= ' page-block--product-category';
+      $sidebar_layout = get_global_option('codetot_product_category_layout') ?? 'sidebar-left';
+    endif;
+
+    $class .= ' ' . esc_attr($sidebar_layout);
+
+    do_action('codetot_product_archive_before_page_block');
+
     if (is_shop() || is_product_category()) :
-      echo '<div class="page-block page-block--archive">';
+      echo '<div class="' . esc_attr($class) . '" data-block="page-block">';
       echo '<div class="container page-block__container">';
+      the_block('page-block-mobile-trigger', array(
+        'class' => 'has-icon',
+        'button_icon' => codetot_svg('menu', false),
+        'button_text' => esc_html__('Filter', 'woocommerce')
+      ));
       echo '<div class="grid page-block__grid">';
       echo '<div class="grid__col page-block__col page-block__col--main">';
+      do_action('codetot_product_archive_after_page_block_main');
     endif;
   }
 
@@ -265,23 +274,36 @@ class Codetot_Woocommerce_Layout_Archive
     echo '</div>';
   }
 
+  public function loop_product_add_to_cart_button_text($button) {
+    $product_card_style = get_global_option('codetot_woocommerce_product_card_style');
+
+    if (!in_array($product_card_style, array('2', '3'))) {
+      return $button;
+    }
+
+    global $product;
+
+    ob_start();
+    printf('<a class="add-to-cart-icon button" href="%1$s">%2$s</a>',
+      $product->get_permalink(),
+      $product_card_style === 2 ? codetot_svg('cart', false) : apply_filters('woocommerce_product_add_to_cart_text', null)
+    );
+    return ob_get_clean();
+  }
+
   public function loop_product_add_to_cart_button()
   {
     global $product;
     $out_of_stock = codetot_is_product_out_of_stock($product);
-    $product_card_style = get_global_option('codetot_woocommerce_product_card_style');
+
 
     if (!$out_of_stock) {
-      if (in_array($product_card_style, array('2', '3'))) {
-        global $product;
-        $link = $product->get_permalink();
-        echo '<a href="' . $link . '" class="add-to-card-icon button">';
-        if ($product_card_style === 2) codetot_svg('cart', true);
-        else echo __('Add to cart', 'ct-theme');
-        echo '</a>';
-      } else {
-        woocommerce_template_loop_add_to_cart();
-      }
+      ob_start();
+      woocommerce_template_loop_add_to_cart();
+      $button = ob_get_clean();
+
+      echo apply_filters('codetot_woocommerce_archive_loop_button', $button);
+
     } else {
       echo '<span class="button product__button button--disabled">' . __('Out of stock', 'woocommerce') . '</span>';
     }
@@ -291,9 +313,6 @@ class Codetot_Woocommerce_Layout_Archive
   {
     global $product;
     $gallery = $product->get_gallery_image_ids();
-    $size = 'medium';
-    $image_size = apply_filters('single_product_archive_thumbnail_size', $size);
-
     // Hover image.
     if (!empty($gallery)) : ?>
       <noscript>
@@ -337,7 +356,7 @@ class Codetot_Woocommerce_Layout_Archive
       'data-src' => $img_ori,
       'data-srcset' => $img_srcset,
       'data-sizes' => 'auto',
-      'class' => 'attachment-' . $size . ' size-' . $size . ' product__image lazyload',
+      'class' => 'wp-post-image attachment-' . $size . ' size-' . $size . ' product__image lazyload',
     );
 
     echo $product->get_image($size, $image_attr);

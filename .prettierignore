@@ -1,0 +1,15 @@
+assets/
+package.json
+package-lock.json
+acf-json/
+src/js/vendors/
+src/img/
+src/svg/
+src/postcss/utils/mixins.css
+dynamic-assets/
+variables.css
+.circleci/
+.github/
+composer.json
+vendor/
+*.md

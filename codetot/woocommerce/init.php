@@ -6,17 +6,13 @@ class Codetot_WooCommerce_Init {
    */
   private static $instance;
   /**
-   * @var array|false|string
+   * @var string
    */
   private $theme_version;
   /**
    * @var string
    */
   private $theme_environment;
-  /**
-   * @var array
-   */
-  private $premium_fonts;
 
   /**
    * Get singleton instance.
@@ -37,8 +33,17 @@ class Codetot_WooCommerce_Init {
     $this->theme_environment = $this->is_localhost() ? '' : '.min';
 
     add_action('widgets_init', array($this, 'register_woocommerce_sidebars'));
-    add_action('wp_enqueue_scripts', array($this, 'load_woocommerce_css'), 90);
+
+    add_filter('woocommerce_product_add_to_cart_text', array($this, 'update_add_to_cart_button_text'));
+
     add_filter('woocommerce_breadcrumb_defaults', array($this, 'breadcrumbs_container'));
+    add_filter('woocommerce_get_breadcrumb', array($this, 'woocommerce_breadcrumb'), 10, 2);
+    add_action('pre_get_posts', array($this, 'search_product_only'));
+
+    add_action('wp_enqueue_scripts', array($this, 'load_woocommerce_css'), 90);
+    add_action('wp_enqueue_scripts', array($this, 'load_woocommerce_js'), 91);
+    add_action('wp_footer', array($this, 'fix_load_country_edit_address'), 90);
+    add_filter('body_class', array($this, 'body_class'));
   }
 
   public function register_woocommerce_sidebars() {
@@ -72,11 +77,42 @@ class Codetot_WooCommerce_Init {
     ));
   }
 
+  public function update_add_to_cart_button_text($text) {
+    global $product;
+
+    if ($product->is_type( 'variable' )) {
+      $variations = $product->get_available_variations();
+
+      if (!empty($variations) && count($variations) > 1) {
+        return esc_html__('View product', 'ct-theme');
+      } else {
+        return esc_html__('Add to cart', 'woocommerce');
+      }
+    }
+
+    return $text;
+  }
+
+  public function fix_load_country_edit_address() {
+    if (is_account_page()) :
+    ?>
+    <script>
+    (function($){
+      var $country = $('select[name="billing_country"]')
+
+      if ($country.length) {
+        $country.select2()
+      }
+    })(jQuery);
+    </script>
+    <?php endif;
+  }
+
   public function load_woocommerce_css() {
     wp_enqueue_style('codetot-woocommerce', get_template_directory_uri() . '/assets/css/woocommerce-style' . $this->theme_environment . '.css', array(), CODETOT_VERSION);
   }
 
-  public function ct_bones_load_woocommerce_js() {
+  public function load_woocommerce_js() {
     wp_enqueue_script('wc-add-to-cart-variation');
     wp_enqueue_script(
       'codetot-woocommerce',
@@ -88,10 +124,37 @@ class Codetot_WooCommerce_Init {
   }
 
   public function breadcrumbs_container($args) {
-    $args['wrap_before'] = '<div class="woo-breadcrumbs"><div class="container woo-breadcrumbs__container"><div class="woo-breadcrumbs__list">';
+    $args['wrap_before'] = '<div class="breadcrumbs breadcrumbs--woocommerce"><div class="container breadcrumbs__container"><div class="breadcrumbs__list">';
     $args['wrap_after'] = '</div></div></div>';
 
     return $args;
+  }
+
+  public function search_product_only($query)
+  {
+    if (apply_filters('codetot_is_search_product_only', true) === true &&  !is_admin() && $query->is_main_query() && $query->is_search) {
+      $query->set('post_type', 'product');
+    }
+  }
+
+  public function woocommerce_breadcrumb($crumbs, $Breadcrumb){
+    $shop_page_id = wc_get_page_id('shop');
+    if($shop_page_id > 0 && !is_shop()) {
+        $new_breadcrumb = [
+            _x( 'Shop', 'breadcrumb', 'woocommerce' ), //Title
+            get_permalink(wc_get_page_id('shop')) // URL
+        ];
+        array_splice($crumbs, 1, 0, [$new_breadcrumb]);
+    }
+    return $crumbs;
+  }
+
+  public function body_class($classes) {
+    $product_card_style = get_global_option('codetot_woocommerce_product_card_style') ?? 1;
+
+    $classes[] = 'has-product-card-style-' . esc_attr($product_card_style);
+
+    return $classes;
   }
 
   public function is_localhost()

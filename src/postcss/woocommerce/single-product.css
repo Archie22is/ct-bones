@@ -10,7 +10,7 @@ body.single-product {
   }
 }
 
-.single-product__top {
+.single-product-top {
   margin-top: 2em;
   margin-bottom: 2em;
 }
@@ -293,7 +293,11 @@ body.single-product {
 }
 
 .single-product-main {
-  margin-top: 50px;
+  margin-top: 1em;
+
+  @media (--m) {
+    margin-top: 2em;
+  }
 }
 
 .woocommerce-tabs {
@@ -302,19 +306,15 @@ body.single-product {
     flex-wrap: wrap;
 
     & li {
-      min-width: 100px;
-      padding: 0 1em;
+      min-width: 3em;
+      padding: 0;
       height: 40px;
       text-align: center;
       line-height: 40px;
-      background: var(--light);
-      border-radius: 3px;
-      margin-right: 10px;
+      border-bottom: 2px solid var(--border);
+      border-radius: 0;
+      margin-right: 1em;
       transition: all 0.3s;
-
-      @media (--s) {
-        min-width: 190px;
-      }
 
       & a {
         display: inherit;
@@ -323,10 +323,10 @@ body.single-product {
 
       &.active,
       &:hover {
-        background: var(--primary);
+        border-bottom-color: var(--primary);
 
         & a {
-          color: var(--white);
+          color: var(--primary);
         }
       }
     }
@@ -359,43 +359,6 @@ body.single-product {
       color: var(--primary);
     }
   }
-}
-
-.crosssell-products {
-  margin-top: 1.5em;
-
-  & h2 {
-    margin-bottom: 10px;
-    color: var(--dark-3);
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 1rem;
-  }
-}
-
-.crosssell-products__items {
-  margin: 0 -4px;
-}
-
-.crosssell-products__item {
-  width: 100px;
-  padding: 0 4px;
-
-  & a {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transition: all 0.5s;
-    border: 1px dashed transparent;
-
-    &:hover {
-      border-color: var(--primary);
-    }
-  }
-}
-
-.crosssell-products__image {
-  @mixin ratio 1/1;
 }
 
 .variations_form {

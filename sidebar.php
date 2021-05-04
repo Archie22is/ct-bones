@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * @package codetot
+ * @since 5.0.0
+ * @author codetot
+ */
 do_action('codetot_before_sidebar');
 
 $sidebar = '';
@@ -10,6 +14,10 @@ if (is_page()) {
 
 if (is_single()) {
   $sidebar = 'post-sidebar';
+}
+
+if (is_category()) {
+  $sidebar = 'category-sidebar';
 }
 
 if (function_exists('is_shop') && is_shop()) {

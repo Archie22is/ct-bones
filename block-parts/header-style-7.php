@@ -8,6 +8,7 @@ $search_form_button = get_block('button', array(
   'attr' => ' type="submit"'
 ));
 ?>
+<?php the_block_part('header/header-topbar');?>
 <div class="header__wrapper">
   <div class="header__row header__row--main">
     <div class="<?php echo $container; ?> header__container">

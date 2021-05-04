@@ -25,10 +25,10 @@ include_once CODETOT_DIR . '/helpers/generator.php';
 
 include_once get_template_directory() . '/inc/template-tags.php';
 include_once get_template_directory() . '/inc/template-functions.php';
-include_once get_template_directory() . '/inc/customizer.php';
 
 require_once CODETOT_DIR . '/theme-init.php';
 require_once CODETOT_DIR . '/assets.php';
+require_once CODETOT_DIR . '/api.php';
 
 // Admin
 require_once CODETOT_ADMIN_DIR . '/init.php';
@@ -38,8 +38,19 @@ require_once CODETOT_ADMIN_DIR . '/ct-data.php';
 require_once CODETOT_ADMIN_DIR . '/theme-sync.php';
 require_once CODETOT_ADMIN_DIR . '/page-settings.php';
 
-// Features
-require_once CODETOT_DIR . '/features/multiple-headers.php';
+require_once CODETOT_DIR . '/shortcodes.php';
+
+/** Custom widgets */
+require_once CODETOT_DIR . '/widgets/ct-icon-box.php';
+require_once CODETOT_DIR . '/widgets/ct-company-info.php';
+
+add_action('wp', function() {
+  // Layout hooks
+  require_once CODETOT_DIR . '/layout.php';
+  require_once CODETOT_DIR . '/features/multiple-headers.php';
+  require_once CODETOT_DIR . '/features/breadcrumbs.php';
+  require_once CODETOT_DIR . '/features/google-maps.php';
+}, 10);
 
 if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
@@ -55,9 +66,20 @@ if (class_exists('WooCommerce')) {
 
   add_action('wp', function() {
     // Custom Layout
+    require_once CODETOT_DIR . '/woocommerce/layouts/abstract.php';
+
+    require_once CODETOT_DIR . '/woocommerce/features/mini-cart.php';
+    require_once CODETOT_DIR . '/woocommerce/features/modal-login.php';
+    require_once CODETOT_DIR . '/woocommerce/features/quick-view.php';
+    require_once CODETOT_DIR . '/woocommerce/features/viewed-products.php';
+
     require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
     require_once CODETOT_DIR . '/woocommerce/layouts/product.php';
-  });
+    require_once CODETOT_DIR . '/woocommerce/layouts/account.php';
+    require_once CODETOT_DIR . '/woocommerce/layouts/cart.php';
+    require_once CODETOT_DIR . '/woocommerce/layouts/checkout.php';
+    require_once CODETOT_DIR . '/woocommerce/layouts/thankyou.php';
+  }, 5);
 }
 
 require_once CODETOT_DIR . '/optimize.php';
