@@ -32,7 +32,11 @@ class Codetot_Theme_Layout
   {
     add_action( 'codetot_sidebar', 'codetot_get_sidebar', 10 );
 
-    if (is_page() && get_page_template_slug( get_the_ID()) === '') {
+    if (
+      is_page() &&
+      get_page_template_slug( get_the_ID()) === '' &&
+      (class_exists('woocommerce') && !is_account_page() && !is_cart() && !is_checkout())
+      ) {
       $this->generate_page_layout();
     }
 
@@ -108,7 +112,7 @@ class Codetot_Theme_Layout
       echo $this->page_block_between();
     }, 10);
 
-    add_action('codetot_after_sidebar', function() {
+    add_action('codetot_footer', function() {
       echo $this->page_block_close();
     }, 10);
   }
@@ -128,7 +132,7 @@ class Codetot_Theme_Layout
       echo $this->page_block_between();
     }, 10);
 
-    add_action('codetot_after_sidebar', function() {
+    add_action('codetot_footer', function() {
       echo $this->page_block_close();
     }, 10);
   }

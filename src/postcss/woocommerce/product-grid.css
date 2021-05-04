@@ -1,13 +1,3 @@
-.product-grid {
-  margin-top: 3em;
-
-  @media (--m) {
-    & + .product-grid {
-      padding-top: 0;
-    }
-  }
-}
-
 .product-grid--search {
   margin-top: 2em;
 }
@@ -20,7 +10,11 @@
 }
 
 .product-grid__header {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
+
+  @media (--m) {
+    margin-bottom: 2em;
+  }
 }
 
 .product-grid--related {

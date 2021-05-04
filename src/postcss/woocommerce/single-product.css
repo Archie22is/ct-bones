@@ -391,3 +391,22 @@ body.single-product {
     }
   }
 }
+
+.single-product-sections__col--left {
+  width: 100%;
+
+  @media (--ms) {
+    width: auto;
+    flex: 1 1 auto;
+  }
+}
+
+.single-product-sections__col--right {
+  width: 100%;
+  margin-top: 1em;
+
+  @media (--ms) {
+    width: var(--small-sidebar-width);
+    margin-top: 0;
+  }
+}
