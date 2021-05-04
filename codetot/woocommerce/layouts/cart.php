@@ -43,7 +43,11 @@ class Codetot_Woocommerce_Layout_Cart extends Codetot_Woocommerce_Layout
     remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10 );
     remove_action( 'woocommerce_proceed_to_checkout', 'woocommerce_button_proceed_to_checkout', 20 );
 
-    add_action('woocommerce_before_cart', array($this, 'cart_page_container_open'), 15);
+    if (is_cart()) {
+      add_action('codetot_page', array($this, 'cart_content'), 10);
+    }
+
+    add_action('woocommerce_before_cart', array($this, 'container_open'), 15);
     add_action('woocommerce_before_cart', array($this, 'cart_page_grid_open'), 20);
     // Column: Cart table
     add_action('woocommerce_before_cart', array($this, 'cart_page_col_open_main'),  25);
@@ -56,16 +60,22 @@ class Codetot_Woocommerce_Layout_Cart extends Codetot_Woocommerce_Layout
 
     add_action('woocommerce_after_cart_totals',  array($this, 'cart_page_col_close'), 90);
     add_action('woocommerce_after_cart', array($this, 'cart_page_grid_close'), 19);
-    add_action('woocommerce_after_cart', array($this, 'cart_page_container_close'), 20);
+    add_action('woocommerce_after_cart', array($this, 'container_close'), 20);
 
     add_filter( 'woocommerce_add_to_cart_fragments', array($this, 'woocommerce_header_add_to_cart_fragment'),5);
   }
 
-  public function cart_page_container_open() {
-    echo '<div class="page-block page-block-cart">';
+  public function cart_content() {
+    the_content();
   }
 
-  public function cart_page_container_close() {
+  public function container_open() {
+    echo '<div class="page-block page-block--cart">';
+    echo '<div class="container page-block__container">';
+  }
+
+  public function container_close() {
+    echo '</div>';
     echo '</div>';
   }
 

@@ -49,9 +49,29 @@ class Codetot_Woocommerce_Layout_Checkout extends Codetot_Woocommerce_Layout
     add_filter('woocommerce_default_address_fields', array($this, 'update_fields_order'));
     add_filter('woocommerce_checkout_fields', array($this, 'update_placeholder_fields'));
 
+    if (is_checkout()) {
+      add_action('codetot_page', array($this, 'container_open'), 1);
+      add_action('codetot_page', array($this, 'checkout_content'), 10);
+      add_action('codetot_page', array($this, 'container_close'), 10);
+    }
+
     // Sticky mobile checkout
-    add_filter( 'woocommerce_add_to_cart_fragments', array($this, 'update_fragments'));
+    add_filter('woocommerce_add_to_cart_fragments', array($this, 'update_fragments'));
     add_filter('woocommerce_after_checkout_form', array($this, 'sticky_mobile_checkout_block'), 100);
+  }
+
+  public function checkout_content() {
+    the_content();
+  }
+
+  public function container_open() {
+    echo '<div class="page-block page-block--account">';
+    echo '<div class="container page-block__container">';
+  }
+
+  public function container_close() {
+    echo '</div>';
+    echo '</div>';
   }
 
   public function page_block_open() {

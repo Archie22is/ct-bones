@@ -68,6 +68,24 @@ class Codetot_WooCommerce_Init {
     ));
 
     register_sidebar(array(
+      'name' => __('Top Product Sidebar', 'ct-theme'),
+      'id' => 'top-product-sidebar',
+      'before_widget' => '<aside id="%1$s" class="widget widget--top-product %2$s"><div class="widget__inner">',
+      'after_widget' => '</div></aside>',
+      'before_title' => '<p class="widget__title">',
+      'after_title' => '</p>'
+    ));
+
+    register_sidebar(array(
+      'name' => __('Bottom Product Sidebar', 'ct-theme'),
+      'id' => 'bottom-product-sidebar',
+      'before_widget' => '<aside id="%1$s" class="widget widget--bottom-product %2$s"><div class="widget__inner">',
+      'after_widget' => '</div></aside>',
+      'before_title' => '<p class="widget__title">',
+      'after_title' => '</p>'
+    ));
+
+    register_sidebar(array(
       'name' => __('Product Category Sidebar', 'ct-theme'),
       'id' => 'product-category-sidebar',
       'before_widget' => '<aside id="%1$s" class="widget widget--product-category %2$s"><div class="widget__inner">',
