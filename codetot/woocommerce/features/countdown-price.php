@@ -27,7 +27,11 @@ class Codetot_WooCommerce_Countdown_Price
 
   private function __construct()
   {
-    add_filter('woocommerce_get_price_html', array($this, 'custom_price_html'), 100, 2);
+    $enable_countdown_price = get_global_option('codetot_woocommerce_enable_countdown_price') ?? true;
+
+    if ($enable_countdown_price) {
+      add_filter('woocommerce_get_price_html', array($this, 'custom_price_html'), 100, 2);
+    }
   }
 
   public function custom_price_html($price, $product)
