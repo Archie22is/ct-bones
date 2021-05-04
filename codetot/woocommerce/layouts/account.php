@@ -75,7 +75,7 @@ class Codetot_Woocommerce_Layout_Account
   }
 
   public function container_open() {
-    echo '<div class="page-block page-block--woocommerce-default">';
+    echo '<div class="page-block page-block--account">';
     echo '<div class="container page-block__container">';
   }
 
