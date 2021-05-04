@@ -21,7 +21,8 @@ export default el => {
   const labels = getData('labels', el) ? JSON.parse(getData('labels', el)) : []
 
   const getLabels = (number, type) => {
-    const matchingLabel = parseInt(number) > 1 ? labels[type].plural : labels[type].singular
+    const matchingLabel =
+      parseInt(number) > 1 ? labels[type].plural : labels[type].singular
 
     return `<span class="number">${number}</span> <span class="unit">${matchingLabel}</span>`
   }
