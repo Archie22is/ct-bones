@@ -32,3 +32,6 @@
 /** Default Sections **/
 @import url('blocks/post-card.css');
 @import url('blocks/category-post.css');
+
+/** First layout widgets **/
+@import url('blocks/ct-widget-icon.css');
