@@ -11,8 +11,7 @@ if(!empty($title) || !empty($description) || !empty($icon)) :
     <?php
       the_block('image', array(
         'image' => $icon,
-        'class' => 'ct-widget-icon__image',
-        'size' => 'full'
+        'class' => 'ct-widget-icon__image'
       ));
     ?>
   </div>
@@ -27,7 +26,7 @@ if(!empty($title) || !empty($description) || !empty($icon)) :
       endif;
       if(!empty($description)) :
     ?>
-      <p class="small-text ct-widget-icon__description"><?php echo $description; ?></p>
+      <div class="small-text ct-widget-icon__description"><?php echo $description; ?></div>
     <?php endif; ?>
   </div>
   <?php endif; ?>
