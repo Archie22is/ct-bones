@@ -96,11 +96,13 @@ class Codetot_Woocommerce_Layout_Product
 
     remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
     remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50);
-
     add_action('woocommerce_single_product_summary',  array($this, 'woocommerce_single_meta'), 6);
     add_action('woocommerce_single_product_summary',  array($this, 'woocommerce_single_meta_tag'), 40);
+
+    //single-product-main
     add_action('woocommerce_after_single_product_summary', array($this,'open_content_single_product'), 5);
     add_action('woocommerce_after_single_product_summary', array($this,'close_content_single_product'), 25);
+    add_action('woocommerce_after_single_product_summary', array($this,'display_facebook_comment'), 12);
 
     // Render sections after top product section
     remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
@@ -120,6 +122,15 @@ class Codetot_Woocommerce_Layout_Product
     endif;
 
     add_action('woocommerce_after_single_product', array($this, 'after_single_product_container_close'), 90);
+  }
+
+  public function display_facebook_comment() {
+    $enable_facebook_comment = get_global_option('codetot_woocommerce_enable_facebook_comment') ?? false;
+    $permalink = get_the_permalink();
+    if(!empty($enable_facebook_comment)) {
+      echo  '<div class="fb-comments" data-href="'.$permalink.'" data-width="100%" data-numposts="8"></div>';
+      echo '<div id="fb-root"></div><script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0" nonce="eTYpyWED"></script>';
+    }
   }
 
   public function generate_wrapper() {
