@@ -32,7 +32,7 @@ $_display_description = !empty($card_style) && (in_array($card_style, array('sty
 
       <?php if ($_display_date_bage) : ?>
         <div class="post-card__bage">
-          <span class="post-card__bage-date"><?php echo get_the_date(); ?></span>
+          <span class="post-card__bage-date"><?php echo get_the_date(!empty($format_date) ? $format_date : ''); ?></span>
           <span class="post-card__bage-icon"><?php codetot_svg('right-arrow',true); ?></span>
         </div>
         <?php endif; ?>
@@ -42,7 +42,7 @@ $_display_description = !empty($card_style) && (in_array($card_style, array('sty
     <?php if ($_display_category || $_display_date) : ?>
       <p class="mb-05 post-card__meta">
         <?php if ($_display_date) : ?>
-          <span class="post-card__meta-date"><?php echo get_the_date(); ?></span>
+          <span class="post-card__meta-date"><?php echo get_the_date(!empty($format_date) ? $format_date : ''); ?></span>
           <span class="post-card__meta-separator">|</span>
         <?php endif; ?>
         <?php if ($_display_category) : ?>
