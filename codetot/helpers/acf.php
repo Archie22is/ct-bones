@@ -116,14 +116,15 @@ function codetot_premium_fonts()
 function codetot_google_fonts()
 {
     return apply_filters('codetot_google_fonts', array(
-        'Open Sans'       => sprintf('Google: %s', 'Open Sans'),
-        'Roboto'          => sprintf('Google: %s', 'Roboto'),
-        'Montserrat'      => sprintf('Google: %s', 'Montserrat'),
-        'Source Sans Pro' => sprintf('Google: %s', 'Source Sans Pro'),
-        'Oswald'          => sprintf('Google: %s', 'Oswald'),
-        'Raleway'         => sprintf('Google: %s', 'Raleway'),
-        'Nunito'          => sprintf('Google: %s', 'Nunito'),
-        'Poppins'         => sprintf('Google: %s', 'Poppins')
+      'Encode Sans'     => sprintf('Google: %s', 'Encode Sans'),
+      'Open Sans'       => sprintf('Google: %s', 'Open Sans'),
+      'Roboto'          => sprintf('Google: %s', 'Roboto'),
+      'Montserrat'      => sprintf('Google: %s', 'Montserrat'),
+      'Source Sans Pro' => sprintf('Google: %s', 'Source Sans Pro'),
+      'Oswald'          => sprintf('Google: %s', 'Oswald'),
+      'Raleway'         => sprintf('Google: %s', 'Raleway'),
+      'Nunito'          => sprintf('Google: %s', 'Nunito'),
+      'Poppins'         => sprintf('Google: %s', 'Poppins')
     ));
 }
 
