@@ -87,41 +87,50 @@ class Codetot_Woocommerce_Layout_Product
     add_action('woocommerce_before_single_product_summary', array($this, 'single_product_column_open_secondary'), 60); // .grid__col
 
     // Product Title
-    add_action('woocommerce_before_single_product_summary', array($this, 'single_product_title_open'), 61);
-
-    add_action('woocommerce_before_single_product_summary', 'woocommerce_template_single_title', 65);
-    add_action('woocommerce_before_single_product_summary', array($this, 'single_product_title_close'), 70);
+    add_action('woocommerce_single_product_summary', array($this, 'single_product_title_open'), 3);
+    add_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 4);
+    add_action('woocommerce_single_product_summary', array($this, 'single_product_title_close'), 5);
 
     add_action('woocommerce_after_single_product_summary', array($this, 'single_product_column_close'), 4); // .grid__col
     add_action('woocommerce_after_single_product_summary', array($this, 'single_product_grid_close'), 5); // ./grid
 
     remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
     remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50);
-
     add_action('woocommerce_single_product_summary',  array($this, 'woocommerce_single_meta'), 6);
     add_action('woocommerce_single_product_summary',  array($this, 'woocommerce_single_meta_tag'), 40);
+
+    //single-product-main
     add_action('woocommerce_after_single_product_summary', array($this,'open_content_single_product'), 5);
     add_action('woocommerce_after_single_product_summary', array($this,'close_content_single_product'), 25);
+    add_action('woocommerce_after_single_product_summary', array($this,'display_facebook_comment'), 12);
 
     // Render sections after top product section
-    remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
     remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
     remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
 
     add_action('woocommerce_after_single_product', array($this, 'after_single_product_container_open'), 1);
 
     if ($this->enable_bottom_sidebar) :
-      add_action('woocommerce_after_single_product', array($this, 'after_single_product_container_grid_open'), 5);
+      add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_grid_open'), 6);
     endif;
 
     add_action('woocommerce_after_single_product', array($this, 'render_cross_sell_products'), 10);
     add_action('woocommerce_after_single_product', array($this, 'render_upsell_sections'), 20);
 
     if ($this->enable_bottom_sidebar) :
-      add_action('woocommerce_after_single_product', array($this, 'after_single_product_container_grid_close'), 80);
+      add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_grid_close'), 24);
     endif;
 
     add_action('woocommerce_after_single_product', array($this, 'after_single_product_container_close'), 90);
+  }
+
+  public function display_facebook_comment() {
+    $enable_facebook_comment = get_global_option('codetot_woocommerce_enable_facebook_comment') ?? false;
+    $permalink = get_the_permalink();
+    if(!empty($enable_facebook_comment)) {
+      echo  '<div class="fb-comments" data-href="'.$permalink.'" data-width="100%" data-numposts="8"></div>';
+      echo '<div id="fb-root"></div><script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0" nonce="eTYpyWED"></script>';
+    }
   }
 
   public function generate_wrapper() {
@@ -175,13 +184,13 @@ class Codetot_Woocommerce_Layout_Product
 
   public function open_content_single_product() {
     echo '<div class="single-product-main">';
-    if (!$this->enable_bottom_sidebar) :
+    if (!$this->enable_sidebar) :
       echo '<div class="container single-product-main__container">';
     endif;
   }
 
   public function close_content_single_product() {
-    if (!$this->enable_bottom_sidebar) :
+    if (!$this->enable_sidebar) :
       echo '</div>';
     endif;
     echo '</div>';
@@ -357,15 +366,15 @@ class Codetot_Woocommerce_Layout_Product
 
   public function after_single_product_container_grid_open() {
     if ($this->enable_bottom_sidebar) :
-      echo '<div class="grid single-product-sections__grid">';
-      echo '<div class="grid__col single-product-sections__col single-product-sections__col--left">';
+      echo '<div class="grid single-product-main__grid">';
+      echo '<div class="grid__col single-product-mains__col single-product-main__col--left">';
     endif;
   }
 
   public function after_single_product_container_grid_close() {
     if ($this->enable_bottom_sidebar) :
       echo '</div>'; // Close .single-product-sections__col--left
-      echo '<div class="grid__col single-product-sections__col single-product-sections__col--right">';
+      echo '<div class="grid__col single-product-main__col single-product-mains__col--right">';
       dynamic_sidebar('bottom-product-sidebar');
       echo '</div>'; // Close .single-product-sections__col--right
       echo '</div>'; // Close .single-product-sections__grid

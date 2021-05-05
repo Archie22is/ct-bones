@@ -16,7 +16,7 @@ get_header();
       <?php the_block('page-header', array(
         'class' => 'page-header--search',
         /* translators: %s: search query. */
-        'title' => sprintf( esc_html__( 'Search Results for: %s', 'ct-bones' ), '<span>' . get_search_query() . '</span>' )
+        'title' => single_cat_title( '', false )
       )); ?>
 
 			<?php
