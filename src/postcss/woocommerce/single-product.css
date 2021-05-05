@@ -393,6 +393,14 @@ body.single-product {
   }
 }
 
+.single-product-sections {
+  margin-top: 2em;
+
+  @media (--ml) {
+    margin-top: 3em;
+  }
+}
+
 .single-product-sections__col--left {
   width: 100%;
 

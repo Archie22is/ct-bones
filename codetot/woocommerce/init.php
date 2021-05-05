@@ -40,6 +40,8 @@ class Codetot_WooCommerce_Init {
     add_filter('woocommerce_get_breadcrumb', array($this, 'woocommerce_breadcrumb'), 10, 2);
     add_action('pre_get_posts', array($this, 'search_product_only'));
 
+    add_filter('woocommerce_reviews_title', array($this, 'change_review_title'));
+
     add_action('wp_enqueue_scripts', array($this, 'load_woocommerce_css'), 90);
     add_action('wp_enqueue_scripts', array($this, 'load_woocommerce_js'), 91);
     add_action('wp_footer', array($this, 'fix_load_country_edit_address'), 90);
@@ -165,6 +167,10 @@ class Codetot_WooCommerce_Init {
         array_splice($crumbs, 1, 0, [$new_breadcrumb]);
     }
     return $crumbs;
+  }
+
+  public function change_review_title() {
+    return esc_html__( 'Reviews', 'woocommerce' );
   }
 
   public function body_class($classes) {
