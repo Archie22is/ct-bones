@@ -5,6 +5,8 @@
   text-align: center;
 
   & .product__inner {
+    height: 100%;
+
     &:hover {
       & .product__meta-inner {
         @media (--m) {
@@ -56,6 +58,12 @@
         background: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' fill='%23ffab00'%3E%3Cpath d='M10 0l3.109 6.61L20 7.663l-4.985 5.1L16.198 20 10 16.58 3.802 20l1.183-7.239L0 7.661l6.891-1.05z' fill='0' fill-rule='evenodd'/%3E%3C/svg%3E");
         background-repeat: space;
       }
+    }
+  }
+
+  & .product__content {
+    & .single-product__price__bottom {
+      display: none;
     }
   }
 }
