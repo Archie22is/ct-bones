@@ -139,7 +139,7 @@ class Codetot_Woocommerce_Layout_Product
     if ($sidebar_layout !== 'no-sidebar') {
       add_action('codetot_after_header', array($this, 'page_block_open'), 10);
       add_action('codetot_before_sidebar', array($this, 'page_block_between'), 10);
-      add_action('codetot_after_sidebar', array($this, 'page_block_close'), 10);
+      add_action('codetot_footer', array($this, 'page_block_close'), 10);
     }
 
     if ($this->enable_top_sidebar) {
