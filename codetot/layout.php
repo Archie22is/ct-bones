@@ -98,7 +98,7 @@ class Codetot_Theme_Layout
 
       if ($sidebar_layout !== 'no-sidebar') {
         echo '<div class="page-comments">';
-        the_content();
+        comments_template();
         echo '</div>';
       } else {
         the_block('default-section', array(
