@@ -146,7 +146,6 @@ class Codetot_Woocommerce_Layout_Archive
   public function loop_product_image_wrapper_close()
   {
     echo '</div>';
-    echo '</div>';
   }
 
   public function page_block_open() {
@@ -240,6 +239,7 @@ class Codetot_Woocommerce_Layout_Archive
 
   public function loop_product_content_close()
   {
+    echo '</div>';
     echo '</div>';
   }
 

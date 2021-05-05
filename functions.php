@@ -33,7 +33,7 @@ require_once CODETOT_DIR . '/api.php';
 
 // Admin
 require_once CODETOT_ADMIN_DIR . '/init.php';
-
+require_once CODETOT_ADMIN_DIR . '/acf.php';
 require_once CODETOT_ADMIN_DIR . '/ct-theme.php';
 require_once CODETOT_ADMIN_DIR . '/ct-data.php';
 require_once CODETOT_ADMIN_DIR . '/theme-sync.php';
