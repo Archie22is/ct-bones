@@ -24,7 +24,7 @@ export default el => {
     const matchingLabel =
       parseInt(number) > 1 ? labels[type].plural : labels[type].singular
 
-    return `<span class="number">${number}</span> <span class="unit">${matchingLabel}</span>`
+    return `<span class="single-product__price__bottom__inner"><span class="number">${number}</span> <span class="unit">${matchingLabel}</span></span>`
   }
 
   const getMessage = messageType => labels['message'][messageType]
