@@ -67,6 +67,16 @@ class CodeTot_Shortcode
       ob_end_clean();
       return $cart_icon;
     });
+
+    add_shortcode('search-icon', function () {
+      ob_start();
+      echo '<button class="header__menu-icons__item header__menu-icons__item--search header__menu-icons__button" data-open-modal="modal-search-form">';
+      echo '<span class="header__menu-icons__icon" aria-hidden="true">' . codetot_svg('search', false) . '</span>';
+      echo '</button>';
+      $search_icon = ob_get_contents();
+      ob_end_clean();
+      return $search_icon;
+    });
   }
 }
 
