@@ -134,6 +134,13 @@ class Codetot_CT_Theme_WooCommerce_Settings
       ),
       array(
         'type' => 'switch',
+        'name' => __('Countdown Product Price', 'ct-theme'),
+        'desc' => __('Display countdown in single product page if price has been scheduled.', 'ct-theme'),
+        'id'   => $this->prefix . 'woocommerce_enable_countdown_price',
+        'std'  => 0
+      ),
+      array(
+        'type' => 'switch',
         'name' => __('Cross-Selling Products', 'ct-theme'),
         'desc' => __('Display cross-sell products below Add to cart button on single product page.', 'ct-theme'),
         'id'   => $this->prefix . 'woocommerce_enable_cross_selling_products',
