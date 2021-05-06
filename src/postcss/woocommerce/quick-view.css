@@ -207,7 +207,6 @@ body.is-quick-view-modal-visible {
   @media (--m) {
     @mixin scrollbar;
 
-    height: calc(100vh - 40px);
     padding: 2em 1em;
     overflow-y: auto;
     border-left: 1px solid var(--border);
