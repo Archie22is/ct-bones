@@ -6,12 +6,12 @@ function cptui_register_my_cpts_store() {
 	 */
 
 	$labels = [
-		"name" => __( "Store", "ct-child-theme" ),
-		"singular_name" => __( "Store", "ct-child-theme" ),
+		"name" => __( "Store", "ct-bones" ),
+		"singular_name" => __( "Store", "ct-bones" ),
 	];
 
 	$args = [
-		"label" => __( "Store", "ct-child-theme" ),
+		"label" => __( "Store", "ct-bones" ),
 		"labels" => $labels,
 		"description" => "",
 		"public" => true,
@@ -47,12 +47,12 @@ function cptui_register_my_taxes_store_locator() {
 	 */
 
 	$labels = [
-		"name" => __( "Store Locator", "ct-child-theme" ),
-		"singular_name" => __( "Store Locator", "ct-child-theme" ),
+		"name" => __( "Store Locator", "ct-bones" ),
+		"singular_name" => __( "Store Locator", "ct-bones" ),
 	];
 
 	$args = [
-		"label" => __( "Store Locator", "ct-child-theme" ),
+		"label" => __( "Store Locator", "ct-bones" ),
 		"labels" => $labels,
 		"public" => true,
 		"publicly_queryable" => true,
