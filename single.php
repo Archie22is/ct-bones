@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all single posts
  *
@@ -10,33 +11,33 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
-		<?php
+<main id="primary" class="site-main">
+  <?php
 
-    if (is_singular()) :
-      do_action('codetot_before_post');
+  if (is_singular()) :
+    do_action('codetot_before_post');
+  endif;
+
+  while (have_posts()) :
+    the_post();
+
+    get_template_part('template-parts/content', get_post_type());
+
+    // If comments are open or we have at least one comment, load up the comment template.
+    if (comments_open() || get_comments_number()) :
+      comments_template();
     endif;
 
-		while ( have_posts() ) :
-			the_post();
+  endwhile; // End of the loop.
 
-			get_template_part( 'template-parts/content', get_post_type() );
+  if (is_singular()) :
+    do_action('codetot_after_post');
+  endif;
+  ?>
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+</main><!-- #main -->
 
-		endwhile; // End of the loop.
-
-    if (is_singular()) :
-      do_action('codetot_after_post');
-    endif;
-		?>
-
-	</main><!-- #main -->
-
-  <?php do_action('codetot_sidebar'); ?>
+<?php do_action('codetot_sidebar'); ?>
 
 <?php
 get_footer();
