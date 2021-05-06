@@ -11,8 +11,12 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
-
 		<?php
+
+    if (is_singular()) :
+      do_action('codetot_before_post');
+    endif;
+
 		while ( have_posts() ) :
 			the_post();
 
@@ -24,6 +28,10 @@ get_header();
 			endif;
 
 		endwhile; // End of the loop.
+
+    if (is_singular()) :
+      do_action('codetot_after_post');
+    endif;
 		?>
 
 	</main><!-- #main -->
