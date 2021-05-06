@@ -42,7 +42,11 @@ $_display_description = !empty($card_style) && (in_array($card_style, array('sty
     <?php if ($_display_category || $_display_date) : ?>
       <p class="mb-05 post-card__meta">
         <?php if ($_display_date) : ?>
-          <span class="post-card__meta-date"><?php echo get_the_date(!empty($format_date) ? $format_date : ''); ?></span>
+          <?php if (!empty($format_date)) : ?>
+            <span class="post-card__meta-date"><?php echo get_the_date($format_date); ?></span>
+          <?php else : ?>
+            <span class="post-card__meta-date"><?php echo get_the_date(); ?></span>
+          <?php endif; ?>
           <span class="post-card__meta-separator">|</span>
         <?php endif; ?>
         <?php if ($_display_category) : ?>
