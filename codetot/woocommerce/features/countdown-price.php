@@ -36,8 +36,8 @@ class Codetot_WooCommerce_Countdown_Price
 
   public function custom_price_html($price, $product)
   {
-    $sales_price_from = get_post_meta($product->id, '_sale_price_dates_from', true);
-    $sales_price_to   = get_post_meta($product->id, '_sale_price_dates_to', true);
+    $sales_price_from = get_post_meta($product->get_id(), '_sale_price_dates_from', true);
+    $sales_price_to   = get_post_meta($product->get_id(), '_sale_price_dates_to', true);
 
     if (is_singular('product') && $product->is_on_sale() & !empty($sales_price_to)) {
       $sales_price_date_from = !empty($sales_price_from) ? date("j M y", $sales_price_from) : '';
