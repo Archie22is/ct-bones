@@ -1,0 +1,16 @@
+name: Create a new Pull Request (bugfix)
+on:
+  push:
+    branches:
+      - 'production'
+jobs:
+  visual_test:
+    name: Running Mobile Page Speed Insights
+    steps:
+    - name: psi_test
+      uses: jakepartusch/psi-action@v1.2
+      id: psi
+      with:
+        url: "${{secrets.URL}}"
+        threshold: 70
+        key: ${{secrets.GOOGLE_API_KEY}}
