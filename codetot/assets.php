@@ -40,6 +40,7 @@ class Codetot_Assets
 
     add_action('wp_enqueue_scripts', array($this, 'load_fonts'), 1);
     add_action('wp_enqueue_scripts', array($this, 'load_frontend_css'), 10);
+    add_action('wp_enqueue_scripts', array($this, 'load_font_size_scale'));
     add_action('wp_enqueue_scripts', array($this, 'load_frontend_js'), 20);
     add_action('wp_head', array($this, 'output_inline_styles'), 100);
 
@@ -123,6 +124,17 @@ class Codetot_Assets
   function update_google_font_url($font_name)
   {
     return str_replace(' ', '+', $font_name);
+  }
+
+  public function load_font_size_scale() {
+    $font_size_scale = get_global_option('codetot_font_size_scale') ?? '1200';
+
+    wp_enqueue_style(
+      'codetot-typography-style',
+      get_template_directory_uri() . '/dynamic-assets/typography-style/' . $font_size_scale . '.css',
+      [],
+      CODETOT_VERSION
+    );
   }
 
   public function load_frontend_js()
