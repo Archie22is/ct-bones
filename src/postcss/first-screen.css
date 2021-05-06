@@ -12,6 +12,7 @@
 @import url('blocks/image.css'); /** High priority **/
 @import url('wp/widgets.css');
 @import url('wp/content.css');
+@import url('wp/single-post.css');
 @import url('others/flickity.css');
 
 /** Header **/

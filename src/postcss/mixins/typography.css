@@ -101,7 +101,7 @@
     }
   }
 
-  & p > img {
+  & img {
     max-width: 100%;
     height: auto;
   }
@@ -185,6 +185,18 @@
       & p {
         margin: 0;
       }
+    }
+  }
+
+  & blockquote {
+    margin-top: 1em;
+    padding-left: 1.5em;
+    border-left: 3px solid var(--dark);
+
+    & p:first-child {
+      @mixin h3;
+
+      margin-top: 0;
     }
   }
 }

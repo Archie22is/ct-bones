@@ -54,3 +54,25 @@
     }
   }
 }
+
+.widget_recent_comments {
+  & li {
+    margin-top: 1em;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  & a {
+    text-decoration: underline;
+  }
+
+  & .comment-author-link {
+    font-weight: var(--font-bold);
+
+    & a {
+      text-decoration: none;
+    }
+  }
+}

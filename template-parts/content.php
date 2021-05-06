@@ -24,12 +24,17 @@
 				<?php
 				ct_bones_posted_on();
 				ct_bones_posted_by();
+        ct_bones_entry_categories();
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php ct_bones_post_thumbnail(); ?>
+  <?php if (apply_filters('codetot_display_post_thumbnail', true) === true) : ?>
+    <div class="entry-thumbnail">
+      <?php ct_bones_post_thumbnail(); ?>
+    </div>
+  <?php endif; ?>
 
 	<div class="entry-content">
 		<?php
@@ -58,6 +63,10 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php ct_bones_entry_footer(); ?>
+		<?php
+    ct_bones_entry_tags();
+    ct_bones_entry_comment_links();
+    ct_bones_entry_footer();
+    ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
