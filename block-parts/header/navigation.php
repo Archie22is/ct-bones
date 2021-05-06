@@ -3,12 +3,20 @@
   <?php
   if (has_nav_menu('primary')) :
     ob_start();
-    wp_nav_menu(array(
-      'theme_location' => 'primary',
-      'container' => 'nav',
-      'container_class' => 'header__nav',
-      'menu_class' => 'header__menu'
-    ));
+    $home_icon = get_global_option('codetot_home_icon_menu');
+    echo '<nav class="header__nav"><ul id="menu-main-menu" class="header__menu">';
+    if(!empty($home_icon)) {
+      echo '<li class="menu-item"><a href="'. esc_url( home_url() ) .'">';
+      codetot_svg('home', true);
+      echo '</a></li>';
+    }
+      wp_nav_menu( array(
+        'theme_location'  => 'primary',
+        'container'       => '__return_false',
+        'fallback_cb'     => '__return_false',
+        'items_wrap'      => '%3$s',
+      ) );
+    echo '</ul></nav>';
     $primary_nav_html = ob_get_clean();
 
     echo $primary_nav_html;
