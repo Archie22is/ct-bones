@@ -90,7 +90,7 @@ class Codetot_Woocommerce_Layout_Archive
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'print_out_of_stock_label'), 22);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'change_sale_flash'), 23);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_link_open'), 30);
-    add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_hover_image'), 40);
+    // add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_hover_image'), 40);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_image'), 50);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_image_wrapper_close'), 90);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_content_open'), 100);
@@ -314,7 +314,7 @@ class Codetot_Woocommerce_Layout_Archive
     global $product;
     $gallery = $product->get_gallery_image_ids();
     // Hover image.
-    if (!empty($gallery)) : ?>
+    if (!empty($gallery) && apply_filters('codetot_product_card_display_hover_image', true)) : ?>
       <noscript>
         <?php
         ob_start();
