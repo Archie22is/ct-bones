@@ -76,3 +76,31 @@
     }
   }
 }
+
+.widget_calendar {
+  & .wp-calendar-table {
+    border: 1px solid var(--border);
+
+    & caption {
+      @mixin label-text;
+
+      padding: 0.25em 1em;
+      border: 1px solid var(--border);
+      border-bottom: 0;
+    }
+
+    & thead {
+      & th {
+        padding: 2px;
+        background: var(--light);
+      }
+    }
+
+    & tbody {
+      & td {
+        padding: 2px;
+        text-align: center;
+      }
+    }
+  }
+}
