@@ -63,8 +63,8 @@ class Codetot_Assets
 
   public function load_fonts()
   {
-    $body_font = get_global_option('font_family');
-    $heading_font = get_global_option('font_heading');
+    $body_font = get_global_option('codetot_font_family');
+    $heading_font = get_global_option('codetot_font_heading');
 
     if (empty($body_font) && empty($heading_font)) {
       return;
@@ -180,7 +180,7 @@ class Codetot_Assets
 
   public function default_variables_css_inline()
   {
-    $variables_file = is_child_theme() ? get_stylesheet_directory() . '/variables.css' : get_template_directory() . '/variables.css';
+    $variables_file = get_stylesheet_directory() . '/variables.css';
     $file_content = file_exists($variables_file) ? file_get_contents($variables_file) : '';
 
     if (!empty($file_content)) {
@@ -199,8 +199,8 @@ class Codetot_Assets
   public function custom_font_options_css_inline()
   {
     if (function_exists('get_global_option')) {
-      $body_font = get_global_option('font_family');
-      $heading_font = get_global_option('font_heading');
+      $body_font = get_global_option('codetot_font_family');
+      $heading_font = get_global_option('codetot_font_heading');
 
       if ($body_font) {
         echo 'body{font-family: ' . $body_font . ', sans-serif;}';
