@@ -40,6 +40,7 @@ class Codetot_Assets
 
     add_action('wp_enqueue_scripts', array($this, 'load_fonts'), 1);
     add_action('wp_enqueue_scripts', array($this, 'load_frontend_css'), 10);
+    add_action('wp_enqueue_scripts', array($this, 'load_font_size_scale'));
     add_action('wp_enqueue_scripts', array($this, 'load_frontend_js'), 20);
     add_action('wp_head', array($this, 'output_inline_styles'), 100);
 
@@ -63,8 +64,8 @@ class Codetot_Assets
 
   public function load_fonts()
   {
-    $body_font = get_global_option('font_family');
-    $heading_font = get_global_option('font_heading');
+    $body_font = get_global_option('codetot_font_family');
+    $heading_font = get_global_option('codetot_font_heading');
 
     if (empty($body_font) && empty($heading_font)) {
       return;
@@ -125,6 +126,17 @@ class Codetot_Assets
     return str_replace(' ', '+', $font_name);
   }
 
+  public function load_font_size_scale() {
+    $font_size_scale = get_global_option('codetot_font_size_scale') ?? '1200';
+
+    wp_enqueue_style(
+      'codetot-typography-style',
+      get_template_directory_uri() . '/dynamic-assets/typography-style/' . $font_size_scale . '.css',
+      [],
+      CODETOT_VERSION
+    );
+  }
+
   public function load_frontend_js()
   {
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -180,7 +192,7 @@ class Codetot_Assets
 
   public function default_variables_css_inline()
   {
-    $variables_file = is_child_theme() ? get_stylesheet_directory() . '/variables.css' : get_template_directory() . '/variables.css';
+    $variables_file = get_stylesheet_directory() . '/variables.css';
     $file_content = file_exists($variables_file) ? file_get_contents($variables_file) : '';
 
     if (!empty($file_content)) {
@@ -199,8 +211,8 @@ class Codetot_Assets
   public function custom_font_options_css_inline()
   {
     if (function_exists('get_global_option')) {
-      $body_font = get_global_option('font_family');
-      $heading_font = get_global_option('font_heading');
+      $body_font = get_global_option('codetot_font_family');
+      $heading_font = get_global_option('codetot_font_heading');
 
       if ($body_font) {
         echo 'body{font-family: ' . $body_font . ', sans-serif;}';

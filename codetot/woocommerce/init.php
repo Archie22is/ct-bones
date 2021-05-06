@@ -41,6 +41,7 @@ class Codetot_WooCommerce_Init {
     add_action('pre_get_posts', array($this, 'search_product_only'));
 
     add_filter('woocommerce_reviews_title', array($this, 'change_review_title'));
+    add_filter('woocommerce_enqueue_styles', '__return_empty_array');
 
     add_action('wp_enqueue_scripts', array($this, 'load_woocommerce_css'), 90);
     add_action('wp_enqueue_scripts', array($this, 'load_woocommerce_js'), 91);

@@ -45,12 +45,17 @@ require_once CODETOT_DIR . '/shortcodes.php';
 require_once CODETOT_DIR . '/widgets/ct-icon-box.php';
 require_once CODETOT_DIR . '/widgets/ct-company-info.php';
 
-require_once CODETOT_DIR . '/features/store.php';
-require_once CODETOT_DIR . '/features/google-maps.php';
+add_action('wp', function() {
+  // Layout hooks
+  require_once CODETOT_DIR . '/layout.php';
+}, 10);
 
-require_once CODETOT_DIR . '/layout.php';
+require_once CODETOT_DIR . '/features/related-posts.php';
+require_once CODETOT_DIR . '/features/facebook-comments.php';
 require_once CODETOT_DIR . '/features/multiple-headers.php';
 require_once CODETOT_DIR . '/features/breadcrumbs.php';
+require_once CODETOT_DIR . '/features/google-maps.php';
+require_once CODETOT_DIR . '/features/store.php';
 
 if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
