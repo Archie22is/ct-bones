@@ -6,6 +6,7 @@ on:
 jobs:
   visual_test:
     name: Running Mobile Page Speed Insights
+    runs-on: ubuntu
     steps:
     - name: psi_test
       uses: jakepartusch/psi-action@v1.2
