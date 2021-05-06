@@ -6,7 +6,7 @@
     $home_icon = get_global_option('codetot_home_icon_menu');
     echo '<nav class="header__nav"><ul id="menu-main-menu" class="header__menu">';
     if(!empty($home_icon)) {
-      echo '<li class="menu-item"><a href="'. esc_url( home_url() ) .'">';
+      echo '<li class="menu-item"><a class ="menu-item__home-url" href="'. esc_url( home_url() ) .'">';
       codetot_svg('home', true);
       echo '</a></li>';
     }
