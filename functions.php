@@ -48,12 +48,14 @@ require_once CODETOT_DIR . '/widgets/ct-company-info.php';
 add_action('wp', function() {
   // Layout hooks
   require_once CODETOT_DIR . '/layout.php';
-  require_once CODETOT_DIR . '/features/multiple-headers.php';
-  require_once CODETOT_DIR . '/features/breadcrumbs.php';
-  require_once CODETOT_DIR . '/features/google-maps.php';
-  require_once CODETOT_DIR . '/features/related-posts.php';
-  require_once CODETOT_DIR . '/features/facebook-comments.php';
 }, 10);
+
+require_once CODETOT_DIR . '/features/related-posts.php';
+require_once CODETOT_DIR . '/features/facebook-comments.php';
+require_once CODETOT_DIR . '/features/multiple-headers.php';
+require_once CODETOT_DIR . '/features/breadcrumbs.php';
+require_once CODETOT_DIR . '/features/google-maps.php';
+require_once CODETOT_DIR . '/features/store.php';
 
 if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
@@ -67,23 +69,21 @@ if (class_exists('WooCommerce')) {
   require_once CODETOT_DIR . '/woocommerce/init.php';
   require_once CODETOT_DIR . '/woocommerce/ct-theme.php';
 
-  add_action('wp', function() {
-    // Custom Layout
-    require_once CODETOT_DIR . '/woocommerce/layouts/abstract.php';
+  // Custom Layout
+  require_once CODETOT_DIR . '/woocommerce/layouts/abstract.php';
 
-    require_once CODETOT_DIR . '/woocommerce/features/mini-cart.php';
-    require_once CODETOT_DIR . '/woocommerce/features/modal-login.php';
-    require_once CODETOT_DIR . '/woocommerce/features/quick-view.php';
-    require_once CODETOT_DIR . '/woocommerce/features/viewed-products.php';
-    require_once CODETOT_DIR . '/woocommerce/features/countdown-price.php';
+  require_once CODETOT_DIR . '/woocommerce/features/mini-cart.php';
+  require_once CODETOT_DIR . '/woocommerce/features/modal-login.php';
+  require_once CODETOT_DIR . '/woocommerce/features/quick-view.php';
+  require_once CODETOT_DIR . '/woocommerce/features/viewed-products.php';
+  require_once CODETOT_DIR . '/woocommerce/features/countdown-price.php';
 
-    require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
-    require_once CODETOT_DIR . '/woocommerce/layouts/product.php';
-    require_once CODETOT_DIR . '/woocommerce/layouts/account.php';
-    require_once CODETOT_DIR . '/woocommerce/layouts/cart.php';
-    require_once CODETOT_DIR . '/woocommerce/layouts/checkout.php';
-    require_once CODETOT_DIR . '/woocommerce/layouts/thankyou.php';
-  }, 5);
+  require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
+  require_once CODETOT_DIR . '/woocommerce/layouts/product.php';
+  require_once CODETOT_DIR . '/woocommerce/layouts/account.php';
+  require_once CODETOT_DIR . '/woocommerce/layouts/cart.php';
+  require_once CODETOT_DIR . '/woocommerce/layouts/checkout.php';
+  require_once CODETOT_DIR . '/woocommerce/layouts/thankyou.php';
 }
 
 require_once CODETOT_DIR . '/optimize.php';
