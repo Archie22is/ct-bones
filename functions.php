@@ -52,6 +52,7 @@ add_action('wp', function() {
   require_once CODETOT_DIR . '/features/breadcrumbs.php';
   require_once CODETOT_DIR . '/features/google-maps.php';
   require_once CODETOT_DIR . '/features/related-posts.php';
+  require_once CODETOT_DIR . '/features/facebook-comments.php';
 }, 10);
 
 if (defined('JETPACK__VERSION')) {
