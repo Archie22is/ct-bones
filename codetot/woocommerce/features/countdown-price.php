@@ -61,6 +61,7 @@ class Codetot_WooCommerce_Countdown_Price
           'plural' => esc_html__('Seconds', 'ct-theme')
         ),
         'message' => array(
+          'ongoing' => esc_html__('Sale ended after', 'ct-theme'),
           'expired' => esc_html__('The sale has ended.', 'ct-theme'),
           'less_day' => esc_html__('The sale will end after less than a day.', 'ct-theme'),
           'less_hour' => esc_html__('Hurry up! The sale will end after less than a hour.', 'ct-theme')
@@ -74,26 +75,14 @@ class Codetot_WooCommerce_Countdown_Price
       $attributes .= sprintf(' data-end-date="%s"', $sales_price_date_to);
       $attributes .= sprintf(' data-labels=\'%s\'', json_encode($labels));
 
-      $price_output_html = sprintf('<span class="single-product__price single-product__price--has-discount" %s>', $attributes);
-      $price_output_html .= '<span class="single-product__price__top">';
+      $price_output_html = sprintf('<span class="product-price" %s>', $attributes);
       $price_output_html .= apply_filters('woocommerce_get_price', $price);
-      $price_output_html .= '</span>'; // Close .single-product__price__top
-      $price_output_html .= '<span class="single-product__price__bottom">';
-      $price_output_html .= '<span class="single-product__price__label">' . __('Sale ended after', 'ct-theme') . '</span>';
-      $price_output_html .= '<span class="single-product__price__countdown js-countdown">';
-      $price_output_html .= '<span class="single-product__price__days js-days"></span>';
-      $price_output_html .= '<span class="single-product__price__hours js-hours"></span>';
-      $price_output_html .= '<span class="single-product__price__minutes js-minutes"></span>';
-      $price_output_html .= '<span class="single-product__price__seconds js-seconds"></span>';
-      $price_output_html .= '</span>'; // Close .single-product__price__countdown
-      $price_output_html .= '<span class="single-product__price__notice js-notice"></span>';
-      $price_output_html .= '</span>'; // Close .single-product__price__bottom
       $price_output_html .= '</span>'; // Close .single-product__price--has-discount
 
       return $price_output_html;
     }
 
-    return apply_filters('woocommerce_get_price', $price);
+    return '<span class="product-price">' . apply_filters('woocommerce_get_price', $price) . '</span>';
   }
 }
 
