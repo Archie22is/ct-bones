@@ -60,12 +60,6 @@
       }
     }
   }
-
-  & .product__content {
-    & .single-product__price__bottom {
-      display: none;
-    }
-  }
 }
 
 .products > .product-category {
