@@ -1,12 +1,12 @@
-name: Create a new Pull Request (bugfix)
+name: Test Page speed
 on:
   push:
     branches:
       - 'production'
 jobs:
   visual_test:
-    name: Running Mobile Page Speed Insights
-    runs-on: ubuntu
+    name: Running Page Speed Insights
+    runs-on: ubuntu-latest
     steps:
     - name: psi_test
       uses: jakepartusch/psi-action@v1.2
