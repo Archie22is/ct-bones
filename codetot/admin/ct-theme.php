@@ -39,6 +39,7 @@ class Codetot_CT_Theme_Settings
         add_filter('rwmb_meta_boxes', array($this, 'register_layout_settings_fields'));
         add_filter('rwmb_meta_boxes', array($this, 'register_header_settings_fields'));
         add_filter('rwmb_meta_boxes', array($this, 'register_footer_settings_fields'));
+        add_filter('rwmb_meta_boxes', array($this, 'register_post_settings_fields'));
         add_filter('rwmb_meta_boxes', array($this, 'register_addons_settings_fields'));
     }
 
@@ -57,6 +58,7 @@ class Codetot_CT_Theme_Settings
                 'layout'      => __('Layout', 'ct-theme'),
                 'header'      => __('Header', ' ct-theme'),
                 'footer'      => __('Footer', 'ct-theme'),
+                'post'        => __('Single Post', 'ct-theme'),
                 'addons'      => __('Addons', 'ct-theme')
             )),
             'submit_button' => __('Save'),
@@ -369,6 +371,47 @@ class Codetot_CT_Theme_Settings
         ];
 
         return $meta_boxes;
+    }
+
+    public function register_post_settings_fields($meta_boxes) {
+      $meta_boxes[] = array(
+        'title'          => __('Post', 'ct-theme'),
+        'id'             => 'ct-theme-post-settings',
+        'settings_pages' => [$this->setting_id],
+        'tab'            => 'post',
+        'fields' => [
+          [
+            'type' => 'switch',
+            'name' => __('Related Posts', 'ct-theme'),
+            'id'   => $this->prefix . 'enable_post_related_posts',
+            'desc' => esc_html_x('Display related posts below post content.', 'settings description', 'ct-theme'),
+            'std' => 1,
+            'columns' => 12
+          ],
+          [
+            'type' => 'select',
+            'name' => __('Related Posts Type', 'ct-theme'),
+            'id'   => $this->prefix . 'related_posts_type',
+            'options' => array(
+              'category' => esc_html__('Posts from same categories', 'ct-bones'),
+              'tag' => esc_html__('Posts from same tags', 'ct-bones'),
+              'category_and_tag' => esc_html('All (Posts from same categories and tags)', 'ct-bones')
+            ),
+            'std' => 1,
+            'columns' => 12
+          ],
+          [
+            'type' => 'switch',
+            'name' => __('Facebook Comments', 'ct-theme'),
+            'id'   => $this->prefix . 'enable_post_facebook_comments',
+            'desc' => esc_html_x('Display Facebook comments below post content.', 'settings description', 'ct-theme'),
+            'std' => 0,
+            'columns' => 12
+          ],
+        ]
+      );
+
+      return $meta_boxes;
     }
 
     public function register_addons_settings_fields($meta_boxes)

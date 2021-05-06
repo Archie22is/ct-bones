@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all single posts
  *
@@ -10,32 +11,33 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main">
+  <?php
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
+  if (is_singular('post')) :
+    do_action('codetot_before_post');
+  endif;
 
-			get_template_part( 'template-parts/content', get_post_type() );
+  while (have_posts()) :
+    the_post();
 
-			the_post_navigation(
-				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'ct-bones' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'ct-bones' ) . '</span> <span class="nav-title">%title</span>',
-				)
-			);
+    get_template_part('template-parts/content', get_post_type());
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+    // If comments are open or we have at least one comment, load up the comment template.
+    if (comments_open() || get_comments_number()) :
+      comments_template();
+    endif;
 
-		endwhile; // End of the loop.
-		?>
+  endwhile; // End of the loop.
 
-	</main><!-- #main -->
+  if (is_singular('post')) :
+    do_action('codetot_after_post');
+  endif;
+  ?>
 
-  <?php do_action('codetot_sidebar'); ?>
+</main><!-- #main -->
+
+<?php do_action('codetot_sidebar'); ?>
 
 <?php
 get_footer();

@@ -52,47 +52,55 @@ if ( ! function_exists( 'ct_bones_posted_by' ) ) :
 	}
 endif;
 
+function ct_bones_entry_categories() {
+  if ( 'post' === get_post_type() ) {
+    /* translators: used between list items, there is a space after the comma */
+    $categories_list = get_the_category_list( esc_html__( ', ', 'ct-bones' ) );
+    if ( $categories_list ) {
+      /* translators: 1: list of categories. */
+      printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'ct-bones' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+    }
+  }
+}
+
+function ct_bones_entry_tags() {
+    /* translators: used between list items, there is a space after the comma */
+    $tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'ct-bones' ) );
+    if ( $tags_list ) {
+      echo '<div class="entry-tags">';
+      /* translators: 1: list of tags. */
+      printf( '<span class="entry-tags__label">%s</span>', esc_html__( 'Tags: ', 'ct-bones' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+      printf( '<span class="entry-tags__list">%s</span>', $tags_list );
+      echo '</div>';
+    }
+}
+
+function ct_bones_entry_comment_links() {
+  if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+    echo '<span class="comments-link">';
+    comments_popup_link(
+      sprintf(
+        wp_kses(
+          /* translators: %s: post title */
+          __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'ct-bones' ),
+          array(
+            'span' => array(
+              'class' => array(),
+            ),
+          )
+        ),
+        wp_kses_post( get_the_title() )
+      )
+    );
+    echo '</span>';
+  }
+}
+
 if ( ! function_exists( 'ct_bones_entry_footer' ) ) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
 	function ct_bones_entry_footer() {
-		// Hide category and tag text for pages.
-		if ( 'post' === get_post_type() ) {
-			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( esc_html__( ', ', 'ct-bones' ) );
-			if ( $categories_list ) {
-				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'ct-bones' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			}
-
-			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'ct-bones' ) );
-			if ( $tags_list ) {
-				/* translators: 1: list of tags. */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'ct-bones' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			}
-		}
-
-		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-			echo '<span class="comments-link">';
-			comments_popup_link(
-				sprintf(
-					wp_kses(
-						/* translators: %s: post title */
-						__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'ct-bones' ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
-					),
-					wp_kses_post( get_the_title() )
-				)
-			);
-			echo '</span>';
-		}
-
 		edit_post_link(
 			sprintf(
 				wp_kses(
@@ -127,24 +135,19 @@ if ( ! function_exists( 'ct_bones_post_thumbnail' ) ) :
 		if ( is_singular() ) :
 			?>
 
-			<div class="post-thumbnail">
-				<?php the_post_thumbnail(); ?>
-			</div><!-- .post-thumbnail -->
+			<?php the_block('image', array(
+        'class' => 'image--cover entry-thumbnail__image',
+        'image' => get_post_thumbnail_id()
+      )); ?>
 
 		<?php else : ?>
 
-			<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+			<a class="entry-thumbnail__link" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
 				<?php
-					the_post_thumbnail(
-						'post-thumbnail',
-						array(
-							'alt' => the_title_attribute(
-								array(
-									'echo' => false,
-								)
-							),
-						)
-					);
+        the_block('image', array(
+          'class' => 'image--cover entry-thumbnail__image',
+          'image' => get_post_thumbnail_id()
+        ));
 				?>
 			</a>
 
