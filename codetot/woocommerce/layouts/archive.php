@@ -256,7 +256,7 @@ class Codetot_Woocommerce_Layout_Archive
       }
       ?>
       <div class="product__rating">
-        <?php echo '<div class="star-rating"><span style="width:'.( ( $average / 5 ) * 100 ) . '%"></span></div>'; ?>
+        <?php echo '<div class="product__rating-stars"><span style="width:'.( ( $average / 5 ) * 100 ) . '%"></span></div>'; ?>
       </div>
       <?php
     endif;
