@@ -61,13 +61,13 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
     $product_card_style = get_global_option('codetot_woocommerce_product_card_style') ?? 1;
     ?>
     <div class="product__quick-view">
-        <span title="<?php esc_attr_e('Quick view', 'ct-theme'); ?>"
+        <span title="<?php esc_attr_e('Quick view', 'ct-bones'); ?>"
               data-quick-view-modal-id="<?php echo esc_attr($product->get_id()); ?>"
               class="product__quick-view-text">
           <?php if (!empty($product_card_style) && in_array($product_card_style, array('1', '2'))) : ?>
             <?php codetot_svg('eyeglasses', true); ?>
           <?php else : ?>
-            <?php esc_attr_e('Quick view', 'ct-theme'); ?>
+            <?php esc_attr_e('Quick view', 'ct-bones'); ?>
           <?php endif; ?>
         </span>
     </div>
@@ -89,7 +89,7 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
 
     $response = array(
       'status' => 500,
-      'message' => esc_html__('Something is wrong, please try again later...', 'ct-theme'),
+      'message' => esc_html__('Something is wrong, please try again later...', 'ct-bones'),
       'content' => false,
     );
 
@@ -168,7 +168,7 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
       $data = array(
         'error' => true,
         'product_url' => apply_filters('woocommerce_cart_redirect_after_error', get_permalink($product_id), $product_id),
-        'message' => __('Quantity of products in stock has been exhausted. The product is not added to the cart.', 'ct-theme'),
+        'message' => __('Quantity of products in stock has been exhausted. The product is not added to the cart.', 'ct-bones'),
       );
 
       wp_send_json($data);

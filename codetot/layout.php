@@ -73,7 +73,7 @@ class Codetot_Theme_Layout
 
       wp_link_pages(
         array(
-          'before'      => '<div class="page-links">' . __( 'Pages:', 'ct-theme' ),
+          'before'      => '<div class="page-links">' . __( 'Pages:', 'ct-bones' ),
           'after'       => '</div>',
           'link_before' => '<span>',
           'link_after'  => '</span>',

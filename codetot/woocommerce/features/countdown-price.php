@@ -45,26 +45,26 @@ class Codetot_WooCommerce_Countdown_Price
 
       $labels = array(
         'days' => array(
-          'singular' => esc_html__('Day', 'ct-theme'),
-          'plural' => esc_html__('Days', 'ct-theme')
+          'singular' => esc_html__('Day', 'ct-bones'),
+          'plural' => esc_html__('Days', 'ct-bones')
         ),
         'hours' => array(
-          'singular' => esc_html__('Hour', 'ct-theme'),
-          'plural' => esc_html__('Hours', 'ct-theme')
+          'singular' => esc_html__('Hour', 'ct-bones'),
+          'plural' => esc_html__('Hours', 'ct-bones')
         ),
         'minutes' => array(
-          'singular' => esc_html__('Minute', 'ct-theme'),
-          'plural' => esc_html__('Minutes', 'ct-theme')
+          'singular' => esc_html__('Minute', 'ct-bones'),
+          'plural' => esc_html__('Minutes', 'ct-bones')
         ),
         'seconds' => array(
-          'singular' => esc_html__('Second', 'ct-theme'),
-          'plural' => esc_html__('Seconds', 'ct-theme')
+          'singular' => esc_html__('Second', 'ct-bones'),
+          'plural' => esc_html__('Seconds', 'ct-bones')
         ),
         'message' => array(
-          'ongoing' => esc_html__('Sale ended after', 'ct-theme'),
-          'expired' => esc_html__('The sale has ended.', 'ct-theme'),
-          'less_day' => esc_html__('The sale will end after less than a day.', 'ct-theme'),
-          'less_hour' => esc_html__('Hurry up! The sale will end after less than a hour.', 'ct-theme')
+          'ongoing' => esc_html__('Sale ended after', 'ct-bones'),
+          'expired' => esc_html__('The sale has ended.', 'ct-bones'),
+          'less_day' => esc_html__('The sale will end after less than a day.', 'ct-bones'),
+          'less_hour' => esc_html__('Hurry up! The sale will end after less than a hour.', 'ct-bones')
         )
       );
 

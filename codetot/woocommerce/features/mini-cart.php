@@ -56,9 +56,9 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout
       <div class="w100 abs mini-cart__overlay js-mini-cart-close"></div>
       <div class="mini-cart__wrapper">
         <div class="mini-cart__head">
-          <h4 class="text-uppercase mini-cart__title"><?php esc_html_e( 'Shopping cart', 'ct-theme' ); ?></h4>
+          <h4 class="text-uppercase mini-cart__title"><?php esc_html_e( 'Shopping cart', 'ct-bones' ); ?></h4>
           <span class="mini-cart__count"><?php echo esc_html( $total ); ?></span>
-          <button class="mini-cart__close js-mini-cart-close" aria-label="<?php _e('Close a mini cart', 'ct-theme'); ?>">
+          <button class="mini-cart__close js-mini-cart-close" aria-label="<?php _e('Close a mini cart', 'ct-bones'); ?>">
             <?php codetot_svg('close', true); ?>
           </button>
         </div>
@@ -122,7 +122,7 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout
                 sprintf(
                   '<a href="%s" class="remove remove_from_cart_button" aria-label="%s" data-product_id="%s" data-cart_item_key="%s" data-product_sku="%s">&times;</a>',
                   esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
-                  esc_attr__( 'Remove this item', 'ct-theme' ),
+                  esc_attr__( 'Remove this item', 'ct-bones' ),
                   esc_attr( $product_id ),
                   esc_attr( $cart_item_key ),
                   esc_attr( $_product->get_sku() )
@@ -167,7 +167,7 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout
       do_action( 'woocommerce_widget_shopping_cart_after_buttons' );
     } else {
       ?>
-      <p class="woocommerce-mini-cart__empty-message"><?php esc_html_e( 'No products in the cart.', 'ct-theme' ); ?></p>
+      <p class="woocommerce-mini-cart__empty-message"><?php esc_html_e( 'No products in the cart.', 'ct-bones' ); ?></p>
       <?php
     }
 
@@ -210,7 +210,7 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout
     $this->codetot_mini_cart();
     $mini_cart = ob_get_clean();
 
-    $fragments['.mini-cart__count'] = sprintf( '<span class="mini-cart__count">'.sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'ct-theme'), $woocommerce->cart->cart_contents_count).'</span>', $mini_cart );
+    $fragments['.mini-cart__count'] = sprintf( '<span class="mini-cart__count">'.sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'ct-bones'), $woocommerce->cart->cart_contents_count).'</span>', $mini_cart );
     return $fragments;
   }
 }

@@ -71,13 +71,13 @@ class Codetot_Acf {
 
   public function load_button_styles($field) {
     $field['choices'] = apply_filters('codetot_button_styles', array(
-      'primary' => __('Primary', 'ct-theme'),
-      'secondary' => __('Secondary', 'ct-theme'),
-      'dark' => __('Dark', 'ct-theme'),
-      'outline' => __('Outline', 'ct-theme'),
-      'outline-white' => __('Outline (Dark Background)', 'ct-theme'),
-      'link' => __('Link', 'ct-theme'),
-      'link-white' => __('Link (Dark Background)', 'ct-theme')
+      'primary' => __('Primary', 'ct-bones'),
+      'secondary' => __('Secondary', 'ct-bones'),
+      'dark' => __('Dark', 'ct-bones'),
+      'outline' => __('Outline', 'ct-bones'),
+      'outline-white' => __('Outline (Dark Background)', 'ct-bones'),
+      'link' => __('Link', 'ct-bones'),
+      'link-white' => __('Link (Dark Background)', 'ct-bones')
     ));
 
     return $field;
@@ -85,8 +85,8 @@ class Codetot_Acf {
 
   public function load_button_targets($field) {
     $field['choices'] = array(
-      '_self' => __('Same Window/Tab', 'ct-theme'),
-      '_blank' => __('New Window/Tab', 'ct-theme')
+      '_self' => __('Same Window/Tab', 'ct-bones'),
+      '_blank' => __('New Window/Tab', 'ct-bones')
     );
 
     return $field;
@@ -94,9 +94,9 @@ class Codetot_Acf {
 
   public function load_button_sizes($field) {
     $field['choices'] = apply_filters('codetot_button_sizes', array(
-      'normal' => __('Normal', 'ct-theme'),
-      'small' => __('Small', 'ct-theme'),
-      'large' => __('Large', 'ct-theme')
+      'normal' => __('Normal', 'ct-bones'),
+      'small' => __('Small', 'ct-bones'),
+      'large' => __('Large', 'ct-bones')
     ));
 
     return $field;
@@ -128,7 +128,7 @@ class Codetot_Acf {
       }
 
       if (empty($choices)) {
-        $choices[''] = __('No available forms.', 'ct-theme');
+        $choices[''] = __('No available forms.', 'ct-bones');
       }
 
       $field['choices'] = $choices;
@@ -140,9 +140,9 @@ class Codetot_Acf {
 
   public function load_alignments($field) {
     $field['choices'] = array(
-      'left' => __('Left', 'ct-theme'),
-      'center' => __('Center', 'ct-theme'),
-      'right' => __('Right', 'ct-theme')
+      'left' => __('Left', 'ct-bones'),
+      'center' => __('Center', 'ct-bones'),
+      'right' => __('Right', 'ct-bones')
     );
 
     return $field;
@@ -150,8 +150,8 @@ class Codetot_Acf {
 
   public function load_background_contract($field) {
     $field['choices'] = array(
-      'light' => __('Light Background - Dark Text', 'ct-theme'),
-      'dark' => __('Dark Background - White Text', 'ct-theme')
+      'light' => __('Light Background - Dark Text', 'ct-bones'),
+      'dark' => __('Dark Background - White Text', 'ct-bones')
     );
 
     return $field;
@@ -159,13 +159,13 @@ class Codetot_Acf {
 
   public function load_background_types($field) {
     $field['choices'] = apply_filters('codetot_background_types', array(
-      'white' => __('White', 'ct-theme'),
-      'light' => __('Light', 'ct-theme'),
-      'gray' => __('Gray', 'ct-theme'),
-      'dark' => __('Dark', 'ct-theme'),
-      'black' => __('Black', 'ct-theme'),
-      'primary' => __('Primary', 'ct-theme'),
-      'secondary' => __('Secondary', 'ct-theme')
+      'white' => __('White', 'ct-bones'),
+      'light' => __('Light', 'ct-bones'),
+      'gray' => __('Gray', 'ct-bones'),
+      'dark' => __('Dark', 'ct-bones'),
+      'black' => __('Black', 'ct-bones'),
+      'primary' => __('Primary', 'ct-bones'),
+      'secondary' => __('Secondary', 'ct-bones')
     ));
 
     return $field;
@@ -174,11 +174,11 @@ class Codetot_Acf {
   public function load_block_presets($field) {
     $preset_number = 7; // = 6
     $options = array(
-      '' => __('Default', 'ct-theme'),
-      'theme' => __('Theme Preset', 'ct-theme')
+      '' => __('Default', 'ct-bones'),
+      'theme' => __('Theme Preset', 'ct-bones')
     );
     for($i = 1; $i < $preset_number; $i++) {
-      $options[$i] = sprintf(__('Preset %s', 'ct-theme'), $i);
+      $options[$i] = sprintf(__('Preset %s', 'ct-bones'), $i);
     }
 
     $field['choices'] = apply_filters('codetot_block_presets', $options);
@@ -188,11 +188,11 @@ class Codetot_Acf {
 
   public function load_block_spacing($field) {
     $field['choices'] = apply_filters('codetot_block_spacing', array(
-      '' => __('Default', 'ct-theme'),
-      's' => __('Small', 'ct-theme'),
-      'm' => __('Medium', 'ct-theme'),
-      'l' => __('Large', 'ct-theme'),
-      'fullscreen' => __('Fullscreen', 'ct-theme')
+      '' => __('Default', 'ct-bones'),
+      's' => __('Small', 'ct-bones'),
+      'm' => __('Medium', 'ct-bones'),
+      'l' => __('Large', 'ct-bones'),
+      'fullscreen' => __('Fullscreen', 'ct-bones')
     ));
 
     return $field;
@@ -200,10 +200,10 @@ class Codetot_Acf {
 
   public function load_primary_layouts($field) {
     $field['choices'] = array(
-      'default' => __('Left Map - Right Content', 'ct-theme'),
-      'switch' => __('Right Map - Left Content', 'ct-theme'),
-      'top' => __('Top Map - Bottom Content', 'ct-theme'),
-      'bottom' => __('Top Content - Bottom Map', 'ct-theme')
+      'default' => __('Left Map - Right Content', 'ct-bones'),
+      'switch' => __('Right Map - Left Content', 'ct-bones'),
+      'top' => __('Top Map - Bottom Content', 'ct-bones'),
+      'bottom' => __('Top Content - Bottom Map', 'ct-bones')
     );
 
     return $field;
@@ -211,10 +211,10 @@ class Codetot_Acf {
 
   public function load_secondary_layouts($field) {
     $field['choices'] = array(
-      'default' => __('Top Content - Bottom Form', 'ct-theme'),
-      'switch' => __('Top Form - Bottom Content', 'ct-theme'),
-      'left' => __('Left Content - Right Form', 'ct-theme'),
-      'right' => __('Left Form - Right Content', 'ct-theme')
+      'default' => __('Top Content - Bottom Form', 'ct-bones'),
+      'switch' => __('Top Form - Bottom Content', 'ct-bones'),
+      'left' => __('Left Content - Right Form', 'ct-bones'),
+      'right' => __('Left Form - Right Content', 'ct-bones')
     );
 
     return $field;
@@ -222,9 +222,9 @@ class Codetot_Acf {
 
   public function load_image_types($field) {
     $field['choices'] = array(
-      'default' => __('Default Image Size', 'ct-theme'),
-      'cover'   => __('Cover Image', 'ct-theme'),
-      'contain' => __('Contain Image', 'ct-theme')
+      'default' => __('Default Image Size', 'ct-bones'),
+      'cover'   => __('Cover Image', 'ct-bones'),
+      'contain' => __('Contain Image', 'ct-bones')
     );
 
     $field['default_value'] = 'default';
@@ -234,13 +234,13 @@ class Codetot_Acf {
 
   public function load_columns($field) {
     $field['choices'] = array(
-      '' => __('Default', 'ct-theme'),
-      'auto' => __('Auto', 'ct-theme')
+      '' => __('Default', 'ct-bones'),
+      'auto' => __('Auto', 'ct-bones')
     );
 
     $available_columns = range(2, 6, 1);
     foreach($available_columns as $column) {
-      $field['choices'][$column] = sprintf(__('%s Columns', 'ct-theme'), $column);
+      $field['choices'][$column] = sprintf(__('%s Columns', 'ct-bones'), $column);
     }
 
     return $field;

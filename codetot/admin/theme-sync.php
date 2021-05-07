@@ -74,14 +74,14 @@ class CodeTot_Admin {
 
   public function display_success_message() {
     $class = 'notice notice-success';
-    $message = __( 'Your action has been processed!', 'ct-theme' );
+    $message = __( 'Your action has been processed!', 'ct-bones' );
 
     printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
   }
 
   public function display_error_message() {
     $class = 'notice notice-error';
-    $message = __( 'There is unknown error with your action. Please try to contact Administrator for more detail.', 'ct-theme' );
+    $message = __( 'There is unknown error with your action. Please try to contact Administrator for more detail.', 'ct-bones' );
 
     printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
   }
@@ -91,7 +91,7 @@ class CodeTot_Admin {
    */
   public function display_default_settings_message() {
     $class = 'notice notice-warning';
-    $message = __( 'Your current theme settings were a theme default settings.', 'ct-theme' );
+    $message = __( 'Your current theme settings were a theme default settings.', 'ct-bones' );
 
     printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
   }
@@ -172,8 +172,8 @@ class CodeTot_Admin {
   public function add_import_export_page() {
     add_submenu_page(
       'themes.php',
-      __('CT Theme Sync', 'ct-theme'),
-      __('CT Theme Sync', 'ct-theme'),
+      __('CT Theme Sync', 'ct-bones'),
+      __('CT Theme Sync', 'ct-bones'),
       'manage_options',
       $this->menu_slug,
       array( $this, 'import_export_page' )
@@ -201,32 +201,32 @@ class CodeTot_Admin {
     ?>
     <div class="wrap">
       <h1><?php _e('CT Theme Sync', 'ct-themes'); ?></h1>
-      <p><?php _e('Here you can import/export settings for a current theme. Please be careful or ask our Support Team to help you update this.', 'ct-theme'); ?></p>
+      <p><?php _e('Here you can import/export settings for a current theme. Please be careful or ask our Support Team to help you update this.', 'ct-bones'); ?></p>
       <table class="form-table" role="presentation">
         <tbody>
           <tr>
-            <th scope="row"><?php _e('Export Theme Settings', 'ct-theme'); ?></th>
+            <th scope="row"><?php _e('Export Theme Settings', 'ct-bones'); ?></th>
             <td>
-              <label class="screen-reader-text" for="export_settings"><?php _e('Export data', 'ct-theme');?></label>
+              <label class="screen-reader-text" for="export_settings"><?php _e('Export data', 'ct-bones');?></label>
               <p><textarea name="export_settings" id="export_settings" rows="10" cols="50" class="large-text code" disabled><?php echo $this->load_settings_to_textarea(); ?></textarea></p>
             </td>
           </tr>
           <tr>
-            <th scope="row"><?php _e('Import Theme Settings', 'ct-theme'); ?></th>
+            <th scope="row"><?php _e('Import Theme Settings', 'ct-bones'); ?></th>
             <td>
               <form method="POST" action="<?php echo $this->admin_sync_page_url; ?>">
-                <label class="screen-reader-text" for="import_settings"><?php _e('Export data', 'ct-theme');?></label>
+                <label class="screen-reader-text" for="import_settings"><?php _e('Export data', 'ct-bones');?></label>
                 <p><textarea name="import_settings" id="import_settings" rows="10" cols="50" class="large-text code"></textarea></p>
-                <?php submit_button(esc_html__('Start import', 'ct-theme')); ?>
+                <?php submit_button(esc_html__('Start import', 'ct-bones')); ?>
               </form>
             </td>
           </tr>
           <tr>
-            <th scope="row"><?php _e('Reset to default', 'ct-theme'); ?></th>
+            <th scope="row"><?php _e('Reset to default', 'ct-bones'); ?></th>
             <td>
-              <p><?php _e('If you wish to reset back to current theme\'s default settings, click a below button.', 'ct-theme');?></p>
+              <p><?php _e('If you wish to reset back to current theme\'s default settings, click a below button.', 'ct-bones');?></p>
               <p>
-                <a href="<?php echo add_query_arg('action', 'reset_settings', $this->admin_sync_page_url); ?>"><?php _e('Reset Settings', 'ct-theme'); ?></a>
+                <a href="<?php echo add_query_arg('action', 'reset_settings', $this->admin_sync_page_url); ?>"><?php _e('Reset Settings', 'ct-bones'); ?></a>
               </p>
             </td>
           </tr>

@@ -32,23 +32,23 @@ class Codetot_Page_Settings {
 
     public function page_settings( $meta_boxes ) {
       $meta_boxes[] = [
-          'title'      => __( 'Page Settings', 'ct-theme' ),
+          'title'      => __( 'Page Settings', 'ct-bones' ),
           'id'         => 'page-settings',
           'post_types' => ['page'],
           'style'      => 'seamless',
           'fields'     => [
               [
-                  'name' => __( 'Enable Header Transparent', 'ct-theme' ),
+                  'name' => __( 'Enable Header Transparent', 'ct-bones' ),
                   'id'   =>  $this->prefix . 'enable_header_transparent',
                   'type' => 'switch',
               ],
               [
-                  'name' => __( 'Page Class', 'ct-theme' ),
+                  'name' => __( 'Page Class', 'ct-bones' ),
                   'id'   => $this->prefix  . 'page_class',
                   'type' => 'text',
               ],
               [
-                'name' => __( 'Page Stylesheet (CSS)', 'ct-theme' ),
+                'name' => __( 'Page Stylesheet (CSS)', 'ct-bones' ),
                 'id'   => $this->prefix  . 'page_stylesheet_css',
                 'type' => 'textarea'
             ],

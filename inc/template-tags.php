@@ -173,9 +173,9 @@ endif;
 function codetot_image_alt( $id = null, $alt = '', $placeholder = false ) {
   if ( ! $id ) {
     if ( $placeholder ) {
-      return esc_attr__( 'Placeholder image', 'ct-theme' );
+      return esc_attr__( 'Placeholder image', 'ct-bones' );
     }
-    return esc_attr__( 'Error image', 'ct-theme' );
+    return esc_attr__( 'Error image', 'ct-bones' );
   }
 
   $data    = get_post_meta( $id, '_wp_attachment_image_alt', true );
@@ -279,7 +279,7 @@ if ( ! function_exists( 'codetot_page_content' ) ) {
 
 		wp_link_pages(
 			array(
-				'before'      => '<div class="page-links">' . __( 'Pages:', 'ct-theme' ),
+				'before'      => '<div class="page-links">' . __( 'Pages:', 'ct-bones' ),
 				'after'       => '</div>',
 				'link_before' => '<span>',
 				'link_after'  => '</span>',

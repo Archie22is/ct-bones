@@ -11,6 +11,6 @@ if (!$hide_icon && class_exists('WooCommerce')) : ?>
           <?php echo sprintf ( _n( '%d', '%d', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?>
         </span>
     <?php endif; ?>
-    <span class="screen-reader-text"><?php _e('Cart', 'ct-theme'); ?></span>
+    <span class="screen-reader-text"><?php _e('Cart', 'ct-bones'); ?></span>
   </a>
 <?php endif; ?>

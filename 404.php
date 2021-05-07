@@ -26,7 +26,7 @@ get_header();
     ));
 
     the_block('button', array(
-      'button' => __('Back to Homepage', 'ct-theme'),
+      'button' => __('Back to Homepage', 'ct-bones'),
       'type' => 'dark',
       'class' => 'message-block__404-button',
       'url' => esc_url(home_url('/'))
