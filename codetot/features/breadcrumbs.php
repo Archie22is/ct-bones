@@ -252,7 +252,7 @@ class Codetot_Breadcrumb
       'error_404' => esc_html__('404 Not Found', 'ct-bones'),
       'archives' => esc_html__('Archives', 'ct-bones'),
       // Translators: %s is the search query.
-      'search' => esc_html__('Search results for: %s', 'ct-bones'),
+      'search' => esc_html__('Search Results for: %s', 'ct-bones'),
       // Translators: %s is the page number.
       'paged' => esc_html__('Page %s', 'ct-bones'),
       // Translators: %s is the page number.

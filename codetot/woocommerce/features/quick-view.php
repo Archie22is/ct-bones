@@ -67,7 +67,7 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
           <?php if (!empty($product_card_style) && in_array($product_card_style, array('1', '2'))) : ?>
             <?php codetot_svg('eyeglasses', true); ?>
           <?php else : ?>
-            <?php esc_attr_e('Quick view', 'ct-bones'); ?>
+            <?php esc_attr_e('Quick View', 'ct-bones'); ?>
           <?php endif; ?>
         </span>
     </div>
@@ -89,7 +89,7 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
 
     $response = array(
       'status' => 500,
-      'message' => esc_html__('Something is wrong, please try again later...', 'ct-bones'),
+      'message' => __('Something is wrong, please try again later&hellip;', 'ct-bones'),
       'content' => false,
     );
 

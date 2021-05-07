@@ -6,9 +6,9 @@ $button = apply_filters('codetot_search_button', sprintf('<input type="submit" c
 $placeholder = !empty($args['placeholder']) ? $placeholder : '';
 if (empty($placeholder)) {
   if (class_exists('WooCommerce')) {
-    $placeholder = esc_html__('Search products...', 'ct-bones');
+    $placeholder = __('Search products&hellip;', 'ct-bones');
   } else {
-    $placeholder = esc_html__('Search...', 'ct-bones');
+    $placeholder = __('Search&hellip;', 'ct-bones');
   }
 }
 ?>
