@@ -37,6 +37,12 @@ class Codetot_Theme_Init
 
     add_filter('walker_nav_menu_start_el', array($this, 'add_arrow_to_primary_menu'), 10, 4);
     add_filter('codetot_search_button', array($this, 'search_button_icon'));
+    add_filter( 'default_page_template_title', array($this, 'rename_default_template' ) );
+  }
+
+  public function rename_default_template()
+  {
+    return __('Basic Page', 'barrel-base');
   }
 
   public function theme_supports()
