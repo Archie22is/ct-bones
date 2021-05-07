@@ -7,32 +7,26 @@ get_header();
 
     <?php
     the_block('breadcrumbs');
-    ?>
 
-		<?php if ( have_posts() ) :
-      global $wp_query;
-      ?>
+    the_block('page-header', array(
+      'class' => 'page-header--archive',
+      /* translators: %s: search query. */
+      'title' => get_the_archive_title()
+    ));
 
-      <?php the_block('page-header', array(
-        'class' => 'page-header--archive',
-        /* translators: %s: search query. */
-        'title' => single_cat_title( '', false )
-      )); ?>
+    if ( have_posts() ) :
+      global $wp_query; ?>
 
 			<?php
 			the_block('post-grid', array(
         'class' => 'post-grid--archive',
+        'display_meta' => true,
         'query' => $wp_query
       ));
 
       the_block('pagination');
 
 		else :
-
-      the_block('page-header', array(
-        'class' => 'page-header--404',
-        'title' => esc_html__('No Posts Found', 'ct-theme')
-      ));
 
       ob_start();
       echo '<p>';
