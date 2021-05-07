@@ -129,7 +129,7 @@ class Codetot_Woocommerce_Layout_Account
     if ( is_wc_endpoint_url( 'orders' ) ) {
       $title = esc_html__( 'Orders', 'woocommerce' );
     } elseif ( is_wc_endpoint_url( 'view-order' ) ) {
-      $title = esc_html__( 'Order Detail', 'ct-theme' );
+      $title = esc_html__( 'Order Detail', 'ct-bones' );
     } elseif ( is_wc_endpoint_url( 'downloads' ) ) {
       $title = esc_html__( 'Downloads', 'woocommerce' );
     } elseif ( is_wc_endpoint_url( 'edit-account' ) ) {
@@ -156,7 +156,7 @@ class Codetot_Woocommerce_Layout_Account
     the_block('page-block-mobile-trigger', array(
       'class' => 'has-icon',
       'button_icon' => codetot_svg('menu', false),
-      'button_text' => __('Menu', 'ct-theme')
+      'button_text' => __('Menu', 'ct-bones')
     ));
     echo '</div>'; // Close .page-block__col--header-right
     echo '</div>'; // Close .page-block__grid--header
@@ -220,7 +220,7 @@ class Codetot_Woocommerce_Layout_Account
     $login_page_url = get_permalink(get_option('woocommerce_myaccount_page_id'));
 
     echo '<div class="page-block__bottom">';
-    echo '<a class="page-block__bottom-link" href="' . esc_url($login_page_url) . '">' . __('Back to Login page', 'ct-theme') . '</a>';
+    echo '<a class="page-block__bottom-link" href="' . esc_url($login_page_url) . '">' . __('Back to Login page', 'ct-bones') . '</a>';
     echo '</div>';
   }
 

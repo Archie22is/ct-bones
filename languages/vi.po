@@ -1,0 +1,1158 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: CT Bones\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-07 04:03+0000\n"
+"PO-Revision-Date: 2021-05-07 04:46+0000\n"
+"Last-Translator: admin\n"
+"Language-Team: Tiếng Việt\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.2; wp-5.6.1\n"
+"X-Domain: ct-bones"
+
+#: codetot/woocommerce/features/mini-cart.php:213
+#: codetot/woocommerce/layouts/cart.php:110
+#, php-format
+msgid "%d"
+msgid_plural "%d"
+msgstr[0] ""
+msgstr[1] ""
+
+#. number of items in the mini cart.
+#: inc/woocommerce.php:141
+#, php-format
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] "%d sản phẩm"
+msgstr[1] ""
+
+#: codetot/helpers/metabox.php:27 codetot/helpers/metabox.php:34
+#: codetot/helpers/metabox.php:41 codetot/helpers/metabox.php:48
+#: codetot/helpers/metabox.php:55 codetot/helpers/metabox.php:62
+#, php-format
+msgid "%s Color"
+msgstr "Màu %s"
+
+#: codetot/admin/acf.php:243
+#, php-format
+msgid "%s Columns"
+msgstr "Cột %s"
+
+#: codetot/widgets/ct-icon-box.php:7
+#, php-format
+msgid "%s Icon Box"
+msgstr ""
+
+#: codetot/admin/ct-theme.php:153
+#, php-format
+msgid "%s Layout"
+msgstr "Bố cục %s"
+
+#: codetot/admin/ct-theme.php:179
+msgid "(pixel) Only work with boxed container layout."
+msgstr ""
+
+#. used between list items, there is a space after the comma
+#: inc/template-tags.php:55
+msgid ", "
+msgstr ", "
+
+#: codetot/features/breadcrumbs.php:252
+msgid "404 Not Found"
+msgstr "404 Không tìm thấy"
+
+#: codetot/admin/ct-theme.php:287
+msgid "Account"
+msgstr "Tài khoản"
+
+#: codetot/woocommerce/layouts/thankyou.php:40
+msgid "Account details"
+msgstr "Thông tin tài khoản"
+
+#: codetot/woocommerce/layouts/thankyou.php:59
+msgid "Account name"
+msgstr "Tên tài khoản"
+
+#: codetot/woocommerce/layouts/thankyou.php:58
+msgid "Account number"
+msgstr "Số tài khoản"
+
+#: codetot/widgets/ct-icon-box.php:124
+msgid "Add Item"
+msgstr ""
+
+#: codetot/theme-init.php:141
+msgid "Add widgets to display in footer column."
+msgstr ""
+
+#: codetot/admin/ct-theme.php:60 codetot/admin/ct-theme.php:382
+msgid "Addons"
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:116
+msgid "Admin: Hide sticky bar when editing products"
+msgstr ""
+
+#: codetot/admin/ct-data.php:60 codetot/admin/ct-data.php:122
+msgid "API Keys"
+msgstr ""
+
+#: codetot/admin/ct-theme.php:201
+msgid "Archive/Category: Posts Per Row"
+msgstr ""
+
+#: codetot/features/breadcrumbs.php:253
+msgid "Archives"
+msgstr ""
+
+#: codetot/admin/acf.php:238
+msgid "Auto"
+msgstr "Tự động"
+
+#: codetot/helpers/metabox.php:141
+#, php-format
+msgid "Available shortcodes: %s"
+msgstr ""
+
+#: 404.php:29
+msgid "Back to Homepage"
+msgstr "Trở lại trang chủ"
+
+#: codetot/woocommerce/layouts/account.php:223
+msgid "Back to Login page"
+msgstr "Trở lại trang Đăng nhập"
+
+#: codetot/woocommerce/layouts/thankyou.php:60
+msgid "Bank name"
+msgstr "Tên ngân hàng"
+
+#: codetot/admin/acf.php:166 codetot/helpers/acf.php:50
+msgid "Black"
+msgstr "Đen"
+
+#: codetot/helpers/metabox.php:48
+msgid "Body Text"
+msgstr "Chữ toàn trang"
+
+#: codetot/woocommerce/init.php:83
+msgid "Bottom Product Sidebar"
+msgstr "Cột bên - Mục dưới trang Sản phẩm"
+
+#: codetot/helpers/acf.php:133 codetot/helpers/acf.php:142
+#: codetot/helpers/metabox.php:27
+msgid "Brand"
+msgstr "Thương hiệu"
+
+#: codetot/features/breadcrumbs.php:250
+msgctxt "breadcrumbs aria label"
+msgid "Breadcrumbs"
+msgstr "Điều hướng trang"
+
+#: codetot/features/breadcrumbs.php:249
+msgid "Browse:"
+msgstr "Duyệt:"
+
+#: block-parts/header/phone-icon.php:12
+msgid "Call us"
+msgstr "Gọi chúng tôi"
+
+#: block-parts/header/cart-icon.php:14 codetot/admin/ct-theme.php:297
+msgid "Cart"
+msgstr "Giỏ hàng"
+
+#: blocks/menu-categories.php:9
+msgid "Category"
+msgstr "Danh mục bài viết"
+
+#: codetot/admin/ct-theme.php:198
+msgid "Category Layout"
+msgstr "Bố cục  Danh mục bài viết"
+
+#: codetot/theme-init.php:129
+msgid "Category Sidebar"
+msgstr "Cột bên Danh mục bài viết"
+
+#. 1: list of categories.
+#: inc/template-tags.php:58
+#, php-format
+msgid "Category: %1$s"
+msgstr "Danh mục: %1$s"
+
+#: codetot/admin/acf.php:144 codetot/helpers/acf.php:68
+msgid "Center"
+msgstr "Giữa"
+
+#: block-parts/header/account-icon.php:9
+msgid "Click to manage an account"
+msgstr "Click để quản lý tài khoản"
+
+#: codetot/woocommerce/features/mini-cart.php:61
+msgid "Close a mini cart"
+msgstr "Đóng giỏ hàng"
+
+#: blocks/slideout-menu.php:3
+msgid "Close a mobile menu"
+msgstr "Đóng menu mobile"
+
+#: block-parts/modal-search-form.php:8
+msgid "Close a search form modal"
+msgstr "Đóng popup tìm kiếm"
+
+#. Author of the theme
+msgid "CODE TOT JSC"
+msgstr "Công ty Cổ phần CODE TỐT"
+
+#: codetot/admin/ct-theme.php:76
+msgid "Color Schema"
+msgstr "Tông màu"
+
+#. %s is the page number.
+#: codetot/features/breadcrumbs.php:259
+#, php-format
+msgid "Comment Page %s"
+msgstr "Trang bình luận %s"
+
+#: comments.php:68
+msgid "Comments are closed."
+msgstr "Chức năng bình luận đã bị đóng."
+
+#. 1: comment count number, 2: title.
+#: comments.php:41
+#, php-format
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "%1$s bình luận trong &ldquo;%2$s&rdquo;"
+msgstr[1] ""
+
+#: codetot/helpers/metabox.php:116
+msgid "Company Address"
+msgstr ""
+
+#: codetot/helpers/metabox.php:126
+msgid "Company Email"
+msgstr ""
+
+#: codetot/helpers/metabox.php:131
+msgid "Company Google Maps Link"
+msgstr ""
+
+#: codetot/admin/ct-theme.php:306 codetot/helpers/metabox.php:121
+msgid "Company Hotline"
+msgstr ""
+
+#: codetot/admin/ct-data.php:75
+msgid "Company Information"
+msgstr ""
+
+#: codetot/helpers/metabox.php:111
+msgid "Company Name"
+msgstr ""
+
+#: block-parts/header/navigation.php:25
+msgid "Configure Primary Menu"
+msgstr "Cấu hình menu chính"
+
+#: codetot/woocommerce/ct-theme.php:104
+msgid "Contain"
+msgstr ""
+
+#: codetot/admin/acf.php:227 codetot/helpers/acf.php:28
+msgid "Contain Image"
+msgstr ""
+
+#: codetot/admin/ct-theme.php:173
+msgid "Container Layout"
+msgstr "Bố cục khung"
+
+#. %s: Name of current post. Only visible to screen readers
+#: template-parts/content.php:45
+#, php-format
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr "Đọc tiếp<span class=\"screen-reader-text\"> \"%s\"</span>"
+
+#: codetot/helpers/metabox.php:200
+#, php-format
+msgid ""
+"Copyright &copy; by <strong>%1$s</strong>. Built with <a href=\"%2$s\" "
+"target=\"_blank\">%3$s</a> (version: %4$s)."
+msgstr ""
+"Bản quyền &copy; thuộcveef <strong>%1$s</strong>. Xây dựng với <a "
+"href=\"%2$s\" target=\"_blank\">%3$s</a> (phiên bản: %4$s)."
+
+#: codetot/woocommerce/ct-theme.php:137
+msgid "Countdown Product Price"
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:103
+msgid "Cover"
+msgstr ""
+
+#: codetot/admin/acf.php:226 codetot/helpers/acf.php:27
+msgid "Cover Image"
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:144
+msgid "Cross-Selling Products"
+msgstr "Sản phẩm bán chéo"
+
+#. Name of the theme
+msgid "CT Bones"
+msgstr "Code Tốt - Bones"
+
+#: codetot/admin/ct-data.php:51 codetot/admin/ct-theme.php:308
+msgid "CT Data"
+msgstr "CT Data"
+
+#: codetot/admin/ct-theme.php:48
+msgid "CT Theme"
+msgstr "CT Theme"
+
+#: codetot/admin/theme-sync.php:175 codetot/admin/theme-sync.php:176
+msgid "CT Theme Sync"
+msgstr "Đồng bộ CT Theme"
+
+#: codetot/helpers/metabox.php:203
+msgid "CT Web Builder"
+msgstr "CT Web Builder"
+
+#: codetot/features/breadcrumbs.php:781 codetot/features/breadcrumbs.php:1219
+msgctxt "daily archives date format"
+msgid "j"
+msgstr ""
+
+#: codetot/admin/acf.php:76 codetot/admin/acf.php:165
+#: codetot/helpers/acf.php:49 codetot/helpers/acf.php:95
+#: codetot/helpers/acf.php:136 codetot/helpers/acf.php:145
+#: codetot/helpers/metabox.php:41
+msgid "Dark"
+msgstr "Tối"
+
+#: codetot/admin/acf.php:154 codetot/helpers/acf.php:60
+msgid "Dark Background - White Text"
+msgstr "Nền tối - Chữ trắng"
+
+#: codetot/woocommerce/features/countdown-price.php:48
+msgid "Day"
+msgstr "Ngày"
+
+#: codetot/woocommerce/features/countdown-price.php:49
+msgid "Days"
+msgstr "Ngày"
+
+#: codetot/admin/acf.php:177 codetot/admin/acf.php:191
+#: codetot/admin/acf.php:237 codetot/helpers/acf.php:35
+#: codetot/woocommerce/ct-theme.php:89
+msgid "Default"
+msgstr "Mặc định"
+
+#: codetot/admin/acf.php:225 codetot/helpers/acf.php:26
+msgid "Default Image Size"
+msgstr "Cỡ ảnh mặc định"
+
+#: codetot/admin/ct-theme.php:302 codetot/admin/ct-theme.php:313
+#, php-format
+msgid "Display %s"
+msgstr "Hiển thị %s"
+
+#: codetot/admin/ct-theme.php:305
+#, php-format
+msgid "Display a \"%1$s\" from <a href=\"%2$s\">%3$s</a> settings."
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:124
+msgid "Display a Facebook comment in each product page"
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:110 codetot/woocommerce/ct-theme.php:117
+msgid ""
+"Display a floating product bar when visiting a product page with price and "
+"add to cart button."
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:81
+msgid "Display a login popup instead of login page."
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:67
+msgid "Display a quick view popup when click on product in listing page."
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:138
+msgid "Display countdown in single product page if price has been scheduled."
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:145
+msgid ""
+"Display cross-sell products below Add to cart button on single product page."
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:131
+msgid "Display product star rating in all list."
+msgstr ""
+
+#: codetot/widgets/ct-icon-box.php:9
+msgid "Display the guarantee list widget."
+msgstr ""
+
+#. %s: Name of current post. Only visible to screen readers
+#: inc/template-tags.php:105
+#, php-format
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr "Sửa <span class=\"screen-reader-text\">%s</span>"
+
+#: codetot/admin/ct-theme.php:281 codetot/admin/ct-theme.php:318
+#, php-format
+msgid "Enable %s"
+msgstr ""
+
+#: codetot/admin/ct-theme.php:397
+msgid "Enable Back to Top button"
+msgstr ""
+
+#: codetot/admin/page-settings.php:41
+msgid "Enable Header Transparent"
+msgstr ""
+
+#: codetot/admin/ct-theme.php:389
+msgid "Enable Sticky Social Links"
+msgstr ""
+
+#: inc/template-tags.php:178
+msgid "Error image"
+msgstr ""
+
+#: codetot/admin/theme-sync.php:210 codetot/admin/theme-sync.php:218
+msgid "Export data"
+msgstr ""
+
+#: codetot/admin/theme-sync.php:208
+msgid "Export Theme Settings"
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:123
+msgid "Facebook Comment"
+msgstr "Bình luận Facebook"
+
+#: codetot/helpers/metabox.php:160
+msgid "Facebook URL"
+msgstr "Địa chỉ Facebook URL"
+
+#: codetot/woocommerce/ct-theme.php:109
+msgid "Floating Product Bar"
+msgstr ""
+
+#: codetot/admin/ct-theme.php:119 codetot/admin/ct-theme.php:125
+msgid "Font Family"
+msgstr "Font chữ"
+
+#: codetot/admin/ct-theme.php:102
+msgid "Font Size Scale"
+msgstr "Tỷ lệ font chữ"
+
+#: codetot/admin/ct-theme.php:59 codetot/admin/ct-theme.php:369
+msgid "Footer"
+msgstr "Cuối trang"
+
+#: codetot/admin/ct-theme.php:345
+msgid "Footer Background Color"
+msgstr "Màu nền cuối trang"
+
+#: codetot/theme-init.php:140
+#, php-format
+msgid "Footer Column #%s"
+msgstr "Cột cuối trang #%s"
+
+#: codetot/admin/ct-theme.php:332
+msgid "Footer Columns"
+msgstr "Cột cuối trang"
+
+#: codetot/admin/acf.php:195 codetot/helpers/acf.php:39
+msgid "Fullscreen"
+msgstr ""
+
+#: codetot/admin/ct-theme.php:55 codetot/admin/ct-theme.php:83
+msgid "General"
+msgstr "Chung"
+
+#: codetot/admin/ct-data.php:58 codetot/admin/ct-data.php:82
+msgid "Global"
+msgstr ""
+
+#: codetot/admin/ct-theme.php:129
+msgid "Global Font"
+msgstr "Font toàn trang"
+
+#: codetot/admin/ct-data.php:128
+msgid "Google Maps API Key"
+msgstr "API Key của Google Maps"
+
+#: codetot/admin/acf.php:164 codetot/helpers/acf.php:48
+#: codetot/helpers/metabox.php:55
+msgid "Gray"
+msgstr ""
+
+#: codetot/admin/ct-theme.php:244
+msgid "Header"
+msgstr "Đầu trang"
+
+#: codetot/admin/ct-theme.php:264
+msgid "Header Background Color"
+msgstr "Màu nền đầu trang"
+
+#: codetot/admin/ct-theme.php:253
+msgid "Header Layout"
+msgstr "Bố cục đầu trang"
+
+#: codetot/admin/ct-theme.php:274
+msgid "Header Text Color Contract"
+msgstr ""
+
+#: codetot/helpers/metabox.php:138
+msgid "Header Topbar Content"
+msgstr "Nội dung topbar đầu trang"
+
+#: codetot/admin/ct-theme.php:136
+msgid "Heading Font"
+msgstr "Font chữ các tiêu đề"
+
+#: codetot/admin/theme-sync.php:204
+msgid ""
+"Here you can import/export settings for a current theme. Please be careful "
+"or ask our Support Team to help you update this."
+msgstr ""
+
+#: codetot/admin/ct-theme.php:287 codetot/admin/ct-theme.php:292
+#: codetot/admin/ct-theme.php:297
+#, php-format
+msgid "Hide %s Icon"
+msgstr "Ẩn icon %s"
+
+#: codetot/features/breadcrumbs.php:251
+msgid "Home"
+msgstr "Trang chủ"
+
+#: codetot/admin/ct-theme.php:313
+msgid "Home Icon in Primary Menu"
+msgstr ""
+
+#: codetot/woocommerce/features/countdown-price.php:52
+msgid "Hour"
+msgstr "Giờ"
+
+#: codetot/features/breadcrumbs.php:762
+msgctxt "hour archives time format"
+msgid "g a"
+msgstr "g a"
+
+#: codetot/woocommerce/features/countdown-price.php:53
+msgid "Hours"
+msgstr "Giờ"
+
+#. Author URI of the theme
+msgid "https://codetot.com"
+msgstr "https://codetot.com"
+
+#: codetot/woocommerce/features/countdown-price.php:67
+msgid "Hurry up! The sale will end after less than a hour."
+msgstr "Đừng bỏ lỡ. Ưu đãi sẽ kết thúc sau ít hơn 1 giờ."
+
+#: codetot/admin/theme-sync.php:227
+msgid ""
+"If you wish to reset back to current theme's default settings, click a below "
+"button."
+msgstr ""
+
+#: codetot/admin/theme-sync.php:215
+msgid "Import Theme Settings"
+msgstr ""
+
+#: codetot/helpers/metabox.php:175
+msgid "Instagram URL"
+msgstr "Instagram URL"
+
+#. %s: search query.
+#: 404.php:22 archive.php:33
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+"Không có nội dung nào ở địa chỉ này. Hãy thử tìm kiếm hay liên khác khác?"
+
+#: search.php:50
+#, php-format
+msgid "It seems we can't find any %s matching your search keyword."
+msgstr "Chúng tôi không thể tìm thấy %s theo từ khóa của bạn."
+
+#: codetot/admin/acf.php:99 codetot/admin/acf.php:194
+#: codetot/helpers/acf.php:38 codetot/helpers/acf.php:78
+msgid "Large"
+msgstr "Lớn"
+
+#: codetot/admin/ct-theme.php:57
+msgid "Layout"
+msgstr "Bố cục"
+
+#: codetot/admin/ct-theme.php:228
+msgid "Layout Settings"
+msgstr "Thiết lập bố cục"
+
+#. %s: post title
+#: inc/template-tags.php:82
+#, php-format
+msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr "Viết bình luận<span class=\"screen-reader-text\"> on %s</span>"
+
+#: codetot/admin/acf.php:143 codetot/helpers/acf.php:67
+msgid "Left"
+msgstr "Trái"
+
+#: codetot/admin/acf.php:216 codetot/helpers/acf.php:18
+msgid "Left Content - Right Form"
+msgstr "Nội dung bên trái - Form bên phải"
+
+#: codetot/admin/acf.php:217 codetot/helpers/acf.php:19
+msgid "Left Form - Right Content"
+msgstr "Form bên trái - Nội dung bên phải"
+
+#: codetot/admin/acf.php:203 codetot/helpers/acf.php:6
+msgid "Left Map - Right Content"
+msgstr "Bản đồ bên trái - Nội dung bên phải"
+
+#: codetot/admin/acf.php:163 codetot/helpers/acf.php:47
+#: codetot/helpers/metabox.php:62
+msgid "Light"
+msgstr "Light"
+
+#: codetot/admin/acf.php:153 codetot/helpers/acf.php:59
+msgid "Light Background - Dark Text"
+msgstr "Nền sáng - Chữ tối"
+
+#: codetot/admin/acf.php:79 codetot/helpers/acf.php:98
+msgid "Link"
+msgstr "Liên kết gạch chân"
+
+#: codetot/admin/acf.php:80 codetot/helpers/acf.php:99
+msgid "Link (Dark Background)"
+msgstr "Liên kết gạch chân (Nền tối)"
+
+#: codetot/helpers/metabox.php:185
+msgid "LinkedIn URL"
+msgstr "LinkedIn URL"
+
+#. used between list items, there is a space after the comma
+#: inc/template-tags.php:65
+msgctxt "list item separator"
+msgid ", "
+msgstr ", "
+
+#: codetot/woocommerce/ct-theme.php:78
+msgid "Login Popup"
+msgstr "Popup đăng nhập"
+
+#: codetot/admin/acf.php:193 codetot/helpers/acf.php:37
+msgid "Medium"
+msgstr ""
+
+#: codetot/woocommerce/layouts/account.php:159
+msgid "Menu"
+msgstr "Menu"
+
+#: codetot/woocommerce/ct-theme.php:71
+msgid "Minicart"
+msgstr ""
+
+#: codetot/woocommerce/features/countdown-price.php:56
+msgid "Minute"
+msgstr "Phút"
+
+#. Minute archive title. %s is the minute time format.
+#: codetot/features/breadcrumbs.php:261
+#, php-format
+msgid "Minute %s"
+msgstr "Phút %s"
+
+#: codetot/features/breadcrumbs.php:726
+msgctxt "minute and hour archives time format"
+msgid "g:i a"
+msgstr "g:i a"
+
+#: codetot/features/breadcrumbs.php:744
+msgctxt "minute archives time format"
+msgid "i"
+msgstr "i"
+
+#: codetot/woocommerce/features/countdown-price.php:57
+msgid "Minutes"
+msgstr "Phút"
+
+#: codetot/features/breadcrumbs.php:780 codetot/features/breadcrumbs.php:838
+#: codetot/features/breadcrumbs.php:1215
+msgctxt "monthly archives date format"
+msgid "F"
+msgstr "F"
+
+#: codetot/admin/acf.php:89 codetot/helpers/acf.php:86
+msgid "New Window/Tab"
+msgstr "Cửa sổ/Tab mới"
+
+#: codetot/helpers/woocommerce.php:55
+msgid "No attribute was defined for query."
+msgstr ""
+
+#: codetot/admin/acf.php:131
+msgid "No available forms."
+msgstr "Chưa có form nào."
+
+#: codetot/woocommerce/features/mini-cart.php:170
+msgid "No products in the cart."
+msgstr "Chưa có sản phẩm nào trong giỏ hàng"
+
+#: search.php:45
+#, php-format
+msgid "No Result for keyword %s"
+msgstr "Không có kết quả nào cho từ khóa %s"
+
+#: codetot/admin/acf.php:97 codetot/helpers/acf.php:76
+msgid "Normal"
+msgstr ""
+
+#. 1: title.
+#: comments.php:35
+#, php-format
+msgid "One thought on &ldquo;%1$s&rdquo;"
+msgstr "Một bình luận trong &ldquo;%1$s&rdquo;"
+
+#: 404.php:17
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Trang này không tồn tại."
+
+#: block-parts/header/mobile-menu-button.php:2
+msgid "Open a mobile menu"
+msgstr "Mở menu mobile"
+
+#: codetot/woocommerce/layouts/account.php:132
+msgid "Order Detail"
+msgstr "Thông tin đơn hàng"
+
+#: codetot/admin/acf.php:77 codetot/helpers/acf.php:96
+msgid "Outline"
+msgstr ""
+
+#: codetot/admin/acf.php:78 codetot/helpers/acf.php:97
+msgid "Outline (Dark Background)"
+msgstr ""
+
+#: blocks/pagination.php:7
+msgid "Page"
+msgstr "Trang"
+
+#. %s is the page number.
+#: codetot/features/breadcrumbs.php:257
+#, php-format
+msgid "Page %s"
+msgstr "Trang %s"
+
+#: codetot/admin/page-settings.php:46
+msgid "Page Class"
+msgstr "Class CSS của trang"
+
+#: codetot/admin/page-settings.php:35
+msgid "Page Settings"
+msgstr "Thiết lập trang"
+
+#: codetot/theme-init.php:118
+msgid "Page Sidebar"
+msgstr "Cột bên trang"
+
+#: codetot/admin/page-settings.php:51
+msgid "Page Stylesheet (CSS)"
+msgstr ""
+
+#: codetot/layout.php:76 inc/template-tags.php:282
+#: template-parts/content.php:58
+msgid "Pages:"
+msgstr "Trang:"
+
+#: codetot/admin/ct-theme.php:302
+msgid "Phone Number"
+msgstr "Số điện thoại"
+
+#: codetot/helpers/metabox.php:180
+msgid "Pinterest URL"
+msgstr "Pinterest URL"
+
+#: inc/template-tags.php:176
+msgid "Placeholder image"
+msgstr "Ảnh minh họa"
+
+#. %s: post author.
+#: inc/template-tags.php:43
+#, php-format
+msgctxt "post author"
+msgid "by %s"
+msgstr "bởi %s"
+
+#: blocks/post-card.php:63
+msgid "Post by:"
+msgstr "Đăng bởi:"
+
+#: codetot/admin/ct-theme.php:214
+msgid "Post Card Style"
+msgstr "Style bài viết trong danh sách"
+
+#. %s: post date.
+#: inc/template-tags.php:27
+#, php-format
+msgctxt "post date"
+msgid "Posted on %s"
+msgstr "Đăng vào %s"
+
+#: codetot/theme-init.php:107
+msgid "Post Sidebar"
+msgstr "Cột bên trang bài viết"
+
+#: codetot/admin/acf.php:181
+#, php-format
+msgid "Preset %s"
+msgstr "Preset %s"
+
+#: codetot/admin/acf.php:74 codetot/admin/acf.php:167
+#: codetot/helpers/acf.php:51 codetot/helpers/acf.php:93
+msgid "Primary"
+msgstr "Primary"
+
+#: codetot/theme-init.php:57
+msgid "Primary Menu"
+msgstr "Menu chính"
+
+#: codetot/woocommerce/ct-theme.php:85
+msgid "Product Card Style"
+msgstr "Style sản phẩm trong danh mục"
+
+#: codetot/woocommerce/init.php:92
+msgid "Product Category Sidebar"
+msgstr "Cột bên danh mục sản phẩm"
+
+#: codetot/woocommerce/layouts/archive.php:344
+msgid "Product Image"
+msgstr "Ảnh sản phẩm"
+
+#: codetot/woocommerce/ct-theme.php:99
+msgid "Product Image Visible"
+msgstr "Hiển thị ảnh sản phẩm"
+
+#: codetot/woocommerce/init.php:65
+msgid "Product Sidebar"
+msgstr "Cột bên trang sản phẩm"
+
+#: codetot/woocommerce/ct-theme.php:130
+msgid "Product Star Rating in List"
+msgstr "Hiện đánh giá sao trong danh sách"
+
+#: codetot/woocommerce/features/quick-view.php:171
+msgid ""
+"Quantity of products in stock has been exhausted. The product is not added "
+"to the cart."
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:64
+#: codetot/woocommerce/features/quick-view.php:70
+msgid "Quick View"
+msgstr "Xem nhanh"
+
+#: codetot/woocommerce/features/quick-view.php:64
+msgid "Quick view"
+msgstr ""
+
+#: blocks/post-card.php:77
+msgid "Read more"
+msgstr "Đọc thêm"
+
+#: codetot/woocommerce/features/viewed-products.php:119
+msgid "Recently Viewed Products"
+msgstr "Sản phẩm vừa mới xem"
+
+#: codetot/features/related-posts.php:146
+msgid "Related posts"
+msgstr "Bài viết liên quan"
+
+#: codetot/woocommerce/features/mini-cart.php:125
+msgid "Remove this item"
+msgstr "Xóa mục này"
+
+#: codetot/admin/theme-sync.php:229
+msgid "Reset Settings"
+msgstr "Khởi tạo lại thiết lập"
+
+#: codetot/admin/theme-sync.php:225
+msgid "Reset to default"
+msgstr "Chuyển về mặc định"
+
+#: codetot/admin/acf.php:145 codetot/helpers/acf.php:69
+msgid "Right"
+msgstr "Phải"
+
+#: codetot/admin/acf.php:204 codetot/helpers/acf.php:7
+msgid "Right Map - Left Content"
+msgstr "Bên phải bản đồ - Bên trái nội dung"
+
+#: codetot/woocommerce/features/countdown-price.php:64
+msgid "Sale ended after"
+msgstr "Ưu đãi kết thúc sau"
+
+#: codetot/admin/acf.php:88 codetot/helpers/acf.php:85
+msgid "Same Window/Tab"
+msgstr "Cùng cửa sổ/tab"
+
+#: block-parts/header/search-icon.php:6 codetot/admin/ct-theme.php:292
+msgid "Search"
+msgstr "Tìm"
+
+#: searchform.php:4
+msgid "Search form"
+msgstr "Form tìm kiếm"
+
+#: searchform.php:9
+msgid "Search products&hellip;"
+msgstr "Tìm sản phẩm&hellip;"
+
+#. %s: search query.
+#. %s is the search query.
+#: search.php:26 codetot/features/breadcrumbs.php:255
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Kết quả tìm kiếm cho: %s"
+
+#: searchform.php:11 searchform.php:16
+msgid "Search&hellip;"
+msgstr "Tìm&hellip;"
+
+#: codetot/woocommerce/features/countdown-price.php:60
+msgid "Second"
+msgstr "Giây"
+
+#: codetot/admin/acf.php:75 codetot/admin/acf.php:168
+#: codetot/helpers/acf.php:52 codetot/helpers/acf.php:94
+#: codetot/helpers/acf.php:134 codetot/helpers/acf.php:143
+#: codetot/helpers/metabox.php:34
+msgid "Secondary"
+msgstr ""
+
+#: codetot/woocommerce/features/countdown-price.php:61
+msgid "Seconds"
+msgstr "Giây"
+
+#: codetot/admin/ct-theme.php:399
+msgctxt "settings description"
+msgid "Display a button scroll to header."
+msgstr "Hiển thị nút bấm scroll lên đầu trang."
+
+#: codetot/admin/ct-theme.php:391
+msgctxt "settings description"
+msgid "Display company social links in left window."
+msgstr ""
+
+#: codetot/woocommerce/init.php:56
+msgid "Shop Sidebar"
+msgstr "Cột bên trang Cửa hàng"
+
+#: codetot/woocommerce/features/mini-cart.php:59
+msgid "Shopping cart"
+msgstr "Giỏ hàng"
+
+#: codetot/admin/ct-theme.php:166
+msgid "Sidebar Layout"
+msgstr "Bố cục cột bên"
+
+#: header.php:26
+msgid "Skip to content"
+msgstr "Chuyển tới nội dung"
+
+#: codetot/admin/acf.php:98 codetot/admin/acf.php:192
+#: codetot/helpers/acf.php:36 codetot/helpers/acf.php:77
+msgid "Small"
+msgstr "Nhỏ"
+
+#: codetot/admin/ct-data.php:59 codetot/admin/ct-data.php:107
+msgid "Social Links"
+msgstr "Mạng xã hội"
+
+#: codetot/admin/ct-data.php:100
+msgid "Social Media Profile URL"
+msgstr ""
+
+#: codetot/woocommerce/features/quick-view.php:92
+msgid "Something is wrong, please try again later&hellip;"
+msgstr ""
+
+#: codetot/assets.php:140
+msgid "Sorry, something went wrong. Please refresh this page and try again!"
+msgstr ""
+
+#: codetot/admin/theme-sync.php:220
+msgid "Start import"
+msgstr ""
+
+#: codetot/admin/ct-theme.php:281
+msgid "Sticky Header"
+msgstr ""
+
+#: codetot/features/store.php:9 codetot/features/store.php:10
+#: codetot/features/store.php:14
+msgid "Store"
+msgstr "Cửa hàng"
+
+#: codetot/features/store.php:50 codetot/features/store.php:51
+#: codetot/features/store.php:55
+msgid "Store Locator"
+msgstr "Cửa hàng"
+
+#: codetot/admin/ct-theme.php:219 codetot/admin/ct-theme.php:220
+#: codetot/admin/ct-theme.php:221 codetot/admin/ct-theme.php:222
+#, php-format
+msgid "Style %s"
+msgstr "Style %s"
+
+#: searchform.php:5 codetot/theme-init.php:186
+msgctxt "submit button"
+msgid "Search"
+msgstr "Tìm"
+
+#. 1: list of tags.
+#: inc/template-tags.php:69
+msgid "Tags: "
+msgstr "Từ khóa:"
+
+#: codetot/woocommerce/features/countdown-price.php:65
+msgid "The sale has ended."
+msgstr "Ưu đãi đã kết thúc."
+
+#: codetot/woocommerce/features/countdown-price.php:66
+msgid "The sale will end after less than a day."
+msgstr "Ưu đãi sẽ kết thúc trong hôm nay."
+
+#: codetot/admin/acf.php:178
+msgid "Theme Preset"
+msgstr ""
+
+#: blocks/category-post.php:41
+msgid "There is no posts to display."
+msgstr "Không có bài viết nào để hiển thị."
+
+#: codetot/admin/theme-sync.php:84
+msgid ""
+"There is unknown error with your action. Please try to contact Administrator "
+"for more detail."
+msgstr ""
+
+#: codetot/features/related-posts.php:66
+msgid "This query must work with singular post only."
+msgstr "Query này chỉ làm việc trên trang bài viết."
+
+#: codetot/admin/acf.php:214 codetot/helpers/acf.php:16
+msgid "Top Content - Bottom Form"
+msgstr ""
+
+#: codetot/admin/acf.php:206 codetot/helpers/acf.php:9
+msgid "Top Content - Bottom Map"
+msgstr ""
+
+#: codetot/admin/acf.php:215 codetot/helpers/acf.php:17
+msgid "Top Form - Bottom Content"
+msgstr ""
+
+#: codetot/admin/acf.php:205 codetot/helpers/acf.php:8
+msgid "Top Map - Bottom Content"
+msgstr ""
+
+#: codetot/woocommerce/init.php:74
+msgid "Top Product Sidebar"
+msgstr "Cột bên phía trên trang sản phẩm"
+
+#: codetot/admin/ct-theme.php:318
+msgid "Topbar"
+msgstr "Topbar"
+
+#: block-parts/modal-search-form.php:7
+msgid "Type to search"
+msgstr "Gõ để tìm"
+
+#: codetot/admin/ct-theme.php:56 codetot/admin/ct-theme.php:96
+msgid "Typography"
+msgstr "Kiểu chữ"
+
+#: codetot/admin/ct-data.php:130
+msgid "Using Google Maps API Key to create map interactive with visitors."
+msgstr ""
+
+#: codetot/woocommerce/init.php:108
+msgid "View product"
+msgstr "Xem sản phẩm"
+
+#: inc/woocommerce.php:137
+msgid "View your shopping cart"
+msgstr "Xem giỏ hàng của bạn"
+
+#: blocks/social-links.php:22
+#, php-format
+msgid "Visit %s"
+msgstr "Xem %s"
+
+#. Weekly archive title. %s is the week date format.
+#: codetot/features/breadcrumbs.php:263
+#, php-format
+msgid "Week %s"
+msgstr "Tuần %s"
+
+#: codetot/features/breadcrumbs.php:810
+msgctxt "weekly archives date format"
+msgid "W"
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:74
+msgid "When adding product in listing page, display a minicart."
+msgstr ""
+
+#: codetot/helpers/metabox.php:134
+msgid ""
+"When visiting a Contact page, the direcction link will point user directly "
+"to app Google Maps."
+msgstr ""
+
+#: codetot/admin/acf.php:162 codetot/helpers/acf.php:46
+#: codetot/helpers/acf.php:135 codetot/helpers/acf.php:144
+msgid "White"
+msgstr "Trắng"
+
+#: codetot/woocommerce/ct-theme.php:54
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: codetot/features/breadcrumbs.php:779 codetot/features/breadcrumbs.php:809
+#: codetot/features/breadcrumbs.php:837 codetot/features/breadcrumbs.php:865
+#: codetot/features/breadcrumbs.php:1211
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "Y"
+
+#: codetot/admin/theme-sync.php:77
+msgid "Your action has been processed!"
+msgstr ""
+
+#: codetot/admin/theme-sync.php:94
+msgid "Your current theme settings were a theme default settings."
+msgstr ""
+
+#: codetot/helpers/metabox.php:165
+msgid "Youtube URL"
+msgstr "Youtube URL"
+
+#: codetot/helpers/metabox.php:170
+msgid "Zalo Official URL"
+msgstr "Zalo Official URL"

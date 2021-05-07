@@ -42,12 +42,12 @@ get_header();
 
       the_block('page-header', array(
         'class' => 'page-header--search page-header--search-not-found',
-        'title' => apply_filters('codetot_404_title', sprintf(__('No Result for keyword %s', 'ct-theme'), '<span>' . get_search_query() . '</span>'))
+        'title' => apply_filters('codetot_404_title', sprintf(__('No Result for keyword %s', 'ct-bones'), '<span>' . get_search_query() . '</span>'))
       ));
 
 			the_block('message-block', array(
         'class' => 'message-block--search',
-        'content' => apply_filters('codetot_404_content', sprintf(__('It seems we can\'t find any %s matching your search keyword.', 'ct-theme'), 'post'))
+        'content' => apply_filters('codetot_404_content', sprintf(__('It seems we can\'t find any %s matching your search keyword.', 'ct-bones'), 'post'))
       ));
 
 		endif;

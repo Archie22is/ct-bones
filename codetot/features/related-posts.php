@@ -143,7 +143,7 @@ class Codetot_Related_Posts
     if ($post_query->have_posts()) {
       the_block('post-grid', array(
         'class' => $class,
-        'title' => esc_html__('Related posts', 'ct-theme'),
+        'title' => esc_html__('Related posts', 'ct-bones'),
         'query' => $post_query
       ));
     }

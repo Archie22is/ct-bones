@@ -3,100 +3,100 @@
 function codetot_primary_contact_layouts()
 {
     return array(
-        'default' => __('Left Map - Right Content', 'ct-theme'),
-        'switch' => __('Right Map - Left Content', 'ct-theme'),
-        'top' => __('Top Map - Bottom Content', 'ct-theme'),
-        'bottom' => __('Top Content - Bottom Map', 'ct-theme')
+        'default' => __('Left Map - Right Content', 'ct-bones'),
+        'switch' => __('Right Map - Left Content', 'ct-bones'),
+        'top' => __('Top Map - Bottom Content', 'ct-bones'),
+        'bottom' => __('Top Content - Bottom Map', 'ct-bones')
     );
 }
 
 function codetot_secondary_contact_layouts()
 {
     return array(
-        'default' => __('Top Content - Bottom Form', 'ct-theme'),
-        'switch' => __('Top Form - Bottom Content', 'ct-theme'),
-        'left' => __('Left Content - Right Form', 'ct-theme'),
-        'right' => __('Left Form - Right Content', 'ct-theme')
+        'default' => __('Top Content - Bottom Form', 'ct-bones'),
+        'switch' => __('Top Form - Bottom Content', 'ct-bones'),
+        'left' => __('Left Content - Right Form', 'ct-bones'),
+        'right' => __('Left Form - Right Content', 'ct-bones')
     );
 }
 
 function codetot_image_types()
 {
     return apply_filters('codetot_image_types', array(
-        'default' => __('Default Image Size', 'ct-theme'),
-        'cover'   => __('Cover Image', 'ct-theme'),
-        'contain' => __('Contain Image', 'ct-theme')
+        'default' => __('Default Image Size', 'ct-bones'),
+        'cover'   => __('Cover Image', 'ct-bones'),
+        'contain' => __('Contain Image', 'ct-bones')
     ));
 }
 
 function codetot_block_vertical_spaces()
 {
     return apply_filters('codetot_block_vertical_spaces', array(
-        'default' => __('Default', 'ct-theme'),
-        's' => __('Small', 'ct-theme'),
-        'm' => __('Medium', 'ct-theme'),
-        'l' => __('Large', 'ct-theme'),
-        'fullscreen' => __('Fullscreen', 'ct-theme')
+        'default' => __('Default', 'ct-bones'),
+        's' => __('Small', 'ct-bones'),
+        'm' => __('Medium', 'ct-bones'),
+        'l' => __('Large', 'ct-bones'),
+        'fullscreen' => __('Fullscreen', 'ct-bones')
     ));
 }
 
 function codetot_background_types()
 {
     return apply_filters('codetot_background_types', array(
-        'white' => __('White', 'ct-theme'),
-        'light' => __('Light', 'ct-theme'),
-        'gray' => __('Gray', 'ct-theme'),
-        'dark' => __('Dark', 'ct-theme'),
-        'black' => __('Black', 'ct-theme'),
-        'primary' => __('Primary', 'ct-theme'),
-        'secondary' => __('Secondary', 'ct-theme')
+        'white' => __('White', 'ct-bones'),
+        'light' => __('Light', 'ct-bones'),
+        'gray' => __('Gray', 'ct-bones'),
+        'dark' => __('Dark', 'ct-bones'),
+        'black' => __('Black', 'ct-bones'),
+        'primary' => __('Primary', 'ct-bones'),
+        'secondary' => __('Secondary', 'ct-bones')
     ));
 }
 
 function codetot_background_contracts()
 {
     return apply_filters('codetot_background_contracts', array(
-        'light' => __('Light Background - Dark Text', 'ct-theme'),
-        'dark' => __('Dark Background - White Text', 'ct-theme')
+        'light' => __('Light Background - Dark Text', 'ct-bones'),
+        'dark' => __('Dark Background - White Text', 'ct-bones')
     ));
 }
 
 function codetot_text_alignments()
 {
     return apply_filters('codetot_text_alignments', array(
-        'left' => __('Left', 'ct-theme'),
-        'center' => __('Center', 'ct-theme'),
-        'right' => __('Right', 'ct-theme')
+        'left' => __('Left', 'ct-bones'),
+        'center' => __('Center', 'ct-bones'),
+        'right' => __('Right', 'ct-bones')
     ));
 }
 
 function codetot_button_sizes()
 {
     return apply_filters('codetot_button_sizes', array(
-        'normal' => __('Normal', 'ct-theme'),
-        'small' => __('Small', 'ct-theme'),
-        'large' => __('Large', 'ct-theme')
+        'normal' => __('Normal', 'ct-bones'),
+        'small' => __('Small', 'ct-bones'),
+        'large' => __('Large', 'ct-bones')
     ));
 }
 
 function codetot_button_targets()
 {
     return apply_filters('codetot_button_targets', array(
-        '_self' => __('Same Window/Tab', 'ct-theme'),
-        '_blank' => __('New Window/Tab', 'ct-theme')
+        '_self' => __('Same Window/Tab', 'ct-bones'),
+        '_blank' => __('New Window/Tab', 'ct-bones')
     ));
 }
 
 function codetot_button_styles()
 {
     return apply_filters('codetot_button_styles', array(
-        'primary' => __('Primary', 'ct-theme'),
-        'secondary' => __('Secondary', 'ct-theme'),
-        'dark' => __('Dark', 'ct-theme'),
-        'outline' => __('Outline', 'ct-theme'),
-        'outline-white' => __('Outline (Dark Background)', 'ct-theme'),
-        'link' => __('Link', 'ct-theme'),
-        'link-white' => __('Link (Dark Background)', 'ct-theme')
+        'primary' => __('Primary', 'ct-bones'),
+        'secondary' => __('Secondary', 'ct-bones'),
+        'dark' => __('Dark', 'ct-bones'),
+        'outline' => __('Outline', 'ct-bones'),
+        'outline-white' => __('Outline (Dark Background)', 'ct-bones'),
+        'link' => __('Link', 'ct-bones'),
+        'link-white' => __('Link (Dark Background)', 'ct-bones')
     ));
 }
 
@@ -130,19 +130,19 @@ function codetot_google_fonts()
 
 function codetot_footer_background_colors() {
     return array(
-        'primary' => __('Brand', 'ct-theme'),
-        'secondary' => __('Secondary', 'ct-theme'),
-        'white'   => __('White', 'ct-theme'),
-        'dark'    => __('Dark', 'ct-theme')
+        'primary' => __('Brand', 'ct-bones'),
+        'secondary' => __('Secondary', 'ct-bones'),
+        'white'   => __('White', 'ct-bones'),
+        'dark'    => __('Dark', 'ct-bones')
       );
 }
 
 function codetot_header_background_colors() {
     return array(
-        'primary' => __('Brand', 'ct-theme'),
-        'secondary' => __('Secondary', 'ct-theme'),
-        'white'   => __('White', 'ct-theme'),
-        'dark'    => __('Dark', 'ct-theme')
+        'primary' => __('Brand', 'ct-bones'),
+        'secondary' => __('Secondary', 'ct-bones'),
+        'white'   => __('White', 'ct-bones'),
+        'dark'    => __('Dark', 'ct-bones')
     );
 }
 

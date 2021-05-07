@@ -54,7 +54,7 @@ class Codetot_Theme_Init
 
     // This theme uses wp_nav_menu() in one location.
     register_nav_menus(array(
-      'primary' => __('Primary Menu', 'ct-theme')
+      'primary' => __('Primary Menu', 'ct-bones')
     ));
 
     /*
@@ -104,7 +104,7 @@ class Codetot_Theme_Init
     register_sidebar(
       array(
         'id' => 'post-sidebar',
-        'name' => __('Post Sidebar', 'ct-theme'),
+        'name' => __('Post Sidebar', 'ct-bones'),
         'before_widget' => '<div id="%1$s" class="widget widget--post %2$s">',
         'after_widget' => '</div>',
         'before_title' => '<p class="widget__title">',
@@ -115,7 +115,7 @@ class Codetot_Theme_Init
     register_sidebar(
       array(
         'id' => 'page-sidebar',
-        'name' => __('Page Sidebar', 'ct-theme'),
+        'name' => __('Page Sidebar', 'ct-bones'),
         'before_widget' => '<div id="%1$s" class="widget widget--page %2$s">',
         'after_widget' => '</div>',
         'before_title' => '<p class="widget__title">',
@@ -126,7 +126,7 @@ class Codetot_Theme_Init
     register_sidebar(
       array(
         'id' => 'category-sidebar',
-        'name' => __('Category Sidebar', 'ct-theme'),
+        'name' => __('Category Sidebar', 'ct-bones'),
         'before_widget' => '<div id="%1$s" class="widget widget--category %2$s">',
         'after_widget' => '</div>',
         'before_title' => '<p class="widget__title">',
@@ -137,8 +137,8 @@ class Codetot_Theme_Init
     for ($i = 1; $i <= $footer_column; $i++) {
       register_sidebar(
         array(
-          'name' => sprintf(__('Footer Column #%s', 'ct-theme'), $i),
-          'description' => __('Add widgets to display in footer column.', 'ct-theme'),
+          'name' => sprintf(__('Footer Column #%s', 'ct-bones'), $i),
+          'description' => __('Add widgets to display in footer column.', 'ct-bones'),
           'id' => 'footer-column-' . $i,
           'before_widget' => '<div id="%1$s" class="widget widget--footer %2$s">',
           'after_widget' => '</div>',
@@ -183,7 +183,7 @@ class Codetot_Theme_Init
 
   public function search_button_icon() {
     return sprintf('<button class="search-submit" type="submit" aria-label="%s">%s</button>',
-      esc_attr_x( 'Search', 'submit button', 'ct-theme' ),
+      esc_attr_x( 'Search', 'submit button', 'ct-bones' ),
       codetot_svg('search', false)
     );
   }

@@ -37,7 +37,7 @@ function codetot_thankyou_page($order_id){
 function codetot_bank_details( $order_id = '' ) {
 
   $bacs_accounts = get_option('woocommerce_bacs_accounts');
-  $title = __('Account details','ct-theme');
+  $title = __('Account details','ct-bones');
 
   if ( ! empty( $bacs_accounts ) ) {
 
@@ -55,9 +55,9 @@ function codetot_bank_details( $order_id = '' ) {
       ?>
       <tr class="bank-account-detail">
         <td>
-          <strong><?php _e('Account number', 'ct-theme'); ?>:</strong> <?php echo $account_number; ?><br>
-          <strong><?php _e('Account name', 'ct-theme'); ?>:</strong> <?php echo $account_name;?><br>
-          <strong><?php _e('Bank name', 'ct-theme'); ?>:</strong> <?php echo $bank_name;?>
+          <strong><?php _e('Account number', 'ct-bones'); ?>:</strong> <?php echo $account_number; ?><br>
+          <strong><?php _e('Account name', 'ct-bones'); ?>:</strong> <?php echo $account_name;?><br>
+          <strong><?php _e('Bank name', 'ct-bones'); ?>:</strong> <?php echo $bank_name;?>
         </td>
       </tr>
       <?php

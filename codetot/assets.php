@@ -137,7 +137,7 @@ class Codetot_Assets
     $locale_settings = array(
       'ajax' => array(
         'url' => admin_url('admin-ajax.php'),
-        "ajax_error" => __('Sorry, something went wrong. Please refresh this page and try again!', 'ct-theme'),
+        "ajax_error" => __('Sorry, something went wrong. Please refresh this page and try again!', 'ct-bones'),
         'nonce' => wp_create_nonce('codetot-config-nonce'),
       )
     );

@@ -4,9 +4,9 @@ class codetot_widget_icon extends WP_Widget {
   function __construct() {
     parent::__construct(
       'codetot_widget_icon',
-      sprintf(__('%s Icon Box', 'ct-theme'), '[CT]'),
+      sprintf(__('%s Icon Box', 'ct-bones'), '[CT]'),
       array(
-        'description' => esc_html__('Display the guarantee list widget.', 'ct-theme')
+        'description' => esc_html__('Display the guarantee list widget.', 'ct-bones')
       )
     );
   }
@@ -121,7 +121,7 @@ if( function_exists('acf_add_local_field_group') ):
         'min' => 0,
         'max' => 0,
         'layout' => 'block',
-        'button_label' => esc_html__('Add Item', 'ct-theme'),
+        'button_label' => esc_html__('Add Item', 'ct-bones'),
         'sub_fields' => array(
           array(
             'key' => 'field_60110fc034a63',

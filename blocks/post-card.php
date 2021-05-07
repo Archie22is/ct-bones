@@ -60,7 +60,7 @@ $_display_description = !empty($card_style) && (in_array($card_style, array('sty
     <?php if ($_display_author) : ?>
       <p class="post-card__author">
         <span class="post-card__author-icon"><?php codetot_svg('user', true); ?></span>
-        <span class="post-card__author-label"><?php _e('Post by:', 'ct-theme') ?></span>
+        <span class="post-card__author-label"><?php _e('Post by:', 'ct-bones') ?></span>
         <span class="post-card__author-name"><?php the_author(); ?></span>
       </p>
     <?php endif; ?>
@@ -74,7 +74,7 @@ $_display_description = !empty($card_style) && (in_array($card_style, array('sty
         'class' => 'rel post-card__button',
         'url' => get_permalink(),
         'type' => 'link',
-        'button' => __('Read more', 'ct-theme')
+        'button' => __('Read more', 'ct-bones')
       )); ?>
     </div>
   <?php endif; ?>
