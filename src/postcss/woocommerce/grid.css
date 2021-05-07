@@ -726,7 +726,7 @@
 
     & .product__quick-view,
     & .add-to-cart-icon {
-      width: calc(50% - 0.125em) !important;;
+      width: calc(50% - 0.125em) !important;
       transform: translateY(100%);
       opacity: 0;
       z-index: 0;
