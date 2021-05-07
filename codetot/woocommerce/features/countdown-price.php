@@ -39,7 +39,7 @@ class Codetot_WooCommerce_Countdown_Price
     $sales_price_from = get_post_meta($product->get_id(), '_sale_price_dates_from', true);
     $sales_price_to   = get_post_meta($product->get_id(), '_sale_price_dates_to', true);
 
-    if (is_singular('product') && $product->is_on_sale() & !empty($sales_price_to)) {
+    if (is_singular('product') && !empty($sales_price_to)) {
       $sales_price_date_from = !empty($sales_price_from) ? date("j M y", $sales_price_from) : '';
       $sales_price_date_to   = date("j M y", $sales_price_to);
 
@@ -75,7 +75,7 @@ class Codetot_WooCommerce_Countdown_Price
       $attributes .= sprintf(' data-end-date="%s"', $sales_price_date_to);
       $attributes .= sprintf(' data-labels=\'%s\'', json_encode($labels));
 
-      $price_output_html = sprintf('<span class="product-price" %s>', $attributes);
+      $price_output_html = sprintf('<span class="product-price product-price--countdown" %s>', $attributes);
       $price_output_html .= apply_filters('woocommerce_get_price', $price);
       $price_output_html .= '</span>'; // Close .single-product__price--has-discount
 
