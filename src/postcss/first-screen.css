@@ -21,9 +21,11 @@
 @import url('blocks/page-header.css');
 @import url('blocks/breadcrumbs.css');
 @import url('blocks/search-form.css');
+@import url('blocks/footer.css');
 
 /** Pages **/
 @import url('blocks/page-block.css');
+@import url('blocks/message-block.css');
 
 /** Layout **/
 @import url('blocks/sidebar-section.css');
