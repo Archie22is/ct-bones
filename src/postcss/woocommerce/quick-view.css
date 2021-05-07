@@ -1,3 +1,38 @@
+.products {
+  & .product.type-product {
+    & .product__quick-view {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: 5;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    & .product__quick-view-text {
+      display: inherit;
+      background: var(--primary);
+      color: var(--white);
+      padding: 0.25em;
+      transform: translateY(100%);
+      opacity: 0;
+      transition: 0.3s ease;
+    }
+
+    &:hover {
+      & .product__quick-view-text {
+        @media (--m) {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
 .quick-view-modal {
   @mixin fade-out;
 
