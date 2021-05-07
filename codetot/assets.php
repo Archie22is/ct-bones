@@ -52,14 +52,6 @@ class Codetot_Assets
 
   public function load_frontend_css()
   {
-    if (is_404() || is_search()) {
-      wp_enqueue_style(
-        'codetot-page-not-found',
-        get_template_directory_uri() . '/dynamic-assets/pages/404' . $this->theme_environment . '.css',
-        array(),
-        $this->theme_version
-      );
-    }
   }
 
   public function load_fonts()
@@ -88,12 +80,10 @@ class Codetot_Assets
       if (!empty($local_font_css_inline)) {
         $this->register_inline_style('codetot-premium-fonts-' . esc_attr($type), $this->update_font_assets_path($local_font_css_inline, $font));
       }
-
     } else {
       $google_fonts_css_inline = $this->get_google_fonts_css_inline($font);
 
       $this->register_inline_style('codetot-google-fonts', $google_fonts_css_inline);
-
     }
   }
 
@@ -126,7 +116,8 @@ class Codetot_Assets
     return str_replace(' ', '+', $font_name);
   }
 
-  public function load_font_size_scale() {
+  public function load_font_size_scale()
+  {
     $font_size_scale = get_global_option('codetot_font_size_scale') ?? '1200';
 
     wp_enqueue_style(
@@ -139,8 +130,8 @@ class Codetot_Assets
 
   public function load_frontend_js()
   {
-    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-      wp_enqueue_script( 'comment-reply' );
+    if (is_singular() && comments_open() && get_option('thread_comments')) {
+      wp_enqueue_script('comment-reply');
     }
 
     $locale_settings = array(
@@ -250,13 +241,15 @@ class Codetot_Assets
     return wp_add_inline_style($id, $this->minify_inline_css($content));
   }
 
-  public function update_font_assets_path($content, $font) {
+  public function update_font_assets_path($content, $font)
+  {
     $font_path = $this->update_local_font_url($font);
 
-    return str_replace('url(\'', 'url(\'' . get_template_directory_uri() . '/dynamic-assets/fonts/' . $font_path .'/', $content);
+    return str_replace('url(\'', 'url(\'' . get_template_directory_uri() . '/dynamic-assets/fonts/' . $font_path . '/', $content);
   }
 
-  public function minify_inline_css($content) {
+  public function minify_inline_css($content)
+  {
     $minified = str_replace("\n", "", $content);
     $minified = str_replace("  ", " ", $minified);
     $minified = str_replace("  ", " ", $minified);

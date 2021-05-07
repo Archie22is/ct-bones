@@ -22,3 +22,7 @@
 .page-header--shop {
   margin-bottom: 1em;
 }
+
+.page-header--404 {
+  text-align: center;
+}

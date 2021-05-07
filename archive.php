@@ -1,45 +1,47 @@
 <?php
-/**
- * The template for displaying archive pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package CT_Bones
- */
 
 get_header();
 ?>
 
 	<main id="primary" class="site-main">
 
-		<?php if ( have_posts() ) : ?>
+    <?php
+    the_block('breadcrumbs');
 
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
+    the_block('page-header', array(
+      'class' => 'page-header--archive',
+      /* translators: %s: search query. */
+      'title' => get_the_archive_title()
+    ));
+
+    if ( have_posts() ) :
+      global $wp_query; ?>
 
 			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+			the_block('post-grid', array(
+        'class' => 'post-grid--archive',
+        'display_meta' => true,
+        'query' => $wp_query
+      ));
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
-			endwhile;
-
-			the_posts_navigation();
+      the_block('pagination');
 
 		else :
 
-			get_template_part( 'template-parts/content', 'none' );
+      ob_start();
+      echo '<p>';
+      esc_html_e('It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'ct-bones');
+      echo '</p>';
+      echo get_search_form(array(
+        'id' => '404'
+      ));
+
+      $content = ob_get_clean();
+
+      the_block('message-block', array(
+        'class' => 'message-block--404',
+        'content' => $content
+      ));
 
 		endif;
 		?>
