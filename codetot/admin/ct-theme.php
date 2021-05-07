@@ -203,11 +203,11 @@ class Codetot_CT_Theme_Settings
                 'type'    => 'select',
                 'std'     => 3,
                 'options' => [
-                    1 => __('1', 'ct-bones'),
-                    2 => __('2', 'ct-bones'),
-                    3 => __('3', 'ct-bones'),
-                    4 => __('4', 'ct-bones'),
-                    5 => __('5', 'ct-bones'),
+                    1 => 1,
+                    2 => 2,
+                    3 => 3,
+                    4 => 4,
+                    5 => 5
                 ],
             ],
             [
@@ -216,10 +216,10 @@ class Codetot_CT_Theme_Settings
                 'type'    => 'select',
                 'std'     => 'style-1',
                 'options' => [
-                    'style-1' => __('Style 1', 'ct-bones'),
-                    'style-2' => __('Style 2', 'ct-bones'),
-                    'style-3' => __('Style 3', 'ct-bones'),
-                    'style-4' => __('Style 4', 'ct-bones'),
+                    'style-1' => sprintf(__('Style %s', 'ct-bones'), 1),
+                    'style-2' => sprintf(__('Style %s', 'ct-bones'), 2),
+                    'style-3' => sprintf(__('Style %s', 'ct-bones'), 3),
+                    'style-4' => sprintf(__('Style %s', 'ct-bones'), 4)
                 ],
             ])
         );
