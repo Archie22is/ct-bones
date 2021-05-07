@@ -278,28 +278,28 @@ class Codetot_CT_Theme_Settings
                     ],
                     [
                         'type' => 'switch',
-                        'name' => __('Enable Sticky Header', 'ct-bones'),
+                        'name' => sprintf(__('Enable %s', 'ct-bones'), esc_html__('Sticky Header', 'ct-bones')),
                         'id'   => $this->prefix . 'header_enable_sticky',
                         'std' => 1
                     ],
                     [
                         'type' => 'switch',
-                        'name' => __('Hide Account Icon', 'ct-bones'),
+                        'name' => sprintf(__('Hide %s Icon', 'ct-bones'), esc_html__('Account', 'ct-bones')),
                         'id' => $this->prefix . 'header_hide_account_icon'
                     ],
                     [
                         'type' => 'switch',
-                        'name' => __('Hide Search Icon', 'ct-bones'),
+                        'name' => sprintf(__('Hide %s Icon', 'ct-bones'), esc_html__('Search', 'ct-bones')),
                         'id' => $this->prefix . 'header_hide_search_icon'
                     ],
                     [
                         'type' => 'switch',
-                        'name' => __('Hide Cart Icon', 'ct-bones'),
+                        'name' => sprintf(__('Hide %s Icon', 'ct-bones'), esc_html__('Cart', 'ct-bones')),
                         'id' => $this->prefix . 'header_hide_cart_icon'
                     ],
                     [
                         'type' => 'switch',
-                        'name' => __('Display Phone Number', 'ct-bones'),
+                        'name' => sprintf(__('Display %s', 'ct-bones'), esc_html__('Phone Number', 'ct-bones')),
                         'id' => $this->prefix . 'header_display_phone',
                         'desc' => sprintf(
                             __('Display a "%1$s" from <a href="%2$s">%3$s</a> settings.', 'ct-bones'),
@@ -310,12 +310,12 @@ class Codetot_CT_Theme_Settings
                     ],
                     [
                       'type' => 'switch',
-                      'name' => __('Display Home Icon Menu', 'ct-bones'),
+                      'name' => sprintf(__('Display %s', 'ct-bones'), esc_html__('Home Icon in Primary Menu', 'ct-bones')),
                       'id'   => $this->prefix . 'home_icon_menu'
                     ],
                     [
                         'type' => 'switch',
-                        'name' => __('Enable Header Topbar', 'ct-bones'),
+                        'name' => sprintf(__('Enable %s', 'ct-bones'), esc_html__('Topbar', 'ct-bones')),
                         'id'   => $this->prefix . 'header_topbar_enable',
                         'std' => 1
                     ]

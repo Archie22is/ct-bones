@@ -86,12 +86,12 @@ class Codetot_CT_Theme_WooCommerce_Settings
         'id'   => $this->prefix . 'woocommerce_product_card_style',
         'std'  => 0,
         'options' => [
-          0 => __('Style Default', 'ct-bones'),
-          1 => __('1', 'ct-bones'),
-          2 => __('2', 'ct-bones'),
-          3 => __('3', 'ct-bones'),
-          4 => __('4', 'ct-bones'),
-          5 => __('5', 'ct-bones'),
+          0 => __('Default', 'ct-bones'),
+          1 => 1,
+          2 => 2,
+          3 => 3,
+          4 => 4,
+          5 => 5,
         ]
       ),
       array(
