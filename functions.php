@@ -9,8 +9,17 @@
  */
 
 if (!defined('CODETOT_VERSION')) {
+  $theme = wp_get_theme();
+  $is_child = !empty($theme->parent());
+
+  if ($is_child) {
+    $theme_version = $theme->parent()->Get('Version');
+  } else {
+    $theme_version = $theme->Get('Version');
+  }
+
 	// Replace the version number of the theme on each release.
-	define('CODETOT_VERSION', wp_get_theme()->Get('Version'));
+	define('CODETOT_VERSION', $theme_version);
 }
 
 define('CODETOT_DIR', get_template_directory() . '/codetot');

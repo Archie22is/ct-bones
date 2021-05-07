@@ -209,7 +209,7 @@ body.single-product {
 }
 
 .entry-summary {
-  & .product-price {
+  & .product-price--countdown {
     display: flex;
     flex-wrap: wrap;
     min-height: 150px;
