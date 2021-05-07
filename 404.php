@@ -11,50 +11,35 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
+    <?php
+    the_block('page-header', array(
+      'class' => 'page-header--404',
+      'title' => esc_html__( 'Oops! That page can&rsquo;t be found.', 'ct-bones' )
+    ));
 
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'ct-bones' ); ?></h1>
-			</header><!-- .page-header -->
+    ob_start();
+    echo '<p>';
+    esc_html_e('It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'ct-bones');
+    echo '</p>';
+    echo get_search_form(array(
+      'id' => '404'
+    ));
 
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'ct-bones' ); ?></p>
+    the_block('button', array(
+      'button' => __('Back to Homepage', 'ct-theme'),
+      'type' => 'dark',
+      'class' => 'message-block__404-button',
+      'url' => esc_url(home_url('/'))
+    ));
 
-					<?php
-					get_search_form();
+    $content = ob_get_clean();
 
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
+    the_block('message-block', array(
+      'class' => 'message-block--404',
+      'content' => $content
+    ));
 
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'ct-bones' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$ct_bones_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'ct-bones' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$ct_bones_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
+    ?>
 	</main><!-- #main -->
-
 <?php
 get_footer();

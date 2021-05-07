@@ -126,6 +126,8 @@ class Codetot_Woocommerce_Layout_Product
   public function generate_wrapper() {
     $sidebar_layout = get_global_option('codetot_product_layout') ?? 'no-sidebar';
 
+    add_action('codetot_after_header', array($this, 'breadcrumbs'), 5);
+
     if ($sidebar_layout !== 'no-sidebar') {
       add_action('codetot_after_header', array($this, 'page_block_open'), 10);
       add_action('codetot_before_sidebar', array($this, 'page_block_between'), 10);
@@ -136,6 +138,12 @@ class Codetot_Woocommerce_Layout_Product
       add_action('woocommerce_before_single_product_summary', array($this, 'top_product_sidebar_open'), 75);
       add_action('woocommerce_after_single_product_summary', array($this, 'top_product_sidebar_between'), 2);
       add_action('woocommerce_after_single_product_summary', array($this, 'top_product_sidebar_close'), 3);
+    }
+  }
+
+  public function breadcrumbs() {
+    if (is_singular('product')) {
+      the_block('breadcrumbs');
     }
   }
 

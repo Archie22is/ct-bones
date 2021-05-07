@@ -2,10 +2,23 @@
   padding: 0.5em 0;
 }
 
+.message-block__404-button {
+  margin-top: 1em;
+}
+
 .message-block--no-container {
   & .message-block__container {
     max-width: 100%;
     margin: 0;
     padding: 0;
+  }
+}
+
+.message-block--404 {
+  margin-top: 1em;
+  text-align: center;
+
+  & .message-block__container {
+    max-width: var(--s);
   }
 }
