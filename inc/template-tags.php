@@ -13,9 +13,6 @@ if ( ! function_exists( 'ct_bones_posted_on' ) ) :
 	 */
 	function ct_bones_posted_on() {
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
-		}
 
 		$time_string = sprintf(
 			$time_string,
@@ -58,7 +55,7 @@ function ct_bones_entry_categories() {
     $categories_list = get_the_category_list( esc_html__( ', ', 'ct-bones' ) );
     if ( $categories_list ) {
       /* translators: 1: list of categories. */
-      printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'ct-bones' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+      printf( '<span class="cat-links">' . esc_html__( 'Category: %1$s', 'ct-bones' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
     }
   }
 }
