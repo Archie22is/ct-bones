@@ -123,32 +123,6 @@
   width: 5em;
 }
 
-.woocommerce .star-rating:before {
-  content: '★★★★★';
-  float: left;
-  top: 0;
-  left: 0;
-  position: absolute;
-  color: var(--gray);
-}
-
-.woocommerce .star-rating span {
-  overflow: hidden;
-  float: left;
-  top: 0;
-  left: 0;
-  position: absolute;
-  padding-top: 1.5em;
-}
-
-.woocommerce .star-rating span:before {
-  content: '★★★★★';
-  top: 0;
-  position: absolute;
-  left: 0;
-  color: var(--yellow);
-}
-
 /* rating block specific to single product summary area */
 .woocommerce .woocommerce-product-rating {
   display: block;
