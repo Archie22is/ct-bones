@@ -35,6 +35,7 @@ class Codetot_Theme_Layout
     if (
       is_page() &&
       get_page_template_slug( get_the_ID()) === '' &&
+      !class_exists('woocommerce') ||
       (class_exists('woocommerce') && !is_account_page() && !is_cart() && !is_checkout())
       ) {
       $this->generate_page_layout();
