@@ -48,16 +48,16 @@ class Codetot_CT_Data_Settings {
 
   public function register_settings_pages($setting_pages) {
     $setting_pages[] = [
-      'menu_title'    => __( 'CT Data', 'ct-theme' ),
+      'menu_title'    => __( 'CT Data', 'ct-bones' ),
       'id'            => 'ct-data',
       'option_name'   => $this->option_name,
       'capability'    => 'level_10',
       'style'         => 'no-boxes',
       'columns'       => 1,
       'tabs'          => apply_filters('codetot_data_tabs', array(
-        'global'      => __('Global', 'ct-theme'),
-        'social'      => __('Social Links', 'ct-theme'),
-        'api'         => __('API Keys', 'ct-theme'),
+        'global'      => __('Global', 'ct-bones'),
+        'social'      => __('Social Links', 'ct-bones'),
+        'api'         => __('API Keys', 'ct-bones'),
       )),
       'submit_button' => __( 'Save' ),
       'customizer'    => false,
@@ -72,14 +72,14 @@ class Codetot_CT_Data_Settings {
       array(
         [
           'type' => 'heading',
-          'name' => __( 'Company Information', 'ct-theme' ),
+          'name' => __( 'Company Information', 'ct-bones' ),
         ]
       ),
       apply_filters('codetot_company_fields', codetot_get_company_info_inputs())
     );
 
     $meta_boxes[] = [
-      'title'          => __( 'Global', 'ct-theme' ),
+      'title'          => __( 'Global', 'ct-bones' ),
       'id'             => 'ct-data-global-settings',
       'settings_pages' => [$this->setting_id],
       'tab'            => 'global',
@@ -97,14 +97,14 @@ class Codetot_CT_Data_Settings {
       array(
         [
           'type' => 'heading',
-          'name' => __( 'Social Media Profile URL', 'ct-theme' )
+          'name' => __( 'Social Media Profile URL', 'ct-bones' )
         ]
       ),
       apply_filters('codetot_social_fields', codetot_get_social_media_options())
     );
 
     $meta_boxes[] = [
-      'title'          => __( 'Social Links', 'ct-theme' ),
+      'title'          => __( 'Social Links', 'ct-bones' ),
       'id'             => 'ct-data-social-settings',
       'settings_pages' => [$this->setting_id],
       'tab'            => 'social',
@@ -119,15 +119,15 @@ class Codetot_CT_Data_Settings {
 
   public function register_api_settings_fields( $meta_boxes ) {
     $meta_boxes[] = [
-      'title'          => __( 'API Keys', 'ct-theme' ),
+      'title'          => __( 'API Keys', 'ct-bones' ),
       'id'             => 'ct-data-api-settings',
       'settings_pages' => [$this->setting_id],
       'tab'            => 'api',
       'fields'         => [
         [
-          'name'    => __( 'Google Maps API Key', 'ct-theme' ),
+          'name'    => __( 'Google Maps API Key', 'ct-bones' ),
           'id'      => $this->prefix . 'google_maps_api_key',
-          'desc'    => esc_html__('Using Google Maps API Key to create map interactive with visitors.', 'ct-theme'),
+          'desc'    => esc_html__('Using Google Maps API Key to create map interactive with visitors.', 'ct-bones'),
           'type'    => 'text',
         ]
       ],

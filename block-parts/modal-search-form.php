@@ -4,8 +4,8 @@
 
 ob_start();
 ?>
-<span class="modal__title"><?php esc_html_e('Type to search', 'ct-theme'); ?></span>
-<button class="modal__close-button" data-close-modal="modal-search-form" aria-label="<?php esc_html_e('Close a search form modal', 'ct-theme'); ?>">
+<span class="modal__title"><?php esc_html_e('Type to search', 'ct-bones'); ?></span>
+<button class="modal__close-button" data-close-modal="modal-search-form" aria-label="<?php esc_html_e('Close a search form modal', 'ct-bones'); ?>">
   <?php codetot_svg('close', true); ?>
 </button>
 <?php

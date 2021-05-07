@@ -38,7 +38,7 @@ $class .= !empty($layout) ? ' ' . esc_attr($layout) : '';
           else :
 
             the_block('message-block', array(
-              'content' => esc_html__('There is no posts to display.', 'ct-theme')
+              'content' => esc_html__('There is no posts to display.', 'ct-bones')
             ));
 
           endif;

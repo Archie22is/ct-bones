@@ -22,7 +22,7 @@
     echo $primary_nav_html;
 
   elseif ( is_user_logged_in() ) :
-    printf('<a class="button button--primary" href="%1$s" target="_blank">%2$s</a>', admin_url() . 'menus.php', '<span class="button__text">' . __('Configure Primary Menu', 'ct-theme') . '</span>');
+    printf('<a class="button button--primary" href="%1$s" target="_blank">%2$s</a>', admin_url() . 'menus.php', '<span class="button__text">' . __('Configure Primary Menu', 'ct-bones') . '</span>');
   endif;
   ?>
   <?php do_action('codetot_header_navigation_after'); ?>

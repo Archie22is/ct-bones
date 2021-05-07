@@ -53,7 +53,7 @@ class Codetot_WooCommerce_Init {
     register_sidebar(
       array(
         'id' => 'shop-sidebar',
-        'name' => __('Shop Sidebar', 'ct-theme'),
+        'name' => __('Shop Sidebar', 'ct-bones'),
         'before_widget' => '<div id="%1$s" class="widget widget--shop %2$s">',
         'after_widget' => '</div>',
         'before_title' => '<p class="widget__title">',
@@ -62,7 +62,7 @@ class Codetot_WooCommerce_Init {
     );
 
     register_sidebar(array(
-      'name' => __('Product Sidebar', 'ct-theme'),
+      'name' => __('Product Sidebar', 'ct-bones'),
       'id' => 'product-sidebar',
       'before_widget' => '<aside id="%1$s" class="widget widget--product %2$s"><div class="widget__inner">',
       'after_widget' => '</div></aside>',
@@ -71,7 +71,7 @@ class Codetot_WooCommerce_Init {
     ));
 
     register_sidebar(array(
-      'name' => __('Top Product Sidebar', 'ct-theme'),
+      'name' => __('Top Product Sidebar', 'ct-bones'),
       'id' => 'top-product-sidebar',
       'before_widget' => '<aside id="%1$s" class="widget widget--top-product %2$s"><div class="widget__inner">',
       'after_widget' => '</div></aside>',
@@ -80,7 +80,7 @@ class Codetot_WooCommerce_Init {
     ));
 
     register_sidebar(array(
-      'name' => __('Bottom Product Sidebar', 'ct-theme'),
+      'name' => __('Bottom Product Sidebar', 'ct-bones'),
       'id' => 'bottom-product-sidebar',
       'before_widget' => '<aside id="%1$s" class="widget widget--bottom-product %2$s"><div class="widget__inner">',
       'after_widget' => '</div></aside>',
@@ -89,7 +89,7 @@ class Codetot_WooCommerce_Init {
     ));
 
     register_sidebar(array(
-      'name' => __('Product Category Sidebar', 'ct-theme'),
+      'name' => __('Product Category Sidebar', 'ct-bones'),
       'id' => 'product-category-sidebar',
       'before_widget' => '<aside id="%1$s" class="widget widget--product-category %2$s"><div class="widget__inner">',
       'after_widget' => '</div></aside>',
@@ -105,7 +105,7 @@ class Codetot_WooCommerce_Init {
       $variations = $product->get_available_variations();
 
       if (!empty($variations) && count($variations) > 1) {
-        return esc_html__('View product', 'ct-theme');
+        return esc_html__('View product', 'ct-bones');
       } else {
         return esc_html__('Add to cart', 'woocommerce');
       }

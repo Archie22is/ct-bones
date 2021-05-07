@@ -24,42 +24,42 @@ function codetot_get_color_options()
 
     return array(
         [
-            'name'    => sprintf(__('%s Color', 'ct-theme'), __('Brand', 'ct-theme')),
+            'name'    => sprintf(__('%s Color', 'ct-bones'), __('Brand', 'ct-bones')),
             'id'      => $prefix . 'primary_color',
             'type'    => 'color',
             'std'     => '#1e73be',
             'columns' => 3,
         ],
         [
-            'name'    => sprintf(__('%s Color', 'ct-theme'), __('Secondary', 'ct-theme')),
+            'name'    => sprintf(__('%s Color', 'ct-bones'), __('Secondary', 'ct-bones')),
             'id'      => $prefix . 'secondary_color',
             'type'    => 'color',
             'std'     => '#d43d3d',
             'columns' => 9,
         ],
         [
-            'name'    => sprintf(__('%s Color', 'ct-theme'), __('Dark', 'ct-theme')),
+            'name'    => sprintf(__('%s Color', 'ct-bones'), __('Dark', 'ct-bones')),
             'id'      => $prefix . 'dark_color',
             'type'    => 'color',
             'std'     => '#3a3a3a',
             'columns' => 3,
         ],
         [
-            'name'    => sprintf(__('%s Color', 'ct-theme'), __('Body Text', 'ct-theme')),
+            'name'    => sprintf(__('%s Color', 'ct-bones'), __('Body Text', 'ct-bones')),
             'id'      => $prefix . 'base_color',
             'type'    => 'color',
             'std'     => '#595959',
             'columns' => 3,
         ],
         [
-            'name'    => sprintf(__('%s Color', 'ct-theme'), __('Gray', 'ct-theme')),
+            'name'    => sprintf(__('%s Color', 'ct-bones'), __('Gray', 'ct-bones')),
             'id'      => $prefix . 'gray_color',
             'type'    => 'color',
             'std'     => '#b2b2b2',
             'columns' => 3,
         ],
         [
-            'name'    => sprintf(__('%s Color', 'ct-theme'), __('Light', 'ct-theme')),
+            'name'    => sprintf(__('%s Color', 'ct-bones'), __('Light', 'ct-bones')),
             'id'      => $prefix . 'light_color',
             'type'    => 'color',
             'std'     => '#f2f2f2',
@@ -108,37 +108,37 @@ function codetot_get_company_info_inputs()
 
   return array(
     [
-      'name' => __('Company Name', 'ct-theme'),
+      'name' => __('Company Name', 'ct-bones'),
       'id'   => $prefix . 'company_name',
       'type' => 'text',
     ],
     [
-      'name' => __('Company Address', 'ct-theme'),
+      'name' => __('Company Address', 'ct-bones'),
       'id'   => $prefix . 'company_address',
       'type' => 'text',
     ],
     [
-      'name' => __('Company Hotline', 'ct-theme'),
+      'name' => __('Company Hotline', 'ct-bones'),
       'id'   => $prefix . 'company_hotline',
       'type' => 'text',
     ],
     [
-      'name' => __('Company Email', 'ct-theme'),
+      'name' => __('Company Email', 'ct-bones'),
       'id'   => $prefix . 'company_email',
       'type' => 'email',
     ],
     [
-      'name' => __('Company Google Maps Link', 'ct-theme'),
+      'name' => __('Company Google Maps Link', 'ct-bones'),
       'id'   => $prefix . 'company_google_maps_link',
       'type' => 'text',
-      'desc' => __('When visiting a Contact page, the direcction link will point user directly to app Google Maps.', 'ct-theme')
+      'desc' => __('When visiting a Contact page, the direcction link will point user directly to app Google Maps.', 'ct-bones')
     ],
     [
       'type'=> 'wysiwyg',
-      'name' => __('Header Topbar Content', 'ct-theme'),
+      'name' => __('Header Topbar Content', 'ct-bones'),
       'id'   => $prefix . 'header_topbar_content',
       'std' => 1,
-      'desc' => sprintf(__('Available shortcodes: %s', 'ct-theme'), '[social-link], [contact]')
+      'desc' => sprintf(__('Available shortcodes: %s', 'ct-bones'), '[social-link], [contact]')
     ],
     [
       'name'    => __('Footer Copyright', 'ct-pro-toolkit'),
@@ -157,32 +157,32 @@ function codetot_get_social_media_options()
 
   return apply_filters('codetot_social_links', array(
     [
-      'name' => __('Facebook URL', 'ct-theme'),
+      'name' => __('Facebook URL', 'ct-bones'),
       'id'   => $prefix . 'company_facebook',
       'type' => 'url',
     ],
     [
-      'name' => __('Youtube URL', 'ct-theme'),
+      'name' => __('Youtube URL', 'ct-bones'),
       'id'   => $prefix . 'company_youtube',
       'type' => 'url',
     ],
     [
-      'name' => __('Zalo Official URL', 'ct-theme'),
+      'name' => __('Zalo Official URL', 'ct-bones'),
       'id'   => $prefix . 'company_zalo',
       'type' => 'url',
     ],
     [
-      'name' => __('Instagram URL', 'ct-theme'),
+      'name' => __('Instagram URL', 'ct-bones'),
       'id'   => $prefix . 'company_instagram',
       'type' => 'url',
     ],
     [
-      'name' => __('Pinterest URL', 'ct-theme'),
+      'name' => __('Pinterest URL', 'ct-bones'),
       'id'   => $prefix . 'company_pinterest',
       'type' => 'url',
     ],
     [
-      'name' => __('LinkedIn URL', 'ct-theme'),
+      'name' => __('LinkedIn URL', 'ct-bones'),
       'id'   => $prefix . 'company_linkedin',
       'type' => 'url',
     ]
@@ -197,10 +197,10 @@ function codetot_get_footer_copyright()
   return !empty(get_codetot_data('codetot_footer_copyright'))
     ? get_codetot_data('codetot_footer_copyright')
     : '<p>' . sprintf(
-      __('Copyright &copy; by <strong>%1$s</strong>. Built with <a href="%2$s" target="_blank">%3$s</a> (version: %4$s).', 'ct-theme') . '</p>',
+      __('Copyright &copy; by <strong>%1$s</strong>. Built with <a href="%2$s" target="_blank">%3$s</a> (version: %4$s).', 'ct-bones') . '</p>',
       get_bloginfo('name'),
       esc_url('https://codetot.com'),
-      esc_html__('CT Web Builder', 'ct-theme'),
+      esc_html__('CT Web Builder', 'ct-bones'),
       CODETOT_VERSION
     )
   ;

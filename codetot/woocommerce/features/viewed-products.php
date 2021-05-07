@@ -116,7 +116,7 @@ if (!class_exists('Codetot_Woocommerce_Viewed_Products')) {
 
       the_block('product-grid', array(
         'class' => $_class,
-        'title' => esc_html__('Recently Viewed Products', 'ct-theme'),
+        'title' => esc_html__('Recently Viewed Products', 'ct-bones'),
         'query' => $query
       ));
     }

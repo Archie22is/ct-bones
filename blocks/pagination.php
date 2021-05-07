@@ -4,7 +4,7 @@
     $query = $wp_query;
   }
   $big = 999999999;
-  $translated = __( 'Page', 'ct-theme' );
+  $translated = __( 'Page', 'ct-bones' );
   if ($query->max_num_pages > 1) :
     ?>
     <div class="pagination<?php if (!empty($class) ) : echo ' ' . $class; endif; ?>" >

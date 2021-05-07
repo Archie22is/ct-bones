@@ -28,7 +28,7 @@ class Codetot_CT_Theme_Settings
     {
         $this->prefix = 'codetot_';
         $this->filter_prefix = 'codetot_settings_';
-        $this->setting_id = 'ct-theme';
+        $this->setting_id = 'ct-bones';
         $this->option_name = 'ct_theme';
 
         add_filter('mb_settings_pages', array($this, 'register_settings_pages'));
@@ -45,19 +45,19 @@ class Codetot_CT_Theme_Settings
     public function register_settings_pages($setting_pages)
     {
         $settings_pages[] = [
-            'menu_title'    => __('CT Theme', 'ct-theme'),
+            'menu_title'    => __('CT Theme', 'ct-bones'),
             'id'            => $this->setting_id,
             'option_name'   => $this->option_name,
             'capability'    => 'level_10',
             'style'         => 'no-boxes',
             'columns'       => 1,
             'tabs'          => apply_filters('codetot_settings_tabs', array(
-                'general'     => __('General', 'ct-theme'),
-                'typography'  => __('Typography', 'ct-theme'),
-                'layout'      => __('Layout', 'ct-theme'),
+                'general'     => __('General', 'ct-bones'),
+                'typography'  => __('Typography', 'ct-bones'),
+                'layout'      => __('Layout', 'ct-bones'),
                 'header'      => __('Header', ' ct-theme'),
-                'footer'      => __('Footer', 'ct-theme'),
-                'addons'      => __('Addons', 'ct-theme')
+                'footer'      => __('Footer', 'ct-bones'),
+                'addons'      => __('Addons', 'ct-bones')
             )),
             'submit_button' => __('Save'),
             'customizer'    => false,
@@ -73,14 +73,14 @@ class Codetot_CT_Theme_Settings
             array(
                 [
                     'type'    => 'heading',
-                    'name'    => __('Color Schema', 'ct-theme')
+                    'name'    => __('Color Schema', 'ct-bones')
                 ]
             ),
             apply_filters('codetot_color_fields', codetot_get_color_options())
         );
 
         $meta_boxes[] = [
-            'title'          => __('General', 'ct-theme'),
+            'title'          => __('General', 'ct-bones'),
             'id'             => 'ct-theme-general-settings',
             'settings_pages' => [$this->setting_id],
             'tab'            => 'general',
@@ -93,13 +93,13 @@ class Codetot_CT_Theme_Settings
     public function register_typography_settings_fields($meta_boxes)
     {
         $meta_boxes[] = [
-            'title'          => __('Typography', 'ct-theme'),
+            'title'          => __('Typography', 'ct-bones'),
             'id'             => 'ct-theme-typography-settings',
             'settings_pages' => [$this->setting_id],
             'tab'            => 'typography',
             'fields'         => [
                 [
-                    'name'   => __('Font Size Scale', 'ct-theme'),
+                    'name'   => __('Font Size Scale', 'ct-bones'),
                     'id'     => $this->prefix . 'font_size_scale',
                     'type'   => 'image_select',
                     'class' => 'codetot-text-select',
@@ -116,24 +116,24 @@ class Codetot_CT_Theme_Settings
     public function register_font_family_settings_fields($meta_boxes)
     {
         $meta_boxes[] = [
-            'title'          => __('Font Family', 'ct-theme'),
+            'title'          => __('Font Family', 'ct-bones'),
             'settings_pages' => [$this->setting_id],
             'tab'            => 'typography',
             'fields'         => [
                 [
                     'type' => 'heading',
-                    'name' => __('Font Family', 'ct-theme'),
+                    'name' => __('Font Family', 'ct-bones'),
                     'columns' => 12,
                 ],
                 [
-                    'name'     => __('Global Font', 'ct-theme'),
+                    'name'     => __('Global Font', 'ct-bones'),
                     'id'       => $this->prefix . 'font_family',
                     'type'     => 'select',
                     'options'  => apply_filters('codetot_font_family_options', codetot_get_font_family_options()),
                     'columns'  => 12,
                 ],
                 [
-                    'name'     => __('Heading Font', 'ct-theme'),
+                    'name'     => __('Heading Font', 'ct-bones'),
                     'id'       => $this->prefix . 'font_heading',
                     'type'     => 'select',
                     'options'  => apply_filters('codetot_font_family_options', codetot_get_font_family_options()),
@@ -150,7 +150,7 @@ class Codetot_CT_Theme_Settings
         $default_layouts = apply_filters('codetot_layout_settings', ['Category', 'Post', 'Page']);
         $layout_fields = array_map(function ($layout_name) {
             return array(
-                'name' => sprintf(__('%s Layout', 'ct-theme'), $layout_name),
+                'name' => sprintf(__('%s Layout', 'ct-bones'), $layout_name),
                 'id'   => $this->prefix . str_replace('-', '_', sanitize_title_with_dashes($layout_name)) . '_layout',
                 'type' => 'image_select',
                 'class' => 'codetot-image-icon',
@@ -163,20 +163,20 @@ class Codetot_CT_Theme_Settings
             array(
                 array(
                     'type' => 'heading',
-                    'name' => __('Sidebar Layout', 'ct-theme')
+                    'name' => __('Sidebar Layout', 'ct-bones')
                 )
             ),
             $layout_fields,
             array(
                 [
                     'type'    => 'heading',
-                    'name'    => __('Container Layout', 'ct-theme')
+                    'name'    => __('Container Layout', 'ct-bones')
                 ],
                 [
                     'name'    => __('Container Width', 'codetot'),
                     'id'      => $this->prefix . 'container_width',
                     'type'    => 'number',
-                    'desc'    => __('(pixel) Only work with boxed container layout.', 'ct-theme'),
+                    'desc'    => __('(pixel) Only work with boxed container layout.', 'ct-bones'),
                     'min'     => 900,
                     'max'     => 1440,
                     'std'     => 1280,
@@ -195,37 +195,37 @@ class Codetot_CT_Theme_Settings
             array(
             [
                 'type' => 'heading',
-                'name' => __('Category Layout', 'ct-theme'),
+                'name' => __('Category Layout', 'ct-bones'),
             ],
             [
-                'name'    => __('Archive/Category: Posts Per Row', 'ct-theme'),
+                'name'    => __('Archive/Category: Posts Per Row', 'ct-bones'),
                 'id'      => $this->prefix . 'category_column_number',
                 'type'    => 'select',
                 'std'     => 3,
                 'options' => [
-                    1 => __('1', 'ct-theme'),
-                    2 => __('2', 'ct-theme'),
-                    3 => __('3', 'ct-theme'),
-                    4 => __('4', 'ct-theme'),
-                    5 => __('5', 'ct-theme'),
+                    1 => 1,
+                    2 => 2,
+                    3 => 3,
+                    4 => 4,
+                    5 => 5
                 ],
             ],
             [
-                'name'    => __('Post Card Style', 'ct-theme'),
+                'name'    => __('Post Card Style', 'ct-bones'),
                 'id'      => $this->prefix . 'post_card_style',
                 'type'    => 'select',
                 'std'     => 'style-1',
                 'options' => [
-                    'style-1' => __('Style 1', 'ct-theme'),
-                    'style-2' => __('Style 2', 'ct-theme'),
-                    'style-3' => __('Style 3', 'ct-theme'),
-                    'style-4' => __('Style 4', 'ct-theme'),
+                    'style-1' => sprintf(__('Style %s', 'ct-bones'), 1),
+                    'style-2' => sprintf(__('Style %s', 'ct-bones'), 2),
+                    'style-3' => sprintf(__('Style %s', 'ct-bones'), 3),
+                    'style-4' => sprintf(__('Style %s', 'ct-bones'), 4)
                 ],
             ])
         );
 
         $meta_boxes[] = [
-            'title'          => __('Layout Settings', 'ct-theme'),
+            'title'          => __('Layout Settings', 'ct-bones'),
             'id'             => 'ct-theme-layout-settings',
             'settings_pages' => [$this->setting_id],
             'tab'            => 'layout',
@@ -241,7 +241,7 @@ class Codetot_CT_Theme_Settings
     public function register_header_settings_fields($meta_boxes)
     {
         $meta_boxes[] = [
-            'title'          => __('Header', 'ct-theme'),
+            'title'          => __('Header', 'ct-bones'),
             'id'             => 'ct-theme-header-settings',
             'settings_pages' => [$this->setting_id],
             'tab'            => 'header',
@@ -250,7 +250,7 @@ class Codetot_CT_Theme_Settings
                 array(
                     [
                         'type' => 'image_select',
-                        'name' => __('Header Layout', 'ct-theme'),
+                        'name' => __('Header Layout', 'ct-bones'),
                         'id'   => $this->prefix . 'header_layout',
                         'class' => 'codetot-image-select',
                         'std' => 'header-1',
@@ -261,7 +261,7 @@ class Codetot_CT_Theme_Settings
                     ],
                     [
                         'type' => 'radio',
-                        'name' => __('Header Background Color', 'ct-theme'),
+                        'name' => __('Header Background Color', 'ct-bones'),
                         'id' => $this->prefix . 'header_background_color',
                         'std' => 'white',
                         'options' => apply_filters(
@@ -271,51 +271,51 @@ class Codetot_CT_Theme_Settings
                     ],
                     [
                         'type' => 'radio',
-                        'name' => __('Header Text Color Contract', 'ct-theme'),
+                        'name' => __('Header Text Color Contract', 'ct-bones'),
                         'id' => $this->prefix . 'header_color_contract',
                         'std' => 'light',
                         'options' => codetot_background_contracts()
                     ],
                     [
                         'type' => 'switch',
-                        'name' => __('Enable Sticky Header', 'ct-theme'),
+                        'name' => sprintf(__('Enable %s', 'ct-bones'), esc_html__('Sticky Header', 'ct-bones')),
                         'id'   => $this->prefix . 'header_enable_sticky',
                         'std' => 1
                     ],
                     [
                         'type' => 'switch',
-                        'name' => __('Hide Account Icon', 'ct-theme'),
+                        'name' => sprintf(__('Hide %s Icon', 'ct-bones'), esc_html__('Account', 'ct-bones')),
                         'id' => $this->prefix . 'header_hide_account_icon'
                     ],
                     [
                         'type' => 'switch',
-                        'name' => __('Hide Search Icon', 'ct-theme'),
+                        'name' => sprintf(__('Hide %s Icon', 'ct-bones'), esc_html__('Search', 'ct-bones')),
                         'id' => $this->prefix . 'header_hide_search_icon'
                     ],
                     [
                         'type' => 'switch',
-                        'name' => __('Hide Cart Icon', 'ct-theme'),
+                        'name' => sprintf(__('Hide %s Icon', 'ct-bones'), esc_html__('Cart', 'ct-bones')),
                         'id' => $this->prefix . 'header_hide_cart_icon'
                     ],
                     [
                         'type' => 'switch',
-                        'name' => __('Display Phone Number', 'ct-theme'),
+                        'name' => sprintf(__('Display %s', 'ct-bones'), esc_html__('Phone Number', 'ct-bones')),
                         'id' => $this->prefix . 'header_display_phone',
                         'desc' => sprintf(
-                            __('Display a "%1$s" from <a href="%2$s">%3$s</a> settings.', 'ct-theme'),
-                            esc_html__('Company Hotline', 'ct-theme'),
+                            __('Display a "%1$s" from <a href="%2$s">%3$s</a> settings.', 'ct-bones'),
+                            esc_html__('Company Hotline', 'ct-bones'),
                             admin_url() . 'admin.php?page=ct-data',
-                            esc_html__('CT Data', 'ct-theme')
+                            esc_html__('CT Data', 'ct-bones')
                         )
                     ],
                     [
                       'type' => 'switch',
-                      'name' => __('Display Home Icon Menu', 'ct-theme'),
+                      'name' => sprintf(__('Display %s', 'ct-bones'), esc_html__('Home Icon in Primary Menu', 'ct-bones')),
                       'id'   => $this->prefix . 'home_icon_menu'
                     ],
                     [
                         'type' => 'switch',
-                        'name' => __('Enable Header Topbar', 'ct-theme'),
+                        'name' => sprintf(__('Enable %s', 'ct-bones'), esc_html__('Topbar', 'ct-bones')),
                         'id'   => $this->prefix . 'header_topbar_enable',
                         'std' => 1
                     ]
@@ -329,7 +329,7 @@ class Codetot_CT_Theme_Settings
     public function register_footer_settings_fields($meta_boxes)
     {
         $footer_columns_field = array(
-            'name' => __('Footer Columns', 'ct-theme'),
+            'name' => __('Footer Columns', 'ct-bones'),
             'id'   => $this->prefix . 'footer_columns',
             'class' => 'codetot-image-icon',
             'type' => 'image_select',
@@ -342,7 +342,7 @@ class Codetot_CT_Theme_Settings
             apply_filters('codetot_footer_columns_fields', $footer_columns_field),
             [
                 'type' => 'radio',
-                'name' => __('Footer Background Color', 'ct-theme'),
+                'name' => __('Footer Background Color', 'ct-bones'),
                 'id' => $this->prefix . 'footer_background_color',
                 'columns' => 6,
                 'options' => apply_filters(
@@ -366,7 +366,7 @@ class Codetot_CT_Theme_Settings
         ]);
 
         $meta_boxes[] = [
-            'title'          => __('Footer', 'ct-theme'),
+            'title'          => __('Footer', 'ct-bones'),
             'id'             => 'ct-theme-footer-settings',
             'settings_pages' => [$this->setting_id],
             'tab'            => 'footer',
@@ -379,24 +379,24 @@ class Codetot_CT_Theme_Settings
     public function register_addons_settings_fields($meta_boxes)
     {
         $meta_boxes[] = array(
-            'title'          => __('Addons', 'ct-theme'),
+            'title'          => __('Addons', 'ct-bones'),
             'id'             => 'ct-theme-addons-settings',
             'settings_pages' => [$this->setting_id],
             'tab'            => 'addons',
             'fields' => [
                 [
                     'type' => 'switch',
-                    'name' => __('Enable Sticky Social Links', 'ct-theme'),
+                    'name' => __('Enable Sticky Social Links', 'ct-bones'),
                     'id'   => $this->prefix . 'enable_sticky_social_links',
-                    'desc' => esc_html_x('Display company social links in left window.', 'settings description', 'ct-theme'),
+                    'desc' => esc_html_x('Display company social links in left window.', 'settings description', 'ct-bones'),
                     'std' => 0,
                     'columns' => 12
                 ],
                 [
                     'type' => 'switch',
-                    'name' => __('Enable Back to Top button', 'ct-theme'),
+                    'name' => __('Enable Back to Top button', 'ct-bones'),
                     'id'   => $this->prefix . 'enable_back_to_top',
-                    'desc' => esc_html_x('Display a button scroll to header.', 'settings description', 'ct-theme'),
+                    'desc' => esc_html_x('Display a button scroll to header.', 'settings description', 'ct-bones'),
                     'std' => 1,
                     'columns' => 12
                 ]

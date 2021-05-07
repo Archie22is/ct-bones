@@ -6,7 +6,7 @@ if (!$hide_icon && class_exists('WooCommerce')) :
       <span class="header__menu-icons__icon">
         <?php codetot_svg('user', true); ?>
       </span>
-      <span class="screen-reader-text"><?php _e('Click to manage an account', 'ct-theme'); ?></span>
+      <span class="screen-reader-text"><?php _e('Click to manage an account', 'ct-bones'); ?></span>
       </a>
   <?php  else : ?>
     <button class="header__menu-icons__item header__menu-icons__link header__menu-icons__item--account" data-open-modal="modal-login">

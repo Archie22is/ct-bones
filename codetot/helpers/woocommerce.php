@@ -52,7 +52,7 @@ function codetot_get_upsell_products( $limit = '-1', $columns = 4, $orderby = 'r
 
 function codetot_get_product_query_by_type($attr) {
   if (empty($attr)) {
-    return new WP_Error(400, __FUNCTION__ . ': ' . __('No attribute was defined for query.', 'ct-theme'));
+    return new WP_Error(400, __FUNCTION__ . ': ' . __('No attribute was defined for query.', 'ct-bones'));
   }
 
   switch($attr):

@@ -341,7 +341,7 @@ class Codetot_Woocommerce_Layout_Archive
 
     $size = 'medium';
     $img_id = $product->get_image_id();
-    $img_alt = codetot_image_alt($img_id, esc_attr__('Product Image', 'ct-theme'));
+    $img_alt = codetot_image_alt($img_id, esc_attr__('Product Image', 'ct-bones'));
     $img_origin = wp_get_attachment_image_src($img_id, $size);
     $img_srcset = wp_get_attachment_image_srcset($img_id, $size);
 
