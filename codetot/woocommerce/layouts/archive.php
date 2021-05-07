@@ -159,7 +159,7 @@ class Codetot_Woocommerce_Layout_Archive
       $sidebar_layout = get_global_option('codetot_product_category_layout') ?? 'sidebar-left';
     endif;
 
-    $class .= ' ' . esc_attr($sidebar_layout);
+    $class .= !empty($sidebar_layout) ? ' ' . esc_attr($sidebar_layout) : '';
 
     do_action('codetot_product_archive_before_page_block');
 
