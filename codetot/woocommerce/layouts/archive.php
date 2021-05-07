@@ -286,7 +286,7 @@ class Codetot_Woocommerce_Layout_Archive
     ob_start();
     printf('<a class="add-to-cart-icon button" href="%1$s">%2$s</a>',
       $product->get_permalink(),
-      $product_card_style === 2 ? codetot_svg('cart', false) : apply_filters('woocommerce_product_add_to_cart_text', null)
+      $product_card_style === 2 ? codetot_svg('cart', false) : apply_filters('woocommerce_product_add_to_cart_text', esc_html__('Add to cart', 'woocommerce'))
     );
     return ob_get_clean();
   }
