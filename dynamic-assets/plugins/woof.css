@@ -1,0 +1,112 @@
+.woof_products_top_panel_ul li {
+  display: inline-flex;
+  float: none;
+  margin: 0 10px 5px 0 !important;
+}
+
+.woof_products_top_panel_ul > li {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.woof_products_top_panel_ul > li:first-child {
+  display: block;
+  width: 100%;
+}
+
+.woof_products_top_panel_ul li ul li {
+  margin: 0 10px 0 0 !important;
+}
+
+.woof_products_top_panel_ul li a {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  background: var(--light);
+  line-height: 1p;
+}
+
+.woof_products_top_panel_ul li a:hover {
+  color: var(--primary);
+}
+
+.woof_products_top_panel_ul li a span {
+  padding: 0;
+  background: transparent;
+}
+
+.woof_products_top_panel_ul li a:after {
+  content: '\00d7';
+  margin-left: 10px;
+  font-size: 1.5rem;
+  line-height: 1;
+  border-radius: 50%;
+}
+
+.woof_submit_search_form_container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.button.woof_submit_search_form {
+  float: none;
+  background: var(--primary);
+  color: var(--white);
+}
+
+.button.woof_submit_search_form:hover {
+  background: var(--dark);
+}
+
+.button.woof_reset_search_form {
+  float: none;
+  margin-left: 10px;
+  background: var(--light);
+  color: var(--dark);
+}
+
+.woof_reset_button_2:hover,
+.button.woof_reset_search_form:hover {
+  color: var(--primary);
+}
+
+.woof_checkbox_label {
+  font-size: 0.85rem;
+}
+
+.woof_childs_list li {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.woof_reset_button_2 {
+  background: var(--light);
+  color: var(--dark);
+}
+
+.woof .widget_price_filter .ui-slider .ui-slider-handle,
+.woof .widget_price_filter .ui-slider .ui-slider-range {
+  background: var(--primary);
+}
+
+.chosen-container-multi .chosen-choices {
+  background: var(--white);
+  border: 1px solid var(--border);
+}
+
+.chosen-container-multi .chosen-choices li.search-choice {
+  padding: 10px 25px 10px 10px;
+  background: var(--light);
+  border: 0;
+  font-size: 0.85rem;
+  line-height: 1;
+  box-shadow: none;
+}
+
+.chosen-container-multi .chosen-choices li.search-choice .search-choice-close {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
