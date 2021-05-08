@@ -1,7 +1,5 @@
 body.woo-variation-swatches {
   & .variations_form .variations {
-    margin-bottom: 1em;
-
     & .label label {
       opacity: 0.75;
     }
