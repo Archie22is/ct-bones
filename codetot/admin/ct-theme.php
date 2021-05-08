@@ -147,7 +147,12 @@ class Codetot_CT_Theme_Settings
 
     public function register_layout_settings_fields($meta_boxes)
     {
-        $default_layouts = apply_filters('codetot_layout_settings', ['Category', 'Post', 'Page']);
+        $default_layouts = apply_filters('codetot_layout_settings', [
+          __('Category', 'ct-bones'),
+          __('Post', 'ct-bones'),
+          __('Page', 'ct-bones')
+        ]
+        );
         $layout_fields = array_map(function ($layout_name) {
             return array(
                 'name' => sprintf(__('%s Layout', 'ct-bones'), $layout_name),

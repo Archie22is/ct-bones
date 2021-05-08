@@ -24,7 +24,7 @@ function codetot_get_color_options()
 
     return array(
         [
-            'name'    => sprintf(__('%s Color', 'ct-bones'), __('Brand', 'ct-bones')),
+            'name'    => sprintf(__('%s Color', 'ct-bones'), __('Primary', 'ct-bones')),
             'id'      => $prefix . 'primary_color',
             'type'    => 'color',
             'std'     => '#1e73be',
