@@ -16,6 +16,10 @@
   & #cancel-comment-reply-link {
     padding-left: 10px;
     font-weight: var(--font-normal);
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -138,6 +142,11 @@ p.comment-form-comment {
   }
 }
 
+.comment-text .description,
+.comment-content {
+  @mixin wysiwyg;
+}
+
 .comment-form .form-submit {
   margin-top: 1em;
 
@@ -175,14 +184,9 @@ ol.commentlist {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    padding: 1em;
+    padding: 20px;
     border: 1px solid var(--border);
-    border-radius: var(--border-radius);
-
-    & img {
-      width: 60px;
-      display: inline-flex;
-    }
+    border-radius: var(--border-radius);c
 
     & .comment-text {
       flex: 1 1 auto;
@@ -240,6 +244,16 @@ ol.commentlist {
       }
     }
   }
+
+  & .avatar {
+    width: 60px;
+    display: inline-flex;
+    border-radius: 50%;
+  }
+
+  & .comment-text {
+    padding-left: 20px;
+  }
 }
 
 /** Non-WooCommerce Reviews **/
@@ -249,8 +263,7 @@ ol.comment-list {
     display: flex;
     flex-wrap: wrap;
     margin: 1em 0 0.5em;
-    padding-bottom: 40px;
-    padding: 10px;
+    padding: 20px 20px 40px 20px;
     border-radius: var(--border-radius);
     border: 1px solid var(--border);
   }
