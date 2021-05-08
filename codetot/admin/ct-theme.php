@@ -173,7 +173,7 @@ class Codetot_CT_Theme_Settings
                     'name'    => __('Container Layout', 'ct-bones')
                 ],
                 [
-                    'name'    => __('Container Width', 'codetot'),
+                    'name'    => __('Container Width', 'ct-bones'),
                     'id'      => $this->prefix . 'container_width',
                     'type'    => 'number',
                     'desc'    => __('(pixel) Only work with boxed container layout.', 'ct-bones'),
@@ -183,7 +183,7 @@ class Codetot_CT_Theme_Settings
                     'columns' => 6,
                 ],
                 [
-                    'name'    => __('Container Layout', 'codetot'),
+                    'name'    => __('Container Layout', 'ct-bones'),
                     'id'      => $this->prefix . 'container_layout',
                     'type'    => 'image_select',
                     'options' => codetot_container_layouts(),
@@ -318,6 +318,15 @@ class Codetot_CT_Theme_Settings
                         'name' => sprintf(__('Enable %s', 'ct-bones'), esc_html__('Topbar', 'ct-bones')),
                         'id'   => $this->prefix . 'header_topbar_enable',
                         'std' => 1
+                    ],
+                    [
+                      'type' => 'radio',
+                      'name' => sprintf(__('%s Layout', 'ct-bones'), esc_html__('Topbar', 'ct-bones')),
+                      'id'   => $this->prefix . 'topbar_layout',
+                      'options' => array(
+                        1 => sprintf(__('%s Column', 'ct-bones'), 1),
+                        2 => sprintf(__('%s Columns', 'ct-bones'), 2)
+                      )
                     ]
                 )
             )
@@ -351,14 +360,14 @@ class Codetot_CT_Theme_Settings
                 )
             ],
             [
-                'name'    => __('Remove Theme Copyright', 'ct-pro-toolkit'),
+                'name'    => __('Remove Theme Copyright', 'ct-bones'),
                 'id'      => $this->filter_prefix . 'remove_theme_copyright',
                 'type'    => 'switch',
                 'style'   => 'rounded',
                 'columns' => 2,
             ],
             [
-                'name'    => __('Hide Footer Social Links', 'ct-pro-toolkit'),
+                'name'    => __('Hide Footer Social Links', 'ct-bones'),
                 'id'      => $this->filter_prefix . 'footer_hide_social_links',
                 'columns' => 2,
                 'type'    => 'switch'
