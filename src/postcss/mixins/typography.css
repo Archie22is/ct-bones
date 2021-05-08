@@ -165,12 +165,6 @@
     empty-cells: show;
     border: 1px solid var(--border);
 
-    & tr {
-      padding: 0.5em 1em;
-
-      font-weight: 700;
-    }
-
     & tbody th {
       background: var(--light);
     }

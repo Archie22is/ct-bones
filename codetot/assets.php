@@ -205,11 +205,11 @@ class Codetot_Assets
       $body_font = get_global_option('codetot_font_family');
       $heading_font = get_global_option('codetot_font_heading');
 
-      if ($body_font) {
-        echo 'body{font-family: ' . $body_font . ', sans-serif;}';
+      if (!empty($body_font)) {
+        echo 'body{font-family: ' . esc_attr($body_font) . ', sans-serif;}';
       }
-      if ($heading_font) {
-        echo 'h1,h2,h3,h4,h5,h6{font-family: ' . $heading_font . ', sans-serif;}';
+      if (!empty($heading_font)) {
+        echo 'h1,h2,h3,h4,h5,h6{font-family: ' . esc_attr($heading_font) . ', sans-serif;}';
       }
     }
   }
