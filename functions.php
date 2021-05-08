@@ -87,8 +87,9 @@ if (class_exists('WooCommerce')) {
   require_once CODETOT_DIR . '/woocommerce/features/viewed-products.php';
   require_once CODETOT_DIR . '/woocommerce/features/countdown-price.php';
 
+  require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
+
   add_action('wp', function() {
-    require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
     require_once CODETOT_DIR . '/woocommerce/layouts/product.php';
     require_once CODETOT_DIR . '/woocommerce/layouts/account.php';
     require_once CODETOT_DIR . '/woocommerce/layouts/cart.php';
