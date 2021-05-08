@@ -139,6 +139,7 @@ class Codetot_Theme_Init
         'after_title' => '</p>'
       )
     );
+
     $footer_column = get_global_option('codetot_footer_columns') ? str_replace('-columns', '', get_global_option('codetot_footer_columns')) : 3;
     for ($i = 1; $i <= $footer_column; $i++) {
       register_sidebar(
@@ -152,6 +153,25 @@ class Codetot_Theme_Init
           'after_title' => '</p>',
         )
       );
+    }
+
+    $enable_topbar_widget = get_global_option('codetot_header_topbar_enable') ?? false;
+    $topbar_widgets = get_global_option('codetot_topbar_layout') ?? 1;
+
+    if ($enable_topbar_widget) {
+      for ($i = 1; $i <= $topbar_widgets; $i++) {
+        register_sidebar(
+          array(
+            'name' => sprintf(__('Topbar Column #%s', 'ct-bones'), $i),
+            'description' => __('Add widgets to display in topbar column.', 'ct-bones'),
+            'id' => 'topbar-column-' . $i,
+            'before_widget' => '<div id="%1$s" class="widget widget--topbar %2$s">',
+            'after_widget' => '</div>',
+            'before_title' => '<p class="widget__title">',
+            'after_title' => '</p>',
+          )
+        );
+      }
     }
   }
 

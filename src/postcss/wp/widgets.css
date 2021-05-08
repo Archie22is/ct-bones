@@ -98,3 +98,58 @@
     }
   }
 }
+
+.widget--topbar {
+  width: auto;
+  margin-top: 0;
+
+  & + .widget--topbar {
+    margin-left: 10px;
+  }
+
+  & .widget__title {
+    display: none;
+  }
+
+  &.widget_text {
+    & .textwidget {
+      & ul,
+      & ol,
+      & blockquote,
+      & p {
+        margin: 0;
+      }
+    }
+  }
+
+  &.widget_nav_menu,
+  &.widget_categories,
+  &.widget_recent_entries {
+    & ul {
+      & li {
+        margin-top: 0;
+        padding-top: 0;
+        border: 0;
+
+        &:first-child {
+          margin-top: 0;
+          padding-top: 0;
+          border: 0;
+        }
+      }
+    }
+  }
+
+  & ul {
+    display: block;
+
+    & li {
+      display: inline-block;
+      margin-right: 10px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
