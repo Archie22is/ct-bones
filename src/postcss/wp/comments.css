@@ -134,9 +134,15 @@ p.comment-form-comment {
 }
 
 .comment-form-cookies-consent {
+  display: flex;
   margin-top: 0.5em;
 
+  & input {
+    margin-top: 0.5em;
+  }
+
   & label {
+    padding-left: 0.5em;
     color: var(--dark);
     opacity: 0.75;
   }
@@ -269,6 +275,8 @@ ol.comment-list {
   }
 
   & .comment-meta {
+    width: 100%;
+
     @media (--sm) {
       width: 25%;
     }
@@ -298,6 +306,8 @@ ol.comment-list {
   }
 
   & .comment-content {
+    width: 100%;
+
     @media (--sm) {
       flex: 1 1 0;
       width: auto;
