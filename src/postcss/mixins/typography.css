@@ -167,15 +167,19 @@
 
     & tr {
       padding: 0.5em 1em;
-      background: var(--light);
+
       font-weight: 700;
+    }
+
+    & tbody th {
+      background: var(--light);
     }
 
     & th,
     & td {
       padding: 0.5em 1em;
       border-left: 1px solid var(--border);
-      border-bottom-width: 0;
+      border-bottom: 1px solid var(--border);
       border-right-width: 0;
       border-top-width: 0;
       font-size: inherit;

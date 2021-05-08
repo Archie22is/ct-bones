@@ -27,7 +27,7 @@
   background: var(--white);
 }
 
-.is-content-visible {
+.product-description.is-content-visible {
   & .product-description__content::after {
     content: none;
   }

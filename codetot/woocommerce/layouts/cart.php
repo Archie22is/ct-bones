@@ -36,7 +36,8 @@ class Codetot_Woocommerce_Layout_Cart extends Codetot_Woocommerce_Layout
    */
   private function __construct()
   {
-    remove_action( 'woocommerce_before_cart', 'woocommerce_output_all_notices', 10 );
+    remove_action('woocommerce_before_cart', 'woocommerce_output_all_notices', 10);
+    remove_action('woocommerce_cart_is_empty', 'wc_empty_cart_message', 10);
     add_action('woocommerce_before_cart', array($this, 'print_errors'), 10);
 
     remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
@@ -49,6 +50,13 @@ class Codetot_Woocommerce_Layout_Cart extends Codetot_Woocommerce_Layout
 
     add_action('woocommerce_before_cart', array($this, 'container_open'), 15);
     add_action('woocommerce_before_cart', array($this, 'cart_page_grid_open'), 20);
+
+    // Case 2: Empty cart
+    add_action('woocommerce_cart_is_empty', array($this, 'container_open'), 15);
+    add_action('woocommerce_cart_is_empty', array($this, 'cart_page_grid_open'), 20);
+    add_action('woocommerce_cart_is_empty', array($this, 'cart_page_col_open_main'),  25);
+    add_action('woocommerce_cart_is_empty', 'wc_empty_cart_message', 40);
+
     // Column: Cart table
     add_action('woocommerce_before_cart', array($this, 'cart_page_col_open_main'),  25);
     add_action('woocommerce_after_cart_table',  array($this, 'cart_page_col_close'), 90);
@@ -70,7 +78,13 @@ class Codetot_Woocommerce_Layout_Cart extends Codetot_Woocommerce_Layout
   }
 
   public function container_open() {
-    echo '<div class="page-block page-block--cart">';
+    if ( WC()->cart->is_empty() ) {
+      $class  ='page-block page-block--cart-empty';
+    } else {
+      $class = 'page-block page-block--cart';
+    }
+
+    echo '<div class="' . $class . '">';
     echo '<div class="container page-block__container">';
   }
 

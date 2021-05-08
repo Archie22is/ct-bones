@@ -37,15 +37,18 @@ class Codetot_Woocommerce_Layout_Archive
   private function __construct()
   {
     $this->remove_default_hooks();
+    add_filter('woocommerce_pagination_args', array($this, 'change_woocommerce_arrow_pagination'));
 
     if (is_shop() || is_product_category()) :
-
-      // Change pagination to Previous + Next text
-      add_filter('woocommerce_pagination_args', array($this, 'change_woocommerce_arrow_pagination'));
-
-      // Sorting (Total display text + Orderby Select)
       $this->build_wrapper();
     endif;
+
+    add_action('woocommerce_before_shop_loop', array($this, 'sorting_open'), 12);
+    add_action('woocommerce_before_shop_loop', array($this, 'sorting_close'), 31);
+    add_action('woocommerce_before_shop_loop', array($this, 'product_grid_open'), 32);
+    add_action('woocommerce_after_shop_loop', array($this, 'product_grid_close'), 10);
+
+    add_action('wp', array($this, 'build_wrapper'));
 
     $this->build_product_column();
     $this->update_product_card_style();
@@ -69,17 +72,12 @@ class Codetot_Woocommerce_Layout_Archive
   public function build_wrapper()
   {
     add_action('codetot_product_archive_after_page_block_main', array($this, 'archive_title'), 10);
-    add_action('codetot_product_archive_after_page_block_main', 'woocommerce_taxonomy_archive_description', 20);
-    add_action('codetot_after_header', 'woocommerce_breadcrumb', 20);
+    add_action('codetot_product_archive_after_page_block_main', array($this, 'top_product_category_content'), 20);
+    add_action('codetot_after_header', array($this, 'breadcrumbs'), 10);
     add_action('codetot_after_header', array($this, 'page_block_open'), 50);
-    add_action('codetot_before_sidebar', array($this, 'page_block_between'), 10);
+    add_action('woocommerce_after_shop_loop', array($this, 'bottom_product_category_content'), 10);
+    add_action('codetot_before_sidebar', array($this, 'page_block_between'), 20);
     add_action('codetot_footer', array($this, 'page_block_close'), 90);
-
-    add_action('woocommerce_before_shop_loop', array($this, 'sorting_open'), 12);
-    add_action('woocommerce_before_shop_loop', array($this, 'sorting_close'), 31);
-    add_action('woocommerce_before_shop_loop', array($this, 'product_grid_open'), 32);
-    add_action('woocommerce_after_shop_loop', array($this, 'product_grid_close'), 10);
-    // add_action('woocommerce_after_shop_loop', array($this, 'long_description_category'), 10);
   }
 
   public function build_product_column()
@@ -125,6 +123,50 @@ class Codetot_Woocommerce_Layout_Archive
     }
   }
 
+  public function display_product_category_content($field_name, $class) {
+    $obj = get_queried_object();
+    $sidebar_layout = 'no-sidebar';
+
+    if ( is_shop() ) :
+      $sidebar_layout = get_global_option('codetot_shop_layout') ?? 'sidebar-left';
+    elseif( is_product_category() ) :
+      $sidebar_layout = get_global_option('codetot_product_category_layout') ?? 'sidebar-left';
+    endif;
+
+    $content = get_field($field_name, 'product_cat_' . esc_attr($obj->term_id));
+
+    if (!empty($content)) {
+      ob_start();
+      echo '<div class="wysiwyg message-block__content">';
+      echo $content;
+      echo '</div>';
+      $html = ob_get_clean();
+
+      $_class = $class;
+
+      if ($sidebar_layout !== 'no-sidebar') {
+        $_class .= ' message-block--no-container';
+      }
+
+      the_block('message-block', array(
+        'class' => $_class,
+        'content' => $html
+      ));
+    }
+  }
+
+  public function top_product_category_content() {
+    if (is_product_category()) {
+      $this->display_product_category_content('top_content', 'message-block--archive-top-content');
+    }
+  }
+
+  public function bottom_product_category_content() {
+    if (is_product_category()) {
+      $this->display_product_category_content('bottom_content', 'message-block--archive-top-content');
+    }
+  }
+
   public function sorting_open()
   {
     echo '<div class="page-block__sorting">';
@@ -148,6 +190,12 @@ class Codetot_Woocommerce_Layout_Archive
     echo '</div>';
   }
 
+  public function breadcrumbs() {
+    if (is_shop() || is_product_category()) {
+      the_block('breadcrumbs');
+    }
+  }
+
   public function page_block_open() {
     $class = 'page-block';
 
@@ -159,7 +207,7 @@ class Codetot_Woocommerce_Layout_Archive
       $sidebar_layout = get_global_option('codetot_product_category_layout') ?? 'sidebar-left';
     endif;
 
-    $class .= ' ' . esc_attr($sidebar_layout);
+    $class .= !empty($sidebar_layout) ? ' ' . esc_attr($sidebar_layout) : '';
 
     do_action('codetot_product_archive_before_page_block');
 
