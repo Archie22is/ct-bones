@@ -134,7 +134,7 @@ function codetot_get_company_info_inputs()
       'desc' => __('When visiting a Contact page, the direcction link will point user directly to app Google Maps.', 'ct-bones')
     ],
     [
-      'name'    => __('Footer Copyright', 'ct-pro-toolkit'),
+      'name'    => __('Footer Copyright', 'ct-bones'),
       'id'      => $prefix . 'footer_copyright',
       'type'    => 'wysiwyg',
     ]
