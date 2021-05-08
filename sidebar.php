@@ -6,7 +6,7 @@
  */
 $sidebar = codetot_sidebar_id();
 
-if (is_active_sidebar($sidebar)) : ?>
+if (!empty($sidebar) && is_active_sidebar($sidebar)) : ?>
 
   <?php do_action('codetot_before_sidebar'); ?>
 

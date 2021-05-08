@@ -1,5 +1,15 @@
 /* global jQuery */
-import { select, selectAll, on, trigger } from 'lib/dom'
+import {
+  select,
+  selectAll,
+  on,
+  trigger,
+  closest,
+  delegate,
+  addClass,
+  hasClass
+} from 'lib/dom'
+import { throttle } from 'lib/utils'
 import { customQuantity } from './woocommerce/quantity'
 import { widgetProductCategories } from './woocommerce/widget-product-categories'
 
@@ -22,31 +32,33 @@ if (checkoutPageTrigger && checkoutForm) {
 }
 
 const initImageHoverProductCard = () => {
-  const productEls = selectAll('.products > .product')
-  if (productEls && productEls.length) {
-    productEls.forEach(productEl => {
-      const contextEls = productEl.getElementsByTagName('noscript')
-      let loaded = false
-      let loading = false
+  delegate(
+    'mouseover',
+    throttle(e => {
+      const parentEl = closest('.product__inner', e.target)
+      if (hasClass('is-loaded', parentEl)) {
+        return
+      }
+
+      const imageHoverEl = parentEl ? select('.js-image-hover', parentEl) : null
+      const contextEls = parentEl
+        ? parentEl.getElementsByTagName('noscript')
+        : null
+
       if (!contextEls || !contextEls.length) {
         return false
       }
+
       const content = contextEls[0].textContent || contextEls[0].innerHTML
-      const parentEl = select('.js-image-hover', productEl)
-      on(
-        'mouseover',
-        () => {
-          if (!loaded && !loading) {
-            loading = true
-            parentEl.innerHTML = content
-            loaded = true
-            loading = false
-          }
-        },
-        productEl
-      )
-    })
-  }
+
+      if (imageHoverEl && content) {
+        imageHoverEl.innerHTML = content
+        addClass('is-loaded', parentEl)
+      }
+    }, 100),
+    '.product__inner',
+    document.body
+  )
 }
 
 const initBlocks = () => {

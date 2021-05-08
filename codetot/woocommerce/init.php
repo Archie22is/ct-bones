@@ -45,6 +45,8 @@ class Codetot_WooCommerce_Init {
 
     add_action('wp_enqueue_scripts', array($this, 'load_woocommerce_css'), 90);
     add_action('wp_enqueue_scripts', array($this, 'load_woocommerce_js'), 91);
+    add_action('wp_enqueue_scripts', array($this, 'plugin_assets'));
+
     add_action('wp_footer', array($this, 'fix_load_country_edit_address'), 90);
     add_filter('body_class', array($this, 'body_class'));
   }
@@ -180,6 +182,12 @@ class Codetot_WooCommerce_Init {
     $classes[] = 'has-product-card-style-' . esc_attr($product_card_style);
 
     return $classes;
+  }
+
+  public function plugin_assets() {
+    if (is_plugin_active('woocommerce-products-filter/index.php')) {
+      wp_enqueue_style('codetot-woof', get_template_directory_uri() . '/dynamic-assets/plugins/woof.css', array(), '1.0.0');
+    }
   }
 
   public function is_localhost()

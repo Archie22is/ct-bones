@@ -15,7 +15,22 @@ class Codetot_Woocommerce_Modal_Login {
 
   public function __construct()
   {
-    add_action('wp_footer', array($this, 'modal_login_block'));
+    $enable_popup = get_global_option('codetot_woocommerce_login_popup') ?? false;
+
+    if ($enable_popup) {
+      add_action('wp_footer', array($this, 'modal_login_block'));
+      add_action('codetot_header_account_icon', array($this, 'header_account_icon'));
+    }
+  }
+
+  public function header_account_icon() {
+    ob_start(); ?>
+    <button class="header__menu-icons__item header__menu-icons__link header__menu-icons__item--account" data-open-modal="modal-login">
+      <span class="header__menu-icons__icon">
+        <?php codetot_svg('user', true); ?>
+      </span>
+    </button>
+    <?php return ob_get_clean();
   }
 
   public function modal_login_block()

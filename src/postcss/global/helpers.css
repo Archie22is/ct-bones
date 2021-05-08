@@ -79,34 +79,18 @@
 }
 
 .section {
-  margin-top: 2em;
-
-  @media (--m) {
-    margin-top: 3em;
-  }
+  margin-top: var(--section-space);
 
   & + .section-bg {
-    margin-top: 2em;
-
-    @media (--m) {
-      margin-top: 3em;
-    }
+    margin-top: var(--section-space);
   }
 }
 
 .section-bg {
-  padding: 2em 0;
-
-  @media (--m) {
-    padding: 3em 0;
-  }
+  padding: var(--section-space) 0;
 
   & + .section {
-    margin-top: 2em;
-
-    @media (--m) {
-      margin-top: 3em;
-    }
+    margin-top: var(--section-space);
   }
 }
 

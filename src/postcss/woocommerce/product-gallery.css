@@ -9,8 +9,8 @@
 }
 
 .product-gallery__slider {
-  padding: 0 5px;
   width: 100%;
+  border: 1px solid var(--border);
 
   & .flickity-viewport {
     transition: height 0.3s;
