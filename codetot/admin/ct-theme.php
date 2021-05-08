@@ -318,6 +318,15 @@ class Codetot_CT_Theme_Settings
                         'name' => sprintf(__('Enable %s', 'ct-bones'), esc_html__('Topbar', 'ct-bones')),
                         'id'   => $this->prefix . 'header_topbar_enable',
                         'std' => 1
+                    ],
+                    [
+                      'type' => 'radio',
+                      'name' => sprintf(__('%s Layout', 'ct-bones'), esc_html__('Topbar', 'ct-bones')),
+                      'id'   => $this->prefix . 'topbar_layout',
+                      'options' => array(
+                        1 => sprintf(__('%s Column', 'ct-bones'), 1),
+                        2 => sprintf(__('%s Columns', 'ct-bones'), 2)
+                      )
                     ]
                 )
             )
