@@ -66,6 +66,24 @@ body.woocommerce-cart {
   }
 }
 
+.woocommerce .woocommerce-info.cart-empty {
+  @mixin large-text;
+
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 0;
+  color: var(--dark);
+  background: transparent;
+}
+
+.woocommerce .button.wc-backward {
+  @mixin button-style-primary;
+
+  text-align: center;
+  margin-top: 1em;
+  padding: 0.5em 2em;
+}
+
 .cart-collaterals {
   padding: 1em;
   background: var(--white);
