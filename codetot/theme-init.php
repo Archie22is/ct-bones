@@ -42,7 +42,7 @@ class Codetot_Theme_Init
 
   public function rename_default_template()
   {
-    return __('Basic Page', 'barrel-base');
+    return esc_html__('Basic Page', 'ct-bones');
   }
 
   public function theme_supports()
