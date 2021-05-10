@@ -326,3 +326,17 @@ ol.comment-list {
     }
   }
 }
+
+.product-reviews {
+  & .reviews_bar {
+    margin-top: 1em;
+  }
+
+  & .ywar_stars_value {
+    color: var(--primary);
+  }
+
+  & .ywar_review_row span {
+    color: var(--primary);
+  }
+}
