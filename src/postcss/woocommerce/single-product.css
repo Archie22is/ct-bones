@@ -496,6 +496,11 @@
   @media (--m) {
     display: block;
     width: 25%;
+    min-width: 240px;
+  }
+
+  @media (--ml) {
+    min-width: 280px;
   }
 }
 
