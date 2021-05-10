@@ -1,21 +1,3 @@
-body.single-product {
-  & .message-block {
-    padding: 1em 0;
-    background: var(--white);
-  }
-
-  & .message-block__container {
-    max-width: 100%;
-    padding: 0;
-  }
-
-  &.no-sidebar {
-    & .sidebar-section__block--sidebar {
-      display: none;
-    }
-  }
-}
-
 .single-product-top__grid {
   display: flex;
   flex-wrap: wrap;
