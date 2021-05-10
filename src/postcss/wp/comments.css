@@ -101,6 +101,7 @@
   }
 }
 
+p.comment-form-title,
 p.comment-form-author,
 p.comment-form-email,
 p.comment-form-url,
@@ -114,6 +115,7 @@ p.comment-form-comment {
   }
 }
 
+.comment-form-title,
 .comment-form-author,
 .comment-form-email,
 .comment-form-url {
@@ -322,5 +324,19 @@ ol.comment-list {
     & .comment-reply-link {
       text-decoration: underline;
     }
+  }
+}
+
+.product-reviews {
+  & .reviews_bar {
+    margin-top: 1em;
+  }
+
+  & .ywar_stars_value {
+    color: var(--primary);
+  }
+
+  & .ywar_review_row span {
+    color: var(--primary);
   }
 }

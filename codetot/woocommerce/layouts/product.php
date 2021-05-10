@@ -96,7 +96,7 @@ class Codetot_Woocommerce_Layout_Product
 
     remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
     remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50);
-    add_action('woocommerce_single_product_summary',  array($this, 'woocommerce_single_meta'), 6);
+    add_action('woocommerce_single_product_summary',  array($this, 'woocommerce_single_meta'), 35);
     add_action('woocommerce_single_product_summary',  array($this, 'woocommerce_single_meta_tag'), 40);
 
     //single-product-main
@@ -143,7 +143,7 @@ class Codetot_Woocommerce_Layout_Product
 
   public function breadcrumbs() {
     if (is_singular('product')) {
-      the_block('breadcrumbs');
+      woocommerce_breadcrumb();
     }
   }
 
