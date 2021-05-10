@@ -34,7 +34,10 @@ $social_links_html = get_block('social-links', array(
       <div class="<?php echo $container_class; ?> footer__container">
         <div class="grid footer__grid">
           <?php
+          // Two hooks to add more columns or rows to this grid
+          do_action('codetot_footer_before_footer_col_widgets');
           echo implode('', $widgets);
+          do_action('codetot_footer_after_footer_col_widgets');
           ?>
         </div>
       </div>
@@ -47,11 +50,9 @@ $social_links_html = get_block('social-links', array(
           <div class="grid__col footer__bottom-col footer__bottom-col--left">
             <div class="footer__copyright-text"><?php echo $footer_copyright; ?></div>
           </div>
-          <?php if ($hide_social_links === true && !empty($social_links_html)) : ?>
+          <?php if (isset($hide_social_links) && $hide_social_links && !empty($social_links_html)) : ?>
             <div class="grid__col footer__bottom-col footer__bottom-col--right">
-              <?php
-              echo $social_links_html;
-              ?>
+              <?php echo $social_links_html; ?>
             </div>
           <?php endif; ?>
         </div>
