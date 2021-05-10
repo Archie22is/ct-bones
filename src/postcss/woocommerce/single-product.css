@@ -485,11 +485,8 @@ body.single-product {
 }
 
 .single-product-sections {
-  margin-top: 2em;
-
-  @media (--ml) {
-    margin-top: 3em;
-  }
+  margin-top: var(--section-space);
+  margin-bottom: var(--section-space);
 }
 
 .single-product-sections__col--left {
