@@ -27,10 +27,20 @@ get_header();
       )); ?>
 
 			<?php
+      if (!class_exists('WooCommerce')) :
+
 			the_block('post-grid', array(
         'class' => 'post-grid--search',
         'query' => $wp_query
       ));
+
+      else :
+
+        the_block('product-grid', array(
+          'query' => $wp_query
+        ));
+
+      endif;
 
       the_block('pagination');
 
