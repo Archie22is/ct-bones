@@ -192,7 +192,7 @@ class Codetot_Woocommerce_Layout_Archive
 
   public function breadcrumbs() {
     if (is_shop() || is_product_category()) {
-      the_block('breadcrumbs');
+      woocommerce_breadcrumb();
     }
   }
 
