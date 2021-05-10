@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: CT Bones\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-07 04:03+0000\n"
-"PO-Revision-Date: 2021-05-08 16:06+0000\n"
-"Last-Translator: admin\n"
+"PO-Revision-Date: 2021-05-10 02:32+0000\n"
+"Last-Translator: \n"
 "Language-Team: Tiếng Việt\n"
 "Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.5.2; wp-5.6.1\n"
+"X-Loco-Version: 2.5.2; wp-5.7\n"
 "X-Domain: ct-bones"
 
 #: codetot/woocommerce/features/mini-cart.php:213
@@ -239,27 +239,27 @@ msgstr[1] ""
 
 #: codetot/helpers/metabox.php:116
 msgid "Company Address"
-msgstr ""
+msgstr "Địa chỉ công ty"
 
 #: codetot/helpers/metabox.php:126
 msgid "Company Email"
-msgstr ""
+msgstr "Địa chỉ email"
 
 #: codetot/helpers/metabox.php:131
 msgid "Company Google Maps Link"
-msgstr ""
+msgstr "Liên kết Google Maps của công ty"
 
 #: codetot/admin/ct-theme.php:311 codetot/helpers/metabox.php:121
 msgid "Company Hotline"
-msgstr ""
+msgstr "Đường dây nóng"
 
 #: codetot/admin/ct-data.php:75
 msgid "Company Information"
-msgstr ""
+msgstr "THÔNG TIN CÔNG TY"
 
 #: codetot/helpers/metabox.php:111
 msgid "Company Name"
-msgstr ""
+msgstr "Tên công ty"
 
 #: block-parts/header/navigation.php:25
 msgid "Configure Primary Menu"
@@ -370,7 +370,7 @@ msgstr "Hiển thị %s"
 #: codetot/admin/ct-theme.php:310
 #, php-format
 msgid "Display a \"%1$s\" from <a href=\"%2$s\">%3$s</a> settings."
-msgstr ""
+msgstr "Hiển thị \"%1$s\" từ mục cài đặt <a href=\"%2$s\">%3$s</a>"
 
 #: codetot/woocommerce/ct-theme.php:124
 msgid "Display a Facebook comment in each product page"
@@ -1169,6 +1169,8 @@ msgid ""
 "When visiting a Contact page, the direcction link will point user directly "
 "to app Google Maps."
 msgstr ""
+"Khi truy cập trang Liên hệ, liên kết hướng dẫn sẽ hướng người dùng trực tiếp "
+"đến ứng dụng Google Maps."
 
 #: codetot/admin/acf.php:162 codetot/helpers/acf.php:46
 #: codetot/helpers/acf.php:135 codetot/helpers/acf.php:144
