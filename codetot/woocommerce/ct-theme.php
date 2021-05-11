@@ -138,6 +138,25 @@ class Codetot_CT_Theme_WooCommerce_Settings
         'desc' => __('Display countdown in single product page if price has been scheduled.', 'ct-bones'),
         'id'   => $this->prefix . 'woocommerce_enable_countdown_price',
         'std'  => 0
+      ),
+      array(
+        'type' => 'select',
+        'name' => __('Display Guarantee List', 'ct-bones'),
+        'desc' => __('Display Guarantee ', 'ct-bones'),
+        'id'   => $this->prefix . 'woocommerce_enable_global_guarantee_list',
+        'options' => array(
+          'no' => __('No', 'ct-bones'),
+          'footer' => __('Footer', 'ct-bones'),
+          'header' => __('Header', 'ct-bones'),
+          'product-top-sidebar' => __('Product Sidebar - Right Small Column', 'ct-bones'),
+          'product-below-sidebar' => __('Product Sidebar - Bottom Right Column', 'ct-bones')
+        ),
+        'desc' => sprintf(
+          __('Display a "%1$s" from data in <a href="%2$s">%3$s</a>.', 'ct-bones'),
+          esc_html__('E-Commerce Guarantees', 'ct-bones'),
+          admin_url() . 'admin.php?page=ct-settings',
+          esc_html__('CT Settings', 'ct-bones')
+        )
       )
     );
 

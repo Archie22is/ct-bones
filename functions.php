@@ -43,6 +43,7 @@ require_once CODETOT_DIR . '/api.php';
 // Admin
 require_once CODETOT_ADMIN_DIR . '/init.php';
 require_once CODETOT_ADMIN_DIR . '/acf.php';
+require_once CODETOT_ADMIN_DIR . '/ct-settings.php';
 require_once CODETOT_ADMIN_DIR . '/ct-theme.php';
 require_once CODETOT_ADMIN_DIR . '/ct-data.php';
 require_once CODETOT_ADMIN_DIR . '/theme-sync.php';
@@ -76,6 +77,7 @@ if (class_exists('WooCommerce')) {
   include_once CODETOT_DIR . '/helpers/woocommerce.php';
 
   require_once CODETOT_DIR . '/woocommerce/init.php';
+  require_once CODETOT_DIR . '/woocommerce/ct-settings.php';
   require_once CODETOT_DIR . '/woocommerce/ct-theme.php';
 
   // Custom Layout
@@ -86,6 +88,7 @@ if (class_exists('WooCommerce')) {
   require_once CODETOT_DIR . '/woocommerce/features/quick-view.php';
   require_once CODETOT_DIR . '/woocommerce/features/viewed-products.php';
   require_once CODETOT_DIR . '/woocommerce/features/countdown-price.php';
+  require_once CODETOT_DIR . '/woocommerce/features/global-guarantee-list.php';
 
   require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
 
