@@ -105,3 +105,15 @@
     display: none;
   }
 }
+
+.video-responsive {
+  @mixin ratio 9/16;
+
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  & iframe {
+    @mixin abs-full;
+  }
+}

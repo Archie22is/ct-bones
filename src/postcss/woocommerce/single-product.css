@@ -64,6 +64,10 @@
 }
 
 .single-product-top {
+  @media (--s) {
+    margin-top: 1em;
+  }
+
   & .flex-active-slide {
     padding-bottom: 10px;
     text-align: center;
@@ -422,6 +426,8 @@
 }
 
 .single-product-meta {
+  margin-top: 0.5em;
+
   & .sku,
   & a {
     color: var(--primary);

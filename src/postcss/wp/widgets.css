@@ -99,6 +99,39 @@
   }
 }
 
+.widget_media_gallery {
+  & .gallery {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  & .gallery-icon {
+    padding: 0.25em 0.25em 0 0.25em;
+
+    & a {
+      display: block;
+    }
+  }
+
+  & .gallery-columns-2 {
+    & .gallery-item {
+      @mixin column-item 2, 0;
+    }
+  }
+
+  & .gallery-columns-3 {
+    & .gallery-item {
+      @mixin column-item 3, 0;
+    }
+  }
+
+  & .gallery-columns-4 {
+    & .gallery-item {
+      @mixin column-item 4, 0;
+    }
+  }
+}
+
 .widget--topbar {
   width: auto;
   margin-top: 0;

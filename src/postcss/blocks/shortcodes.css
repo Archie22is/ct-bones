@@ -1,0 +1,57 @@
+.widget .ul.contact-shortcode,
+ul.contact-shortcode {
+  @mixin list-reset;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  & li.contact-shortcode__item {
+    display: flex;
+    margin-right: 1em;
+    align-items: center;
+
+    & a {
+      display: flex;
+      align-items: center;
+      color: var(--dark);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+
+  & .contact-shortcode__content {
+    font-size: var(--font-small);
+  }
+}
+
+.contact-shortcode__icon {
+  @mixin icon 20px;
+
+  display: flex;
+  margin-right: 0.25em;
+}
+
+.widget a.cart-shortcode,
+a.cart-shortcode {
+  position: relative;
+  display: inline-flex;
+  color: var(--dark);
+}
+
+.cart-shortcode__count {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: inline-block;
+  color: var(--white);
+  background-color: var(--primary);
+  border-radius: 50%;
+  text-align: center;
+  width: 14px;
+  height: 14px;
+  font-size: 10px;
+  line-height: 14px;
+}
