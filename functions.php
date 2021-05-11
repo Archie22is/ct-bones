@@ -76,6 +76,7 @@ if (class_exists('WooCommerce')) {
   include_once CODETOT_DIR . '/helpers/woocommerce.php';
 
   require_once CODETOT_DIR . '/woocommerce/init.php';
+  require_once CODETOT_DIR . '/woocommerce/ct-settings.php';
   require_once CODETOT_DIR . '/woocommerce/ct-theme.php';
 
   // Custom Layout
@@ -98,4 +99,5 @@ if (class_exists('WooCommerce')) {
   });
 }
 
+require_once CODETOT_ADMIN_DIR . '/ct-settings.php';
 require_once CODETOT_DIR . '/optimize.php';
