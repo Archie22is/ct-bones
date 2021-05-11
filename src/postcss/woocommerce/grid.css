@@ -5,7 +5,7 @@
   text-align: center;
 
   & .product__inner {
-    height: 100%;
+    flex: 1 0 auto;
 
     &:hover {
       & .product__image-hover {
@@ -57,7 +57,7 @@
 }
 
 .products .product-card {
-  height: 100%;
+  flex: 1 0 auto;
 }
 
 .products > .product-category {
