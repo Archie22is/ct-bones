@@ -156,8 +156,8 @@ class Codetot_WooCommerce_Global_Guarantee_List
     $guarantee_list_section_settings = apply_filters('codetot_woocommerce_global_guarantee_list_settings', [
       'class' => 'guarantee-list--' . $this->position,
       'layout' => 'row',
-      'content_alignment' => 'center',
-      'background_type' => 'dark',
+      'content_alignment' => 'left',
+      'background_type' => 'light',
       'columns' => count($data)
     ]);
 
