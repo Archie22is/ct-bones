@@ -55,7 +55,7 @@ class Codetot_CT_Theme_Settings
                 'general'     => __('General', 'ct-bones'),
                 'typography'  => __('Typography', 'ct-bones'),
                 'layout'      => __('Layout', 'ct-bones'),
-                'header'      => __('Header', ' ct-theme'),
+                'header'      => __('Header', 'ct-bones'),
                 'footer'      => __('Footer', 'ct-bones'),
                 'addons'      => __('Addons', 'ct-bones')
             )),
