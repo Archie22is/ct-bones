@@ -258,6 +258,7 @@
   transition: all 0.3s ease-in-out;
   z-index: 1;
   transform: translateX(110%);
+  background: var(--white);
 }
 
 .product__image-wrapper {
