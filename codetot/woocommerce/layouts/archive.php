@@ -370,7 +370,7 @@ class Codetot_Woocommerce_Layout_Archive
         ));
         $image_html = ob_get_clean();
         ?>
-      <div class="product__image-hover-wrapper js-image-hover">
+      <div class="product__image-hover-wrapper">
         <?php $image_html = str_replace('srcset="', 'data-sizes="auto" data-srcset="', $image_html); echo $image_html; ?>
       </div>
     <?php
