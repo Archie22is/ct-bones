@@ -55,7 +55,7 @@
   border: 2px solid var(--gray);
   transition: all 0.3s;
 
-  @media (--xs) {
+  @media (--sm) {
     width: calc(20% - 10px);
   }
 
