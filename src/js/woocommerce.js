@@ -1,10 +1,4 @@
-import {
-  select,
-  selectAll,
-  on,
-  trigger
-
-} from 'lib/dom'
+import { select, selectAll, on, trigger } from 'lib/dom'
 import { customQuantity } from './woocommerce/quantity'
 import { widgetProductCategories } from './woocommerce/widget-product-categories'
 
