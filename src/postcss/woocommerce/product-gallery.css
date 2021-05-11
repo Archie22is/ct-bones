@@ -75,7 +75,7 @@
     opacity: 1;
     border-color: var(--primary);
 
-    .product-gallery__slider-nav-image {
+    & .product-gallery__slider-nav-image {
       @mixin fade-in;
     }
   }
