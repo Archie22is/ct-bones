@@ -29,6 +29,7 @@ $social_links_html = get_block('social-links', array(
 ));
 ?>
 <footer class="<?php echo $footer_class; ?>" role="contentinfo">
+  <?php do_action('codetot_footer_row_top'); ?>
   <?php if (!empty($widgets)) : ?>
     <div class="footer__top">
       <div class="<?php echo $container_class; ?> footer__container">
@@ -43,6 +44,7 @@ $social_links_html = get_block('social-links', array(
       </div>
     </div>
   <?php endif; ?>
+  <?php do_action('codetot_footer_row_middle'); ?>
   <?php if (!$remove_footer_copyright && !empty($footer_copyright) ): ?>
     <div class="footer__bottom">
       <div class="<?php echo $container_class; ?> footer__container">
@@ -59,4 +61,5 @@ $social_links_html = get_block('social-links', array(
       </div>
     </div>
   <?php endif; ?>
+  <?php do_action('codetot_footer_row_bottom'); ?>
 </footer>
