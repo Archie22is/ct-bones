@@ -369,10 +369,10 @@ class Codetot_Woocommerce_Layout_Archive
           'class' => 'product__image-hover lazyload'
         ));
         $image_html = ob_get_clean();
-        $image_html = str_replace('srcset="', 'data-sizes="auto" data-srcset="', $image_html);
-        echo $image_html;
         ?>
-      <div class="product__image-hover-wrapper js-image-hover"></div>
+      <div class="product__image-hover-wrapper js-image-hover">
+        <?php $image_html = str_replace('srcset="', 'data-sizes="auto" data-srcset="', $image_html); echo $image_html; ?>
+      </div>
     <?php
     endif;
   }
