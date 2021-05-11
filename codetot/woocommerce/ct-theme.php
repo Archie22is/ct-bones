@@ -142,7 +142,6 @@ class Codetot_CT_Theme_WooCommerce_Settings
       array(
         'type' => 'select',
         'name' => __('Display Guarantee List', 'ct-bones'),
-        'desc' => __('Display Guarantee ', 'ct-bones'),
         'id'   => $this->prefix . 'woocommerce_enable_global_guarantee_list',
         'options' => array(
           'no' => __('No', 'ct-bones'),
