@@ -318,9 +318,26 @@
 .product__meta-inner {
   & .price {
     font-weight: var(--font-bold);
+    color: var(--primary);
+
+    & del {
+      color: var(--dark);
+      font-weight: var(--font-normal);
+      opacity: 0.75;
+    }
 
     @media (--m) {
       display: inline-block;
+    }
+
+    & .product-price {
+      display: inline-flex;
+      flex-wrap: wrap;
+      flex-direction: row-reverse;
+
+      & del {
+        margin-left: 0.5em;
+      }
     }
   }
 
