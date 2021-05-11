@@ -148,21 +148,21 @@ class Codetot_CT_Theme_Settings
     public function register_layout_settings_fields($meta_boxes)
     {
         $default_layouts = apply_filters('codetot_layout_settings', [
-          __('Category', 'ct-bones'),
-          __('Post', 'ct-bones'),
-          __('Page', 'ct-bones')
+          'category' => __('Category', 'ct-bones'),
+          'post' => __('Post', 'ct-bones'),
+          'page' => __('Page', 'ct-bones')
         ]
         );
-        $layout_fields = array_map(function ($layout_name) {
-            return array(
-                'name' => sprintf(__('%s Layout', 'ct-bones'), $layout_name),
-                'id'   => $this->prefix . str_replace('-', '_', sanitize_title_with_dashes($layout_name)) . '_layout',
-                'type' => 'image_select',
-                'class' => 'codetot-image-icon',
-                'columns' => apply_filters('codetot_layout_settings_column', 3),
-                'options' => codetot_sidebar_layouts()
-            );
-        }, $default_layouts);
+        foreach($default_layouts as $key => $label) {
+          $layout_fields[] = array(
+            'name' => sprintf(__('%s Layout', 'ct-bones'), $label),
+            'id'   => $this->prefix . str_replace('-', '_', $key) . '_layout',
+            'type' => 'image_select',
+            'class' => 'codetot-image-icon',
+            'columns' => apply_filters('codetot_layout_settings_column', 3),
+            'options' => codetot_sidebar_layouts()
+          );
+        }
 
         $layout_fields = array_merge(
             array(

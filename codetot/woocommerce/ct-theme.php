@@ -158,9 +158,9 @@ class Codetot_CT_Theme_WooCommerce_Settings
   public function woocommerce_sidebar_settings($layouts)
   {
     return array_merge($layouts, array(
-      __('Product', 'ct-bones'),
-      __('Shop', 'ct-bones'),
-      __('Product Category', 'ct-bones')
+      'product' => __('Product', 'ct-bones'),
+      'shop' => __('Shop', 'ct-bones'),
+      'product_category' => __('Product Category', 'ct-bones')
     ));
   }
 }
