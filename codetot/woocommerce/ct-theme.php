@@ -114,7 +114,6 @@ class Codetot_CT_Theme_WooCommerce_Settings
       array(
         'type' => 'switch',
         'name' => __('Admin: Hide sticky bar when editing products', 'ct-bones'),
-        'desc' => __('Display a floating product bar when visiting a product page with price and add to cart button.', 'ct-bones'),
         'id'   => $this->prefix . 'woocommerce_hide_sticky_bar_editing_products',
         'std'  => 1
       ),

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: CT Bones\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-07 04:03+0000\n"
-"PO-Revision-Date: 2021-05-10 02:32+0000\n"
+"PO-Revision-Date: 2021-05-11 14:16+0000\n"
 "Last-Translator: \n"
 "Language-Team: Tiếng Việt\n"
 "Language: vi\n"
@@ -21,14 +21,6 @@ msgstr ""
 msgid "%d"
 msgid_plural "%d"
 msgstr[0] "%d"
-msgstr[1] ""
-
-#. number of items in the mini cart.
-#: inc/woocommerce.php:141
-#, php-format
-msgid "%d item"
-msgid_plural "%d items"
-msgstr[0] "%d sản phẩm"
 msgstr[1] ""
 
 #: codetot/helpers/metabox.php:27 codetot/helpers/metabox.php:34
@@ -91,13 +83,13 @@ msgstr "Số tài khoản"
 msgid "Add Item"
 msgstr ""
 
-#: codetot/theme-init.php:148
+#: codetot/theme-init.php:149
 msgid "Add widgets to display in footer column."
-msgstr ""
+msgstr "Thêm widget để hiện ở cột cuối trang."
 
-#: codetot/theme-init.php:166
+#: codetot/theme-init.php:167
 msgid "Add widgets to display in topbar column."
-msgstr ""
+msgstr "Thêm widget để hiện ở topbar trên cùng."
 
 #: codetot/admin/ct-theme.php:60 codetot/admin/ct-theme.php:396
 msgid "Addons"
@@ -135,7 +127,7 @@ msgstr "Trở lại trang Đăng nhập"
 msgid "Bank name"
 msgstr "Tên ngân hàng"
 
-#: codetot/theme-init.php:45
+#: codetot/theme-init.php:46
 msgid "Basic Page"
 msgstr "Trang cơ bản"
 
@@ -168,7 +160,7 @@ msgstr "Duyệt:"
 msgid "Call us"
 msgstr "Gọi chúng tôi"
 
-#: block-parts/header/cart-icon.php:14 codetot/admin/ct-theme.php:302
+#: codetot/admin/ct-theme.php:302
 msgid "Cart"
 msgstr "Giỏ hàng"
 
@@ -180,7 +172,7 @@ msgstr "Danh mục bài viết"
 msgid "Category Layout"
 msgstr "Bố cục  Danh mục bài viết"
 
-#: codetot/theme-init.php:135
+#: codetot/theme-init.php:136
 msgid "Category Sidebar"
 msgstr "Cột bên danh mục bài viết"
 
@@ -316,6 +308,11 @@ msgstr "Code Tốt - Bones"
 msgid "CT Data"
 msgstr "CT Data"
 
+#: codetot/admin/ct-settings.php:36 codetot/admin/ct-settings.php:37
+#: codetot/admin/ct-settings.php:52 codetot/woocommerce/ct-theme.php:157
+msgid "CT Settings"
+msgstr ""
+
 #: codetot/admin/ct-theme.php:48
 msgid "CT Theme"
 msgstr "CT Theme"
@@ -372,6 +369,11 @@ msgstr "Hiển thị %s"
 msgid "Display a \"%1$s\" from <a href=\"%2$s\">%3$s</a> settings."
 msgstr "Hiển thị \"%1$s\" từ mục cài đặt <a href=\"%2$s\">%3$s</a>"
 
+#: codetot/woocommerce/ct-theme.php:154
+#, php-format
+msgid "Display a \"%1$s\" from data in <a href=\"%2$s\">%3$s</a>."
+msgstr "Hiển thị nội dung \"%1$s\" từ dữ liệu tại <a href=\"%2$s\">%3$s</a>."
+
 #: codetot/woocommerce/ct-theme.php:124
 msgid "Display a Facebook comment in each product page"
 msgstr "Hiển thị comment Facebook trong mỗi trang sản phẩm"
@@ -402,6 +404,10 @@ msgstr ""
 "Hiển thị đếm countdown trong trang Sản phẩm nếu đặt giá ưu đãi trong khoảng "
 "thời gian xác định."
 
+#: codetot/woocommerce/ct-theme.php:144
+msgid "Display Guarantee List"
+msgstr "Hiện thông tin cam kết"
+
 #: codetot/woocommerce/ct-theme.php:131
 msgid "Display product star rating in all list."
 msgstr ""
@@ -410,6 +416,10 @@ msgstr ""
 
 #: codetot/widgets/ct-icon-box.php:9
 msgid "Display the guarantee list widget."
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:155
+msgid "E-Commerce Guarantees"
 msgstr ""
 
 #. %s: Name of current post. Only visible to screen readers
@@ -468,6 +478,7 @@ msgid "Font Size Scale"
 msgstr "Tỷ lệ font chữ"
 
 #: codetot/admin/ct-theme.php:59 codetot/admin/ct-theme.php:383
+#: codetot/woocommerce/ct-theme.php:148
 msgid "Footer"
 msgstr "Cuối trang"
 
@@ -475,7 +486,7 @@ msgstr "Cuối trang"
 msgid "Footer Background Color"
 msgstr "Màu nền cuối trang"
 
-#: codetot/theme-init.php:147
+#: codetot/theme-init.php:148
 #, php-format
 msgid "Footer Column #%s"
 msgstr "Cột cuối trang #%s"
@@ -513,7 +524,7 @@ msgstr "API Key của Google Maps"
 msgid "Gray"
 msgstr "Xám"
 
-#: codetot/admin/ct-theme.php:249
+#: codetot/admin/ct-theme.php:249 codetot/woocommerce/ct-theme.php:149
 msgid "Header"
 msgstr "Đầu trang"
 
@@ -600,7 +611,7 @@ msgid ""
 msgstr ""
 "Không có nội dung nào ở địa chỉ này. Hãy thử tìm kiếm hay liên khác khác?"
 
-#: search.php:50
+#: search.php:61
 #, php-format
 msgid "It seems we can't find any %s matching your search keyword."
 msgstr "Chúng tôi không thể tìm thấy %s theo từ khóa của bạn."
@@ -717,6 +728,10 @@ msgstr "F"
 msgid "New Window/Tab"
 msgstr "Cửa sổ/Tab mới"
 
+#: codetot/woocommerce/ct-theme.php:147
+msgid "No"
+msgstr "Không"
+
 #: codetot/helpers/woocommerce.php:55
 msgid "No attribute was defined for query."
 msgstr ""
@@ -729,7 +744,7 @@ msgstr "Chưa có form nào."
 msgid "No products in the cart."
 msgstr "Chưa có sản phẩm nào trong giỏ hàng"
 
-#: search.php:45
+#: search.php:56
 #, php-format
 msgid "No Result for keyword %s"
 msgstr "Không có kết quả nào cho từ khóa %s"
@@ -782,7 +797,7 @@ msgstr "Class CSS của trang"
 msgid "Page Settings"
 msgstr "Thiết lập trang"
 
-#: codetot/theme-init.php:124
+#: codetot/theme-init.php:125
 msgid "Page Sidebar"
 msgstr "Cột bên trang"
 
@@ -833,7 +848,7 @@ msgctxt "post date"
 msgid "Posted on %s"
 msgstr "Đăng vào %s"
 
-#: codetot/theme-init.php:113
+#: codetot/theme-init.php:114
 msgid "Post Sidebar"
 msgstr "Cột bên trang bài viết"
 
@@ -848,11 +863,11 @@ msgstr "Preset %s"
 msgid "Primary"
 msgstr "Chính"
 
-#: codetot/theme-init.php:63
+#: codetot/theme-init.php:64
 msgid "Primary Menu"
 msgstr "Menu chính"
 
-#: codetot/woocommerce/ct-theme.php:161
+#: codetot/woocommerce/ct-theme.php:179
 msgid "Product"
 msgstr "Sản phẩm"
 
@@ -860,7 +875,7 @@ msgstr "Sản phẩm"
 msgid "Product Card Style"
 msgstr "Style sản phẩm trong danh mục"
 
-#: codetot/woocommerce/ct-theme.php:163
+#: codetot/woocommerce/ct-theme.php:181
 msgid "Product Category"
 msgstr "Danh mục sản phẩm"
 
@@ -868,7 +883,7 @@ msgstr "Danh mục sản phẩm"
 msgid "Product Category Sidebar"
 msgstr "Cột bên danh mục sản phẩm"
 
-#: codetot/woocommerce/layouts/archive.php:392
+#: codetot/woocommerce/layouts/archive.php:390
 msgid "Product Image"
 msgstr "Ảnh sản phẩm"
 
@@ -879,6 +894,14 @@ msgstr "Hiển thị ảnh sản phẩm"
 #: codetot/woocommerce/init.php:67
 msgid "Product Sidebar"
 msgstr "Cột bên trang sản phẩm"
+
+#: codetot/woocommerce/ct-theme.php:151
+msgid "Product Sidebar - Bottom Right Column"
+msgstr "Cột bên sản phẩm - Phía dưới"
+
+#: codetot/woocommerce/ct-theme.php:150
+msgid "Product Sidebar - Right Small Column"
+msgstr "Cột bên sản phẩm - Phía trên bên phải"
 
 #: codetot/woocommerce/ct-theme.php:130
 msgid "Product Star Rating in List"
@@ -943,7 +966,7 @@ msgstr "Ưu đãi kết thúc sau"
 msgid "Same Window/Tab"
 msgstr "Cùng cửa sổ/tab"
 
-#: block-parts/header/search-icon.php:6 codetot/admin/ct-theme.php:297
+#: codetot/admin/ct-theme.php:297
 msgid "Search"
 msgstr "Tìm"
 
@@ -957,7 +980,7 @@ msgstr "Tìm sản phẩm&hellip;"
 
 #. %s: search query.
 #. %s is the search query.
-#: search.php:26 codetot/features/breadcrumbs.php:255
+#: search.php:27 codetot/features/breadcrumbs.php:255
 #, php-format
 msgid "Search Results for: %s"
 msgstr "Kết quả tìm kiếm cho: %s"
@@ -992,7 +1015,7 @@ msgid "Display company social links in left window."
 msgstr ""
 "Hiển thị danh sách các icon và liên kết MXH ở bên trái  cửa sổ màn hình."
 
-#: codetot/woocommerce/ct-theme.php:162
+#: codetot/woocommerce/ct-theme.php:180
 msgid "Shop"
 msgstr "Cửa hàng"
 
@@ -1057,7 +1080,7 @@ msgstr "Cửa hàng"
 msgid "Style %s"
 msgstr "Style %s"
 
-#: searchform.php:5 codetot/theme-init.php:212
+#: searchform.php:5 codetot/theme-init.php:213
 msgctxt "submit button"
 msgid "Search"
 msgstr "Tìm"
@@ -1117,7 +1140,7 @@ msgstr "Cột bên - Bên trên trang sản phẩm"
 msgid "Topbar"
 msgstr "Topbar"
 
-#: codetot/theme-init.php:165
+#: codetot/theme-init.php:166
 #, php-format
 msgid "Topbar Column #%s"
 msgstr "Cột bên Topbar #%s"
@@ -1137,10 +1160,6 @@ msgstr "Sử dụng Google Maps API để tạo bản đồ tương tác với n
 #: codetot/woocommerce/init.php:110
 msgid "View product"
 msgstr "Xem sản phẩm"
-
-#: inc/woocommerce.php:137
-msgid "View your shopping cart"
-msgstr "Xem giỏ hàng của bạn"
 
 #: blocks/social-links.php:22
 #, php-format
