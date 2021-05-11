@@ -120,11 +120,11 @@ class Codetot_Woocommerce_Layout_Cart extends Codetot_Woocommerce_Layout
     global $woocommerce;
     ob_start();
     ?>
-    <span class="header__menu-icons__count">
+    <span class="cart-shortcode__count">
       <?php echo sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'ct-bones'), $woocommerce->cart->cart_contents_count);?>
     </span>
     <?php
-    $fragments['.header__menu-icons__count'] = ob_get_clean();
+    $fragments['.cart-shortcode__count'] = ob_get_clean();
     return $fragments;
   }
 }
