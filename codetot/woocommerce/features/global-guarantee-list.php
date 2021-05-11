@@ -153,11 +153,15 @@ class Codetot_WooCommerce_Global_Guarantee_List
 
   public function render_section() {
     $data = get_field('guarantee_list', 'options');
+    $footer_background = get_global_option('codetot_footer_background_color') ?? 'dark';
+
+    $class = 'section-bg guarantee-list--' . $this->position;
+    $class .= codetot_is_dark_background($footer_background) ? ' bg-light is-light-contract' : ' bg-dark is-dark-contract';
+
     $guarantee_list_section_settings = apply_filters('codetot_woocommerce_global_guarantee_list_settings', [
-      'class' => 'guarantee-list--' . $this->position,
+      'class' => $class,
       'layout' => 'row',
       'content_alignment' => 'left',
-      'background_type' => 'light',
       'columns' => count($data)
     ]);
 
