@@ -7,6 +7,7 @@ ul.contact-shortcode {
 
   & li.contact-shortcode__item {
     display: flex;
+    margin-top: 0;
     margin-right: 1em;
     align-items: center;
 
@@ -23,7 +24,7 @@ ul.contact-shortcode {
   }
 
   & .contact-shortcode__content {
-    font-size: var(--font-small);
+    font-size: 0.85rem;
   }
 }
 

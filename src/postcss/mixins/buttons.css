@@ -18,6 +18,7 @@
 @define-mixin button-default {
   display: inline-block;
   height: auto;
+  min-height: 44px;
   padding: 8px 12px;
   font-size: 1rem;
   text-align: center;
@@ -26,10 +27,12 @@
 
 @define-mixin button-large {
   padding: 12px 25px;
+  min-height: 48px;
 }
 
 @define-mixin button-small {
   padding: 8px 15px;
+  min-height: 40px;
 }
 
 @define-mixin button-default {
