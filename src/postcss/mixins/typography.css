@@ -149,11 +149,6 @@
     @mixin large;
   }
 
-  & iframe {
-    max-width: 100% !important;
-    height: auto;
-  }
-
   & .gform_wrapper {
     margin-top: 1em;
   }

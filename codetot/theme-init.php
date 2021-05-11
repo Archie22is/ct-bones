@@ -37,7 +37,8 @@ class Codetot_Theme_Init
 
     add_filter('walker_nav_menu_start_el', array($this, 'add_arrow_to_primary_menu'), 10, 4);
     add_filter('codetot_search_button', array($this, 'search_button_icon'));
-    add_filter( 'default_page_template_title', array($this, 'rename_default_template' ) );
+    add_filter('default_page_template_title', array($this, 'rename_default_template'));
+    add_filter('embed_oembed_html', array($this,'wrap_embeds'), 10, 4);
   }
 
   public function rename_default_template()
@@ -212,6 +213,10 @@ class Codetot_Theme_Init
       esc_attr_x( 'Search', 'submit button', 'ct-bones' ),
       codetot_svg('search', false)
     );
+  }
+
+  public function wrap_embeds( $html, $url, $attr, $post_id ) {
+    return '<div class="video-responsive">' . $html . '</div>';
   }
 }
 
