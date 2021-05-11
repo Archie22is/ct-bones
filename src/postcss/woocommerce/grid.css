@@ -5,7 +5,7 @@
   text-align: center;
 
   & .product__inner {
-    height: 100%;
+    flex: 1 0 auto;
 
     &:hover {
       & .product__image-hover {
@@ -57,7 +57,7 @@
 }
 
 .products .product-card {
-  height: 100%;
+  flex: 1 0 auto;
 }
 
 .products > .product-category {
@@ -318,9 +318,26 @@
 .product__meta-inner {
   & .price {
     font-weight: var(--font-bold);
+    color: var(--primary);
+
+    & del {
+      color: var(--dark);
+      font-weight: var(--font-normal);
+      opacity: 0.75;
+    }
 
     @media (--m) {
       display: inline-block;
+    }
+
+    & .product-price {
+      display: inline-flex;
+      flex-wrap: wrap;
+      flex-direction: row-reverse;
+
+      & del {
+        margin-left: 0.5em;
+      }
     }
   }
 
