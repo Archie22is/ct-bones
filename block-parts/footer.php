@@ -3,9 +3,9 @@
 $container_class = codetot_site_container();
 $columns = get_global_option('codetot_footer_columns') ? str_replace('-columns', '', get_global_option('codetot_footer_columns')) : 3;
 $footer_background = get_global_option('codetot_footer_background_color') ?? 'dark';
-$remove_footer_copyright = get_global_option('codetot_remove_theme_copyright') ?? false;
+$remove_footer_copyright = get_global_option('codetot_settings_remove_theme_copyright') ?? false;
 $footer_copyright = codetot_get_footer_copyright();
-$hide_social_links = get_global_option('codetot_footer_hide_social_links') ?? false;
+$hide_social_links = get_global_option('codetot_settings_footer_hide_social_links') ?? false;
 
 $footer_class = 'footer';
 $footer_class .= !empty($footer_background) ? ' bg-' . esc_attr($footer_background) : ' bg-dark';
