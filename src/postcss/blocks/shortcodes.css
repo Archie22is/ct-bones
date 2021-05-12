@@ -22,9 +22,14 @@ ul.contact-shortcode {
       }
     }
   }
+}
 
-  & .contact-shortcode__content {
-    font-size: 0.85rem;
+.header-topbar {
+  & .widget .ul.contact-shortcode,
+  & ul.contact-shortcode {
+    & .contact-shortcode__content {
+      font-size: 0.85rem;
+    }
   }
 }
 
