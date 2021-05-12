@@ -86,7 +86,7 @@ class Codetot_Woocommerce_Layout_Account
 
   public function login_title()
   {
-    echo '<h1 class="h2 align-c page-block__title">' . esc_html__('My Account') . '</h1>';
+    echo '<h1 class="h2 align-c page-block__title">' . esc_html__('My account', 'woocommerce') . '</h1>';
   }
 
   public function reset_password_title()
