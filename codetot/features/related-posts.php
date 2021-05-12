@@ -141,7 +141,8 @@ class Codetot_Related_Posts
       the_block('post-grid', array(
         'class' => $class,
         'title' => esc_html__('Related posts', 'ct-bones'),
-        'query' => $post_query
+        'query' => $post_query,
+        'card_style' => get_global_option('codetot_post_card_style') ?? 'style-1'
       ));
     }
   }
