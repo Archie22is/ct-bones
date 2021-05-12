@@ -192,6 +192,7 @@
 
 .woocommerce-loop-product__title {
   margin-top: 0.25em;
+  margin-bottom: 0.5em;
   font-size: 1rem;
   font-weight: var(--font-normal);
 }
@@ -322,6 +323,7 @@
     color: var(--primary);
 
     & del {
+      margin-right: 0.5em;
       color: var(--dark);
       font-weight: var(--font-normal);
       opacity: 0.75;
@@ -329,16 +331,6 @@
 
     @media (--m) {
       display: inline-block;
-    }
-
-    & .product-price {
-      display: inline-flex;
-      flex-wrap: wrap;
-      flex-direction: row-reverse;
-
-      & del {
-        margin-left: 0.5em;
-      }
     }
   }
 
