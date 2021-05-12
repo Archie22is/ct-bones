@@ -39,7 +39,7 @@ $search_form_button = get_block('button', array(
     </div>
   </div>
   <?php if (!$disable_menu) : ?>
-    <div class="header__row header__row--navigation">
+    <div class="header__row header__row--navigation js-sticky">
       <div class="<?php echo $container; ?> header__container">
         <div class="grid header__grid">
           <?php the_block_part('header/navigation'); ?>
