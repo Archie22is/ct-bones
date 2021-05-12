@@ -26,7 +26,7 @@ $has_woocommerce = class_exists('WooCommerce');
       </div>
     </div>
   </div>
-  <div class="header__row">
+  <div class="header__row js-sticky">
     <div class="<?php echo $container; ?> header__container">
       <div class="grid header__grid">
         <?php
