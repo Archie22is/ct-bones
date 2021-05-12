@@ -21,7 +21,9 @@ get_header();
 			the_block('post-grid', array(
         'class' => 'post-grid--archive',
         'display_meta' => true,
-        'query' => $wp_query
+        'query' => $wp_query,
+        'card_style' => get_global_option('codetot_post_card_style') ?? 'style-1',
+        'columns' => get_global_option('codetot_category_column_number') ?? '3',
       ));
 
       the_block('pagination');
