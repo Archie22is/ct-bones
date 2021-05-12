@@ -135,10 +135,7 @@ class Codetot_Related_Posts
     $post_args = $this->get_query_args();
 
     $post_query = new WP_Query($post_args);
-
-    $post_layout = get_global_option('codetot_post_layout') ?? 'no-sidebar';
-    $class = 'post-grid--related-posts';
-    $class .= $post_layout === 'no-sidebar' ? ' default-section--no-container' : '';
+    $class = 'post-grid--related-posts default-section--no-container';
 
     if ($post_query->have_posts()) {
       the_block('post-grid', array(

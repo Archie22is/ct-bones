@@ -19,3 +19,4 @@ function codetot_get_category_column_number() {
 function codetot_get_category_post_card_style() {
   return get_global_option('post_card_style') ?? 'style-1';
 }
+

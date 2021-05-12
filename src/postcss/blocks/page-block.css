@@ -57,6 +57,10 @@
   & .page-block__col--sidebar {
     display: none;
   }
+
+  & .page-block__col--main {
+    width: 100%;
+  }
 }
 
 .page-block__bottom {
