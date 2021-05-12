@@ -23,7 +23,6 @@ export default el => {
 
   if (enableSticky) {
     window.addEventListener('scroll', () => {
-      console.log($(window).scrollTop())
       if ($(window).scrollTop() > top) {
         const currentScroll = window.pageYOffset
         if (currentScroll <= 0) {
