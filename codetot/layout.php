@@ -31,7 +31,7 @@ class Codetot_Theme_Layout
   private function __construct()
   {
     add_action( 'codetot_sidebar', 'codetot_get_sidebar', 10 );
-
+    add_action('codetot_after_content_post', array($this, 'codetot_share_button'), 5);
     if (
       (
         is_page() &&
@@ -130,9 +130,9 @@ class Codetot_Theme_Layout
     add_action('codetot_after_header', function() use ($sidebar_layout) {
       the_block('breadcrumbs');
 
-      if ($sidebar_layout !== 'no-sidebar') {
+
         echo $this->page_block_open('page-block--page ' . $sidebar_layout, false);
-      }
+
     }, 10);
 
     add_action('codetot_before_sidebar', function() {
@@ -142,6 +142,16 @@ class Codetot_Theme_Layout
     add_action('codetot_footer', function() {
       echo $this->page_block_close();
     }, 10);
+  }
+
+  public function codetot_share_button() {
+    global $post;
+
+    the_block('social-links', array(
+      'class' => 'social-links--share',
+      'label' => __('Share', 'ct-theme'),
+      'items' => codetot_get_share_post_links($post)
+    ));
   }
 
   public function generate_comments() {
