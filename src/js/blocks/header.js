@@ -31,15 +31,18 @@ export default el => {
           return
         }
 
-        if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) {
-        // down
+        if (
+          currentScroll > lastScroll &&
+          !body.classList.contains(scrollDown)
+        ) {
+          // down
           removeClass(scrollUp, body)
           addClass(scrollDown, body)
         } else if (
           currentScroll < lastScroll &&
-        body.classList.contains(scrollDown)
+          body.classList.contains(scrollDown)
         ) {
-        // up
+          // up
           removeClass(scrollDown, body)
           addClass(scrollUp, body)
         }
