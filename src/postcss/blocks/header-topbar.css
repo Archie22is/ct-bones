@@ -36,4 +36,12 @@
 .header-topbar__content {
   padding-top: 10px;
   padding-bottom: 10px;
+
+  & .widget_nav_menu {
+    & .menu-item-has-children {
+      & .sub-menu {
+        display: none;
+      }
+    }
+  }
 }
