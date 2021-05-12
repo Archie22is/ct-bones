@@ -47,6 +47,10 @@ a.cart-shortcode {
   color: var(--dark);
 }
 
+.cart-shortcode__inner {
+  display: flex;
+}
+
 .cart-shortcode__count {
   position: absolute;
   right: 0;
