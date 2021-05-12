@@ -63,6 +63,7 @@
 .post-card__image {
   @mixin ratio 2/3;
 
+  width: 100%;
   overflow: hidden;
 
   & .image__img {
