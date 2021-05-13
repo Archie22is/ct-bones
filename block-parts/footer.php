@@ -52,7 +52,7 @@ $social_links_html = get_block('social-links', array(
           <div class="grid__col footer__bottom-col footer__bottom-col--left">
             <div class="footer__copyright-text"><?php echo $footer_copyright; ?></div>
           </div>
-          <?php if (isset($hide_social_links) && $hide_social_links && !empty($social_links_html)) : ?>
+          <?php if (!$hide_social_links && !empty($social_links_html)) : ?>
             <div class="grid__col footer__bottom-col footer__bottom-col--right">
               <?php echo $social_links_html; ?>
             </div>
