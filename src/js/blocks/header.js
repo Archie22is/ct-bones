@@ -19,9 +19,9 @@ export default el => {
       slideoutTrigger
     )
   }
-  const top = $(navigation).offset().top
 
-  if (enableSticky) {
+  if (enableSticky && navigation) {
+    const top = $(navigation).offset().top
     window.addEventListener('scroll', () => {
       if ($(window).scrollTop() > top) {
         const currentScroll = window.pageYOffset
