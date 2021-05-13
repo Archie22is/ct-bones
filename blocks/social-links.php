@@ -17,7 +17,7 @@ if (empty($items)) {
       <span class="label-text social-links__label"><?php echo $label; ?></span>
     <?php endif; ?>
     <?php foreach ($items as $item) : ?>
-      <a class="social-links__item" data-type="<?php echo $item['type']; ?>" href="<?php echo !empty($item['url']) ? $item['url'] : '#' ?>" target="_blank">
+      <a class="social-links__item" data-type="<?php echo $item['type']; ?>" href="<?php echo !empty($item['url']) ? $item['url'] : '#' ?>" target="_blank" rel="noreferrer">
         <span class="social-links__svg"><?php codetot_svg('social-' . $item['type'], true); ?></span>
         <span class="small-text d-none social-links__text"><?php printf(__('Visit %s', 'ct-bones'), $item['type']); ?></span>
       </a>
