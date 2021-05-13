@@ -38,8 +38,8 @@ class Codetot_Assets
     $this->theme_environment = $this->is_localhost() ? '' : '.min';
     $this->premium_fonts = array_keys(codetot_premium_fonts());
 
+    add_action('wp_head', array($this, 'register_pwa_meta'));
     add_action('wp_enqueue_scripts', array($this, 'load_fonts'), 1);
-    add_action('wp_enqueue_scripts', array($this, 'load_frontend_css'), 10);
     add_action('wp_enqueue_scripts', array($this, 'load_font_size_scale'));
     add_action('wp_enqueue_scripts', array($this, 'load_frontend_js'), 20);
     add_action('wp_head', array($this, 'output_inline_styles'), 100);
@@ -50,8 +50,11 @@ class Codetot_Assets
     add_action('codetot_custom_style_css', array($this, 'custom_font_options_css_inline'));
   }
 
-  public function load_frontend_css()
+  public function register_pwa_meta()
   {
+    $primary_color = get_global_option('codetot_primary_color') ?? '#000';
+
+    echo '<meta name="theme-color" content="' . esc_attr($primary_color). '">';
   }
 
   public function load_fonts()
