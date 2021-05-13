@@ -13,6 +13,4 @@ const initBlocks = () => {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  initBlocks()
-})
+document.addEventListener('DOMContentLoaded', initBlocks)
