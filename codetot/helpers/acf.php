@@ -103,13 +103,14 @@ function codetot_button_styles()
 function codetot_premium_fonts()
 {
     return apply_filters('codetot_premium_fonts', array(
-        'Averta'          => 'Averta',
-        'Avenir Next'     => 'Avenir Next',
-        'Futura'          => 'Futura',
-        'Myriad Pro'      => 'Myriad Pro',
-        'Segoe UI'        => 'Segoe UI',
-        'SF Pro Display'  => 'SF Pro Display',
-        'Sanomat Sans'    => 'Sanomat Sans'
+      'Averta'          => 'Averta',
+      'Avenir Next'     => 'Avenir Next',
+      'Futura'          => 'Futura',
+      'Myriad Pro'      => 'Myriad Pro',
+      'Segoe UI'        => 'Segoe UI',
+      'SF Pro Display'  => 'SF Pro Display',
+      'Sanomat Sans'    => 'Sanomat Sans',
+      'San Francisco Display' => 'San Francisco Display'
     ));
 }
 
