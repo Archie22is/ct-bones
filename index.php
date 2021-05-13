@@ -20,32 +20,22 @@ get_header();
 		<?php
 		if ( have_posts() ) :
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
+      global $wp_query;
 
 			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+			the_block('post-grid', array(
+        'class' => 'mt-2',
+        'columns' => 3,
+        'query' => $wp_query
+      ));
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
-			endwhile;
-
-			the_posts_navigation();
+      the_block('pagination');
 
 		else :
 
-			get_template_part( 'template-parts/content', 'none' );
+			the_block('message-block', array(
+        'content' => esc_html__('There is no posts to display.', 'ct-bones')
+      ));
 
 		endif;
 		?>
