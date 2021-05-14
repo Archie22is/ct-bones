@@ -52,11 +52,22 @@ class Codetot_Theme_Layout
     }
   }
 
+  public function load_page_header() {
+    var_dump('parent load');
+    $sidebar_layout = get_global_option('codetot_page_layout') ?? 'left-sidebar';
+    $header_class = $sidebar_layout !== 'no-sidebar' ? 'page-header--no-container page-header--top-section' : '';
+
+    the_block('page-header', array(
+      'class' => $header_class,
+      'title' => get_the_title()
+    ));
+  }
+
   public function generate_page_layout() {
     $sidebar_layout = get_global_option('codetot_page_layout');
 
     add_action('codetot_after_header', function() use($sidebar_layout) {
-
+      do_action('codetot_before_page_block');
       if ( !is_front_page() ) {
         the_block('breadcrumbs');
       }
@@ -65,19 +76,12 @@ class Codetot_Theme_Layout
         echo $this->page_block_open('page-block--page ' . $sidebar_layout, false);
       }
     }, 10);
-
-    add_action('codetot_page', function() use($sidebar_layout) {
-      $header_class = $sidebar_layout !== 'no-sidebar' ? 'page-header--no-container page-header--top-section' : '';
-
-      the_block('page-header', array(
-        'class' => $header_class,
-        'title' => get_the_title()
-      ));
-    }, 20);
+    add_action('codetot_page', array($this, 'load_page_header'), 20);
     add_action('codetot_page', function() use($sidebar_layout) {
       ob_start();
+      echo '<div class="wysiwyg">';
       the_content();
-
+      echo '</div>';
       wp_link_pages(
         array(
           'before'      => '<div class="page-links">' . __( 'Pages:', 'ct-bones' ),
