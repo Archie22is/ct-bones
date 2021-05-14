@@ -352,7 +352,7 @@ class Codetot_Woocommerce_Layout_Product
 
     the_block('product-grid', array(
       'class' => $_class,
-      'title' => apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like', 'woocommerce' ) ),
+      'title' => apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'woocommerce' ) ),
       'list' => $upsell_products
     ));
   }
