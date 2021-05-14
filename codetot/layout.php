@@ -37,7 +37,7 @@ class Codetot_Theme_Layout
         is_page() &&
         get_page_template_slug( get_the_ID()) === ''
       ) &&
-      (
+      ( !class_exists('woocommerce') ||
         class_exists('woocommerce') &&
         !is_account_page() &&
         !is_cart() &&
