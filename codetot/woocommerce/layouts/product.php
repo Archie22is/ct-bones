@@ -337,7 +337,13 @@ class Codetot_Woocommerce_Layout_Product
       return;
     }
 
+    $sidebar_layout = get_global_option('codetot_product_layout') ?? 'no-sidebar';
 
+    $_class = 'product-grid--upsells';
+
+    if ($sidebar_layout !== 'no-sidebar') {
+      $_class .= ' product-grid--no-container';
+    }
     $upsell_products = codetot_get_upsell_products();
 
     if (empty($upsell_products)) {
@@ -345,7 +351,7 @@ class Codetot_Woocommerce_Layout_Product
     }
 
     the_block('product-grid', array(
-      'class' => 'product-grid--no-container product-grid--upsells',
+      'class' => $_class,
       'title' => apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like', 'woocommerce' ) ),
       'list' => $upsell_products
     ));
