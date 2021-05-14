@@ -11,7 +11,7 @@
       width: 100%;
     }
 
-    @media(--m) {
+    @media (--m) {
       padding: 0 var(--grid-gutter-m);
     }
   }
@@ -40,7 +40,7 @@
     }
   }
 
-  @media(--s) {
+  @media (--s) {
     &.gallery-columns-2,
     &.gallery-columns-3 {
       & > .gallery-item {
@@ -65,7 +65,7 @@
     }
   }
 
-  @media(--m) {
+  @media (--m) {
     &.gallery-columns-1 {
       & > .gallery-item {
         @mixin column-item 1, var(--grid-gutter);
