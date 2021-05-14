@@ -23,7 +23,7 @@ $search_form_button = get_block('button', array(
           </div>
         </div>
         <div class="grid__col header__col header__col--menu-icons">
-        <?php echo do_shortcode('contact'); ?>
+        <?php echo do_shortcode('[contact]'); ?>
           <div class="header__menu-icons">
             <?php
             the_block_part('header/search-icon');
