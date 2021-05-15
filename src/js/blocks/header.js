@@ -4,11 +4,13 @@ import { select, on, addClass, removeClass, trigger, getData } from '../lib/dom'
 const body = document.body
 const $ = jQuery
 export default el => {
-  const enableSticky = getData('sticky-header')
   const slideoutTrigger = select('.js-open-mobile-menu', el)
-  const navigation = select('.js-sticky', el)
+  const enableSticky = getData('sticky-header', el)
   const scrollUp = 'scroll-up'
   const scrollDown = 'scroll-down'
+  const fixedHeader = 'is-fixed-header'
+  const maxHeight = el.offsetHeight
+  const headerSticky = select('.js-sticky-header', el)
   let lastScroll = 0
   if (slideoutTrigger) {
     on(
@@ -19,11 +21,14 @@ export default el => {
       slideoutTrigger
     )
   }
-
-  if (enableSticky && navigation) {
-    const top = $(navigation).offset().top
+  if (enableSticky) {
     window.addEventListener('scroll', () => {
-      if ($(window).scrollTop() > top) {
+      if ($(window).scrollTop() > (maxHeight)) {
+        addClass(fixedHeader, body)
+        el.setAttribute('style', `height: ${maxHeight}px`)
+        const stickyHeight = headerSticky.offsetHeight
+        headerSticky.setAttribute('style', `height: ${stickyHeight}px`)
+        addClass(enableSticky, headerSticky)
         const currentScroll = window.pageYOffset
         if (currentScroll <= 0) {
           removeClass(scrollUp, body)
@@ -47,8 +52,10 @@ export default el => {
         }
         lastScroll = currentScroll
       } else {
-        removeClass(scrollDown, body)
         removeClass(scrollUp, body)
+        removeClass(fixedHeader, body)
+        el.style.height = null
+        headerSticky.style.height = null
       }
     })
   }
