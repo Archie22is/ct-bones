@@ -188,7 +188,7 @@ body.woocommerce-cart {
 .shipping-calculator-form {
   padding-top: 10px;
 
-  & button[type="submit"] {
+  & button[type='submit'] {
     margin-top: 10px;
     background: var(--dark);
 
