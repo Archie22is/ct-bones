@@ -198,8 +198,10 @@ class Codetot_WooCommerce_Init {
 
   public function body_class($classes) {
     $product_card_style = get_global_option('codetot_woocommerce_product_card_style') ?? 1;
+    $product_image_visible = get_global_option('codetot_woocommerce_product_image_visible') ?? 'cover';
 
     $classes[] = 'has-product-card-style-' . esc_attr($product_card_style);
+    $classes[] = 'has-product-card-image-' . esc_attr($product_image_visible);
 
     return $classes;
   }
