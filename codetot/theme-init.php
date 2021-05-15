@@ -54,10 +54,6 @@ class Codetot_Theme_Init
 
     // Thumbnail and image sizes
     add_theme_support('post-thumbnails');
-    add_image_size('codetot-mobile', 360, 9999, false);
-    add_image_size('codetot-tablet', 600, 9999, false);
-    add_image_size('codetot-large-tablet', 1024, 9999, false);
-    add_image_size('codetot-desktop', 1440, 9999, false);
 
     // This theme uses wp_nav_menu() in one location.
     register_nav_menus(array(
