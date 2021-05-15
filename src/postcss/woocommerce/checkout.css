@@ -242,7 +242,12 @@ form.woocommerce-billing-fields {
   }
 }
 
-.woocommerce-shipping-destination,
+.woocommerce-shipping-destination {
+  font-size: 0.85rem;
+  color: var(--dark);
+  opacity: 0.75;
+}
+
 .form-row#shipping_country_field,
 .form-row#billing_country_field {
   display: none;
