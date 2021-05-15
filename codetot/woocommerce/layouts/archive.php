@@ -388,7 +388,7 @@ class Codetot_Woocommerce_Layout_Archive
       return '';
     }
 
-    $size = 'medium';
+    $size = 'thumbnail';
     $img_id = $product->get_image_id();
     $img_alt = codetot_image_alt($img_id, esc_attr__('Product Image', 'ct-bones'));
     $img_origin = wp_get_attachment_image_src($img_id, $size);
@@ -404,7 +404,6 @@ class Codetot_Woocommerce_Layout_Archive
       'alt' => $img_alt,
       'data-src' => $img_ori,
       'data-srcset' => $img_srcset,
-      'data-sizes' => 'auto',
       'class' => 'wp-post-image attachment-' . $size . ' size-' . $size . ' product__image lazyload',
     );
 
