@@ -32,6 +32,7 @@ class Codetot_WooCommerce_Init {
     $this->theme_version = $this->is_localhost() ? substr(sha1(rand()), 0, 6) : wp_get_theme()->get('Version');
     $this->theme_environment = $this->is_localhost() ? '' : '.min';
 
+    add_action('after_setup_theme', array($this, 'woocommerce_support'));
     add_action('widgets_init', array($this, 'register_woocommerce_sidebars'));
 
     add_filter('woocommerce_product_add_to_cart_text', array($this, 'update_add_to_cart_button_text'));
@@ -51,6 +52,23 @@ class Codetot_WooCommerce_Init {
     add_filter('body_class', array($this, 'body_class'));
 
     add_filter('woocommerce_cart_item_remove_link', array($this, 'replace_cart_remove_icon'), 10, 2 );
+  }
+
+  public function woocommerce_support() {
+    add_theme_support(
+      'woocommerce',
+      array(
+        'thumbnail_image_width' => 150,
+        'single_image_width'    => 300,
+        'product_grid'          => array(
+          'default_rows'    => 3,
+          'min_rows'        => 1,
+          'default_columns' => 3,
+          'min_columns'     => 3,
+          'max_columns'     => 5,
+        ),
+      )
+    );
   }
 
   public function register_woocommerce_sidebars() {
