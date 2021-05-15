@@ -374,7 +374,7 @@ class Codetot_Woocommerce_Layout_Archive
         $hover_image_url = wp_get_attachment_image_url($hover_image_id, 'large', false);
         if (!empty($hover_image_url)) :
         ?>
-      <div class="product__image-hover-wrapper js-hover-image" data-image-url="<?php echo $hover_image_url; ?>"></div>
+      <div class="product__image-hover js-hover-image" data-image-url="<?php echo $hover_image_url; ?>"></div>
       <?php endif; ?>
     <?php
     endif;
