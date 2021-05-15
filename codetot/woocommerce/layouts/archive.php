@@ -181,7 +181,7 @@ class Codetot_Woocommerce_Layout_Archive
 
   public function loop_product_image_wrapper_open()
   {
-    echo '<div class="product__inner">';
+    echo '<div class="product__inner js-product-inner">';
     echo '<div class="product__image-wrapper">';
   }
 
@@ -360,19 +360,22 @@ class Codetot_Woocommerce_Layout_Archive
   public function loop_product_hover_image()
   {
     global $product;
+    $thumbnail_id = (int) $product->get_image_id();
     $gallery = $product->get_gallery_image_ids();
     // Hover image.
-    if (!empty($gallery) && apply_filters('codetot_product_card_display_hover_image', true)) : ?>
-        <?php
-        ob_start();
-        echo wp_get_attachment_image($gallery[0], 'medium', false, array(
-          'class' => 'product__image-hover lazyload'
-        ));
-        $image_html = ob_get_clean();
+    if (!empty($gallery) && apply_filters('codetot_product_card_display_hover_image', true)) :
+        $hover_image_id = (int) $gallery[0];
+
+        // If first image from gallery match default image, using second image
+        if ($gallery[0] === $thumbnail_id && count($gallery) > 1) {
+          $hover_image_id = $gallery[1];
+        }
+
+        $hover_image_url = wp_get_attachment_image_url($hover_image_id, 'large', false);
+        if (!empty($hover_image_url)) :
         ?>
-      <div class="product__image-hover-wrapper">
-        <?php $image_html = str_replace('srcset="', 'data-sizes="auto" data-srcset="', $image_html); echo $image_html; ?>
-      </div>
+      <div class="product__image-hover-wrapper js-hover-image" data-image-url="<?php echo $hover_image_url; ?>"></div>
+      <?php endif; ?>
     <?php
     endif;
   }
