@@ -305,8 +305,16 @@
   transition: all 0.3s ease-in-out;
 }
 
-.is-product-image-contain .product__image {
-  object-fit: contain;
+.has-product-card-image-cover {
+  & .product__image {
+    object-fit: cover;
+  }
+}
+
+.has-product-card-image-contain {
+  & .product__image {
+    object-fit: contain;
+  }
 }
 
 .product__content {
