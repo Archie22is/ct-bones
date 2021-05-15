@@ -49,6 +49,8 @@ class Codetot_WooCommerce_Init {
 
     add_action('wp_footer', array($this, 'fix_load_country_edit_address'), 90);
     add_filter('body_class', array($this, 'body_class'));
+
+    add_filter('woocommerce_cart_item_remove_link', array($this, 'replace_cart_remove_icon'), 10, 2 );
   }
 
   public function register_woocommerce_sidebars() {
@@ -188,6 +190,10 @@ class Codetot_WooCommerce_Init {
     if (is_plugin_active('woocommerce-products-filter/index.php')) {
       wp_enqueue_style('codetot-woof', get_template_directory_uri() . '/dynamic-assets/plugins/woof.css', array(), '1.0.0');
     }
+  }
+
+  public function replace_cart_remove_icon($html, $cart_item_key) {
+    return str_replace('&times;', esc_html__('Remove', 'woocommerce'), $html);
   }
 
   public function is_localhost()

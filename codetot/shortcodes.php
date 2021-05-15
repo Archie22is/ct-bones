@@ -123,6 +123,7 @@ class CodeTot_Shortcode
       echo esc_html__('Search', 'wordpress');
     }
     echo '</span>';
+    printf('<span class="screen-reader-text">%s</span>', esc_html__('Open a search form', 'ct-bones'));
     echo '</button>';
     return ob_get_clean();
   }
