@@ -189,18 +189,17 @@ class Codetot_Woocommerce_Layout_Product
   }
 
   public function woo_custom_description_tab( $tabs ) {
-    $content = get_the_content();
-    if( $content) {
+    if (!empty($tab['description'])) {
       $tabs['description']['callback'] = array($this,'woo_custom_description_tab_content');
-      return $tabs;
     }
+
+    return $tabs;
   }
 
   public function woo_custom_description_tab_content() {
-    $content = get_the_content();
-      the_block('product-description', array(
-        'content' => $content
-      ));
+    the_block('product-description', array(
+      'content' => apply_filters('the_content', get_the_content())
+    ));
   }
 
   public function close_content_single_product() {
