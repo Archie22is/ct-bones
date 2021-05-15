@@ -39,22 +39,28 @@
 .woocommerce-message,
 .woocommerce-error,
 .woocommerce-info {
-  list-style: none;
+  @mixin list-reset;
+
   margin-bottom: 20px;
+  padding: 8px;
   padding: 10px 20px;
   color: var(--white);
-  border-radius: 4px;
+  background-color: var(--dark);
+  border-radius: var(--border-radius);
+
+  @media (--s) {
+    min-height: 64px;
+  }
 
   & .button,
   & .woocommerce-Button {
-    display: none;
-  }
-}
+    @mixin button-normal;
+    @mixin button-style-primary;
 
-.woocommerce-message,
-.woocommerce-info,
-.woocommerce-error {
-  background-color: var(--dark);
+    float: right;
+    margin: 0 0.5em;
+    color: var(--white);
+  }
 }
 
 .select2-container--default .select2-search--dropdown .select2-search__field {

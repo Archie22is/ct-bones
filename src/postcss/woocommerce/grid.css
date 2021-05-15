@@ -9,8 +9,16 @@
 
     &:hover {
       & .product__image-hover {
-        transform: translateX(0);
+        @media (--m) {
+          @mixin fade-in;
+        }
       }
+    }
+  }
+
+  & .woocommerce-loop-product__title {
+    @media (--max-mobile) {
+      font-size: 0.85rem;
     }
   }
 
@@ -26,7 +34,7 @@
         @mixin fade-in;
       }
 
-      & .product__image-hover-wrapper {
+      & .product__image-hover {
         @mixin fade-out;
       }
     }
@@ -246,18 +254,13 @@
   background: var(--gray);
 }
 
-.product__image-hover-wrapper {
-  transition: all 0.3s cubic-bezier(0.25, 0.25, 0.75, 0.75);
-}
-
 .product__image-hover {
   @mixin abs-full;
+  @mixin fade-out;
 
-  object-fit: contain;
-  transition: all 0.3s ease-in-out;
   z-index: 1;
-  transform: translateX(110%);
   background: var(--white);
+  transition: all 0.3s cubic-bezier(0.25, 0.25, 0.75, 0.75);
 }
 
 .product__image-wrapper {
@@ -354,20 +357,6 @@
 
 .product__inner {
   border: 1px solid var(--light);
-
-  & .product__image-hover {
-    opacity: 0;
-    visibility: hidden;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  &:hover {
-    & .product__image-hover {
-      opacity: 1;
-      visibility: visible;
-    }
-  }
 }
 
 .product__quick-view {

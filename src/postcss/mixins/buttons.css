@@ -1,12 +1,12 @@
 @define-mixin button-normal {
-  padding: 8px 12px;
+  padding: 10px 12px;
 
   @media (--s) {
-    padding: 8px 15px;
+    padding: 12px 15px;
   }
 
   @media (--m) {
-    padding: 8px 35px;
+    padding: 15px 35px;
   }
 }
 
