@@ -905,10 +905,6 @@
       }
     }
 
-    & .header__sticky {
-      box-shadow: 0 2px 2px 0 var(--light);
-    }
-
     & .jump-down {
       position: fixed;
       width: 100%;
@@ -922,9 +918,8 @@
     & .visible-scroll-up {
       position: fixed;
       width: 100%;
-      top: 0;
-      transform: translateY(-105%);
       left: 0;
+      bottom: 100%;
       transition: all 0.5s;
       z-index: 99;
     }
@@ -933,8 +928,7 @@
   &.scroll-up {
     & [data-sticky-header] {
       & .visible-scroll-up {
-        top: 0;
-        transform: translateY(0);
+        transform: translateY(100%);
       }
     }
   }
