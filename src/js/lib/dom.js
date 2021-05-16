@@ -516,6 +516,30 @@ const inViewPort = el => {
   return vertInView && horInView
 }
 
+const getNoScriptContent = el => {
+  if (!el) {
+    return ''
+  }
+
+  const contextEls = el.getElementsByTagName('noscript')
+  return contextEls && contextEls.length
+    ? contextEls[0].textContent || contextEls[0].innerHTML
+    : ''
+}
+
+const loadNoscriptContent = (el, className = 'is-not-loaded') => {
+  if (hasClass(className, el)) {
+    const context = getNoScriptContent(el)
+
+    if (context) {
+      el.innerHTML = ''
+      appendHtml(el, context)
+
+      removeClass(className, el)
+    }
+  }
+}
+
 export {
   addClass,
   append,
@@ -534,6 +558,7 @@ export {
   getTopPosition,
   getData,
   getModuleOptions,
+  getNoScriptContent,
   getParent,
   getScrollTop,
   getStyle,
@@ -547,6 +572,7 @@ export {
   onFocus,
   onBlur,
   loadScript,
+  loadNoscriptContent,
   matches,
   prepend,
   preventDefault,
