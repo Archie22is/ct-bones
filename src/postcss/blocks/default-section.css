@@ -71,3 +71,41 @@
     padding: 0;
   }
 }
+
+.default-section.has-lazyload {
+  & .default-section__container--main {
+    position: relative;
+  }
+
+  & .default-section__inner--main,
+  & .loader {
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+
+  & .loader {
+    @mixin fade-out;
+    @mixin abs-full;
+    @mixin flex-center;
+
+    pointer-events: none;
+  }
+
+  &.is-loading {
+    & .default-section__container--main {
+      min-height: 80px;
+    }
+
+    & .default-section__inner--main {
+      @mixin fade-out;
+
+      z-index: 1;
+    }
+
+    & .loader {
+      @mixin fade-in;
+
+      pointer-events: visible;
+      z-index: 2;
+    }
+  }
+}
