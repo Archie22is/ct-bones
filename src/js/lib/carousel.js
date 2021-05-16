@@ -1,5 +1,11 @@
 import Flickity from 'flickity'
-import { getModuleOptions, on, addClass, removeClass } from 'lib/dom'
+import {
+  getModuleOptions,
+  loadNoscriptContent,
+  on,
+  addClass,
+  removeClass
+} from 'lib/dom'
 import { throttle } from 'lib/utils'
 require('flickity-as-nav-for')
 
@@ -13,7 +19,13 @@ export default (el, options = {}) => {
     cellAlign: 'left',
     percentPosition: false,
     items: 1,
+    lazyload: false,
     watchCSS: false,
+    on: {
+      ready: () => {
+        addClass('is-ready', el)
+      }
+    },
     arrowShape: {
       x0: 10,
       x1: 50,
@@ -25,19 +37,31 @@ export default (el, options = {}) => {
   }
   const args = getModuleOptions(MODULE_NAME, el, defaults)
   const finalArgs = { ...args, ...options }
+
+  const resize = () => addClass(INIT_CLASS, el)
+  const reset = () => removeClass(INIT_CLASS, el)
+
   if (el.childElementCount > args.items) {
     const flickity = new Flickity(el, finalArgs)
 
-    const resize = () => addClass(INIT_CLASS, el)
-    const reset = () => removeClass(INIT_CLASS, el)
+    if (finalArgs.lazyload) {
+      flickity.on('change', () => {
+        const currentSlide = flickity.selectedElement
+
+        loadNoscriptContent(currentSlide)
+      })
+    }
+
     const handler = () => {
       reset()
       flickity.resize()
       resize()
     }
+
+    handler()
+
     on('change', handler, window)
     on('resize', throttle(handler, 300), window)
-    on('load', handler, window)
 
     return flickity
   }
