@@ -21,15 +21,7 @@ export default el => {
     }
   }
 
-  on(
-    'scroll',
-    throttle(initLoad, 100),
-    window
-  )
+  on('scroll', throttle(initLoad, 100), window)
 
-  on(
-    'load',
-    throttle(initLoad, 100),
-    window
-  )
+  on('load', throttle(initLoad, 100), window)
 }
