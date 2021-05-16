@@ -71,14 +71,15 @@ class CodeTot_Optimize
 
   public function register_first_screen_style()
   {
-    $first_screen_css_path = get_template_directory() . '/assets/css/first-screen-style.css';
-    $first_screen_url = get_template_directory_uri() . '/assets/css/first-screen-style' . $this->theme_environment . '.css';
+    $first_screen_css_path = get_template_directory() . '/assets/css/first-screen-style' . $this->theme_environment . '.css';
     $first_screen_css_inline = file_exists($first_screen_css_path) ? file_get_contents($first_screen_css_path) : '';
 
     if (!$this->is_localhost() && !empty($first_screen_css_inline)) {
       // Inline - production
       $this->register_inline_style('codetot-first-screen', $first_screen_css_inline);
     } else {
+      $first_screen_url = get_template_directory_uri() . '/assets/css/first-screen-style' . $this->theme_environment . '.css';
+
       // Load file
       wp_enqueue_style('codetot-first-screen', $first_screen_url, array(), CODETOT_VERSION);
     }
