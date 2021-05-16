@@ -67,6 +67,8 @@ class CodeTot_Optimize
     if (is_singular('post')) {
       wp_enqueue_style('toc-screen');
     }
+
+    wp_enqueue_style('codetot-global', get_template_directory_uri() . '/assets/css/global-style' . $this->theme_environment . '.css', array('codetot-first-screen'), CODETOT_VERSION);
   }
 
   public function register_first_screen_style()
@@ -120,9 +122,7 @@ class CodeTot_Optimize
 
   public function lazy_styles()
   {
-    $styles = apply_filters('codetot_lazy_styles', array(
-      'codetot-global-style' => get_template_directory_uri() . '/assets/css/global-style' . $this->theme_environment . '.css?ver=' . CODETOT_VERSION,
-    ));
+    $styles = apply_filters('codetot_lazy_styles', array());
     if (!empty($styles)) {
     ?>
     <script id="codetot-lazy-styles">
