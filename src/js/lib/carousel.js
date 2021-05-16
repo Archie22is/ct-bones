@@ -21,6 +21,11 @@ export default (el, options = {}) => {
     items: 1,
     lazyload: false,
     watchCSS: false,
+    on: {
+      ready: () => {
+        addClass('is-ready', el)
+      }
+    },
     arrowShape: {
       x0: 10,
       x1: 50,
