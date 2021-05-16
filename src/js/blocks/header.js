@@ -23,7 +23,7 @@ export default el => {
   }
   if (enableSticky) {
     window.addEventListener('scroll', () => {
-      if ($(window).scrollTop() > (maxHeight + 36)) {
+      if ($(window).scrollTop() > maxHeight) {
         addClass(fixedHeader, body)
         el.setAttribute('style', `height: ${maxHeight}px`)
         const stickyHeight = headerSticky.offsetHeight
