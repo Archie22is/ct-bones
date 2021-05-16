@@ -865,11 +865,11 @@
 }
 
 & [data-sticky-header] {
-  transition: all 0.5s
+  transition: all 0.5s;
 }
 
 .is-fixed-header {
-  & .header-topbar{
+  & .header-topbar {
     display: none;
   }
 
@@ -940,11 +940,11 @@
   }
 }
 
-@keyframes stuckMoveDown{
-  0%{
-      transform:translateY(-100%)
+@keyframes stuckMoveDown {
+  0% {
+    transform: translateY(-100%);
   }
-  100%{
-      transform:translateY(0)
+  100% {
+    transform: translateY(0);
   }
 }
