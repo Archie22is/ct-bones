@@ -282,10 +282,15 @@ class Codetot_CT_Theme_Settings
                         'options' => codetot_background_contracts()
                     ],
                     [
-                        'type' => 'switch',
-                        'name' => sprintf(__('Enable %s', 'ct-bones'), esc_html__('Sticky Header', 'ct-bones')),
-                        'id'   => $this->prefix . 'header_enable_sticky',
-                        'std' => 1
+                      'type' => 'select',
+                      'name' => sprintf(__('Enable %s', 'ct-bones'), esc_html__('Sticky Header', 'ct-bones')),
+                      'id'   => $this->prefix . 'header_enable_sticky',
+                      'std'  => 'jump-down',
+                      'options' => [
+                        'none' => __('None', 'ct-bones'),
+                        'jump-down' => __('Jump Down', 'ct-bones'),
+                        'visible-scroll-up' => __('Visible Scroll Up', 'ct-bones'),
+                      ],
                     ],
                     [
                         'type' => 'switch',

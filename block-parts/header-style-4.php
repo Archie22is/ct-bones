@@ -3,7 +3,7 @@ $container = codetot_site_container();
 $has_woocommerce = class_exists('WooCommerce');
 ?>
 <?php the_block_part('header/header-topbar');?>
-<div class="header__wrapper js-sticky">
+<div class="header__wrapper">
   <div class="<?php echo $container; ?> header__container">
     <div class="grid header__grid">
       <?php the_block_part('header/navigation'); ?>
