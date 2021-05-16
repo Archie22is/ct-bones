@@ -186,3 +186,26 @@
     }
   }
 }
+
+.codetot-resent-post__wrapper {
+  width: 25%;
+}
+
+.codetot-resent-post__image {
+  @mixin ratio 1/1;
+}
+
+.codetot-resent-post--content {
+  width: 75%;
+  padding-left: 0.5em;
+}
+
+.codetot-resent-post {
+  & .codetot-resent-post__item {
+    margin-top: 1em;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
