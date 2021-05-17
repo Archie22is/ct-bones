@@ -50,11 +50,6 @@ class Codetot_Api {
    */
   public function get_menu_html_callback($request) {
     $html = '';
-    $is_mobile = !empty($request->get_param('view')) && $request->get_param('view') === 'mobile';
-
-    if ($is_mobile) {
-      $html = get_block('slideout-menu-ajax');
-    }
 
     return new WP_REST_Response(
       array(
