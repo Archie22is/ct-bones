@@ -1,6 +1,6 @@
 .search-form--404,
 .widget_search .search-form,
-.search-form--slideout-menu-ajax,
+.slideout-menu .search-form,
 .search-form--header {
   display: flex;
   width: 100%;
@@ -48,7 +48,7 @@
   margin-top: 1em;
 }
 
-.search-form--slideout-menu-ajax {
+.slideout-menu .search-form {
   margin-bottom: 1em;
 }
 

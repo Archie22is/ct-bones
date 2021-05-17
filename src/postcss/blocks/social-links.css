@@ -10,10 +10,14 @@
 
 .social-links__item {
   display: inline-flex;
-  width: auto;
+  width: 48px;
   height: auto;
   padding: 3px;
   transition: all 0.3s ease-in-out;
+
+  @media (--s) {
+    width: auto;
+  }
 
   &:hover {
     opacity: 0.85;
