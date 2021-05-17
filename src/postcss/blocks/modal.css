@@ -13,10 +13,12 @@
   transition: opacity 0.3s, visibility 0.3s;
 }
 
-.modal--visible {
-  @mixin fade-in;
+.is-modal-activate {
+  & .modal--visible {
+    @mixin fade-in;
 
-  pointer-events: visible;
+    pointer-events: visible;
+  }
 }
 
 .modal__header {
