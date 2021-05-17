@@ -53,7 +53,6 @@ class Codetot_Theme_Layout
   }
 
   public function load_page_header() {
-    var_dump('parent load');
     $sidebar_layout = get_global_option('codetot_page_layout') ?? 'left-sidebar';
     $header_class = $sidebar_layout !== 'no-sidebar' ? 'page-header--no-container page-header--top-section' : '';
 
