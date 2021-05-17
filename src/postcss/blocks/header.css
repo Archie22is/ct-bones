@@ -912,6 +912,7 @@
       left: 0;
       z-index: 99;
       animation: stuckMoveDown 0.5s;
+      box-shadow: 0 1px 2px 0 var(--gray);
     }
 
     & .visible-scroll-up {
@@ -928,6 +929,7 @@
     & [data-sticky-header] {
       & .visible-scroll-up {
         transform: translateY(100%);
+        box-shadow: 0 1px 2px 0 var(--gray);
       }
     }
   }
