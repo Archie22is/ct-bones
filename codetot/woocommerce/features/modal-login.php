@@ -24,7 +24,9 @@ class Codetot_Woocommerce_Modal_Login {
   }
 
   public function header_account_icon($html) {
-    if (!is_user_logged_in()) :
+    if (is_user_logged_in()) :
+      return $html;
+    else :
       ob_start(); ?>
       <button class="header__menu-icons__item header__menu-icons__link header__menu-icons__item--account" data-open-modal="modal-login">
         <span class="header__menu-icons__icon">
@@ -34,8 +36,6 @@ class Codetot_Woocommerce_Modal_Login {
       </button>
       <?php return ob_get_clean();
     endif;
-
-    return $html;
   }
 
   public function modal_login_block()
