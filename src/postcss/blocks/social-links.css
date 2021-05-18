@@ -30,13 +30,21 @@
   & svg {
     @mixin icon 24px;
 
-    fill: var(--dark);
+    & path {
+      fill: var(--dark);
+    }
   }
 }
 
 .social-links--dark-contract {
   & .social-links__svg svg path {
     fill: var(--white);
+  }
+}
+
+.social-links--light-contract {
+  & .social-links__svg svg path {
+    fill: var(--dark);
   }
 }
 
