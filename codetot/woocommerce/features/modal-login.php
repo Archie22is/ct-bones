@@ -19,7 +19,7 @@ class Codetot_Woocommerce_Modal_Login {
 
     if ($enable_popup) {
       add_action('wp_footer', array($this, 'modal_login_block'));
-      add_action('codetot_header_account_icon', array($this, 'header_account_icon'));
+      add_filter('codetot_header_account_icon', array($this, 'header_account_icon'));
     }
   }
 
