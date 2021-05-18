@@ -104,12 +104,13 @@
 
 .slideout-menu__close-button {
   @mixin button-reset;
+  @mixin flex-center;
 
   position: absolute;
   top: 0;
   right: 0;
-  padding: 0.5em 0.85em;
-  font-size: 1.5rem;
+  padding: 1em;
+  background: var(--dark);
 
   & * {
     pointer-events: none;
