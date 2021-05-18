@@ -62,14 +62,18 @@ class Codetot_Theme_Layout
     ));
   }
 
+  public function load_breadcrumbs() {
+    the_block('breadcrumbs');
+  }
+
   public function generate_page_layout() {
     $sidebar_layout = get_global_option('codetot_page_layout');
 
+    if ( !is_front_page() ) {
+      add_action('codetot_after_header', array($this, 'load_breadcrumbs'), 9);
+    }
     add_action('codetot_after_header', function() use($sidebar_layout) {
       do_action('codetot_before_page_block');
-      if ( !is_front_page() ) {
-        the_block('breadcrumbs');
-      }
 
       if ($sidebar_layout !== 'no-sidebar') {
         echo $this->page_block_open('page-block--page ' . $sidebar_layout, false);
@@ -129,15 +133,10 @@ class Codetot_Theme_Layout
 
   public function generate_post_layout() {
     $sidebar_layout = get_global_option('codetot_post_layout');
-
+    add_action('codetot_after_header', array($this, 'load_breadcrumbs'), 9);
     add_action('codetot_after_header', function() use ($sidebar_layout) {
-      the_block('breadcrumbs');
-
-
         echo $this->page_block_open('page-block--page ' . $sidebar_layout, false);
-
     }, 10);
-
     add_action('codetot_before_sidebar', function() {
       echo $this->page_block_between();
     }, 10);
