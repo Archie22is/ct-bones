@@ -52,6 +52,8 @@ class Codetot_WooCommerce_Init {
     add_filter('body_class', array($this, 'body_class'));
 
     add_filter('woocommerce_cart_item_remove_link', array($this, 'replace_cart_remove_icon'), 10, 2 );
+
+    add_action('admin_enqueue_scripts', array($this, 'hide_product_bar_editing_product_screen'));
   }
 
   public function woocommerce_support() {
@@ -214,6 +216,24 @@ class Codetot_WooCommerce_Init {
 
   public function replace_cart_remove_icon($html, $cart_item_key) {
     return str_replace('&times;', esc_html__('Remove', 'woocommerce'), $html);
+  }
+
+  public function hide_product_bar_editing_product_screen() {
+    $enable = get_global_option('codetot_woocommerce_hide_sticky_bar_editing_products') ?? false;
+    $script_id = 'codetot-admin-woocommerce-hide-product-bar';
+
+    $css_content = '
+      .woocommerce-layout__header.is-scrolled {
+        opacity: 0;
+        visibility: hidden;
+      }
+    ';
+
+    if ($enable) {
+      wp_register_style($script_id, false);
+      wp_enqueue_style($script_id, false);
+      wp_add_inline_style($script_id, $css_content);
+    }
   }
 
   public function is_localhost()
