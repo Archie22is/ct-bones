@@ -13,6 +13,10 @@ $_display_date = !empty($card_style) && $card_style == 'style-3';
 $_display_date_bage = !empty($card_style) && $card_style == 'style-2';
 $_display_footer = !empty($card_style) && $card_style == 'style-3';
 $_display_description = !empty($card_style) && (in_array($card_style, array('style-2', 'style-3', 'style-4', 'style-5')));
+
+$_format_date = !empty($format_date) ? $format_date : get_option('format_date');
+$word_count = (int) apply_filters('codetot_post_card_excerpt_number', 20);
+
 ?>
 <article class="<?php echo $_class; ?>">
   <div class="post-card__wrapper">
@@ -42,11 +46,9 @@ $_display_description = !empty($card_style) && (in_array($card_style, array('sty
     <?php if ($_display_category || $_display_date) : ?>
       <p class="mb-05 post-card__meta">
         <?php if ($_display_date) : ?>
-          <?php if (!empty($format_date)) : ?>
-            <span class="post-card__meta-date"><?php echo get_the_date($format_date); ?></span>
-          <?php else : ?>
-            <span class="post-card__meta-date"><?php echo get_the_date(); ?></span>
-          <?php endif; ?>
+          <span class="post-card__meta-date"><?php echo get_the_date($format_date); ?></span>
+        <?php endif; ?>
+        <?php if ($_display_date && $_display_category) : ?>
           <span class="post-card__meta-separator">|</span>
         <?php endif; ?>
         <?php if ($_display_category) : ?>
@@ -64,8 +66,8 @@ $_display_description = !empty($card_style) && (in_array($card_style, array('sty
         <span class="post-card__author-name"><?php the_author(); ?></span>
       </p>
     <?php endif; ?>
-    <?php if ($_display_description) : ?>
-      <p class="post-card__description"><?php echo codetot_excerpt(20); ?></p>
+    <?php if ($_display_description) :?>
+      <div class="post-card__description"><?php echo codetot_excerpt($word_count); ?></div>
     <?php endif; ?>
   </div>
   <?php if ($_display_footer) : ?>
