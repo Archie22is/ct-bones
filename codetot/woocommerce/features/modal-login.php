@@ -23,14 +23,19 @@ class Codetot_Woocommerce_Modal_Login {
     }
   }
 
-  public function header_account_icon() {
-    ob_start(); ?>
-    <button class="header__menu-icons__item header__menu-icons__link header__menu-icons__item--account" data-open-modal="modal-login">
-      <span class="header__menu-icons__icon">
-        <?php codetot_svg('user', true); ?>
-      </span>
-    </button>
-    <?php return ob_get_clean();
+  public function header_account_icon($html) {
+    if (!is_user_logged_in()) :
+      ob_start(); ?>
+      <button class="header__menu-icons__item header__menu-icons__link header__menu-icons__item--account" data-open-modal="modal-login">
+        <span class="header__menu-icons__icon">
+          <?php codetot_svg('user', true); ?>
+        </span>
+        <span class="screen-reader-text"><?php _e('Click to open a login popup', 'ct-bones'); ?></span>
+      </button>
+      <?php return ob_get_clean();
+    endif;
+
+    return $html;
   }
 
   public function modal_login_block()
