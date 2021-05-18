@@ -7,11 +7,8 @@
   right: 0;
   bottom: 0;
   left: 0;
-  transition: opacity 0.25s, visibility 0s 0.25s;
-
-  @media (--m) {
-    display: none;
-  }
+  pointer-events: none;
+  transition: all 0.3s;
 
   & .header__vertical--logo {
     width: 100%;
@@ -76,15 +73,11 @@
   }
 }
 
-.is-slideout-visible .slideout-menu {
-  @mixin fade-in;
-
-  & .slideout-menu__wrapper {
-    transform: translate(0, 0);
-  }
+.is-assets-loaded .slideout-menu {
+  display: block;
 }
 
-.has-header-layout-2 {
+.has-header-layout-2.is-assets-loaded {
   & .slideout-menu {
     @media (--m) {
       display: block;
@@ -104,12 +97,16 @@
 
 .slideout-menu__close-button {
   @mixin button-reset;
+  @mixin flex-center;
 
   position: absolute;
   top: 0;
   right: 0;
-  padding: 0.5em 0.85em;
-  font-size: 1.5rem;
+  padding: 1em;
+  background: var(--dark);
+  transform: translate3d(0, -100%, 0);
+  transition: transform 0.2s;
+  will-change: transform;
 
   & * {
     pointer-events: none;
@@ -127,13 +124,14 @@
   top: 0;
   bottom: 0;
   left: 0;
-  transform: translate(-100%, 0);
   max-width: calc(100% - 4rem);
   width: 300px;
   overflow-y: auto;
   backface-visibility: hidden;
-  transition: transform 0.25s 125ms;
   z-index: 2;
+  transform: translate3d(-100%, 0, 0);
+  transition: transform 0.25s;
+  will-change: transform;
 }
 
 .slideout-menu__inner {
@@ -231,19 +229,20 @@
   }
 }
 
-.slideout-menu__loader {
-  @mixin fade-out;
-  @mixin flex-center;
+.is-slideout-visible {
+  & .slideout-menu {
+    @mixin fade-in;
+  }
 
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--white);
-  z-index: 3;
-}
+  & .slideout-menu__close-button {
+    transform: translate3d(0, 0, 0);
+  }
 
-.is-loading .slideout-menu__loader {
-  @mixin fade-in;
+  & .slideout-menu__wrapper {
+    transform: translate3d(0, 0, 0);
+  }
+
+  & * {
+    pointer-events: visible;
+  }
 }

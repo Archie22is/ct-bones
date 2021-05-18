@@ -42,6 +42,8 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
     $this->enable = get_global_option('codetot_woocommerce_enable_quick_view') ?? false;
 
     if ($this->enable) {
+      add_filter('body_class', array($this, 'add_body_class'));
+
       // Add elements
       add_action('woocommerce_before_shop_loop_item_title', array($this, 'quick_view_button'), 21);
       add_action('wp_footer', array($this, 'quick_view_modal'));
@@ -53,6 +55,12 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
       add_action('wp_ajax_shop_quick_view_add_to_cart', array($this, 'add_to_cart_json'));
       add_action('wp_ajax_nopriv_shop_quick_view_add_to_cart', array($this, 'add_to_cart_json'));
     }
+  }
+
+  public function add_body_class($classes) {
+    $classes[] = 'has-quick-view-product';
+
+    return $classes;
   }
 
   public function quick_view_button()

@@ -108,7 +108,6 @@ class CodeTot_Optimize
 
   public function load_first_screen_hide_selectors() {
     $selectors = apply_filters('codetot_first_screen_hide_style', array(
-      '.slideout-menu',
       '.modal-search-form',
       '.modal'
     ));

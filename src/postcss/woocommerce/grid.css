@@ -306,12 +306,14 @@
 }
 
 .has-product-card-image-cover {
+  & .product__image-hover .image__img,
   & .product__image {
     object-fit: cover;
   }
 }
 
 .has-product-card-image-contain {
+  & .product__image-hover .image__img,
   & .product__image {
     object-fit: contain;
   }

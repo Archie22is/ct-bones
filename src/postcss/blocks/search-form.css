@@ -1,11 +1,11 @@
 .search-form--404,
 .widget_search .search-form,
-.slideout-menu .search-form,
+.search-form--slideout-menu,
 .search-form--header {
   display: flex;
   width: 100%;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: var(--border-radius);
   overflow: hidden;
 
   & .search-field {
@@ -48,7 +48,7 @@
   margin-top: 1em;
 }
 
-.slideout-menu .search-form {
+.search-form--slideout-menu {
   margin-bottom: 1em;
 }
 
