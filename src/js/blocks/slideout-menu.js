@@ -7,7 +7,6 @@ import {
   closest,
   trigger
 } from 'lib/dom'
-require('whatwg-fetch')
 
 const body = document.body
 const SLIDEOUT_VISIBLE_CLASS = 'is-slideout-visible'
