@@ -42,7 +42,7 @@ if (!class_exists('Codetot_Woocommerce_Viewed_Products')) {
     public function __construct()
     {
       add_action('template_redirect', array($this, 'add_cookies'), 20);
-      add_action('woocommerce_after_single_product', array($this, 'render_section'), 30);
+      add_action('woocommerce_after_single_product_summary', array($this, 'render_section'), 40);
     }
 
     public function add_cookies()
@@ -106,9 +106,9 @@ if (!class_exists('Codetot_Woocommerce_Viewed_Products')) {
     public function render_section()
     {
       $sidebar_layout = get_global_option('codetot_product_layout') ?? 'no-sidebar';
-
+      $columns = get_global_option('codetot_woocommerce_viewed_products_colums') ?? '4';
       $query = $this->get_query();
-      $_class = 'product-grid--viewed-products';
+      $_class = 'section product-grid--viewed-products';
 
       if ($sidebar_layout !== 'no-sidebar') {
         $_class .= ' product-grid--no-container';
@@ -117,7 +117,8 @@ if (!class_exists('Codetot_Woocommerce_Viewed_Products')) {
       the_block('product-grid', array(
         'class' => $_class,
         'title' => esc_html__('Recently Viewed Products', 'ct-bones'),
-        'query' => $query
+        'query' => $query,
+        'columns' => $columns
       ));
     }
   }
