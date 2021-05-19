@@ -65,7 +65,7 @@ class Codetot_Woocommerce_Layout_Checkout extends Codetot_Woocommerce_Layout
   }
 
   public function container_open() {
-    echo '<div class="page-block page-block--account">';
+    echo '<div class="page-block page-block--checkout">';
     echo '<div class="container page-block__container">';
   }
 

@@ -33,6 +33,12 @@ body.woocommerce-checkout {
       min-width: 400px;
     }
   }
+
+  & .page-block__col--main {
+    @media (--m) {
+      max-width: calc(100% - 400px);
+    }
+  }
 }
 
 .woocommerce-checkout .woocommerce .woocommerce-error {
