@@ -155,7 +155,46 @@ class Codetot_CT_Theme_WooCommerce_Settings
           admin_url() . 'admin.php?page=ct-settings',
           esc_html__('CT Settings', 'ct-bones')
         )
-      )
+      ),
+      array(
+        'type' => 'select',
+        'name' => __('Cross Sell Products Columns', 'ct-bones'),
+        'id'   => $this->prefix . 'woocommerce_cross_sell_products_colums',
+        'std'  => 4,
+        'options' => [
+          1 => 1,
+          2 => 2,
+          3 => 3,
+          4 => 4,
+          5 => 5,
+        ]
+      ),
+      array(
+        'type' => 'select',
+        'name' => __('Upsells Products Columns', 'ct-bones'),
+        'id'   => $this->prefix . 'woocommerce_upsells_products_colums',
+        'std'  => 4,
+        'options' => [
+          1 => 1,
+          2 => 2,
+          3 => 3,
+          4 => 4,
+          5 => 5,
+        ]
+      ),
+      array(
+        'type' => 'select',
+        'name' => __('Viewed Products Columns', 'ct-bones'),
+        'id'   => $this->prefix . 'woocommerce_viewed_products_colums',
+        'std'  => 4,
+        'options' => [
+          1 => 1,
+          2 => 2,
+          3 => 3,
+          4 => 4,
+          5 => 5,
+        ]
+      ),
     );
 
     $meta_boxes[] = [
