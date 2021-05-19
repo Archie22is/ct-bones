@@ -144,7 +144,7 @@ class Codetot_Woocommerce_Layout_Account
       $title = esc_html__('Dashboard', 'woocommerce');
     }
 
-    echo '<div class="page-block page-block--account page-block--account" data-block="page-block">';
+    echo '<div class="page-block page-block--account" data-block="page-block">';
     echo '<div class="page-block__header">';
     echo '<div class="grid page-block__grid page-block__grid page-block__grid--header">';
     echo '<div class="grid__col page-block__col page-block__col--header-left">';
