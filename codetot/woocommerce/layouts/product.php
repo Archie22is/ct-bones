@@ -183,10 +183,7 @@ class Codetot_Woocommerce_Layout_Product
   }
 
   public function woo_custom_description_tab( $tabs ) {
-    if (!empty($tab['description'])) {
-      $tabs['description']['callback'] = array($this,'woo_custom_description_tab_content');
-    }
-
+    $tabs['description']['callback'] = array($this,'woo_custom_description_tab_content');
     return $tabs;
   }
 
