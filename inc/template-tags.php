@@ -66,7 +66,7 @@ function ct_bones_entry_tags() {
     if ( $tags_list ) {
       echo '<div class="entry-tags">';
       /* translators: 1: list of tags. */
-      printf( '<span class="entry-tags__label">%s</span>', esc_html__( 'Tags: ', 'ct-bones' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+      printf( '<span class="entry-tags__label">%s</span> ', esc_html__( 'Tags:', 'ct-bones' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
       printf( '<span class="entry-tags__list">%s</span>', $tags_list );
       echo '</div>';
     }
