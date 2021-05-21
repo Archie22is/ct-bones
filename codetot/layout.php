@@ -67,7 +67,7 @@ class Codetot_Theme_Layout
   }
 
   public function generate_page_layout() {
-    $sidebar_layout = get_global_option('codetot_page_layout');
+    $sidebar_layout = get_global_option('codetot_page_layout') ?? 'no-sidebar';
 
     if ( !is_front_page() ) {
       add_action('codetot_after_header', array($this, 'load_breadcrumbs'), 9);
@@ -102,7 +102,7 @@ class Codetot_Theme_Layout
         echo '</div>';
       } else {
         the_block('default-section', array(
-          'class' => 'section page-content',
+          'class' => 'section page-content page-content--no-sidebar',
           'content' => $content
         ));
       }

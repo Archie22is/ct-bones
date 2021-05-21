@@ -3,6 +3,10 @@
   transition: height 0.3s;
 }
 
+.page-content--no-sidebar {
+  margin-bottom: 2em;
+}
+
 .page-block__grid {
   flex-direction: column-reverse;
 
