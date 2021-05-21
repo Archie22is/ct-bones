@@ -198,35 +198,36 @@ class Codetot_CT_Theme_Settings
                 ]
             ),
             array(
-            [
-                'type' => 'heading',
-                'name' => __('Category Layout', 'ct-bones'),
-            ],
-            [
-                'name'    => __('Archive/Category: Posts Per Row', 'ct-bones'),
-                'id'      => $this->prefix . 'category_column_number',
-                'type'    => 'select',
-                'std'     => 3,
-                'options' => [
-                    1 => 1,
-                    2 => 2,
-                    3 => 3,
-                    4 => 4,
-                    5 => 5
-                ],
-            ],
-            [
-                'name'    => __('Post Card Style', 'ct-bones'),
-                'id'      => $this->prefix . 'post_card_style',
-                'type'    => 'select',
-                'std'     => 'style-1',
-                'options' => [
-                    'style-1' => sprintf(__('Style %s', 'ct-bones'), 1),
-                    'style-2' => sprintf(__('Style %s', 'ct-bones'), 2),
-                    'style-3' => sprintf(__('Style %s', 'ct-bones'), 3),
-                    'style-4' => sprintf(__('Style %s', 'ct-bones'), 4)
-                ],
-            ])
+              [
+                  'type' => 'heading',
+                  'name' => __('Category Layout', 'ct-bones'),
+              ],
+              [
+                  'name'    => __('Archive/Category: Posts Per Row', 'ct-bones'),
+                  'id'      => $this->prefix . 'category_column_number',
+                  'type'    => 'select',
+                  'std'     => 3,
+                  'options' => [
+                      1 => 1,
+                      2 => 2,
+                      3 => 3,
+                      4 => 4,
+                      5 => 5
+                  ],
+              ],
+              [
+                  'name'    => __('Post Card Style', 'ct-bones'),
+                  'id'      => $this->prefix . 'post_card_style',
+                  'type'    => 'select',
+                  'std'     => 'style-1',
+                  'options' => [
+                      'style-1' => sprintf(__('Style %s', 'ct-bones'), 1),
+                      'style-2' => sprintf(__('Style %s', 'ct-bones'), 2),
+                      'style-3' => sprintf(__('Style %s', 'ct-bones'), 3),
+                      'style-4' => sprintf(__('Style %s', 'ct-bones'), 4)
+                  ],
+              ]
+            )
         );
 
         $meta_boxes[] = [
