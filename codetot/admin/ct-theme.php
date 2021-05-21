@@ -229,7 +229,25 @@ class Codetot_CT_Theme_Settings
             'style-4' => sprintf(__('Style %s', 'ct-bones'), 4)
           ],
         ]
-      )
+        ),
+        array(
+          [
+            'type' => 'heading',
+            'name' => __('Single Post Layout', 'ct-bones'),
+          ],
+          [
+            'name'    => __('Hide Post Meta (date, category and author)', 'ct-bones'),
+            'id'      => $this->filter_prefix . 'hide_post_meta',
+            'type'    => 'switch',
+            'style'   => 'rounded'
+          ],
+          [
+            'name'    => __('Hide Featured Image', 'ct-bones'),
+            'id'      => $this->filter_prefix . 'hide_featured_image',
+            'type'    => 'switch',
+            'style'   => 'rounded'
+          ]
+        )
     );
 
     $meta_boxes[] = [

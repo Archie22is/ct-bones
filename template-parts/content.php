@@ -8,6 +8,8 @@
  * @package CT_Bones
  */
 
+$hide_featured_image = get_global_option('codetot_settings_hide_featured_image') ?? false;
+$hide_post_meta = get_global_option('codetot_settings_hide_post_meta') ?? false;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -18,23 +20,18 @@
     else :
       the_title('<h2 class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>');
     endif;
-
-    if ('post' === get_post_type()) :
-      $hide_post_meta = get_global_option('codetot_post_hide_meta') ?? false;
-      if (!$hide_post_meta) :
-    ?>
-        <div class="entry-meta">
-          <?php
-          ct_bones_posted_on();
-          ct_bones_posted_by();
-          ct_bones_entry_categories();
-          ?>
-        </div><!-- .entry-meta -->
-      <?php endif; ?>
+    if ('post' === get_post_type() && !$hide_post_meta) : ?>
+      <div class="entry-meta">
+        <?php
+        ct_bones_posted_on();
+        ct_bones_posted_by();
+        ct_bones_entry_categories();
+        ?>
+      </div><!-- .entry-meta -->
     <?php endif; ?>
   </header><!-- .entry-header -->
 
-  <?php if (apply_filters('codetot_display_post_thumbnail', true) === true) : ?>
+  <?php if (!$hide_featured_image) : ?>
     <div class="entry-thumbnail">
       <?php ct_bones_post_thumbnail(); ?>
     </div>
