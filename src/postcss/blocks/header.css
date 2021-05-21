@@ -272,6 +272,18 @@
   }
 }
 
+.header--dark-contract {
+  color: var(--white);
+
+  & a {
+    color: var(--white);
+  }
+
+  & svg {
+    fill: var(--white);
+  }
+}
+
 .header--layout-6.header--dark-contract,
 .header--dark-contract {
   & .header__mobile-button svg,
