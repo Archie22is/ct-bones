@@ -46,6 +46,11 @@
         border-top: 0;
       }
     }
+
+    & ul {
+      margin-top: 0.25em;
+      margin-left: 1em;
+    }
   }
 }
 
