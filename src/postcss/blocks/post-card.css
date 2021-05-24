@@ -12,11 +12,6 @@
 
 .post-card__meta-category {
   display: inline-block;
-  transition: transform 0.3s;
-
-  &:hover {
-    transform: translateY(-3px);
-  }
 }
 
 .post-card__link {
