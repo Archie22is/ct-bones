@@ -14,10 +14,6 @@
   margin: 1em 0 0;
 }
 
-.entry-thumbnail__image {
-  @mixin ratio 9/16;
-}
-
 .entry-meta {
   opacity: 0.75;
 

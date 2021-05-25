@@ -137,7 +137,7 @@
 .footer.bg-dark {
   & .footer__copyright-text,
   & .footer__copyright-text a {
-    color: var(--gray);
+    color: var(--light);
   }
 
   & .widget--footer {
@@ -148,16 +148,16 @@
     &.widget_recent_entries,
     &.widget_nav_menu {
       & a {
-        color: var(--gray);
+        color: var(--white);
       }
     }
 
     &.widget_text {
       & .textwidget {
-        color: var(--gray);
+        color: var(--white);
 
         & a {
-          color: var(--gray);
+          color: var(--white);
         }
       }
     }
