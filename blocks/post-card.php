@@ -16,7 +16,7 @@ $_display_footer = !empty($card_style) && $card_style == 'style-3';
 $_display_description = !empty($card_style) && (in_array($card_style, array('style-2', 'style-3', 'style-4', 'style-5')));
 
 $_format_date = !empty($format_date) ? $format_date : get_option('format_date');
-$word_count = (int) apply_filters('codetot_post_card_excerpt_number', 20);
+$word_count = !empty($post_description_length) ? (int) $post_description_length :  (int) apply_filters('codetot_post_card_excerpt_number', 20);
 
 ?>
 <article class="<?php echo $_class; ?>">
