@@ -1,5 +1,17 @@
 .message-block {
   padding: 0.5em 0;
+
+  & .woocommerce-message {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+
+    & a {
+      padding: 0.25em 0.75em;
+      background-color: var(--primary);
+    }
+  }
 }
 
 .message-block__404-button {
