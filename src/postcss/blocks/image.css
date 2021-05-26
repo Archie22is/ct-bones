@@ -1,8 +1,8 @@
-.image {
+.image--contain,
+.image--cover {
   position: relative;
   display: flex;
 
-  & source,
   & img {
     @mixin abs-full;
 
@@ -11,12 +11,13 @@
 }
 
 .image--default {
-  & source,
+  display: flex;
+
   & img,
   & .image__img {
     position: static;
+    width: auto;
     max-width: 100%;
-    height: auto;
   }
 }
 
@@ -29,7 +30,6 @@
 }
 
 .image--contain {
-  & source,
   & img,
   & .image__img {
     object-fit: contain;
@@ -43,7 +43,6 @@
 .image-placeholder {
   background: var(--light);
 
-  & source,
   & img,
   & .image__img {
     object-fit: contain;
