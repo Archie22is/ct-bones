@@ -45,6 +45,17 @@
         padding-top: 0;
         border-top: 0;
       }
+
+      & a {
+        font-weight: var(--font-bold);
+      }
+
+      & .post-date {
+        display: block;
+        font-size: 0.925rem;
+        color: var(--dark);
+        opacity: 0.75;
+      }
     }
 
     & ul {
