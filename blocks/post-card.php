@@ -1,7 +1,7 @@
 <?php
 $categories = get_the_category();
 $category = !empty($categories) ? $categories[0] : '';
-$title_num_words = 5;
+$title_num_words = 10;
 
 $_class = 'fa1 f fdc post-card';
 $_class .= !empty($card_style) ? ' post-card--' . esc_attr($card_style) : ' post-card--style-1';
