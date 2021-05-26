@@ -1,6 +1,7 @@
 <?php
 $categories = get_the_category();
 $category = !empty($categories) ? $categories[0] : '';
+$title_num_words = 5;
 
 $_class = 'fa1 f fdc post-card';
 $_class .= !empty($card_style) ? ' post-card--' . esc_attr($card_style) : ' post-card--style-1';
@@ -57,7 +58,7 @@ $word_count = (int) apply_filters('codetot_post_card_excerpt_number', 20);
       </p>
     <?php endif; ?>
     <h3 class="post-card__title">
-      <a class="post-card__link" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+      <a class="post-card__link" href="<?php the_permalink(); ?>"><?php echo wp_trim_words(get_the_title(), $title_num_words, '...'); ?></a>
     </h3>
     <?php if ($_display_author) : ?>
       <p class="post-card__author">
