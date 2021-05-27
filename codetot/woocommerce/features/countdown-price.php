@@ -82,7 +82,7 @@ class Codetot_WooCommerce_Countdown_Price
       return $price_output_html;
     }
 
-    return '<span class="product-price">' . apply_filters('woocommerce_get_price', $price) . '</span>';
+    return !empty($price) ? '<span class="product-price">' . apply_filters('woocommerce_get_price', $price) . '</span>' : '';
   }
 }
 
