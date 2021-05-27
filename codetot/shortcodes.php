@@ -40,6 +40,7 @@ class CodeTot_Shortcode
     add_shortcode('cart-icon', array($this, 'render_cart_icon'));
     add_shortcode('search-icon', array($this, 'render_search_icon'));
     add_shortcode('social-share', array($this, 'render_social_share_shortcode'));
+    add_shortcode('icon', array($this, 'render_icon_shortcode'));
   }
 
   public function render_social_link_shortcode($atts) {
@@ -54,6 +55,23 @@ class CodeTot_Shortcode
     return get_block('social-links', array(
       'class' => $class
     ));
+  }
+
+  public function render_icon_shortcode($atts) {
+    $settings = shortcode_atts(array(
+      'name' => 'star',
+      'class' => 'icon_svg'
+    ), $atts);
+
+    ob_start();
+
+    echo '<span class="'.$settings['class'].'">';
+    codetot_svg($settings['name'], true);
+    echo '</span>';
+
+    $svg = ob_get_clean();
+
+    return $svg;
   }
 
   public function render_social_share_shortcode() {
