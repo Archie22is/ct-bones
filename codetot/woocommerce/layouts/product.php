@@ -255,8 +255,8 @@ class Codetot_Woocommerce_Layout_Product
 
   public function single_product_column_open() {
     echo '<div class="single-product-top__col">';
+    echo '<div class="single-product-top__inner">';
   }
-
 
   // Top product sidebar
   public function single_product_column_open_secondary() {
@@ -441,6 +441,7 @@ class Codetot_Woocommerce_Layout_Product
 
 
   public function single_product_column_close() {
+    echo '</div>';
     echo '</div>';
   }
 
