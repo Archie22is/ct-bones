@@ -6,11 +6,12 @@
     flex-direction: column-reverse;
     justify-content: space-between;
     align-items: center;
-    line-height: 1;
-    align-items: flex-start;
+    line-height: 1.5;
+    align-items: center;
 
     @media (--s) {
       flex-direction: row-reverse;
+      align-items: flex-start;
     }
 
     & a {
