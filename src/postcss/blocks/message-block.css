@@ -3,13 +3,27 @@
 
   & .woocommerce-message {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column-reverse;
     justify-content: space-between;
     align-items: center;
+    line-height: 1;
+    align-items: flex-start;
+
+    @media (--s) {
+      flex-direction: row-reverse;
+    }
 
     & a {
       padding: 0.25em 0.75em;
       background-color: var(--primary);
+      min-width: 150px;
+      text-align: center;
+      margin-top: 1em;
+
+      @media (--s) {
+        margin-left: 2em;
+        margin-top: 0;
+      }
     }
   }
 }
