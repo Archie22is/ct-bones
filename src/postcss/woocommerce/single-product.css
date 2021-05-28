@@ -150,20 +150,6 @@
       }
     }
 
-    & .price {
-      @mixin h3;
-
-      margin: 0 0 10px;
-      font-weight: var(--font-bold);
-      color: var(--primary);
-
-      & del {
-        opacity: 0.65;
-        color: var(--dark);
-        font-weight: var(--font-normal);
-      }
-    }
-
     & .product_meta {
       margin-top: 1em;
       margin-bottom: 1em;
@@ -200,6 +186,10 @@
       display: none;
     }
   }
+}
+
+.single-product-top__inner {
+  position: relative;
 }
 
 .entry-summary {
@@ -439,9 +429,12 @@
 .single-product-meta {
   margin-top: 0.5em;
 
-  & .sku,
-  & a {
+  & .product-meta__value {
     color: var(--primary);
+
+    & a {
+      color: var(--primary);
+    }
   }
 }
 
@@ -546,5 +539,22 @@
 
     color: var(--body-text-color);
     font-weight: var(--font-normal);
+  }
+}
+
+.quick-view-modal__summary,
+.entry-summary {
+  & .product-price {
+    @mixin h3;
+
+    margin: 0 0 10px;
+    font-weight: var(--font-bold);
+    color: var(--primary);
+
+    & del {
+      opacity: 0.65;
+      color: var(--dark);
+      font-weight: var(--font-normal);
+    }
   }
 }
