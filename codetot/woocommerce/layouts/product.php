@@ -250,6 +250,41 @@ class Codetot_Woocommerce_Layout_Product
       echo '</div>';
     endif;
 
+    $availability = $product->get_availability();
+    echo '<div class="availability_wrapper">';
+    esc_html_e( 'Availability: ', 'woocommerce' );
+    echo '<span class="availability">';
+    echo ( $availability['class'] != 'in-stock') ? ( $availability['availability'],'woocommerce') : esc_html__( 'In stock', 'woocommerce' );
+    echo '</span>';
+    echo '</div>';
+
+    if ( !empty( $product->get_height() ) || !empty( $product->get_width() ) || !empty( $product->get_length() ) ) {
+      echo '<div class="dimensions_wrapper">';
+      esc_html_e( 'Size: ', 'woocommerce' );
+      $space = ' x ';
+
+      if(!empty($product->get_height())) :
+        echo '<span class="height">';
+        echo  $product->get_height() . get_option( 'woocommerce_dimension_unit' );
+        echo '</span>';
+        echo $space;
+      endif;
+
+      if(!empty($product->get_width()) && !empty($product->get_height())) :
+        echo '<span class="width">';
+        echo  $product->get_width() . get_option( 'woocommerce_dimension_unit' );
+        echo '</span>';
+        echo $space;
+      endif;
+
+      if(!empty($product->get_length()) && !empty($product->get_width())) :
+        echo '<span class="length">';
+        echo  $product->get_length() . get_option( 'woocommerce_dimension_unit' );
+        echo '</span>';
+      endif;
+      echo '</div>';
+    }
+
     echo wc_get_product_category_list( $product->get_id(), ', ', '<div class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</div>' );
 
     do_action( 'woocommerce_product_meta_end' );

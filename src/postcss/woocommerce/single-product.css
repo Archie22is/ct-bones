@@ -177,7 +177,11 @@
         }
       }
 
-      & .sku {
+      & .sku,
+      * .weight,
+      * .height,
+      * .width,
+      & .length {
         color: var(--primary);
       }
     }
@@ -525,5 +529,11 @@
   @media (--m) {
     display: block;
     width: 33.33%;
+  }
+}
+
+.single-product {
+  & .product_title {
+    color: var(--primary);
   }
 }
