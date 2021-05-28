@@ -104,17 +104,13 @@ class Codetot_Woocommerce_Layout_Product
     add_action('woocommerce_after_single_product_summary', array($this,'close_content_single_product'), 25);
     add_filter( 'woocommerce_product_tabs', array($this,'woo_custom_description_tab'), 98 );
 
-    // Render sections after top product section
-    remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
-    remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
-
     add_action('woocommerce_after_single_product', array($this, 'after_single_product_container_open'), 1);
 
     if ($this->enable_bottom_sidebar) :
       add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_grid_open'), 6);
     endif;
-    add_action('woocommerce_after_single_product_summary', array($this, 'render_cross_sell_products'), 30);
-    add_action('woocommerce_after_single_product_summary', array($this, 'render_upsell_sections'), 35);
+    add_action('woocommerce_after_single_product', array($this, 'render_cross_sell_products'), 10);
+    add_action('woocommerce_after_single_product', array($this, 'render_upsell_sections'), 20);
 
     if ($this->enable_bottom_sidebar) :
       add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_grid_close'), 24);
