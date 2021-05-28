@@ -104,18 +104,19 @@ class Codetot_Woocommerce_Layout_Product
     add_action('woocommerce_after_single_product_summary', array($this,'close_content_single_product'), 25);
     add_filter( 'woocommerce_product_tabs', array($this,'woo_custom_description_tab'), 98 );
 
-    // Render sections after top product section
-    remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
-    remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
+    add_action('woocommerce_after_single_product', array($this, 'after_single_product_container_open'), 1);
+
     if ($this->enable_bottom_sidebar) :
       add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_grid_open'), 6);
     endif;
-    add_action('woocommerce_after_single_product_summary', array($this, 'render_cross_sell_products'), 30);
-    add_action('woocommerce_after_single_product_summary', array($this, 'render_upsell_sections'), 35);
+    add_action('woocommerce_after_single_product', array($this, 'render_cross_sell_products'), 10);
+    add_action('woocommerce_after_single_product', array($this, 'render_upsell_sections'), 20);
 
     if ($this->enable_bottom_sidebar) :
       add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_grid_close'), 24);
     endif;
+
+    add_action('woocommerce_after_single_product', array($this, 'after_single_product_container_close'), 90);
   }
 
   public function generate_wrapper() {
@@ -250,6 +251,40 @@ class Codetot_Woocommerce_Layout_Product
       echo '</div>';
     endif;
 
+    $availability = $product->get_availability();
+    echo '<div class="availability_wrapper">' . esc_html__( 'Stock', 'woocommerce' ) . ': ';
+    echo '<span class="availability">';
+    echo ( $availability['class'] != 'in-stock') ? ( $availability['availability']) : esc_html__( 'In stock', 'woocommerce' );
+    echo '</span>';
+    echo '</div>';
+
+    if ( !empty( $product->get_height() ) || !empty( $product->get_width() ) || !empty( $product->get_length() ) ) {
+      echo '<div class="dimensions_wrapper">';
+      esc_html_e( 'Size: ', 'woocommerce' );
+      $space = ' x ';
+
+      if(!empty($product->get_height())) :
+        echo '<span class="height">';
+        echo  $product->get_height() . get_option( 'woocommerce_dimension_unit' );
+        echo '</span>';
+        echo $space;
+      endif;
+
+      if(!empty($product->get_width()) && !empty($product->get_height())) :
+        echo '<span class="width">';
+        echo  $product->get_width() . get_option( 'woocommerce_dimension_unit' );
+        echo '</span>';
+        echo $space;
+      endif;
+
+      if(!empty($product->get_length()) && !empty($product->get_width())) :
+        echo '<span class="length">';
+        echo  $product->get_length() . get_option( 'woocommerce_dimension_unit' );
+        echo '</span>';
+      endif;
+      echo '</div>';
+    }
+
     echo wc_get_product_category_list( $product->get_id(), ', ', '<div class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</div>' );
 
     do_action( 'woocommerce_product_meta_end' );
@@ -378,6 +413,10 @@ class Codetot_Woocommerce_Layout_Product
     }
   }
 
+  public function after_single_product_container_open() {
+    echo '<div class="single-product-sections">';
+  }
+
   public function after_single_product_container_grid_open() {
     if ($this->enable_bottom_sidebar) :
       echo '<div class="grid single-product-main__grid">';
@@ -393,6 +432,10 @@ class Codetot_Woocommerce_Layout_Product
       echo '</div>'; // Close .single-product-sections__col--right
       echo '</div>'; // Close .single-product-sections__grid
     endif;
+  }
+
+  public function after_single_product_container_close() {
+    echo '</div>'; // Close .single-product-sections
   }
 }
 
