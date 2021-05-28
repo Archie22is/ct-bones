@@ -190,7 +190,7 @@
   & .woocommerce-product-details__short-description {
     @mixin wysiwyg;
 
-    padding: 10px 0;
+    padding: 0 0 0.5em;
 
     & img {
       display: none;
@@ -459,6 +459,10 @@
 
   & .variations {
     margin: 0;
+
+    & .label label {
+      font-weight: var(--font-bold);
+    }
   }
 
   & .value {
