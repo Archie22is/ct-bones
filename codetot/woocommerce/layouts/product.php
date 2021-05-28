@@ -104,7 +104,7 @@ class Codetot_Woocommerce_Layout_Product
     //single-product-main
     add_action('woocommerce_after_single_product_summary', array($this,'open_content_single_product'), 5);
     add_action('woocommerce_after_single_product_summary', array($this,'close_content_single_product'), 25);
-    add_filter( 'woocommerce_product_tabs', array($this,'woo_custom_description_tab'), 98 );
+    add_filter( 'woocommerce_product_tabs', array($this, 'woo_custom_description_tab'), 98 );
 
     add_action('woocommerce_after_single_product', array($this, 'after_single_product_container_open'), 1);
 
@@ -206,7 +206,14 @@ class Codetot_Woocommerce_Layout_Product
   }
 
   public function woo_custom_description_tab( $tabs ) {
-    $tabs['description']['callback'] = array($this,'woo_custom_description_tab_content');
+    if (!empty($tabs['description'])) {
+      $tabs['description']['callback'] = array($this,'woo_custom_description_tab_content');
+    }
+
+    if (!empty($tabs['additional_information'])) {
+      unset($tabs['additional_information']);
+    }
+
     return $tabs;
   }
 
