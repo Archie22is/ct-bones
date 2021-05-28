@@ -534,6 +534,6 @@
 
 .single-product {
   & .product_title {
-    color: var(--primary);
+    color: var(--body-text-color);
   }
 }
