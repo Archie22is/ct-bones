@@ -128,7 +128,7 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
         </div>
         <div class="quick-view-modal__summary">
           <?php
-          remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 4);
+          remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
           remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
           do_action('woocommerce_single_product_summary');
           add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
