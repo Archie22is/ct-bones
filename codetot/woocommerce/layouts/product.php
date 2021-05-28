@@ -87,9 +87,10 @@ class Codetot_Woocommerce_Layout_Product
     add_action('woocommerce_before_single_product_summary', array($this, 'single_product_column_open_secondary'), 60); // .grid__col
 
     // Product Title
-    add_action('woocommerce_single_product_summary', array($this, 'single_product_title_open'), 3);
-    add_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 4);
-    add_action('woocommerce_single_product_summary', array($this, 'single_product_title_close'), 5);
+    add_action('woocommerce_single_product_summary', array($this, 'single_product_title_open'), 1);
+    add_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
+    add_action('woocommerce_single_product_summary', array($this, 'display_product_stars'), 6);
+    add_action('woocommerce_single_product_summary', array($this, 'single_product_title_close'), 15);
 
     add_action('woocommerce_after_single_product_summary', array($this, 'single_product_column_close'), 4); // .grid__col
     add_action('woocommerce_after_single_product_summary', array($this, 'single_product_grid_close'), 5); // ./grid
@@ -173,6 +174,24 @@ class Codetot_Woocommerce_Layout_Product
       endif;
       echo '</div>'; // close .page-block__container
       echo '</div>'; // close .page-block--product-category
+    endif;
+  }
+
+  public function display_product_stars() {
+    global $product;
+
+    $average = $product->get_average_rating();
+    $enable_star_rating = get_global_option('codetot_woocommerce_enable_product_star_rating_in_list') ?? false;
+
+    if (!empty($average) || $enable_star_rating) :
+      if ($enable_star_rating && $average == 0) {
+        $average = 5;
+      }
+      ?>
+      <div class="product__rating">
+        <?php echo '<div class="product__rating-stars"><span style="width:'.( ( $average / 5 ) * 100 ) . '%"></span></div>'; ?>
+      </div>
+      <?php
     endif;
   }
 
