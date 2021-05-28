@@ -251,10 +251,9 @@ class Codetot_Woocommerce_Layout_Product
     endif;
 
     $availability = $product->get_availability();
-    echo '<div class="availability_wrapper">';
-    esc_html_e( 'Availability: ', 'woocommerce' );
+    echo '<div class="availability_wrapper">' . esc_html__( 'Stock', 'woocommerce' ) . ': ';
     echo '<span class="availability">';
-    echo ( $availability['class'] != 'in-stock') ? ( $availability['availability'],'woocommerce') : esc_html__( 'In stock', 'woocommerce' );
+    echo ( $availability['class'] != 'in-stock') ? ( $availability['availability']) : esc_html__( 'In stock', 'woocommerce' );
     echo '</span>';
     echo '</div>';
 
