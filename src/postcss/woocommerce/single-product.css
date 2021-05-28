@@ -202,6 +202,10 @@
   }
 }
 
+.single-product-top__inner {
+  position: relative;
+}
+
 .entry-summary {
   & .product-price--countdown {
     display: flex;

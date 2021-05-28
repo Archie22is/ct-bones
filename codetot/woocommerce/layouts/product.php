@@ -81,7 +81,8 @@ class Codetot_Woocommerce_Layout_Product
 
     // Product Gallery column
     add_action('woocommerce_before_single_product_summary', array($this, 'single_product_column_open'), 15); // .grid__col
-    add_action('woocommerce_before_single_product_summary', array($this, 'single_product_gallery'), 20);
+    add_action('woocommerce_before_single_product_summary', array($this, 'change_sale_flash_in_gallery'), 20);
+    add_action('woocommerce_before_single_product_summary', array($this, 'single_product_gallery'), 25);
     add_action('woocommerce_before_single_product_summary', array($this, 'single_product_column_close'), 50); // /.grid__col
 
     // Column: Product Detail (Right)
@@ -479,6 +480,58 @@ class Codetot_Woocommerce_Layout_Product
     }
 
     return $html;
+  }
+
+  public function change_sale_flash_in_gallery()
+  {
+    global $product;
+    if (empty($product)) {
+      return;
+    }
+
+    $sale = $product->is_on_sale();
+    $price_sale = $product->get_sale_price();
+    $price = $product->get_regular_price();
+    $simple = $product->is_type('simple');
+    $variable = $product->is_type('variable');
+    $external = $product->is_type('external');
+    $sale_text = __('On Sale', 'woocommerce');
+    $sale_percent = true;
+    $final_price = '';
+    $out_of_stock = codetot_is_product_out_of_stock($product);
+
+    // Out of stock.
+    if ($out_of_stock) {
+      return;
+    }
+
+    if ($sale) {
+      // For simple product.
+      if ($simple || $external) {
+        if ($sale_percent) {
+          $final_price = (($price - $price_sale) / $price) * 100;
+          $final_price = '-' . round($final_price) . '%';
+        } elseif ($sale_text) {
+          $final_price = $sale_text;
+        }
+      } elseif ($variable && $sale_text) {
+        // For variable product.
+        $final_price = $sale_text;
+      }
+
+      if (!$final_price) {
+        return;
+      }
+
+      $classes[] = 'product__tag product__tag--onsale';
+      $classes[] = 'sale-right';
+      $classes[] = 'is-square';
+    ?>
+      <span class="<?php echo esc_attr(implode(' ', array_filter($classes))); ?>">
+        <?php echo esc_html($final_price); ?>
+      </span>
+    <?php
+    }
   }
 
   public function single_product_gallery() {
