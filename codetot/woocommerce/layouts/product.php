@@ -90,7 +90,7 @@ class Codetot_Woocommerce_Layout_Product
     // Product Title
     add_action('woocommerce_single_product_summary', array($this, 'single_product_title_open'), 1);
     add_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
-    add_action('woocommerce_single_product_summary', array($this, 'display_product_stars'), 6);
+    // add_action('woocommerce_single_product_summary', array($this, 'display_product_stars'), 6);
     add_action('woocommerce_single_product_summary', array($this, 'single_product_title_close'), 15);
 
     add_action('woocommerce_after_single_product_summary', array($this, 'single_product_column_close'), 4); // .grid__col
@@ -264,27 +264,32 @@ class Codetot_Woocommerce_Layout_Product
 
     do_action( 'woocommerce_product_meta_start' );
 
-    if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) :
-      echo '<div class="sku_wrapper">';
-      esc_html_e( 'SKU: ', 'woocommerce' );
-      echo '<span class="sku">';
-      echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' );
-      echo '</span>';
-      echo '</div>';
+    if ( wc_product_sku_enabled() && !empty($product->get_sku()) ) :
+      printf('<p class="product-meta product-meta--sku"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+      esc_html__( 'SKU: ', 'woocommerce' ),
+      $product->get_sku()
+    );
     endif;
 
+    if ($product->has_weight()) {
+      $weight_unit = get_option('woocommerce_weight_unit');
+
+      printf('<p class="product-meta product-meta--weight"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+        esc_html__('Weight', 'woocommerce'),
+        $product->get_weight() . $weight_unit
+      );
+    }
+
     $availability = $product->get_availability();
-    echo '<div class="availability_wrapper">' . esc_html__( 'Stock', 'woocommerce' ) . ': ';
-    echo '<span class="availability">';
-    echo ( $availability['class'] != 'in-stock') ? ( $availability['availability']) : esc_html__( 'In stock', 'woocommerce' );
-    echo '</span>';
-    echo '</div>';
+    printf('<p class="product-meta product-meta--stock"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+      esc_html__( 'Stock', 'woocommerce' ),
+      $availability['class'] != 'in-stock' ? $availability['availability'] : esc_html__( 'In stock', 'woocommerce' )
+    );
 
     if ( !empty( $product->get_height() ) || !empty( $product->get_width() ) || !empty( $product->get_length() ) ) {
-      echo '<div class="dimensions_wrapper">';
-      esc_html_e( 'Size: ', 'woocommerce' );
       $space = ' x ';
 
+      ob_start();
       if(!empty($product->get_height())) :
         echo '<span class="height">';
         echo  $product->get_height() . get_option( 'woocommerce_dimension_unit' );
@@ -304,10 +309,23 @@ class Codetot_Woocommerce_Layout_Product
         echo  $product->get_length() . get_option( 'woocommerce_dimension_unit' );
         echo '</span>';
       endif;
-      echo '</div>';
+      $dimesions_html = ob_get_clean();
+
+      printf('<p class="product-meta product-meta--dimesions"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+        esc_html__( 'Size', 'woocommerce' ),
+        $dimesions_html
+      );
     }
 
-    echo wc_get_product_category_list( $product->get_id(), ', ', '<div class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</div>' );
+    $product_categories = get_the_terms($product->get_id(), 'product_cat');
+    if (!empty($product_categories) && !is_wp_error($product_categories)) {
+      $product_category_label = _n('Category', 'Categories', count($product_categories), 'woocommerce');
+
+      printf('<p class="product-meta product-meta--categories"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+        $product_category_label,
+        wc_get_product_category_list($product->get_id(), ', ')
+      );
+    }
 
     do_action( 'woocommerce_product_meta_end' );
 
