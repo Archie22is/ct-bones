@@ -439,9 +439,12 @@
 .single-product-meta {
   margin-top: 0.5em;
 
-  & .sku,
-  & a {
+  & .product-meta__value {
     color: var(--primary);
+
+    & a {
+      color: var(--primary);
+    }
   }
 }
 
