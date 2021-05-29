@@ -91,33 +91,33 @@
 
   & .post-card__wrapper {
     position: relative;
+  }
 
-    & .post-card__bage {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      z-index: 2;
-      background: rgba(0, 0, 0, 0.4);
-      color: var(--white);
-      display: flex;
-      align-items: center;
+  & .post-card__badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+  }
 
-      & .post-card__bage-icon {
-        background: var(--primary);
-        padding: 0.5em;
-        display: flex;
+  & .post-card__bage-icon {
+    background: var(--primary);
+    padding: 0.5em;
+    display: flex;
 
-        & svg {
-          fill: var(--white);
-          width: 20px;
-          height: 20px;
-        }
-      }
-
-      & .post-card__bage-date {
-        padding: 0 0.5em;
-      }
+    & svg {
+      fill: var(--white);
+      width: 20px;
+      height: 20px;
     }
+  }
+
+  & .post-card__bage-date {
+    padding: 0 0.5em;
   }
 }
 

@@ -11,7 +11,7 @@ $_class .= !empty($class) ? ' ' . esc_attr($class) : '';
 $_display_category = !empty($card_style) && (in_array($card_style, array('style-3')));
 $_display_author = !empty($card_style) && (in_array($card_style, array('style-4')));
 $_display_date = !empty($card_style) && $card_style == 'style-3';
-$_display_date_bage = !empty($card_style) && $card_style == 'style-2';
+$_display_date_badge = !empty($card_style) && $card_style == 'style-2';
 $_display_footer = !empty($card_style) && $card_style == 'style-3';
 $_display_description = !empty($card_style) && (in_array($card_style, array('style-2', 'style-3', 'style-4', 'style-5')));
 
@@ -36,10 +36,10 @@ $word_count = !empty($post_description_length) ? (int) $post_description_length 
       endif;
       ?>
 
-      <?php if ($_display_date_bage) : ?>
-        <div class="post-card__bage">
-          <span class="post-card__bage-date"><?php echo $post_date; ?></span>
-          <span class="post-card__bage-icon"><?php codetot_svg('right-arrow',true); ?></span>
+      <?php if ($_display_date_badge) : ?>
+        <div class="post-card__badge">
+          <span class="post-card__badge-date"><?php echo $post_date; ?></span>
+          <span class="post-card__badge-icon"><?php codetot_svg('right-arrow',true); ?></span>
         </div>
         <?php endif; ?>
       </a>
