@@ -164,6 +164,20 @@ h3:empty {
   }
 }
 
+.product-type-simple:not(.purchasable) {
+  & .button.product_type_simple {
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 0 2.2em;
+    margin: 1em 0;
+
+    &:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+  }
+}
+
 .product__rating {
   display: flex;
   justify-content: center;
