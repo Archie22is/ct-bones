@@ -1,33 +1,35 @@
 <?php
 
 get_header();
+$card_style = get_global_option('codetot_post_card_style') ?? 'style-1';
+$number_columns = get_global_option('codetot_category_column_number');
+$title = get_the_archive_title();
 ?>
-
 	<main id="primary" class="site-main">
-
+  <?php do_action('codetot_before_category_main'); ?>
     <?php
-    the_block('breadcrumbs');
 
-    the_block('page-header', array(
-      'class' => 'page-header--archive',
-      /* translators: %s: search query. */
-      'title' => get_the_archive_title()
-    ));
+    echo '<h1 class="page-title">'.$title.'</h1>';
 
     if ( have_posts() ) :
       global $wp_query; ?>
 
 			<?php
-			the_block('post-grid', array(
-        'class' => 'post-grid--archive',
-        'display_meta' => true,
-        'query' => $wp_query,
-        'card_style' => get_global_option('codetot_post_card_style') ?? 'style-1',
-        'columns' => get_global_option('codetot_category_column_number') ?? '3',
+      $columns = [];
+      while( $wp_query->have_posts() ) : $wp_query->the_post();
+        $columns[] = get_block('post-card',array(
+          'card_style' => !empty($card_style) ? $card_style : 'style-1'
+        ));
+      endwhile; wp_reset_postdata();
+
+      $content = codetot_build_grid_columns($columns, 'post-grid', array(
+        'column_class' => 'f fdc default-section__col'
       ));
 
+      echo '<div class="mt-1 site-main__main-category default-section has-'.$number_columns. '-columns">';
+      echo $content;
       the_block('pagination');
-
+      echo '</div>';
 		else :
 
       ob_start();
@@ -48,9 +50,8 @@ get_header();
 		endif;
 		?>
 
+    <?php do_action('codetot_sidebar'); ?>
+    <?php do_action('codetot_after_category_main'); ?>
 	</main><!-- #main -->
-
-  <?php do_action('codetot_sidebar'); ?>
-
 <?php
 get_footer();
