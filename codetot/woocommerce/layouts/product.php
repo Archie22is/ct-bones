@@ -74,22 +74,25 @@ class Codetot_Woocommerce_Layout_Product
     remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
     remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10);
     remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
+    remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
 
     add_action('woocommerce_before_single_product_summary', array($this, 'print_errors'), 5);
     add_action('woocommerce_before_single_product_summary', array($this, 'single_product_grid_open'), 12); // .grid
 
     // Product Gallery column
     add_action('woocommerce_before_single_product_summary', array($this, 'single_product_column_open'), 15); // .grid__col
-    add_action('woocommerce_before_single_product_summary', array($this, 'single_product_gallery'), 20);
+    add_action('woocommerce_before_single_product_summary', array($this, 'change_sale_flash_in_gallery'), 20);
+    add_action('woocommerce_before_single_product_summary', array($this, 'single_product_gallery'), 25);
     add_action('woocommerce_before_single_product_summary', array($this, 'single_product_column_close'), 50); // /.grid__col
 
     // Column: Product Detail (Right)
     add_action('woocommerce_before_single_product_summary', array($this, 'single_product_column_open_secondary'), 60); // .grid__col
 
     // Product Title
-    add_action('woocommerce_single_product_summary', array($this, 'single_product_title_open'), 3);
-    add_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 4);
-    add_action('woocommerce_single_product_summary', array($this, 'single_product_title_close'), 5);
+    add_action('woocommerce_single_product_summary', array($this, 'single_product_title_open'), 1);
+    add_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
+    // add_action('woocommerce_single_product_summary', array($this, 'display_product_stars'), 6);
+    add_action('woocommerce_single_product_summary', array($this, 'single_product_title_close'), 15);
 
     add_action('woocommerce_after_single_product_summary', array($this, 'single_product_column_close'), 4); // .grid__col
     add_action('woocommerce_after_single_product_summary', array($this, 'single_product_grid_close'), 5); // ./grid
@@ -102,20 +105,23 @@ class Codetot_Woocommerce_Layout_Product
     //single-product-main
     add_action('woocommerce_after_single_product_summary', array($this,'open_content_single_product'), 5);
     add_action('woocommerce_after_single_product_summary', array($this,'close_content_single_product'), 25);
-    add_filter( 'woocommerce_product_tabs', array($this,'woo_custom_description_tab'), 98 );
+    add_filter( 'woocommerce_product_tabs', array($this, 'woo_custom_description_tab'), 98 );
 
-    // Render sections after top product section
-    remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
-    remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
+    add_action('woocommerce_after_single_product', array($this, 'after_single_product_container_open'), 1);
+
     if ($this->enable_bottom_sidebar) :
       add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_grid_open'), 6);
     endif;
-    add_action('woocommerce_after_single_product_summary', array($this, 'render_cross_sell_products'), 30);
-    add_action('woocommerce_after_single_product_summary', array($this, 'render_upsell_sections'), 35);
+
+    add_action('woocommerce_after_single_product', array($this, 'render_related_products'), 10);
+    add_action('woocommerce_after_single_product', array($this, 'render_cross_sell_products'), 15);
+    add_action('woocommerce_after_single_product', array($this, 'render_upsell_sections'), 20);
 
     if ($this->enable_bottom_sidebar) :
       add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_grid_close'), 24);
     endif;
+
+    add_action('woocommerce_after_single_product', array($this, 'after_single_product_container_close'), 90);
   }
 
   public function generate_wrapper() {
@@ -175,6 +181,24 @@ class Codetot_Woocommerce_Layout_Product
     endif;
   }
 
+  public function display_product_stars() {
+    global $product;
+
+    $average = $product->get_average_rating();
+    $enable_star_rating = get_global_option('codetot_woocommerce_enable_product_star_rating_in_list') ?? false;
+
+    if (!empty($average) || $enable_star_rating) :
+      if ($enable_star_rating && $average == 0) {
+        $average = 5;
+      }
+      ?>
+      <div class="product__rating">
+        <?php echo '<div class="product__rating-stars"><span style="width:'.( ( $average / 5 ) * 100 ) . '%"></span></div>'; ?>
+      </div>
+      <?php
+    endif;
+  }
+
   public function open_content_single_product() {
     echo '<div class="single-product-main">';
     if (!$this->enable_sidebar) :
@@ -183,7 +207,14 @@ class Codetot_Woocommerce_Layout_Product
   }
 
   public function woo_custom_description_tab( $tabs ) {
-    $tabs['description']['callback'] = array($this,'woo_custom_description_tab_content');
+    if (!empty($tabs['description'])) {
+      $tabs['description']['callback'] = array($this,'woo_custom_description_tab_content');
+    }
+
+    if (!empty($tabs['additional_information'])) {
+      unset($tabs['additional_information']);
+    }
+
     return $tabs;
   }
 
@@ -225,8 +256,8 @@ class Codetot_Woocommerce_Layout_Product
 
   public function single_product_column_open() {
     echo '<div class="single-product-top__col">';
+    echo '<div class="single-product-top__inner">';
   }
-
 
   // Top product sidebar
   public function single_product_column_open_secondary() {
@@ -241,16 +272,68 @@ class Codetot_Woocommerce_Layout_Product
 
     do_action( 'woocommerce_product_meta_start' );
 
-    if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) :
-      echo '<div class="sku_wrapper">';
-      esc_html_e( 'SKU: ', 'woocommerce' );
-      echo '<span class="sku">';
-      echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' );
-      echo '</span>';
-      echo '</div>';
+    if ( wc_product_sku_enabled() && !empty($product->get_sku()) ) :
+      printf('<p class="product-meta product-meta--sku"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+      esc_html__( 'SKU: ', 'woocommerce' ),
+      $product->get_sku()
+    );
     endif;
 
-    echo wc_get_product_category_list( $product->get_id(), ', ', '<div class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</div>' );
+    if ($product->has_weight()) {
+      $weight_unit = get_option('woocommerce_weight_unit');
+
+      printf('<p class="product-meta product-meta--weight"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+        esc_html__('Weight', 'woocommerce'),
+        $product->get_weight() . $weight_unit
+      );
+    }
+
+    $availability = $product->get_availability();
+    printf('<p class="product-meta product-meta--stock"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+      esc_html__( 'Stock', 'woocommerce' ),
+      $availability['class'] != 'in-stock' ? $availability['availability'] : esc_html__( 'In stock', 'woocommerce' )
+    );
+
+    if ( !empty( $product->get_height() ) || !empty( $product->get_width() ) || !empty( $product->get_length() ) ) {
+      $space = ' x ';
+
+      ob_start();
+      if(!empty($product->get_height())) :
+        echo '<span class="height">';
+        echo  $product->get_height() . get_option( 'woocommerce_dimension_unit' );
+        echo '</span>';
+        echo $space;
+      endif;
+
+      if(!empty($product->get_width()) && !empty($product->get_height())) :
+        echo '<span class="width">';
+        echo  $product->get_width() . get_option( 'woocommerce_dimension_unit' );
+        echo '</span>';
+        echo $space;
+      endif;
+
+      if(!empty($product->get_length()) && !empty($product->get_width())) :
+        echo '<span class="length">';
+        echo  $product->get_length() . get_option( 'woocommerce_dimension_unit' );
+        echo '</span>';
+      endif;
+      $dimesions_html = ob_get_clean();
+
+      printf('<p class="product-meta product-meta--dimesions"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+        esc_html__( 'Size', 'woocommerce' ),
+        $dimesions_html
+      );
+    }
+
+    $product_categories = get_the_terms($product->get_id(), 'product_cat');
+    if (!empty($product_categories) && !is_wp_error($product_categories)) {
+      $product_category_label = _n('Category', 'Categories', count($product_categories), 'woocommerce');
+
+      printf('<p class="product-meta product-meta--categories"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+        $product_category_label,
+        wc_get_product_category_list($product->get_id(), ', ')
+      );
+    }
 
     do_action( 'woocommerce_product_meta_end' );
 
@@ -263,7 +346,40 @@ class Codetot_Woocommerce_Layout_Product
     do_action( 'woocommerce_product_meta_start' );
     echo wc_get_product_tag_list( $product->get_id(), ', ', '<div class="single-product-tag tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</div>' );
     do_action( 'woocommerce_product_meta_end' );
+  }
 
+  public function render_related_products() {
+    global $product;
+    $sidebar_layout = get_global_option('codetot_product_layout') ?? 'no-sidebar';
+    $columns = get_global_option('codetot_woocommerce_cross_sell_products_colums') ?? '4';
+    $related_product_ids = wc_get_related_products($product->get_id());
+
+    if (empty($related_product_ids)) {
+      return '';
+    }
+
+    $post_args = array(
+      'post_type' => 'product',
+      'post_status' => 'publish',
+      'posts_per_page' => apply_filters('codetot_related_products_number', 4),
+      'post__in' => $related_product_ids
+    );
+
+    $_class = 'section product-grid--related-products';
+    if ($sidebar_layout !== 'no-sidebar') {
+      $_class .= ' product-grid--no-container';
+    }
+
+    $post_query = new WP_Query($post_args);
+
+    if ($post_query->have_posts()) :
+      the_block('product-grid', array(
+        'class' => $_class,
+        'title' => apply_filters( 'woocommerce_product_related_products_heading', __( 'Related products', 'woocommerce' ) ),
+        'query' => $post_query,
+        'columns' => $columns
+      ));
+    endif;
   }
 
   public function render_cross_sell_products() {
@@ -291,7 +407,7 @@ class Codetot_Woocommerce_Layout_Product
     if ($post_query->have_posts()) :
       the_block('product-grid', array(
         'class' => $_class,
-        'title' => apply_filters( 'woocommerce_product_related_products_heading', __( 'Related products', 'woocommerce' ) ),
+        'title' => apply_filters( 'woocommerce_product_cross_sells_products_heading', __( 'You might be interest', 'woocommerce' ) ),
         'query' => $post_query,
         'columns' => $columns
       ));
@@ -326,6 +442,7 @@ class Codetot_Woocommerce_Layout_Product
 
 
   public function single_product_column_close() {
+    echo '</div>';
     echo '</div>';
   }
 
@@ -365,6 +482,58 @@ class Codetot_Woocommerce_Layout_Product
     return $html;
   }
 
+  public function change_sale_flash_in_gallery()
+  {
+    global $product;
+    if (empty($product)) {
+      return;
+    }
+
+    $sale = $product->is_on_sale();
+    $price_sale = $product->get_sale_price();
+    $price = $product->get_regular_price();
+    $simple = $product->is_type('simple');
+    $variable = $product->is_type('variable');
+    $external = $product->is_type('external');
+    $sale_text = __('On Sale', 'woocommerce');
+    $sale_percent = true;
+    $final_price = '';
+    $out_of_stock = codetot_is_product_out_of_stock($product);
+
+    // Out of stock.
+    if ($out_of_stock) {
+      return;
+    }
+
+    if ($sale) {
+      // For simple product.
+      if ($simple || $external) {
+        if ($sale_percent) {
+          $final_price = (($price - $price_sale) / $price) * 100;
+          $final_price = '-' . round($final_price) . '%';
+        } elseif ($sale_text) {
+          $final_price = $sale_text;
+        }
+      } elseif ($variable && $sale_text) {
+        // For variable product.
+        $final_price = $sale_text;
+      }
+
+      if (!$final_price) {
+        return;
+      }
+
+      $classes[] = 'product__tag product__tag--onsale';
+      $classes[] = 'sale-right';
+      $classes[] = 'is-square';
+    ?>
+      <span class="<?php echo esc_attr(implode(' ', array_filter($classes))); ?>">
+        <?php echo esc_html($final_price); ?>
+      </span>
+    <?php
+    }
+  }
+
   public function single_product_gallery() {
     the_block('product-gallery');
   }
@@ -376,6 +545,10 @@ class Codetot_Woocommerce_Layout_Product
         'content' => wc_print_notices(true)
       ));
     }
+  }
+
+  public function after_single_product_container_open() {
+    echo '<div class="single-product-sections">';
   }
 
   public function after_single_product_container_grid_open() {
@@ -393,6 +566,10 @@ class Codetot_Woocommerce_Layout_Product
       echo '</div>'; // Close .single-product-sections__col--right
       echo '</div>'; // Close .single-product-sections__grid
     endif;
+  }
+
+  public function after_single_product_container_close() {
+    echo '</div>'; // Close .single-product-sections
   }
 }
 

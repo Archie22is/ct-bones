@@ -45,8 +45,6 @@ get_header();
 
     the_block('pagination');
 
-    the_posts_navigation();
-
   else :
 
     ob_start();
