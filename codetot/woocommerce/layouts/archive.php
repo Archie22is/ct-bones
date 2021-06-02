@@ -388,27 +388,17 @@ class Codetot_Woocommerce_Layout_Archive
       return '';
     }
 
-    $size = 'medium';
-    $img_id = $product->get_image_id();
-    $img_alt = codetot_image_alt($img_id, esc_attr__('Product Image', 'ct-bones'));
-    $img_origin = wp_get_attachment_image_src($img_id, $size);
-    $img_srcset = wp_get_attachment_image_srcset($img_id, $size);
+    $img_id = !empty($product->get_image_id()) ? $product->get_image_id() : get_option('woocommerce_placeholder_image', 0);
 
-    if (!$img_origin) {
-      $img_ori = '';
-    } else {
-      $img_ori = $img_origin[0];
-    }
+    ob_start();
+    echo wp_get_attachment_image($img_id, 'woocommerce_thumbnail', false, array(
+      'class' => 'wp-post-image lazyload image__img product__image'
+    ));
+    $image_html = ob_get_clean();
+    $image_html = str_replace(' srcset="', ' srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-srcset="', $image_html);
+    $image_html = str_replace(' loading="lazy', '', $image_html);
 
-    $image_attr = array(
-      'alt' => $img_alt,
-      'data-src' => $img_ori,
-      'data-srcset' => $img_srcset,
-      'data-sizes' => 'auto',
-      'class' => 'wp-post-image attachment-' . $size . ' size-' . $size . ' product__image lazyload',
-    );
-
-    echo $product->get_image($size, $image_attr);
+    echo $image_html;
   }
 
   public function add_template_loop_product_title()
