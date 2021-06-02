@@ -72,7 +72,7 @@
     }
   }
 
-  & .wpml-ls-legacy-list-horizontal{
+  & .wpml-ls-legacy-list-horizontal {
     &.wpml-ls-statics-footer {
       margin-bottom: 1em;
       padding: 0;
@@ -87,7 +87,7 @@
           }
 
           & > .wpml-ls-link {
-            padding: 0
+            padding: 0;
           }
         }
       }
