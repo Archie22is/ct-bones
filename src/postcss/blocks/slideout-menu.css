@@ -71,6 +71,28 @@
       width: 6px;
     }
   }
+
+  & .wpml-ls-legacy-list-horizontal {
+    &.wpml-ls-statics-footer {
+      margin-bottom: 1em;
+      padding: 0;
+
+      & > ul {
+        text-align: left;
+        & > li {
+          margin-left: 0.5em;
+
+          &:first-child {
+            margin-left: 0;
+          }
+
+          & > .wpml-ls-link {
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
 }
 
 .is-assets-loaded .slideout-menu {
