@@ -8,6 +8,9 @@
     <div class="slideout-menu__inner">
       <?php
       echo get_search_form(array('id' => 'slideout-menu'));
+      if ( function_exists('icl_object_id') ) {
+        echo do_shortcode( '[wpml_language_switcher type="footer" flags=1 native=0 translated=0][/wpml_language_switcher]' );
+      }
       ?>
       <?php if (has_nav_menu('primary')) :
         wp_nav_menu(array(
