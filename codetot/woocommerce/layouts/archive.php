@@ -392,11 +392,12 @@ class Codetot_Woocommerce_Layout_Archive
 
     ob_start();
     echo wp_get_attachment_image($img_id, 'medium_large', false, array(
-      'class' => 'wp-post-image lazyload image__img'
+      'class' => 'wp-post-image lazyload image__img',
+      'alt' => ''
     ));
     $image_html = ob_get_clean();
     $image_html = str_replace(' srcset="', ' srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-srcset="', $image_html);
-    $image_html = str_replace(' loading="lazy', '', $image_html);
+    $image_html = str_replace(' loading="lazy"', '', $image_html);
 
     echo '<figure class="product__image">';
     echo $image_html;
