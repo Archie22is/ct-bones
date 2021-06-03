@@ -312,12 +312,6 @@ form.woocommerce-billing-fields {
       display: none;
     }
 
-    & .product-name {
-      display: flex;
-      padding-right: 10px;
-      align-items: center;
-    }
-
     & .woocommerce-Price-amount {
       color: var(--primary);
     }
