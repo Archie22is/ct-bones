@@ -368,6 +368,16 @@ form.woocommerce-billing-fields {
   &:first-child {
     margin-top: 0;
   }
+
+  &.payment_method_thueapi {
+    & label {
+      width: auto;
+    }
+
+    & img {
+      display: none;
+    }
+  }
 }
 
 .wc_payment_method .payment_box {
