@@ -24,16 +24,13 @@ body.woocommerce-checkout.woocommerce-order-received {
 
   & .woocommerce-order-overview {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: 2em;
-    font-size: 0.8rem;
-    margin-left: 0;
-    padding-left: 0;
+    font-size: 0.925rem;
+    margin: 1em 0;
 
     @media (--m) {
-      margin: 0 -10px;
+      margin: 1em -10px;
       font-size: 1rem;
     }
 
@@ -44,10 +41,10 @@ body.woocommerce-checkout.woocommerce-order-received {
     & > li {
       text-align: left;
 
-      @mixin column-item 1, 0.5em;
+      @mixin column-item 1, 0.15em;
 
       @media (--s) {
-        @mixin column-item 2, 0.5em;
+        @mixin column-item 2, 0.25em;
       }
 
       @media (--m) {
@@ -85,6 +82,14 @@ body.woocommerce-checkout.woocommerce-order-received {
       }
     }
 
+    & tfoot {
+      & tr:last-child td{
+        & .amount {
+          color: var(--primary);
+        }
+      }
+    }
+
     & .woocommerce-Price-amount {
       font-weight: 700;
     }
@@ -92,14 +97,44 @@ body.woocommerce-checkout.woocommerce-order-received {
     & .woocommerce-table__product-name a:hover {
       color: var(--primary);
     }
+
+    & .wc-item-meta {
+      & > li {
+        & > p {
+          display: inline;
+          padding-left: 0.15em;
+        }
+      }
+    }
   }
 
+  & .wc-bacs-bank-details-heading,
   & .woocommerce-column__title,
   & .woocommerce-order-account-details__title,
   & .woocommerce-order-details__title {
     font-size: 1.25rem;
-    font-weight: 500;
+    font-weight: var(--font-normal);
     text-transform: uppercase;
+  }
+
+  & .wc-bacs-bank-details-account-name {
+    font-size: 1rem;
+  }
+
+  & .wc-bacs-bank-details {
+    font-size: 0.925rem;
+
+    & > li {
+      margin-top: 0.15em;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    @media (--s) {
+      font-size: 1rem;
+    }
   }
 
   & .woocommerce-customer-details {
