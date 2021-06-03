@@ -296,6 +296,20 @@ body.woocommerce-cart {
         color: var(--primary);
       }
     }
+
+    & .variation {
+      & > * {
+        display: inline-block;
+      }
+
+      & > dt {
+        font-weight: 700;
+      }
+
+      & > dd {
+        margin-left: 0;
+      }
+    }
   }
 
   & .product-price {
@@ -387,6 +401,28 @@ body.woocommerce-cart {
       width: auto;
       padding-left: 1em;
       padding-right: 1em;
+    }
+  }
+}
+
+.cart_item {
+  & .product-name {
+    & .variation {
+      display: block;
+      margin: 0;
+      font-size: 0.85rem;
+
+      & > * {
+        display: inline-block;
+      }
+
+      & > dt {
+        font-weight: 700;
+      }
+
+      & > dd {
+        margin-left: 0;
+      }
     }
   }
 }
