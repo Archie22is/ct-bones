@@ -92,11 +92,7 @@ body.woocommerce-checkout.woocommerce-order-received {
     }
 
     & .woocommerce-Price-amount {
-      font-weight: 700;
-    }
-
-    & .woocommerce-table__product-name a:hover {
-      color: var(--primary);
+      font-weight: var(--font-bold);
     }
 
     & .wc-item-meta {

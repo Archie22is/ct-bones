@@ -159,6 +159,14 @@
 
   & .woocommerce-table__product-name {
     text-align: left;
+
+    & a {
+      &:hover {
+        @media (--m) {
+          text-decoration: underline;
+        }
+      }
+    }
   }
 }
 
