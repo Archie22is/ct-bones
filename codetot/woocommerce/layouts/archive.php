@@ -391,7 +391,7 @@ class Codetot_Woocommerce_Layout_Archive
     $img_id = !empty($product->get_image_id()) ? $product->get_image_id() : get_option('woocommerce_placeholder_image', 0);
 
     ob_start();
-    echo wp_get_attachment_image($img_id, 'woocommerce_thumbnail', false, array(
+    echo wp_get_attachment_image($img_id, 'medium_large', false, array(
       'class' => 'wp-post-image lazyload image__img product__image'
     ));
     $image_html = ob_get_clean();
