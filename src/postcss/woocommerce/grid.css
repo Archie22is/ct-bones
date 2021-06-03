@@ -247,14 +247,14 @@
 
 .has-product-card-image-cover {
   & .product__image-hover .image__img,
-  & .product__image {
+  & .product__image .image__img {
     object-fit: cover;
   }
 }
 
 .has-product-card-image-contain {
   & .product__image-hover .image__img,
-  & .product__image {
+  & .product__image .image__img {
     object-fit: contain;
   }
 }
