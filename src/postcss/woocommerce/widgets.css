@@ -141,11 +141,11 @@
   }
 
   & img {
-    max-width: 60px;
-    max-height: 60px;
     position: absolute;
     top: 10px;
     left: 0;
+    width: 60px;
+    height: 60px;
   }
 
   & .product-price {
