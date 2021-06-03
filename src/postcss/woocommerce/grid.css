@@ -73,13 +73,9 @@
 
 .products.columns-5 {
   & > .product {
-    width: 100%;
+    width: 50%;
     margin-top: 20px;
     padding: 0 10px;
-
-    @media (--xxs) {
-      width: 50%;
-    }
 
     @media (--sm) {
       width: 20%;
@@ -101,13 +97,9 @@
 
 .products.columns-3 {
   & > .product {
-    width: 100%;
+    width: 50%;
     margin-top: 20px;
     padding: 0 10px;
-
-    @media (--xxs) {
-      width: 50%;
-    }
 
     @media (--sm) {
       width: 33.33%;
