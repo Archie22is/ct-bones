@@ -55,7 +55,7 @@ class Codetot_Woocommerce_Layout_Product
     $this->enable_top_sidebar = is_active_sidebar('top-product-sidebar');
     $this->enable_bottom_sidebar = is_active_sidebar('bottom-product-sidebar');
 
-    add_action('wp', array($this, 'generate_wrapper'));
+    $this->generate_wrapper();
 
     add_action('wp_enqueue_scripts', array($this, 'enqueue_single_product_assets'));
 
