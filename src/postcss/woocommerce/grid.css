@@ -11,6 +11,10 @@
       & .product__image-hover {
         @media (--m) {
           @mixin fade-in;
+
+          & + .product__image {
+            @mixin fade-out;
+          }
         }
       }
     }
