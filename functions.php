@@ -98,7 +98,6 @@ if (class_exists('WooCommerce')) {
     require_once CODETOT_DIR . '/woocommerce/layouts/account.php';
     require_once CODETOT_DIR . '/woocommerce/layouts/cart.php';
     require_once CODETOT_DIR . '/woocommerce/layouts/checkout.php';
-    require_once CODETOT_DIR . '/woocommerce/layouts/thankyou.php';
   });
 }
 
