@@ -45,8 +45,8 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
       add_filter('body_class', array($this, 'add_body_class'));
 
       // Add elements
-      add_action('woocommerce_before_shop_loop_item_title', array($this, 'quick_view_button'), 21);
-      add_action('wp_footer', array($this, 'quick_view_modal'));
+      add_action('woocommerce_before_shop_loop_item_title', 'codetot_quick_view_button', 21);
+      add_action('wp_footer', 'codetot_quick_view_modal');
 
       // Load JSON content
       add_action('wp_ajax_shop_quick_view', array($this, 'get_content_json'));
@@ -61,30 +61,6 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
     $classes[] = 'has-quick-view-product';
 
     return $classes;
-  }
-
-  public function quick_view_button()
-  {
-    global $product;
-    $product_card_style = get_global_option('codetot_woocommerce_product_card_style') ?? 1;
-    ?>
-    <div class="product__quick-view">
-        <span title="<?php esc_attr_e('Quick view', 'ct-bones'); ?>"
-              data-quick-view-modal-id="<?php echo esc_attr($product->get_id()); ?>"
-              class="product__quick-view-text">
-          <?php if (!empty($product_card_style) && in_array($product_card_style, array('1', '2'))) : ?>
-            <?php codetot_svg('eyeglasses', true); ?>
-          <?php else : ?>
-            <?php esc_attr_e('Quick View', 'ct-bones'); ?>
-          <?php endif; ?>
-        </span>
-    </div>
-    <?php
-  }
-
-  public function quick_view_modal()
-  {
-    the_block('quick-view-modal');
   }
 
   /**
@@ -185,6 +161,28 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
     wp_die();
   }
 
+}
+
+function codetot_quick_view_button() {
+  global $product;
+  $product_card_style = get_global_option('codetot_woocommerce_product_card_style') ?? 1;
+  ?>
+  <div class="product__quick-view">
+      <span title="<?php esc_attr_e('Quick view', 'ct-bones'); ?>"
+            data-quick-view-modal-id="<?php echo esc_attr($product->get_id()); ?>"
+            class="product__quick-view-text">
+        <?php if (!empty($product_card_style) && in_array($product_card_style, array('1', '2'))) : ?>
+          <?php codetot_svg('eyeglasses', true); ?>
+        <?php else : ?>
+          <?php esc_attr_e('Quick View', 'ct-bones'); ?>
+        <?php endif; ?>
+      </span>
+  </div>
+  <?php
+}
+
+function codetot_quick_view_modal() {
+  the_block('quick-view-modal');
 }
 
 Codetot_Woocommerce_Quick_View::instance();
