@@ -316,3 +316,46 @@
     border-top: 1px solid rgb(255, 255, 255, 0.11);
   }
 }
+
+@define-mixin radio-wrapper-standard-check {
+  border-radius: 11px;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 9px;
+  left: 10px;
+  content: ' ';
+  display: block;
+  background: var(--primary);
+}
+
+@define-mixin radio-wrapper-standard {
+  display: inline-block;
+  position: relative;
+  padding: 0 6px;
+
+  & input[type='radio'] {
+    display: none;
+  }
+
+  & label {
+    color: var(--dark-3);
+  }
+
+  & label::before {
+    content: ' ';
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin: 0 10px 0 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid var(--border-light);
+    background-color: transparent;
+  }
+
+  & input[type='radio']:checked + label::after {
+    @mixin radio-wrapper-standard-check;
+  }
+}

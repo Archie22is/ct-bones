@@ -9,3 +9,7 @@
     @mixin select-in-wrapper;
   }
 }
+
+.radio-wrapper-default {
+  @mixin radio-wrapper-standard;
+}
