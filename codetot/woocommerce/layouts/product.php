@@ -366,7 +366,7 @@ class Codetot_Woocommerce_Layout_Product
 
     $_class = 'section product-grid--related-products';
     if ($this->sidebar_layout !== 'no-sidebar') {
-      $_class .= ' product-grid--no-container';
+      $_class .= ' default-section--no-container';
     }
 
     $post_query = new WP_Query($post_args);
@@ -398,7 +398,7 @@ class Codetot_Woocommerce_Layout_Product
 
     $_class = 'section product-grid--cross-sell-products';
     if ($this->sidebar_layout !== 'no-sidebar') {
-      $_class .= ' product-grid--no-container';
+      $_class .= ' default-section--no-container';
     }
 
     $display_section = apply_filters('codetot_enable_cross_selling_sections', true);
@@ -422,7 +422,7 @@ class Codetot_Woocommerce_Layout_Product
     $_class = 'section product-grid--upsells';
 
     if ($this->sidebar_layout !== 'no-sidebar') {
-      $_class .= ' product-grid--no-container';
+      $_class .= ' default-section--no-container';
     }
     $upsell_products = codetot_get_upsell_products();
 
@@ -484,7 +484,7 @@ class Codetot_Woocommerce_Layout_Product
     $simple = $product->is_type('simple');
     $variable = $product->is_type('variable');
     $external = $product->is_type('external');
-    $sale_text = __('On Sale', 'woocommerce');
+    $sale_text = __('On Sale', 'ct-bones');
     $sale_percent = true;
     $final_price = '';
     $out_of_stock = codetot_is_product_out_of_stock($product);
