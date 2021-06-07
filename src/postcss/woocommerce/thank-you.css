@@ -14,12 +14,13 @@ body.woocommerce-checkout.woocommerce-order-received {
   margin: auto;
 
   & .woocommerce-thankyou-order-received {
-    padding: 1em 0;
+    margin: 1em 0;
+    padding: 1em;
+    background: var(--white);
     text-align: center;
     border: 2px dashed var(--primary);
-    font-weight: bold;
+    font-weight: var(--font-bold);
     color: var(--primary);
-    margin-bottom: 2em;
   }
 
   & .woocommerce-order-overview {
@@ -91,11 +92,7 @@ body.woocommerce-checkout.woocommerce-order-received {
     }
 
     & .woocommerce-Price-amount {
-      font-weight: 700;
-    }
-
-    & .woocommerce-table__product-name a:hover {
-      color: var(--primary);
+      font-weight: var(--font-bold);
     }
 
     & .wc-item-meta {
