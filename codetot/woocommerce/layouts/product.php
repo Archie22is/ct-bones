@@ -406,7 +406,7 @@ class Codetot_Woocommerce_Layout_Product
     if ($post_query->have_posts()) :
       the_block('product-grid', array(
         'class' => $_class,
-        'title' => apply_filters( 'woocommerce_product_cross_sells_products_heading', __( 'You might be interest', 'woocommerce' ) ),
+        'title' => apply_filters( 'woocommerce_product_cross_sells_products_heading', __( 'You may be interested in&hellip;', 'woocommerce' )),
         'query' => $post_query,
         'columns' => $columns
       ));
