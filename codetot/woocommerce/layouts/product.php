@@ -401,9 +401,10 @@ class Codetot_Woocommerce_Layout_Product
       $_class .= ' product-grid--no-container';
     }
 
+    $display_section = apply_filters('codetot_enable_cross_selling_sections', true);
     $post_query = new WP_Query($post_args);
 
-    if ($post_query->have_posts()) :
+    if ($post_query->have_posts() && $display_section) :
       the_block('product-grid', array(
         'class' => $_class,
         'title' => apply_filters( 'woocommerce_product_cross_sells_products_heading', __( 'You may be interested in&hellip;', 'woocommerce' )),
