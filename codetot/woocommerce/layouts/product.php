@@ -72,6 +72,8 @@ class Codetot_Woocommerce_Layout_Product
     remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10);
     remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
     remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+    remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+
 
     add_action('woocommerce_before_single_product_summary', array($this, 'print_errors'), 5);
     add_action('woocommerce_before_single_product_summary', array($this, 'single_product_top_open'), 12); // .grid
@@ -100,8 +102,8 @@ class Codetot_Woocommerce_Layout_Product
     add_action('woocommerce_single_product_summary',  array($this, 'woocommerce_single_meta_tag'), 40);
 
     //single-product-main
-    // add_action('woocommerce_after_single_product_summary', array($this,'open_content_single_product'), 1);
-    // add_action('woocommerce_after_single_product_summary', array($this,'close_content_single_product'), 15);
+    add_action('woocommerce_after_single_product_summary', array($this,'open_content_single_product'), 5);
+    add_action('woocommerce_after_single_product_summary', array($this,'close_content_single_product'), 15);
     add_filter( 'woocommerce_product_tabs', array($this, 'woo_custom_description_tab'), 98 );
 
     add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_open'), 100);
@@ -115,7 +117,7 @@ class Codetot_Woocommerce_Layout_Product
     add_action('woocommerce_after_single_product', array($this, 'render_upsell_sections'), 20);
 
     if ($this->enable_bottom_sidebar) :
-      add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_grid_close'), 24);
+      add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_grid_close'), 11);
     endif;
 
     add_action('woocommerce_after_single_product', array($this, 'after_single_product_container_close'), 40);

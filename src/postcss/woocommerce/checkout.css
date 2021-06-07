@@ -320,6 +320,28 @@ form.woocommerce-billing-fields {
     & .order-total td {
       font-size: 1rem;
     }
+
+    & .product-name {
+      display: block;
+
+      & .variation {
+        margin-top: 0.5em;
+
+        & > * {
+          display: inline-block;
+        }
+
+        & > dt {
+          font-weight: 700;
+          width: auto;
+        }
+
+        & > dd {
+          margin-left: 0;
+          width: auto;
+        }
+      }
+    }
   }
 
   & tr {
