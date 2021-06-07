@@ -433,7 +433,7 @@ class Codetot_Woocommerce_Layout_Archive
     $simple = $product->is_type('simple');
     $variable = $product->is_type('variable');
     $external = $product->is_type('external');
-    $sale_text = __('On Sale', 'woocommerce');
+    $sale_text = __('On Sale', 'ct-bones');
     $sale_percent = true;
     $final_price = '';
     $out_of_stock = codetot_is_product_out_of_stock($product);
