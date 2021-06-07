@@ -120,6 +120,14 @@
         }
       }
     }
+
+    & .current-cat-parent {
+      & .current-cat {
+        & a {
+          color: var(--primary);
+        }
+      }
+    }
   }
 }
 
