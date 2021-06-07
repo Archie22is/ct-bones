@@ -304,10 +304,12 @@ body.woocommerce-cart {
 
       & > dt {
         font-weight: 700;
+        width: auto;
       }
 
       & > dd {
         margin-left: 0;
+        width: auto;
       }
     }
   }
