@@ -72,6 +72,8 @@ class Codetot_Woocommerce_Layout_Product
     remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10);
     remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
     remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+    remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+
 
     add_action('woocommerce_before_single_product_summary', array($this, 'print_errors'), 5);
     add_action('woocommerce_before_single_product_summary', array($this, 'single_product_top_open'), 12); // .grid

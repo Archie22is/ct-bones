@@ -111,7 +111,7 @@ if (!class_exists('Codetot_Woocommerce_Viewed_Products')) {
       $_class = 'section product-grid--viewed-products';
 
       if ($sidebar_layout !== 'no-sidebar') {
-        $_class .= ' product-grid--no-container';
+        $_class .= ' default-section--no-container';
       }
 
       the_block('product-grid', array(
