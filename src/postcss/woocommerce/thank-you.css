@@ -84,7 +84,7 @@ body.woocommerce-checkout.woocommerce-order-received {
     }
 
     & tfoot {
-      & tr:last-child td{
+      & tr:last-child td {
         & .amount {
           color: var(--primary);
         }
