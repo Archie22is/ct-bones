@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: CT Bones\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-07 04:03+0000\n"
-"PO-Revision-Date: 2021-06-02 01:37+0000\n"
+"PO-Revision-Date: 2021-06-07 04:01+0000\n"
 "Last-Translator: \n"
 "Language-Team: Tiếng Việt\n"
 "Language: vi\n"
@@ -76,18 +76,6 @@ msgstr ""
 msgid "Account"
 msgstr "Tài khoản"
 
-#: codetot/woocommerce/layouts/thankyou.php:40
-msgid "Account details"
-msgstr "Thông tin tài khoản"
-
-#: codetot/woocommerce/layouts/thankyou.php:59
-msgid "Account name"
-msgstr "Tên tài khoản"
-
-#: codetot/woocommerce/layouts/thankyou.php:58
-msgid "Account number"
-msgstr "Số tài khoản"
-
 #: codetot/widgets/ct-icon-box.php:124
 msgid "Add Item"
 msgstr ""
@@ -131,10 +119,6 @@ msgstr "Trở lại trang chủ"
 #: codetot/woocommerce/layouts/account.php:221
 msgid "Back to Login page"
 msgstr "Trở lại trang Đăng nhập"
-
-#: codetot/woocommerce/layouts/thankyou.php:60
-msgid "Bank name"
-msgstr "Tên ngân hàng"
 
 #: codetot/theme-init.php:46
 msgid "Basic Page"
@@ -315,7 +299,7 @@ msgstr "Ảnh cover"
 
 #: codetot/woocommerce/ct-theme.php:161
 msgid "Cross Sell Products Columns"
-msgstr ""
+msgstr "Số cột sản phẩm bán chéo"
 
 #. Name of the theme
 msgid "CT Bones"
@@ -328,7 +312,7 @@ msgstr "CT Data"
 #: codetot/admin/ct-settings.php:36 codetot/admin/ct-settings.php:37
 #: codetot/admin/ct-settings.php:52 codetot/woocommerce/ct-theme.php:156
 msgid "CT Settings"
-msgstr ""
+msgstr "CT Settings"
 
 #: codetot/admin/ct-theme.php:48
 msgid "CT Theme"
@@ -518,7 +502,7 @@ msgstr "Nội dung bản quyền cuối trang"
 
 #: codetot/admin/acf.php:195 codetot/helpers/acf.php:39
 msgid "Fullscreen"
-msgstr ""
+msgstr "Tràn khung"
 
 #: codetot/admin/ct-theme.php:55 codetot/admin/ct-theme.php:83
 msgid "General"
@@ -576,7 +560,7 @@ msgstr "Ẩn icon %s"
 
 #: codetot/admin/ct-theme.php:245
 msgid "Hide Featured Image"
-msgstr ""
+msgstr "Ẩn ảnh đại diện bài viết"
 
 #: codetot/admin/ct-theme.php:401
 msgid "Hide Footer Social Links"
@@ -584,7 +568,7 @@ msgstr "Ẩn icon mạng xã hội cuối trang"
 
 #: codetot/admin/ct-theme.php:239
 msgid "Hide Post Meta (date, category and author)"
-msgstr ""
+msgstr "Ẩn thông tin bài viết (ngày tháng, danh mục và tác giả)"
 
 #: codetot/features/breadcrumbs.php:251
 msgid "Home"
@@ -636,14 +620,14 @@ msgid ""
 msgstr ""
 "Không có nội dung nào ở địa chỉ này. Hãy thử tìm kiếm hay liên khác khác?"
 
-#: search.php:59
+#: search.php:60
 #, php-format
 msgid "It seems we can't find any %s matching your search keyword."
 msgstr "Chúng tôi không thể tìm thấy %s theo từ khóa của bạn."
 
 #: codetot/admin/ct-theme.php:312
 msgid "Jump Down"
-msgstr ""
+msgstr "Nhảy xuống dưới"
 
 #: codetot/admin/acf.php:99 codetot/admin/acf.php:194
 #: codetot/helpers/acf.php:38 codetot/helpers/acf.php:78
@@ -773,22 +757,27 @@ msgstr "Chưa có form nào."
 msgid "No products in the cart."
 msgstr "Chưa có sản phẩm nào trong giỏ hàng"
 
-#: search.php:54
+#: search.php:55
 #, php-format
 msgid "No Result for keyword %s"
 msgstr "Không có kết quả nào cho từ khóa %s"
 
 #: codetot/admin/ct-theme.php:311
 msgid "None"
-msgstr ""
+msgstr "Không"
 
 #: codetot/admin/acf.php:97 codetot/helpers/acf.php:76
 msgid "Normal"
-msgstr ""
+msgstr "Bình thường"
 
 #: codetot/widgets/ct-recent-posts.php:125
 msgid "Number of posts to show:"
-msgstr ""
+msgstr "Số bài hiển thị:"
+
+#: codetot/woocommerce/layouts/archive.php:436
+#: codetot/woocommerce/layouts/product.php:487
+msgid "On Sale"
+msgstr "Giảm giá"
 
 #. 1: title.
 #: comments.php:35
@@ -806,7 +795,7 @@ msgstr "Mở menu mobile"
 
 #: codetot/shortcodes.php:158
 msgid "Open a search form"
-msgstr ""
+msgstr "Mở form tìm kiếm"
 
 #: codetot/woocommerce/layouts/account.php:132
 msgid "Order Detail"
@@ -924,10 +913,6 @@ msgstr "Danh mục sản phẩm"
 msgid "Product Category Sidebar"
 msgstr "Cột bên danh mục sản phẩm"
 
-#: codetot/woocommerce/layouts/archive.php:393
-msgid "Product Image"
-msgstr "Ảnh sản phẩm"
-
 #: codetot/woocommerce/ct-theme.php:99
 msgid "Product Image Visible"
 msgstr "Hiển thị ảnh sản phẩm"
@@ -948,18 +933,18 @@ msgstr "Cột bên sản phẩm - Phía trên bên phải"
 msgid "Product Star Rating in List"
 msgstr "Hiện đánh giá sao trong danh sách"
 
-#: codetot/woocommerce/features/quick-view.php:179
+#: codetot/woocommerce/features/quick-view.php:155
 msgid ""
 "Quantity of products in stock has been exhausted. The product is not added "
 "to the cart."
-msgstr ""
+msgstr "Kho không còn hàng. Sản phẩm không được thêm vào giỏ hàng."
 
 #: codetot/woocommerce/ct-theme.php:64
-#: codetot/woocommerce/features/quick-view.php:78
+#: codetot/woocommerce/features/quick-view.php:177
 msgid "Quick View"
 msgstr "Xem nhanh"
 
-#: codetot/woocommerce/features/quick-view.php:72
+#: codetot/woocommerce/features/quick-view.php:171
 msgid "Quick view"
 msgstr "Xem nhanh"
 
@@ -1078,7 +1063,7 @@ msgstr "Bố cục cột bên"
 
 #: codetot/admin/ct-theme.php:236
 msgid "Single Post Layout"
-msgstr ""
+msgstr "Bố cục bài viết"
 
 #: header.php:26
 msgid "Skip to content"
@@ -1097,7 +1082,7 @@ msgstr "Mạng xã hội"
 msgid "Social Media Profile URL"
 msgstr ""
 
-#: codetot/woocommerce/features/quick-view.php:100
+#: codetot/woocommerce/features/quick-view.php:76
 msgid "Something is wrong, please try again later&hellip;"
 msgstr ""
 
@@ -1169,7 +1154,7 @@ msgstr "Query này chỉ làm việc trên trang bài viết."
 
 #: codetot/widgets/ct-recent-posts.php:122
 msgid "Title:"
-msgstr ""
+msgstr "Tiêu đề:"
 
 #: codetot/admin/acf.php:214 codetot/helpers/acf.php:16
 msgid "Top Content - Bottom Form"
@@ -1210,7 +1195,7 @@ msgstr "Kiểu chữ"
 
 #: codetot/woocommerce/ct-theme.php:174
 msgid "Upsells Products Columns"
-msgstr ""
+msgstr "Số cột sản phẩm bán kèm"
 
 #: codetot/admin/ct-data.php:130
 msgid "Using Google Maps API Key to create map interactive with visitors."
@@ -1222,11 +1207,11 @@ msgstr "Xem sản phẩm"
 
 #: codetot/woocommerce/ct-theme.php:187
 msgid "Viewed Products Columns"
-msgstr ""
+msgstr "Số cột sản phẩm đã xem"
 
 #: codetot/admin/ct-theme.php:313
 msgid "Visible Scroll Up"
-msgstr ""
+msgstr "Hiện khi scroll lên trên"
 
 #: blocks/social-links.php:26 blocks/social-links.php:29
 #, php-format

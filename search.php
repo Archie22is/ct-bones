@@ -38,6 +38,7 @@ get_header();
     else :
 
       the_block('product-grid', array(
+        'class' => 'section product-grid--search',
         'query' => $wp_query
       ));
 

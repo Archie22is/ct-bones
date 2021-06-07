@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CT Bones\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-02 01:36+0000\n"
+"POT-Creation-Date: 2021-06-07 03:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -77,18 +77,6 @@ msgstr ""
 msgid "Account"
 msgstr ""
 
-#: codetot/woocommerce/layouts/thankyou.php:40
-msgid "Account details"
-msgstr ""
-
-#: codetot/woocommerce/layouts/thankyou.php:59
-msgid "Account name"
-msgstr ""
-
-#: codetot/woocommerce/layouts/thankyou.php:58
-msgid "Account number"
-msgstr ""
-
 #: codetot/widgets/ct-icon-box.php:124
 msgid "Add Item"
 msgstr ""
@@ -131,10 +119,6 @@ msgstr ""
 
 #: codetot/woocommerce/layouts/account.php:221
 msgid "Back to Login page"
-msgstr ""
-
-#: codetot/woocommerce/layouts/thankyou.php:60
-msgid "Bank name"
 msgstr ""
 
 #: codetot/theme-init.php:46
@@ -624,7 +608,7 @@ msgid ""
 "below or a search?"
 msgstr ""
 
-#: search.php:59
+#: search.php:60
 #, php-format
 msgid "It seems we can't find any %s matching your search keyword."
 msgstr ""
@@ -761,7 +745,7 @@ msgstr ""
 msgid "No products in the cart."
 msgstr ""
 
-#: search.php:54
+#: search.php:55
 #, php-format
 msgid "No Result for keyword %s"
 msgstr ""
@@ -776,6 +760,11 @@ msgstr ""
 
 #: codetot/widgets/ct-recent-posts.php:125
 msgid "Number of posts to show:"
+msgstr ""
+
+#: codetot/woocommerce/layouts/archive.php:436
+#: codetot/woocommerce/layouts/product.php:487
+msgid "On Sale"
 msgstr ""
 
 #. 1: title.
@@ -912,10 +901,6 @@ msgstr ""
 msgid "Product Category Sidebar"
 msgstr ""
 
-#: codetot/woocommerce/layouts/archive.php:393
-msgid "Product Image"
-msgstr ""
-
 #: codetot/woocommerce/ct-theme.php:99
 msgid "Product Image Visible"
 msgstr ""
@@ -936,18 +921,18 @@ msgstr ""
 msgid "Product Star Rating in List"
 msgstr ""
 
-#: codetot/woocommerce/features/quick-view.php:179
+#: codetot/woocommerce/features/quick-view.php:155
 msgid ""
 "Quantity of products in stock has been exhausted. The product is not added "
 "to the cart."
 msgstr ""
 
 #: codetot/woocommerce/ct-theme.php:64
-#: codetot/woocommerce/features/quick-view.php:78
+#: codetot/woocommerce/features/quick-view.php:177
 msgid "Quick View"
 msgstr ""
 
-#: codetot/woocommerce/features/quick-view.php:72
+#: codetot/woocommerce/features/quick-view.php:171
 msgid "Quick view"
 msgstr ""
 
@@ -1084,7 +1069,7 @@ msgstr ""
 msgid "Social Media Profile URL"
 msgstr ""
 
-#: codetot/woocommerce/features/quick-view.php:100
+#: codetot/woocommerce/features/quick-view.php:76
 msgid "Something is wrong, please try again later&hellip;"
 msgstr ""
 
