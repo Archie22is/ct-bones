@@ -1,3 +1,11 @@
 .email-form {
   @mixin email-form;
 }
+
+.select-wrapper {
+  @mixin select-wrapper;
+
+  & select {
+    @mixin select-in-wrapper;
+  }
+}
