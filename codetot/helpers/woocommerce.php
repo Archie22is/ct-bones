@@ -145,3 +145,45 @@ function codetot_get_product_query_by_type($attr) {
 
   endswitch;
 }
+
+function codetot_get_price_discount_percentage($product, $display_type = 'percentage') {
+  if (empty($product)) {
+    return;
+  }
+
+  $is_on_sale = $product->is_on_sale();
+  $price_sale = $product->get_sale_price();
+  $price = $product->get_regular_price();
+  $is_simple_product = $product->is_type('simple');
+  $is_variable_product = $product->is_type('variable');
+  $is_external_product = $product->is_type('external');
+  $sale_text = __('On Sale', 'ct-bones');
+  $final_price = '';
+  $out_of_stock = codetot_is_product_out_of_stock($product);
+
+  // Out of stock.
+  if ($out_of_stock || !$is_on_sale) {
+    return '';
+  }
+
+  if ($display_type !== 'percentage') {
+    return $sale_text;
+  }
+
+  if ($is_simple_product || $is_external_product) {
+    $final_price = (($price - $price_sale) / $price) * 100;
+    $final_price = '-' . round($final_price) . '%';
+  } elseif ($is_variable_product) {
+    $price_sale =  $product->get_variation_sale_price('min', false);
+    $price = $product->get_variation_regular_price('min', false);
+
+    $final_price = (($price - $price_sale) / $price) * 100;
+    $final_price = '-' . round($final_price) . '%';
+  }
+
+  if (!empty($final_price)) {
+    return $final_price;
+  } else {
+    return $sale_text;
+  }
+}

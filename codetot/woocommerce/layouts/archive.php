@@ -423,53 +423,17 @@ class Codetot_Woocommerce_Layout_Archive
   public function change_sale_flash()
   {
     global $product;
-    if (empty($product)) {
-      return;
-    }
 
-    $sale = $product->is_on_sale();
-    $price_sale = $product->get_sale_price();
-    $price = $product->get_regular_price();
-    $simple = $product->is_type('simple');
-    $variable = $product->is_type('variable');
-    $external = $product->is_type('external');
-    $sale_text = __('On Sale', 'ct-bones');
-    $sale_percent = true;
-    $final_price = '';
-    $out_of_stock = codetot_is_product_out_of_stock($product);
+    $final_price = codetot_get_price_discount_percentage($product, 'percentage');
+    $classes = ['product__tag', 'product__tag--onsale'];
 
-    // Out of stock.
-    if ($out_of_stock) {
-      return;
-    }
-
-    if ($sale) {
-      // For simple product.
-      if ($simple || $external) {
-        if ($sale_percent) {
-          $final_price = (($price - $price_sale) / $price) * 100;
-          $final_price = '-' . round($final_price) . '%';
-        } elseif ($sale_text) {
-          $final_price = $sale_text;
-        }
-      } elseif ($variable && $sale_text) {
-        // For variable product.
-        $final_price = $sale_text;
-      }
-
-      if (!$final_price) {
-        return;
-      }
-
-      $classes[] = 'product__tag product__tag--onsale';
-      $classes[] = 'sale-right';
-      $classes[] = 'is-square';
-    ?>
+    if (!empty($final_price) ) :
+      ?>
       <span class="<?php echo esc_attr(implode(' ', array_filter($classes))); ?>">
         <?php echo esc_html($final_price); ?>
       </span>
-    <?php
-    }
+      <?php
+    endif;
   }
 
   public function print_out_of_stock_label()
