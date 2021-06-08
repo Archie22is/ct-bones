@@ -39,7 +39,6 @@ class Codetot_CT_Theme_Settings
     add_filter('rwmb_meta_boxes', array($this, 'register_layout_settings_fields'));
     add_filter('rwmb_meta_boxes', array($this, 'register_header_settings_fields'));
     add_filter('rwmb_meta_boxes', array($this, 'register_footer_settings_fields'));
-    add_filter('rwmb_meta_boxes', array($this, 'register_addons_settings_fields'));
   }
 
   public function register_settings_pages($setting_pages)
@@ -56,8 +55,7 @@ class Codetot_CT_Theme_Settings
         'typography'  => __('Typography', 'ct-bones'),
         'layout'      => __('Layout', 'ct-bones'),
         'header'      => __('Header', 'ct-bones'),
-        'footer'      => __('Footer', 'ct-bones'),
-        'addons'      => __('Addons', 'ct-bones')
+        'footer'      => __('Footer', 'ct-bones')
       )),
       'submit_button' => __('Save'),
       'customizer'    => false,
@@ -412,36 +410,6 @@ class Codetot_CT_Theme_Settings
       'tab'            => 'footer',
       'fields'         => $fields,
     ];
-
-    return $meta_boxes;
-  }
-
-  public function register_addons_settings_fields($meta_boxes)
-  {
-    $meta_boxes[] = array(
-      'title'          => __('Addons', 'ct-bones'),
-      'id'             => 'ct-theme-addons-settings',
-      'settings_pages' => [$this->setting_id],
-      'tab'            => 'addons',
-      'fields' => [
-        [
-          'type' => 'switch',
-          'name' => __('Enable Sticky Social Links', 'ct-bones'),
-          'id'   => $this->prefix . 'enable_sticky_social_links',
-          'desc' => esc_html_x('Display company social links in left window.', 'settings description', 'ct-bones'),
-          'std' => 0,
-          'columns' => 12
-        ],
-        [
-          'type' => 'switch',
-          'name' => __('Enable Back to Top button', 'ct-bones'),
-          'id'   => $this->prefix . 'enable_back_to_top',
-          'desc' => esc_html_x('Display a button scroll to header.', 'settings description', 'ct-bones'),
-          'std' => 1,
-          'columns' => 12
-        ]
-      ]
-    );
 
     return $meta_boxes;
   }

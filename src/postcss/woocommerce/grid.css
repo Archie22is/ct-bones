@@ -187,7 +187,7 @@
   font-size: 1rem;
   pointer-events: none;
   border-radius: 3px 0 0 3px;
-  z-index: 2;
+  z-index: 3;
 }
 
 .product__tag--out-of-stock {

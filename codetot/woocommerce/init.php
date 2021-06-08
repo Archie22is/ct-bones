@@ -74,25 +74,31 @@ class Codetot_WooCommerce_Init {
   }
 
   public function register_woocommerce_sidebars() {
-    register_sidebar(
-      array(
-        'id' => 'shop-sidebar',
-        'name' => __('Shop Sidebar', 'ct-bones'),
-        'before_widget' => '<div id="%1$s" class="widget widget--shop %2$s">',
-        'after_widget' => '</div>',
+    $shop_sidebar_layout = get_global_option('codetot_shop_layout') ?? 'sidebar-left';
+    if ($shop_sidebar_layout !== 'no-sidebar') :
+      register_sidebar(
+        array(
+          'id' => 'shop-sidebar',
+          'name' => __('Shop Sidebar', 'ct-bones'),
+          'before_widget' => '<div id="%1$s" class="widget widget--shop %2$s">',
+          'after_widget' => '</div>',
+          'before_title' => '<p class="widget__title">',
+          'after_title' => '</p>'
+        )
+      );
+    endif;
+
+    $product_sidebar_layout = get_global_option('codetot_product_layout') ?? 'sidebar-left';
+    if ($product_sidebar_layout !== 'no-sidebar') :
+      register_sidebar(array(
+        'name' => __('Product Sidebar', 'ct-bones'),
+        'id' => 'product-sidebar',
+        'before_widget' => '<aside id="%1$s" class="widget widget--product %2$s"><div class="widget__inner">',
+        'after_widget' => '</div></aside>',
         'before_title' => '<p class="widget__title">',
         'after_title' => '</p>'
-      )
-    );
-
-    register_sidebar(array(
-      'name' => __('Product Sidebar', 'ct-bones'),
-      'id' => 'product-sidebar',
-      'before_widget' => '<aside id="%1$s" class="widget widget--product %2$s"><div class="widget__inner">',
-      'after_widget' => '</div></aside>',
-      'before_title' => '<p class="widget__title">',
-      'after_title' => '</p>'
-    ));
+      ));
+    endif;
 
     register_sidebar(array(
       'name' => __('Top Product Sidebar', 'ct-bones'),
@@ -112,14 +118,17 @@ class Codetot_WooCommerce_Init {
       'after_title' => '</p>'
     ));
 
-    register_sidebar(array(
-      'name' => __('Product Category Sidebar', 'ct-bones'),
-      'id' => 'product-category-sidebar',
-      'before_widget' => '<aside id="%1$s" class="widget widget--product-category %2$s"><div class="widget__inner">',
-      'after_widget' => '</div></aside>',
-      'before_title' => '<p class="widget__title">',
-      'after_title' => '</p>'
-    ));
+    $product_category_sidebar_layout = get_global_option('codetot_product_category_layout') ?? 'sidebar-left';
+    if ($product_category_sidebar_layout !== 'no-sidebar') :
+      register_sidebar(array(
+        'name' => __('Product Category Sidebar', 'ct-bones'),
+        'id' => 'product-category-sidebar',
+        'before_widget' => '<aside id="%1$s" class="widget widget--product-category %2$s"><div class="widget__inner">',
+        'after_widget' => '</div></aside>',
+        'before_title' => '<p class="widget__title">',
+        'after_title' => '</p>'
+      ));
+    endif;
   }
 
   public function update_add_to_cart_button_text($text) {

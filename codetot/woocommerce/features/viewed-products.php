@@ -42,7 +42,7 @@ if (!class_exists('Codetot_Woocommerce_Viewed_Products')) {
     public function __construct()
     {
       add_action('template_redirect', array($this, 'add_cookies'), 20);
-      add_action('woocommerce_after_single_product', array($this, 'render_section'), 30);
+      add_action('woocommerce_after_single_product_summary', array($this, 'render_section'), 75);
     }
 
     public function add_cookies()
