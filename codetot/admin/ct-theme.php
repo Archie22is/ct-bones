@@ -240,6 +240,12 @@ class Codetot_CT_Theme_Settings
             'style'   => 'rounded'
           ],
           [
+            'name'    => __('Hide Social Share', 'ct-bones'),
+            'id'      => $this->filter_prefix . 'hide_social_share',
+            'type'    => 'switch',
+            'style'   => 'rounded'
+          ],
+          [
             'name'    => __('Hide Featured Image', 'ct-bones'),
             'id'      => $this->filter_prefix . 'hide_featured_image',
             'type'    => 'switch',
