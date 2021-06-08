@@ -52,7 +52,7 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout
   public function woocommerce_cart_sidebar() {
     $total = WC()->cart->cart_contents_count;
     ?>
-    <div class="mini-cart-sidebar" data-ct-block="mini-cart">
+    <div class="mini-cart-sidebar" data-woocommerce-block="mini-cart">
       <div class="w100 abs mini-cart__overlay js-mini-cart-close"></div>
       <div class="mini-cart__wrapper">
         <div class="mini-cart__head">

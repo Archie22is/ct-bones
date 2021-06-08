@@ -173,13 +173,16 @@ class Codetot_Theme_Layout
   }
 
   public function codetot_share_button() {
-    global $post;
+    $hide_social_share = get_global_option('codetot_settings_hide_social_share') ?? false;
+    if (!$hide_social_share) :
+      global $post;
 
-    the_block('social-links', array(
-      'class' => 'social-links--share',
-      'label' => __('Share', 'ct-theme'),
-      'items' => codetot_get_share_post_links($post)
-    ));
+      the_block('social-links', array(
+        'class' => 'social-links--share',
+        'label' => __('Share', 'ct-theme'),
+        'items' => codetot_get_share_post_links($post)
+      ));
+    endif;
   }
 
   public function generate_comments() {
