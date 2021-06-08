@@ -79,3 +79,16 @@
     @mixin fade-in;
   }
 }
+
+.woocommerce-table--order-details,
+.woocommerce-table--order-details tr,
+.woocommerce-table--order-details td,
+.woocommerce-table--order-details th {
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: var(--grid-gutter);
+}
+
+.woocommerce-table--order-details thead {
+  background: var(--border);
+}
