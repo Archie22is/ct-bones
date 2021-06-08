@@ -489,9 +489,9 @@
 .single-product-sections__col--left {
   width: 100%;
 
-  @media (--ms) {
+  @media (--m) {
     width: auto;
-    flex: 1 1 auto;
+    flex: 1 1 0;
   }
 }
 
@@ -499,13 +499,13 @@
   width: 100%;
   margin-top: 1em;
 
-  @media (--ms) {
+  @media (--m) {
     width: var(--small-sidebar-width);
     margin-top: 0;
   }
 }
 
-.single-product-mains__col--right {
+.single-product-main__col--right {
   display: none;
 
   @media (--m) {
