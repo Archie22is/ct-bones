@@ -84,7 +84,10 @@ export default el => {
   }
 
   const initSlider = () => {
-    const productGalleryEl = select('[data-woocommerce-block="product-gallery"]', el)
+    const productGalleryEl = select(
+      '[data-woocommerce-block="product-gallery"]',
+      el
+    )
     // eslint-disable-next-line no-unused-vars
     let productGalleryInstance = null
 
