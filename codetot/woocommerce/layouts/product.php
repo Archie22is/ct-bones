@@ -451,8 +451,6 @@ function codetot_render_related_products() {
     return;
   }
 
-  var_dump('loaded parent theme');
-
   global $product;
   $columns = get_global_option('codetot_woocommerce_cross_sell_products_colums') ?? 4;
   $related_product_ids = wc_get_related_products($product->get_id());
