@@ -60,18 +60,31 @@ class Codetot_Theme_Layout
     $sidebar_layout = get_global_option('codetot_page_layout') ?? 'left-sidebar';
     $header_class = $sidebar_layout !== 'no-sidebar' ? 'page-header--no-container page-header--top-section' : '';
 
-    the_block('page-header', array(
-      'class' => $header_class,
-      'title' => get_the_title()
-    ));
+    $is_gutenberg_page = $this->is_gutenberg_blocks();
+
+    if (!$is_gutenberg_page) :
+      the_block('page-header', array(
+        'class' => $header_class,
+        'title' => get_the_title()
+      ));
+    endif;
   }
 
   public function load_breadcrumbs() {
     the_block('breadcrumbs');
   }
 
+  public function is_gutenberg_blocks() {
+    global $post;
+    $blocks = parse_blocks( $post->post_content );
+
+    return !empty($blocks) && $blocks[0]['blockName'] !== '';
+  }
+
   public function generate_page_layout() {
     $sidebar_layout = get_global_option('codetot_page_layout') ?? 'no-sidebar';
+
+    $is_gutenberg_page = $this->is_gutenberg_blocks();
 
     if ( !is_front_page() ) {
       add_action('codetot_after_header', array($this, 'load_breadcrumbs'), 9);
@@ -84,32 +97,36 @@ class Codetot_Theme_Layout
       }
     }, 10);
     add_action('codetot_page', array($this, 'load_page_header'), 20);
-    add_action('codetot_page', function() use($sidebar_layout) {
-      ob_start();
-      echo '<div class="wysiwyg">';
-      the_content();
-      echo '</div>';
-      wp_link_pages(
-        array(
-          'before'      => '<div class="page-links">' . __( 'Pages:', 'ct-bones' ),
-          'after'       => '</div>',
-          'link_before' => '<span>',
-          'link_after'  => '</span>',
-        )
-      );
+    add_action('codetot_page', function() use($sidebar_layout, $is_gutenberg_page) {
 
-      $content = ob_get_clean();
+      if ($is_gutenberg_page) {
+        the_content();
+      } else {
+        ob_start();
 
-      if ($sidebar_layout !== 'no-sidebar') {
-        echo '<div class="wysiwyg page-block__content">';
+        echo '<div class="wysiwyg">';
         the_content();
         echo '</div>';
-      } else {
-        the_block('default-section', array(
-          'class' => 'section page-content page-content--no-sidebar',
-          'content' => $content
-        ));
+        wp_link_pages(
+          array(
+            'before'      => '<div class="page-links">' . __( 'Pages:', 'ct-bones' ),
+            'after'       => '</div>',
+            'link_before' => '<span>',
+            'link_after'  => '</span>',
+          )
+        );
+        $content = ob_get_clean();
+
+        if ($sidebar_layout !== 'no-sidebar') {
+          echo $content;
+        } else {
+          the_block('default-section', array(
+            'class' => 'section page-content page-content--no-sidebar',
+            'content' => $content
+          ));
+        }
       }
+
     }, 30);
     add_action('codetot_page', function() use($sidebar_layout) {
       $content = $this->generate_comments();
