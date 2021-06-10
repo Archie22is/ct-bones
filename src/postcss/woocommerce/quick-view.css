@@ -189,6 +189,9 @@ body.is-quick-view-modal-visible {
   }
 
   & button[type='submit'] {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    height: 40px;
     border-radius: 50px;
 
     &:hover {
