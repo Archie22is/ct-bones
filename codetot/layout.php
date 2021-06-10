@@ -32,18 +32,18 @@ class Codetot_Theme_Layout
   {
     add_action( 'codetot_sidebar', 'codetot_get_sidebar', 10 );
     add_action('codetot_after_content_post', array($this, 'codetot_share_button'), 5);
+
     if (
+      is_page() &&
+      get_page_template_slug( get_the_ID()) === '' &&
       (
-        is_page() &&
-        get_page_template_slug( get_the_ID()) === ''
-      ) &&
-      ( !class_exists('woocommerce') ||
-        class_exists('woocommerce') &&
-        !is_account_page() &&
-        !is_cart() &&
-        !is_checkout()
+        class_exists('WooCommerce') &&
+        (
+          !is_account_page() &&
+          !is_cart()
+        )
       )
-      ) {
+    ) {
       $this->generate_page_layout();
     }
 
