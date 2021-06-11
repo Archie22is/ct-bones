@@ -40,7 +40,8 @@ class Codetot_Theme_Layout
         class_exists('WooCommerce') &&
         (
           !is_account_page() &&
-          !is_cart()
+          !is_cart() &&
+          !is_checkout()
         )
       )
     ) {
