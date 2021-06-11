@@ -325,20 +325,23 @@ form.woocommerce-billing-fields {
       display: block;
 
       & .variation {
-        margin-top: 0.5em;
+        display: flex;
+        margin-top: 6px;
+        font-size: 0.85rem;
 
         & > * {
           display: inline-block;
+          margin-top: 6px;
         }
 
         & > dt {
-          font-weight: 700;
-          width: auto;
+          font-weight: 600;
+          width: 40%;
         }
 
         & > dd {
           margin-left: 0;
-          width: auto;
+          width: 60%;
         }
       }
     }

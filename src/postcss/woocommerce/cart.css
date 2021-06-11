@@ -304,12 +304,10 @@ body.woocommerce-cart {
 
       & > dt {
         font-weight: 700;
-        width: auto;
       }
 
       & > dd {
         margin-left: 0;
-        width: auto;
       }
     }
   }
@@ -410,20 +408,23 @@ body.woocommerce-cart {
 .cart_item {
   & .product-name {
     & .variation {
-      display: block;
-      margin: 0;
+      display: flex;
+      margin-top: 6px;
       font-size: 0.85rem;
 
       & > * {
         display: inline-block;
+        margin-top: 6px;
       }
 
       & > dt {
-        font-weight: 700;
+        width: 40%;
+        font-weight: 600;
       }
 
       & > dd {
         margin-left: 0;
+        width: 60%;
       }
     }
   }
