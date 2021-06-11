@@ -91,8 +91,6 @@ export default el => {
     // eslint-disable-next-line no-unused-vars
     let productGalleryInstance = null
 
-    console.log(productGalleryEl)
-
     if (productGalleryEl) {
       productGalleryInstance = new ProductGallery(productGalleryEl)
     }
