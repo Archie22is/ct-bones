@@ -39,7 +39,7 @@ class Codetot_Woocommerce_Layout_Archive
     $this->remove_default_hooks();
     add_filter('woocommerce_pagination_args', array($this, 'change_woocommerce_arrow_pagination'));
 
-    if (is_shop() || is_product_category()) :
+    if (is_shop() || is_product_category() || is_product_tag()) :
       $this->build_wrapper();
     endif;
 
@@ -107,7 +107,7 @@ class Codetot_Woocommerce_Layout_Archive
 
   public function archive_title()
   {
-    if (is_shop() || is_product_category()) {
+    if (is_shop() || is_product_category() || is_product_tag()) {
       $current_object = get_queried_object();
 
       if (is_shop()) {
@@ -129,7 +129,7 @@ class Codetot_Woocommerce_Layout_Archive
 
     if ( is_shop() ) :
       $sidebar_layout = get_global_option('codetot_shop_layout') ?? 'sidebar-left';
-    elseif( is_product_category() ) :
+    elseif( is_product_category() || is_product_tag()) :
       $sidebar_layout = get_global_option('codetot_product_category_layout') ?? 'sidebar-left';
     endif;
 
@@ -191,7 +191,7 @@ class Codetot_Woocommerce_Layout_Archive
   }
 
   public function breadcrumbs() {
-    if (is_shop() || is_product_category()) {
+    if (is_shop() || is_product_category() || is_product_tag()) {
       woocommerce_breadcrumb();
     }
   }
@@ -202,7 +202,7 @@ class Codetot_Woocommerce_Layout_Archive
     if ( is_shop() ) :
       $class .= ' page-block--shop';
       $sidebar_layout = get_global_option('codetot_shop_layout') ?? 'sidebar-left';
-    elseif( is_product_category() ) :
+    elseif( is_product_category() || is_product_tag()) :
       $class .= ' page-block--product-category';
       $sidebar_layout = get_global_option('codetot_product_category_layout') ?? 'sidebar-left';
     endif;
@@ -211,7 +211,7 @@ class Codetot_Woocommerce_Layout_Archive
 
     do_action('codetot_product_archive_before_page_block');
 
-    if (is_shop() || is_product_category()) :
+    if (is_shop() || is_product_category() || is_product_tag()) :
       echo '<div class="' . esc_attr($class) . '" data-block="page-block">';
       echo '<div class="container page-block__container">';
       the_block('page-block-mobile-trigger', array(
@@ -226,14 +226,14 @@ class Codetot_Woocommerce_Layout_Archive
   }
 
   public function page_block_between() {
-    if (is_shop() || is_product_category()) :
+    if (is_shop() || is_product_category() || is_product_tag()) :
       echo '</div>'; // Close .page-block__col--main
       echo '<div class="grid__col page-block__col page-block__col--sidebar">';
     endif;
   }
 
   public function page_block_close() {
-    if (is_shop() || is_product_category()) :
+    if (is_shop() || is_product_category() || is_product_tag()) :
       echo '</div>'; // close .page-block__col--sidebar
       echo '</div>'; // close .page-block__grid
       echo '</div>'; // close .page-block__container
@@ -406,7 +406,7 @@ class Codetot_Woocommerce_Layout_Archive
 
   public function add_template_loop_product_title()
   {
-    if (is_product_category() || is_archive()) {
+    if (is_product_category() || is_archive() || is_product_tag()) {
       $title_tag_open = '<h2 class="woocommerce-loop-product__title product__title">';
       $title_tag_close = '</h2>';
     } else {
