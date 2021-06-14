@@ -560,6 +560,7 @@
 
     &.product-price--countdown {
       color: var(--white);
+      line-height: 1.25;
 
       & del,
       & ins {
