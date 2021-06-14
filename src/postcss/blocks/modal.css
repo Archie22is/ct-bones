@@ -1,22 +1,29 @@
 .modal {
-  @mixin fade-out;
-  @mixin flex-center;
+  display: none;
+}
 
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(55, 58, 71, 0.9);
-  pointer-events: none;
-  z-index: 990;
-  transition: opacity 0.3s, visibility 0.3s;
+.is-assets-loaded {
+  & .modal {
+    @mixin fade-out;
+    @mixin flex-center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(55, 58, 71, 0.9);
+    pointer-events: none;
+    z-index: 990;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
 }
 
 .is-modal-activate {
   & .modal--visible {
     @mixin fade-in;
 
+    display: flex;
     pointer-events: visible;
   }
 }
