@@ -550,11 +550,11 @@
 
     margin: 0 0 10px;
     font-weight: var(--font-bold);
-    color: var(--primary);
+    color: var(--white);
 
     & del {
       opacity: 0.65;
-      color: var(--dark);
+      color: var(--white);
       font-weight: var(--font-normal);
     }
   }
