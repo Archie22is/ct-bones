@@ -561,8 +561,17 @@
     &.product-price--countdown {
       color: var(--white);
 
-      & del {
+      & del,
+      & ins {
         color: var(--white);
+      }
+
+      & del {
+        padding-left: 1em;
+
+        @media (--sm) {
+          padding-left: 0;
+        }
       }
     }
   }
