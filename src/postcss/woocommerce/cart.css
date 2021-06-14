@@ -409,7 +409,8 @@ body.woocommerce-cart {
   & .product-name {
     & .variation {
       display: flex;
-      margin-top: 6px;
+      flex-wrap: wrap;
+      margin: 0;
       font-size: 0.85rem;
 
       & > * {
