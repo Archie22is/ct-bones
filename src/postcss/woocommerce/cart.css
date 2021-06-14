@@ -343,7 +343,7 @@ body.woocommerce-cart {
     }
 
     @media (--m) {
-      display: none;
+      border: 0;
     }
   }
 
