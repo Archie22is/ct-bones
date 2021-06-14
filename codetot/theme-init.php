@@ -77,18 +77,6 @@ class Codetot_Theme_Init
       )
     );
 
-    // Set up the WordPress core custom background feature.
-    add_theme_support(
-      'custom-background',
-      apply_filters(
-        'ct_bones_custom_background_args',
-        array(
-          'default-color' => 'ffffff',
-          'default-image' => '',
-        )
-      )
-    );
-
     add_theme_support('customize-selective-refresh-widgets');
 
     add_theme_support(
