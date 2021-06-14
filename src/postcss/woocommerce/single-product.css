@@ -550,12 +550,20 @@
 
     margin: 0 0 10px;
     font-weight: var(--font-bold);
-    color: var(--white);
+    color: var(--primary);
 
     & del {
       opacity: 0.65;
-      color: var(--white);
+      color: var(--dark);
       font-weight: var(--font-normal);
+    }
+
+    &.product-price--countdown {
+      color: var(--white);
+
+      & del {
+        color: var(--white);
+      }
     }
   }
 }
