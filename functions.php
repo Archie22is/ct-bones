@@ -44,6 +44,16 @@ if ( !function_exists('the_block_part') ) {
   }
 }
 
+if ( !function_exists('get_field') ) {
+  function codetot_admin_notice() {
+    $class = 'notice notice-error';
+    $message = sprintf(__('Plugin %s must be activate to work with this theme.', 'ct-bones'), 'Advanced Custom Fields PRO');
+
+    printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
+  }
+  add_action( 'admin_notices', 'codetot_admin_notice' );
+}
+
 define('CODETOT_DIR', get_template_directory() . '/codetot');
 define('CODETOT_ADMIN_DIR', get_template_directory() . '/codetot/admin');
 define('CODETOT_ADMIN_PATH', get_template_directory_uri() . '/codetot/admin');
