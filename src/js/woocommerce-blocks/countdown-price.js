@@ -111,6 +111,7 @@ export default el => {
         displayMessage('expired')
         addClass('is-hide', el)
         clearInterval(timeinterval)
+        window.location.reload()
       }
     }
 
