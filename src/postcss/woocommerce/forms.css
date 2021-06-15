@@ -68,6 +68,14 @@
   }
 }
 
+.woocommerce-form-coupon-toggle {
+  & .woocommerce-info {
+    & .showcoupon {
+      color: var(--primary);
+    }
+  }
+}
+
 .select2-container--default .select2-search--dropdown .select2-search__field {
   height: 40px;
   outline: none;
