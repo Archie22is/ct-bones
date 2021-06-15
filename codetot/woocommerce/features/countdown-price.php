@@ -38,12 +38,13 @@ class Codetot_WooCommerce_Countdown_Price
   {
     $sales_price_from = get_post_meta($product->get_id(), '_sale_price_dates_from', true);
     $sales_price_to   = get_post_meta($product->get_id(), '_sale_price_dates_to', true);
-    $sales_price_date_from = !empty($sales_price_from) ? date("j M Y", $sales_price_from) : '';
-    $sales_price_date_to   = date("j M Y", $sales_price_to);
-    $today = current_time('timestamp');
 
-    if(strtotime($sales_price_date_to) - $today > 0) {
-      if (is_singular('product') && !empty($sales_price_to)) {
+    if (is_singular('product') && !empty($sales_price_to)) {
+      $sales_price_date_from = !empty($sales_price_from) ? date("j M y", $sales_price_from) : '';
+      $sales_price_date_to   = date("j M y", $sales_price_to);
+      $today = current_time('timestamp');
+
+      if(strtotime($sales_price_date_to) - $today > 0) {
 
         $labels = array(
           'days' => array(
