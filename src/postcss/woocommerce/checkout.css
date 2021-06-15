@@ -97,6 +97,7 @@ body.woocommerce-checkout {
     width: 100%;
     border-right: 0;
     border-radius: var(--border-radius) 0 0 var(--border-radius);
+    box-shadow: none;
 
     &:focus {
       outline: none;
@@ -117,6 +118,7 @@ body.woocommerce-checkout {
     @mixin button-style-primary;
 
     min-height: 44px;
+    padding: 13px 35px;
     border-radius: 0 var(--border-radius) var(--border-radius) 0;
   }
 }

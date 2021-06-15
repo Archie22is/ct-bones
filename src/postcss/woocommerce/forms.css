@@ -49,7 +49,7 @@
   border-radius: var(--border-radius);
 
   @media (--s) {
-    min-height: 64px;
+    min-height: auto;
   }
 
   & a {
