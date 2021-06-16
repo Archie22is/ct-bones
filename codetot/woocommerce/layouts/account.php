@@ -60,28 +60,15 @@ class Codetot_Woocommerce_Layout_Account
     }
 
     if (is_account_page()) {
-      add_action('codetot_page', array($this, 'container_open'), 1);
       add_action('codetot_page', array($this, 'account_content'), 10);
-      add_action('codetot_page', array($this, 'container_close'), 90);
+      add_action('woocommerce_before_account_navigation', array($this, 'account_page_open'), 10);
+      add_action('woocommerce_after_account_navigation', array($this, 'account_page_between'), 60);
+      add_action('woocommerce_after_main_content', array($this, 'account_page_close'), 90);
     }
-
-    add_action('woocommerce_before_account_navigation', array($this, 'account_page_open'), 10);
-    add_action('woocommerce_after_account_navigation', array($this, 'account_page_between'), 60);
-    add_action('woocommerce_after_main_content', array($this, 'account_page_close'), 90);
   }
 
   public function account_content() {
     the_content();
-  }
-
-  public function container_open() {
-    echo '<div class="page-block page-block--account">';
-    echo '<div class="container page-block__container">';
-  }
-
-  public function container_close() {
-    echo '</div>';
-    echo '</div>';
   }
 
   public function login_title()
@@ -151,6 +138,7 @@ class Codetot_Woocommerce_Layout_Account
     $title = $this->account_page_title();
 
     echo '<div class="page-block page-block--account" data-block="page-block">';
+    echo '<div class="container page-block__container">';
     echo '<div class="page-block__header">';
     echo '<div class="grid page-block__grid page-block__grid page-block__grid--header">';
     echo '<div class="grid__col page-block__col page-block__col--header-left">';
@@ -180,6 +168,7 @@ class Codetot_Woocommerce_Layout_Account
       echo '</div>'; // Close .page-block__col--main
       echo '</div>'; // Close .page-block__grid
       echo '</div>'; // Close .page-block__main
+      echo '</div>'; // Close .page-block__container
       echo '</div>'; // Close .page-block
     }
   }
