@@ -544,7 +544,6 @@
   }
 }
 
-.quick-view-modal__summary,
 .entry-summary {
   & .product-price {
     @mixin h3;
@@ -575,6 +574,26 @@
           padding-left: 0;
         }
       }
+    }
+  }
+}
+
+.quick-view-modal__summary {
+  & .product-price {
+    @mixin h3;
+
+    margin: 0 0 10px;
+    font-weight: var(--font-bold);
+    color: var(--primary);
+
+    & del {
+      opacity: 0.65;
+      color: var(--dark);
+    }
+
+    & ins {
+      color: var(--primary);
+      font-weight: var(--font-bold);
     }
   }
 }
