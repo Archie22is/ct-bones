@@ -125,7 +125,7 @@ class Codetot_Woocommerce_Layout_Account
     echo '</div>';
   }
 
-  public function account_page_open() {
+  public function account_page_title() {
     if ( is_wc_endpoint_url( 'orders' ) ) {
       $title = esc_html__( 'Orders', 'woocommerce' );
     } elseif ( is_wc_endpoint_url( 'view-order' ) ) {
@@ -143,6 +143,12 @@ class Codetot_Woocommerce_Layout_Account
     } else {
       $title = esc_html__('Dashboard', 'woocommerce');
     }
+
+    return apply_filters('codetot_my_account_page_title', $title);
+  }
+
+  public function account_page_open() {
+    $title = $this->account_page_title();
 
     echo '<div class="page-block page-block--account" data-block="page-block">';
     echo '<div class="page-block__header">';
