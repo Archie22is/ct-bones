@@ -56,6 +56,10 @@ class Codetot_WooCommerce_Countdown_Price
   }
 
   public function format_date_with_time($date, $type = 'end') {
+    if (empty($date)) {
+      return new \WP_Error('not_found', __FUNCTION__ . ': ' . __('Missing date parameter', 'ct-bones'));
+    }
+
     if ($type === 'end') {
       return date($this->end_date_format, $date);
     } else {
@@ -148,7 +152,7 @@ class Codetot_WooCommerce_Countdown_Price
   }
 
   public function is_scheduled($date) {
-    if (empty($date)) {
+    if (empty($date) || is_wp_error($date)) {
       return false;
     }
 
@@ -156,7 +160,7 @@ class Codetot_WooCommerce_Countdown_Price
   }
 
   public function is_date_running($date) {
-    if (empty($date)) {
+    if (empty($date) || is_wp_error($date)) {
       return false;
     }
 
