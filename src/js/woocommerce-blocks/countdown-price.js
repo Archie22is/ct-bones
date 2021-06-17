@@ -2,7 +2,10 @@
 import { select, getData, addClass, removeClass, closest } from 'lib/dom'
 
 const getTimeRemaining = (time, type = 'end') => {
-  const total = type === 'end' ? time - Date.parse(new Date()) : Date.parse(new Date()) - time
+  const total =
+    type === 'end'
+      ? time - Date.parse(new Date())
+      : Date.parse(new Date()) - time
 
   const seconds = Math.floor((total / 1000) % 60)
   const minutes = Math.floor((total / 1000 / 60) % 60)
@@ -38,7 +41,9 @@ export default el => {
   const parentEl = closest('.entry-summary', el)
   const startDate = Date.parse(getData('start-date', el))
   const endDate = Date.parse(getData('end-date', el))
-  const labels = CODETOT_COUNTDOWN_LABELS ? JSON.parse(CODETOT_COUNTDOWN_LABELS) : []
+  const labels = CODETOT_COUNTDOWN_LABELS
+    ? JSON.parse(CODETOT_COUNTDOWN_LABELS)
+    : []
   let noticeEl = null
   let daysEl = null
   let hoursEl = null
@@ -127,7 +132,10 @@ export default el => {
     }
 
     const updateScheduledTime = () => {
-      const { days, hours, minutes, seconds } = getTimeRemaining(startDate, 'start')
+      const { days, hours, minutes, seconds } = getTimeRemaining(
+        startDate,
+        'start'
+      )
 
       updateDay(days)
       updateHour(hours)
@@ -142,9 +150,7 @@ export default el => {
 
       const currentTime = Date.parse(new Date())
 
-      if (
-        startDate && startDate > currentTime
-      ) {
+      if (startDate && startDate > currentTime) {
         updateScheduledTime()
         labelEl.innerHTML = getMessage('not_start')
 
@@ -153,9 +159,7 @@ export default el => {
         if (total <= 0) {
           reset()
         }
-      } else if (
-        endDate && endDate >= currentTime
-      ) {
+      } else if (endDate && endDate >= currentTime) {
         labelEl.innerHTML = getMessage('ongoing')
 
         updateOnGoingTime()
