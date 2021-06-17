@@ -250,10 +250,12 @@
 
 .single-product__price__countdown {
   display: flex;
+  width: 100%;
 }
 
 .single-product__price__item {
   margin-right: 0.5em;
+  width: 25%;
 
   &:last-child {
     margin-right: 0;
