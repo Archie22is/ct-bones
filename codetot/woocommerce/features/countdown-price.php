@@ -32,7 +32,11 @@ class Codetot_WooCommerce_Countdown_Price
     $this->end_date_format = 'Y-m-d 23:59:59';
 
     if ($enable_countdown_price) {
-      add_filter('woocommerce_get_price_html', array($this, 'custom_price_html'), 100, 2);
+      add_action('wp', function() {
+        remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
+        add_action('woocommerce_single_product_summary', array($this, 'render_countdown_block'), 12);
+      }, 20);
+
       add_action('wp_enqueue_scripts', array($this, 'load_js_labels'));
     }
   }
@@ -59,10 +63,8 @@ class Codetot_WooCommerce_Countdown_Price
     }
   }
 
-  public function get_time_range()
+  public function get_time_range($product)
   {
-    global $product;
-
     $output = [];
 
     if ($product->is_type('simple')) {
@@ -76,6 +78,7 @@ class Codetot_WooCommerce_Countdown_Price
       );
 
     } elseif ($product->is_type('variable')) {
+
       $variations = $product->get_available_variations();
 
       if (empty($variations)) {
@@ -158,23 +161,19 @@ class Codetot_WooCommerce_Countdown_Price
     return strtotime($date) >= current_time('timestamp');
   }
 
-  public function custom_price_html($price, $product)
+  public function render_countdown_block()
   {
-    if (is_admin()) {
-      return $price;
-    }
-
+    global $product;
     $time_range = $this->get_time_range($product);
+    $price = $product->get_price_html();
 
     $sales_price_from = !empty($time_range['from']) ? $time_range['from'] : null;
     $sales_price_to   = !empty($time_range['to']) ? $time_range['to'] : null;
-    $labels = $this->get_labels();
 
     $is_scheduled = !empty($sales_price_from) && $this->is_scheduled($sales_price_from);
     $is_running = !empty($sales_price_to) && $this->is_date_running($sales_price_to);
 
     if (
-      is_singular('product') &&
       (
         $is_scheduled ||
         $is_running
@@ -194,10 +193,8 @@ class Codetot_WooCommerce_Countdown_Price
       $price_output_html .= apply_filters('woocommerce_get_price', $price);
       $price_output_html .= '</span>'; // Close .single-product__price--has-discount
 
-      return $price_output_html;
+      echo $price_output_html;
     }
-
-    return !empty($price) ? '<span class="product-price">' . apply_filters('woocommerce_get_price', $price) . '</span>' : '';
   }
 }
 
