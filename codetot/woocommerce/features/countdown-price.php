@@ -72,10 +72,12 @@ class Codetot_WooCommerce_Countdown_Price
       $start_date_timestamp = get_post_meta($product->get_id(), '_sale_price_dates_from', true);
       $end_time_timestamp = get_post_meta($product->get_id(), '_sale_price_dates_to', true);
 
-      $output = array(
-        'from' => $this->format_date_with_time($start_date_timestamp),
-        'to' => $this->format_date_with_time($end_time_timestamp)
-      );
+      if (!empty($start_date_timestamp) && !empty($end_time_timestamp)):
+        $output = array(
+          'from' => $this->format_date_with_time($start_date_timestamp),
+          'to' => $this->format_date_with_time($end_time_timestamp)
+        );
+      endif;
 
     } elseif ($product->is_type('variable')) {
 
