@@ -250,10 +250,12 @@
 
 .single-product__price__countdown {
   display: flex;
+  width: 100%;
 }
 
 .single-product__price__item {
   margin-right: 0.5em;
+  width: 25%;
 
   &:last-child {
     margin-right: 0;
@@ -280,12 +282,15 @@
 }
 
 .single-product__price__notice {
+  @mixin label-text;
+
   display: none;
 }
 
-.product-price.display-message {
+.product-price--countdown.display-message {
   & .single-product__price__notice {
     display: block;
+    margin-top: 1em;
   }
 }
 
@@ -562,6 +567,7 @@
       color: var(--white);
       line-height: 1.25;
 
+      & .single-product__price__notice,
       & del,
       & ins {
         color: var(--white);
