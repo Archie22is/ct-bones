@@ -1,3 +1,8 @@
 .product-gallery__bottom {
-  margin-top: 10px;
+  margin-top: 0.25em;
+  margin-bottom: 2em;
+}
+
+.product-gallery__button {
+  font-size: 0.85rem;
 }
