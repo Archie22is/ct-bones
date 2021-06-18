@@ -1,3 +1,4 @@
+/* global jQuery */
 import {
   select,
   selectAll,
@@ -9,8 +10,10 @@ import {
   getData
 } from 'lib/dom'
 import { debounce } from 'lib/utils'
-import { customQuantity } from './woocommerce/quantity'
+import { initQuantity } from './woocommerce/quantity'
 import { widgetProductCategories } from './woocommerce/widget-product-categories'
+
+const $ = jQuery
 
 const checkoutPageTrigger = select('[data-checkout-page-trigger]')
 const checkoutForm = select('form[name="checkout"]')
@@ -65,9 +68,23 @@ const initBlocks = () => {
   }
 }
 
+const initAllQtyElements = () => {
+  const quantityEls = selectAll('.quantity')
+
+  console.log(quantityEls)
+
+  quantityEls.forEach(quantityEl => {
+    initQuantity(quantityEl)
+  })
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  customQuantity()
+  initAllQtyElements()
   widgetProductCategories()
   initBlocks()
   initImageHoverProductCard()
+
+  $(document.body).on('wc_fragments_loaded wc_fragments_refreshed', () => {
+    initAllQtyElements()
+  })
 })
