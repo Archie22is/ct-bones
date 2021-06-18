@@ -71,6 +71,16 @@ class Codetot_WooCommerce_Init {
         ),
       )
     );
+
+    add_theme_support( 'wc-product-gallery-zoom' );
+    add_theme_support( 'wc-product-gallery-lightbox' );
+    add_theme_support( 'wc-product-gallery-slider' );
+
+    add_filter( 'woocommerce_single_product_photoswipe_enabled', function(){
+      if( wp_is_mobile() ) {
+        return false;
+      }
+    });
   }
 
   public function register_woocommerce_sidebars() {
@@ -168,6 +178,7 @@ class Codetot_WooCommerce_Init {
 
   public function load_woocommerce_js() {
     wp_enqueue_script('wc-add-to-cart-variation');
+
     wp_enqueue_script(
       'codetot-woocommerce',
       get_template_directory_uri() . '/assets/js/woocommerce-script' . $this->theme_environment . '.js',
