@@ -3,6 +3,7 @@
 /* global jQuery, codetotConfig, wc_add_to_cart_variation_params */
 import { select, on, getData, addClass, removeClass, delegate, hasClass, setAttribute } from 'lib/dom'
 import { pipe } from 'lib/utils'
+import Countdown from './countdown-price'
 import 'whatwg-fetch'
 const $ = jQuery
 
@@ -62,6 +63,7 @@ export default el => {
         pipe(
           initChangeVariation,
           initSlider,
+          initCountdown,
           initAddToCart,
           deactivateLoader
         )(el)
@@ -69,6 +71,19 @@ export default el => {
       .catch(function (error) {
         console.log('request failed', error)
       })
+
+    return el
+  }
+
+  const initCountdown = () => {
+    const countdownEl = select('[data-woocommerce-block="countdown-price"]', el)
+
+    if (!countdownEl) {
+      return el
+    }
+
+    // eslint-disable-next-line no-unused-vars
+    const countdown = new Countdown(countdownEl)
 
     return el
   }

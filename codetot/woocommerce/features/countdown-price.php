@@ -42,10 +42,6 @@ class Codetot_WooCommerce_Countdown_Price
   }
 
   public function load_js_labels() {
-    if (!is_singular('product')) {
-      return;
-    }
-
     ob_start();
     printf('var CODETOT_COUNTDOWN_LABELS = \'%s\'', json_encode($this->get_labels()));
     $labels = ob_get_clean();
