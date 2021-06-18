@@ -158,6 +158,19 @@ class Codetot_CT_Theme_WooCommerce_Settings
       ),
       array(
         'type' => 'select',
+        'name' => __('Product Thumbnails Columns', 'ct-bones'),
+        'id'   => $this->prefix . 'woocommerce_product_thumbnails_columns',
+        'desc' => __('The maximum thumbnails in single product\'s gallery.', 'ct-bones'),
+        'std'  => 4,
+        'options' => [
+          3 => 3,
+          4 => 4,
+          5 => 5,
+          6 => 6
+        ]
+      ),
+      array(
+        'type' => 'select',
         'name' => __('Cross Sell Products Columns', 'ct-bones'),
         'id'   => $this->prefix . 'woocommerce_cross_sell_products_colums',
         'std'  => 4,

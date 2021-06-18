@@ -122,7 +122,9 @@ class Codetot_Woocommerce_Layout_Product
     add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_close'), 110);
 
     add_filter('woocommerce_product_thumbnails_columns', function() {
-      return 5;
+      $columns = get_global_option('codetot_woocommerce_product_thumbnails_columns') ?? 4;
+
+      return $columns;
     });
   }
 
