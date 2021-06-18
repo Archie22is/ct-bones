@@ -60,6 +60,8 @@ class Codetot_Woocommerce_Layout_Cart extends Codetot_Woocommerce_Layout
     add_action('woocommerce_before_cart', array($this, 'cart_page_col_open_main'),  25);
     add_action('woocommerce_after_cart_table',  array($this, 'cart_page_col_close'), 90);
 
+    add_filter('woocommerce_cart_item_price', array($this, 'update_cart_item_price'), 10, 3);
+
     // Column: Cart Totals
     add_action('woocommerce_before_cart_collaterals', array($this, 'cart_page_col_open_sidebar'),  1);
     add_action('woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10);
@@ -112,6 +114,23 @@ class Codetot_Woocommerce_Layout_Cart extends Codetot_Woocommerce_Layout
   public function cart_page_col_close() {
     echo '</div>';
     echo '</div>';
+  }
+
+  public function update_cart_item_price($price, $cart_item, $cart_item_key) {
+    $product = $cart_item['data'];
+    $regular_price    = $product->get_regular_price();
+    $sale_price = $product->get_sale_price();
+
+    if ( $product->is_on_sale() && ! empty( $sale_price ) ) {
+      $percentage = codetot_get_price_discount_percentage($product, 'percentage');
+
+      $price = sprintf('%s <span class="percentage">%s</span>', wc_format_sale_price(
+        wc_get_price_to_display( $product, array( 'price' => $product->get_regular_price(), 'qty' => 1 ) ),
+        wc_get_price_to_display( $product, array( 'qty' => 1 ) )
+      ) . $product->get_price_suffix(), $percentage);
+    }
+
+    return '<span class="product-price-wrapper">' . $price . '</span>';
   }
 
   function woocommerce_header_add_to_cart_fragment( $fragments ) {
