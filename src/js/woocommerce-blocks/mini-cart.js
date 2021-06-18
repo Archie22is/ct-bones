@@ -78,6 +78,10 @@ export default el => {
     window
   )
 
+  on('orientationchange', () => {
+    trigger('minicart.close', body)
+  }, window)
+
   if (triggers) {
     on(
       'click',

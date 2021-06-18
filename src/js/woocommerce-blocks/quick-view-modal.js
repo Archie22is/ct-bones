@@ -33,58 +33,6 @@ export default el => {
     return el
   }
 
-  const initVariation = () => {
-    if (typeof wc_add_to_cart_variation_params === 'undefined') {
-      return el
-    }
-
-    const $variationForm = $(el).find('.variations_form')
-    let slideFirstImage = $(el).find(
-      '.quick-view-modal__slider-item:eq(0) img'
-    )
-    $variationForm.on('found_variation', function (event, variation) {
-      if (
-        variation.image &&
-        variation.image.src &&
-        variation.image.src.length > 1
-      ) {
-        slideFirstImage.attr('src', variation.image.full_src)
-        slideFirstImage.wc_set_variation_attr('src', variation.image.src)
-        slideFirstImage.wc_set_variation_attr('height', variation.image.src_h)
-        slideFirstImage.wc_set_variation_attr('width', variation.image.src_w)
-        slideFirstImage.wc_set_variation_attr(
-          'srcset',
-          variation.image.srcset
-        )
-        slideFirstImage.wc_set_variation_attr('sizes', variation.image.sizes)
-        slideFirstImage.wc_set_variation_attr('title', variation.image.title)
-        slideFirstImage.wc_set_variation_attr('alt', variation.image.alt)
-        slideFirstImage.wc_set_variation_attr(
-          'data-src',
-          variation.image.full_src
-        )
-        slideFirstImage.wc_set_variation_attr(
-          'data-large_image',
-          variation.image.full_src
-        )
-        slideFirstImage.wc_set_variation_attr(
-          'data-large_image_width',
-          variation.image.full_src_w
-        )
-        slideFirstImage.wc_set_variation_attr(
-          'data-large_image_height',
-          variation.image.full_src_h
-        )
-        slideFirstImage.wc_set_variation_attr(
-          'href',
-          variation.image.full_src
-        )
-      }
-    })
-
-    return el
-  }
-
   const fetchData = () => {
     window
       .fetch(codetotConfig.ajax.url, {
@@ -112,7 +60,6 @@ export default el => {
         $(document.body).trigger('wc_fragment_refresh')
 
         pipe(
-          initVariation,
           initChangeVariation,
           initSlider,
           initAddToCart,
@@ -259,6 +206,8 @@ export default el => {
     },
     window
   )
+
+  on('orientationchange', closeModal, window)
 
   on('click', e => {
     if (this !== e.target) {
