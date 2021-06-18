@@ -69,11 +69,6 @@
     border-radius: var(--border-radius);
   }
 
-  & .flex-active-slide {
-    padding-bottom: 10px;
-    text-align: center;
-  }
-
   & .flex-control-thumbs {
     @mixin list-reset;
 
