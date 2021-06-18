@@ -107,9 +107,9 @@ export default el => {
       smoothHeight: true
     }
 
-    $productGalleryEl.trigger( 'wc-product-gallery-before-init', [ this, wc_single_product_params ] )
+    $productGalleryEl.trigger('wc-product-gallery-before-init', [ this, wc_single_product_params ])
     $productGalleryEl.wc_product_gallery( wc_single_product_params )
-    $productGalleryEl.trigger( 'wc-product-gallery-after-init', [ this, wc_single_product_params ] )
+    $productGalleryEl.trigger('wc-product-gallery-after-init', [ this, wc_single_product_params ])
 
     return el
   }

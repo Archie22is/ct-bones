@@ -15,9 +15,13 @@ $columns = apply_filters( 'woocommerce_product_thumbnails_columns', 5);
 $attachment_ids = $product->get_gallery_image_ids();
 
 if ( $attachment_ids && $product->get_image_id() ) {
+  do_action('codetot_before_single_product_image_thumbnails');
+
 	foreach ( $attachment_ids as $index => $attachment_id ) {
     if ($index <= ($columns - 2)) :
       echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', wc_get_gallery_image_html( $attachment_id ), $attachment_id );
     endif;
 	}
+
+  do_action('codetot_after_single_product_image_thumbnails');
 }
