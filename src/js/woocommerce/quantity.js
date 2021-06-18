@@ -34,10 +34,9 @@ const initQuantity = ele => {
     return
   }
 
-  console.log('init')
-
   // Add class ajax-ready on first load.
-  addClass('ajax-ready', input)
+  addClass('is-loading', ele)
+  addClass('ajax-ready', ele)
 
   // Append Minus button before Input.
   if (!select('.product-qty[data-qty="minus"]', ele)) {
@@ -108,20 +107,11 @@ const initQuantity = ele => {
 
   // Minus & Plus button click.
   on('click', e => {
-    console.log(e.target.className)
-    e.stopPropagation()
-
     const current = Number(input.value || 0)
     const step = Number(getAttribute('step', input) || 1)
     const min = Number(getAttribute('min', input) || 0)
     const max = Number(getAttribute('max', input) || 100)
     const dataType = getAttribute('data-qty', e.target)
-
-    console.log('current is ' + current)
-    console.log('step is ' + step)
-    console.log('min is ' + min)
-    console.log('max is ' + max)
-    console.log('datatype is ' + dataType)
 
     if (dataType === 'minus' && current >= step) {
       // Minus button.
@@ -143,8 +133,10 @@ const initQuantity = ele => {
 
     // Trigger event.
     input.dispatchEvent(eventChange)
-    $(input).trigger('input')
+    $(input).trigger('change')
   }, buttons)
+
+  removeClass('is-loading', ele)
 }
 
 export { initQuantity }

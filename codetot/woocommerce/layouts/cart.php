@@ -42,7 +42,6 @@ class Codetot_Woocommerce_Layout_Cart extends Codetot_Woocommerce_Layout
 
     remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
     remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10 );
-    remove_action( 'woocommerce_proceed_to_checkout', 'woocommerce_button_proceed_to_checkout', 20 );
 
     if (is_cart()) {
       add_action('codetot_page', array($this, 'cart_content'), 10);
@@ -64,7 +63,6 @@ class Codetot_Woocommerce_Layout_Cart extends Codetot_Woocommerce_Layout
     // Column: Cart Totals
     add_action('woocommerce_before_cart_collaterals', array($this, 'cart_page_col_open_sidebar'),  1);
     add_action('woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10);
-    add_action('woocommerce_cart_collaterals', 'woocommerce_button_proceed_to_checkout', 20);
 
     add_action('woocommerce_after_cart_totals',  array($this, 'cart_page_col_close'), 90);
     add_action('woocommerce_after_cart', array($this, 'cart_page_grid_close'), 19);

@@ -41,10 +41,17 @@ body.woocommerce-cart {
     @media (--sm) {
       width: 33.33%;
       margin-top: 0;
+
+      & .page-block__inner {
+        position: sticky;
+        top: 10px;
+        width: 100%;
+      }
     }
   }
 
   & .page-block__inner {
+    margin-top: 1em;
     padding: 1em;
     background: var(--white);
     border-radius: var(--border-radius);
@@ -64,8 +71,8 @@ body.woocommerce-cart {
     text-align: center;
 
     @media (--m) {
-      padding: 1em;
-      font-size: 1.25rem;
+      padding: 15px 40px;
+      font-size: 1.15rem;
     }
   }
 }
@@ -221,7 +228,7 @@ body.woocommerce-cart {
 
   & td {
     @media (--m) {
-      vertical-align: middle;
+      vertical-align: top;
       padding: 1em 0;
       border-bottom: 1px solid var(--border);
     }
@@ -258,14 +265,14 @@ body.woocommerce-cart {
 
   & th:not(:first-child):not(.product-thumbnail),
   & td:not(:first-child):not(.product-thumbnail) {
-    padding-left: 0.5em;
-    padding-right: 1em;
-    padding-bottom: 1em;
+    padding-left: 10px;
+    padding-right: 15px;
+    padding-bottom: 15px;
     line-height: 1.25;
 
     @media (--s) {
-      padding-left: 1em;
-      padding-right: 1em;
+      padding-left: 15px;
+      padding-right: 15px;
     }
   }
 
@@ -303,7 +310,7 @@ body.woocommerce-cart {
       }
 
       & > dt {
-        font-weight: 700;
+        font-weight: var(--font-bold);
       }
 
       & > dd {
@@ -314,10 +321,6 @@ body.woocommerce-cart {
 
   & .product-price {
     display: none;
-
-    @media (--ml) {
-      display: table-cell;
-    }
   }
 
   & .product-subtotal {
@@ -328,6 +331,11 @@ body.woocommerce-cart {
     @media (--m) {
       min-width: 100%;
       text-align: right;
+
+      & > * {
+        margin-top: 10px;
+        display: block;
+      }
     }
   }
 
@@ -336,14 +344,23 @@ body.woocommerce-cart {
     bottom: 1em;
     right: 0;
 
+    @media (--m) {
+      bottom: 16px;
+      right: auto;
+      left: 165px;
+      border: 0;
+    }
+
     & a {
       font-size: 1rem;
       line-height: 1;
       text-decoration: underline;
-    }
+      color: var(--dark);
 
-    @media (--m) {
-      border: 0;
+      @media (--m) {
+        font-size: 0.85rem;
+        text-decoration: none;
+      }
     }
   }
 
@@ -389,6 +406,7 @@ body.woocommerce-cart {
     @mixin button-style-secondary;
     @mixin button-large;
 
+    display: none;
     width: 100%;
     min-width: 135px;
 

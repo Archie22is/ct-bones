@@ -81,23 +81,10 @@ const initAllQtyElements = () => {
   })
 }
 
-const autoUpdateCart = () => {
-  if (!hasClass('woocommerce-cart', document.body)) {
-    return false
-  }
-
-  const formEl = select('.woocommerce-cart-form')
-
-  if (!formEl) {
-    return false
-  }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   widgetProductCategories()
   initBlocks()
   initImageHoverProductCard()
-  autoUpdateCart()
 
   $(document.body).on('wc_fragments_loaded wc_fragments_refreshed', () => {
     initAllQtyElements()
