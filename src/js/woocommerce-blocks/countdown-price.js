@@ -23,7 +23,7 @@ const getTimeRemaining = (time, type = 'end') => {
 
 const renderHtml = price => {
   return `
-    <span class="single-product__price__top">${price}</span>
+    <span class="single-product__price__top"><span class="price">${price}</span></span>
     <span class="single-product__price__bottom">
       <span class="single-product__price__label js-label"></span>
       <span class="single-product__price__countdown js-countdown">

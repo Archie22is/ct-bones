@@ -14,10 +14,10 @@ body.woo-variation-swatches {
   & .variable-items-wrapper {
     & .variable-item:not(.radio-variable-item) {
       position: relative;
-      padding: 3px 10px;
+      padding: 5px;
       border-radius: var(--border-radius);
-      box-shadow: none;
-      border: 0.125em solid var(--gray);
+      box-shadow: none !important;
+      border: 2px solid var(--gray);
 
       & span.variable-item-span {
         padding: 0;
@@ -28,10 +28,11 @@ body.woo-variation-swatches {
     & .variable-item:not(.radio-variable-item).selected:hover {
       box-shadow: none;
       border-color: var(--primary);
+      box-shadow: none !important;
     }
 
     & .variable-item:not(.radio-variable-item).disabled {
-      border-color: var(--border);
+      border-color: var(--gray);
 
       &::before,
       &::after {
@@ -44,5 +45,15 @@ body.woo-variation-swatches {
     & .reset_variations {
       display: none !important;
     }
+  }
+
+  & .variable-items-wrapper .variable-item:not(.radio-variable-item):hover,
+  & .variable-items-wrapper .variable-item:not(.radio-variable-item).selected:hover {
+    box-shadow: none !important;
+  }
+
+  &.wvs-show-label .variations td .woo-selected-variation-item-name,
+  &.wvs-show-label .variations td label {
+    margin: 0;
   }
 }
