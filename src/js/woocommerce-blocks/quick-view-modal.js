@@ -80,6 +80,17 @@ export default el => {
     wc_single_product_params.flexslider_enabled = true
     wc_single_product_params.photoswipe_enabled = false
     wc_single_product_params.zoom_enabled = true
+    wc_single_product_params.flexslider = {
+      allowOneSlide: false,
+      animation: 'slide',
+      animationLoop: false,
+      animationSpeed: 500,
+      controlNav: 'thumbnails',
+      directionNav: false,
+      rtl: false,
+      slideshow: false,
+      smoothHeight: true
+    }
 
     $productGalleryEl.trigger( 'wc-product-gallery-before-init', [ this, wc_single_product_params ] )
     $productGalleryEl.wc_product_gallery( wc_single_product_params )
