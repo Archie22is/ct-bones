@@ -203,6 +203,16 @@ class Codetot_WooCommerce_Init
         true
       );
     }
+
+    if (is_checkout()) {
+      wp_enqueue_script(
+        'codetot-checkout',
+        get_template_directory_uri() . '/assets/js/checkout' . $this->theme_environment . '.js',
+        array('jquery'),
+        CODETOT_VERSION,
+        true
+      );
+    }
   }
 
   public function breadcrumbs_container($args)

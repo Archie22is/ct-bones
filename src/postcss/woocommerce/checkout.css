@@ -34,13 +34,18 @@ body.woocommerce-checkout {
     display: block;
 
     @media (--sm) {
-      width: 50%;
+      width: 300px;
+    }
+
+    @media (--m) {
+      width: 35%;
     }
   }
 
   & .page-block__col--main {
     @media (--sm) {
-      width: 50%;
+      width: auto;
+      flex: 1 1 0;
     }
   }
 }
@@ -49,82 +54,6 @@ body.woocommerce-checkout {
   margin-left: 0;
   margin-right: 0;
   padding: 1em;
-}
-
-.woocommerce-form-coupon-toggle {
-  max-width: var(--xs);
-  margin: 0 auto 1em auto;
-
-  & .woocommerce-info {
-    margin-bottom: 0.5em;
-    padding: 0;
-    background: transparent;
-    color: initial;
-    text-align: center;
-  }
-
-  & .showcoupon {
-    display: block;
-    width: 100%;
-    text-decoration: underline;
-
-    @media (--s) {
-      display: inline;
-      width: auto;
-    }
-
-    &:hover {
-      color: var(--primary);
-    }
-  }
-}
-
-.checkout_coupon.woocommerce-form-coupon {
-  display: flex;
-  flex-wrap: wrap;
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius);
-  max-width: var(--xs);
-  margin: 1em auto;
-  padding: 1em 1.5em;
-  background: var(--white);
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
-
-  & p:first-child {
-    width: 100%;
-    margin-bottom: 0.5em;
-  }
-
-  & .form-row .input-text {
-    @mixin input-field;
-
-    width: 100%;
-    border-right: 0;
-    border-radius: var(--border-radius) 0 0 var(--border-radius);
-    box-shadow: none;
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  & .form-row-first {
-    width: auto;
-    flex: 1 1 0;
-  }
-
-  & .form-row-last {
-    width: auto;
-    margin: 0;
-  }
-
-  & button[type='submit'] {
-    @mixin button-style-primary;
-
-    min-height: 44px;
-    padding: 13px 35px;
-    border-radius: 0 var(--border-radius) var(--border-radius) 0;
-  }
 }
 
 form.woocommerce-billing-fields {
@@ -299,102 +228,146 @@ form.woocommerce-billing-fields {
   }
 }
 
+.cart_totals h2,
+.checkout-coupon-form__label,
+.order-review__title,
 #order_review_heading {
+  display: block;
+  margin-bottom: 0.5em;
+
+  font-weight: var(--font-normal);
+}
+
+.woocommerce-form-coupon-toggle {
   display: none;
 }
 
-#order_review {
-  margin-top: 1em;
-  margin-bottom: 1em;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius);
-  padding: 1em;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+.checkout-coupon-form__sub-title {
+  font-weight: var(--font-bold);
+  margin-bottom: 5px;
+}
 
-  @media (--s) {
-    margin-top: 0;
+
+ul.checkout-coupon-form__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkout-coupon-form__item {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 5px;
+  padding: 2px 0 2px 5px;
+  background-color: var(--primary);
+  border: 1px dashed var(--border);
+  transition: background-color 0.3s;
+
+  &:hover {
+    @media (--m) {
+      background-color: var(--dark);
+    }
   }
 
-  & .woocommerce-checkout-review-order-table {
-    margin-bottom: 1em;
+  & .woocommerce-remove-coupon {
+    @mixin flex-center;
 
-    & thead {
-      display: none;
+    width: 24px;
+    height: 24px;
+    color: var(--white);
+
+    & svg {
+      width: 20px;
+      height: 20px;
     }
 
-    & .woocommerce-Price-amount {
-      color: var(--primary);
-    }
-
-    & .order-total th,
-    & .order-total td {
-      font-size: 1rem;
-    }
-
-    & .product-name {
-      display: block;
-
-      & .variation {
-        display: flex;
-        margin-top: 6px;
-        font-size: 0.85rem;
-
-        & > * {
-          display: inline-block;
-          margin-top: 6px;
-        }
-
-        & > dt {
-          font-weight: 600;
-          width: 40%;
-        }
-
-        & > dd {
-          margin-left: 0;
-          width: 60%;
-        }
+    &:hover {
+      @media (--m) {
+        color: var(--white);
       }
     }
   }
 
-  & tr {
+  & .coupon {
+    font-size: 0.85rem;
+    line-height: 1;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+
+  & .action {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    border-bottom: 1px solid var(--border);
+    margin-left: 5px;
   }
+}
 
-  & th,
-  & td {
-    font-weight: normal;
-    text-align: left;
-    padding-top: 10px;
-    padding-bottom: 10px;
+#order_review_heading {
+  &::after {
+    content: ':';
   }
+}
 
-  & tr td:last-child {
-    text-align: right;
-    margin-left: 10px;
-  }
+.checkout-coupon-form__wrapper,
+.woocommerce-checkout-payment,
+.checkout-total {
+  padding: 1em;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
 
-  & input {
-    &[type='radio'],
-    &[type='checkbox'] {
-      margin-right: 5px;
-      position: relative;
-      top: 2px;
-    }
-  }
-
-  & .woocommerce-terms-and-conditions-wrapper {
-    padding-bottom: 1em;
-  }
-
-  & button[type='submit'] {
-    @mixin button-large;
-
+.woocommerce-checkout-payment {
+  & .button {
     width: 100%;
+  }
+}
+
+.checkout-total {
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+  @media (--s) {
+    margin-top: 0;
+  }
+}
+
+.checkout-coupon-form {
+  margin-bottom: 1em;
+}
+
+.checkout-coupon-form__description {
+  font-size: 0.95rem;
+}
+
+.checkout-coupon-form__form-wrapper {
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+}
+
+.checkout-coupon-form__input {
+  width: calc(100% - 85px);
+  padding-left: 1em;
+  background: transparent;
+  border: 0;
+
+  @media (--sm) {
+    font-size: 0.85rem;
+  }
+}
+
+.checkout-coupon-form__button {
+  min-width: 85px;
+  padding: 10px 15px;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  cursor: pointer;
+
+  & * {
+    pointer-events: none;
+  }
+
+  @media (--sm) {
+    font-size: 0.85rem;
   }
 }
 
@@ -416,8 +389,20 @@ form.woocommerce-billing-fields {
   }
 }
 
+.woocommerce-remove-coupon {
+  &:hover {
+    @media (--m) {
+      color: var(--primary);
+    }
+  }
+}
+
+.wc_payment_method label {
+  font-weight: var(--font-bold);
+}
+
 .wc_payment_method .payment_box {
-  padding-left: 1.4em;
+  padding-left: 16px;
 }
 
 .wc_payment_method .payment_box,
@@ -429,6 +414,7 @@ form.woocommerce-billing-fields {
 
 .woocommerce-terms-and-conditions-wrapper {
   margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .woocommerce-shipping-fields {
@@ -436,5 +422,9 @@ form.woocommerce-billing-fields {
 
   & .form-row label {
     display: none;
+  }
+
+  & .shipping_address {
+    margin-top: 10px;
   }
 }

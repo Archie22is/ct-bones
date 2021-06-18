@@ -48,6 +48,7 @@ class Codetot_Woocommerce_Layout_Cart extends Codetot_Woocommerce_Layout
     }
 
     add_action('woocommerce_before_cart', array($this, 'container_open'), 15);
+    add_action('woocommerce_before_cart', array($this, 'render_shop_steps'), 16);
     add_action('woocommerce_before_cart', array($this, 'cart_page_grid_open'), 20);
 
     // Case 2: Empty cart
@@ -71,6 +72,11 @@ class Codetot_Woocommerce_Layout_Cart extends Codetot_Woocommerce_Layout
     add_action('woocommerce_after_cart', array($this, 'container_close'), 20);
 
     add_filter( 'woocommerce_add_to_cart_fragments', array($this, 'woocommerce_header_add_to_cart_fragment'),5);
+  }
+
+  public function render_shop_steps()
+  {
+    the_block('shop-steps');
   }
 
   public function cart_content() {
