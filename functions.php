@@ -121,6 +121,7 @@ if (class_exists('WooCommerce')) {
   require_once CODETOT_DIR . '/woocommerce/features/quick-view.php';
   require_once CODETOT_DIR . '/woocommerce/features/countdown-price.php';
   require_once CODETOT_DIR . '/woocommerce/features/global-guarantee-list.php';
+  require_once CODETOT_DIR . '/woocommerce/features/product-video.php';
 
   require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
 

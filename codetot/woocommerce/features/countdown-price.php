@@ -28,6 +28,7 @@ class Codetot_WooCommerce_Countdown_Price
   private function __construct()
   {
     $enable_countdown_price = get_global_option('codetot_woocommerce_enable_countdown_price') ?? true;
+    $this->countdown_style = get_global_option('codetot_woocommerce_countdown_product_style') ?? 'default';
     $this->start_date_format = 'Y-m-d 00:00:00';
     $this->end_date_format = 'Y-m-d 23:59:59';
 
@@ -42,10 +43,6 @@ class Codetot_WooCommerce_Countdown_Price
   }
 
   public function load_js_labels() {
-    if (!is_singular('product')) {
-      return;
-    }
-
     ob_start();
     printf('var CODETOT_COUNTDOWN_LABELS = \'%s\'', json_encode($this->get_labels()));
     $labels = ob_get_clean();
@@ -56,6 +53,10 @@ class Codetot_WooCommerce_Countdown_Price
   }
 
   public function format_date_with_time($date, $type = 'end') {
+    if (empty($date)) {
+      return new \WP_Error('not_found', __FUNCTION__ . ': ' . __('Missing date parameter', 'ct-bones'));
+    }
+
     if ($type === 'end') {
       return date($this->end_date_format, $date);
     } else {
@@ -148,7 +149,7 @@ class Codetot_WooCommerce_Countdown_Price
   }
 
   public function is_scheduled($date) {
-    if (empty($date)) {
+    if (empty($date) || is_wp_error($date)) {
       return false;
     }
 
@@ -156,7 +157,7 @@ class Codetot_WooCommerce_Countdown_Price
   }
 
   public function is_date_running($date) {
-    if (empty($date)) {
+    if (empty($date) || is_wp_error($date)) {
       return false;
     }
 
@@ -174,6 +175,7 @@ class Codetot_WooCommerce_Countdown_Price
 
     $is_scheduled = !empty($sales_price_from) && $this->is_scheduled($sales_price_from);
     $is_running = !empty($sales_price_to) && $this->is_date_running($sales_price_to);
+    $_class = 'product-price';
 
     if (
       (
@@ -183,6 +185,9 @@ class Codetot_WooCommerce_Countdown_Price
     ) {
       $attributes = 'data-woocommerce-block="countdown-price"';
 
+      $_class .= ' product-price--countdown';
+      $_class .= ' is-style-' . esc_attr($this->countdown_style);
+
       if (!empty($sales_price_from)) :
         $attributes .= sprintf(' data-start-date="%s"', $sales_price_from); // Ex: 2021-10-01 00:00:00
       endif;
@@ -191,13 +196,13 @@ class Codetot_WooCommerce_Countdown_Price
         $attributes .= sprintf(' data-end-date="%s"', $sales_price_to); // Ex: 2021-10-01 23:59:59
       endif;
 
-      $price_output_html = sprintf('<span class="product-price product-price--countdown" %s>', $attributes);
+      $price_output_html = sprintf('<span class="%s" %s>', $_class, $attributes);
       $price_output_html .= apply_filters('woocommerce_get_price', $price);
       $price_output_html .= '</span>'; // Close .single-product__price--has-discount
 
       echo $price_output_html;
     } else {
-      echo '<span class="product-price">';
+      echo '<span class="' . esc_attr($_class) . '">';
       woocommerce_template_single_price();
       echo '</span>';
     }

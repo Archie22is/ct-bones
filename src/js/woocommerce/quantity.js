@@ -1,89 +1,92 @@
 /* global jQuery */
+import {
+  select,
+  selectAll,
+  closest,
+  getAttribute,
+  setAttribute,
+  addClass,
+  removeClass,
+  getData,
+  on
+} from 'lib/dom'
+
+const $ = jQuery
 
 // Create Minus button.
-const minusBtn = () => {
-  var minusBtn = document.createElement('span')
+const createMinusButton = () => {
+  let el = document.createElement('span')
 
-  minusBtn.setAttribute('class', 'product-qty')
-  minusBtn.setAttribute('data-qty', 'minus')
-  minusBtn.innerHTML =
+  addClass('product-qty', el)
+  setAttribute('data-qty', 'minus', el)
+  el.innerHTML =
     '<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17"><path d="M15 8v1H2V8h13z"/></svg>'
 
-  return minusBtn
+  return el
 }
 
 // Create Plus button.
-const plusBtn = () => {
-  var plusBtn = document.createElement('span')
+const createPlusButton = () => {
+  let el = document.createElement('span')
 
-  plusBtn.setAttribute('class', 'product-qty')
-  plusBtn.setAttribute('data-qty', 'plus')
-  plusBtn.innerHTML =
+  addClass('product-qty', el)
+  setAttribute('data-qty', 'plus', el)
+  el.innerHTML =
     '<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17"><path d="M16 9H9v7H8V9H1V8h7V1h1v7h7v1z"/></svg>'
 
-  return plusBtn
+  return el
 }
 
-// Add Minus and Plus button on Product Quantity.
-const customQuantity = () => {
-  var quantity = document.querySelectorAll('.quantity')
-
-  if (!quantity.length) {
+const initQuantity = ele => {
+  // Input.
+  var input = select('input.qty', ele)
+  if (!input) {
     return
   }
 
-  // Foreach.
-  quantity.forEach(function (ele) {
-    // Input.
-    var input = ele.querySelector('input.qty')
-    if (!input) {
-      return
-    }
+  // Add class ajax-ready on first load.
+  addClass('is-loading', ele)
+  addClass('ajax-ready', ele)
 
-    // Add class ajax-ready on first load.
-    input.classList.add('ajax-ready')
+  // Append Minus button before Input.
+  if (!select('.product-qty[data-qty="minus"]', ele)) {
+    ele.insertBefore(createMinusButton(), input)
+  }
 
-    // Append Minus button before Input.
-    if (!ele.querySelector('.product-qty[data-qty="minus"]')) {
-      ele.insertBefore(minusBtn(), input)
-    }
+  // Append Plus button after Input.
+  if (!select('.product-qty[data-qty="plus"]', ele)) {
+    ele.appendChild(createPlusButton())
+  }
 
-    // Append Plus button after Input.
-    if (!ele.querySelector('.product-qty[data-qty="plus"]')) {
-      ele.appendChild(plusBtn())
-    }
+  // Vars.
+  const cart = closest('form.cart', ele)
+  const buttons = selectAll('.product-qty', ele)
+  const maxInput = Number(getAttribute('max', input))
+  // eslint-disable-next-line no-undef
+  const eventChange = new Event('change')
 
-    // Vars.
-    var cart = ele.closest('form.cart')
-    var buttons = ele.querySelectorAll('.product-qty')
-    var maxInput = Number(input.getAttribute('max'))
-    // eslint-disable-next-line no-undef
-    var eventChange = new Event('change')
+  // Get product info.
+  const productInfo = cart ? select('.additional-product', cart) : false
+  const inStock = productInfo ? getData('in_stock', productInfo) : 'no'
+  const outStock = productInfo
+    ? getData('out_of_stock', productInfo)
+    : 'Out of stock'
+  const notEnough = productInfo ? getData('not_enough', productInfo) : ''
+  const quantityValid = productInfo
+    ? getData('valid_quantity', productInfo)
+    : ''
 
-    // Get product info.
-    var productInfo = cart ? cart.querySelector('.additional-product') : false
-    var inStock = productInfo ? productInfo.getAttribute('data-in_stock') : 'no'
-    var outStock = productInfo
-      ? productInfo.getAttribute('data-out_of_stock')
-      : 'Out of stock'
-    var notEnough = productInfo
-      ? productInfo.getAttribute('data-not_enough')
-      : ''
-    var quantityValid = productInfo
-      ? productInfo.getAttribute('data-valid_quantity')
-      : ''
-
-    // Check valid quantity.
-    input.addEventListener('change', function () {
-      var inputVal = input.value
+  // Check valid quantity.
+  on(
+    'change',
+    e => {
+      var inputVal = e.target.value
       var inCartQty = productInfo ? Number(productInfo.value || 0) : 0
-      var min = Number(input.getAttribute('min') || 0)
-      var ajaxReady = function () {
-        input.classList.remove('ajax-ready')
-      }
+      var min = Number(getAttribute('min', input) || 0)
+      const ajaxReady = () => removeClass('ajax-ready', input)
 
       // When quantity updated.
-      input.classList.add('ajax-ready')
+      addClass('ajax-ready', input)
 
       // Valid quantity.
       if (inputVal < min || isNaN(inputVal)) {
@@ -110,47 +113,46 @@ const customQuantity = () => {
           ajaxReady()
         }
       }
-    })
+    },
+    input
+  )
 
-    // Minus & Plus button click.
-    for (var i = 0, j = buttons.length; i < j; i++) {
-      buttons[i].onclick = function () {
-        // Variables.
-        var t = this
-        var current = Number(input.value || 0)
-        var step = Number(input.getAttribute('step') || 1)
-        var min = Number(input.getAttribute('min') || 0)
-        var max = Number(input.getAttribute('max'))
-        var dataType = t.getAttribute('data-qty')
+  // Minus & Plus button click.
+  on(
+    'click',
+    e => {
+      const current = Number(input.value || 0)
+      const step = Number(getAttribute('step', input) || 1)
+      const min = Number(getAttribute('min', input) || 0)
+      const max = Number(getAttribute('max', input) || 100)
+      const dataType = getAttribute('data-qty', e.target)
 
-        if (dataType === 'minus' && current >= step) {
-          // Minus button.
-          if (current <= min || current - step < min) {
-            return
-          }
-
-          input.value = current - step
-        } else if (dataType === 'plus') {
-          // Plus button.
-          if (max && (current >= max || current + step > max)) {
-            return
-          }
-
-          input.value = current + step
+      if (dataType === 'minus' && current >= step) {
+        // Minus button.
+        if (current <= min || current - step < min) {
+          return
         }
 
-        // Trigger event.
-        input.dispatchEvent(eventChange)
-        jQuery(input).trigger('input')
-
-        // Remove disable attribute on Update Cart button on Cart page.
-        var updateCart = document.querySelector("[name='update_cart']")
-        if (updateCart) {
-          updateCart.disabled = false
-        }
+        input.value = current - step
       }
-    }
-  })
+
+      if (dataType === 'plus') {
+        // Plus button.
+        if (max && (current >= max || current + step > max)) {
+          return
+        }
+
+        input.value = current + step
+      }
+
+      // Trigger event.
+      input.dispatchEvent(eventChange)
+      $(input).trigger('change')
+    },
+    buttons
+  )
+
+  removeClass('is-loading', ele)
 }
 
-export { customQuantity, minusBtn, plusBtn }
+export { initQuantity }

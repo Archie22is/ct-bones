@@ -52,7 +52,7 @@
     min-height: auto;
   }
 
-  & a {
+  & a:not(.button) {
     color: var(--white);
     text-decoration: underline;
   }

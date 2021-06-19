@@ -1,5 +1,5 @@
 /* global CODETOT_COUNTDOWN_LABELS */
-import { select, getData, addClass, removeClass, closest } from 'lib/dom'
+import { select, getData, addClass, removeClass } from 'lib/dom'
 
 const getTimeRemaining = (time, type = 'end') => {
   const total =
@@ -23,7 +23,7 @@ const getTimeRemaining = (time, type = 'end') => {
 
 const renderHtml = price => {
   return `
-    <span class="single-product__price__top">${price}</span>
+    <span class="single-product__price__top"><span class="price">${price}</span></span>
     <span class="single-product__price__bottom">
       <span class="single-product__price__label js-label"></span>
       <span class="single-product__price__countdown js-countdown">
@@ -38,7 +38,6 @@ const renderHtml = price => {
 }
 
 export default el => {
-  const parentEl = closest('.entry-summary', el)
   const startDate = Date.parse(getData('start-date', el))
   const endDate = Date.parse(getData('end-date', el))
   const labels = CODETOT_COUNTDOWN_LABELS
@@ -87,106 +86,106 @@ export default el => {
     rendered = true
   }
 
-  if (parentEl) {
-    const updateDay = days => {
-      if (daysEl) {
-        daysEl.innerHTML = getLabels(days, 'days')
+  const updateDay = days => {
+    if (daysEl) {
+      daysEl.innerHTML = getLabels(days, 'days')
 
-        if (days < 1) {
-          displayMessage('less_day')
-          addClass('hide-day', el)
-        }
+      if (days < 1) {
+        displayMessage('less_day')
+        addClass('hide-day', el)
       }
-    }
-
-    const updateHour = hours => {
-      if (hoursEl) {
-        hoursEl.innerHTML = getLabels(hours, 'hours')
-
-        if (hours < 1) {
-          displayMessage('less_hour')
-          addClass('hide-hour', el)
-        }
-      }
-    }
-
-    const updateMinute = minutes => {
-      if (minutesEl && minutes) {
-        minutesEl.innerHTML = getLabels(minutes, 'minutes')
-      }
-    }
-
-    const updateSecond = seconds => {
-      if (secondsEl && seconds) {
-        secondsEl.innerHTML = getLabels(('0' + seconds).slice(-2), 'seconds')
-      }
-    }
-
-    const updateOnGoingTime = () => {
-      const { days, hours, minutes, seconds } = getTimeRemaining(endDate, 'end')
-
-      updateDay(days)
-      updateHour(hours)
-      updateMinute(minutes)
-      updateSecond(seconds)
-    }
-
-    const updateScheduledTime = () => {
-      const { days, hours, minutes, seconds } = getTimeRemaining(
-        startDate,
-        'start'
-      )
-
-      updateDay(days)
-      updateHour(hours)
-      updateMinute(minutes)
-      updateSecond(seconds)
-    }
-
-    const updateRemainingTime = () => {
-      if (!rendered) {
-        render()
-      }
-
-      const currentTime = Date.parse(new Date())
-
-      if (startDate && startDate > currentTime) {
-        updateScheduledTime()
-        labelEl.innerHTML = getMessage('not_start')
-
-        const { total } = getTimeRemaining(startDate)
-
-        if (total <= 0) {
-          reset()
-        }
-      } else if (endDate && endDate >= currentTime) {
-        labelEl.innerHTML = getMessage('ongoing')
-
-        updateOnGoingTime()
-
-        const { total } = getTimeRemaining(endDate)
-
-        if (total <= 0) {
-          reset()
-        }
-      } else {
-        reset()
-
-        console.log('DEBUG: There is unknown error with countdown settings.')
-      }
-    }
-
-    // eslint-disable-next-line no-unused-vars
-    const timeinterval = setInterval(updateRemainingTime, 1000)
-
-    const reset = () => {
-      clearInterval(timeinterval)
-
-      setTimeout(() => {
-        window.location.reload()
-      }, 1000)
-
-      return el
     }
   }
+
+  const updateHour = hours => {
+    if (hoursEl) {
+      hoursEl.innerHTML = getLabels(hours, 'hours')
+
+      if (hours < 1) {
+        displayMessage('less_hour')
+        addClass('hide-hour', el)
+      }
+    }
+  }
+
+  const updateMinute = minutes => {
+    if (minutesEl && minutes) {
+      minutesEl.innerHTML = getLabels(minutes, 'minutes')
+    }
+  }
+
+  const updateSecond = seconds => {
+    if (secondsEl && seconds) {
+      secondsEl.innerHTML = getLabels(('0' + seconds).slice(-2), 'seconds')
+    }
+  }
+
+  const updateOnGoingTime = () => {
+    const { days, hours, minutes, seconds } = getTimeRemaining(endDate, 'end')
+
+    updateDay(days)
+    updateHour(hours)
+    updateMinute(minutes)
+    updateSecond(seconds)
+  }
+
+  const updateScheduledTime = () => {
+    const { days, hours, minutes, seconds } = getTimeRemaining(
+      startDate,
+      'start'
+    )
+
+    updateDay(days)
+    updateHour(hours)
+    updateMinute(minutes)
+    updateSecond(seconds)
+  }
+
+  const updateRemainingTime = () => {
+    if (!rendered) {
+      render()
+    }
+
+    const currentTime = Date.parse(new Date())
+
+    if (startDate && startDate > currentTime) {
+      updateScheduledTime()
+      labelEl.innerHTML = getMessage('not_start')
+
+      const { total } = getTimeRemaining(startDate)
+
+      if (total <= 0) {
+        reset()
+      }
+    } else if (endDate && endDate >= currentTime) {
+      labelEl.innerHTML = getMessage('ongoing')
+
+      updateOnGoingTime()
+
+      const { total } = getTimeRemaining(endDate)
+
+      if (total <= 0) {
+        reset()
+      }
+    } else {
+      reset()
+
+      console.log('DEBUG: There is unknown error with countdown settings.')
+    }
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  const timeinterval = setInterval(updateRemainingTime, 1000)
+
+  const reset = () => {
+    clearInterval(timeinterval)
+
+    setTimeout(() => {
+      window.location.reload()
+    }, 1000)
+
+    return el
+  }
+
+  return el
 }
