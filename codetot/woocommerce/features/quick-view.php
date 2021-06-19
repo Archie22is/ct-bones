@@ -42,6 +42,7 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
     $this->enable = get_global_option('codetot_woocommerce_enable_quick_view') ?? false;
 
     if ($this->enable) {
+      add_action('wp_enqueue_scripts', array($this, 'load_assets'));
       add_filter('body_class', array($this, 'add_body_class'));
 
       // Add elements
@@ -57,6 +58,12 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
     }
   }
 
+  public function load_assets() {
+    wp_enqueue_script('flexslider');
+    wp_enqueue_script('zoom' );
+    wp_enqueue_script('wc-single-product');
+  }
+
   public function add_body_class($classes) {
     $classes[] = 'has-quick-view-product';
 
@@ -68,7 +75,6 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
    */
   public function get_content_json()
   {
-
     check_ajax_referer('codetot-config-nonce', 'ajax_nonce', false);
 
     $response = array(
@@ -85,14 +91,29 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
     $product_id = absint($_POST['product_id']);
 
     // For cross-sells on Cart page.
-    $get_product = wc_get_product($product_id);
-    $parent_id = $get_product->get_parent_id();
+    $product_obj = wc_get_product($product_id);
+    $parent_id = $product_obj->get_parent_id();
 
     if (!empty($parent_id)) {
       $product_id = $parent_id;
     }
 
     wp('p=' . $product_id . '&post_type=product');
+
+    ob_start();
+
+    $final_price = codetot_get_price_discount_percentage($product_obj, 'percentage');
+    $classes = ['product__tag', 'product__tag--onsale'];
+
+    if (!empty($final_price) ) :
+      ?>
+      <span class="<?php echo esc_attr(implode(' ', array_filter($classes))); ?>">
+        <?php echo esc_html($final_price); ?>
+      </span>
+      <?php
+    endif;
+    $sale_badge_html = ob_get_clean();
+
     ob_start();
 
     if (have_posts()) {
@@ -100,14 +121,14 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
         the_post();
         ?>
         <div class="quick-view-modal__header">
-          <h2 class="quick-view-modal__title"><?php the_title(); ?></h2>
+          <h2 class="quick-view-modal__title">
+            <a class="d-block quick-view-modal__title-link" href="<?php the_permalink(); ?>" title="<?php printf(__('View product %s', 'ct-bones'), get_the_title()); ?>"><?php the_title(); ?></a>
+          </h2>
         </div>
         <div class="quick-view-modal__summary">
           <?php
           remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
-          remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
           do_action('woocommerce_single_product_summary');
-          add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
           ?>
         </div>
         <?php
@@ -116,13 +137,15 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
 
     $content_html = ob_get_clean();
 
+    ob_start();
+    echo $sale_badge_html;
+    echo '<div class="quick-view-modal__images">';
+    woocommerce_show_product_images();
+    echo '</div>';
+    $slider_html = ob_get_clean();
+
     $output_arr = array(
-      'sliderHtml' => get_block('quick-view-modal-slider', array(
-        'product_id' => $product_id
-      )),
-      'imagesHtml' => get_block('quick-view-modal-images', array(
-        'product_id' => $product_id
-      )),
+      'sliderHtml' => $slider_html,
       'contentHtml' => $content_html
     );
 

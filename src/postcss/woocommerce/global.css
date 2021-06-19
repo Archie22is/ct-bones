@@ -40,11 +40,16 @@ h3:empty {
   justify-content: center;
   align-items: center;
   width: 110px;
-  height: 40px;
+  height: 44px;
   border: 1px solid var(--border);
   overflow: hidden;
   background: var(--white);
-  border-radius: 6px;
+  border-radius: var(--border-radius);
+  transition: opacity 0.3s ease;
+
+  &.is-loading {
+    opacity: 0;
+  }
 
   & .product-qty {
     @mixin flex-center;
@@ -52,8 +57,12 @@ h3:empty {
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 40px;
+    width: 44px;
     cursor: pointer;
+
+    & * {
+      pointer-events: none;
+    }
 
     & svg {
       width: 14px;
@@ -198,5 +207,129 @@ h3:empty {
     left: 0;
     height: 16px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs/%3E%3Cpath fill='%23ffc107' d='M23.4 8.6L16 7.5l-3.3-7c-.3-.6-1.1-.6-1.4 0L8 7.4l-7.4 1c-.6.2-.8 1-.4 1.3l5.4 5.5-1.3 7.8c0 .6.6 1 1.1.8l6.6-3.7 6.6 3.7a.8.8 0 001-.8l-1.2-7.8 5.4-5.4a.8.8 0 00-.4-1.3z'/%3E%3C/svg%3E");
+  }
+}
+
+.quick-view-modal,
+.entry-summary {
+  & .price {
+    @mixin h3;
+
+    margin: 0 0 10px;
+    font-weight: var(--font-bold);
+    color: var(--primary);
+
+    & del {
+      opacity: 0.65;
+      color: var(--dark);
+      font-weight: var(--font-normal);
+    }
+  }
+}
+
+.shop_table {
+  margin: 0;
+  border: 0;
+  width: 100%;
+
+  & tr {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    border-bottom: 1px solid var(--border);
+  }
+
+  & tr th {
+    font-weight: var(--font-normal);
+  }
+
+  & tr th,
+  & tr td {
+    border: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  & tbody th,
+  & tbody td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  & input[type='radio'] {
+    margin-right: 10px;
+  }
+
+  & [name='calc_shipping'] {
+    width: 100%;
+    height: 50px;
+  }
+
+  & .cart-subtotal {
+    & th,
+    & td {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
+
+  & .order-total {
+    border-bottom: 0;
+
+    & th {
+      padding-right: 10px;
+    }
+
+    & td {
+      text-align: right;
+    }
+
+    & .amount {
+      color: var(--primary);
+      font-size: 1.15rem;
+    }
+  }
+
+  & .woocommerce-shipping-totals {
+    & td {
+      padding-top: 3px;
+      text-align: left;
+    }
+
+    & th {
+      padding: 0;
+    }
+  }
+
+  & a {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+
+  & a.shipping-calculator-button {
+    text-decoration: none;
+  }
+}
+
+.shop_table tbody tr.shipping,
+.shop_table tbody tr.cart-discount {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px 0;
+
+  & th {
+    width: 100%;
+    padding: 0;
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    text-align: left;
+  }
+
+  & td {
+    width: 100%;
+    margin: 5px 0 0 0;
+    padding: 0;
+    text-align: left;
+    opacity: 0.75;
   }
 }

@@ -70,18 +70,22 @@ class Codetot_Woocommerce_Layout_Product
     remove_action( 'woocommerce_before_single_product', 'woocommerce_output_all_notices', 10);
     remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
     remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10);
-    remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
+
+    // Remove default sections
     remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
     remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
 
+    remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20 );
 
     add_action('woocommerce_before_single_product_summary', array($this, 'print_errors'), 5);
     add_action('woocommerce_before_single_product_summary', array($this, 'single_product_top_open'), 12); // .grid
 
     // Product Gallery column
     add_action('woocommerce_before_single_product_summary', array($this, 'single_product_column_open'), 15); // .grid__col
-    add_action('woocommerce_before_single_product_summary', array($this, 'change_sale_flash_in_gallery'), 20);
-    add_action('woocommerce_before_single_product_summary', array($this, 'single_product_gallery'), 25);
+    add_action('woocommerce_before_single_product_summary', array($this, 'change_sale_flash_in_gallery'), 16);
+
+    add_action('woocommerce_product_thumbnails', array($this, 'single_product_gallery_nav'), 20 );
+    add_action('woocommerce_before_single_product_summary', array($this, 'render_bottom_product_gallery'), 40);
     add_action('woocommerce_before_single_product_summary', array($this, 'single_product_column_close'), 50); // /.grid__col
 
     // Column: Product Detail (Right)
@@ -116,6 +120,12 @@ class Codetot_Woocommerce_Layout_Product
 
     add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_grid_close'), 100);
     add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_close'), 110);
+
+    add_filter('woocommerce_product_thumbnails_columns', function() {
+      $columns = get_global_option('codetot_woocommerce_product_thumbnails_columns') ?? 4;
+
+      return $columns;
+    });
   }
 
   public function generate_wrapper() {
@@ -393,8 +403,27 @@ class Codetot_Woocommerce_Layout_Product
     endif;
   }
 
-  public function single_product_gallery() {
-    the_block('product-gallery');
+  public function single_product_gallery_nav() {
+    the_block('product-gallery-nav');
+  }
+
+  public function render_bottom_product_gallery() {
+    global $product;
+    $columns = apply_filters( 'woocommerce_product_thumbnails_columns', 5);
+    $attachment_ids = $product->get_gallery_image_ids();
+
+    if (count($attachment_ids) > $columns) {
+      $available_items_number = count($attachment_ids) - $columns;
+
+      echo '<div class="align-c product-gallery__bottom">';
+      the_block('button', array(
+        'button' => sprintf(_n('View more %s images', 'View more %s images', 'ct-bones', $available_items_number), $available_items_number),
+        'type' => 'link',
+        'class' => 'product-gallery__button',
+        'atts' => ' data-open-modal="product-gallery"'
+      ));
+      echo '</div>';
+    }
   }
 
   public function print_errors()
@@ -443,6 +472,11 @@ class Codetot_Woocommerce_Layout_Product
     endif;
 
     echo '</div>'; // Close .single-product-sections
+  }
+
+  // Remove default <a></a> link in product gallery
+  public function product_image_thumbnail_html($html) {
+    return preg_replace( "!<(a|/a).*?>!", '', $html );
   }
 }
 

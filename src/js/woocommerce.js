@@ -1,3 +1,4 @@
+/* global jQuery */
 import {
   select,
   selectAll,
@@ -9,13 +10,16 @@ import {
   getData
 } from 'lib/dom'
 import { debounce } from 'lib/utils'
-import { customQuantity } from './woocommerce/quantity'
+import { initQuantity } from './woocommerce/quantity'
 import { widgetProductCategories } from './woocommerce/widget-product-categories'
+
+const $ = jQuery
 
 const checkoutPageTrigger = select('[data-checkout-page-trigger]')
 const checkoutForm = select('form[name="checkout"]')
 const woocommerceBlocks = selectAll('[data-woocommerce-block]')
 
+// Mobile checkout button
 if (checkoutPageTrigger && checkoutForm) {
   on(
     'click',
@@ -29,7 +33,7 @@ if (checkoutPageTrigger && checkoutForm) {
 }
 
 const getProductImageMarkup = url =>
-  `<img class="image__img" src="${url}" alt="">`
+  `<img class="image__img" src="${url}" alt="" width="200" height="200">`
 
 const initImageHoverProductCard = () => {
   delegate(
@@ -65,9 +69,24 @@ const initBlocks = () => {
   }
 }
 
+const initAllQtyElements = () => {
+  const quantityEls = selectAll('.quantity')
+
+  if (!quantityEls.length) {
+    return
+  }
+
+  quantityEls.forEach(quantityEl => {
+    initQuantity(quantityEl)
+  })
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  customQuantity()
   widgetProductCategories()
   initBlocks()
   initImageHoverProductCard()
+
+  $(document.body).on('wc_fragments_loaded wc_fragments_refreshed', () => {
+    initAllQtyElements()
+  })
 })

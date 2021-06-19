@@ -8,7 +8,6 @@ import {
   trigger
 } from 'lib/dom'
 import { initQuantityCart } from '../woocommerce/mini-cart'
-import { customQuantity } from '../woocommerce/quantity'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 
 const $ = jQuery
@@ -24,7 +23,6 @@ const done = () => removeClass(UPDATING_BODY_CLASS, body)
 const isCartPage = () => hasClass('woocommerce-cart', body)
 
 const refresh = () => {
-  customQuantity()
   initQuantityCart()
 }
 
@@ -76,6 +74,14 @@ export default el => {
       if (e.code === 'Escape' && hasClass(VISIBLE_BODY_CLASS, body)) {
         trigger('minicart.close', body)
       }
+    },
+    window
+  )
+
+  on(
+    'orientationchange',
+    () => {
+      trigger('minicart.close', body)
     },
     window
   )

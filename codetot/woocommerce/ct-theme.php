@@ -68,6 +68,13 @@ class Codetot_CT_Theme_WooCommerce_Settings
       ),
       array(
         'type' => 'switch',
+        'name' => __('Product Video', 'ct-bones'),
+        'id'   => $this->prefix . 'woocommerce_enable_product_video',
+        'std'  => 1,
+        'desc' => __('Display a video in single product.', 'ct-bones')
+      ),
+      array(
+        'type' => 'switch',
         'name' => __('Minicart', 'ct-bones'),
         'id'   => $this->prefix . 'woocommerce_enable_minicart',
         'std'  => 1,
@@ -140,6 +147,19 @@ class Codetot_CT_Theme_WooCommerce_Settings
       ),
       array(
         'type' => 'select',
+        'name' => __('Countdown Product Style', 'ct-bones'),
+        'id'   => $this->prefix . 'woocommerce_countdown_product_style',
+        'std'  => 'default',
+        'options' => [
+          'default' => __('Default (Gradient)'),
+          'primary' => __('Primary', 'ct-bones'),
+          'secondary' => __('Secondary', 'ct-bones'),
+          'dark' => __('Dark', 'ct-bones'),
+          'custom' => __('Custom Theme', 'ct-bones')
+        ]
+      ),
+      array(
+        'type' => 'select',
         'name' => __('Display Guarantee List', 'ct-bones'),
         'id'   => $this->prefix . 'woocommerce_enable_global_guarantee_list',
         'options' => array(
@@ -155,6 +175,19 @@ class Codetot_CT_Theme_WooCommerce_Settings
           admin_url() . 'admin.php?page=ct-settings',
           esc_html__('CT Settings', 'ct-bones')
         )
+      ),
+      array(
+        'type' => 'select',
+        'name' => __('Product Thumbnails Columns', 'ct-bones'),
+        'id'   => $this->prefix . 'woocommerce_product_thumbnails_columns',
+        'desc' => __('The maximum thumbnails in single product\'s gallery.', 'ct-bones'),
+        'std'  => 4,
+        'options' => [
+          3 => 3,
+          4 => 4,
+          5 => 5,
+          6 => 6
+        ]
       ),
       array(
         'type' => 'select',

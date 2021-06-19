@@ -1,6 +1,7 @@
 <?php
 
-class Codetot_WooCommerce_Init {
+class Codetot_WooCommerce_Init
+{
   /**
    * @var Codetot_WooCommerce_Init
    */
@@ -51,12 +52,13 @@ class Codetot_WooCommerce_Init {
     add_action('wp_footer', array($this, 'fix_load_country_edit_address'), 90);
     add_filter('body_class', array($this, 'body_class'));
 
-    add_filter('woocommerce_cart_item_remove_link', array($this, 'replace_cart_remove_icon'), 10, 2 );
+    add_filter('woocommerce_cart_item_remove_link', array($this, 'replace_cart_remove_icon'), 10, 2);
 
     add_action('admin_enqueue_scripts', array($this, 'hide_product_bar_editing_product_screen'));
   }
 
-  public function woocommerce_support() {
+  public function woocommerce_support()
+  {
     add_theme_support(
       'woocommerce',
       array(
@@ -71,9 +73,20 @@ class Codetot_WooCommerce_Init {
         ),
       )
     );
+
+    add_theme_support('wc-product-gallery-zoom');
+    add_theme_support('wc-product-gallery-lightbox');
+    add_theme_support('wc-product-gallery-slider');
+
+    add_filter('woocommerce_single_product_photoswipe_enabled', function () {
+      if (wp_is_mobile()) {
+        return false;
+      }
+    });
   }
 
-  public function register_woocommerce_sidebars() {
+  public function register_woocommerce_sidebars()
+  {
     $shop_sidebar_layout = get_global_option('codetot_shop_layout') ?? 'sidebar-left';
     if ($shop_sidebar_layout !== 'no-sidebar') :
       register_sidebar(
@@ -131,10 +144,11 @@ class Codetot_WooCommerce_Init {
     endif;
   }
 
-  public function update_add_to_cart_button_text($text) {
+  public function update_add_to_cart_button_text($text)
+  {
     global $product;
 
-    if ($product->is_type( 'variable' )) {
+    if ($product->is_type('variable')) {
       $variations = $product->get_available_variations();
 
       if (!empty($variations) && count($variations) > 1) {
@@ -147,27 +161,31 @@ class Codetot_WooCommerce_Init {
     return $text;
   }
 
-  public function fix_load_country_edit_address() {
+  public function fix_load_country_edit_address()
+  {
     if (is_account_page()) :
-    ?>
-    <script>
-    (function($){
-      var $country = $('select[name="billing_country"]')
+?>
+      <script>
+        (function($) {
+          var $country = $('select[name="billing_country"]')
 
-      if ($country.length) {
-        $country.select2()
-      }
-    })(jQuery);
-    </script>
-    <?php endif;
+          if ($country.length) {
+            $country.select2()
+          }
+        })(jQuery);
+      </script>
+<?php endif;
   }
 
-  public function load_woocommerce_css() {
+  public function load_woocommerce_css()
+  {
     wp_enqueue_style('codetot-woocommerce', get_template_directory_uri() . '/assets/css/woocommerce-style' . $this->theme_environment . '.css', array(), CODETOT_VERSION);
   }
 
-  public function load_woocommerce_js() {
+  public function load_woocommerce_js()
+  {
     wp_enqueue_script('wc-add-to-cart-variation');
+
     wp_enqueue_script(
       'codetot-woocommerce',
       get_template_directory_uri() . '/assets/js/woocommerce-script' . $this->theme_environment . '.js',
@@ -175,9 +193,30 @@ class Codetot_WooCommerce_Init {
       CODETOT_VERSION,
       true
     );
+
+    if (is_cart()) {
+      wp_enqueue_script(
+        'codetot-cart',
+        get_template_directory_uri() . '/assets/js/cart' . $this->theme_environment . '.js',
+        array('jquery'),
+        CODETOT_VERSION,
+        true
+      );
+    }
+
+    if (is_checkout()) {
+      wp_enqueue_script(
+        'codetot-checkout',
+        get_template_directory_uri() . '/assets/js/checkout' . $this->theme_environment . '.js',
+        array('jquery'),
+        CODETOT_VERSION,
+        true
+      );
+    }
   }
 
-  public function breadcrumbs_container($args) {
+  public function breadcrumbs_container($args)
+  {
     $args['wrap_before'] = '<div class="breadcrumbs breadcrumbs--woocommerce"><div class="container breadcrumbs__container"><div class="breadcrumbs__list">';
     $args['wrap_after'] = '</div></div></div>';
 
@@ -191,23 +230,26 @@ class Codetot_WooCommerce_Init {
     }
   }
 
-  public function woocommerce_breadcrumb($crumbs, $Breadcrumb){
+  public function woocommerce_breadcrumb($crumbs, $Breadcrumb)
+  {
     $shop_page_id = wc_get_page_id('shop');
-    if($shop_page_id > 0 && !is_shop()) {
-        $new_breadcrumb = [
-            _x( 'Shop', 'breadcrumb', 'woocommerce' ), //Title
-            get_permalink(wc_get_page_id('shop')) // URL
-        ];
-        array_splice($crumbs, 1, 0, [$new_breadcrumb]);
+    if ($shop_page_id > 0 && !is_shop()) {
+      $new_breadcrumb = [
+        _x('Shop', 'breadcrumb', 'woocommerce'), //Title
+        get_permalink(wc_get_page_id('shop')) // URL
+      ];
+      array_splice($crumbs, 1, 0, [$new_breadcrumb]);
     }
     return $crumbs;
   }
 
-  public function change_review_title() {
-    return esc_html__( 'Reviews', 'woocommerce' );
+  public function change_review_title()
+  {
+    return esc_html__('Reviews', 'woocommerce');
   }
 
-  public function body_class($classes) {
+  public function body_class($classes)
+  {
     $product_card_style = get_global_option('codetot_woocommerce_product_card_style') ?? 1;
     $product_image_visible = get_global_option('codetot_woocommerce_product_image_visible') ?? 'cover';
 
@@ -217,17 +259,20 @@ class Codetot_WooCommerce_Init {
     return $classes;
   }
 
-  public function plugin_assets() {
+  public function plugin_assets()
+  {
     if (is_plugin_active('woocommerce-products-filter/index.php')) {
       wp_enqueue_style('codetot-woof', get_template_directory_uri() . '/dynamic-assets/plugins/woof.css', array(), '1.0.0');
     }
   }
 
-  public function replace_cart_remove_icon($html, $cart_item_key) {
+  public function replace_cart_remove_icon($html, $cart_item_key)
+  {
     return str_replace('&times;', esc_html__('Remove', 'woocommerce'), $html);
   }
 
-  public function hide_product_bar_editing_product_screen() {
+  public function hide_product_bar_editing_product_screen()
+  {
     $enable = get_global_option('codetot_woocommerce_hide_sticky_bar_editing_products') ?? false;
     $script_id = 'codetot-admin-woocommerce-hide-product-bar';
 
@@ -252,4 +297,3 @@ class Codetot_WooCommerce_Init {
 }
 
 Codetot_WooCommerce_Init::instance();
-

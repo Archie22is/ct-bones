@@ -184,10 +184,14 @@
   background: var(--primary);
   color: var(--white);
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
-  font-size: 1rem;
+  font-size: 0.85rem;
   pointer-events: none;
   border-radius: 3px 0 0 3px;
   z-index: 3;
+
+  @media (--s) {
+    font-size: 1rem;
+  }
 }
 
 .product__tag--out-of-stock {
