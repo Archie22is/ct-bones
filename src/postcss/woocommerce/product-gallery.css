@@ -73,6 +73,7 @@
     @mixin abs-full;
 
     opacity: 0;
+    object-fit: contain;
     z-index: 1;
   }
 }
@@ -82,6 +83,7 @@
     @mixin abs-full;
 
     opacity: 1;
+    object-fit: contain;
     z-index: 1;
   }
 }

@@ -546,8 +546,6 @@
   }
 
   & .reset_variations {
-    margin-left: 0.5em;
-
     &:hover {
       color: var(--primary);
     }

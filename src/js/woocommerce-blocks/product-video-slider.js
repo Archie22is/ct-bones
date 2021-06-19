@@ -11,7 +11,7 @@ export default el => {
   const sliderWrapper = select('.js-slider-wrapper', el)
   const $variationForm = $('.variations_form')
 
-  let videoEl = null
+  let $videoEl = null
 
   wc_single_product_params.flexslider.video = videoUrl.length
 
@@ -29,9 +29,11 @@ export default el => {
 
       const $currentSlide = $slider.find('.flex-active-slide')
       if ($currentSlide.hasClass('has-video')) {
-        videoEl.play()
-      } else {
-        videoEl.pause()
+        $videoEl = $currentSlide.find('.js-video')
+
+        if ($videoEl.length) {
+          $videoEl[0].play()
+        }
       }
     }
 
@@ -42,32 +44,34 @@ export default el => {
         .addClass('has-video-icon is-active')
         .append(playIconSvg)
 
-      videoEl = select('.js-video', el)
+      const $videoEl = $slider.find('.flex-active-slide .js-video')
 
-      videoEl.play()
+      if ($videoEl.length) {
+        $videoEl[0].play()
+      }
     }
 
     $variationForm.on('change', () => {
       const $currentSlide = $(sliderWrapper).find('.flex-active-slide')
-      $currentSlide
-        .removeClass('has-video')
-        .addClass('has-variation-change')
-        .find('.js-video')
-        .remove()
-      $(sliderWrapper)
-        .find('li.is-active')
-        .removeClass('has-video-icon')
-        .addClass('has-variation-change')
+      const $currentNav = $(sliderWrapper).find('li.is-active')
+
+      if ($currentSlide.hasClass('has-video')) {
+        $currentSlide.removeClass('has-video').addClass('has-variation-change').find('.js-video').remove()
+      }
+
+      if ($currentNav.hasClass('has-video-icon')) {
+        $currentNav.removeClass('has-video-icon').addClass('has-variation-change')
+      }
     })
   }
 
   // Display video play when outside of scroll
   const checkVideoPlay = () => {
-    if (videoEl) {
+    if ($videoEl) {
       if (inViewPort(sliderWrapper)) {
-        videoEl.play()
+        $videoEl[0].play()
       } else {
-        videoEl.pause()
+        $videoEl[0].pause()
       }
     }
   }
