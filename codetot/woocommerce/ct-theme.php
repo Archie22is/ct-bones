@@ -68,6 +68,13 @@ class Codetot_CT_Theme_WooCommerce_Settings
       ),
       array(
         'type' => 'switch',
+        'name' => __('Product Video', 'ct-bones'),
+        'id'   => $this->prefix . 'woocommerce_enable_product_video',
+        'std'  => 1,
+        'desc' => __('Display a video in single product.', 'ct-bones')
+      ),
+      array(
+        'type' => 'switch',
         'name' => __('Minicart', 'ct-bones'),
         'id'   => $this->prefix . 'woocommerce_enable_minicart',
         'std'  => 1,
@@ -137,6 +144,19 @@ class Codetot_CT_Theme_WooCommerce_Settings
         'desc' => __('Display countdown in single product page if price has been scheduled.', 'ct-bones'),
         'id'   => $this->prefix . 'woocommerce_enable_countdown_price',
         'std'  => 0
+      ),
+      array(
+        'type' => 'select',
+        'name' => __('Countdown Product Style', 'ct-bones'),
+        'id'   => $this->prefix . 'woocommerce_countdown_product_style',
+        'std'  => 'default',
+        'options' => [
+          'default' => __('Default (Gradient)'),
+          'primary' => __('Primary', 'ct-bones'),
+          'secondary' => __('Secondary', 'ct-bones'),
+          'dark' => __('Dark', 'ct-bones'),
+          'custom' => __('Custom Theme', 'ct-bones')
+        ]
       ),
       array(
         'type' => 'select',

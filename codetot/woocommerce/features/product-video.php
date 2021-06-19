@@ -30,23 +30,27 @@ class Codetot_WooCommerce_Product_Video
     $this->tab_id = 'ct_product_video';
     $this->data_key = 'ct_product_video_data';
 
-    add_action('wp', function() {
-      if (is_singular('product')) {
-        global $post;
-        $video_value = get_post_meta($post->ID, '_ct_product_video_url', true);
+    $enable = get_global_option('codetot_woocommerce_enable_product_video') ?? false;
 
-        if (!empty($video_value)) :
-          remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
-          add_action('woocommerce_before_single_product_summary', 'codetot_woocommerce_product_video_section', 20);
-        endif;
-      }
-    }, 20);
+    if ($enable) {
+      add_action('wp', function() {
+        if (is_singular('product')) {
+          global $post;
+          $video_value = get_post_meta($post->ID, '_ct_product_video_url', true);
 
-    add_filter('woocommerce_product_data_tabs', array($this, 'register_data_tab_field'));
-    add_action('woocommerce_product_data_panels', array($this, 'load_data_tab_panel'), 100);
-    add_action('save_post_product', array($this, 'save_field_data'));
+          if (!empty($video_value)) :
+            remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
+            add_action('woocommerce_before_single_product_summary', 'codetot_woocommerce_product_video_section', 20);
+          endif;
+        }
+      }, 20);
 
-    add_filter('woocommerce_single_product_image_thumbnail_html', array($this, 'update_product_gallery'), 10, 2);
+      add_filter('woocommerce_product_data_tabs', array($this, 'register_data_tab_field'));
+      add_action('woocommerce_product_data_panels', array($this, 'load_data_tab_panel'), 100);
+      add_action('save_post_product', array($this, 'save_field_data'));
+
+      add_filter('woocommerce_single_product_image_thumbnail_html', array($this, 'update_product_gallery'), 10, 2);
+    }
   }
 
   public function register_data_tab_field($tabs)
