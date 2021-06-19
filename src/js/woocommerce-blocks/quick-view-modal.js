@@ -1,7 +1,16 @@
 /* eslint-disable camelcase */
 /* eslint-disable space-in-parens */
 /* global jQuery, codetotConfig, wc_add_to_cart_variation_params */
-import { select, on, getData, addClass, removeClass, delegate, hasClass, setAttribute } from 'lib/dom'
+import {
+  select,
+  on,
+  getData,
+  addClass,
+  removeClass,
+  delegate,
+  hasClass,
+  setAttribute
+} from 'lib/dom'
 import { pipe } from 'lib/utils'
 import Countdown from './countdown-price'
 import 'whatwg-fetch'
@@ -107,9 +116,15 @@ export default el => {
       smoothHeight: true
     }
 
-    $productGalleryEl.trigger('wc-product-gallery-before-init', [ this, wc_single_product_params ])
-    $productGalleryEl.wc_product_gallery( wc_single_product_params )
-    $productGalleryEl.trigger('wc-product-gallery-after-init', [ this, wc_single_product_params ])
+    $productGalleryEl.trigger('wc-product-gallery-before-init', [
+      this,
+      wc_single_product_params
+    ])
+    $productGalleryEl.wc_product_gallery(wc_single_product_params)
+    $productGalleryEl.trigger('wc-product-gallery-after-init', [
+      this,
+      wc_single_product_params
+    ])
 
     return el
   }
@@ -126,12 +141,16 @@ export default el => {
         const productQtyInput = select('input[name=quantity]', form)
         const productIdInput = select('input[name=product_id]', form)
         const qty = productQtyInput ? Number(productQtyInput.value || 0) : 1
-        let productId = productIdInput ? productIdInput.value : select('button[name="add-to-cart"]', form).value
+        let productId = productIdInput
+          ? productIdInput.value
+          : select('button[name="add-to-cart"]', form).value
         productId = Number(productId || 0)
 
         // Variation Product Type
         let variationIdInput = select('input[name=variation_id]', form)
-        const variationId = variationIdInput ? Number(variationIdInput.value || 0) : null
+        const variationId = variationIdInput
+          ? Number(variationIdInput.value || 0)
+          : null
 
         const button = select('button[type="submit"]', form)
         const resetVariationsEl = select('.reset_variations', form)
@@ -163,18 +182,13 @@ export default el => {
               data.cart_hash
             ])
           })
-          .then(
-            () => {
-              button.removeAttribute('disabled')
+          .then(() => {
+            button.removeAttribute('disabled')
 
-              $(resetVariationsEl).trigger('click')
+            $(resetVariationsEl).trigger('click')
 
-              pipe(
-                closeModal,
-                deactivateLoader
-              )(el)
-            }
-          )
+            pipe(closeModal, deactivateLoader)(el)
+          })
           .catch(function (error) {
             console.log('request failed', error)
           })
@@ -197,7 +211,9 @@ export default el => {
     }
 
     $(variationFormEl).wc_variation_form()
-    $(variationFormEl).find('.variations select').change()
+    $(variationFormEl)
+      .find('.variations select')
+      .change()
 
     return el
   }
@@ -212,11 +228,7 @@ export default el => {
 
         openModal()
 
-        pipe(
-          activateLoader,
-          clearExistingHtml,
-          fetchData
-        )(el)
+        pipe(activateLoader, clearExistingHtml, fetchData)(el)
       }
     },
     '[data-quick-view-modal-id]',
@@ -235,19 +247,19 @@ export default el => {
 
   on('orientationchange', closeModal, window)
 
-  on('click', e => {
-    if (this !== e.target) {
-      return
-    }
+  on(
+    'click',
+    e => {
+      if (this !== e.target) {
+        return
+      }
 
-    closeModal()
-  }, el)
+      closeModal()
+    },
+    el
+  )
 
   if (closeEl) {
-    on(
-      'click',
-      closeModal,
-      closeEl
-    )
+    on('click', closeModal, closeEl)
   }
 }

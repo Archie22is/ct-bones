@@ -48,7 +48,9 @@ body.woo-variation-swatches {
   }
 
   & .variable-items-wrapper .variable-item:not(.radio-variable-item):hover,
-  & .variable-items-wrapper .variable-item:not(.radio-variable-item).selected:hover {
+  &
+    .variable-items-wrapper
+    .variable-item:not(.radio-variable-item).selected:hover {
     box-shadow: none !important;
   }
 

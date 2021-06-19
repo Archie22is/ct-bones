@@ -22,7 +22,10 @@ export default el => {
     // Changing a slide: check if it has video. Work with both only 1 video or multiple videos
     wc_single_product_params.flexslider.after = function ($slider) {
       $slider.find('li').removeClass('is-active')
-      $slider.find('li .flex-active').parent().addClass('is-active')
+      $slider
+        .find('li .flex-active')
+        .parent()
+        .addClass('is-active')
 
       const $currentSlide = $slider.find('.flex-active-slide')
       if ($currentSlide.hasClass('has-video')) {
@@ -33,7 +36,11 @@ export default el => {
     }
 
     wc_single_product_params.flexslider.start = function ($slider) {
-      $slider.find('li .flex-active').parent().addClass('has-video-icon is-active').append(playIconSvg)
+      $slider
+        .find('li .flex-active')
+        .parent()
+        .addClass('has-video-icon is-active')
+        .append(playIconSvg)
 
       videoEl = select('.js-video', el)
 
@@ -42,8 +49,15 @@ export default el => {
 
     $variationForm.on('change', () => {
       const $currentSlide = $(sliderWrapper).find('.flex-active-slide')
-      $currentSlide.removeClass('has-video').addClass('has-variation-change').find('.js-video').remove()
-      $(sliderWrapper).find('li.is-active').removeClass('has-video-icon').addClass('has-variation-change')
+      $currentSlide
+        .removeClass('has-video')
+        .addClass('has-variation-change')
+        .find('.js-video')
+        .remove()
+      $(sliderWrapper)
+        .find('li.is-active')
+        .removeClass('has-video-icon')
+        .addClass('has-variation-change')
     })
   }
 
@@ -58,9 +72,5 @@ export default el => {
     }
   }
 
-  on(
-    'scroll',
-    throttle(checkVideoPlay, 300),
-    window
-  )
+  on('scroll', throttle(checkVideoPlay, 300), window)
 }

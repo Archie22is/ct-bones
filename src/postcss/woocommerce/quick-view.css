@@ -351,7 +351,11 @@ body.is-quick-view-modal-visible {
       width: 100%;
       height: 40px;
       background: var(--white);
-      background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+      background: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
     }
   }
 }

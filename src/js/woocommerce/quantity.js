@@ -1,5 +1,15 @@
 /* global jQuery */
-import { select, selectAll, closest, getAttribute, setAttribute, addClass, removeClass, getData, on } from 'lib/dom'
+import {
+  select,
+  selectAll,
+  closest,
+  getAttribute,
+  setAttribute,
+  addClass,
+  removeClass,
+  getData,
+  on
+} from 'lib/dom'
 
 const $ = jQuery
 
@@ -61,80 +71,86 @@ const initQuantity = ele => {
   const outStock = productInfo
     ? getData('out_of_stock', productInfo)
     : 'Out of stock'
-  const notEnough = productInfo
-    ? getData('not_enough', productInfo)
-    : ''
+  const notEnough = productInfo ? getData('not_enough', productInfo) : ''
   const quantityValid = productInfo
     ? getData('valid_quantity', productInfo)
     : ''
 
   // Check valid quantity.
-  on('change', e => {
-    var inputVal = e.target.value
-    var inCartQty = productInfo ? Number(productInfo.value || 0) : 0
-    var min = Number(getAttribute('min', input) || 0)
-    const ajaxReady = () => removeClass('ajax-ready', input)
+  on(
+    'change',
+    e => {
+      var inputVal = e.target.value
+      var inCartQty = productInfo ? Number(productInfo.value || 0) : 0
+      var min = Number(getAttribute('min', input) || 0)
+      const ajaxReady = () => removeClass('ajax-ready', input)
 
-    // When quantity updated.
-    addClass('ajax-ready', input)
+      // When quantity updated.
+      addClass('ajax-ready', input)
 
-    // Valid quantity.
-    if (inputVal < min || isNaN(inputVal)) {
-      // eslint-disable-next-line no-undef
-      alert(quantityValid)
-      ajaxReady()
-      return
-    }
-
-    // Stock status.
-    if (inStock === 'yes') {
-      // Out of stock.
-      if (maxInput && inCartQty === maxInput) {
+      // Valid quantity.
+      if (inputVal < min || isNaN(inputVal)) {
         // eslint-disable-next-line no-undef
-        alert(outStock)
+        alert(quantityValid)
         ajaxReady()
         return
       }
 
-      // Not enough quantity.
-      if (maxInput && +inputVal + +inCartQty > maxInput) {
-        // eslint-disable-next-line no-undef
-        alert(notEnough)
-        ajaxReady()
+      // Stock status.
+      if (inStock === 'yes') {
+        // Out of stock.
+        if (maxInput && inCartQty === maxInput) {
+          // eslint-disable-next-line no-undef
+          alert(outStock)
+          ajaxReady()
+          return
+        }
+
+        // Not enough quantity.
+        if (maxInput && +inputVal + +inCartQty > maxInput) {
+          // eslint-disable-next-line no-undef
+          alert(notEnough)
+          ajaxReady()
+        }
       }
-    }
-  }, input)
+    },
+    input
+  )
 
   // Minus & Plus button click.
-  on('click', e => {
-    const current = Number(input.value || 0)
-    const step = Number(getAttribute('step', input) || 1)
-    const min = Number(getAttribute('min', input) || 0)
-    const max = Number(getAttribute('max', input) || 100)
-    const dataType = getAttribute('data-qty', e.target)
+  on(
+    'click',
+    e => {
+      const current = Number(input.value || 0)
+      const step = Number(getAttribute('step', input) || 1)
+      const min = Number(getAttribute('min', input) || 0)
+      const max = Number(getAttribute('max', input) || 100)
+      const dataType = getAttribute('data-qty', e.target)
 
-    if (dataType === 'minus' && current >= step) {
-      // Minus button.
-      if (current <= min || current - step < min) {
-        return
+      if (dataType === 'minus' && current >= step) {
+        // Minus button.
+        if (current <= min || current - step < min) {
+          return
+        }
+
+        input.value = current - step
       }
 
-      input.value = current - step
-    }
+      if (dataType === 'plus') {
+        // Plus button.
+        if (max && (current >= max || current + step > max)) {
+          return
+        }
 
-    if (dataType === 'plus') {
-      // Plus button.
-      if (max && (current >= max || current + step > max)) {
-        return
+        input.value = current + step
       }
 
-      input.value = current + step
-    }
-
-    // Trigger event.
-    input.dispatchEvent(eventChange)
-    $(input).trigger('change')
-  }, buttons)
+      // Trigger event.
+      input.dispatchEvent(eventChange)
+      $(input).trigger('change')
+    },
+    buttons
+  )
 
   removeClass('is-loading', ele)
 }

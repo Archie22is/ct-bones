@@ -6,8 +6,12 @@ jQuery(function ($) {
   const updatePromotionForm = () => {
     const formEl = select('form[name="checkout"]')
     const couponForm = select('form.checkout_coupon')
-    const couponFormInput = couponForm ? select('input[name="coupon_code"]', couponForm) : null
-    const customCouponInput = formEl ? select('input[name="custom_coupon_code"]', formEl) : null
+    const couponFormInput = couponForm
+      ? select('input[name="coupon_code"]', couponForm)
+      : null
+    const customCouponInput = formEl
+      ? select('input[name="custom_coupon_code"]', formEl)
+      : null
 
     const promotionValue = customCouponInput ? customCouponInput.value : null
 
@@ -18,10 +22,5 @@ jQuery(function ($) {
     }
   }
 
-  delegate(
-    'click',
-    updatePromotionForm,
-    '.js-coupon-trigger',
-    document.body
-  )
+  delegate('click', updatePromotionForm, '.js-coupon-trigger', document.body)
 })
