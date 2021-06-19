@@ -37,7 +37,6 @@ class Codetot_WooCommerce_Product_Video
 
         if (!empty($video_value)) :
           remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
-          add_action('codetot_before_single_product_image_thumbnails', array($this, 'render_video'));
           add_action('woocommerce_before_single_product_summary', 'codetot_woocommerce_product_video_section', 20);
         endif;
       }
@@ -106,22 +105,38 @@ class Codetot_WooCommerce_Product_Video
   public function update_product_gallery($html, $attachment_id) {
     return $html;
   }
+}
 
-  public function render_video() {
-    global $product;
+function codetot_woocommerce_render_video() {
+  global $product;
 
-    $video_type = get_post_meta($product->get_id(), '_ct_product_video_type', true);
-    $video_value = $video_type = get_post_meta($product->get_id(), '_ct_product_video_url', true);
+  $video_type = get_post_meta($product->get_id(), '_ct_product_video_type', true);
+  $video_value = get_post_meta($product->get_id(), '_ct_product_video_url', true);
 
-    if ($video_type === 'url') : ?>
-      <div class="woocommerce-product-gallery__image" data-thumb="http://via.placeholder.com/300" data-thumb-alt="">
-        <video class="js-video" muted="" playsinline="" loop="">
+  $logo_id = get_theme_mod('custom_logo');
+  $image_url = !empty($logo_id) ? wp_get_attachment_image_src($logo_id, 'medium')[0] : 'http://via.placeholder.com/600';
+
+  if ($video_type === 'url' && !empty($video_value)) : ?>
+    <div
+      class="woocommerce-product-gallery__image has-video js-video-wrapper"
+      data-video-type="<?php echo esc_attr($video_type); ?>"
+      data-video-value="<?php echo esc_attr($video_value); ?>"
+      data-thumb="<?php echo esc_url($image_url); ?>"
+    >
+      <div class="woocommerce-product-gallery__video-wrapper">
+        <video class="woocommerce-product-gallery__video js-video" muted="" playsinline="" loop="">
           <source src="<?php echo esc_url($video_value); ?>" type="video/mp4">
         </video>
+        <?php
+        echo wp_get_attachment_image($logo_id, 'medium', false, array(
+          'class' => 'wp-post-image',
+          'loading' => false
+        ));
+        ?>
       </div>
-      <?php
-    endif;
-  }
+    </div>
+    <?php
+  endif;
 }
 
 function codetot_woocommerce_product_video_section()
@@ -140,32 +155,41 @@ function codetot_woocommerce_product_video_section()
       'woocommerce-product-gallery--' . ($post_thumbnail_id ? 'with-images' : 'without-images'),
       'woocommerce-product-gallery--columns-' . absint($columns),
       'woocommerce-product-gallery--has-video',
+      'js-slider-wrapper',
       'images',
     )
   );
   ?>
   <div
-    class="<?php echo esc_attr(implode(' ', array_map('sanitize_html_class', $wrapper_classes))); ?>"
-    data-columns="<?php echo esc_attr($columns); ?>"
-    data-woocommerce-block="product-video-slider"
+    class="product-gallery"
     data-video-type="<?php echo $video_type; ?>"
     data-video-url="<?php echo $video_value; ?>"
+    data-woocommerce-block="product-video-slider"
   >
-    <figure class="js-slider woocommerce-product-gallery__wrapper">
-      <?php
-      if ($post_thumbnail_id) {
-        $html = wc_get_gallery_image_html($post_thumbnail_id, true);
-      } else {
-        $html  = '<div class="woocommerce-product-gallery__image--placeholder">';
-        $html .= sprintf('<img src="%s" alt="%s" class="wp-post-image" />', esc_url(wc_placeholder_img_src('woocommerce_single')), esc_html__('Awaiting product image', 'woocommerce'));
-        $html .= '</div>';
-      }
+    <div
+      class="<?php echo esc_attr(implode(' ', array_map('sanitize_html_class', $wrapper_classes))); ?>"
+      data-columns="<?php echo esc_attr($columns); ?>"
 
-      echo apply_filters('woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
+    >
+      <figure class="js-slider woocommerce-product-gallery__wrapper">
+        <?php
 
-      do_action('woocommerce_product_thumbnails');
-      ?>
-    </figure>
+        codetot_woocommerce_render_video();
+
+        if ($post_thumbnail_id) {
+          $html = wc_get_gallery_image_html($post_thumbnail_id, true);
+        } else {
+          $html  = '<div class="woocommerce-product-gallery__image js-slider-item woocommerce-product-gallery__image--placeholder">';
+          $html .= sprintf('<img src="%s" alt="%s" class="wp-post-image" />', esc_url(wc_placeholder_img_src('woocommerce_single')), esc_html__('Awaiting product image', 'woocommerce'));
+          $html .= '</div>';
+        }
+
+        echo apply_filters('woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
+
+        do_action('woocommerce_product_thumbnails');
+        ?>
+      </figure>
+    </div>
   </div>
 <?php
 }
