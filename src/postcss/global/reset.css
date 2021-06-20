@@ -60,13 +60,6 @@ svg {
   height: 24px;
 }
 
-.widget ul,
-ul.gform_fields {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
 button {
   padding: 0;
   background: transparent;

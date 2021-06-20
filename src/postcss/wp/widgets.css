@@ -1,6 +1,10 @@
 .widget {
   @mixin column-item 1, 1.5em;
 
+  & > ul {
+    @mixin list-reset;
+  }
+
   & a {
     color: var(--dark);
 
@@ -13,13 +17,19 @@
     max-width: 100%;
     height: auto;
   }
+}
 
+.widget.widget_text {
   & .textwidget {
     @mixin wysiwyg;
 
-    & ul.gform_fields {
+    & .gform_fields {
       @mixin list-reset;
     }
+  }
+
+  & .textwidget ul {
+    @mixin list-reset;
   }
 }
 
@@ -51,13 +61,6 @@
       margin-top: 0.25em;
       margin-left: 1em;
     }
-  }
-}
-
-.widget_categories,
-.widget_recent_entries {
-  & a {
-    font-weight: var(--font-bold);
   }
 }
 
