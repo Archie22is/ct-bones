@@ -22,30 +22,75 @@ if (!defined('CODETOT_VERSION')) {
 	define('CODETOT_VERSION', $theme_version);
 }
 
-if ( !function_exists('the_block') ) {
-  function the_block() {
-    $error = new WP_Error(
-      'plugin_not_activate',
-      sprintf(__('Plugin %s must be activate to work with this theme.', 'ct-bones'), 'CT Blocks')
-    );
+if (!function_exists('get_block')) {
+  /**
+   * @param string $block_name
+   * @param array $args
+   * @return false|string
+   */
+  function get_block($block_name, $args = array())
+  {
+    ob_start();
+    the_block($block_name, $args);
+    return ob_get_clean();
+  }
+}
 
-    echo '<pre>';
-    echo $error->get_error_message();
-    echo '</pre>';
+if ( !function_exists('the_block') ) {
+  function the_block($block_name, $args = array())
+  {
+    extract($args, EXTR_SKIP);
+
+    if (is_child_theme()) {
+      $paths[] = get_stylesheet_directory() . '/blocks/' . esc_attr($block_name) . '.php';
+    }
+
+    $paths[] = get_template_directory() . '/blocks/' . esc_attr($block_name) . '.php';
+
+    $loaded = false;
+
+    foreach($paths as $path) {
+      if (file_exists($path) && empty($loaded)) {
+        include($path);
+
+        $loaded = true;
+      }
+    }
+
+    if (empty($loaded)) {
+      $error = new WP_Error(
+        'missing_path',
+        sprintf(__('Missing block %s', 'ct-bones'), $block_name)
+      );
+
+      echo '<pre>';
+      echo $error->get_error_message();
+      echo '</pre>';
+    }
   }
 }
 
 if ( !function_exists('the_block_part') ) {
-  function the_block_part() {
+  function the_block_part($block_name) {
     $error = new WP_Error(
       'plugin_not_activate',
       sprintf(__('Plugin %s must be activate to work with this theme.', 'ct-bones'), 'CT Blocks')
     );
 
-    echo '<pre>';
-    echo $error->get_error_message();
-    echo '</pre>';
-    die();
+    $path = get_template_directory() . '/block-parts/' . esc_attr($block_name) . '.php';
+
+    if (file_exists($path)) {
+      include($path);
+    } else {
+      $error = new WP_Error(
+        'missing_path',
+        sprintf(__('Missing block part %s', 'ct-bones'), $block_name)
+      );
+
+      echo '<pre>';
+      echo $error->get_error_message();
+      echo '</pre>';
+    }
   }
 }
 
