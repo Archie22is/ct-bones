@@ -9,6 +9,8 @@
 @import url('global/grid.css');
 @import url('global/animate.css');
 @import url('global/form.css');
+@import url('global/sections.css');
+@import url('global/responsive.css');
 @import url('blocks/image.css'); /** High priority **/
 @import url('wp/widgets.css');
 @import url('wp/content.css');

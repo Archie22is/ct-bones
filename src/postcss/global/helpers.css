@@ -1,3 +1,4 @@
+/* Positions */
 .abs {
   position: absolute;
 }
@@ -7,6 +8,8 @@
 .fixed {
   position: fixed;
 }
+
+/* Display */
 .d-inline {
   display: inline;
 }
@@ -19,6 +22,14 @@
 .d-none {
   display: none;
 }
+.f {
+  display: flex;
+}
+.d-inline-flex {
+  display: inline-flex;
+}
+
+/* z-index */
 .z-1 {
   z-index: 1;
 }
@@ -28,8 +39,30 @@
 .z-3 {
   z-index: 3;
 }
+
+/* Width */
 .w100 {
   width: 100%;
+}
+.w50 {
+  width: 50%;
+}
+.w25 {
+  width: 25%;
+}
+.w33 {
+  width: 33.33%;
+}
+.w20 {
+  width: 20%;
+}
+.w16 {
+  width: 16.66%;
+}
+
+/* Margin */
+.m0 {
+  margin: 0;
 }
 
 .mxa {
@@ -43,11 +76,40 @@
 .mra {
   margin-right: auto;
 }
+.mt-05 {
+  margin-top: 0.5em;
+}
+.mb-05 {
+  margin-bottom: 0.5em;
+}
 .mt-1 {
   margin-top: 1em;
 }
 .mb-1 {
   margin-bottom: 1em;
+}
+.mt-15 {
+  margin-top: 1.5em;
+}
+.mb-15 {
+  margin-bottom: 1.5em;
+}
+.mt-2 {
+  margin-top: 2em;
+}
+.mb-2 {
+  margin-bottom: 2em;
+}
+
+/* Padding */
+.p0 {
+  padding: 0;
+}
+.pt-05 {
+  padding-top: 0.5em;
+}
+.pb-05 {
+  padding-bottom: 0.5em;
 }
 .pt-1 {
   padding-top: 1em;
@@ -61,49 +123,53 @@
 .pr-1 {
   padding-right: 1em;
 }
+.pt-2 {
+  padding-top: 2em;
+}
+.pb-2 {
+  padding-bottom: 2em;
+}
+.pl-2 {
+  padding-left: 2em;
+}
+.pr-2 {
+  padding-right: 2em;
+}
 
-.pv {
+.px-1 {
   padding-top: 1em;
   padding-bottom: 1em;
 }
 
-.py {
+.px-15 {
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+}
+
+.px-2 {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.py-1 {
   padding-left: 1em;
   padding-right: 1em;
+}
+
+.py-15 {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+.py-2 {
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 .hidden {
   display: none !important;
   opacity: 0 !important;
   visibility: hidden !important;
-}
-
-.section {
-  margin-top: var(--section-space);
-
-  & + .section-bg {
-    margin-top: var(--section-space);
-  }
-}
-
-.section-bg {
-  padding: var(--section-space) 0;
-
-  & + .section {
-    margin-top: var(--section-space);
-  }
-}
-
-.section--hide-mobile {
-  @media (--max-mobile) {
-    display: none;
-  }
-}
-
-.mobile-only {
-  @media (--s) {
-    display: none;
-  }
 }
 
 .video-responsive {
