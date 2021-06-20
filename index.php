@@ -30,7 +30,7 @@ if (!is_front_page()) {
 
       $description = get_the_archive_description();
       ?>
-      <header class="page-header">
+      <header class="mt-05 mb-1 page-header">
         <?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
         <?php if ( $description ) : ?>
           <div class="archive-description"><?php echo wp_kses_post( wpautop( $description ) ); ?></div>
@@ -42,20 +42,38 @@ if (!is_front_page()) {
     global $wp_query;
 
     $columns = [];
+
+    $post_count = $wp_query->post_count;
+
     while( $wp_query->have_posts() ) : $wp_query->the_post();
-      $columns[] = get_block('post-card',array(
-        'card_style' => !empty($card_style) ? $card_style : 'style-1'
-      ));
+      if (
+        ($post_count > 3 && count($columns) < 3) ||
+        ($post_count < 3)
+      ) :
+        $columns[] = get_block('post-card',array(
+          'card_style' => !empty($card_style) ? $card_style : 'style-1'
+        ));
+      endif;
     endwhile; wp_reset_postdata();
 
     $content = codetot_build_grid_columns($columns, 'post-grid', array(
       'column_class' => 'f fdc default-section__col'
     ));
 
-    printf('<div class="mt-1 site-main__main-category default-section %s">', 'has-'. esc_attr($number_columns) . '-columns');
-    echo $content;
+    the_block('default-section', array(
+      'class' => 'default-section--no-container has-3-columns',
+      'content' => $content
+    ));
+
+    if ($post_count > 3) {
+      the_block('post-list', array(
+        'class' => 'default-section--no-container',
+        'query' => $wp_query,
+        'offset' => 3
+      ));
+    }
+
     the_block('pagination');
-    echo '</div>';
 
   else :
 

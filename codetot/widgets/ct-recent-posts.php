@@ -69,7 +69,7 @@ class Codetot_Recent_Post_Widget extends WP_Widget {
                 endif;
               ?>
             </a>
-            <span class="f fdc w75 widget__content">
+            <span class="f fdc widget__content">
               <span class="f fw widget__item-title"><a class="d-block w100 bold-text widget__item-title-link" href="<?php the_permalink() ?>"><?php the_title(); ?></a></span>
               <span class="d-block mt-05 post-date widget__post-date"><?php echo get_the_date('d/m/Y', get_the_ID()); ?></span>
             </span>

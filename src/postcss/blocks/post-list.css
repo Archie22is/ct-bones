@@ -1,0 +1,11 @@
+.post-list__row {
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: 1px solid var(--border);
+
+  &:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+}

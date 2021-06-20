@@ -4,6 +4,9 @@
 .fdc {
   flex-direction: column;
 }
+.ais {
+  align-items: flex-start;
+}
 .aic {
   align-items: center;
 }
