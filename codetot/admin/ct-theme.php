@@ -34,7 +34,7 @@ class Codetot_CT_Theme_Settings
     add_filter('mb_settings_pages', array($this, 'register_settings_pages'));
 
     add_filter('rwmb_meta_boxes', array($this, 'register_general_settings_fields'));
-    add_filter('rwmb_meta_boxes', array($this, 'register_typography_settings_fields'));
+    add_filter('rwmb_meta_boxes', array($this, 'register_addons_settings_fields'));
     add_filter('rwmb_meta_boxes', array($this, 'register_font_family_settings_fields'));
     add_filter('rwmb_meta_boxes', array($this, 'register_layout_settings_fields'));
     add_filter('rwmb_meta_boxes', array($this, 'register_header_settings_fields'));
@@ -52,7 +52,7 @@ class Codetot_CT_Theme_Settings
       'columns'       => 1,
       'tabs'          => apply_filters('codetot_settings_tabs', array(
         'general'     => __('General', 'ct-bones'),
-        'typography'  => __('Typography', 'ct-bones'),
+        'addons'  => __('Addons', 'ct-bones'),
         'layout'      => __('Layout', 'ct-bones'),
         'header'      => __('Header', 'ct-bones'),
         'footer'      => __('Footer', 'ct-bones')
@@ -74,7 +74,18 @@ class Codetot_CT_Theme_Settings
           'name'    => __('Color Schema', 'ct-bones')
         ]
       ),
-      apply_filters('codetot_color_fields', codetot_get_color_options())
+      apply_filters('codetot_color_fields', codetot_get_color_options()),
+      array(
+        [
+          'name'   => __('Font Size Scale', 'ct-bones'),
+          'id'     => $this->prefix . 'font_size_scale',
+          'type'   => 'image_select',
+          'class' => 'codetot-text-select',
+          'std'    => 1200,
+          'inline' => false,
+          'options' => codetot_get_font_size_scale_options()
+        ]
+      )
     );
 
     $meta_boxes[] = [
@@ -88,24 +99,14 @@ class Codetot_CT_Theme_Settings
     return $meta_boxes;
   }
 
-  public function register_typography_settings_fields($meta_boxes)
+  public function register_addons_settings_fields($meta_boxes)
   {
     $meta_boxes[] = [
-      'title'          => __('Typography', 'ct-bones'),
-      'id'             => 'ct-theme-typography-settings',
+      'title'          => __('Addons', 'ct-bones'),
+      'id'             => 'ct-theme-addons-settings',
       'settings_pages' => [$this->setting_id],
-      'tab'            => 'typography',
-      'fields'         => [
-        [
-          'name'   => __('Font Size Scale', 'ct-bones'),
-          'id'     => $this->prefix . 'font_size_scale',
-          'type'   => 'image_select',
-          'class' => 'codetot-text-select',
-          'std'    => 1200,
-          'inline' => false,
-          'options' => codetot_get_font_size_scale_options()
-        ],
-      ],
+      'tab'            => 'addons',
+      'fields'         => [],
     ];
 
     return $meta_boxes;
@@ -116,7 +117,7 @@ class Codetot_CT_Theme_Settings
     $meta_boxes[] = [
       'title'          => __('Font Family', 'ct-bones'),
       'settings_pages' => [$this->setting_id],
-      'tab'            => 'typography',
+      'tab'            => 'general',
       'fields'         => [
         [
           'type' => 'heading',
@@ -184,17 +185,7 @@ class Codetot_CT_Theme_Settings
           'desc'    => __('(pixel) Only work with boxed container layout.', 'ct-bones'),
           'min'     => 900,
           'max'     => 1440,
-          'std'     => 1280,
-          'columns' => 6,
-        ],
-        [
-          'name'    => __('Container Layout', 'ct-bones'),
-          'id'      => $this->prefix . 'container_layout',
-          'type'    => 'image_select',
-          'options' => codetot_container_layouts(),
-          'std'     => 'boxed',
-          'columns' => 6,
-          'inline'  => false
+          'std'     => 1280
         ]
       ),
       array(
