@@ -2,7 +2,7 @@
 $_class = 'post-grid section';
 $_class .= !empty($class) ? ' ' . $class : '';
 $_class .= !empty($columns) ? ' has-' . $columns .'-columns': ' has-3-columns';
-$container = codetot_site_container();
+$container = 'container';
 
 $header = !empty($title) ? codetot_build_content_block(array(
   'title' => $title

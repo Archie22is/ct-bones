@@ -1,5 +1,5 @@
 <?php
-$container = codetot_site_container();
+$container = 'container';
 $_class = 'page-header section';
 $_class .= !empty($alignment) ? ' ' . esc_attr($alignment) : '';
 $_class .= !empty($class) ? ' ' . esc_attr($class) : '';

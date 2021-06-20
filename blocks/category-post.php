@@ -2,7 +2,7 @@
 $layout = get_global_option('codetot_category_layout') ?? 'sidebar-left';
 $post_grid_columns = codetot_get_category_column_number();
 $post_card_style = codetot_get_category_post_card_style();
-$container = codetot_site_container();
+$container = 'container';
 $class = 'category-post page-block page-block--category';
 $class .= !empty($layout) ? ' ' . esc_attr($layout) : '';
 ?>
