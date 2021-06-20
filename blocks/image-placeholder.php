@@ -24,7 +24,7 @@ if (has_custom_logo() && !empty($custom_logo_id)) :
 
 else :
   ob_start();
-  echo '<figure class="image image--contain image-placeholder__image">';
+  echo '<figure class="image image--cover image-placeholder__image">';
   printf('<img class="image__img lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="%1$s" alt="">', get_template_directory_uri() . '/assets/img/no-image.jpg');
   echo '</figure>';
 

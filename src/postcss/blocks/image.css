@@ -42,12 +42,10 @@
 }
 
 .image-placeholder {
-  background: var(--light);
+  @mixin ratio 2/3;
 
-  & img,
-  & .image__img {
-    object-fit: contain;
-  }
+  background: var(--light);
+  overflow: hidden;
 }
 
 .image--hd {
