@@ -54,16 +54,21 @@
   @mixin ratio 9/16;
 }
 
-.image-placeholder__icon,
 .image-placeholder__image {
   @mixin abs-full;
 }
 
-.image-placeholder__icon {
+.image-placeholder--icon {
   @mixin flex-center;
+}
 
-  & svg {
-    width: 40px;
-    height: 40px;
-  }
+.image-placeholder__logo {
+  @mixin flex-center;
+  @mixin abs-full;
+}
+
+.image-placeholder__image-logo {
+  width: 100px;
+  max-width: 100px;
+  height: auto;
 }

@@ -30,9 +30,7 @@ $word_count = !empty($post_description_length) ? (int) $post_description_length 
           'class' => 'image--cover post-card__image'
         ));
       else :
-        the_block('image-placeholder', array(
-          'class' => 'post-card__image'
-        ));
+        the_block('image-placeholder');
       endif;
       ?>
 

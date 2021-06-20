@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The main template file
  *
@@ -15,34 +16,34 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main">
 
-		<?php
-		if ( have_posts() ) :
+  <?php
+  if (have_posts()) :
 
-      global $wp_query;
+    global $wp_query;
 
-			/* Start the Loop */
-			the_block('post-grid', array(
-        'class' => 'mt-2',
-        'columns' => 3,
-        'query' => $wp_query
-      ));
+    /* Start the Loop */
+    the_block('post-grid', array(
+      'class' => 'mt-2 mb-2 post-grid--default',
+      'columns' => 3,
+      'query' => $wp_query
+    ));
 
-      the_block('pagination');
+    the_block('pagination');
 
-		else :
+  else :
 
-			the_block('message-block', array(
-        'content' => esc_html__('There is no posts to display.', 'ct-bones')
-      ));
+    the_block('message-block', array(
+      'content' => esc_html__('There is no posts to display.', 'ct-bones')
+    ));
 
-		endif;
-		?>
+  endif;
+  ?>
 
-	</main><!-- #main -->
+</main><!-- #main -->
 
-  <?php do_action('codetot_sidebar'); ?>
+<?php do_action('codetot_sidebar'); ?>
 
 <?php
 get_footer();
