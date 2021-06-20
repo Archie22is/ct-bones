@@ -162,6 +162,10 @@
         }
       }
     }
+
+    & .gform_confirmation_message {
+      color: var(--white);
+    }
   }
 }
 

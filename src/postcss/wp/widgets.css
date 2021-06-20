@@ -41,6 +41,7 @@
   font-weight: var(--font-bold);
 }
 
+.widget_archive,
 .widget_nav_menu,
 .widget_categories,
 .widget_recent_entries {
