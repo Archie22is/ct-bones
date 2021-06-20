@@ -1,14 +1,11 @@
-.f {
-  display: flex;
-}
-.d-inline-flex {
-  display: inline-flex;
-}
 .fw {
   flex-wrap: wrap;
 }
 .fdc {
   flex-direction: column;
+}
+.ais {
+  align-items: flex-start;
 }
 .aic {
   align-items: center;

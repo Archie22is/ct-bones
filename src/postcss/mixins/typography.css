@@ -77,6 +77,34 @@
   }
 }
 
+@define-mixin table-border {
+  margin-top: 1em;
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: 1px solid var(--border);
+
+  & tbody th {
+    background: var(--light);
+  }
+
+  & th,
+  & td {
+    padding: 0.5em 1em;
+    border-left: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    border-right-width: 0;
+    border-top-width: 0;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible;
+
+    & p {
+      margin: 0;
+    }
+  }
+}
+
 @define-mixin wysiwyg {
   & h1,
   & h2,
@@ -154,31 +182,7 @@
   }
 
   & table {
-    margin-top: 1em;
-    border-collapse: collapse;
-    border-spacing: 0;
-    empty-cells: show;
-    border: 1px solid var(--border);
-
-    & tbody th {
-      background: var(--light);
-    }
-
-    & th,
-    & td {
-      padding: 0.5em 1em;
-      border-left: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      border-right-width: 0;
-      border-top-width: 0;
-      font-size: inherit;
-      margin: 0;
-      overflow: visible;
-
-      & p {
-        margin: 0;
-      }
-    }
+    @mixin table-border;
   }
 
   & blockquote {

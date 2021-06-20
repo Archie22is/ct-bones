@@ -7,10 +7,11 @@ $_class = 'fa1 f fdc post-card';
 $_class .= !empty($card_style) ? ' post-card--' . esc_attr($card_style) : ' post-card--style-1';
 $_class .= !empty($class) ? ' ' . esc_attr($class) : '';
 
+
 // Visible condition
 $_display_category = !empty($card_style) && (in_array($card_style, array('style-3')));
 $_display_author = !empty($card_style) && (in_array($card_style, array('style-4')));
-$_display_date = !empty($card_style) && $card_style == 'style-3';
+$_display_date = !empty($card_style) && (in_array($card_style, array('style-1', 'style-3')));
 $_display_date_badge = !empty($card_style) && $card_style == 'style-2';
 $_display_footer = !empty($card_style) && $card_style == 'style-3';
 $_display_description = !empty($card_style) && (in_array($card_style, array('style-2', 'style-3', 'style-4', 'style-5')));
@@ -30,9 +31,7 @@ $word_count = !empty($post_description_length) ? (int) $post_description_length 
           'class' => 'image--cover post-card__image'
         ));
       else :
-        the_block('image-placeholder', array(
-          'class' => 'post-card__image'
-        ));
+        the_block('image-placeholder');
       endif;
       ?>
 

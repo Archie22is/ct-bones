@@ -42,28 +42,31 @@
 }
 
 .image-placeholder {
-  background: var(--light);
+  @mixin ratio 2/3;
 
-  & img,
-  & .image__img {
-    object-fit: contain;
-  }
+  background: var(--light);
+  overflow: hidden;
 }
 
 .image--hd {
   @mixin ratio 9/16;
 }
 
-.image-placeholder__icon,
 .image-placeholder__image {
   @mixin abs-full;
 }
 
-.image-placeholder__icon {
+.image-placeholder--icon {
   @mixin flex-center;
+}
 
-  & svg {
-    width: 40px;
-    height: 40px;
-  }
+.image-placeholder__logo {
+  @mixin flex-center;
+  @mixin abs-full;
+}
+
+.image-placeholder__image-logo {
+  width: 100px;
+  max-width: 100px;
+  height: auto;
 }

@@ -11,7 +11,7 @@
 
   display: flex;
   align-items: center;
-  font-weight: var(--font-bold);
+  margin-bottom: 0.5em;
 
   & #cancel-comment-reply-link {
     padding-left: 10px;
@@ -167,6 +167,12 @@ p.comment-form-comment {
   }
 }
 
+.comment-form .logged-in-as {
+  & a:last-child {
+    text-decoration: underline;
+  }
+}
+
 .comment-form .form-submit {
   margin-top: 1em;
 
@@ -265,9 +271,14 @@ ol.comment-list {
     display: flex;
     flex-wrap: wrap;
     margin: 1em 0 0.5em;
-    padding: 20px 20px 40px 20px;
+    padding: 20px;
     border-radius: var(--border-radius);
     border: 1px solid var(--border);
+    overflow: hidden;
+
+    @media (--sm) {
+      padding: 0;
+    }
   }
 
   & .comment-meta {
@@ -275,6 +286,8 @@ ol.comment-list {
 
     @media (--sm) {
       width: 25%;
+      padding: 20px;
+      background: var(--light);
     }
   }
 
@@ -292,6 +305,11 @@ ol.comment-list {
       }
     }
 
+    & .fn {
+      margin-bottom: 0.5em;
+      line-height: 1.5;
+    }
+
     & .says {
       display: none;
     }
@@ -299,26 +317,47 @@ ol.comment-list {
 
   & .comment-metadata {
     opacity: 0.75;
+
+    & > a {
+      display: block;
+    }
   }
 
   & .comment-content {
     width: 100%;
+    margin: 0.5em 0;
+    padding-top: 0.5em;
+    border-top: 1px dashed var(--border);
 
     @media (--sm) {
       flex: 1 1 0;
       width: auto;
-      padding-left: 10px;
+      margin: 0;
+      padding: 20px;
+      border-top: 0;
     }
   }
 
   & .reply {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
+    @media (--sm) {
+      width: 100%;
+      padding: 10px;
+      text-align: right;
+      border-top: 1px solid var(--border);
+    }
 
     & .comment-reply-link {
       text-decoration: underline;
     }
+  }
+
+  & .edit-link {
+    display: block;
+  }
+
+  & .comment-edit-link {
+    text-decoration: underline;
+    font-size: 0.85rem;
   }
 }
 

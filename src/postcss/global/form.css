@@ -1,7 +1,3 @@
-.email-form {
-  @mixin email-form;
-}
-
 .select-wrapper {
   @mixin select-wrapper;
 
@@ -11,5 +7,5 @@
 }
 
 .radio-wrapper-default {
-  @mixin radio-wrapper-standard;
+  @mixin custom-radio;
 }

@@ -41,12 +41,6 @@ class Codetot_Recent_Post_Widget extends WP_Widget {
 		ob_start();
 		extract($args);
 
-		if ( empty( $instance['image'] ) ) $instance['image'] = false;
-		$is_image = $instance['image'] ? 'true' : 'false';
-
-        if ( empty( $instance['date-stamp'] ) ) $instance['date-stamp'] = false;
-		$is_date_stamp = $instance['date-stamp'] ? 'true' : 'false';
-
 		$title = apply_filters('widget_title', empty($instance['title']) ? __('Recent Posts', 'codetot') : $instance['title'], $instance, $this->id_base);
 		if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) )
  			$number = 10;
@@ -60,33 +54,29 @@ class Codetot_Recent_Post_Widget extends WP_Widget {
     ?>
 		<?php echo $before_widget; ?>
 		<?php if ( $title ) echo $before_title . $title . $after_title; ?>
-		<?php echo '<ul class="codetot-resent-post">'; ?>
-		<?php while ( $query->have_posts() ) : $query->the_post(); ?>
-		<li class="codetot-resent-post__item">
-      <div class="f fw codetot-resent-post__post">
-        <div class="codetot-resent-post__wrapper">
-          <a href="<?php the_permalink() ?>">
-            <?php
-              if (has_post_thumbnail()) :
-                the_block('image', array(
-                  'image' => get_post_thumbnail_id(),
-                  'class' => 'image--cover codetot-resent-post__image'
-                ));
-              else :
-                the_block('image-placeholder', array(
-                  'class' => 'codetot-resent-post__image'
-                ));
-              endif;
-            ?>
+		<div class="widget__list">
+      <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+        <div class="w100 widget__item">
+          <span class="f widget__item-wrapper">
+            <a class="f widget__image-link" href="<?php the_permalink() ?>">
+              <?php if (has_post_thumbnail()) :
+                  the_block('image', array(
+                    'image' => get_post_thumbnail_id(),
+                    'class' => 'image--cover widget__post-image'
+                  ));
+                else :
+                  the_block('image-placeholder');
+                endif;
+              ?>
             </a>
+            <span class="f fdc widget__content">
+              <span class="f fw widget__item-title"><a class="d-block w100 bold-text widget__item-title-link" href="<?php the_permalink() ?>"><?php the_title(); ?></a></span>
+              <span class="d-block mt-05 post-date widget__post-date"><?php echo get_the_date('d/m/Y', get_the_ID()); ?></span>
+            </span>
+          </span>
         </div>
-        <div class="codetot-resent-post--content">
-          <p><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></p>
-        </div>
-      </div>
-		</li>
-		<?php endwhile; ?>
-		<?php echo '</ul>'; ?>
+      <?php endwhile; ?>
+		</div>
 		<?php echo $after_widget; ?>
   <?php
 		// Reset the global $the_post as this query will have stomped on it

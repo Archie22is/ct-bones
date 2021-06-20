@@ -161,162 +161,6 @@
   pointer-events: none;
 }
 
-@define-mixin custom-checkbox {
-  appearance: none;
-  position: relative;
-  width: 20px;
-  height: 20px;
-  color: var(--dark);
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  outline: 0;
-  cursor: pointer;
-  transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
-
-  &::before {
-    position: absolute;
-    content: '';
-    display: block;
-    top: 3px;
-    left: 6px;
-    width: 4px;
-    height: 8px;
-    border-style: solid;
-    border-color: var(--white);
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-    opacity: 0;
-  }
-
-  &:checked {
-    color: var(--white);
-    border-color: var(--primary);
-    background: var(--primary);
-
-    &::before {
-      opacity: 1;
-    }
-
-    & ~ span::before,
-    & ~ label::before {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-  }
-}
-
-@define-mixin email-form {
-  align-items: center;
-  padding: 1em 0;
-  line-height: 1.25;
-  margin: auto;
-  width: 100%;
-  font-size: 0.8rem;
-
-  @media (--s) {
-    margin: auto 0 auto auto;
-    font-size: 1rem;
-  }
-
-  & li,
-  & .gform_footer {
-    margin: 0;
-  }
-
-  & .gform_footer {
-    height: max-content;
-    position: relative;
-    margin-top: 0.5em;
-
-    @media (--s) {
-      width: auto;
-    }
-
-    & input {
-      background-color: var(--primary);
-      border-top-right-radius: 30px !important;
-      border-bottom-right-radius: 30px !important;
-      padding: 0 1em 0 0.75em;
-    }
-
-    & img {
-      position: absolute;
-      top: calc(50% - 0.5em);
-      right: -1.25em;
-    }
-  }
-
-  & .gfield_label {
-    margin: 0;
-  }
-
-  & .gform_fields {
-    & input {
-      padding: 0 2em;
-    }
-  }
-
-  & .gform_wrapper {
-    width: 100%;
-  }
-
-  & form {
-    display: flex;
-  }
-
-  & input {
-    height: 40px !important;
-    border-radius: 0 !important;
-    border: none !important;
-
-    @media (--s) {
-      height: 50px !important;
-    }
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  & .gform_body {
-    flex: 1 1 auto;
-    margin-top: 0.5em;
-
-    @media (--s) {
-      width: auto;
-    }
-
-    & .ginput_container {
-      border-top-left-radius: 30px;
-      border-bottom-left-radius: 30px;
-      overflow: hidden;
-      margin-bottom: 0.5em;
-    }
-  }
-
-  & a {
-    transition: 0.4s;
-    display: inline-block;
-
-    &:hover {
-      transform: translateX(2px);
-      text-decoration: none !important;
-    }
-  }
-
-  & p {
-    margin-top: 0 !important;
-  }
-
-  & .footer__top {
-    padding-bottom: 0;
-  }
-
-  & .footer__bottom {
-    border-top: 1px solid rgb(255, 255, 255, 0.11);
-  }
-}
-
 @define-mixin radio-wrapper-standard-check {
   border-radius: 11px;
   width: 12px;
@@ -327,6 +171,112 @@
   content: ' ';
   display: block;
   background: var(--primary);
+}
+
+@define-mixin custom-checkbox $color, $border {
+  @mixin abs-full;
+
+  appearance: none;
+  opacity: 0;
+
+  &:checked {
+    & ~ span::before,
+    & ~ label::before {
+      border-color: $color;
+    }
+
+    & ~ span,
+    & ~ label {
+      color: $color;
+    }
+
+    & ~ span::after,
+    & ~ label::after {
+      opacity: 1;
+    }
+  }
+
+  & ~ span,
+  & ~ label {
+    pointer-events: none;
+    transition: color 0.3s cubic-bezier(0.1, 0.1, 0.25, 1);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      width: 19px;
+      height: 19px;
+      border: 1px solid $border;
+      transition: border-color 0.3s cubic-bezier(0.1, 0.1, 0.25, 1);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 3px;
+      width: 15px;
+      height: 15px;
+      background: $color;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      opacity: 0;
+    }
+  }
+}
+
+@define-mixin custom-radio $color: var(--primary), $border: var(--border) {
+  @mixin abs-full;
+
+  appearance: none;
+  opacity: 0;
+
+  &:checked {
+    & ~ span::before,
+    & ~ label::before {
+      border-color: $color;
+    }
+
+    & ~ span,
+    & ~ label {
+      color: $color;
+    }
+
+    & ~ span::after,
+    & ~ label::after {
+      opacity: 1;
+    }
+  }
+
+  & ~ span,
+  & ~ label {
+    pointer-events: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      width: 19px;
+      height: 19px;
+      border: 1px solid $border;
+      border-radius: 50%;
+      transition: border-color 0.3s cubic-bezier(0.1, 0.1, 0.25, 1);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 3px;
+      width: 15px;
+      height: 15px;
+      background: $color;
+      clip-path: circle(50% at 50% 50%);
+      opacity: 0;
+    }
+  }
 }
 
 @define-mixin radio-wrapper-standard {
@@ -357,5 +307,17 @@
 
   & input[type='radio']:checked + label::after {
     @mixin radio-wrapper-standard-check;
+  }
+}
+
+@define-mixin item-with-line $border {
+  margin-top: 0.5em;
+  padding-top: 0.5em;
+  border-top: 1px solid $border;
+
+  &:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
   }
 }

@@ -57,10 +57,18 @@ class Codetot_Assets
     echo '<meta name="theme-color" content="' . esc_attr($primary_color). '">';
   }
 
+  public function get_body_font() {
+    return  get_global_option('codetot_font_family') ?? 'Averta';
+  }
+
+  public function get_heading_font() {
+    return  get_global_option('codetot_font_family') ?? 'Averta';
+  }
+
   public function load_fonts()
   {
-    $body_font = get_global_option('codetot_font_family');
-    $heading_font = get_global_option('codetot_font_heading');
+    $body_font = $this->get_body_font();
+    $heading_font = $this->get_heading_font();
 
     if (empty($body_font) && empty($heading_font)) {
       return;
@@ -204,16 +212,14 @@ class Codetot_Assets
 
   public function custom_font_options_css_inline()
   {
-    if (function_exists('get_global_option')) {
-      $body_font = get_global_option('codetot_font_family');
-      $heading_font = get_global_option('codetot_font_heading');
+    $body_font = $this->get_body_font();
+    $heading_font = $this->get_heading_font();
 
-      if (!empty($body_font)) {
-        echo 'body{font-family: ' . esc_attr($body_font) . ', sans-serif;}';
-      }
-      if (!empty($heading_font)) {
-        echo 'h1,h2,h3,h4,h5,h6{font-family: ' . esc_attr($heading_font) . ', sans-serif;}';
-      }
+    if (!empty($body_font)) {
+      echo 'body{font-family: ' . esc_attr($body_font) . ', sans-serif;}';
+    }
+    if (!empty($heading_font)) {
+      echo 'h1,h2,h3,h4,h5,h6{font-family: ' . esc_attr($heading_font) . ', sans-serif;}';
     }
   }
 

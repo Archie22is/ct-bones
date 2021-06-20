@@ -1,5 +1,5 @@
 <?php
-$container = codetot_site_container();
+$container = 'container';
 $has_woocommerce = class_exists('WooCommerce');
 $search_form_button = get_block('button', array(
   'icon' => 'search',

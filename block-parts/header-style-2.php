@@ -1,5 +1,5 @@
 <?php
-$container = codetot_site_container();
+$container = 'container';
 $has_woocommerce = class_exists('WooCommerce');
 ?>
 <?php the_block_part('header/header-topbar');?>

@@ -25,6 +25,12 @@
   }
 }
 
+@media screen and (min-width: 1280px) {
+  .codetot-text-select .rwmb-image-select {
+    width: calc(16.66% - 20px);
+  }
+}
+
 .codetot-image-select .rwmb-image-select img,
 .codetot-text-select .rwmb-image-select img {
   object-fit: contain;

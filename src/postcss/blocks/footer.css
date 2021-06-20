@@ -129,6 +129,7 @@
 
 .footer__bottom-col--right {
   @media (--s) {
+    width: 25%;
     text-align: right;
   }
 }
@@ -159,6 +160,26 @@
         & a {
           color: var(--white);
         }
+      }
+    }
+
+    & .gform_confirmation_message {
+      color: var(--white);
+    }
+
+    &.widget_codetot_recent_posts {
+      & .widget__item {
+        @mixin item-with-line rgba(255, 255, 255, 0.1);
+
+        color: var(--white);
+
+        & a {
+          color: var(--white);
+        }
+      }
+
+      & .widget__post-date {
+        color: var(--white);
       }
     }
   }

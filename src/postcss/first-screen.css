@@ -9,6 +9,9 @@
 @import url('global/grid.css');
 @import url('global/animate.css');
 @import url('global/form.css');
+@import url('global/sections.css');
+@import url('global/responsive.css');
+@import url('others/gravity-forms.css');
 @import url('blocks/image.css'); /** High priority **/
 @import url('wp/widgets.css');
 @import url('wp/content.css');
@@ -39,6 +42,8 @@
 @import url('blocks/post-card.css');
 @import url('blocks/category-post.css');
 @import url('blocks/pagination.css');
+@import url('blocks/post-row.css');
+@import url('blocks/post-list.css');
 
 /** First layout widgets **/
 @import url('blocks/ct-widget-icon.css');

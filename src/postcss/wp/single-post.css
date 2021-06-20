@@ -34,6 +34,16 @@
   @media (--ml) {
     margin-top: 2em;
   }
+
+  & .post-edit-link {
+    text-decoration: underline;
+
+    &:hover {
+      @media (--m) {
+        color: var(--primary);
+      }
+    }
+  }
 }
 
 .entry-tags__label {

@@ -37,7 +37,7 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout
 
   private function __construct()
   {
-    $this->container_class = function_exists('codetot_site_container') ? codetot_site_container() : 'container';
+    $this->container_class = 'container';
 
     add_action('wp_footer', array($this, 'woocommerce_cart_sidebar'));
     add_action('codetot_first_screen_hide_style', array($this, 'first_load_selector'));

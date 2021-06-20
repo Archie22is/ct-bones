@@ -2,7 +2,7 @@
 $_attrs = '';
 $_attrs .= !empty($id) ? sprintf(' id="%s"', esc_attr($id)) : '';
 $_attrs .= !empty($attributes) ? ' ' . $attributes : '';
-$container = codetot_site_container();
+$container = 'container';
 $_class = 'default-section';
 $_class .= !empty($class) ? ' ' . $class : '';
 
