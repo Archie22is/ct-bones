@@ -48,6 +48,45 @@ if ( !function_exists('the_block_part') ) {
     die();
   }
 }
+
+if (!function_exists('codetot_svg')) {
+  function codetot_svg($name, $echo = true)
+  {
+
+    if (empty($name)) {
+      return new WP_Error(
+        '404',
+        __('Missing svg file name', 'ct-blocks')
+      );
+    }
+
+    $paths = apply_filters('codetot_svg_paths', []);
+    $svg_content = '';
+
+    if (is_child_theme()) {
+      $paths[] = get_stylesheet_directory() . '/assets/svg';
+    }
+    $paths[] = get_template_directory() . '/assets/svg';
+
+    foreach($paths as $path) {
+      $file_path = $path . '/' . $name . '.svg';
+
+      if (file_exists($file_path) && empty($svg_content)) {
+        $svg_content = file_get_contents($file_path);
+      }
+    }
+
+    if (empty($svg_content)) {
+      $svg_content = '<!-- No svg file for ' . $name . '.svg -->';
+    }
+
+    if ($echo) {
+      echo $svg_content;
+
+      return true;
+    } else {
+      return $svg_content;
+    }
   }
 }
 
