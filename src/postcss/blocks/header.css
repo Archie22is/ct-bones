@@ -2,6 +2,35 @@
   position: relative;
   z-index: 99;
   transition: all 0.3s;
+
+  & .site-title {
+    & a {
+      font-size: 1rem;
+      font-weight: var(--font-bold);
+    }
+  }
+
+  & .custom-logo-link {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 0;
+    transition: all 0.3s;
+
+    & .custom-logo {
+      width: auto;
+      height: auto;
+      max-height: 30px;
+      max-width: 100%;
+
+      @media (--s) {
+        max-height: 40px;
+      }
+
+      @media (--m) {
+        max-height: 60px;
+      }
+    }
+  }
 }
 
 .header__grid {
@@ -10,28 +39,6 @@
 
 .header--transparent {
   background-color: transparent;
-}
-
-.header .custom-logo-link {
-  display: inline-flex;
-  align-items: center;
-  margin-bottom: 0;
-  transition: all 0.3s;
-
-  & .custom-logo {
-    width: auto;
-    height: auto;
-    max-height: 30px;
-    max-width: 100%;
-
-    @media (--s) {
-      max-height: 40px;
-    }
-
-    @media (--m) {
-      max-height: 60px;
-    }
-  }
 }
 
 .header__grid {
