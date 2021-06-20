@@ -4,6 +4,9 @@
   transition: all 0.3s;
 
   & .site-title {
+    display: flex;
+    align-items: center;
+
     & a {
       font-size: 1rem;
       font-weight: var(--font-bold);
@@ -318,7 +321,7 @@
 
 .header--layout-1 {
   & .header__wrapper {
-    padding: 5px 0;
+    padding: 1em 0;
   }
 
   & .header__grid {
