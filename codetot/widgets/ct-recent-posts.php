@@ -60,27 +60,27 @@ class Codetot_Recent_Post_Widget extends WP_Widget {
     ?>
 		<?php echo $before_widget; ?>
 		<?php if ( $title ) echo $before_title . $title . $after_title; ?>
-		<?php echo '<ul class="codetot-resent-post">'; ?>
+		<?php echo '<ul class="codetot-recent-posts">'; ?>
 		<?php while ( $query->have_posts() ) : $query->the_post(); ?>
-		<li class="codetot-resent-post__item">
-      <div class="f fw codetot-resent-post__post">
-        <div class="codetot-resent-post__wrapper">
+		<li class="codetot-recent-posts__item">
+      <div class="f fw codetot-recent-posts__post">
+        <div class="codetot-recent-posts__wrapper">
           <a href="<?php the_permalink() ?>">
             <?php
               if (has_post_thumbnail()) :
                 the_block('image', array(
                   'image' => get_post_thumbnail_id(),
-                  'class' => 'image--cover codetot-resent-post__image'
+                  'class' => 'image--cover codetot-recent-posts__image'
                 ));
               else :
                 the_block('image-placeholder', array(
-                  'class' => 'codetot-resent-post__image'
+                  'class' => 'codetot-recent-posts__image'
                 ));
               endif;
             ?>
             </a>
         </div>
-        <div class="codetot-resent-post--content">
+        <div class="codetot-recent-posts--content">
           <p><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></p>
         </div>
       </div>

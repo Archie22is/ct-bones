@@ -11,6 +11,7 @@
 @import url('global/form.css');
 @import url('global/sections.css');
 @import url('global/responsive.css');
+@import url('others/gravity-forms.css');
 @import url('blocks/image.css'); /** High priority **/
 @import url('wp/widgets.css');
 @import url('wp/content.css');
