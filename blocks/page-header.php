@@ -1,6 +1,6 @@
 <?php
 $container = 'container';
-$_class = 'page-header section';
+$_class = 'page-header';
 $_class .= !empty($alignment) ? ' ' . esc_attr($alignment) : '';
 $_class .= !empty($class) ? ' ' . esc_attr($class) : '';
 do_action('codetot_page_header_before'); ?>

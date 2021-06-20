@@ -55,6 +55,8 @@ class Codetot_Theme_Layout
     if (is_category()) {
       $this->generate_category_layout();
     }
+
+    $this->generate_default_index_layout();
   }
 
   public function load_page_header() {
@@ -169,20 +171,20 @@ class Codetot_Theme_Layout
   }
 
   public function generate_category_layout() {
-    $sidebar_layout = get_global_option('codetot_category_layout');
-    add_action('codetot_before_category_main', array($this, 'load_breadcrumbs'), 9);
+    $sidebar_layout = get_global_option('codetot_category_layout') ?? 'sidebar-right';
+    add_action('codetot_before_archive_main', array($this, 'load_breadcrumbs'), 9);
 
-    add_action('codetot_before_category_main', function() use ($sidebar_layout) {
-        echo $this->page_block_open('page-block--page ' . $sidebar_layout, false);
+    add_action('codetot_before_archive_main', function() use ($sidebar_layout) {
+        echo $this->page_block_open('page-block--archive ' . $sidebar_layout, false);
     }, 10);
 
-    add_action('codetot_after_category_main', function() {
+    add_action('codetot_after_archive_main', function() use($sidebar_layout) {
       if ($sidebar_layout !== 'no-sidebar') {
         echo '</div><div class="grid__col page-block__col page-block__col--sidebar">';
         dynamic_sidebar('category-sidebar');
       }
     }, 9);
-    add_action('codetot_after_category_main', function() {
+    add_action('codetot_after_archive_main', function() {
       echo '</div>';// Close .page-block__col
       echo '</div>'; // Close .page-block__grid
       echo '</div>'; // Close .page-block__container
@@ -210,6 +212,20 @@ class Codetot_Theme_Layout
       endif;
 
    return ob_get_clean();
+  }
+
+  public function generate_default_index_layout() {
+    add_action('codetot_before_index_main', function() {
+      echo $this->page_block_open('page-block--archive sidebar-right', false);
+    }, 10);
+
+    add_action('codetot_before_index_sidebar', function() {
+      echo $this->page_block_between();
+    }, 1);
+
+    add_action('codetot_after_index_main', function() {
+      echo $this->page_block_close();
+    }, 10);
   }
 
   public function page_block_open($available_class = '')

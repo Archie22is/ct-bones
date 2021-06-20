@@ -382,9 +382,14 @@ if (!function_exists('codetot_sidebar_id')) {
     } elseif (is_page()) {
       $sidebar_layout = get_global_option('codetot_page_layout') ?? 'no-sidebar';
 
-      // Page.
       return $sidebar_layout !== 'no-sidebar' ? 'page-sidebar' : 'no-sidebar';
-    } elseif (is_singular('post')) {
+
+    } elseif (is_category()) {
+      $sidebar_layout = get_global_option('codetot_category_layout') ?? 'sidebar-right';
+
+      return $sidebar_layout !== 'no-sidebar' ? 'category-sidebar' : 'no-sidebar';
+
+    } elseif (is_singular('post') || is_front_page() || is_tag() || is_author() || is_date()) {
       $sidebar_layout = get_global_option('codetot_post_layout') ?? 'no-sidebar';
 
       // Post page.

@@ -7,8 +7,9 @@ $_class = 'fa1 f fdc post-card';
 $_class .= !empty($card_style) ? ' post-card--' . esc_attr($card_style) : ' post-card--style-1';
 $_class .= !empty($class) ? ' ' . esc_attr($class) : '';
 
+
 // Visible condition
-$_display_category = !empty($card_style) && (in_array($card_style, array('style-1', 'style-3')));
+$_display_category = !empty($card_style) && (in_array($card_style, array('style-3')));
 $_display_author = !empty($card_style) && (in_array($card_style, array('style-4')));
 $_display_date = !empty($card_style) && (in_array($card_style, array('style-1', 'style-3')));
 $_display_date_badge = !empty($card_style) && $card_style == 'style-2';

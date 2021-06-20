@@ -9,7 +9,7 @@ $title = get_the_archive_title();
   <?php do_action('codetot_before_category_main'); ?>
     <?php
 
-    echo '<h1 class="page-title">'.$title.'</h1>';
+    printf('<h1 class="page-title">%s</h1>', $title);
 
     if ( have_posts() ) :
       global $wp_query; ?>
@@ -26,7 +26,7 @@ $title = get_the_archive_title();
         'column_class' => 'f fdc default-section__col'
       ));
 
-      echo '<div class="mt-1 site-main__main-category default-section has-'.$number_columns. '-columns">';
+      printf('<div class="mt-1 site-main__main-category default-section %s">', 'has-'. esc_attr($number_columns) . '-columns');
       echo $content;
       the_block('pagination');
       echo '</div>';

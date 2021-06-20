@@ -72,10 +72,14 @@
 
 .widget_recent_comments {
   & li {
-    margin-top: 1em;
+    margin-top: 0.5em;
+    padding-top: 0.5em;
+    border-top: 1px dashed var(--border);
 
     &:first-child {
       margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
     }
   }
 
