@@ -26,10 +26,12 @@ if ( !function_exists('the_block') ) {
   function the_block() {
     $error = new WP_Error(
       'plugin_not_activate',
-      sprintf(__('Plugin %s must be activate to work with this theme.', 'ct-bones'), 'CT Bones')
+      sprintf(__('Plugin %s must be activate to work with this theme.', 'ct-bones'), 'CT Blocks')
     );
 
+    echo '<pre>';
     echo $error->get_error_message();
+    echo '</pre>';
   }
 }
 
@@ -37,10 +39,15 @@ if ( !function_exists('the_block_part') ) {
   function the_block_part() {
     $error = new WP_Error(
       'plugin_not_activate',
-      sprintf(__('Plugin %s must be activate to work with this theme.', 'ct-bones'), 'CT Bones')
+      sprintf(__('Plugin %s must be activate to work with this theme.', 'ct-bones'), 'CT Blocks')
     );
 
+    echo '<pre>';
     echo $error->get_error_message();
+    echo '</pre>';
+    die();
+  }
+}
   }
 }
 
