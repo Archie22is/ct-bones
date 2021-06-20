@@ -234,7 +234,7 @@
 
 .header__menu-icons__item--phone {
   display: flex;
-  color: var(--white);
+  color: var(--dark);
 
   & .header__menu-icons__icon {
     @mixin icon 20px;
@@ -266,11 +266,12 @@
   & .header__menu-icons__text {
     font-weight: var(--font-bold);
     font-size: var(--text-large);
+    color: var(--primary);
     line-height: 1;
   }
 
   & svg path {
-    fill: var(--white);
+    fill: var(--dark);
   }
 }
 
