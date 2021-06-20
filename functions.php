@@ -77,14 +77,24 @@ if ( !function_exists('the_block_part') ) {
       sprintf(__('Plugin %s must be activate to work with this theme.', 'ct-bones'), 'CT Blocks')
     );
 
-    $path = get_template_directory() . '/block-parts/' . esc_attr($block_name) . '.php';
+    if (is_child_theme()) {
+      $paths[] = get_stylesheet_directory() . '/block-parts/' . esc_attr($block_name) . '.php';
+    }
 
-    if (file_exists($path)) {
-      include($path);
-    } else {
+    $paths[] = get_template_directory() . '/block-parts/' . esc_attr($block_name) . '.php';
+
+    foreach($paths as $path) {
+      if (file_exists($path) && empty($loaded)) {
+        include($path);
+
+        $loaded = true;
+      }
+    }
+
+    if (empty($loaded)) {
       $error = new WP_Error(
         'missing_path',
-        sprintf(__('Missing block part %s', 'ct-bones'), $block_name)
+        sprintf(__('Missing block %s', 'ct-bones'), $block_name)
       );
 
       echo '<pre>';
