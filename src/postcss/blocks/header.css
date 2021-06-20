@@ -8,8 +8,14 @@
     align-items: center;
 
     & a {
-      font-size: 1rem;
+      font-size: 1.25rem;
       font-weight: var(--font-bold);
+
+      &:hover {
+        @media (--m) {
+          color: var(--primary);
+        }
+      }
     }
   }
 
