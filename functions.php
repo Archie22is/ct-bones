@@ -167,8 +167,6 @@ include_once CODETOT_DIR . '/helpers/generator.php';
 include_once CODETOT_DIR . '/helpers/template-tags.php';
 include_once CODETOT_DIR . '/helpers/deprecated.php';
 
-include_once get_template_directory() . '/inc/template-functions.php';
-
 require_once CODETOT_DIR . '/theme-init.php';
 require_once CODETOT_DIR . '/assets.php';
 require_once CODETOT_DIR . '/api.php';
