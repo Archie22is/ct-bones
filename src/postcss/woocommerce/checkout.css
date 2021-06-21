@@ -3,8 +3,10 @@
 }
 
 body.woocommerce-checkout {
-  @media (--m) {
-    background: var(--light);
+  padding-bottom: 52px;
+
+  @media (--xs) {
+    padding-bottom: 0;
   }
 
   & main {
@@ -20,6 +22,12 @@ body.woocommerce-checkout {
       display: none;
     }
   }
+
+  & .woocommerce .woocommerce-error {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1em;
+  }
 }
 
 .page-block--checkout {
@@ -32,9 +40,11 @@ body.woocommerce-checkout {
 
   & .page-block__col--sidebar {
     display: block;
+    margin-top: 1em;
 
     @media (--sm) {
       width: 300px;
+      margin-top: 0;
     }
 
     @media (--m) {
@@ -50,10 +60,9 @@ body.woocommerce-checkout {
   }
 }
 
-.woocommerce-checkout .woocommerce .woocommerce-error {
-  margin-left: 0;
-  margin-right: 0;
-  padding: 1em;
+form.woocommerce-checkout {
+  position: relative;
+  z-index: 2;
 }
 
 form.woocommerce-billing-fields {
@@ -194,37 +203,20 @@ form.woocommerce-billing-fields {
   display: none;
 }
 
-.woocommerce-form__label-for-checkbox {
+h3#ship-to-different-address {
+  font-size: 1rem;
+  font-weight: var(--font-normal);
+}
+
+.woocommerce-form__label.woocommerce-form__label-for-checkbox {
   display: flex;
+  position: relative;
   margin-top: 1em;
+  padding-left: 30px;
   font-weight: var(--font-normal);
 
-  & label {
-    display: inline-flex;
-    margin-bottom: 0.5em;
-    vertical-align: middle;
-  }
-
   & input[type='checkbox'] {
-    @mixin custom-checkbox;
-
-    width: 24px;
-    height: 24px;
-
-    & ~ span {
-      margin-left: 0.5em;
-    }
-
-    &::before {
-      top: 3px;
-      left: 7px;
-      width: 5px;
-      height: 10px;
-    }
-  }
-
-  & span {
-    font-size: 1.15rem;
+    @mixin custom-checkbox var(--primary), var(--dark);
   }
 }
 
@@ -345,7 +337,8 @@ ul.checkout-coupon-form__list {
 }
 
 .checkout-coupon-form__input {
-  width: calc(100% - 85px);
+  width: auto;
+  flex: 1 1 0;
   padding-left: 1em;
   background: transparent;
   border: 0;
@@ -355,7 +348,7 @@ ul.checkout-coupon-form__list {
   }
 }
 
-.checkout-coupon-form__button {
+.button.checkout-coupon-form__button {
   min-width: 85px;
   padding: 10px 15px;
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
@@ -424,6 +417,6 @@ ul.checkout-coupon-form__list {
   }
 
   & .shipping_address {
-    margin-top: 10px;
+    margin-top: 20px;
   }
 }

@@ -179,7 +179,7 @@ class Codetot_Woocommerce_Layout_Checkout extends Codetot_Woocommerce_Layout
 
   ?>
     <div class="checkout-coupon-form">
-      <label class="h3 checkout-coupon-form__label" for="custom_coupon_code"><?php esc_html__('Coupons:', 'woocommerce'); ?></label>
+      <label class="h3 checkout-coupon-form__label" for="custom_coupon_code"><?php _e('Coupons', 'woocommerce'); ?></label>
       <div class="checkout-coupon-form__wrapper">
         <?php if (!empty($coupons)) : ?>
           <ul class="checkout-coupon-form__list">
