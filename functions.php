@@ -164,9 +164,9 @@ define('CODETOT_ASSETS_URI ', get_template_directory_uri(). '/assets');
 include_once CODETOT_DIR . '/helpers/acf.php';
 include_once CODETOT_DIR . '/helpers/metabox.php';
 include_once CODETOT_DIR . '/helpers/generator.php';
+include_once CODETOT_DIR . '/helpers/template-tags.php';
 include_once CODETOT_DIR . '/helpers/deprecated.php';
 
-include_once get_template_directory() . '/inc/template-tags.php';
 include_once get_template_directory() . '/inc/template-functions.php';
 
 require_once CODETOT_DIR . '/theme-init.php';
