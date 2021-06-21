@@ -1,5 +1,5 @@
 .mobile-only {
-  @media (--max-mobile) {
+  @media (--xs) {
     display: none;
   }
 }

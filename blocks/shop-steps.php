@@ -37,7 +37,7 @@ $steps[] = array(
 );
 
 ?>
-<div class="section shop-steps">
+<div class="section section--hide-mobile hide-mobile shop-steps">
   <div class="f aie shop-steps__list">
     <?php foreach($steps as $index => $step) :
       ob_start(); ?>
