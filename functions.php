@@ -201,10 +201,6 @@ add_action('wp', function() {
   require_once CODETOT_DIR . '/features/facebook-comments.php';
 }, 10);
 
-if (defined('JETPACK__VERSION')) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
-
 if (class_exists('WooCommerce')) {
 	require get_template_directory() . '/inc/woocommerce.php';
 
