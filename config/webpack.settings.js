@@ -9,8 +9,8 @@ module.exports = {
     'admin-acf-style': './src/postcss/admin-acf.css',
     'woocommerce-style': './src/postcss/woocommerce.css',
     'woocommerce-script': './src/js/woocommerce.js',
-    'cart': './src/js/cart.js',
-    'checkout': './src/js/checkout.js'
+    cart: './src/js/cart.js',
+    checkout: './src/js/checkout.js'
   },
   filename: {
     js: 'js/[name].js',
