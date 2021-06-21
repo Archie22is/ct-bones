@@ -8,7 +8,9 @@ module.exports = {
     'first-screen-style': './src/postcss/first-screen.css',
     'admin-acf-style': './src/postcss/admin-acf.css',
     'woocommerce-style': './src/postcss/woocommerce.css',
-    'woocommerce-script': './src/js/woocommerce.js'
+    'woocommerce-script': './src/js/woocommerce.js',
+    'cart': './src/js/cart.js',
+    'checkout': './src/js/checkout.js'
   },
   filename: {
     js: 'js/[name].js',
@@ -49,7 +51,7 @@ module.exports = {
     port: 3000,
     watch: true,
     proxy: {
-      target: 'http://peaksport.test',
+      target: 'http://codetot-shop.test',
       proxyReq: [
         proxyReq => {
           proxyReq.setHeader('X-Codetot-Header', 'development')
