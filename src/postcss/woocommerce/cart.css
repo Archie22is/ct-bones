@@ -125,7 +125,7 @@ body.woocommerce-cart {
   }
 }
 
-.woocommerce-cart-form__contents {
+.shop_table.woocommerce-cart-form__contents {
   display: block;
   width: 100%;
 
@@ -220,6 +220,8 @@ body.woocommerce-cart {
     }
 
     & a {
+      text-decoration: none;
+
       &:hover {
         color: var(--primary);
       }
