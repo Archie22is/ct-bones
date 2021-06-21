@@ -173,6 +173,7 @@ body.woocommerce-cart {
 
       @media (--m) {
         display: table-cell;
+        padding: 10px 0;
       }
     }
   }
@@ -316,6 +317,7 @@ body.woocommerce-cart {
     @media (--m) {
       width: 50%;
       display: inline-flex;
+      margin-bottom: 0;
     }
 
     & input[name='coupon_code'] {
@@ -390,13 +392,13 @@ body.woocommerce-cart {
   }
 }
 
-.woocommerce-cart-form__cart-item {
+tr.woocommerce-cart-form__cart-item {
   position: relative;
   display: flex;
-  padding-left: 70px;
   flex-direction: column;
-  padding-top: 1em;
   margin-bottom: 1em;
+  padding-top: 1em;
+  padding-left: 70px;
   border-bottom: 1px dashed var(--border);
 
   @media (--m) {
