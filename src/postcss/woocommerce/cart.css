@@ -57,9 +57,24 @@ body.woocommerce-cart {
     border-radius: var(--border-radius);
   }
 
-  & .product-thumbnail img {
-    max-width: 100%;
-    height: auto;
+  & .product-thumbnail {
+    & a {
+      display: flex;
+
+      &:hover {
+        & img {
+          @media (--m) {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+
+    & img {
+      max-width: 100%;
+      height: auto;
+      transition: transform 0.3s;
+    }
   }
 
   & .checkout-button {
@@ -161,6 +176,7 @@ body.woocommerce-cart {
   & tr:last-child {
     width: 100%;
     display: block;
+    border-bottom: 0;
 
     @media (--m) {
       display: table-row;
