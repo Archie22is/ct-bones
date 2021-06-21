@@ -5,14 +5,14 @@ if (!empty($has_mega)):
   if( function_exists('acf_add_local_field_group') ):
 
     acf_add_local_field_group(array(
-      'key' => 'group_60d0038bcb6fc',
+      'key' => 'group_60d082c3b524e',
       'title' => 'Mega Menu Option',
       'fields' => array(
         array(
-          'key' => 'field_60d0039c21447',
-          'label' => 'Show Mega Menu',
-          'name' => 'show_mega',
-          'type' => 'radio',
+          'key' => 'field_60d082d353798',
+          'label' => 'Display Mega menu',
+          'name' => 'display_mega_menu',
+          'type' => 'true_false',
           'instructions' => '',
           'required' => 0,
           'conditional_logic' => 0,
@@ -21,19 +21,14 @@ if (!empty($has_mega)):
             'class' => '',
             'id' => '',
           ),
-          'choices' => array(
-            'yes' => 'Yes',
-            'no' => 'No',
-          ),
-          'allow_null' => 0,
-          'other_choice' => 0,
-          'default_value' => 'no',
-          'layout' => 'horizontal',
-          'return_format' => 'array',
-          'save_other_choice' => 0,
+          'message' => '',
+          'default_value' => 0,
+          'ui' => 0,
+          'ui_on_text' => '',
+          'ui_off_text' => '',
         ),
         array(
-          'key' => 'field_60d0083734b32',
+          'key' => 'field_60d082fd53799',
           'label' => 'Column',
           'name' => 'column',
           'type' => 'select',
@@ -42,9 +37,9 @@ if (!empty($has_mega)):
           'conditional_logic' => array(
             array(
               array(
-                'field' => 'field_60d0039c21447',
+                'field' => 'field_60d082d353798',
                 'operator' => '==',
-                'value' => 'Yes',
+                'value' => '1',
               ),
             ),
           ),
@@ -87,17 +82,18 @@ if (!empty($has_mega)):
       'active' => true,
       'description' => '',
     ));
-  endif;
+
+    endif;
 endif;
 
 
 add_filter('wp_nav_menu_objects', 'codetot_wp_nav_menu_objects', 10, 2);
 function codetot_wp_nav_menu_objects( $items, $args ) {
 	foreach( $items as &$item ) {
-    $is_enable = get_field('show_mega_menu', $item);
+    $is_enable = get_field('display_mega_menu', $item);
     $column = get_field('column', $item);
 
-    if ($is_enable == 'Yes' && $item->menu_item_parent == 0) {
+    if ($is_enable == true && $item->menu_item_parent == 0) {
       $item->classes[] = 'has-mega-menu';
       $item->classes[] = 'mega-'.$column['value'];
       $items_has_mega[] = $item;
