@@ -106,7 +106,15 @@ class Codetot_CT_Theme_Settings
       'id'             => 'ct-theme-addons-settings',
       'settings_pages' => [$this->setting_id],
       'tab'            => 'addons',
-      'fields'         => [],
+      'fields'         => [
+        [
+          'type'      => 'switch',
+          'id'        => $this->prefix . 'enable_mega_menu',
+          'name'      => __('Enable Mega Menu?', 'ct-bones'),
+          'desc'    => __('Display mega menu in Primary Menu', 'ct-bones'),
+          'style'     => 'rounded',
+        ],
+      ],
     ];
 
     return $meta_boxes;
