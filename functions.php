@@ -181,6 +181,7 @@ require_once CODETOT_ADMIN_DIR . '/theme-sync.php';
 require_once CODETOT_ADMIN_DIR . '/page-settings.php';
 
 require_once CODETOT_DIR . '/shortcodes.php';
+require_once CODETOT_DIR . '/features/mega-menu.php';
 
 /** Custom widgets */
 require_once CODETOT_DIR . '/widgets/ct-icon-box.php';
