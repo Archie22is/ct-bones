@@ -187,7 +187,7 @@ require_once CODETOT_DIR . '/widgets/ct-icon-box.php';
 require_once CODETOT_DIR . '/widgets/ct-company-info.php';
 require_once CODETOT_DIR . '/widgets/ct-recent-posts.php';
 
-require_once CODETOT_DIR . '/features/store.php';
+require_once CODETOT_DIR . '/features/store-locator.php';
 require_once CODETOT_DIR . '/features/google-maps.php';
 
 add_action('wp', function() {
