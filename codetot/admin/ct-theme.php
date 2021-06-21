@@ -106,7 +106,22 @@ class Codetot_CT_Theme_Settings
       'id'             => 'ct-theme-addons-settings',
       'settings_pages' => [$this->setting_id],
       'tab'            => 'addons',
-      'fields'         => [],
+      'fields'         => [
+        [
+          'type'      => 'switch',
+          'id'        => $this->prefix . 'enable_mega_menu',
+          'name'      => __('Enable Mega Menu?', 'ct-bones'),
+          'desc'    => __('Display mega menu in Primary Menu', 'ct-bones'),
+          'style'     => 'rounded',
+        ],
+        [
+          'name'    => __('Store Locator Maps', 'ct-bones'),
+          'id'      => $this->filter_prefix . 'enable_store_locator_map',
+          'type'    => 'switch',
+          'style'   => 'rounded',
+          'desc' => __('Enable maps with multiple store locations.', 'ct-bones')
+        ],
+      ],
     ];
 
     return $meta_boxes;

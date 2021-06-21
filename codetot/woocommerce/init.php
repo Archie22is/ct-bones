@@ -33,6 +33,9 @@ class Codetot_WooCommerce_Init
     $this->theme_version = $this->is_localhost() ? substr(sha1(rand()), 0, 6) : wp_get_theme()->get('Version');
     $this->theme_environment = $this->is_localhost() ? '' : '.min';
 
+    remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
+    remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
+
     add_action('after_setup_theme', array($this, 'woocommerce_support'));
     add_action('widgets_init', array($this, 'register_woocommerce_sidebars'));
 

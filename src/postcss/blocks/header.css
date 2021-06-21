@@ -90,7 +90,7 @@
     & > a {
       display: block;
       color: var(--black);
-      padding: 5px 0;
+      padding: 1em 0;
 
       &:hover {
         color: var(--primary);
@@ -970,5 +970,97 @@
   }
   100% {
     transform: translateY(0);
+  }
+}
+
+.has-mega-menu {
+  @media (--m) {
+    position: unset !important;
+
+    & > .sub-menu {
+      width: 100% !important;
+      max-width: var(--container-max) !important;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: left;
+      background: var(--white);
+      padding: var(--grid-gutter-m) !important;
+      border-top: 2px solid var(--primary);
+      opacity: 0;
+      visibility: hidden;
+
+      & > .menu-item {
+        position: relative;
+        display: block;
+        padding: 0 var(--grid-gutter);
+
+        & > a {
+          font-weight: var(--font-bold);
+          color: var(--dark-3);
+          border-top: unset !important;
+          border-bottom: 1px solid var(--border) !important;
+        }
+
+        & > .sub-menu {
+          position: relative !important;
+          display: block;
+          width: auto !important;
+          box-shadow: unset !important;
+          top: unset !important;
+          left: unset !important;
+          opacity: unset !important;
+          visibility: unset !important;
+        }
+      }
+    }
+
+    &.mega-col-2 {
+      & > .sub-menu {
+        & > .menu-item {
+          @mixin column-item 2, 1em;
+        }
+      }
+    }
+
+    &.mega-col-3 {
+      & > .sub-menu {
+        & > .menu-item {
+          @mixin column-item 3, 1em;
+        }
+      }
+    }
+
+    &.mega-col-4 {
+      & > .sub-menu {
+        & > .menu-item {
+          @mixin column-item 4, 1em;
+        }
+      }
+    }
+
+    &.mega-col-5 {
+      & > .sub-menu {
+        & > .menu-item {
+          @mixin column-item 5, 1em;
+        }
+      }
+    }
+
+    &.mega-col-6 {
+      & > .sub-menu {
+        & > .menu-item {
+          @mixin column-item 6, 1em;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    @media (--m) {
+      & > .sub-menu {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+    }
   }
 }
