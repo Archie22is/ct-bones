@@ -200,8 +200,6 @@ add_action('wp', function() {
 }, 10);
 
 if (class_exists('WooCommerce')) {
-	require get_template_directory() . '/inc/woocommerce.php';
-
   include_once CODETOT_DIR . '/helpers/woocommerce.php';
 
   require_once CODETOT_DIR . '/woocommerce/init.php';
