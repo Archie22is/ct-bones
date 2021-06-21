@@ -22,7 +22,9 @@ const checkjQueryUIStyle = () => {
 
   if (datePickerEl && datePickerTrigger) {
     setTimeout(() => {
-      initStyle('https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css')
+      initStyle(
+        'https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css'
+      )
     }, 10000)
   }
 }

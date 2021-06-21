@@ -56,11 +56,17 @@ export default el => {
       const $currentNav = $(sliderWrapper).find('li.is-active')
 
       if ($currentSlide.hasClass('has-video')) {
-        $currentSlide.removeClass('has-video').addClass('has-variation-change').find('.js-video').remove()
+        $currentSlide
+          .removeClass('has-video')
+          .addClass('has-variation-change')
+          .find('.js-video')
+          .remove()
       }
 
       if ($currentNav.hasClass('has-video-icon')) {
-        $currentNav.removeClass('has-video-icon').addClass('has-variation-change')
+        $currentNav
+          .removeClass('has-video-icon')
+          .addClass('has-variation-change')
       }
     })
   }
