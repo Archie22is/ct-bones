@@ -61,13 +61,13 @@ if (!is_front_page()) {
     ));
 
     the_block('default-section', array(
-      'class' => 'default-section--no-container has-3-columns',
+      'class' => 'section default-section--no-container has-3-columns',
       'content' => $content
     ));
 
     if ($post_count > 3) {
       the_block('post-list', array(
-        'class' => 'default-section--no-container',
+        'class' => 'section default-section--no-container',
         'query' => $wp_query,
         'offset' => 3
       ));
