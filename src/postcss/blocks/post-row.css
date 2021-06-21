@@ -1,5 +1,16 @@
-.post-row__image {
-  @mixin ratio 3/4;
+.post-row__meta-date {
+  color: var(--dark);
+  opacity: 0.75;
+}
+
+.post-row__meta-link {
+  color: var(--primary);
+
+  &:hover {
+    @media (--m) {
+      color: var(--dark);
+    }
+  }
 }
 
 .post-row__col--image {
@@ -7,6 +18,14 @@
 
   @media (--xs) {
     width: 140px;
+  }
+
+  @media (--s) {
+    width: 200px;
+  }
+
+  @media (--sm) {
+    width: 240px;
   }
 }
 
