@@ -32,6 +32,12 @@
   width: 100%;
 }
 
+.form-row.woocommerce-invalid {
+  & .input-text {
+    border-color: var(--red);
+  }
+}
+
 .woocommerce ul {
   list-style: none;
 }

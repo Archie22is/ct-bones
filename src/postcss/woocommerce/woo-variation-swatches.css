@@ -3,7 +3,10 @@
   font-weight: var(--font-normal);
 }
 
-.woo-variation-swatches .variations_form .variations .woo-selected-variation-item-name {
+.woo-variation-swatches
+  .variations_form
+  .variations
+  .woo-selected-variation-item-name {
   opacity: 1;
   color: var(--primary);
   font-weight: var(--font-bold);

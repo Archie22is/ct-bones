@@ -114,6 +114,13 @@ class Codetot_CT_Theme_Settings
           'desc'    => __('Display mega menu in Primary Menu', 'ct-bones'),
           'style'     => 'rounded',
         ],
+        [
+          'name'    => __('Store Locator Maps', 'ct-bones'),
+          'id'      => $this->filter_prefix . 'enable_store_locator_map',
+          'type'    => 'switch',
+          'style'   => 'rounded',
+          'desc' => __('Enable maps with multiple store locations.', 'ct-bones')
+        ],
       ],
     ];
 

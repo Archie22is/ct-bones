@@ -164,10 +164,8 @@ define('CODETOT_ASSETS_URI ', get_template_directory_uri(). '/assets');
 include_once CODETOT_DIR . '/helpers/acf.php';
 include_once CODETOT_DIR . '/helpers/metabox.php';
 include_once CODETOT_DIR . '/helpers/generator.php';
+include_once CODETOT_DIR . '/helpers/template-tags.php';
 include_once CODETOT_DIR . '/helpers/deprecated.php';
-
-include_once get_template_directory() . '/inc/template-tags.php';
-include_once get_template_directory() . '/inc/template-functions.php';
 
 require_once CODETOT_DIR . '/theme-init.php';
 require_once CODETOT_DIR . '/assets.php';
@@ -190,7 +188,7 @@ require_once CODETOT_DIR . '/widgets/ct-icon-box.php';
 require_once CODETOT_DIR . '/widgets/ct-company-info.php';
 require_once CODETOT_DIR . '/widgets/ct-recent-posts.php';
 
-require_once CODETOT_DIR . '/features/store.php';
+require_once CODETOT_DIR . '/features/store-locator.php';
 require_once CODETOT_DIR . '/features/google-maps.php';
 
 add_action('wp', function() {
@@ -202,13 +200,7 @@ add_action('wp', function() {
   require_once CODETOT_DIR . '/features/facebook-comments.php';
 }, 10);
 
-if (defined('JETPACK__VERSION')) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
-
 if (class_exists('WooCommerce')) {
-	require get_template_directory() . '/inc/woocommerce.php';
-
   include_once CODETOT_DIR . '/helpers/woocommerce.php';
 
   require_once CODETOT_DIR . '/woocommerce/init.php';
