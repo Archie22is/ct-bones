@@ -12,10 +12,6 @@
   & + .section {
     margin-top: var(--section-space);
   }
-
-  & + .section-bg {
-    padding-top: 0;
-  }
 }
 
 .section--hide-mobile {
