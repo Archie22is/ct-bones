@@ -68,6 +68,13 @@ class Codetot_CT_Theme_WooCommerce_Settings
       ),
       array(
         'type' => 'switch',
+        'name' => __('Short Description in Quick View', 'ct-bones'),
+        'id'   => $this->prefix . 'woocommerce_enable_description_in_quick_view',
+        'std'  => 1,
+        'desc' => __('Display short description in quick view popup when click on product in listing page.', 'ct-bones')
+      ),
+      array(
+        'type' => 'switch',
         'name' => __('Product Video', 'ct-bones'),
         'id'   => $this->prefix . 'woocommerce_enable_product_video',
         'std'  => 1,
