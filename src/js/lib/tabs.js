@@ -4,7 +4,8 @@ import {
   setAttribute,
   trigger,
   addClass,
-  removeClass
+  removeClass,
+  inViewPort
 } from 'lib/dom'
 
 export default (el, customOptions = {}) => {
@@ -40,7 +41,9 @@ export default (el, customOptions = {}) => {
             }
           }
 
-          navItems[index].focus()
+          if (inViewPort(el)) {
+            navItems[index].focus()
+          }
         } else {
           setAttribute('aria-selected', 'false', navItems[index])
           removeClass(options.activeNavClass, navItems[index])
@@ -83,19 +86,13 @@ export default (el, customOptions = {}) => {
     navItems
   )
 
-  on(
-    'load',
-    () => {
-      trigger(
-        {
-          event: 'update',
-          data: {
-            currentIndex: 0
-          }
-        },
-        el
-      )
+  trigger(
+    {
+      event: 'update',
+      data: {
+        currentIndex: 0
+      }
     },
-    window
+    el
   )
 }
