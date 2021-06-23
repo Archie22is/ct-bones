@@ -96,7 +96,7 @@ function codetot_wp_nav_menu_objects( $items, $args ) {
     if ($is_enable == true && $item->menu_item_parent == 0) {
       $item->classes[] = 'has-mega-menu';
       $item->classes[] = 'mega-'.$column['value'];
-      $items_has_mega[] = $item;
+      // $items_has_mega[] = $item;
     }
 
 	}

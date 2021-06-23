@@ -988,6 +988,9 @@
       border-top: 2px solid var(--primary);
       opacity: 0;
       visibility: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease-out;
+      overflow: hidden;
 
       & > .menu-item {
         position: relative;
@@ -1060,6 +1063,9 @@
       & > .sub-menu {
         opacity: 1 !important;
         visibility: visible !important;
+        max-height: 800px;
+        transition: max-height 0.3s ease-in;
+        overflow-y: scroll;
       }
     }
   }
