@@ -71,13 +71,15 @@ class Codetot_Acf {
 
   public function load_button_styles($field) {
     $field['choices'] = apply_filters('codetot_button_styles', array(
-      'primary' => __('Primary', 'ct-bones'),
-      'secondary' => __('Secondary', 'ct-bones'),
-      'dark' => __('Dark', 'ct-bones'),
-      'outline' => __('Outline', 'ct-bones'),
-      'outline-white' => __('Outline (Dark Background)', 'ct-bones'),
-      'link' => __('Link', 'ct-bones'),
-      'link-white' => __('Link (Dark Background)', 'ct-bones')
+      'primary' => __('Primary: White Text - Primary Background', 'ct-bones'),
+      'secondary' => __('Secondary: White Text - Secondary Background', 'ct-bones'),
+      'dark' => __('Dark: White Text - Dark Background', 'ct-bones'),
+      'white' => __('White: Dark Text - White Background', 'ct-bones'),
+      'outline' => __('Outline: Dark Border and Text - No Background', 'ct-bones'),
+      'outline-primary' => __('Outline Primary: Primary Border and Text - No Background'),
+      'outline-white' => __('Outline White: White Border and Text - No Background', 'ct-bones'),
+      'link' => __('Link: Dark Text and Line', 'ct-bones'),
+      'link-white' => __('Link White: White Text and Line', 'ct-bones')
     ));
 
     return $field;
