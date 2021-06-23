@@ -415,14 +415,26 @@ class Codetot_Woocommerce_Layout_Product
     if (count($attachment_ids) > $columns) {
       $available_items_number = count($attachment_ids) - $columns;
 
+      $attachment_ids = array_slice($attachment_ids, $columns);
+      $first_img_id = $attachment_ids[0];
+      $img_first = wp_get_attachment_image_src($first_img_id,'full');
+      $img_first_url = $img_first[0];
+
       echo '<div class="align-c product-gallery__bottom">';
       the_block('button', array(
         'button' => sprintf(_n('View more %s images', 'View more %s images', 'ct-bones', $available_items_number), $available_items_number),
         'type' => 'link',
         'class' => 'product-gallery__button',
-        'atts' => ' data-open-modal="product-gallery"'
+        'attr' => ' data-fancybox="gallery"',
+        'url' => $img_first_url
       ));
       echo '</div>';
+
+      $attachment_ids = array_slice($attachment_ids, 1);
+      foreach ($attachment_ids as $id_img) {
+        $img = wp_get_attachment_image_src($id_img,'full');
+        echo sprintf('<a class="product-gallery__item" data-fancybox="gallery" href="%s"><img class="product-gallery__img" src="%s" /></a>', $img[0], $img[0]);
+      }
     }
   }
 
