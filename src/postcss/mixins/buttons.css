@@ -72,6 +72,16 @@
   }
 }
 
+@define-mixin button-style-white {
+  background: var(--white);
+  color: var(--dark);
+
+  &:hover {
+    background: var(--dark);
+    color: var(--white);
+  }
+}
+
 @define-mixin button-style-outline {
   border: 1px solid var(--primary);
   background: none;
