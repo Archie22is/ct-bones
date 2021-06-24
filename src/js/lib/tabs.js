@@ -4,8 +4,7 @@ import {
   setAttribute,
   trigger,
   addClass,
-  removeClass,
-  inViewPort
+  removeClass
 } from 'lib/dom'
 
 export default (el, customOptions = {}) => {
@@ -39,10 +38,6 @@ export default (el, customOptions = {}) => {
             if (typeof options.lazyloadCallback === 'function') {
               options.lazyloadCallback(navItems[index], panels[index])
             }
-          }
-
-          if (inViewPort(el)) {
-            navItems[index].focus()
           }
         } else {
           setAttribute('aria-selected', 'false', navItems[index])

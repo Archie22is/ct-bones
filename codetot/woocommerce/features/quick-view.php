@@ -127,8 +127,16 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
         </div>
         <div class="quick-view-modal__summary">
           <?php
-          remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
-          do_action('woocommerce_single_product_summary');
+            remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
+            remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+            do_action('woocommerce_single_product_summary');
+
+            $enable_excerpt = get_global_option('codetot_woocommerce_enable_description_in_quick_view');
+            if ($enable_excerpt) {
+              echo '<div class="wysiwyg woocommerce-product-details__short-description">';
+              the_excerpt();
+              echo '</div>';
+            }
           ?>
         </div>
         <?php
