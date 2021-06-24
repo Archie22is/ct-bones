@@ -16,6 +16,10 @@
   @mixin button-style-dark;
 }
 
+.button--white {
+  @mixin button-style-white;
+}
+
 .button--outline,
 .button--outline-white {
   display: inline-flex;

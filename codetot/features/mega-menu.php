@@ -84,22 +84,22 @@ if (!empty($has_mega)):
     ));
 
     endif;
+
+  add_filter('wp_nav_menu_objects', 'codetot_wp_nav_menu_objects', 10, 2);
+  function codetot_wp_nav_menu_objects( $items, $args ) {
+      foreach( $items as &$item ) {
+        $is_enable = get_field('display_mega_menu', $item);
+        $column = get_field('column', $item);
+          if ($is_enable == true && $item->menu_item_parent == 0) {
+            $item->classes[] = 'has-mega-menu';
+            $item->classes[] = 'mega-'.$column['value'];
+            // $items_has_mega[] = $item;
+          }
+      }
+
+    return $items;
+  }
 endif;
 
 
-add_filter('wp_nav_menu_objects', 'codetot_wp_nav_menu_objects', 10, 2);
-function codetot_wp_nav_menu_objects( $items, $args ) {
-	foreach( $items as &$item ) {
-    $is_enable = get_field('display_mega_menu', $item);
-    $column = get_field('column', $item);
 
-    if ($is_enable == true && $item->menu_item_parent == 0) {
-      $item->classes[] = 'has-mega-menu';
-      $item->classes[] = 'mega-'.$column['value'];
-      // $items_has_mega[] = $item;
-    }
-
-	}
-
-	return $items;
-}

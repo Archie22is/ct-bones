@@ -7,7 +7,7 @@ $remove_footer_copyright = get_global_option('codetot_settings_remove_theme_copy
 $footer_copyright = codetot_get_footer_copyright();
 $hide_social_links = get_global_option('codetot_settings_footer_hide_social_links') ?? false;
 
-$footer_class = 'footer';
+$footer_class = 'mt-2 footer';
 $footer_class .= !empty($footer_background) ? ' bg-' . esc_attr($footer_background) : ' bg-dark';
 $footer_class .= !empty($columns) ? ' footer--' . $columns . '-columns' : '';
 
