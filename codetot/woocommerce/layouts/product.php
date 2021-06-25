@@ -84,8 +84,8 @@ class Codetot_Woocommerce_Layout_Product
     add_action('woocommerce_before_single_product_summary', array($this, 'single_product_column_open'), 15); // .grid__col
     add_action('woocommerce_before_single_product_summary', array($this, 'change_sale_flash_in_gallery'), 16);
 
-    add_action('woocommerce_product_thumbnails', array($this, 'single_product_gallery_nav'), 20 );
-    add_action('woocommerce_before_single_product_summary', array($this, 'render_bottom_product_gallery'), 40);
+    add_action('woocommerce_product_thumbnails', 'codetot_render_single_product_gallery_nav', 20 );
+    add_action('woocommerce_before_single_product_summary', 'codetot_render_bottom_product_gallery', 40);
     add_action('woocommerce_before_single_product_summary', array($this, 'single_product_column_close'), 50); // /.grid__col
 
     // Column: Product Detail (Right)
@@ -403,41 +403,6 @@ class Codetot_Woocommerce_Layout_Product
     endif;
   }
 
-  public function single_product_gallery_nav() {
-    the_block('product-gallery-nav');
-  }
-
-  public function render_bottom_product_gallery() {
-    global $product;
-    $columns = apply_filters( 'woocommerce_product_thumbnails_columns', 5);
-    $attachment_ids = $product->get_gallery_image_ids();
-
-    if (count($attachment_ids) > $columns) {
-      $available_items_number = count($attachment_ids) - $columns;
-
-      $attachment_ids = array_slice($attachment_ids, $columns);
-      $first_img_id = $attachment_ids[0];
-      $img_first = wp_get_attachment_image_src($first_img_id,'full');
-      $img_first_url = $img_first[0];
-
-      echo '<div class="align-c product-gallery__bottom">';
-      the_block('button', array(
-        'button' => sprintf(_n('View more %s images', 'View more %s images', 'ct-bones', $available_items_number), $available_items_number),
-        'type' => 'link',
-        'class' => 'product-gallery__button',
-        'attr' => ' data-fancybox="gallery"',
-        'url' => $img_first_url
-      ));
-      echo '</div>';
-
-      $attachment_ids = array_slice($attachment_ids, 1);
-      foreach ($attachment_ids as $id_img) {
-        $img = wp_get_attachment_image_src($id_img,'full');
-        echo sprintf('<a class="product-gallery__item" data-fancybox="gallery" href="%s"><img class="product-gallery__img" src="%s" /></a>', $img[0], $img[0]);
-      }
-    }
-  }
-
   public function print_errors()
   {
     if (is_singular('product')) {
@@ -490,6 +455,50 @@ class Codetot_Woocommerce_Layout_Product
   public function product_image_thumbnail_html($html) {
     return preg_replace( "!<(a|/a).*?>!", '', $html );
   }
+}
+
+function codetot_render_bottom_product_gallery() {
+  global $product;
+
+  $default_columns = apply_filters( 'woocommerce_product_thumbnails_columns', 5);
+  $columns = (int) get_global_option('codetot_woocommerce_product_thumbnails_columns') ?? $default_columns;
+  $attachment_ids = $product->get_gallery_image_ids();
+
+  if (count($attachment_ids) > $columns) {
+    $more_count = count($attachment_ids) - (int) $columns;
+
+    $attachment_ids = array_slice($attachment_ids, $columns);
+    $first_img_id = $attachment_ids[0];
+    $img_first = wp_get_attachment_image_src($first_img_id,'full');
+    $img_first_url = $img_first[0];
+
+    echo '<div class="align-c product-gallery__bottom">';
+    the_block('button', array(
+      'button' => sprintf(_n('View more %s images', 'View more %s images', 'ct-bones', $more_count), $more_count),
+      'type' => 'link',
+      'class' => 'product-gallery__button',
+      'attr' => ' data-fancybox="gallery"',
+      'url' => $img_first_url
+    ));
+    echo '</div>';
+
+    $attachment_ids = array_slice($attachment_ids, 1);
+    foreach ($attachment_ids as $attachment_id) {
+      $small_image = wp_get_attachment_image_src($attachment_id, 'thumbnail');
+      $attachment_image = wp_get_attachment_image_src($attachment_id, 'full');
+
+      printf('<a class="product-gallery__item" data-fancybox="gallery" href="%1$s"><img class="product-gallery__img" src="%2$s" width="%3$s" height="%4$s" alt="" /></a>',
+        $attachment_image[0],
+        $small_image[0],
+        $small_image[1],
+        $small_image[2]
+      );
+    }
+  }
+}
+
+function codetot_render_single_product_gallery_nav() {
+  the_block('product-gallery-nav');
 }
 
 function codetot_render_related_products() {
