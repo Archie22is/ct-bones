@@ -1065,7 +1065,7 @@
         visibility: visible !important;
         max-height: 800px;
         transition: max-height 0.3s ease-in;
-        overflow-y: scroll;
+        overflow-y: auto;
       }
     }
   }

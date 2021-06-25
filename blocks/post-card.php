@@ -20,6 +20,11 @@ $_format_date = !empty($format_date) ? $format_date : get_option('format_date');
 $post_date = get_the_date($_format_date);
 $word_count = !empty($post_description_length) ? (int) $post_description_length :  (int) apply_filters('codetot_post_card_excerpt_number', 20);
 
+if ( is_archive() || is_category() || is_search()) {
+  $post_title = get_the_title();
+}else {
+  $post_title = wp_trim_words(get_the_title(), $title_num_words, '...');
+}
 ?>
 <article class="<?php echo $_class; ?>">
   <div class="post-card__wrapper">
@@ -58,7 +63,7 @@ $word_count = !empty($post_description_length) ? (int) $post_description_length 
       </p>
     <?php endif; ?>
     <h3 class="post-card__title">
-      <a class="post-card__link" href="<?php the_permalink(); ?>"><?php echo wp_trim_words(get_the_title(), $title_num_words, '...'); ?></a>
+      <a class="post-card__link" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo $post_title; ?></a>
     </h3>
     <?php if ($_display_author) : ?>
       <p class="post-card__author">
