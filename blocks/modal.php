@@ -34,7 +34,7 @@ if (!empty($id) && !empty($content)) :
           <?php echo $header; ?>
         </div>
       <?php endif; ?>
-      <div class="modal__content">
+      <div class="modal__content js-content<?php if (isset($lazyload)) : echo ' is-not-loaded'; endif; ?>">
         <?php echo $content; ?>
       </div>
       <?php if (!isset($hide_close_button)) : ?>

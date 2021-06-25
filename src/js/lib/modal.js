@@ -1,4 +1,11 @@
-import { on, selectAll, trigger, addClass, removeClass } from 'lib/dom'
+import {
+  on,
+  selectAll,
+  trigger,
+  addClass,
+  removeClass,
+  loadNoscriptContent
+} from 'lib/dom'
 import { map } from 'lib/utils'
 
 const mergeTwoArrays = (oldArray, newArray) => {
@@ -34,11 +41,16 @@ export default (el, customOptions = {}) => {
     activeClass: 'modal--visible',
     openTriggers: ['a[href="#ID"]', '[data-open-modal="ID"]'],
     closeTriggers: ['[data-close-modal="ID"]'],
+    lazyload: false,
     enableClickOverlay: true
   }
 
   const options = { ...defaultOptions, ...customOptions }
   const activate = () => {
+    if (options.lazyload) {
+      loadNoscriptContent(el)
+    }
+
     addClass(BODY_MODAL_CLASS, body)
     addClass(options.activeClass, el)
   }
