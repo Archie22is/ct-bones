@@ -459,11 +459,13 @@ class Codetot_Woocommerce_Layout_Product
 
 function codetot_render_bottom_product_gallery() {
   global $product;
-  $columns = apply_filters( 'woocommerce_product_thumbnails_columns', 5);
+
+  $default_columns = apply_filters( 'woocommerce_product_thumbnails_columns', 5);
+  $columns = (int) get_global_option('codetot_woocommerce_product_thumbnails_columns') ?? $default_columns;
   $attachment_ids = $product->get_gallery_image_ids();
 
   if (count($attachment_ids) > $columns) {
-    $available_items_number = count($attachment_ids) - $columns;
+    $more_count = count($attachment_ids) - (int) $columns;
 
     $attachment_ids = array_slice($attachment_ids, $columns);
     $first_img_id = $attachment_ids[0];
@@ -472,7 +474,7 @@ function codetot_render_bottom_product_gallery() {
 
     echo '<div class="align-c product-gallery__bottom">';
     the_block('button', array(
-      'button' => sprintf(_n('View more %s images', 'View more %s images', 'ct-bones', $available_items_number), $available_items_number),
+      'button' => sprintf(_n('View more %s images', 'View more %s images', 'ct-bones', $more_count), $more_count),
       'type' => 'link',
       'class' => 'product-gallery__button',
       'attr' => ' data-fancybox="gallery"',
@@ -481,9 +483,16 @@ function codetot_render_bottom_product_gallery() {
     echo '</div>';
 
     $attachment_ids = array_slice($attachment_ids, 1);
-    foreach ($attachment_ids as $id_img) {
-      $img = wp_get_attachment_image_src($id_img,'full');
-      echo sprintf('<a class="product-gallery__item" data-fancybox="gallery" href="%s"><img class="product-gallery__img" src="%s" /></a>', $img[0], $img[0]);
+    foreach ($attachment_ids as $attachment_id) {
+      $small_image = wp_get_attachment_image_src($attachment_id, 'thumbnail');
+      $attachment_image = wp_get_attachment_image_src($attachment_id, 'full');
+
+      printf('<a class="product-gallery__item" data-fancybox="gallery" href="%1$s"><img class="product-gallery__img" src="%2$s" width="%3$s" height="%4$s" alt="" /></a>',
+        $attachment_image[0],
+        $small_image[0],
+        $small_image[1],
+        $small_image[2]
+      );
     }
   }
 }
