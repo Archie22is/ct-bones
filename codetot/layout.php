@@ -52,10 +52,6 @@ class Codetot_Theme_Layout
       $this->generate_post_layout();
     }
 
-    if (is_category()) {
-      $this->generate_category_layout();
-    }
-
     $this->generate_default_index_layout();
   }
 
@@ -170,28 +166,6 @@ class Codetot_Theme_Layout
     }, 10);
   }
 
-  public function generate_category_layout() {
-    $sidebar_layout = get_global_option('codetot_category_layout') ?? 'sidebar-right';
-    add_action('codetot_before_archive_main', array($this, 'load_breadcrumbs'), 9);
-
-    add_action('codetot_before_archive_main', function() use ($sidebar_layout) {
-        echo $this->page_block_open('page-block--archive ' . $sidebar_layout, false);
-    }, 10);
-
-    add_action('codetot_after_archive_main', function() use($sidebar_layout) {
-      if ($sidebar_layout !== 'no-sidebar') {
-        echo '</div><div class="grid__col page-block__col page-block__col--sidebar">';
-        dynamic_sidebar('category-sidebar');
-      }
-    }, 9);
-    add_action('codetot_after_archive_main', function() {
-      echo '</div>';// Close .page-block__col
-      echo '</div>'; // Close .page-block__grid
-      echo '</div>'; // Close .page-block__container
-      echo '</div>'; // Close .page-block
-    }, 10);
-  }
-
   public function codetot_share_button() {
     $hide_social_share = get_global_option('codetot_settings_hide_social_share') ?? false;
     if (!$hide_social_share) :
@@ -215,8 +189,16 @@ class Codetot_Theme_Layout
   }
 
   public function generate_default_index_layout() {
+    $sidebar_layout = get_global_option('codetot_category_layout') ?? 'sidebar-right';
+
     add_action('codetot_before_index_main', function() {
-      echo $this->page_block_open('page-block--archive sidebar-right', false);
+      if (is_category()) {
+        $sidebar_layout = get_global_option('codetot_category_layout') ?? 'sidebar-right';
+      } else {
+        $sidebar_layout = get_global_option('codetot_post_layout') ?? 'sidebar-right';
+      }
+
+      echo $this->page_block_open('page-block--archive ' . esc_attr($sidebar_layout), false);
     }, 10);
 
     add_action('codetot_before_index_sidebar', function() {
