@@ -168,8 +168,6 @@ export default el => {
         reset()
       }
     } else {
-      reset()
-
       console.log('DEBUG: There is unknown error with countdown settings.')
     }
   }
