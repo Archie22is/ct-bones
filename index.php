@@ -86,7 +86,13 @@ if (!is_front_page()) {
 </main><!-- #main -->
 
 <?php do_action('codetot_before_index_sidebar'); ?>
-<?php get_sidebar('post-sidebar'); ?>
+<?php
+if (is_category()) {
+  get_sidebar();
+} else {
+  get_sidebar('post-sidebar');
+}
+?>
 <?php do_action('codetot_after_index_main'); ?>
 
 <?php
