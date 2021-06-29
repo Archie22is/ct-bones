@@ -78,7 +78,7 @@
     margin-top: 10px;
 
     & li {
-      display: flex;
+      display: block;
       margin-right: 10px;
       cursor: pointer;
 
@@ -505,7 +505,6 @@
 
 .single-product-tag,
 .single-product-meta {
-  margin-top: 0.5em;
   font-size: 0.9rem;
 
   & .product-meta__value {
