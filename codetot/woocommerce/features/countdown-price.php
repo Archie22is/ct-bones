@@ -34,7 +34,6 @@ class Codetot_WooCommerce_Countdown_Price
 
     if ($enable_countdown_price) {
       add_action('wp', function() {
-        remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
         add_action('woocommerce_single_product_summary', array($this, 'render_countdown_block'), 12);
       }, 20);
 
@@ -52,16 +51,19 @@ class Codetot_WooCommerce_Countdown_Price
     wp_add_inline_script('codetot-countdown-labels', $labels);
   }
 
-  public function format_date_with_time($date, $type = 'end') {
-    if (empty($date)) {
-      return new \WP_Error('not_found', __FUNCTION__ . ': ' . __('Missing date parameter', 'ct-bones'));
+  public function format_date_with_time($timestamp, $type = 'end') {
+    if (empty($timestamp)) {
+      return new \WP_Error('not_found', __FUNCTION__ . ': ' . __('Missing timestamp parameter', 'ct-bones'));
     }
 
-    if ($type === 'end') {
-      return date($this->end_date_format, $date);
-    } else {
-      return date($this->start_date_format, $date);
-    }
+    $timezone = wp_timezone_string();
+    $date_format = $type === 'start' ? $this->start_date_format : $this->end_date_format;
+
+    $date = DateTime::createFromFormat( 'U', $timestamp );
+    $timezone = new DateTimeZone($timezone);
+    $date->setTimeZone($timezone);
+
+    return $date->format($date_format);
   }
 
   public function get_time_range($product)

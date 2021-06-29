@@ -1,50 +1,7 @@
 /* global CODETOT_COUNTDOWN_LABELS */
 import { select, getData, addClass, removeClass } from 'lib/dom'
-
-const getTimeRemaining = (time, type = 'end') => {
-  const total =
-    type === 'end'
-      ? time - Date.parse(new Date())
-      : Date.parse(new Date()) - time
-
-  const seconds = Math.floor((total / 1000) % 60)
-  const minutes = Math.floor((total / 1000 / 60) % 60)
-  const hours = Math.floor((total / (1000 * 60 * 60)) % 24)
-  const days = Math.floor(total / (1000 * 60 * 60 * 24))
-
-  return {
-    total,
-    days,
-    hours,
-    minutes,
-    seconds
-  }
-}
-
-const renderHtml = price => {
-  return `
-    <span class="single-product__price__top"><span class="price">${price}</span></span>
-    <span class="single-product__price__bottom">
-      <span class="single-product__price__label js-label"></span>
-      <span class="single-product__price__countdown js-countdown">
-        <span class="single-product__price__item single-product__price__days js-days"></span>
-        <span class="single-product__price__item single-product__price__hours js-hours"></span>
-        <span class="single-product__price__item single-product__price__minutes js-minutes"></span>
-        <span class="single-product__price__item single-product__price__seconds js-seconds"></span>
-      </span>
-    </span>
-    <span class="single-product__price__notice js-notice"></span>
-  `
-}
-
-const parseDate = dateString => {
-  const parsed = Date.parse(dateString)
-  if (!isNaN(parsed)) {
-    return dateString
-  }
-
-  return Date.parse(dateString.replace(/-/g, '/').replace(/[a-z]+/gi, ' '))
-}
+import { parseDate, getRemainingTime } from 'lib/date'
+import { renderHtml } from 'lib/countdown'
 
 export default el => {
   const startDate = getData('start-date', el) ? parseDate(getData('start-date', el)) : null
@@ -130,7 +87,7 @@ export default el => {
   }
 
   const updateOnGoingTime = () => {
-    const { days, hours, minutes, seconds } = getTimeRemaining(endDate, 'end')
+    const { days, hours, minutes, seconds } = getRemainingTime(endDate, 'end')
 
     updateDay(days)
     updateHour(hours)
@@ -139,7 +96,7 @@ export default el => {
   }
 
   const updateScheduledTime = () => {
-    const { days, hours, minutes, seconds } = getTimeRemaining(
+    const { days, hours, minutes, seconds } = getRemainingTime(
       startDate,
       'start'
     )
@@ -157,11 +114,15 @@ export default el => {
 
     const currentTime = Date.parse(new Date())
 
+    console.log(startDate)
+    console.log(endDate)
+    console.log(currentTime)
+
     if (startDate && startDate > currentTime) {
       updateScheduledTime()
       labelEl.innerHTML = getMessage('not_start')
 
-      const { total } = getTimeRemaining(startDate)
+      const { total } = getRemainingTime(startDate)
 
       if (total <= 0) {
         reset()
@@ -171,7 +132,7 @@ export default el => {
 
       updateOnGoingTime()
 
-      const { total } = getTimeRemaining(endDate)
+      const { total } = getRemainingTime(endDate)
 
       if (total <= 0) {
         reset()
