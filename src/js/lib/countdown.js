@@ -13,13 +13,4 @@ const renderHtml = () => {
   `
 }
 
-export default (el, customOptions) => {
-  const defaultOptions = {
-    labelText: 'Sale ended after',
-    labelSelector: '.js-label'
-  }
-
-  const options = { ...defaultOptions, ...customOptions }
-}
-
 export { renderHtml }
