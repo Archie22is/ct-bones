@@ -207,10 +207,6 @@ class Codetot_WooCommerce_Countdown_Price
       $price_output_html .= '</span>'; // Close .single-product__price--has-discount
 
       echo $price_output_html;
-    } else {
-      echo '<span class="' . esc_attr($_class) . '">';
-      woocommerce_template_single_price();
-      echo '</span>';
     }
   }
 }
