@@ -78,7 +78,7 @@
     margin-top: 10px;
 
     & li {
-      display: flex;
+      display: block;
       margin-right: 10px;
       cursor: pointer;
 
