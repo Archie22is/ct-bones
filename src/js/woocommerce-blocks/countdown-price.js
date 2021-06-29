@@ -37,9 +37,18 @@ const renderHtml = price => {
   `
 }
 
+const parseDate = dateString => {
+  const parsed = Date.parse(dateString)
+  if (!isNaN(parsed)) {
+    return dateString
+  }
+
+  return Date.parse(dateString.replace(/-/g, '/').replace(/[a-z]+/gi, ' '))
+}
+
 export default el => {
-  const startDate = Date.parse(getData('start-date', el))
-  const endDate = Date.parse(getData('end-date', el))
+  const startDate = getData('start-date', el) ? parseDate(getData('start-date', el)) : null
+  const endDate = getData('end-date', el) ? parseDate(getData('end-date', el)) : null
   const labels = CODETOT_COUNTDOWN_LABELS
     ? JSON.parse(CODETOT_COUNTDOWN_LABELS)
     : []
