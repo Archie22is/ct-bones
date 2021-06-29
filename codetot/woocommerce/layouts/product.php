@@ -274,7 +274,7 @@ class Codetot_Woocommerce_Layout_Product
   public function woocommerce_single_meta() {
     global $product;
 
-    echo  '<div class="single-product-meta">';
+    echo  '<div class="mt-05 single-product-meta">';
 
     do_action( 'woocommerce_product_meta_start' );
 
