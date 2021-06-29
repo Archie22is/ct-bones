@@ -25,7 +25,9 @@ export default el => {
     const matchingLabel =
       parseInt(number) > 0 ? labels[type].plural : labels[type].singular
 
-    return `<span class="single-product__price__bottom__inner"><span class="number">${number}</span> <span class="unit">${matchingLabel}</span></span>`
+    const displayNumber = number > 1 ? number : 0
+
+    return `<span class="single-product__price__bottom__inner"><span class="number">${displayNumber}</span> <span class="unit">${matchingLabel}</span></span>`
   }
 
   const getMessage = messageType => labels['message'][messageType]
@@ -60,9 +62,8 @@ export default el => {
     if (daysEl) {
       daysEl.innerHTML = getLabels(days, 'days')
 
-      if (days < 1) {
+      if (days <= 1) {
         displayMessage('less_day')
-        addClass('hide-day', el)
       }
     }
   }
@@ -73,7 +74,6 @@ export default el => {
 
       if (hours < 1) {
         displayMessage('less_hour')
-        addClass('hide-hour', el)
       }
     }
   }
@@ -91,24 +91,25 @@ export default el => {
   }
 
   const updateOnGoingTime = () => {
-    const { days, hours, minutes, seconds } = getRemainingTime(endDate, 'end')
+    if (getRemainingTime(endDate)) {
+      const { days, hours, minutes, seconds } = getRemainingTime(endDate)
 
-    updateDay(days)
-    updateHour(hours)
-    updateMinute(minutes)
-    updateSecond(seconds)
+      updateDay(days)
+      updateHour(hours)
+      updateMinute(minutes)
+      updateSecond(seconds)
+    }
   }
 
   const updateScheduledTime = () => {
-    const { days, hours, minutes, seconds } = getRemainingTime(
-      startDate,
-      'start'
-    )
+    if (getRemainingTime(startDate)) {
+      const { days, hours, minutes, seconds } = getRemainingTime(startDate)
 
-    updateDay(days)
-    updateHour(hours)
-    updateMinute(minutes)
-    updateSecond(seconds)
+      updateDay(days)
+      updateHour(hours)
+      updateMinute(minutes)
+      updateSecond(seconds)
+    }
   }
 
   const updateRemainingTime = () => {
@@ -118,31 +119,35 @@ export default el => {
 
     const currentTime = Date.parse(new Date())
 
-    console.log(startDate)
-    console.log(endDate)
-    console.log(currentTime)
-
     if (startDate && startDate > currentTime) {
       updateScheduledTime()
       labelEl.innerHTML = getMessage('not_start')
 
-      const { total } = getRemainingTime(startDate)
+      if (getRemainingTime(startDate)) {
+        const { total } = getRemainingTime(startDate)
 
-      if (total <= 0) {
-        reset()
+        if (total <= 0) {
+          reset()
+        }
+      } else {
+        console.error(['error with endDate', startDate])
       }
     } else if (endDate && endDate >= currentTime) {
       labelEl.innerHTML = getMessage('ongoing')
 
       updateOnGoingTime()
 
-      const { total } = getRemainingTime(endDate)
+      if (getRemainingTime(endDate)) {
+        const { total } = getRemainingTime(endDate)
 
-      if (total <= 0) {
-        reset()
+        if (total <= 0) {
+          reset()
+        }
+      } else {
+        console.error(['error with endDate', endDate])
       }
     } else {
-      console.log('DEBUG: There is unknown error with countdown settings.')
+      console.error(['no matching startDate or endDate', startDate, endDate])
     }
   }
 

@@ -29,8 +29,8 @@ class Codetot_WooCommerce_Countdown_Price
   {
     $enable_countdown_price = get_global_option('codetot_woocommerce_enable_countdown_price') ?? true;
     $this->countdown_style = get_global_option('codetot_woocommerce_countdown_product_style') ?? 'default';
-    $this->start_date_format = 'Y-m-d 00:00:00';
-    $this->end_date_format = 'Y-m-d 23:59:59';
+    $this->start_date_format = 'D M d Y 00:00:00 O';
+    $this->end_date_format = 'D M d Y 23:59:59 O';
 
     if ($enable_countdown_price) {
       add_action('wp', function() {
@@ -51,16 +51,20 @@ class Codetot_WooCommerce_Countdown_Price
     wp_add_inline_script('codetot-countdown-labels', $labels);
   }
 
+  public function get_timezone() {
+    $wp_timezone = wp_timezone_string();
+
+    return new DateTimeZone($wp_timezone);
+  }
+
   public function format_date_with_time($timestamp, $type = 'end') {
     if (empty($timestamp)) {
       return new \WP_Error('not_found', __FUNCTION__ . ': ' . __('Missing timestamp parameter', 'ct-bones'));
     }
 
-    $timezone = wp_timezone_string();
+    $timezone = $this->get_timezone();
     $date_format = $type === 'start' ? $this->start_date_format : $this->end_date_format;
-
     $date = DateTime::createFromFormat( 'U', $timestamp );
-    $timezone = new DateTimeZone($timezone);
     $date->setTimeZone($timezone);
 
     return $date->format($date_format);
@@ -77,8 +81,8 @@ class Codetot_WooCommerce_Countdown_Price
 
       if (!empty($start_date_timestamp) && !empty($end_time_timestamp)):
         $output = array(
-          'from' => $this->format_date_with_time($start_date_timestamp),
-          'to' => $this->format_date_with_time($end_time_timestamp)
+          'from' => $this->format_date_with_time($start_date_timestamp, 'start'),
+          'to' => $this->format_date_with_time($end_time_timestamp, 'end')
         );
       endif;
 
