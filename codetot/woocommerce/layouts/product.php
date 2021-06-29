@@ -280,7 +280,7 @@ class Codetot_Woocommerce_Layout_Product
 
     if ( wc_product_sku_enabled() && !empty($product->get_sku()) ) :
       printf('<p class="product-meta product-meta--sku"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
-      esc_html__( 'SKU: ', 'woocommerce' ),
+      str_replace(':', '', esc_html__( 'SKU: ', 'woocommerce' )),
       $product->get_sku()
     );
     endif;
