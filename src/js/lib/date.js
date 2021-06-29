@@ -1,5 +1,6 @@
 const parseDate = dateString => {
-  const formattedDate = dateString.replace(/[a-z]+/gi, ' ').replace(/ /g, 'T') + 'Z'
+  const formattedDate =
+    dateString.replace(/[a-z]+/gi, ' ').replace(/ /g, 'T') + 'Z'
   const parsed = Date.parse(formattedDate)
 
   return parsed
@@ -25,7 +26,4 @@ const getRemainingTime = (time, type = 'end') => {
   }
 }
 
-export {
-  parseDate,
-  getRemainingTime
-}
+export { parseDate, getRemainingTime }

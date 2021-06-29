@@ -4,8 +4,12 @@ import { parseDate, getRemainingTime } from 'lib/date'
 import { renderHtml } from 'lib/countdown'
 
 export default el => {
-  const startDate = getData('start-date', el) ? parseDate(getData('start-date', el)) : null
-  const endDate = getData('end-date', el) ? parseDate(getData('end-date', el)) : null
+  const startDate = getData('start-date', el)
+    ? parseDate(getData('start-date', el))
+    : null
+  const endDate = getData('end-date', el)
+    ? parseDate(getData('end-date', el))
+    : null
   const labels = CODETOT_COUNTDOWN_LABELS
     ? JSON.parse(CODETOT_COUNTDOWN_LABELS)
     : []

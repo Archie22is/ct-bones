@@ -22,6 +22,4 @@ export default (el, customOptions) => {
   const options = { ...defaultOptions, ...customOptions }
 }
 
-export {
-  renderHtml
-}
+export { renderHtml }
