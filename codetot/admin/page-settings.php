@@ -41,7 +41,7 @@ class Codetot_Page_Settings
           array(
             'key' => 'field_60dc3cc3cccd4',
             'label' => 'Page Body Class',
-            'name' => 'page_body_class',
+            'name' => 'codetot_page_class',
             'type' => 'textarea',
             'instructions' => '',
             'required' => 0,
@@ -79,7 +79,7 @@ class Codetot_Page_Settings
           array(
             'key' => 'field_60dc3cd5cccd5',
             'label' => 'Page CSS',
-            'name' => 'page_css',
+            'name' => 'codetot_page_stylesheet_css',
             'type' => 'textarea',
             'instructions' => '',
             'required' => 0,
