@@ -1,5 +1,6 @@
 <?php
 $_no_lazyload = isset($lazyload) && $lazyload ? $lazyload : false;
+$_size = !empty($size) ? $size : 'full';
 
 if (!empty($image) && !empty($class)) :
   $image_id = false;
@@ -17,7 +18,7 @@ if (!empty($image) && !empty($class)) :
     <?php
     if (!$_no_lazyload) {
       ob_start();
-      echo wp_get_attachment_image($image_id, 'full', null, array(
+      echo wp_get_attachment_image($image_id, $_size, null, array(
         'class' => 'image__img lazyload'
       ));
       $image_html = ob_get_clean();
