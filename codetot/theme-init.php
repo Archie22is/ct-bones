@@ -181,12 +181,27 @@ class Codetot_Theme_Init
 
   public function page_body_class($classes)
   {
-    if (!function_exists('rwmb_meta')) {
-      return $classes;
-    }
+    if (is_page() && is_page_template('flexible')) {
+      $page_id = get_the_ID();
 
-    if (is_page() && !empty(rwmb_meta('codetot_page_class'))) {
-      $classes[] = esc_attr(rwmb_meta('codetot_page_class'));
+      $page_class = get_field('page_body_class', $page_id);
+      $remove_footer = get_post_meta($page_id, 'remove_footer_top_spacing') ?? false;
+
+      if (!empty($page_class)) {
+        $classes[] = $page_class;
+      } else {
+        $old_class = rwmb_meta('codetot_page_class') ?? '';
+
+        // Migrate to new field
+        if (!empty($old_class)) {
+          update_post_meta($page_id, 'page_body_class', esc_attr($old_class));
+          update_post_meta($page_id, 'codetot_page_class', '');
+        }
+      }
+
+      if ($remove_footer) {
+        $classes[] = 'remove-top-footer-space';
+      }
     }
 
     return $classes;
