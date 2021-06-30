@@ -60,6 +60,7 @@ class Codetot_Acf {
     // Block Presets
     add_filter('acf/load_field/name=block_preset', array($this, 'load_block_presets'));
     add_filter('acf/load_field/name=block_spacing', array($this, 'load_block_spacing'));
+    add_filter('acf/load_field/name=block_container', array($this, 'load_block_container'));
 
     // Contact Section - Layout Settings
     add_filter('acf/load_field/name=contact_primary_layout', array($this, 'load_primary_layouts'));
@@ -189,13 +190,17 @@ class Codetot_Acf {
   }
 
   public function load_block_spacing($field) {
-    $field['choices'] = apply_filters('codetot_block_spacing', array(
-      '' => __('Default', 'ct-bones'),
-      's' => __('Small', 'ct-bones'),
-      'm' => __('Medium', 'ct-bones'),
-      'l' => __('Large', 'ct-bones'),
-      'fullscreen' => __('Fullscreen', 'ct-bones')
-    ));
+    $default_spacing = codetot_block_vertical_spaces();
+
+    $field['choices'] = apply_filters('codetot_block_spacing', $default_spacing);
+
+    return $field;
+  }
+
+  public function load_block_container($field) {
+    $default_container_options = codetot_container_layout_options();
+
+    $field['choices'] = apply_filters('codetot_block_container_choices', $default_container_options);
 
     return $field;
   }

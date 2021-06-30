@@ -164,6 +164,13 @@ function codetot_sidebar_layouts()
     );
 }
 
+function codetot_container_layout_options() {
+  return array(
+    'fullwidth' => __('Fullwidth', 'ct-bones'),
+    'boxed' => __('Boxed', 'ct-bones'),
+  );
+}
+
 function codetot_container_layouts() {
     return array(
         'boxed' => CODETOT_ADMIN_ASSETS_URI . '/container-boxed.svg',
