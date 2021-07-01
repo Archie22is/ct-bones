@@ -66,14 +66,22 @@
   & .button,
   & .woocommerce-Button {
     @mixin button-normal;
-    @mixin button-style-primary;
+    @mixin button-style-outline;
 
-    float: right;
     margin: 0 0.5em;
     color: var(--white);
+    border-color: var(--white);
   }
 }
 
+.woocommerce-MyAccount-content {
+  & .woocommerce-message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+  }
+}
 .woocommerce-form-coupon-toggle {
   & .woocommerce-info {
     & .showcoupon {
