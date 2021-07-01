@@ -39,7 +39,7 @@
   background: var(--white);
   border-radius: var(--border-radius);
   overflow: hidden;
-  box-shadow: 0 5px 20px rgba(34,34, 34, 0.1);
+  box-shadow: 0 5px 20px rgba(34, 34, 34, 0.1);
 
   & .post-card__meta-category {
     padding: 3px 8px;
