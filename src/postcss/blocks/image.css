@@ -42,8 +42,7 @@
 }
 
 .image-placeholder {
-  @mixin ratio 2/3;
-
+  position: relative;
   background: var(--light);
   overflow: hidden;
 }
@@ -52,12 +51,8 @@
   @mixin ratio 9/16;
 }
 
-.image-placeholder__image {
-  @mixin abs-full;
-}
-
 .image-placeholder--icon {
-  @mixin flex-center;
+  @mixin ratio 9/16;
 }
 
 .image-placeholder__logo {
