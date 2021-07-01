@@ -45,33 +45,10 @@ if (!is_front_page()) {
 
     $post_count = $wp_query->post_count;
 
-    while( $wp_query->have_posts() ) : $wp_query->the_post();
-      if (
-        ($post_count > 3 && count($columns) < 3) ||
-        ($post_count < 3)
-      ) :
-        $columns[] = get_block('post-card',array(
-          'card_style' => !empty($card_style) ? $card_style : 'style-1'
-        ));
-      endif;
-    endwhile; wp_reset_postdata();
-
-    $content = codetot_build_grid_columns($columns, 'post-grid', array(
-      'column_class' => 'f fdc default-section__col'
+    the_block('post-list', array(
+      'class' => 'section default-section--no-container',
+      'query' => $wp_query
     ));
-
-    the_block('default-section', array(
-      'class' => 'section default-section--no-container has-3-columns',
-      'content' => $content
-    ));
-
-    if ($post_count > 3) {
-      the_block('post-list', array(
-        'class' => 'section default-section--no-container',
-        'query' => $wp_query,
-        'offset' => 3
-      ));
-    }
 
     the_block('pagination');
 

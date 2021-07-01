@@ -181,19 +181,12 @@ class Codetot_Theme_Init
 
   public function page_body_class($classes)
   {
-    if (is_page() && is_page_template('flexible' && function_exists('get_field'))) {
-      $page_id = get_the_ID();
+    if (!function_exists('rwmb_meta')) {
+      return $classes;
+    }
 
-      $page_class = get_field('codetot_page_class', $page_id);
-      $remove_footer = get_field('remove_footer_top_spacing', $page_id) ?? false;
-
-      if (!empty($page_class)) {
-        $classes[] = $page_class;
-      }
-
-      if ($remove_footer) {
-        $classes[] = 'remove-top-footer-space';
-      }
+    if (is_page() && !empty(rwmb_meta('codetot_page_class'))) {
+      $classes[] = esc_attr(rwmb_meta('codetot_page_class'));
     }
 
     return $classes;
