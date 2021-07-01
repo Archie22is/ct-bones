@@ -33,17 +33,13 @@ class Codetot_Theme_Layout
     add_action( 'codetot_sidebar', 'codetot_get_sidebar', 10 );
     add_action('codetot_after_content_post', array($this, 'codetot_share_button'), 5);
 
+    $is_not_flexible_page = get_page_template_slug( get_the_ID()) !== 'flexible';
+    $is_not_woocommerce_pages = class_exists('WooCommerce') ? (!is_account_page() && !is_cart() && !is_checkout()) : !class_exists('WooCommerce');
+
     if (
       is_page() &&
-      get_page_template_slug( get_the_ID()) === '' &&
-      (
-        class_exists('WooCommerce') &&
-        (
-          !is_account_page() &&
-          !is_cart() &&
-          !is_checkout()
-        )
-      )
+      $is_not_flexible_page &&
+      $is_not_woocommerce_pages
     ) {
       $this->generate_page_layout();
     }
@@ -57,7 +53,7 @@ class Codetot_Theme_Layout
 
   public function load_page_header() {
     $sidebar_layout = get_global_option('codetot_page_layout') ?? 'left-sidebar';
-    $header_class = $sidebar_layout !== 'no-sidebar' ? 'page-header--no-container page-header--top-section' : '';
+    $header_class = $sidebar_layout !== 'no-sidebar' ? 'page-header--top-section' : '';
 
     $is_gutenberg_page = $this->is_gutenberg_blocks();
 
@@ -77,7 +73,7 @@ class Codetot_Theme_Layout
     global $post;
     $blocks = parse_blocks( $post->post_content );
 
-    return !empty($blocks) && $blocks[0]['blockName'] !== '';
+    return !empty($blocks) && !empty($blocks[0]['blockName']);
   }
 
   public function generate_page_layout() {
