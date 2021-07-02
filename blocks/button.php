@@ -1,6 +1,13 @@
 <?php
 $button_sizes = array('small', 'large');
-$button_types = array('primary', 'secondary', 'white', 'dark', 'outline', 'outline-white', 'link', 'link-white');
+$button_types = array(
+  'primary',
+  'secondary',
+  'white',
+  'dark',
+  'outline', 'outline-white', 'outline-primary', 'outline-secondary',
+  'link', 'link-white', 'link-primary', 'link-secondary'
+);
 
 $_class = 'button';
 $_class .= !empty($size) && in_array($size, $button_sizes) ? ' button--' . $size : '';
@@ -8,7 +15,7 @@ $_class .= !empty($type) && in_array($type, $button_types) ? ' button--' . $type
 $_class .= !empty($class) ? ' ' . $class : '';
 
 $_attr = !empty($attr) ? $attr : '';
-$_attr .= !empty($target) ? ' target="' . $target . '"' : '';
+$_attr .= !empty($target) ? ' target="' . esc_attr($target) . '"' : '';
 
 $_url = !empty($url) ? $url : '';
 $content = !empty($button) ? '<span class="button__text">' . esc_html($button) . '</span>' : '';

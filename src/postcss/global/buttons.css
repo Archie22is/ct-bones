@@ -21,6 +21,8 @@
 }
 
 .button--outline,
+.button--outline-primary,
+.button--outline-dark,
 .button--outline-white {
   display: inline-flex;
   align-items: center;
@@ -35,12 +37,14 @@
 
 .button--outline {
   background: transparent;
-  color: var(--primary);
-  border: 1px solid var(--primary);
+  color: var(--dark);
+  border: 1px solid var(--dark);
 
   &:hover {
-    background: var(--primary);
-    color: var(--white) !important;
+    @media (--m) {
+      background: var(--primary);
+      color: var(--white);
+    }
   }
 }
 
@@ -50,18 +54,96 @@
   border: 1px solid var(--white);
 
   &:hover {
-    background-color: var(--primary);
-    color: var(--white);
+    @media (--m) {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+  }
+}
+
+.button--outline-primary {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+
+  &:hover {
+    @media (--m) {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+  }
+}
+
+.button--outline-secondary {
+  background: transparent;
+  color: var(--secondary);
+  border: 1px solid var(--secondary);
+
+  &:hover {
+    @media (--m) {
+      background-color: var(--primary);
+      color: var(--white);
+    }
   }
 }
 
 .button.button--link {
   @mixin button-link;
 
+  color: var(--dark);
+
+  &::after {
+    background-color: var(--dark);
+  }
+
+  &:hover {
+    @media (--m) {
+      color: var(--primary);
+
+      &::after {
+        background-color: var(--primary);
+      }
+    }
+  }
+}
+
+.button.button--link-primary {
+  @mixin button-link;
+
   color: var(--primary);
 
   &::after {
-    background: var(--primary);
+    background-color: var(--primary);
+  }
+
+  &:hover {
+    @media (--m) {
+      color: var(--secondary);
+
+      &::after {
+        background-color: var(--secondary);
+      }
+    }
+  }
+}
+
+.button.button--link-secondary {
+  @mixin button-link;
+
+  color: var(--secondary);
+
+  &::after {
+    background-color: var(--secondary);
+  }
+
+  &:hover {
+    @media (--m) {
+      color: var(--primary);
+
+      &::after {
+        background-color: var(--primary);
+      }
+    }
   }
 }
 
@@ -80,7 +162,7 @@
   @mixin button-small;
 
   &.button--link {
-    padding: 0 !important;
+    padding: 0 0 10px !important;
   }
 }
 
@@ -89,7 +171,7 @@
   @mixin button-large;
 
   &.button--link {
-    padding: 0 !important;
+    padding: 0 0 10px !important;
   }
 }
 
@@ -106,7 +188,7 @@
   transition: all 0.3s ease-in-out;
   overflow: hidden;
 
-  .button__menu {
+  & .button__menu {
     position: relative;
     width: 100%;
     height: 3px;
