@@ -185,8 +185,12 @@ class Codetot_Theme_Init
       return $classes;
     }
 
-    if (is_page() && !empty(rwmb_meta('codetot_page_class'))) {
-      $classes[] = esc_attr(rwmb_meta('codetot_page_class'));
+    if (is_page()) {
+      $page_class = rwmb_meta('codetot_page_class') ?? '';
+
+      if (!empty($page_class)) {
+        $classes[] = esc_attr(rwmb_meta('codetot_page_class'));
+      }
     }
 
     return $classes;
