@@ -90,7 +90,8 @@
 
 @define-mixin button-link {
   position: relative;
-  padding: 0;
+  padding-left: 0;
+  padding-right: 0;
   background: none;
 
   &::after {

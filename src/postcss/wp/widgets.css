@@ -58,6 +58,7 @@
 }
 
 .widget_codetot_recent_posts,
+.widget_codetot_related_posts,
 .widget_recent_entries {
   & .post-date {
     display: block;
@@ -209,7 +210,8 @@
   }
 }
 
-.widget_codetot_recent_posts {
+.widget_codetot_recent_posts,
+.widget_codetot_related_posts {
   & .image-placeholder,
   & .widget__post-image {
     @mixin ratio 1/1;
