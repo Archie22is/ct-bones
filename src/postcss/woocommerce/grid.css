@@ -39,7 +39,7 @@
       }
 
       & .product__image-hover {
-        @mixin fade-out;
+        @mixin fade-in;
       }
     }
   }
@@ -311,6 +311,10 @@
 
 .product__inner {
   border: 1px solid var(--light);
+
+  & .button--disabled {
+    display: none;
+  }
 }
 
 .product__quick-view {
