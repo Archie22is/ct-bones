@@ -55,7 +55,7 @@
   }
 }
 
-.button--link {
+.button.button--link {
   @mixin button-link;
 
   color: var(--primary);
@@ -65,18 +65,13 @@
   }
 }
 
-.button--link-white {
+.button.button--link-white {
   @mixin button-link;
 
-  padding: 10px 20px;
   color: var(--white);
 
   &::after {
     background: var(--white);
-    bottom: 10px;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    width: calc(100% - 40px);
   }
 }
 
