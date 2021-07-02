@@ -38,8 +38,8 @@ class Codetot_Page_Settings {
           'style'      => 'seamless',
           'fields'     => [
               [
-                  'name' => __( 'Enable Header Transparent', 'ct-bones' ),
-                  'id'   =>  $this->prefix . 'enable_header_transparent',
+                  'name' => __( 'Disable Footer Top Spacing', 'ct-bones' ),
+                  'id'   =>  $this->prefix . 'disable_footer_top_spacing',
                   'type' => 'switch',
               ],
               [

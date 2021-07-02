@@ -6,8 +6,10 @@ $footer_background = get_global_option('codetot_footer_background_color') ?? 'da
 $remove_footer_copyright = get_global_option('codetot_settings_remove_theme_copyright') ?? false;
 $footer_copyright = codetot_get_footer_copyright();
 $hide_social_links = get_global_option('codetot_settings_footer_hide_social_links') ?? false;
+$disable_top_footer_spacing = is_page() && rwmb_meta('codetot_disable_footer_top_spacing') ?? false;
 
-$footer_class = 'mt-2 footer';
+$footer_class = 'footer';
+$footer_class .= !$disable_top_footer_spacing ? ' mt-2' : '';
 $footer_class .= !empty($footer_background) ? ' bg-' . esc_attr($footer_background) : ' bg-dark';
 $footer_class .= !empty($columns) ? ' footer--' . $columns . '-columns' : '';
 
