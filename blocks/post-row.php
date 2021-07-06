@@ -35,7 +35,7 @@ $category_html = sprintf('<a class="post-row__meta-link" href="%1$s">%2$s</a>', 
         <?php if ($_display_date) : ?>
           <span class="post-row__meta-date"><?php echo $post_date; ?></span>
         <?php endif; ?>
-        <?php if ($_display_date && $_display_category) : ?>
+        <?php if ($_display_date && $_display_category && !empty($category)) : ?>
           <span class="post-row__meta-separator">|</span>
         <?php endif; ?>
         <?php if ($_display_category && !empty($category)) : ?>
