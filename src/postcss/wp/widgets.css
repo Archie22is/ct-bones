@@ -41,11 +41,14 @@
   font-weight: var(--font-bold);
 }
 
+.widget_codetot_widget_company_info,
 .widget_archive,
 .widget_nav_menu,
 .widget_categories,
 .widget_recent_entries {
   & ul {
+    @mixin list-reset;
+
     & li {
       @mixin item-with-line var(--border);
     }
@@ -249,5 +252,61 @@
 
   & .widget__item {
     @mixin item-with-line var(--border);
+  }
+}
+
+.widget_codetot_widget_company_info {
+  & ul {
+    @mixin list-reset;
+  }
+
+  & .widget__link,
+  & li {
+    display: flex;
+    width: 100%;
+  }
+
+  & .widget__link {
+    &:hover {
+      @media (--m) {
+        color: var(--primary);
+      }
+    }
+  }
+
+  & .widget__icon {
+    @mixin icon 24px;
+
+    opacity: 0.85;
+  }
+
+  & .widget__content {
+    flex: 1 1 0;
+    padding-left: 10px;
+  }
+
+  &.widget--dark-theme {
+    & p,
+    & ul,
+    & li,
+    & a {
+      color: var(--white);
+    }
+
+    & a {
+      &:hover {
+        @media (--m) {
+          color: var(--white);
+        }
+      }
+    }
+
+    & .widget__icon svg {
+      stroke: var(--white);
+    }
+
+    & li {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
   }
 }
