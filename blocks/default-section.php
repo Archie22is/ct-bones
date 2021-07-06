@@ -5,6 +5,7 @@ $_attrs .= !empty($attributes) ? ' ' . $attributes : '';
 $container = 'container';
 $_class = 'default-section';
 $_class .= !empty($class) ? ' ' . $class : '';
+$_tag = !empty($tag) ? $tag : 'section';
 
 // Support lazyload main block
 $_enable_lazyload = isset($lazyload) && $lazyload === true;
@@ -25,7 +26,7 @@ if (!empty($content)) {
 }
 
 if (!empty($content)) : ?>
-  <section class="<?php echo $_class; ?>"<?php if (!empty($_attrs)) : echo ' ' . $_attrs; endif; ?>>
+  <<?php echo $_tag; ?> class="<?php echo $_class; ?>"<?php if (!empty($_attrs)) : echo ' ' . $_attrs; endif; ?>>
     <?php if (!empty($before_header)) : echo $before_header; endif; ?>
     <?php if (!empty($header)) : ?>
       <div class="default-section__header">
@@ -66,5 +67,5 @@ if (!empty($content)) : ?>
       </div>
     <?php endif; ?>
     <?php if (!empty($after_footer)) : echo $after_footer; endif; ?>
-  </section>
+  </<?php echo $_tag; ?>>
 <?php endif; ?>
