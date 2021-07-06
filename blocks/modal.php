@@ -22,7 +22,7 @@ $_class .= !empty($class) ? ' ' . $class: '';
 
 $_close_button_class = !empty($close_button_class) ? $close_button_class : 'js-close-button';
 
-$_attributes = sprintf('id="%s" role="dialog" aria-labelledby="modal__title"', $id);
+$_attributes = sprintf('id="%s" role="dialog"', $id);
 $_attributes .= !empty($attributes) ? ' ' . $attributes : '';
 
 if (!empty($id) && !empty($content)) :
