@@ -199,7 +199,12 @@
   & ~ span,
   & ~ label {
     pointer-events: none;
+    line-height: 48px; /* Fix mobile SEO score */
     transition: color 0.3s cubic-bezier(0.1, 0.1, 0.25, 1);
+
+    @media (--m) {
+      line-height: 36px;
+    }
 
     &::before {
       content: '';
@@ -208,20 +213,29 @@
       left: 0;
       width: 19px;
       height: 19px;
+      top: 13px;
       border: 1px solid $border;
       transition: border-color 0.3s cubic-bezier(0.1, 0.1, 0.25, 1);
+
+      @media (--m) {
+        top: 7px;
+      }
     }
 
     &::after {
       content: '';
       position: absolute;
-      top: 5px;
+      top: 16px;
       left: 3px;
       width: 15px;
       height: 15px;
       background: $color;
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       opacity: 0;
+
+      @media (--m) {
+        top: 10px;
+      }
     }
   }
 }
