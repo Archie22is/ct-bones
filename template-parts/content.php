@@ -37,7 +37,7 @@ $hide_post_meta = get_global_option('codetot_settings_hide_post_meta') ?? false;
     </div>
   <?php endif; ?>
 
-  <div class="entry-content">
+  <div class="wysiwyg entry-content">
     <?php
     the_content(
       sprintf(
