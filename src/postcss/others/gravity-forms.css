@@ -137,6 +137,20 @@ table.gfield_list {
     display: none;
   }
 
+  & form:not(.gform_dark) {
+    & .gfield_radio {
+      & input[type='radio'] {
+        @mixin custom-radio var(--primary), var(--border);
+      }
+    }
+
+    & .gfield_checkbox {
+      & input[type='checkbox'] {
+        @mixin custom-checkbox var(--primary), var(--border);
+      }
+    }
+  }
+
   & .gfield_description {
     & .validation_message {
       margin-top: 0.25em;
@@ -151,18 +165,6 @@ table.gfield_list {
       position: relative;
       width: 100%;
       padding-left: 30px;
-    }
-  }
-
-  & .gfield_radio {
-    & input[type='radio'] {
-      @mixin custom-radio var(--primary), var(--border);
-    }
-  }
-
-  & .gfield_checkbox {
-    & input[type='checkbox'] {
-      @mixin custom-checkbox var(--primary), var(--border);
     }
   }
 
@@ -211,6 +213,10 @@ table.gfield_list {
   & .gfield_checkbox {
     & input[type='checkbox'] {
       @mixin custom-checkbox var(--white), var(--white);
+
+      &:checked ~ label {
+        color: var(--white);
+      }
     }
   }
 }

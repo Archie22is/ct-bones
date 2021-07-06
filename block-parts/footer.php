@@ -31,7 +31,7 @@ $social_links_html = get_block('social-links', array(
 ));
 
 ?>
-<footer class="<?php echo $footer_class; ?>" role="contentinfo">
+<footer class="<?php echo $footer_class; ?>">
   <?php do_action('codetot_footer_row_top'); ?>
   <?php if (!empty($widgets)) : ?>
     <div class="footer__top">
