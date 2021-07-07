@@ -16,36 +16,16 @@ if (!empty($image) && !empty($class)) :
   ?>
   <picture class="image <?php echo $class; ?>">
     <?php
-    if (!$_no_lazyload) {
-      ob_start();
-      echo wp_get_attachment_image($image_id, $_size, null, array(
-        'class' => 'image__img lazyload'
-      ));
-      $image_html = ob_get_clean();
-      $image_html = str_replace('srcset="', 'srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-srcset="', $image_html);
-      echo $image_html;
-    } else {
-      $mobile_image = wp_get_attachment_image_src($image_id, 'medium', null);
-      $mobile_image_srcset = wp_get_attachment_image_srcset($image_id, ' codetot-small');
-      $large_image = wp_get_attachment_image_src($image_id, 'large', null);
-      $desktop_image = wp_get_attachment_image_src($image_id, 'full', null);
+    $image_html = wp_get_attachment_image($image_id, $_size, false, array(
+      'loading' => false,
+      'class' => 'wp-post-image image__img lazyload',
+    ));
 
-      if (!empty($large_image)) {
-        printf('<source data-srcset="%1$s" media="(min-width: 768px)">', $large_image[0]);
-      }
+    $image_html = str_replace('srcset="', 'srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-srcset="', $image_html);
+    $image_html = preg_replace('/[ ]sizes="[^"]*"/', '', $image_html);
+    $image_html = str_replace(' data-srcset="', ' data-sizes="auto" data-srcset="', $image_html);
 
-      if (!empty($desktop_image)) {
-        printf('<source data-srcset="%s" media="(min-width: 1280px)">', $desktop_image[0]);
-      }
-
-      printf('<img class="image__img lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="%1$s" width="%2$s" height="%3$s" alt="%4$s">',
-        $mobile_image[0],
-        $mobile_image_srcset,
-        !empty($mobile_image[1]) ? esc_attr($mobile_image[1]) : 360,
-        !empty($mobile_image[2]) ? esc_attr($mobile_image[2]) : 180,
-        !empty($mobile_image[3]) ? esc_attr($mobile_image[3]) : ''
-      );
-    }
+    echo $image_html;
     ?>
   </picture>
 <?php endif; ?>

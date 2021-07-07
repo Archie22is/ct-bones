@@ -8,7 +8,7 @@ $post_date = get_the_date($_format_date);
 
 $categories = get_the_category();
 $category = !empty($categories) ? $categories[0] : '';
-$category_html = sprintf('<a class="post-row__meta-link" href="%1$s">%2$s</a>', get_category_link($category), esc_attr($category->name));
+$category_html = !empty($category) ? sprintf('<a class="post-row__meta-link" href="%1$s">%2$s</a>', get_category_link($category), esc_attr($category->name)) : '';
 ?>
 
 <article class="w100 post-row">

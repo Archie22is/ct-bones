@@ -198,10 +198,17 @@ class Codetot_Assets
     $file_content = file_exists($variables_file) ? file_get_contents($variables_file) : '';
 
     if (!empty($file_content)) {
-      echo $file_content;
+      echo $this->filter_css_variables($file_content);
     } else {
       echo '/** No variables.css found **/';
     }
+  }
+
+  public function filter_css_variables($context) {
+    $context = preg_replace('/@custom-media(.*);/', '', $context);
+    $context = preg_replace('/\s+/', '', $context);
+
+    return $context;
   }
 
   public function custom_color_options_css_inline()
