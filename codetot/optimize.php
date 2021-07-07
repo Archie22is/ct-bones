@@ -50,6 +50,7 @@ class CodeTot_Optimize
 
     add_filter('style_loader_tag', array($this, 'remove_type_attr'), 10, 2);
     add_filter('script_loader_tag', array($this, 'remove_type_attr'), 10, 2);
+    add_filter('gform_get_form_filter', array($this, 'filter_tag_html5_gravity_forms'));
   }
 
   public function remove_scripts()
@@ -165,6 +166,10 @@ class CodeTot_Optimize
    */
   public function remove_type_attr($tag, $handle) {
     return preg_replace( "/type=['\"]text\/(javascript|css)['\"]/", '', $tag );
+  }
+
+  public function filter_tag_html5_gravity_forms($form_string) {
+    return preg_replace( "/[ ]type=[\'\"]text\/(javascript|css)[\'\"]/", '', $form_string );
   }
 
   /**
