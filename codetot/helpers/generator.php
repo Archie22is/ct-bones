@@ -27,7 +27,9 @@ if (!function_exists('codetot_build_content_block')) {
     $output_elements = [];
     $title_tag = (!empty($args['title_tag']) ? $args['title_tag'] : 'h2');
     $block_tag = (!empty($args['block_tag']) ? $args['block_tag'] : 'div');
+
     $_class = (!empty($args['default_class'])) ? $args['default_class'] : $prefix_class . '__header';
+    $_class .= !empty($args['custom_class']) ? ' ' . esc_attr($args['custom_class']) : '';
 
     if (!empty($args['label'])) {
       $output_elements['label'] = sprintf('<p class="%1$s__label">%2$s</p>', $prefix_class, $args['label']);
