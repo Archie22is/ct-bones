@@ -97,7 +97,7 @@ class Codetot_Theme_Init
         'id' => 'post-sidebar',
         'name' => __('Post Sidebar', 'ct-bones'),
         'before_widget' => '<div id="%1$s" class="widget widget--post %2$s">',
-        'after_widget' => '</div>',
+        'after_widget' => '</div><!-- Close widget -->',
         'before_title' => '<p class="widget__title">',
         'after_title' => '</p>'
       )
@@ -108,7 +108,7 @@ class Codetot_Theme_Init
         'id' => 'page-sidebar',
         'name' => __('Page Sidebar', 'ct-bones'),
         'before_widget' => '<div id="%1$s" class="widget widget--page %2$s">',
-        'after_widget' => '</div>',
+        'after_widget' => '</div><!-- Close widget -->',
         'before_title' => '<p class="widget__title">',
         'after_title' => '</p>'
       )
@@ -119,7 +119,7 @@ class Codetot_Theme_Init
         'id' => 'category-sidebar',
         'name' => __('Category Sidebar', 'ct-bones'),
         'before_widget' => '<div id="%1$s" class="widget widget--category %2$s">',
-        'after_widget' => '</div>',
+        'after_widget' => '</div><!-- Close widget -->',
         'before_title' => '<p class="widget__title">',
         'after_title' => '</p>'
       )
@@ -133,7 +133,7 @@ class Codetot_Theme_Init
           'description' => __('Add widgets to display in footer column.', 'ct-bones'),
           'id' => 'footer-column-' . $i,
           'before_widget' => '<div id="%1$s" class="widget widget--footer %2$s">',
-          'after_widget' => '</div>',
+          'after_widget' => '</div><!-- Close widget -->',
           'before_title' => '<p class="widget__title">',
           'after_title' => '</p>',
         )
@@ -151,7 +151,7 @@ class Codetot_Theme_Init
             'description' => __('Add widgets to display in topbar column.', 'ct-bones'),
             'id' => 'topbar-column-' . $i,
             'before_widget' => '<div id="%1$s" class="widget widget--topbar %2$s">',
-            'after_widget' => '</div>',
+            'after_widget' => '</div><!-- Close widget -->',
             'before_title' => '<p class="widget__title">',
             'after_title' => '</p>',
           )
