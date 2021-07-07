@@ -10,6 +10,7 @@
           the_block_part('header/search-icon');
           the_block_part('header/account-icon');
           the_block_part('header/cart-icon');
+          the_block_part('header/phone-icon');
           ?>
         </div>
       </div>
