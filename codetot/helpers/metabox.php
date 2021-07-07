@@ -165,6 +165,11 @@ function codetot_get_social_media_options()
       'type' => 'url',
     ],
     [
+      'name' => __('Messenger URL', 'ct-bones'),
+      'id'   => $prefix . 'company_messenger',
+      'type' => 'url',
+    ],
+    [
       'name' => __('Instagram URL', 'ct-bones'),
       'id'   => $prefix . 'company_instagram',
       'type' => 'url',
@@ -206,7 +211,7 @@ function codetot_get_google_maps_api_key() {
 function codetot_get_social_links() {
   $items = [];
   $setting_prefix = 'codetot_company_';
-  $keys = apply_filters('codetot_social_link_types', ['facebook', 'youtube', 'zalo', 'instagram',' pinterest', 'linkedin']);
+  $keys = apply_filters('codetot_social_link_types', ['facebook', 'youtube', 'zalo', 'messenger', 'instagram',' pinterest', 'linkedin']);
 
   foreach ($keys as $key) {
     $value = get_codetot_data($setting_prefix . $key);
