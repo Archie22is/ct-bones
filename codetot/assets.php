@@ -145,6 +145,14 @@ class Codetot_Assets
       wp_enqueue_script('comment-reply');
     }
 
+    wp_enqueue_script(
+      'wow',
+      get_template_directory_uri() . '/dynamic-assets/plugins/wow.min.js',
+      array(),
+      '1.1.2',
+      true
+    );
+
     $locale_settings = array(
       'ajax' => array(
         'url' => admin_url('admin-ajax.php'),
@@ -152,6 +160,14 @@ class Codetot_Assets
         'nonce' => wp_create_nonce('codetot-config-nonce'),
       ),
       'themePath' => get_template_directory_uri()
+    );
+
+    wp_enqueue_script(
+      'codetot-first-screen-script',
+      get_template_directory_uri() . '/assets/js/first-screen' . $this->theme_environment . '.js',
+      array(),
+      $this->theme_version,
+      false
     );
 
     wp_enqueue_script(
