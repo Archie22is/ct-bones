@@ -47,6 +47,9 @@ class CodeTot_Optimize
     add_action('wp_head', array($this, 'lazy_styles'), 1);
 
     add_action('wp_head',  array($this, 'load_first_screen_hide_selectors'));
+
+    add_filter('style_loader_tag', array($this, 'remove_type_attr'), 10, 2);
+    add_filter('script_loader_tag', array($this, 'remove_type_attr'), 10, 2);
   }
 
   public function remove_scripts()
@@ -151,6 +154,17 @@ class CodeTot_Optimize
     wp_register_style($id, false);
     wp_enqueue_style($id);
     return wp_add_inline_style($id, $content);
+  }
+
+  /**
+   * Validate HTML5 by remove type="script" in tag scripts
+   *
+   * @param string $tag
+   * @param string $handle
+   * @return void
+   */
+  public function remove_type_attr($tag, $handle) {
+    return preg_replace( "/type=['\"]text\/(javascript|css)['\"]/", '', $tag );
   }
 
   /**
