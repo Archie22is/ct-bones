@@ -77,10 +77,6 @@ class Codetot_Multiple_Headers
           the_block_part('header/mobile-menu-button');
         }, 10);
 
-        add_action('codetot_header_icon_blocks', function () {
-          the_block_part('header/search-icon');
-        }, 1);
-
         add_action('codetot_header', function () {
           the_block_part('header-style-' . $this->layout);
         });

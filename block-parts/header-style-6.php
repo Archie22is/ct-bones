@@ -1,6 +1,4 @@
 <?php
-$container = 'container';
-$has_woocommerce = class_exists('WooCommerce');
 $disable_menu = false; // TODO: Update a field to enable/disable
 $search_form_button = get_block('button', array(
   'icon' => 'search',
@@ -12,7 +10,7 @@ $search_form_button = get_block('button', array(
 <?php the_block_part('header/header-topbar');?>
 <div class="header__wrapper">
   <div class="header__row header__row--main">
-    <div class="<?php echo $container; ?> header__container">
+    <div class="container header__container">
       <div class="grid header__grid">
         <?php the_block_part('header/logo'); ?>
         <div class="grid__col header__col header__col--mobile-button">
@@ -28,10 +26,8 @@ $search_form_button = get_block('button', array(
             <?php
             the_block_part('header/phone-icon');
             the_block_part('header/search-icon');
-            if ($has_woocommerce) {
-              the_block_part('header/account-icon');
-              the_block_part('header/cart-icon');
-            }
+            the_block_part('header/account-icon');
+            the_block_part('header/cart-icon');
             ?>
           </div>
         </div>
@@ -40,7 +36,7 @@ $search_form_button = get_block('button', array(
   </div>
   <?php if (!$disable_menu) : ?>
     <div class="header__row header__row--navigation">
-      <div class="<?php echo $container; ?> header__container">
+      <div class="container header__container">
         <div class="grid header__grid">
           <?php the_block_part('header/navigation'); ?>
         </div>
