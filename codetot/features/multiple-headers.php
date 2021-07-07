@@ -48,13 +48,6 @@ class Codetot_Multiple_Headers
     switch ($this->layout):
       case '1':
       case '2':
-
-        if (in_array($this->layout, array(1, 2))) {
-          add_action('codetot_header_icon_blocks', function () {
-            the_block_part('header/search-icon');
-          });
-        }
-
         add_action('codetot_header', function () {
           the_block_part('header-style-' . $this->layout);
         }, 1);
