@@ -37,7 +37,6 @@ class CodeTot_Optimize
     $this->theme_environment = $this->is_localhost() ? '' : '.min';
 
     add_action('wp_enqueue_scripts', array($this, 'enqueue_frontend_styles'), 10);
-    add_action('wp_enqueue_scripts', array($this, 'register_first_screen_style'), 1);
     add_action('wp_enqueue_scripts', array($this, 'enqueue_frontend_scripts'));
 
     add_action('wp_print_scripts', array($this, 'remove_scripts'));
@@ -48,6 +47,10 @@ class CodeTot_Optimize
     add_action('wp_head', array($this, 'lazy_styles'), 1);
 
     add_action('wp_head',  array($this, 'load_first_screen_hide_selectors'));
+
+    add_filter('style_loader_tag', array($this, 'remove_type_attr'), 10, 2);
+    add_filter('script_loader_tag', array($this, 'remove_type_attr'), 10, 2);
+    add_filter('gform_get_form_filter', array($this, 'filter_tag_html5_gravity_forms'));
   }
 
   public function remove_scripts()
@@ -68,23 +71,10 @@ class CodeTot_Optimize
       wp_enqueue_style('toc-screen');
     }
 
+    $first_screen_url = get_template_directory_uri() . '/assets/css/first-screen-style' . $this->theme_environment . '.css';
+    // Load file
+    wp_enqueue_style('codetot-first-screen', $first_screen_url, array(), CODETOT_VERSION);
     wp_enqueue_style('codetot-global', get_template_directory_uri() . '/assets/css/global-style' . $this->theme_environment . '.css', array('codetot-first-screen'), CODETOT_VERSION);
-  }
-
-  public function register_first_screen_style()
-  {
-    $first_screen_css_path = get_template_directory() . '/assets/css/first-screen-style' . $this->theme_environment . '.css';
-    $first_screen_css_inline = file_exists($first_screen_css_path) ? file_get_contents($first_screen_css_path) : '';
-
-    if (!$this->is_localhost() && !empty($first_screen_css_inline)) {
-      // Inline - production
-      $this->register_inline_style('codetot-first-screen', $first_screen_css_inline);
-    } else {
-      $first_screen_url = get_template_directory_uri() . '/assets/css/first-screen-style' . $this->theme_environment . '.css';
-
-      // Load file
-      wp_enqueue_style('codetot-first-screen', $first_screen_url, array(), CODETOT_VERSION);
-    }
   }
 
   public function enqueue_frontend_scripts()
@@ -165,6 +155,21 @@ class CodeTot_Optimize
     wp_register_style($id, false);
     wp_enqueue_style($id);
     return wp_add_inline_style($id, $content);
+  }
+
+  /**
+   * Validate HTML5 by remove type="script" in tag scripts
+   *
+   * @param string $tag
+   * @param string $handle
+   * @return void
+   */
+  public function remove_type_attr($tag, $handle) {
+    return preg_replace( "/type=['\"]text\/(javascript|css)['\"]/", '', $tag );
+  }
+
+  public function filter_tag_html5_gravity_forms($form_string) {
+    return preg_replace( "/[ ]type=[\'\"]text\/(javascript|css)[\'\"]/", '', $form_string );
   }
 
   /**

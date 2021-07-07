@@ -116,13 +116,13 @@
   & ul,
   & p {
     margin-top: 1em;
-    word-break: break-word;
+    overflow-wrap: anywhere;
   }
 
   & a {
     color: var(--primary);
     text-decoration: underline;
-    word-break: break-word;
+    overflow-wrap: anywhere;
 
     &:hover {
       color: var(--dark);
