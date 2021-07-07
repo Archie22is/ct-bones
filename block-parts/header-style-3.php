@@ -1,11 +1,7 @@
-<?php
-$container = 'container';
-$has_woocommerce = class_exists('WooCommerce');
-?>
 <?php the_block_part('header/header-topbar');?>
 <div class="header__wrapper">
   <div class="header__row header__row--main">
-    <div class="<?php echo $container; ?> header__container">
+    <div class="container header__container">
       <div class="grid header__grid">
         <div class="grid__col header__col header__col--menu-icons">
           <div class="header__menu-icons">
@@ -19,7 +15,8 @@ $has_woocommerce = class_exists('WooCommerce');
         <div class="grid__col header__col header__col--menu-icons">
           <div class="header__menu-icons">
             <?php
-            do_action('codetot_header_icon_blocks');
+            the_block_part('header/account-icon');
+            the_block_part('header/cart-icon');
             ?>
           </div>
         </div>
@@ -27,7 +24,7 @@ $has_woocommerce = class_exists('WooCommerce');
     </div>
   </div>
   <div class="header__row header__row--navigation">
-    <div class="<?php echo $container; ?> header__container">
+    <div class="container header__container">
       <div class="grid header__grid">
         <?php
         the_block_part('header/navigation');

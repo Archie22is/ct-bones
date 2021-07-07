@@ -55,12 +55,6 @@ class Codetot_Multiple_Headers
         break;
 
       case '3':
-
-        add_action('codetot_header_icon_blocks', function () {
-          the_block_part('header/account-icon');
-          the_block_part('header/cart-icon');
-        });
-
         add_action('codetot_header', function () {
           the_block_part('header-style-' . $this->layout);
         }, 1);
