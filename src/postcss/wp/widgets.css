@@ -308,5 +308,15 @@
     & li {
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
+
+    & .widget__item--zalo {
+      & svg {
+        stroke: none;
+
+        & path {
+          fill: var(--white);
+        }
+      }
+    }
   }
 }
