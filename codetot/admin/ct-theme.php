@@ -256,6 +256,12 @@ class Codetot_CT_Theme_Settings
             'id'      => $this->filter_prefix . 'hide_featured_image',
             'type'    => 'switch',
             'style'   => 'rounded'
+          ],
+          [
+            'name'    => __('Hide Related Posts', 'ct-bones'),
+            'id'      => $this->filter_prefix . 'hide_related_posts',
+            'type'    => 'switch',
+            'style'   => 'rounded'
           ]
         )
     );

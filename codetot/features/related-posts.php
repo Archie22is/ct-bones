@@ -39,10 +39,10 @@ class Codetot_Related_Posts
    */
   public function __construct()
   {
-    $this->enable = get_global_option('codetot_enable_post_related_posts') ?? true;
+    $this->hide = get_global_option('codetot_settings_hide_related_posts') ?? false;
     $this->query_type = get_global_option('codetot_related_posts_type') ?? 'category';
 
-    if ($this->enable) {
+    if (!$this->hide) {
       add_action('codetot_after_post', array($this, 'render_section'), 10);
     }
   }
