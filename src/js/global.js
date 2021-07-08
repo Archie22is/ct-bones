@@ -1,3 +1,4 @@
+/* global codetotConfig */
 import { select, selectAll } from 'lib/dom'
 import { initStyle } from 'lib/scripts'
 
@@ -23,7 +24,7 @@ const checkjQueryUIStyle = () => {
   if (datePickerEl && datePickerTrigger) {
     setTimeout(() => {
       initStyle(
-        'https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css'
+        `${codetotConfig.themePath}/dynamic-assets/plugins/jquery-ui.min.css`
       )
     }, 10000)
   }

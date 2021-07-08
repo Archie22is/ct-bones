@@ -48,13 +48,6 @@ class Codetot_Multiple_Headers
     switch ($this->layout):
       case '1':
       case '2':
-
-        if (in_array($this->layout, array(1, 2))) {
-          add_action('codetot_header_icon_blocks', function () {
-            the_block_part('header/search-icon');
-          });
-        }
-
         add_action('codetot_header', function () {
           the_block_part('header-style-' . $this->layout);
         }, 1);
@@ -62,12 +55,6 @@ class Codetot_Multiple_Headers
         break;
 
       case '3':
-
-        add_action('codetot_header_icon_blocks', function () {
-          the_block_part('header/account-icon');
-          the_block_part('header/cart-icon');
-        });
-
         add_action('codetot_header', function () {
           the_block_part('header-style-' . $this->layout);
         }, 1);
@@ -79,12 +66,6 @@ class Codetot_Multiple_Headers
           the_block_part('header/mobile-menu-button');
         }, 10);
 
-        add_action('codetot_header_icon_blocks', function () {
-          the_block_part('header/search-icon');
-          the_block_part('header/account-icon');
-          the_block_part('header/cart-icon');
-        }, 1);
-
         add_action('codetot_header', function () {
           the_block_part('header-style-' . $this->layout);
         });
@@ -95,10 +76,6 @@ class Codetot_Multiple_Headers
         add_action('codetot_header_navigation_after', function () {
           the_block_part('header/mobile-menu-button');
         }, 10);
-
-        add_action('codetot_header_icon_blocks', function () {
-          the_block_part('header/search-icon');
-        }, 1);
 
         add_action('codetot_header', function () {
           the_block_part('header-style-' . $this->layout);
