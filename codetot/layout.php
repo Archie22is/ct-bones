@@ -53,33 +53,21 @@ class Codetot_Theme_Layout
 
   public function load_page_header() {
     $sidebar_layout = get_global_option('codetot_page_layout') ?? 'left-sidebar';
-    $header_class = $sidebar_layout !== 'no-sidebar' ? 'page-header--top-section' : '';
+    $header_class = $sidebar_layout !== 'no-sidebar' ? 'page-header--no-container' : ' mt-1';
+    $header_class .= ' mb-1';
 
-    $is_gutenberg_page = $this->is_gutenberg_blocks();
-
-    if (!$is_gutenberg_page) :
-      the_block('page-header', array(
-        'class' => $header_class,
-        'title' => get_the_title()
-      ));
-    endif;
+    the_block('page-header', array(
+      'class' => $header_class,
+      'title' => get_the_title()
+    ));
   }
 
   public function load_breadcrumbs() {
     the_block('breadcrumbs');
   }
 
-  public function is_gutenberg_blocks() {
-    global $post;
-    $blocks = parse_blocks( $post->post_content );
-
-    return !empty($blocks) && !empty($blocks[0]['blockName']);
-  }
-
   public function generate_page_layout() {
     $sidebar_layout = get_global_option('codetot_page_layout') ?? 'no-sidebar';
-
-    $is_gutenberg_page = $this->is_gutenberg_blocks();
 
     if ( !is_front_page() ) {
       add_action('codetot_after_header', array($this, 'load_breadcrumbs'), 9);
@@ -91,35 +79,32 @@ class Codetot_Theme_Layout
         echo $this->page_block_open('page-block--page ' . $sidebar_layout, false);
       }
     }, 10);
+
     add_action('codetot_page', array($this, 'load_page_header'), 20);
-    add_action('codetot_page', function() use($sidebar_layout, $is_gutenberg_page) {
+    add_action('codetot_page', function() use($sidebar_layout) {
+      ob_start();
 
-      if ($is_gutenberg_page) {
-        the_content();
+      echo '<div class="wysiwyg">';
+      the_content();
+      echo '</div>';
+      wp_link_pages(
+        array(
+          'before'      => '<div class="page-links">' . __( 'Pages:', 'ct-bones' ),
+          'after'       => '</div>',
+          'link_before' => '<span>',
+          'link_after'  => '</span>',
+        )
+      );
+
+      $content = ob_get_clean();
+
+      if ($sidebar_layout !== 'no-sidebar') {
+        echo $content;
       } else {
-        ob_start();
-
-        echo '<div class="wysiwyg">';
-        the_content();
-        echo '</div>';
-        wp_link_pages(
-          array(
-            'before'      => '<div class="page-links">' . __( 'Pages:', 'ct-bones' ),
-            'after'       => '</div>',
-            'link_before' => '<span>',
-            'link_after'  => '</span>',
-          )
-        );
-        $content = ob_get_clean();
-
-        if ($sidebar_layout !== 'no-sidebar') {
-          echo $content;
-        } else {
-          the_block('default-section', array(
-            'class' => 'section page-content page-content--no-sidebar',
-            'content' => $content
-          ));
-        }
+        the_block('default-section', array(
+          'class' => 'section page-content page-content--no-sidebar',
+          'content' => $content
+        ));
       }
 
     }, 30);

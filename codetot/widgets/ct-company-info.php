@@ -103,7 +103,7 @@ class codetot_widget_company_info extends WP_Widget
       <ul class="widget__list">
         <?php foreach ($links as $link) :
           ob_start(); ?>
-          <span class="widget__icon"><?php codetot_svg($link['icon'], true); ?></span>
+          <span class="widget__icon" aria-hidden="true"><?php codetot_svg($link['icon'], true); ?></span>
           <span class="widget__content"><?php echo $link['content']; ?></span>
           <?php
           $content = ob_get_clean(); ?>
