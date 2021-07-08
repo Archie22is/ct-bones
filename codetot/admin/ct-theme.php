@@ -115,12 +115,19 @@ class Codetot_CT_Theme_Settings
           'style'     => 'rounded',
         ],
         [
+          'name'    => __('Back to top Button', 'ct-bones'),
+          'id'      => $this->filter_prefix . 'enable_back_to_top',
+          'type'    => 'switch',
+          'style'   => 'rounded',
+          'desc' => __('Enable back to top button when scroll down.', 'ct-bones')
+        ],
+        [
           'name'    => __('Store Locator Maps', 'ct-bones'),
           'id'      => $this->filter_prefix . 'enable_store_locator_map',
           'type'    => 'switch',
           'style'   => 'rounded',
           'desc' => __('Enable maps with multiple store locations.', 'ct-bones')
-        ],
+        ]
       ],
     ];
 

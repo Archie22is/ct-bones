@@ -182,7 +182,6 @@ require_once CODETOT_ADMIN_DIR . '/theme-sync.php';
 require_once CODETOT_ADMIN_DIR . '/page-settings.php';
 
 require_once CODETOT_DIR . '/shortcodes.php';
-require_once CODETOT_DIR . '/features/mega-menu.php';
 
 /** Custom widgets */
 require_once CODETOT_DIR . '/widgets/ct-icon-box.php';
@@ -190,8 +189,10 @@ require_once CODETOT_DIR . '/widgets/ct-company-info.php';
 require_once CODETOT_DIR . '/widgets/ct-recent-posts.php';
 require_once CODETOT_DIR . '/widgets/ct-related-posts.php';
 
+require_once CODETOT_DIR . '/features/back-to-top.php';
 require_once CODETOT_DIR . '/features/store-locator.php';
 require_once CODETOT_DIR . '/features/google-maps.php';
+require_once CODETOT_DIR . '/features/mega-menu.php';
 
 add_action('wp', function() {
   // Layout hooks
