@@ -46,7 +46,7 @@ $number_columns = get_global_option('codetot_category_column_number') ?? 3;
       echo '<div class="container">';
       echo $content;
       echo '</div>';
-      the_block('pagination');
+      // the_block('pagination');
       echo '</div>';
 
     else :
