@@ -178,7 +178,7 @@ require_once CODETOT_ADMIN_DIR . '/acf.php';
 require_once CODETOT_ADMIN_DIR . '/ct-settings.php';
 require_once CODETOT_ADMIN_DIR . '/ct-theme.php';
 require_once CODETOT_ADMIN_DIR . '/ct-data.php';
-require_once CODETOT_ADMIN_DIR . '/theme-sync.php';
+// require_once CODETOT_ADMIN_DIR . '/theme-sync.php';
 require_once CODETOT_ADMIN_DIR . '/page-settings.php';
 
 require_once CODETOT_DIR . '/shortcodes.php';
