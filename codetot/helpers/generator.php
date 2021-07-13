@@ -51,6 +51,12 @@ if (!function_exists('codetot_build_content_block')) {
     $_class .= !empty($args['alignment']) ? ' ' . $prefix_class . '--' . $args['alignment'] . ' section-header--' . $args['alignment'] : '';
     $_class .= !empty($args['class']) ? ' ' . $args['class'] : '';
 
+    if (
+      empty($output_elements['description']) && empty($args['label']) && $block_tag === 'section'
+    ) {
+      $block_tag = 'div';
+    }
+
     ob_start();
     printf('<%s class="%s">', $block_tag, $_class);
     if (isset($args['enable_container'])) : printf('<div class="%s %s__container">', 'container', $prefix_class); endif;
