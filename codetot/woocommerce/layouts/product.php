@@ -460,7 +460,7 @@ class Codetot_Woocommerce_Layout_Product
 function codetot_render_bottom_product_gallery() {
   global $product;
 
-  $default_columns = apply_filters( 'woocommerce_product_thumbnails_columns', 5) ?? 4;
+  $default_columns = apply_filters( 'woocommerce_product_thumbnails_columns', 4);
   $columns = (int) get_global_option('codetot_woocommerce_product_thumbnails_columns') ?? $default_columns;
   $attachment_ids = $product->get_gallery_image_ids();
 
