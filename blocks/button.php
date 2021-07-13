@@ -25,6 +25,11 @@ if (!empty($icon)) {
   $_class .= ' button--icon';
 }
 
+if (!empty($icon_html)) {
+  $content .= '<span class="button__icon">' . $icon_html . '</span>';
+  $_class .= ' button--icon';
+}
+
 if (!empty($type)) {
   switch($type):
 
