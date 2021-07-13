@@ -1,4 +1,4 @@
-<div class="slideout-menu d-none" tabindex="0" data-block="slideout-menu">
+<div class="slideout-menu" tabindex="0" data-block="slideout-menu">
   <div class="slideout-menu__overlay js-mobile-menu-close">
     <button class="slideout-menu__close-button js-mobile-menu-close" aria-label="<?php _e('Close a mobile menu', 'ct-bones'); ?>">
       <?php codetot_svg('close', true); ?>
