@@ -150,6 +150,7 @@
         @mixin button-large;
 
         margin-top: 0.5em;
+        height: 44px;
 
         @media (--m) {
           min-width: 200px;
