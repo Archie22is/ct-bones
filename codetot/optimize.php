@@ -43,9 +43,6 @@ class CodeTot_Optimize
     add_action('wp_print_styles', array($this, 'remove_styles'));
     add_action('wp_head', array($this, 'dns_prefetch'), 0);
 
-    add_action('wp_head', array($this, 'lazy_scripts'), 1);
-    add_action('wp_head', array($this, 'lazy_styles'), 1);
-
     add_action('wp_head',  array($this, 'load_first_screen_hide_selectors'));
 
     add_filter('style_loader_tag', array($this, 'remove_type_attr'), 10, 2);
@@ -83,8 +80,6 @@ class CodeTot_Optimize
       wp_register_script('lazysizes', get_template_directory_uri() . '/assets/js/vendors/lazysizes.min.js', array(), '5.2.2');
       wp_enqueue_script('lazysizes');
     }
-
-    wp_enqueue_script('codetot-lazy', get_template_directory_uri() . '/assets/js/codetot-lazy'. $this->theme_environment .'.js', array(), CODETOT_VERSION, true);
   }
 
   public function dns_prefetch()
@@ -107,42 +102,6 @@ class CodeTot_Optimize
     echo 'opacity: 0; visibility: hidden;';
     echo '}';
     echo '</style>';
-  }
-
-  public function lazy_styles()
-  {
-    $styles = apply_filters('codetot_lazy_styles', array());
-    if (!empty($styles)) {
-    ?>
-    <script id="codetot-lazy-styles">
-      var LAZY_STYLES = '<?php echo json_encode($styles); ?>';
-    </script>
-    <?php
-    } else {
-      echo '<!--- CODETOT: No lazy styles -->'; ?>
-      <script id="codetot-lazy-styles">
-        var LAZY_STYLES = '';
-      </script>
-      <?php
-    }
-  }
-
-  public function lazy_scripts()
-  {
-    $scripts = apply_filters('codetot_lazy_scripts', array());
-    if (!empty($scripts)) {
-      ?>
-      <script id="codetot-lazy-scripts">
-        var LAZY_SCRIPTS = '<?php echo json_encode($scripts); ?>';
-      </script>
-      <?php
-    } else {
-      echo '<!--- CODETOT: No lazy scripts -->'; ?>
-      <script id="codetot-lazy-scripts">
-        var LAZY_SCRIPTS = '';
-      </script>
-      <?php
-    }
   }
 
   /**
