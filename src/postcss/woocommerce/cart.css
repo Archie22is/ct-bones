@@ -57,26 +57,6 @@ body.woocommerce-cart {
     border-radius: var(--border-radius);
   }
 
-  & .product-thumbnail {
-    & a {
-      display: flex;
-
-      &:hover {
-        & img {
-          @media (--m) {
-            transform: scale(1.1);
-          }
-        }
-      }
-    }
-
-    & img {
-      max-width: 100%;
-      height: auto;
-      transition: transform 0.3s;
-    }
-  }
-
   & .checkout-button {
     @mixin button-style-primary;
     @mixin button-large;
@@ -219,12 +199,32 @@ body.woocommerce-cart {
     left: 0;
     width: 70px;
 
+    & a {
+      display: flex;
+      overflow: hidden;
+
+      &:hover {
+        & img {
+          @media (--m) {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+
+    & img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      transition: transform 0.3s;
+    }
+
     @media (--m) {
       display: table-cell;
       position: static;
       top: unset;
       left: unset;
-      width: 130px;
+      width: 150px;
     }
   }
 
@@ -236,6 +236,7 @@ body.woocommerce-cart {
     }
 
     & a {
+      color: var(--body-text-color);
       text-decoration: none;
 
       &:hover {
@@ -306,7 +307,7 @@ body.woocommerce-cart {
     @media (--m) {
       bottom: 16px;
       right: auto;
-      left: 140px;
+      left: 165px;
       padding: 0;
       border: 0;
     }
