@@ -1,7 +1,6 @@
 module.exports = {
   entries: {
     // JS File
-    'codetot-lazy': './src/js/lazy.js',
     global: './src/js/global.js',
     // CSS Files
     'global-style': './src/postcss/global.css',
