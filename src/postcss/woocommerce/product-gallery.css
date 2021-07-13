@@ -1,10 +1,11 @@
-.product-gallery__bottom {
-  margin-top: 0.25em;
-  margin-bottom: 2em;
-}
-
 .product-gallery__button {
   font-size: 0.85rem;
+
+  &.button--icon {
+    & .button__icon {
+      @mixin icon 24px;
+    }
+  }
 }
 
 .woocommerce-product-gallery {

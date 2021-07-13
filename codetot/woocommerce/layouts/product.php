@@ -471,10 +471,13 @@ function codetot_render_bottom_product_gallery() {
     $img_first = wp_get_attachment_image_src($first_img_id,'full');
     $img_first_url = $img_first[0];
 
-    echo '<div class="align-c product-gallery__bottom">';
+    $icon_html = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>';
+
+    echo '<div class="align-c mt-05 mb-05 product-gallery__bottom">';
     the_block('button', array(
       'button' => sprintf(_n('View more %s images', 'View more %s images', 'ct-bones', $more_count), $more_count),
-      'type' => 'link',
+      'type' => 'outline-primary',
+      'icon_html' => $icon_html,
       'class' => 'product-gallery__button',
       'attr' => ' data-fancybox="gallery"',
       'url' => $img_first_url
@@ -483,14 +486,10 @@ function codetot_render_bottom_product_gallery() {
 
     $attachment_ids = array_slice($attachment_ids, 1);
     foreach ($attachment_ids as $attachment_id) {
-      $small_image = wp_get_attachment_image_src($attachment_id, 'thumbnail');
       $attachment_image = wp_get_attachment_image_src($attachment_id, 'full');
 
-      printf('<a class="product-gallery__item" data-fancybox="gallery" href="%1$s"><img class="product-gallery__img" src="%2$s" width="%3$s" height="%4$s" alt="" /></a>',
-        $attachment_image[0],
-        $small_image[0],
-        $small_image[1],
-        $small_image[2]
+      printf('<a class="product-gallery__item" data-fancybox="gallery" href="%1$s"></a>',
+        $attachment_image[0]
       );
     }
   }
