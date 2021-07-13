@@ -189,6 +189,7 @@
     display: flex;
     width: 16px;
     height: 16px;
+    margin: 0 5px;
 
     @media (--m) {
       width: 18px;

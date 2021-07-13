@@ -1,13 +1,22 @@
-.product-gallery__bottom {
-  margin-top: 0.25em;
-  margin-bottom: 2em;
-}
-
 .product-gallery__button {
   font-size: 0.85rem;
+
+  &.button--icon {
+    & .button__icon {
+      @mixin icon 24px;
+    }
+  }
 }
 
 .woocommerce-product-gallery {
+  max-width: 375px;
+  margin: 1em auto 0;
+
+  @media (--s) {
+    max-width: 100%;
+    margin: 0;
+  }
+
   & .flex-control-nav {
     & img {
       border: 2px solid var(--border);

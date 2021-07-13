@@ -150,7 +150,7 @@ function codetot_woocommerce_product_video_section()
   $video_type = get_post_meta($product->get_id(), '_ct_product_video_type', true);
   $video_value = get_post_meta($product->get_id(), '_ct_product_video_url', true);
 
-  $columns           = apply_filters('woocommerce_product_thumbnails_columns', 4);
+  $columns           = apply_filters('codetot_woocommerce_product_thumbnails_columns', 4);
   $post_thumbnail_id = $product->get_image_id();
   $wrapper_classes   = apply_filters(
     'woocommerce_single_product_image_gallery_classes',
