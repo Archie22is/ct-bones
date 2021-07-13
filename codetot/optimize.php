@@ -43,8 +43,6 @@ class CodeTot_Optimize
     add_action('wp_print_styles', array($this, 'remove_styles'));
     add_action('wp_head', array($this, 'dns_prefetch'), 0);
 
-    add_action('wp_head',  array($this, 'load_first_screen_hide_selectors'));
-
     add_filter('style_loader_tag', array($this, 'remove_type_attr'), 10, 2);
     add_filter('script_loader_tag', array($this, 'remove_type_attr'), 10, 2);
     add_filter('gform_get_form_filter', array($this, 'filter_tag_html5_gravity_forms'));
@@ -77,7 +75,7 @@ class CodeTot_Optimize
   public function enqueue_frontend_scripts()
   {
     if (!wp_script_is('lazysizes', 'enqueued')) {
-      wp_register_script('lazysizes', get_template_directory_uri() . '/assets/js/vendors/lazysizes.min.js', array(), '5.2.2');
+      wp_register_script('lazysizes', get_template_directory_uri() . '/assets/js/vendors/lazysizes.min.js', array(), '5.2.2', false);
       wp_enqueue_script('lazysizes');
     }
   }
@@ -89,19 +87,6 @@ class CodeTot_Optimize
     <link rel="dns-prefetch" href="//fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <?php
-  }
-
-  public function load_first_screen_hide_selectors() {
-    $selectors = apply_filters('codetot_first_screen_hide_style', array(
-      '.modal-search-form',
-      '.modal'
-    ));
-
-    echo '<style id="codetot-first-screen-hide-css">';
-    echo implode(', ', $selectors) . '{';
-    echo 'opacity: 0; visibility: hidden;';
-    echo '}';
-    echo '</style>';
   }
 
   /**
