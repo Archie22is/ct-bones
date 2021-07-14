@@ -51,9 +51,11 @@ class Codetot_Related_Post_Widget extends WP_Widget {
         'post_status' => 'publish',
         'post_type' => 'post',
         'posts_per_page' => $number,
-        'category__in' => wp_get_post_categories( $post->ID ),
-        'post__not_in' => array( $post->ID )
       );
+    if(is_single()) {
+      $args_resent_post['category__in'] = wp_get_post_categories( $post->ID );
+      $args_resent_post['post__not_in'] = array( $post->ID );
+    }
 		$query = new WP_Query($args_resent_post);
 		if ($query->have_posts()) :
     ?>
