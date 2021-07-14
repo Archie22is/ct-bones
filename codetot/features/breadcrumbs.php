@@ -215,7 +215,7 @@ class Codetot_Breadcrumb
 
       // Wrap the breadcrumb trail.
       $breadcrumb = sprintf(
-        '<%1$s role="navigation" aria-label="%2$s" class="breadcrumbs__nav" itemprop="breadcrumb">%3$s%4$s%5$s</%1$s>',
+        '<%1$s aria-label="%2$s" class="breadcrumbs__nav" itemprop="breadcrumb">%3$s%4$s%5$s</%1$s>',
         tag_escape($this->args['container']),
         esc_attr($this->labels['aria_label']),
         $this->args['before'],
