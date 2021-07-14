@@ -65,10 +65,7 @@ class Codetot_Related_Post_Widget extends WP_Widget {
           <span class="f widget__item-wrapper">
             <a class="f widget__image-link" href="<?php the_permalink() ?>">
               <?php if (has_post_thumbnail()) :
-                  the_block('image', array(
-                    'image' => get_post_thumbnail_id(),
-                    'class' => 'image--cover widget__post-image'
-                  ));
+                echo get_the_post_thumbnail(get_the_id(), 'thumbnail');
                 else :
                   the_block('image-placeholder');
                 endif;
