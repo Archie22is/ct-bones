@@ -24,9 +24,9 @@ $search_form_button = get_block('button', array(
         <?php echo do_shortcode('[contact]'); ?>
           <div class="header__menu-icons">
             <?php
-            the_block_part('header/search-icon');
-            the_block_part('header/account-icon');
-            the_block_part('header/cart-icon');
+             the_block_part('header/phone-icon');
+             the_block_part('header/account-icon');
+             the_block_part('header/cart-icon');
             ?>
           </div>
         </div>
