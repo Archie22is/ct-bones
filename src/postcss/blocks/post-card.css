@@ -119,6 +119,7 @@
 }
 
 .post-card--style-4 {
+  flex: 1 1 auto;
   background: var(--white);
   border: 1px solid var(--border);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
