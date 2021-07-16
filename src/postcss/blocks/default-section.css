@@ -58,6 +58,10 @@
 
 .default-section.is-footer-center .default-section__footer {
   text-align: center;
+
+  & .button-group {
+    justify-content: center;
+  }
 }
 
 .default-section.is-footer-right .default-section__footer {
