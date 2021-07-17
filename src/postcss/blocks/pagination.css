@@ -16,7 +16,7 @@
   color: var(--primary);
   border: 1px solid rgba(0, 0, 0, 0.4);
   text-decoration: none;
-  font-weight: 700;
+  font-weight: var(--font-bold);
   border-radius: 3px;
 
   &:not(.current, .prev, .next) {

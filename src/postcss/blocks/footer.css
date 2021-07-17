@@ -2,7 +2,7 @@
   & .widget__title {
     margin-bottom: 20px;
     color: var(--dark);
-    font-weight: 700;
+    font-weight: var(--font-bold);
     text-transform: uppercase;
   }
 
