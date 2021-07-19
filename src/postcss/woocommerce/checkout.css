@@ -428,9 +428,3 @@ ul.checkout-coupon-form__list {
     margin-top: 20px;
   }
 }
-
-.validate-required.woocommerce-validated {
-  & .woocommerce-terms-and-conditions-checkbox-text {
-    line-height: 1.5
-  }
-}
