@@ -3,7 +3,7 @@
 }
 
 .shop-steps__list {
-  border-bottom: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--dark);
 }
 
 .shop-steps__item {
