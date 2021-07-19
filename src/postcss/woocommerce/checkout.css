@@ -311,6 +311,14 @@ ul.checkout-coupon-form__list {
   & .button {
     width: 100%;
   }
+
+  & .validate-required {
+    & .woocommerce-form__label-for-checkbox {
+      & .woocommerce-terms-and-conditions-checkbox-text {
+        line-height: 1.5;
+      }
+    }
+  }
 }
 
 .checkout-total {
