@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CT Bones\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-07 03:57+0000\n"
+"POT-Creation-Date: 2021-07-19 03:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: ct-bones"
 
 #: codetot/woocommerce/features/mini-cart.php:213
-#: codetot/woocommerce/layouts/cart.php:124
+#: codetot/woocommerce/layouts/cart.php:147
 #, php-format
 msgid "%d"
 msgid_plural "%d"
@@ -29,6 +29,11 @@ msgstr[1] ""
 msgid "%s  Recent Posts"
 msgstr ""
 
+#: codetot/widgets/ct-related-posts.php:19
+#, php-format
+msgid "%s  Related Posts"
+msgstr ""
+
 #: codetot/helpers/metabox.php:27 codetot/helpers/metabox.php:34
 #: codetot/helpers/metabox.php:41 codetot/helpers/metabox.php:48
 #: codetot/helpers/metabox.php:55 codetot/helpers/metabox.php:62
@@ -36,12 +41,12 @@ msgstr ""
 msgid "%s Color"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:358
+#: codetot/admin/ct-theme.php:381
 #, php-format
 msgid "%s Column"
 msgstr ""
 
-#: codetot/admin/acf.php:243 codetot/admin/ct-theme.php:359
+#: codetot/admin/acf.php:250 codetot/admin/ct-theme.php:382
 #, php-format
 msgid "%s Columns"
 msgstr ""
@@ -51,17 +56,17 @@ msgstr ""
 msgid "%s Icon Box"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:160 codetot/admin/ct-theme.php:355
+#: codetot/admin/ct-theme.php:181 codetot/admin/ct-theme.php:378
 #, php-format
 msgid "%s Layout"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:186
+#: codetot/admin/ct-theme.php:207
 msgid "(pixel) Only work with boxed container layout."
 msgstr ""
 
 #. used between list items, there is a space after the comma
-#: inc/template-tags.php:59
+#: codetot/helpers/template-tags.php:59
 msgid ", "
 msgstr ""
 
@@ -73,7 +78,11 @@ msgstr ""
 msgid "A widget that displays recent posts."
 msgstr ""
 
-#: codetot/admin/ct-theme.php:318
+#: codetot/widgets/ct-related-posts.php:21
+msgid "A widget that displays related posts."
+msgstr ""
+
+#: codetot/admin/ct-theme.php:341
 msgid "Account"
 msgstr ""
 
@@ -81,19 +90,19 @@ msgstr ""
 msgid "Add Item"
 msgstr ""
 
-#: codetot/theme-init.php:145
+#: codetot/theme-init.php:133
 msgid "Add widgets to display in footer column."
 msgstr ""
 
-#: codetot/theme-init.php:163
+#: codetot/theme-init.php:151
 msgid "Add widgets to display in topbar column."
 msgstr ""
 
-#: codetot/admin/ct-theme.php:60 codetot/admin/ct-theme.php:422
+#: codetot/admin/ct-theme.php:55 codetot/admin/ct-theme.php:105
 msgid "Addons"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:116
+#: codetot/woocommerce/ct-theme.php:130
 msgid "Admin: Hide sticky bar when editing products"
 msgstr ""
 
@@ -101,7 +110,7 @@ msgstr ""
 msgid "API Keys"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:208
+#: codetot/admin/ct-theme.php:219
 msgid "Archive/Category: Posts Per Row"
 msgstr ""
 
@@ -109,7 +118,11 @@ msgstr ""
 msgid "Archives"
 msgstr ""
 
-#: codetot/admin/acf.php:238
+#: codetot/woocommerce/features/product-video.php:77
+msgid "Attachment ID"
+msgstr ""
+
+#: codetot/admin/acf.php:245
 msgid "Auto"
 msgstr ""
 
@@ -117,15 +130,19 @@ msgstr ""
 msgid "Back to Homepage"
 msgstr ""
 
-#: codetot/woocommerce/layouts/account.php:221
+#: codetot/woocommerce/layouts/account.php:216
 msgid "Back to Login page"
+msgstr ""
+
+#: codetot/admin/ct-theme.php:118
+msgid "Back to top Button"
 msgstr ""
 
 #: codetot/theme-init.php:46
 msgid "Basic Page"
 msgstr ""
 
-#: codetot/admin/acf.php:166 codetot/helpers/acf.php:50
+#: codetot/admin/acf.php:169 codetot/helpers/acf.php:50
 msgid "Black"
 msgstr ""
 
@@ -133,11 +150,15 @@ msgstr ""
 msgid "Body Text"
 msgstr ""
 
-#: codetot/woocommerce/init.php:107
+#: codetot/woocommerce/init.php:129
 msgid "Bottom Product Sidebar"
 msgstr ""
 
-#: codetot/helpers/acf.php:134 codetot/helpers/acf.php:143
+#: codetot/helpers/acf.php:171
+msgid "Boxed"
+msgstr ""
+
+#: codetot/helpers/acf.php:135 codetot/helpers/acf.php:144
 msgid "Brand"
 msgstr ""
 
@@ -154,29 +175,29 @@ msgstr ""
 msgid "Call us"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:328
+#: codetot/admin/ct-theme.php:351
 msgid "Cart"
 msgstr ""
 
-#: blocks/menu-categories.php:9 codetot/admin/ct-theme.php:153
+#: blocks/menu-categories.php:9 codetot/admin/ct-theme.php:174
 msgid "Category"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:205
+#: codetot/admin/ct-theme.php:216
 msgid "Category Layout"
 msgstr ""
 
-#: codetot/theme-init.php:132
+#: codetot/theme-init.php:120
 msgid "Category Sidebar"
 msgstr ""
 
 #. 1: list of categories.
-#: inc/template-tags.php:62
+#: codetot/helpers/template-tags.php:62
 #, php-format
 msgid "Category: %1$s"
 msgstr ""
 
-#: codetot/admin/acf.php:144 codetot/helpers/acf.php:68
+#: codetot/admin/acf.php:147 codetot/helpers/acf.php:68
 msgid "Center"
 msgstr ""
 
@@ -204,7 +225,7 @@ msgstr ""
 msgid "CODE TOT JSC"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:76
+#: codetot/admin/ct-theme.php:74
 msgid "Color Schema"
 msgstr ""
 
@@ -239,7 +260,7 @@ msgstr ""
 msgid "Company Google Maps Link"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:337 codetot/helpers/metabox.php:121
+#: codetot/admin/ct-theme.php:360 codetot/helpers/metabox.php:121
 msgid "Company Hotline"
 msgstr ""
 
@@ -251,23 +272,27 @@ msgstr ""
 msgid "Company Name"
 msgstr ""
 
+#: blocks/shop-steps.php:36
+msgid "Complete order"
+msgstr ""
+
 #: block-parts/header/navigation.php:25
 msgid "Configure Primary Menu"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:104
+#: codetot/woocommerce/ct-theme.php:118
 msgid "Contain"
 msgstr ""
 
-#: codetot/admin/acf.php:227 codetot/helpers/acf.php:28
+#: codetot/admin/acf.php:234 codetot/helpers/acf.php:28
 msgid "Contain Image"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:180 codetot/admin/ct-theme.php:193
+#: codetot/admin/ct-theme.php:201
 msgid "Container Layout"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:183
+#: codetot/admin/ct-theme.php:204
 msgid "Container Width"
 msgstr ""
 
@@ -277,26 +302,30 @@ msgstr ""
 msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
 msgstr ""
 
-#: codetot/helpers/metabox.php:193
+#: codetot/helpers/metabox.php:198
 #, php-format
 msgid ""
 "Copyright &copy; by <strong>%1$s</strong>. Built with <a href=\"%2$s\" "
 "target=\"_blank\">%3$s</a> (version: %4$s)."
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:136
+#: codetot/woocommerce/ct-theme.php:150
 msgid "Countdown Product Price"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:103
+#: codetot/woocommerce/ct-theme.php:157
+msgid "Countdown Product Style"
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:117
 msgid "Cover"
 msgstr ""
 
-#: codetot/admin/acf.php:226 codetot/helpers/acf.php:27
+#: codetot/admin/acf.php:233 codetot/helpers/acf.php:27
 msgid "Cover Image"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:161
+#: codetot/woocommerce/ct-theme.php:201
 msgid "Cross Sell Products Columns"
 msgstr ""
 
@@ -304,16 +333,16 @@ msgstr ""
 msgid "CT Bones"
 msgstr ""
 
-#: codetot/admin/ct-data.php:51 codetot/admin/ct-theme.php:339
+#: codetot/admin/ct-data.php:51 codetot/admin/ct-theme.php:362
 msgid "CT Data"
 msgstr ""
 
 #: codetot/admin/ct-settings.php:36 codetot/admin/ct-settings.php:37
-#: codetot/admin/ct-settings.php:52 codetot/woocommerce/ct-theme.php:156
+#: codetot/admin/ct-settings.php:57 codetot/woocommerce/ct-theme.php:183
 msgid "CT Settings"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:48
+#: codetot/admin/ct-theme.php:47
 msgid "CT Theme"
 msgstr ""
 
@@ -321,8 +350,12 @@ msgstr ""
 msgid "CT Theme Sync"
 msgstr ""
 
-#: codetot/helpers/metabox.php:196
+#: codetot/helpers/metabox.php:201
 msgid "CT Web Builder"
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:165
+msgid "Custom Theme"
 msgstr ""
 
 #: codetot/features/breadcrumbs.php:781 codetot/features/breadcrumbs.php:1219
@@ -330,61 +363,68 @@ msgctxt "daily archives date format"
 msgid "j"
 msgstr ""
 
-#: codetot/admin/acf.php:76 codetot/admin/acf.php:165
-#: codetot/helpers/acf.php:49 codetot/helpers/acf.php:95
-#: codetot/helpers/acf.php:137 codetot/helpers/acf.php:146
-#: codetot/helpers/metabox.php:41
+#: codetot/admin/acf.php:168 codetot/helpers/acf.php:49
+#: codetot/helpers/acf.php:95 codetot/helpers/acf.php:138
+#: codetot/helpers/acf.php:147 codetot/helpers/metabox.php:41
+#: codetot/woocommerce/ct-theme.php:164
 msgid "Dark"
 msgstr ""
 
-#: codetot/admin/acf.php:154 codetot/helpers/acf.php:60
+#: codetot/admin/acf.php:157 codetot/helpers/acf.php:60
 msgid "Dark Background - White Text"
 msgstr ""
 
-#: codetot/woocommerce/features/countdown-price.php:48
+#: codetot/admin/acf.php:77
+msgid "Dark: White Text - Dark Background"
+msgstr ""
+
+#: codetot/woocommerce/features/countdown-price.php:132
 msgid "Day"
 msgstr ""
 
-#: codetot/woocommerce/features/countdown-price.php:49
+#: codetot/woocommerce/features/countdown-price.php:133
 msgid "Days"
 msgstr ""
 
-#: codetot/admin/acf.php:177 codetot/admin/acf.php:191
-#: codetot/admin/acf.php:237 codetot/helpers/acf.php:35
-#: codetot/woocommerce/ct-theme.php:89
+#: codetot/admin/acf.php:180 codetot/admin/acf.php:244
+#: codetot/helpers/acf.php:35 codetot/woocommerce/ct-theme.php:103
 msgid "Default"
 msgstr ""
 
-#: codetot/admin/acf.php:225 codetot/helpers/acf.php:26
+#: codetot/admin/acf.php:232 codetot/helpers/acf.php:26
 msgid "Default Image Size"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:333 codetot/admin/ct-theme.php:344
+#: codetot/admin/page-settings.php:41
+msgid "Disable Footer Top Spacing"
+msgstr ""
+
+#: codetot/admin/ct-theme.php:356 codetot/admin/ct-theme.php:367
 #, php-format
 msgid "Display %s"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:336
+#: codetot/admin/ct-theme.php:359
 #, php-format
 msgid "Display a \"%1$s\" from <a href=\"%2$s\">%3$s</a> settings."
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:153
+#: codetot/woocommerce/ct-theme.php:180
 #, php-format
 msgid "Display a \"%1$s\" from data in <a href=\"%2$s\">%3$s</a>."
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:123
+#: codetot/woocommerce/ct-theme.php:137
 msgid "Display a Facebook comment in each product page"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:110
+#: codetot/woocommerce/ct-theme.php:124
 msgid ""
 "Display a floating product bar when visiting a product page with price and "
 "add to cart button."
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:81
+#: codetot/woocommerce/ct-theme.php:95
 msgid "Display a login popup instead of login page."
 msgstr ""
 
@@ -392,50 +432,68 @@ msgstr ""
 msgid "Display a quick view popup when click on product in listing page."
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:137
+#: codetot/woocommerce/ct-theme.php:81
+msgid "Display a video in single product."
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:151
 msgid "Display countdown in single product page if price has been scheduled."
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:143
+#: codetot/woocommerce/ct-theme.php:170
 msgid "Display Guarantee List"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:130
+#: codetot/admin/ct-theme.php:114
+msgid "Display mega menu in Primary Menu"
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:144
 msgid "Display product star rating in all list."
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:74
+msgid ""
+"Display short description in quick view popup when click on product in "
+"listing page."
 msgstr ""
 
 #: codetot/widgets/ct-icon-box.php:9
 msgid "Display the guarantee list widget."
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:154
+#: codetot/woocommerce/ct-theme.php:181
 msgid "E-Commerce Guarantees"
 msgstr ""
 
 #. %s: Name of current post. Only visible to screen readers
-#: inc/template-tags.php:112
+#: codetot/helpers/template-tags.php:112
 #, php-format
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:307 codetot/admin/ct-theme.php:349
+#: codetot/admin/ct-theme.php:330 codetot/admin/ct-theme.php:372
 #, php-format
 msgid "Enable %s"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:437
-msgid "Enable Back to Top button"
+#: codetot/admin/ct-theme.php:122
+msgid "Enable back to top button when scroll down."
 msgstr ""
 
-#: codetot/admin/page-settings.php:41
-msgid "Enable Header Transparent"
+#: codetot/admin/ct-theme.php:129
+msgid "Enable maps with multiple store locations."
 msgstr ""
 
-#: codetot/admin/ct-theme.php:429
-msgid "Enable Sticky Social Links"
+#: codetot/admin/ct-theme.php:113
+msgid "Enable Mega Menu?"
 msgstr ""
 
-#: inc/template-tags.php:188
+#: codetot/woocommerce/features/product-video.php:84
+msgid "Enter a product video URL"
+msgstr ""
+
+#: codetot/helpers/template-tags.php:188
 msgid "Error image"
 msgstr ""
 
@@ -447,7 +505,7 @@ msgstr ""
 msgid "Export Theme Settings"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:122
+#: codetot/woocommerce/ct-theme.php:136
 msgid "Facebook Comment"
 msgstr ""
 
@@ -455,33 +513,33 @@ msgstr ""
 msgid "Facebook URL"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:109
+#: codetot/woocommerce/ct-theme.php:123
 msgid "Floating Product Bar"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:119 codetot/admin/ct-theme.php:125
+#: codetot/admin/ct-theme.php:140 codetot/admin/ct-theme.php:146
 msgid "Font Family"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:102
+#: codetot/admin/ct-theme.php:80
 msgid "Font Size Scale"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:59 codetot/admin/ct-theme.php:409
-#: codetot/woocommerce/ct-theme.php:147
+#: codetot/admin/ct-theme.php:58 codetot/admin/ct-theme.php:432
+#: codetot/woocommerce/ct-theme.php:174
 msgid "Footer"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:385
+#: codetot/admin/ct-theme.php:408
 msgid "Footer Background Color"
 msgstr ""
 
-#: codetot/theme-init.php:144
+#: codetot/theme-init.php:132
 #, php-format
 msgid "Footer Column #%s"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:372
+#: codetot/admin/ct-theme.php:395
 msgid "Footer Columns"
 msgstr ""
 
@@ -489,11 +547,15 @@ msgstr ""
 msgid "Footer Copyright"
 msgstr ""
 
-#: codetot/admin/acf.php:195 codetot/helpers/acf.php:39
+#: codetot/helpers/acf.php:39
 msgid "Fullscreen"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:55 codetot/admin/ct-theme.php:83
+#: codetot/helpers/acf.php:170
+msgid "Fullwidth"
+msgstr ""
+
+#: codetot/admin/ct-theme.php:54 codetot/admin/ct-theme.php:92
 msgid "General"
 msgstr ""
 
@@ -501,7 +563,7 @@ msgstr ""
 msgid "Global"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:129
+#: codetot/admin/ct-theme.php:150
 msgid "Global Font"
 msgstr ""
 
@@ -509,29 +571,29 @@ msgstr ""
 msgid "Google Maps API Key"
 msgstr ""
 
-#: codetot/admin/acf.php:164 codetot/helpers/acf.php:48
+#: codetot/admin/acf.php:167 codetot/helpers/acf.php:48
 #: codetot/helpers/metabox.php:55
 msgid "Gray"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:58 codetot/admin/ct-theme.php:270
-#: codetot/woocommerce/ct-theme.php:148
+#: codetot/admin/ct-theme.php:57 codetot/admin/ct-theme.php:293
+#: codetot/woocommerce/ct-theme.php:175
 msgid "Header"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:290
+#: codetot/admin/ct-theme.php:313
 msgid "Header Background Color"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:279
+#: codetot/admin/ct-theme.php:302
 msgid "Header Layout"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:300
+#: codetot/admin/ct-theme.php:323
 msgid "Header Text Color Contract"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:136
+#: codetot/admin/ct-theme.php:157
 msgid "Heading Font"
 msgstr ""
 
@@ -541,33 +603,41 @@ msgid ""
 "or ask our Support Team to help you update this."
 msgstr ""
 
-#: codetot/admin/ct-theme.php:318 codetot/admin/ct-theme.php:323
-#: codetot/admin/ct-theme.php:328
+#: codetot/admin/ct-theme.php:341 codetot/admin/ct-theme.php:346
+#: codetot/admin/ct-theme.php:351
 #, php-format
 msgid "Hide %s Icon"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:245
+#: codetot/admin/ct-theme.php:262
 msgid "Hide Featured Image"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:401
+#: codetot/admin/ct-theme.php:424
 msgid "Hide Footer Social Links"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:239
+#: codetot/admin/ct-theme.php:250
 msgid "Hide Post Meta (date, category and author)"
+msgstr ""
+
+#: codetot/admin/ct-theme.php:268
+msgid "Hide Related Posts"
+msgstr ""
+
+#: codetot/admin/ct-theme.php:256
+msgid "Hide Social Share"
 msgstr ""
 
 #: codetot/features/breadcrumbs.php:251
 msgid "Home"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:344
+#: codetot/admin/ct-theme.php:367
 msgid "Home Icon in Primary Menu"
 msgstr ""
 
-#: codetot/woocommerce/features/countdown-price.php:52
+#: codetot/woocommerce/features/countdown-price.php:136
 msgid "Hour"
 msgstr ""
 
@@ -576,7 +646,7 @@ msgctxt "hour archives time format"
 msgid "g a"
 msgstr ""
 
-#: codetot/woocommerce/features/countdown-price.php:53
+#: codetot/woocommerce/features/countdown-price.php:137
 msgid "Hours"
 msgstr ""
 
@@ -584,7 +654,7 @@ msgstr ""
 msgid "https://codetot.com"
 msgstr ""
 
-#: codetot/woocommerce/features/countdown-price.php:67
+#: codetot/woocommerce/features/countdown-price.php:152
 msgid "Hurry up! The sale will end after less than a hour."
 msgstr ""
 
@@ -598,104 +668,120 @@ msgstr ""
 msgid "Import Theme Settings"
 msgstr ""
 
-#: codetot/helpers/metabox.php:168
+#: codetot/admin/ct-settings.php:44 codetot/admin/ct-settings.php:45
+msgid "Insert Scripts"
+msgstr ""
+
+#: codetot/helpers/metabox.php:173
 msgid "Instagram URL"
 msgstr ""
 
-#: 404.php:22 archive.php:37
+#: 404.php:22
 msgid ""
 "It looks like nothing was found at this location. Maybe try one of the links "
 "below or a search?"
 msgstr ""
 
-#: search.php:60
+#: search.php:74
 #, php-format
 msgid "It seems we can't find any %s matching your search keyword."
 msgstr ""
 
-#: codetot/admin/ct-theme.php:312
+#: codetot/admin/ct-theme.php:335
 msgid "Jump Down"
 msgstr ""
 
-#: codetot/admin/acf.php:99 codetot/admin/acf.php:194
-#: codetot/helpers/acf.php:38 codetot/helpers/acf.php:78
+#: codetot/admin/acf.php:102 codetot/helpers/acf.php:38
+#: codetot/helpers/acf.php:78
 msgid "Large"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:57
+#: codetot/admin/ct-theme.php:56
 msgid "Layout"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:254
+#: codetot/admin/ct-theme.php:277
 msgid "Layout Settings"
 msgstr ""
 
 #. %s: post title
-#: inc/template-tags.php:88
+#: codetot/helpers/template-tags.php:88
 #, php-format
 msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
 msgstr ""
 
-#: codetot/admin/acf.php:143 codetot/helpers/acf.php:67
+#: codetot/admin/acf.php:146 codetot/helpers/acf.php:67
 msgid "Left"
 msgstr ""
 
-#: codetot/admin/acf.php:216 codetot/helpers/acf.php:18
+#: codetot/admin/acf.php:223 codetot/helpers/acf.php:18
 msgid "Left Content - Right Form"
 msgstr ""
 
-#: codetot/admin/acf.php:217 codetot/helpers/acf.php:19
+#: codetot/admin/acf.php:224 codetot/helpers/acf.php:19
 msgid "Left Form - Right Content"
 msgstr ""
 
-#: codetot/admin/acf.php:203 codetot/helpers/acf.php:6
+#: codetot/admin/acf.php:210 codetot/helpers/acf.php:6
 msgid "Left Map - Right Content"
 msgstr ""
 
-#: codetot/admin/acf.php:163 codetot/helpers/acf.php:47
+#: codetot/admin/acf.php:166 codetot/helpers/acf.php:47
 #: codetot/helpers/metabox.php:62
 msgid "Light"
 msgstr ""
 
-#: codetot/admin/acf.php:153 codetot/helpers/acf.php:59
+#: codetot/admin/acf.php:156 codetot/helpers/acf.php:59
 msgid "Light Background - Dark Text"
 msgstr ""
 
-#: codetot/admin/acf.php:79 codetot/helpers/acf.php:98
+#: codetot/helpers/acf.php:98
 msgid "Link"
 msgstr ""
 
-#: codetot/admin/acf.php:80 codetot/helpers/acf.php:99
+#: codetot/helpers/acf.php:99
 msgid "Link (Dark Background)"
 msgstr ""
 
-#: codetot/helpers/metabox.php:178
+#: codetot/admin/acf.php:83
+msgid "Link White: White Text and Line"
+msgstr ""
+
+#: codetot/admin/acf.php:82
+msgid "Link: Dark Text and Line"
+msgstr ""
+
+#: codetot/helpers/metabox.php:183
 msgid "LinkedIn URL"
 msgstr ""
 
 #. used between list items, there is a space after the comma
-#: inc/template-tags.php:70
+#: codetot/helpers/template-tags.php:70
 msgctxt "list item separator"
 msgid ", "
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:78
+#: codetot/woocommerce/ct-theme.php:92
 msgid "Login Popup"
 msgstr ""
 
-#: codetot/admin/acf.php:193 codetot/helpers/acf.php:37
+#: codetot/helpers/acf.php:37
 msgid "Medium"
 msgstr ""
 
-#: codetot/woocommerce/layouts/account.php:157
+#: codetot/woocommerce/layouts/account.php:151
 msgid "Menu"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:71
+#: codetot/helpers/metabox.php:168
+msgid "Messenger URL"
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:85
 msgid "Minicart"
 msgstr ""
 
-#: codetot/woocommerce/features/countdown-price.php:56
+#: codetot/woocommerce/features/countdown-price.php:140
 msgid "Minute"
 msgstr ""
 
@@ -715,8 +801,17 @@ msgctxt "minute archives time format"
 msgid "i"
 msgstr ""
 
-#: codetot/woocommerce/features/countdown-price.php:57
+#: codetot/woocommerce/features/countdown-price.php:141
 msgid "Minutes"
+msgstr ""
+
+#: functions.php:63 functions.php:97
+#, php-format
+msgid "Missing block %s"
+msgstr ""
+
+#: codetot/woocommerce/features/countdown-price.php:62
+msgid "Missing timestamp parameter"
 msgstr ""
 
 #: codetot/features/breadcrumbs.php:780 codetot/features/breadcrumbs.php:838
@@ -725,11 +820,11 @@ msgctxt "monthly archives date format"
 msgid "F"
 msgstr ""
 
-#: codetot/admin/acf.php:89 codetot/helpers/acf.php:86
+#: codetot/admin/acf.php:92 codetot/helpers/acf.php:86
 msgid "New Window/Tab"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:146
+#: codetot/woocommerce/ct-theme.php:173
 msgid "No"
 msgstr ""
 
@@ -737,7 +832,7 @@ msgstr ""
 msgid "No attribute was defined for query."
 msgstr ""
 
-#: codetot/admin/acf.php:131
+#: codetot/admin/acf.php:134
 msgid "No available forms."
 msgstr ""
 
@@ -745,25 +840,25 @@ msgstr ""
 msgid "No products in the cart."
 msgstr ""
 
-#: search.php:55
+#: search.php:69
 #, php-format
 msgid "No Result for keyword %s"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:311
+#: codetot/admin/ct-theme.php:334
 msgid "None"
 msgstr ""
 
-#: codetot/admin/acf.php:97 codetot/helpers/acf.php:76
+#: codetot/admin/acf.php:100 codetot/helpers/acf.php:76
 msgid "Normal"
 msgstr ""
 
-#: codetot/widgets/ct-recent-posts.php:125
+#: codetot/widgets/ct-recent-posts.php:115
+#: codetot/widgets/ct-related-posts.php:119
 msgid "Number of posts to show:"
 msgstr ""
 
-#: codetot/woocommerce/layouts/archive.php:436
-#: codetot/woocommerce/layouts/product.php:487
+#: codetot/helpers/woocommerce.php:160
 msgid "On Sale"
 msgstr ""
 
@@ -785,19 +880,27 @@ msgstr ""
 msgid "Open a search form"
 msgstr ""
 
-#: codetot/woocommerce/layouts/account.php:132
+#: codetot/woocommerce/layouts/account.php:119
 msgid "Order Detail"
 msgstr ""
 
-#: codetot/admin/acf.php:77 codetot/helpers/acf.php:96
+#: codetot/helpers/acf.php:96
 msgid "Outline"
 msgstr ""
 
-#: codetot/admin/acf.php:78 codetot/helpers/acf.php:97
+#: codetot/helpers/acf.php:97
 msgid "Outline (Dark Background)"
 msgstr ""
 
-#: blocks/pagination.php:7 codetot/admin/ct-theme.php:155
+#: codetot/admin/acf.php:81
+msgid "Outline White: White Border and Text - No Background"
+msgstr ""
+
+#: codetot/admin/acf.php:79
+msgid "Outline: Dark Border and Text - No Background"
+msgstr ""
+
+#: blocks/pagination.php:7 codetot/admin/ct-theme.php:176
 msgid "Page"
 msgstr ""
 
@@ -815,7 +918,7 @@ msgstr ""
 msgid "Page Settings"
 msgstr ""
 
-#: codetot/theme-init.php:121
+#: codetot/theme-init.php:109
 msgid "Page Sidebar"
 msgstr ""
 
@@ -823,61 +926,62 @@ msgstr ""
 msgid "Page Stylesheet (CSS)"
 msgstr ""
 
-#: codetot/layout.php:94 inc/template-tags.php:297
-#: template-parts/content.php:59
+#: codetot/layout.php:92 template-parts/content.php:59
+#: codetot/helpers/template-tags.php:297
 msgid "Pages:"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:333
+#: codetot/admin/ct-theme.php:356
 msgid "Phone Number"
 msgstr ""
 
-#: codetot/helpers/metabox.php:173
+#: codetot/helpers/metabox.php:178
 msgid "Pinterest URL"
 msgstr ""
 
-#: inc/template-tags.php:186
+#: codetot/helpers/template-tags.php:186
 msgid "Placeholder image"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:154
+#: functions.php:77 functions.php:151
+#, php-format
+msgid "Plugin %s must be activate to work with this theme."
+msgstr ""
+
+#: codetot/admin/ct-theme.php:175
 msgid "Post"
 msgstr ""
 
 #. %s: post author.
-#: inc/template-tags.php:46
+#: codetot/helpers/template-tags.php:46
 #, php-format
 msgctxt "post author"
 msgid "by %s"
 msgstr ""
 
-#: blocks/post-card.php:67
-msgid "Post by:"
-msgstr ""
-
-#: codetot/admin/ct-theme.php:221
+#: codetot/admin/ct-theme.php:232
 msgid "Post Card Style"
 msgstr ""
 
 #. %s: post date.
-#: inc/template-tags.php:29
+#: codetot/helpers/template-tags.php:29
 #, php-format
 msgctxt "post date"
 msgid "Posted on %s"
 msgstr ""
 
-#: codetot/theme-init.php:110
+#: codetot/theme-init.php:98
 msgid "Post Sidebar"
 msgstr ""
 
-#: codetot/admin/acf.php:181
+#: codetot/admin/acf.php:184
 #, php-format
 msgid "Preset %s"
 msgstr ""
 
-#: codetot/admin/acf.php:74 codetot/admin/acf.php:167
-#: codetot/helpers/acf.php:51 codetot/helpers/acf.php:93
-#: codetot/helpers/metabox.php:27
+#: codetot/admin/acf.php:170 codetot/helpers/acf.php:51
+#: codetot/helpers/acf.php:93 codetot/helpers/metabox.php:27
+#: codetot/woocommerce/ct-theme.php:162
 msgid "Primary"
 msgstr ""
 
@@ -885,70 +989,80 @@ msgstr ""
 msgid "Primary Menu"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:217
+#: codetot/admin/acf.php:75
+msgid "Primary: White Text - Primary Background"
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:257
 msgid "Product"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:85
+#: codetot/woocommerce/ct-theme.php:99
 msgid "Product Card Style"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:219
+#: codetot/woocommerce/ct-theme.php:259
 msgid "Product Category"
 msgstr ""
 
-#: codetot/woocommerce/init.php:116
+#: codetot/woocommerce/init.php:140
 msgid "Product Category Sidebar"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:99
+#: codetot/woocommerce/ct-theme.php:113
 msgid "Product Image Visible"
 msgstr ""
 
-#: codetot/woocommerce/init.php:89
+#: codetot/woocommerce/init.php:110
 msgid "Product Sidebar"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:150
+#: codetot/woocommerce/ct-theme.php:177
 msgid "Product Sidebar - Bottom Right Column"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:149
+#: codetot/woocommerce/ct-theme.php:176
 msgid "Product Sidebar - Right Small Column"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:129
+#: codetot/woocommerce/ct-theme.php:143
 msgid "Product Star Rating in List"
 msgstr ""
 
-#: codetot/woocommerce/features/quick-view.php:155
+#: codetot/woocommerce/ct-theme.php:188
+msgid "Product Thumbnails Columns"
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:78
+#: codetot/woocommerce/features/product-video.php:59
+msgid "Product Video"
+msgstr ""
+
+#: codetot/woocommerce/features/quick-view.php:186
 msgid ""
 "Quantity of products in stock has been exhausted. The product is not added "
 "to the cart."
 msgstr ""
 
 #: codetot/woocommerce/ct-theme.php:64
-#: codetot/woocommerce/features/quick-view.php:177
+#: codetot/woocommerce/features/quick-view.php:208
 msgid "Quick View"
 msgstr ""
 
-#: codetot/woocommerce/features/quick-view.php:171
+#: codetot/woocommerce/features/quick-view.php:202
 msgid "Quick view"
 msgstr ""
 
-#: blocks/post-card.php:81 blocks/product-description.php:2
+#: blocks/post-card-style-1.php:37 blocks/post-card-style-3.php:34
+#: blocks/post-card-style-4.php:23 blocks/product-description.php:2
 msgid "Read more"
-msgstr ""
-
-#: codetot/woocommerce/features/viewed-products.php:119
-msgid "Recently Viewed Products"
 msgstr ""
 
 #: codetot/features/related-posts.php:143
 msgid "Related posts"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:394
+#: codetot/admin/ct-theme.php:417
 msgid "Remove Theme Copyright"
 msgstr ""
 
@@ -964,79 +1078,73 @@ msgstr ""
 msgid "Reset to default"
 msgstr ""
 
-#: codetot/admin/acf.php:145 codetot/helpers/acf.php:69
+#: codetot/admin/acf.php:148 codetot/helpers/acf.php:69
 msgid "Right"
 msgstr ""
 
-#: codetot/admin/acf.php:204 codetot/helpers/acf.php:7
+#: codetot/admin/acf.php:211 codetot/helpers/acf.php:7
 msgid "Right Map - Left Content"
 msgstr ""
 
-#: codetot/woocommerce/features/countdown-price.php:64
+#: codetot/woocommerce/features/countdown-price.php:148
+msgid "Sale begins after"
+msgstr ""
+
+#: codetot/woocommerce/features/countdown-price.php:149
 msgid "Sale ended after"
 msgstr ""
 
-#: codetot/admin/acf.php:88 codetot/helpers/acf.php:85
+#: codetot/admin/acf.php:91 codetot/helpers/acf.php:85
 msgid "Same Window/Tab"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:323
+#: codetot/admin/ct-theme.php:346
 msgid "Search"
 msgstr ""
 
-#: searchform.php:4
-msgid "Search form"
-msgstr ""
-
-#: searchform.php:9
+#: searchform.php:8
 msgid "Search products&hellip;"
 msgstr ""
 
 #. %s: search query.
 #. %s is the search query.
-#: search.php:27 codetot/features/breadcrumbs.php:255
+#: search.php:29 codetot/features/breadcrumbs.php:255
 #, php-format
 msgid "Search Results for: %s"
 msgstr ""
 
-#: searchform.php:11 searchform.php:16
+#: searchform.php:10 searchform.php:15
 msgid "Search&hellip;"
 msgstr ""
 
-#: codetot/woocommerce/features/countdown-price.php:60
+#: codetot/woocommerce/features/countdown-price.php:144
 msgid "Second"
 msgstr ""
 
-#: codetot/admin/acf.php:75 codetot/admin/acf.php:168
-#: codetot/helpers/acf.php:52 codetot/helpers/acf.php:94
-#: codetot/helpers/acf.php:135 codetot/helpers/acf.php:144
-#: codetot/helpers/metabox.php:34
+#: codetot/admin/acf.php:171 codetot/helpers/acf.php:52
+#: codetot/helpers/acf.php:94 codetot/helpers/acf.php:136
+#: codetot/helpers/acf.php:145 codetot/helpers/metabox.php:34
+#: codetot/woocommerce/ct-theme.php:163
 msgid "Secondary"
 msgstr ""
 
-#: codetot/woocommerce/features/countdown-price.php:61
+#: codetot/admin/acf.php:76
+msgid "Secondary: White Text - Secondary Background"
+msgstr ""
+
+#: codetot/woocommerce/features/countdown-price.php:145
 msgid "Seconds"
-msgstr ""
-
-#: codetot/admin/ct-theme.php:439
-msgctxt "settings description"
-msgid "Display a button scroll to header."
-msgstr ""
-
-#: codetot/admin/ct-theme.php:431
-msgctxt "settings description"
-msgid "Display company social links in left window."
 msgstr ""
 
 #: codetot/shortcodes.php:83
 msgid "Share"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:218
+#: codetot/woocommerce/ct-theme.php:258
 msgid "Shop"
 msgstr ""
 
-#: codetot/woocommerce/init.php:80
+#: codetot/woocommerce/init.php:98
 msgid "Shop Sidebar"
 msgstr ""
 
@@ -1044,11 +1152,15 @@ msgstr ""
 msgid "Shopping cart"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:173
+#: codetot/woocommerce/ct-theme.php:71
+msgid "Short Description in Quick View"
+msgstr ""
+
+#: codetot/admin/ct-theme.php:194
 msgid "Sidebar Layout"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:236
+#: codetot/admin/ct-theme.php:247
 msgid "Single Post Layout"
 msgstr ""
 
@@ -1056,8 +1168,8 @@ msgstr ""
 msgid "Skip to content"
 msgstr ""
 
-#: codetot/admin/acf.php:98 codetot/admin/acf.php:192
-#: codetot/helpers/acf.php:36 codetot/helpers/acf.php:77
+#: codetot/admin/acf.php:101 codetot/helpers/acf.php:36
+#: codetot/helpers/acf.php:77
 msgid "Small"
 msgstr ""
 
@@ -1069,11 +1181,11 @@ msgstr ""
 msgid "Social Media Profile URL"
 msgstr ""
 
-#: codetot/woocommerce/features/quick-view.php:76
+#: codetot/woocommerce/features/quick-view.php:82
 msgid "Something is wrong, please try again later&hellip;"
 msgstr ""
 
-#: codetot/assets.php:143
+#: codetot/assets.php:151
 msgid "Sorry, something went wrong. Please refresh this page and try again!"
 msgstr ""
 
@@ -1081,49 +1193,57 @@ msgstr ""
 msgid "Start import"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:307
+#: codetot/admin/ct-theme.php:330
 msgid "Sticky Header"
 msgstr ""
 
-#: codetot/features/store.php:9 codetot/features/store.php:10
-#: codetot/features/store.php:14
+#: codetot/features/store-locator.php:37 codetot/features/store-locator.php:38
+#: codetot/features/store-locator.php:42
 msgid "Store"
 msgstr ""
 
-#: codetot/features/store.php:50 codetot/features/store.php:51
-#: codetot/features/store.php:55
+#: codetot/features/store-locator.php:71 codetot/features/store-locator.php:72
+#: codetot/features/store-locator.php:76
 msgid "Store Locator"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:226 codetot/admin/ct-theme.php:227
-#: codetot/admin/ct-theme.php:228 codetot/admin/ct-theme.php:229
+#: codetot/admin/ct-theme.php:125
+msgid "Store Locator Maps"
+msgstr ""
+
+#: codetot/admin/ct-theme.php:237 codetot/admin/ct-theme.php:238
+#: codetot/admin/ct-theme.php:239 codetot/admin/ct-theme.php:240
 #, php-format
 msgid "Style %s"
 msgstr ""
 
-#: searchform.php:5 codetot/theme-init.php:209
+#: searchform.php:4 codetot/theme-init.php:201
 msgctxt "submit button"
 msgid "Search"
 msgstr ""
 
 #. 1: list of tags.
-#: inc/template-tags.php:74
+#: codetot/helpers/template-tags.php:74
 msgid "Tags:"
 msgstr ""
 
-#: codetot/woocommerce/features/countdown-price.php:65
+#: codetot/woocommerce/ct-theme.php:190
+msgid "The maximum thumbnails in single product's gallery."
+msgstr ""
+
+#: codetot/woocommerce/features/countdown-price.php:150
 msgid "The sale has ended."
 msgstr ""
 
-#: codetot/woocommerce/features/countdown-price.php:66
+#: codetot/woocommerce/features/countdown-price.php:151
 msgid "The sale will end after less than a day."
 msgstr ""
 
-#: codetot/admin/acf.php:178
+#: codetot/admin/acf.php:181
 msgid "Theme Preset"
 msgstr ""
 
-#: index.php:37 blocks/category-post.php:41
+#: index.php:58 blocks/category-post.php:41
 msgid "There is no posts to display."
 msgstr ""
 
@@ -1137,35 +1257,36 @@ msgstr ""
 msgid "This query must work with singular post only."
 msgstr ""
 
-#: codetot/widgets/ct-recent-posts.php:122
+#: codetot/widgets/ct-recent-posts.php:112
+#: codetot/widgets/ct-related-posts.php:116
 msgid "Title:"
 msgstr ""
 
-#: codetot/admin/acf.php:214 codetot/helpers/acf.php:16
+#: codetot/admin/acf.php:221 codetot/helpers/acf.php:16
 msgid "Top Content - Bottom Form"
 msgstr ""
 
-#: codetot/admin/acf.php:206 codetot/helpers/acf.php:9
+#: codetot/admin/acf.php:213 codetot/helpers/acf.php:9
 msgid "Top Content - Bottom Map"
 msgstr ""
 
-#: codetot/admin/acf.php:215 codetot/helpers/acf.php:17
+#: codetot/admin/acf.php:222 codetot/helpers/acf.php:17
 msgid "Top Form - Bottom Content"
 msgstr ""
 
-#: codetot/admin/acf.php:205 codetot/helpers/acf.php:8
+#: codetot/admin/acf.php:212 codetot/helpers/acf.php:8
 msgid "Top Map - Bottom Content"
 msgstr ""
 
-#: codetot/woocommerce/init.php:98
+#: codetot/woocommerce/init.php:120
 msgid "Top Product Sidebar"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:349 codetot/admin/ct-theme.php:355
+#: codetot/admin/ct-theme.php:372 codetot/admin/ct-theme.php:378
 msgid "Topbar"
 msgstr ""
 
-#: codetot/theme-init.php:162
+#: codetot/theme-init.php:150
 #, php-format
 msgid "Topbar Column #%s"
 msgstr ""
@@ -1174,31 +1295,49 @@ msgstr ""
 msgid "Type to search"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:56 codetot/admin/ct-theme.php:96
-msgid "Typography"
+#: codetot/woocommerce/ct-theme.php:214
+msgid "Upsells Products Columns"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:174
-msgid "Upsells Products Columns"
+#: codetot/woocommerce/features/product-video.php:76
+msgid "URL"
 msgstr ""
 
 #: codetot/admin/ct-data.php:130
 msgid "Using Google Maps API Key to create map interactive with visitors."
 msgstr ""
 
-#: codetot/woocommerce/init.php:132
+#: codetot/woocommerce/features/product-video.php:74
+msgid "Video Type"
+msgstr ""
+
+#: codetot/woocommerce/features/product-video.php:85
+msgid "Video URL"
+msgstr ""
+
+#: blocks/post-card-style-2.php:25
+#, php-format
+msgid "View post %s"
+msgstr ""
+
+#: codetot/woocommerce/init.php:158
 msgid "View product"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:187
+#: codetot/woocommerce/features/quick-view.php:125
+#, php-format
+msgid "View product %s"
+msgstr ""
+
+#: codetot/woocommerce/ct-theme.php:227
 msgid "Viewed Products Columns"
 msgstr ""
 
-#: codetot/admin/ct-theme.php:313
+#: codetot/admin/ct-theme.php:336
 msgid "Visible Scroll Up"
 msgstr ""
 
-#: blocks/social-links.php:26 blocks/social-links.php:29
+#: blocks/social-links.php:27 blocks/social-links.php:30
 #, php-format
 msgid "Visit %s"
 msgstr ""
@@ -1214,7 +1353,7 @@ msgctxt "weekly archives date format"
 msgid "W"
 msgstr ""
 
-#: codetot/woocommerce/ct-theme.php:74
+#: codetot/woocommerce/ct-theme.php:88
 msgid "When adding product in listing page, display a minicart."
 msgstr ""
 
@@ -1224,9 +1363,13 @@ msgid ""
 "to app Google Maps."
 msgstr ""
 
-#: codetot/admin/acf.php:162 codetot/helpers/acf.php:46
-#: codetot/helpers/acf.php:136 codetot/helpers/acf.php:145
+#: codetot/admin/acf.php:165 codetot/helpers/acf.php:46
+#: codetot/helpers/acf.php:137 codetot/helpers/acf.php:146
 msgid "White"
+msgstr ""
+
+#: codetot/admin/acf.php:78
+msgid "White: Dark Text - White Background"
 msgstr ""
 
 #: codetot/woocommerce/ct-theme.php:54
@@ -1240,6 +1383,10 @@ msgctxt "yearly archives date format"
 msgid "Y"
 msgstr ""
 
+#: blocks/slideout-menu.php:29
+msgid "You need to configure menu."
+msgstr ""
+
 #: codetot/admin/theme-sync.php:77
 msgid "Your action has been processed!"
 msgstr ""
@@ -1249,6 +1396,7 @@ msgid "Your current theme settings were a theme default settings."
 msgstr ""
 
 #: codetot/helpers/metabox.php:158
+#: codetot/woocommerce/features/product-video.php:78
 msgid "Youtube URL"
 msgstr ""
 
