@@ -129,13 +129,6 @@ class Codetot_CT_Theme_Settings
           'desc' => __('Enable maps with multiple store locations.', 'ct-bones')
         ],
         [
-          'name'    => __('Store Locator Maps', 'ct-bones'),
-          'id'      => $this->filter_prefix . 'enable_store_locator_map',
-          'type'    => 'switch',
-          'style'   => 'rounded',
-          'desc' => __('Enable maps with multiple store locations.', 'ct-bones')
-        ],
-        [
           'type' => 'select',
           'name' => __('Homepage - H1 Heading', 'ct-bones'),
           'id'   => $this->prefix . 'homepage_heading',
