@@ -246,14 +246,28 @@ if (!function_exists('codetot_logo_or_site_title')) {
    */
   function codetot_logo_or_site_title($echo = false)
   {
+    $homepage_heading = get_global_option('codetot_homepage_heading') ?? false;
+    $is_homepage_heading = $homepage_heading === '1';
+    $titleAttribute = $is_homepage_heading ? 'title="' . get_the_title( get_option('page_on_front')) . '"' : '';
+
+    ob_start();
+    $custom_logo_id = get_theme_mod( 'custom_logo' );
+    $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+    $logo = printf ('<a href="%1$s" title="%2$s" class="custom-logo-link" rel="home" aria-current="page"><img src="%3$s"></a>',
+      get_bloginfo('url'),
+      get_the_title( get_option('page_on_front')),
+      $image[0]
+    );
+
+    $logo = ob_get_clean();
+
     if (function_exists('the_custom_logo') && has_custom_logo()) {
       // Image logo.
-      $logo = get_custom_logo();
-      $html = is_home() ? '<h1 class="logo">' . $logo . '</h1>' : $logo;
+      $logo1 = get_custom_logo();
+      $html = $is_homepage_heading ? '<h1 class="header__logo">' . $logo . '</h1>' : $logo;
     } else {
-      $tag = is_home() ? 'h1' : 'div';
-
-      $html  = '<' . esc_attr($tag) . ' class="site-title"><a href="' . esc_url(home_url('/')) . '" rel="home">' . esc_html(get_bloginfo('name')) . '</a></' . esc_attr($tag) . '>';
+      $tag = $is_homepage_heading ? 'h1' : 'div';
+      $html  = '<' . esc_attr($tag) . ' class="site-title"><a href="' . esc_url(home_url('/')) . '" rel="home"' . $titleAttribute . '>' . esc_html(get_bloginfo('name')) . '</a></' . esc_attr($tag) . '>';
     }
 
     if (!$echo) {
