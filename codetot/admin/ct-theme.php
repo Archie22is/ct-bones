@@ -127,6 +127,16 @@ class Codetot_CT_Theme_Settings
           'type'    => 'switch',
           'style'   => 'rounded',
           'desc' => __('Enable maps with multiple store locations.', 'ct-bones')
+        ],
+        [
+          'type' => 'select',
+          'name' => __('Homepage - H1 Heading', 'ct-bones'),
+          'id'   => $this->prefix . 'homepage_heading',
+          'std'  => 0,
+          'options' => [
+            0 => __('None', 'ct-bones'),
+            1 => __('Homepage Page Title', 'ct-bones')
+          ]
         ]
       ],
     ];
