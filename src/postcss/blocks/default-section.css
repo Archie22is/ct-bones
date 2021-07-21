@@ -50,6 +50,16 @@
   }
 }
 
+.default-section.has-6-columns .default-section__col {
+  @media (--xs) {
+    @mixin column-item 2, 1em;
+  }
+
+  @media (--m) {
+    @mixin column-item 6, 1em;
+  }
+}
+
 .default-section.is-header-center .default-section__header {
   text-align: center;
 
