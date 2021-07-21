@@ -40,7 +40,6 @@
   }
 }
 
-
 .default-section.has-5-columns .default-section__col {
   @media (--xs) {
     @mixin column-item 2, 1em;
