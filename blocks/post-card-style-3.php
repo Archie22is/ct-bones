@@ -16,7 +16,9 @@
   </a>
   <div class="post-card__main">
     <p class="mb-05 c-dark post-card__meta">
-      <span class="post-card__meta-date"><?php echo $post_date; ?></span>
+      <?php if(!empty($post_date)) : ?>
+        <span class="post-card__meta-date"><?php echo $post_date; ?></span>
+      <?php endif; ?>
       <?php if (!empty($category_link) && !empty($category_name)) : ?>
         <span class="post-card__meta-separator">|</span>
         <a class="post-card__meta-category" href="<?php echo $category_link; ?>"><?php echo $category_name; ?></a>

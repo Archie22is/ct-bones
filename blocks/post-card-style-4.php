@@ -4,9 +4,11 @@
       <a class="post-card__link" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
     </h3>
     <div class="mt-05 post-card__description"><?php echo codetot_excerpt(15); ?></div>
-    <p class="mt-05 post-card__meta">
-      <span class="post-card__meta-date"><?php echo $post_date; ?></span>
-    </p>
+    <?php if(!empty($post_date)) : ?>
+      <p class="mt-05 post-card__meta">
+        <span class="post-card__meta-date"><?php echo $post_date; ?></span>
+      </p>
+    <?php endif; ?>
   </div>
   <div class="post-card__footer">
     <div class="f fw jcb post-card__footer-grid">

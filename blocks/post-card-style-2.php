@@ -13,9 +13,11 @@
       ));
     endif;
     ?>
+    <?php if(!empty($post_date)) : ?>
     <span class="f c-white abs z-2 post-card__badge">
       <span class="post-card__badge-date"><?php echo $post_date; ?></span>
     </span>
+    <?php endif; ?>
   </a>
   <div class="fa1 post-card__main">
     <?php if (!empty($category_name) && !empty($category_link)) : ?>
