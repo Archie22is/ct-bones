@@ -13,10 +13,10 @@ function codetot_get_category_sidebar_on_single() {
 }
 
 function codetot_get_category_column_number() {
-  return get_global_option('category_column_number') ?? '1';
+  return get_global_option('codetot_category_column_number') ?? '1';
 }
 
 function codetot_get_category_post_card_style() {
-  return get_global_option('post_card_style') ?? 'style-1';
+  return get_global_option('codetot_post_card_style') ?? 'style-1';
 }
 

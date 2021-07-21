@@ -11,7 +11,7 @@
 get_header();
 
 global $wp_query;
-
+$post_card_style = codetot_get_category_post_card_style();
 $number_columns = get_global_option('codetot_category_column_number') ?? 3;
 ?>
 

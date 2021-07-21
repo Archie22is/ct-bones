@@ -25,9 +25,11 @@
     <h3 class="post-card__title">
       <a class="post-card__link" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
     </h3>
+    <?php if(!empty($post_date)) : ?>
     <p class="mt-05 mb-05 post-card__meta">
-      <span class="post-card__meta-date"><?php echo $post_date; ?></span>
-    </p>
+        <span class="post-card__meta-date"><?php echo $post_date; ?></span>
+      </p>
+    <?php endif; ?>
   </div>
   <div class="pt-05 post-card__footer">
     <?php the_block('button', array(

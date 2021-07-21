@@ -18,6 +18,6 @@ $word_count = !empty($post_description_length) ? (int) $post_description_length 
 the_block('post-card-' . esc_attr($card_style), array(
   'class' => !empty($class) ? $class : '',
   'post_date' => $post_date,
-  'category_name' => $category->name,
+  'category_name' => !empty($category) ? $category->name : '',
   'category_link' => get_category_link($category)
 ));
