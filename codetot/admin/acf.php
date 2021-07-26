@@ -57,6 +57,9 @@ class Codetot_Acf {
     add_filter('acf/load_field/name=style_color', array($this, 'load_background_types'));
     add_filter('acf/load_field/name=background_type_item', array($this, 'load_background_types'));
 
+    // Section title tag
+    add_filter('acf/load_field/name=section_title_tag', array($this, 'load_section_title_tag'));
+
     // Block Presets
     add_filter('acf/load_field/name=block_preset', array($this, 'load_block_presets'));
     add_filter('acf/load_field/name=block_spacing', array($this, 'load_block_spacing'));
@@ -169,6 +172,17 @@ class Codetot_Acf {
       'black' => __('Black', 'ct-bones'),
       'primary' => __('Primary', 'ct-bones'),
       'secondary' => __('Secondary', 'ct-bones')
+    ));
+
+    return $field;
+  }
+
+  public function load_section_title_tag($field) {
+    $field['choices'] = apply_filters('codetot_section_title_tag', array(
+      'h1' => __('Heading 1', 'ct-bones'),
+      'h2' => __('Heading 2', 'ct-bones'),
+      'h3' => __('Heading 3', 'ct-bones'),
+      'p' => __('Paragraph', 'ct-bones')
     ));
 
     return $field;
