@@ -4,6 +4,7 @@ import {
   hasClass,
   removeClass,
   inViewPort,
+  trigger,
   loadNoscriptContent
 } from 'lib/dom'
 import { throttle } from 'lib/utils'
@@ -24,4 +25,10 @@ export default el => {
   on('scroll', throttle(initLoad, 100), window)
 
   on('load', throttle(initLoad, 100), window)
+
+  setTimeout(() => {
+    trigger('loaded', el)
+    console.log('ahihi-okok in')
+  }, 10000)
+  console.log('ahihi-okok out')
 }
