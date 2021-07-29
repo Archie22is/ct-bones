@@ -28,7 +28,5 @@ export default el => {
 
   setTimeout(() => {
     trigger('loaded', el)
-    console.log('ahihi-okok in')
   }, 10000)
-  console.log('ahihi-okok out')
 }
