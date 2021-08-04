@@ -249,14 +249,14 @@ if (!function_exists('codetot_logo_or_site_title')) {
     $homepage_heading = get_global_option('codetot_homepage_heading') ?? false;
     $is_homepage_heading = $homepage_heading === '1';
     $titleAttribute = $is_homepage_heading ? 'title="' . get_the_title( get_option('page_on_front')) . '"' : '';
+    $tag = $is_homepage_heading && is_front_page() ? 'h1' : 'div';
 
     if (function_exists('the_custom_logo') && has_custom_logo()) {
       // Image logo.
       $logo = get_custom_logo();
-      $html = $is_homepage_heading ? '<h1 class="header__logo">' . ' <span class="screen-reader-text">'.get_the_title( get_option('page_on_front')) . '</span>'. $logo . '</h1>' : $logo;
+      $html = '<'.esc_attr($tag) .' class="header__logo">' . ' <span class="screen-reader-text">'.get_the_title( get_option('page_on_front')) . '</span>'. $logo . '</'.esc_attr($tag) .'>';
 
     } else {
-      $tag = $is_homepage_heading ? 'h1' : 'div';
       $html  = '<' . esc_attr($tag) . ' class="site-title"><a href="' . esc_url(home_url('/')) . '" rel="home"' . $titleAttribute . '>' . esc_html(get_bloginfo('name')) . '</a></' . esc_attr($tag) . '>';
     }
 
