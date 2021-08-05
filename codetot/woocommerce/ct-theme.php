@@ -198,6 +198,17 @@ class Codetot_CT_Theme_WooCommerce_Settings
       ),
       array(
         'type' => 'select',
+        'name' => __('Product Thumbnails Count', 'ct-bones'),
+        'id'   => $this->prefix . 'woocommerce_product_thumbnails_count',
+        'desc' => __('Display product thumbnails once or add view more button like Tiki.', 'ct-bones'),
+        'std'  => 4,
+        'options' => [
+          'default' => __('View more button', 'ct-bones'),
+          'all' => __('Load all thumbnails', 'ct-bones')
+        ]
+      ),
+      array(
+        'type' => 'select',
         'name' => __('Cross Sell Products Columns', 'ct-bones'),
         'id'   => $this->prefix . 'woocommerce_cross_sell_products_colums',
         'std'  => 4,
