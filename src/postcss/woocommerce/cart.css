@@ -176,7 +176,7 @@ body.woocommerce-cart {
 
   & .product-quantity {
     @media (--m) {
-      text-align: center;
+      text-align: right;
     }
   }
 
