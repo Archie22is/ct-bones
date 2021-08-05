@@ -306,8 +306,8 @@ body.woocommerce-cart {
 
     @media (--m) {
       bottom: 16px;
-      right: auto;
-      left: 165px;
+      right: 15px;
+      left: unset;
       padding: 0;
       border: 0;
     }
