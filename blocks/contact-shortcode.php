@@ -24,7 +24,7 @@ if(!empty($items)) : ?>
         <span class="contact-shortcode__content"><?php echo $item['url']; ?></span>
         <?php $content = ob_get_clean();
       ?>
-      <li class="contact-shortcode__item">
+      <li class="contact-shortcode__item" data-type="<?php echo $item['type']; ?>">
         <?php if (!empty($url)) :
           printf('<a class="contact-shortcode__link" href="%1$s" target="%2$s">%3$s</a>',
             $url,
