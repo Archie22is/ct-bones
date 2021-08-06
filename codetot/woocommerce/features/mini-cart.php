@@ -17,10 +17,6 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout
    * @var Codetot_Woocommerce_Mini_Cart
    */
   private static $instance;
-  /**
-   * @var string
-   */
-  private $container_class;
 
   /**
    * Get singleton instance.
@@ -37,16 +33,17 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout
 
   private function __construct()
   {
-    $this->container_class = 'container';
+    $this->enable = get_global_option('codetot_woocommerce_enable_minicart') ?? true;
 
-    add_action('wp_footer', array($this, 'woocommerce_cart_sidebar'));
-    add_action('codetot_first_screen_hide_style', array($this, 'first_load_selector'));
-    add_action('wp_ajax_update_quantity_in_mini_cart', array($this,'ajax_update_quantity_in_mini_cart'));
-    add_action('wp_ajax_nopriv_update_quantity_in_mini_cart', array($this,'ajax_update_quantity_in_mini_cart'));
+    if ($this->enable) {
+      add_action('wp_footer', array($this, 'woocommerce_cart_sidebar'));
+      add_action('wp_ajax_update_quantity_in_mini_cart', array($this,'ajax_update_quantity_in_mini_cart'));
+      add_action('wp_ajax_nopriv_update_quantity_in_mini_cart', array($this,'ajax_update_quantity_in_mini_cart'));
 
-    add_filter( 'woocommerce_widget_cart_item_quantity', array($this,'update_quantity_mini_cart'), 10, 3 );
+      add_filter('woocommerce_widget_cart_item_quantity', array($this,'update_quantity_mini_cart'), 10, 3);
 
-    add_filter( 'woocommerce_add_to_cart_fragments', array($this, 'woocommerce_header_add_to_cart_fragment'),10);
+      add_filter('woocommerce_add_to_cart_fragments', array($this, 'woocommerce_header_add_to_cart_fragment'), 10);
+    }
   }
 
   public function woocommerce_cart_sidebar() {
@@ -56,7 +53,7 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout
       <div class="w100 abs mini-cart__overlay js-mini-cart-close"></div>
       <div class="mini-cart__wrapper">
         <div class="mini-cart__head">
-          <h4 class="text-uppercase mini-cart__title"><?php esc_html_e( 'Shopping cart', 'ct-bones' ); ?></h4>
+          <p class="text-uppercase mini-cart__title"><?php esc_html_e( 'Shopping cart', 'ct-bones' ); ?></p>
           <span class="mini-cart__count"><?php echo esc_html( $total ); ?></span>
           <button class="mini-cart__close js-mini-cart-close" aria-label="<?php _e('Close a mini cart', 'ct-bones'); ?>">
             <?php codetot_svg('close', true); ?>
@@ -72,7 +69,6 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout
 
   function update_quantity_mini_cart( $output, $cart_item, $cart_item_key ) {
     $product        = $cart_item['data'];
-    $product_id     = $cart_item['product_id'];
     $stock_quantity = $product->get_stock_quantity();
     $product_price  = WC()->cart->get_product_price( $product );
 
@@ -92,10 +88,6 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout
   }
 
   public function codetot_mini_cart() {
-//    if ( ! codetot_is_woocommerce_activated() ) {
-//      return;
-//    }
-
     do_action( 'woocommerce_before_mini_cart' );
 
     if ( ! WC()->cart->is_empty() ) {
@@ -196,12 +188,6 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout
     $response['content'] = ob_get_clean();
 
     wp_send_json_success($response);
-  }
-
-  public function first_load_selector($selectors) {
-    $selectors[] = '.mini-cart-sidebar';
-
-    return $selectors;
   }
 
   public function woocommerce_header_add_to_cart_fragment( $fragments ) {
