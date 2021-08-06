@@ -247,7 +247,7 @@ if (!function_exists('codetot_logo_or_site_title')) {
   function codetot_logo_or_site_title($echo = false)
   {
     $homepage_heading = get_global_option('codetot_homepage_heading') ?? false;
-    $is_homepage_heading = $homepage_heading === '1';
+    $is_homepage_heading = is_front_page() && $homepage_heading === '1';
     $titleAttribute = $is_homepage_heading ? 'title="' . get_the_title( get_option('page_on_front')) . '"' : '';
     $tag = $is_homepage_heading && is_front_page() ? 'h1' : 'div';
 
