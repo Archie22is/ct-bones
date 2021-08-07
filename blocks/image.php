@@ -1,5 +1,5 @@
 <?php
-$_lazyload = isset($lazyload) && $lazyload ?? true;
+$_lazyload = (isset($lazyload) && $lazyload) || !isset($lazyload);
 $_size = !empty($size) ? $size : 'full';
 
 if (!empty($image) && !empty($class)) :
