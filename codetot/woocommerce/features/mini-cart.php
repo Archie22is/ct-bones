@@ -33,7 +33,7 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout
 
   private function __construct()
   {
-    $this->enable = get_global_option('codetot_woocommerce_enable_minicart') ?? true;
+    $this->enable = !empty(get_global_option('codetot_woocommerce_enable_minicart'));
 
     if ($this->enable) {
       add_action('wp_footer', array($this, 'woocommerce_cart_sidebar'));

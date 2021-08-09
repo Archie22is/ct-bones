@@ -16,6 +16,7 @@ $_class .= !empty($class) ? ' ' . $class : '';
 
 $_attr = !empty($attr) ? $attr : '';
 $_attr .= !empty($target) ? ' target="' . esc_attr($target) . '"' : '';
+$_attr .= !empty($rel) ? ' rel="' . esc_attr($rel) . '"' : 'rel="nofollow"';
 
 $_url = !empty($url) ? $url : '';
 $content = !empty($button) ? '<span class="button__text">' . esc_html($button) . '</span>' : '';
