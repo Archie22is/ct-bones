@@ -11,7 +11,7 @@ $_tag = !empty($tag) ? $tag : 'section';
 $_enable_lazyload = isset($lazyload) && $lazyload === true;
 $_lazyload_loader_class = !empty($lazyload_loader_class) ? $lazyload_loader_class : 'loader--dark';
 if ($_enable_lazyload) {
-  $_attrs .= ' data-block="default-section"';
+  $_attrs .= empty($attributes) ? ' data-block="default-section"' : '';
   $_class .= ' is-loading has-lazyload';
 }
 
