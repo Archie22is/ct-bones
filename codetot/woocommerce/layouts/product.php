@@ -102,8 +102,8 @@ class Codetot_Woocommerce_Layout_Product
 
     remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
     remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50);
-    add_action('woocommerce_single_product_summary',  array($this, 'woocommerce_single_meta'), 35);
-    add_action('woocommerce_single_product_summary',  array($this, 'woocommerce_single_meta_tag'), 40);
+    add_action('woocommerce_single_product_summary',  'codetot_woocommerce_single_meta', 35);
+    add_action('woocommerce_single_product_summary',  'codetot_woocommerce_single_meta_tag', 40);
 
     add_filter('woocommerce_product_tabs', array($this, 'woo_custom_description_tab'), 98);
     remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
@@ -269,89 +269,6 @@ class Codetot_Woocommerce_Layout_Product
   // Top product sidebar
   public function single_product_column_open_secondary() {
     echo '<div class="single-product-top__col single-product-top__col--sidebar">';
-  }
-
-  public function woocommerce_single_meta() {
-    global $product;
-
-    echo  '<div class="mt-05 single-product-meta">';
-
-    do_action( 'woocommerce_product_meta_start' );
-
-    if ( wc_product_sku_enabled() && !empty($product->get_sku()) ) :
-      printf('<p class="product-meta product-meta--sku"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
-      str_replace(':', '', esc_html__( 'SKU: ', 'woocommerce' )),
-      $product->get_sku()
-    );
-    endif;
-
-    if ($product->has_weight()) {
-      $weight_unit = get_option('woocommerce_weight_unit');
-
-      printf('<p class="product-meta product-meta--weight"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
-        esc_html__('Weight', 'woocommerce'),
-        $product->get_weight() . $weight_unit
-      );
-    }
-
-    $availability = $product->get_availability();
-    printf('<p class="product-meta product-meta--stock"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
-      esc_html__( 'Stock', 'woocommerce' ),
-      $availability['class'] != 'in-stock' ? $availability['availability'] : esc_html__( 'In stock', 'woocommerce' )
-    );
-
-    if ( !empty( $product->get_height() ) || !empty( $product->get_width() ) || !empty( $product->get_length() ) ) {
-      $space = ' x ';
-
-      ob_start();
-      if(!empty($product->get_height())) :
-        echo '<span class="height">';
-        echo  $product->get_height() . get_option( 'woocommerce_dimension_unit' );
-        echo '</span>';
-        echo $space;
-      endif;
-
-      if(!empty($product->get_width()) && !empty($product->get_height())) :
-        echo '<span class="width">';
-        echo  $product->get_width() . get_option( 'woocommerce_dimension_unit' );
-        echo '</span>';
-        echo $space;
-      endif;
-
-      if(!empty($product->get_length()) && !empty($product->get_width())) :
-        echo '<span class="length">';
-        echo  $product->get_length() . get_option( 'woocommerce_dimension_unit' );
-        echo '</span>';
-      endif;
-      $dimesions_html = ob_get_clean();
-
-      printf('<p class="product-meta product-meta--dimesions"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
-        esc_html__( 'Size', 'woocommerce' ),
-        $dimesions_html
-      );
-    }
-
-    $product_categories = get_the_terms($product->get_id(), 'product_cat');
-    if (!empty($product_categories) && !is_wp_error($product_categories)) {
-      $product_category_label = _n('Category', 'Categories', count($product_categories), 'woocommerce');
-
-      printf('<p class="product-meta product-meta--categories"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
-        $product_category_label,
-        wc_get_product_category_list($product->get_id(), ', ')
-      );
-    }
-
-    do_action( 'woocommerce_product_meta_end' );
-
-    echo '</div>' ;
-
-  }
-
-  public function woocommerce_single_meta_tag() {
-    global $product;
-    do_action( 'woocommerce_product_meta_start' );
-    echo wc_get_product_tag_list( $product->get_id(), ', ', '<div class="single-product-tag tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</div>' );
-    do_action( 'woocommerce_product_meta_end' );
   }
 
   public function single_product_title_open() {
@@ -666,6 +583,95 @@ function codetot_track_product_view() {
 	}
 
 	wc_setcookie( 'woocommerce_recently_viewed', implode( '|', $viewed_products ) );
+}
+
+function codetot_woocommerce_single_meta_tag() {
+  global $product;
+  do_action( 'woocommerce_product_meta_start' );
+  echo wc_get_product_tag_list( $product->get_id(), ', ', '<div class="single-product-tag tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</div>' );
+  do_action( 'woocommerce_product_meta_end' );
+}
+
+function codetot_woocommerce_single_meta() {
+  global $product;
+
+  echo  '<div class="mt-05 single-product-meta">';
+
+  do_action( 'woocommerce_product_meta_start' );
+
+  if ( wc_product_sku_enabled() && !empty($product->get_sku()) ) :
+    printf('<p class="product-meta product-meta--sku"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+    str_replace(':', '', esc_html__( 'SKU: ', 'woocommerce' )),
+    $product->get_sku()
+  );
+  endif;
+
+  if ($product->has_weight()) {
+    $weight_unit = get_option('woocommerce_weight_unit');
+
+    printf('<p class="product-meta product-meta--weight"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+      esc_html__('Weight', 'woocommerce'),
+      $product->get_weight() . $weight_unit
+    );
+  }
+
+  $availability = $product->get_availability();
+  $hide_stock_status = get_global_option('codetot_woocommerce_hide_product_stock_status') ?? false;
+
+  if (!$hide_stock_status) :
+
+    printf('<p class="product-meta product-meta--stock"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+      esc_html__( 'Stock', 'woocommerce' ),
+      $availability['class'] != 'in-stock' ? $availability['availability'] : esc_html__( 'In stock', 'woocommerce' )
+    );
+
+  endif;
+
+  if ( !empty( $product->get_height() ) || !empty( $product->get_width() ) || !empty( $product->get_length() ) ) {
+    $space = ' x ';
+
+    ob_start();
+    if(!empty($product->get_height())) :
+      echo '<span class="height">';
+      echo  $product->get_height() . get_option( 'woocommerce_dimension_unit' );
+      echo '</span>';
+      echo $space;
+    endif;
+
+    if(!empty($product->get_width()) && !empty($product->get_height())) :
+      echo '<span class="width">';
+      echo  $product->get_width() . get_option( 'woocommerce_dimension_unit' );
+      echo '</span>';
+      echo $space;
+    endif;
+
+    if(!empty($product->get_length()) && !empty($product->get_width())) :
+      echo '<span class="length">';
+      echo  $product->get_length() . get_option( 'woocommerce_dimension_unit' );
+      echo '</span>';
+    endif;
+    $dimesions_html = ob_get_clean();
+
+    printf('<p class="product-meta product-meta--dimesions"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+      esc_html__( 'Size', 'woocommerce' ),
+      $dimesions_html
+    );
+  }
+
+  $product_categories = get_the_terms($product->get_id(), 'product_cat');
+  if (!empty($product_categories) && !is_wp_error($product_categories)) {
+    $product_category_label = _n('Category', 'Categories', count($product_categories), 'woocommerce');
+
+    printf('<p class="product-meta product-meta--categories"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+      $product_category_label,
+      wc_get_product_category_list($product->get_id(), ', ')
+    );
+  }
+
+  do_action( 'woocommerce_product_meta_end' );
+
+  echo '</div>' ;
+
 }
 
 Codetot_Woocommerce_Layout_Product::instance();
