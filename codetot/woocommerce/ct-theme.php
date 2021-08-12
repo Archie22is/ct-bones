@@ -239,20 +239,7 @@ class Codetot_CT_Theme_WooCommerce_Settings
           4 => 4,
           5 => 5,
         ]
-      ),
-      array(
-        'type' => 'select',
-        'name' => __('Viewed Products Columns', 'ct-bones'),
-        'id'   => $this->prefix . 'woocommerce_viewed_products_colums',
-        'std'  => 4,
-        'options' => [
-          1 => 1,
-          2 => 2,
-          3 => 3,
-          4 => 4,
-          5 => 5,
-        ]
-      ),
+      )
     );
 
     $meta_boxes[] = [

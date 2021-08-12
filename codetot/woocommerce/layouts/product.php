@@ -116,7 +116,6 @@ class Codetot_Woocommerce_Layout_Product
     add_action('woocommerce_after_single_product_summary', 'codetot_render_related_products', 50);
     add_action('woocommerce_after_single_product_summary', 'codetot_render_cross_sell_products', 60);
     add_action('woocommerce_after_single_product_summary', 'codetot_render_upsell_sections', 70);
-    add_action('woocommerce_after_single_product_summary', 'codetot_render_viewed_products_section', 75);
 
     add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_grid_close'), 100);
     add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_close'), 110);
@@ -513,76 +512,6 @@ function codetot_render_upsell_sections() {
     'list' => $upsell_products,
     'columns' => $columns
   ));
-}
-
-function codetot_render_viewed_products_section() {
-  $viewed_products = ! empty( $_COOKIE['woocommerce_recently_viewed'] ) ? (array) explode( '|', wp_unslash( $_COOKIE['woocommerce_recently_viewed'] ) ) : array(); // @codingStandardsIgnoreLine
-  $viewed_products = array_reverse( array_filter( array_map( 'absint', $viewed_products ) ) );
-
-  if ( empty( $viewed_products ) ) {
-    return;
-  }
-
-  $columns = get_global_option('codetot_woocommerce_viewed_products_colums') ?? 4;
-
-  $post_args = array(
-    'posts_per_page' => apply_filters('codetot_viewed_products_number', $columns),
-    'no_found_rows'  => 1,
-    'post_status'    => 'publish',
-    'post_type'      => 'product',
-    'post__in'       => $viewed_products,
-    'orderby'        => 'post__in',
-  );
-
-  if ( 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) ) {
-    $post_args['tax_query'] = array(
-      array(
-        'taxonomy' => 'product_visibility',
-        'field'    => 'name',
-        'terms'    => 'outofstock',
-        'operator' => 'NOT IN',
-      ),
-    );
-  }
-
-  $_post_args = apply_filters( 'woocommerce_recently_viewed_products_widget_query_args', $post_args);
-
-  $post_query = new WP_Query($_post_args);
-
-  $_class = 'section default-section--no-container product-grid--viewed-products';
-
-  if ($post_query->have_posts()) :
-    the_block('product-grid', array(
-      'class' => $_class,
-      'title' => apply_filters( 'codetot_product_viewed_products_heading', __( 'Recently Viewed Products', 'woocommerce' )),
-      'query' => $post_query,
-      'columns' => $columns
-    ));
-  endif;
-}
-add_action( 'template_redirect', 'codetot_track_product_view', 20 );
-
-function codetot_track_product_view() {
-	if ( ! is_singular( 'product' ) ) {
-		return;
-	}
-
-	global $post;
-
-	if ( empty( $_COOKIE['woocommerce_recently_viewed'] ) )
-		$viewed_products = array();
-	else
-		$viewed_products = (array) explode( '|', $_COOKIE['woocommerce_recently_viewed'] );
-
-	if ( ! in_array( $post->ID, $viewed_products ) ) {
-		$viewed_products[] = $post->ID;
-	}
-
-	if ( sizeof( $viewed_products ) > 15 ) {
-		array_shift( $viewed_products );
-	}
-
-	wc_setcookie( 'woocommerce_recently_viewed', implode( '|', $viewed_products ) );
 }
 
 function codetot_woocommerce_single_meta_tag() {
