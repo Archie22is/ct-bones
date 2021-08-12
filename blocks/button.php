@@ -18,7 +18,7 @@ $_attr = !empty($attr) ? $attr : '';
 $_attr .= !empty($target) ? ' target="' . esc_attr($target) . '"' : '';
 
 if (!empty($url)) {
-  $_attr .= !is_null($rel) ? ' rel="' . esc_attr($rel) . '"' : ' rel="nofollow"';
+  $_attr .= isset($rel) ? ' rel="' . esc_attr($rel) . '"' : ' rel="nofollow"';
 }
 
 $_url = !empty($url) ? $url : '';
