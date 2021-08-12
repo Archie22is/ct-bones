@@ -113,9 +113,9 @@ class Codetot_Woocommerce_Layout_Product
     add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_grid_open'), 40);
     add_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 45);
 
-    add_action('woocommerce_after_single_product_summary', 'codetot_render_related_products', 50);
-    add_action('woocommerce_after_single_product_summary', 'codetot_render_cross_sell_products', 60);
-    add_action('woocommerce_after_single_product_summary', 'codetot_render_upsell_sections', 70);
+    add_action('codetot_single_product_sections', 'codetot_render_related_products', 10);
+    add_action('codetot_single_product_sections', 'codetot_render_cross_sell_products', 20);
+    add_action('codetot_single_product_sections', 'codetot_render_upsell_sections', 30);
 
     add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_grid_close'), 100);
     add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_close'), 110);
@@ -344,6 +344,8 @@ class Codetot_Woocommerce_Layout_Product
     if ($this->enable_bottom_sidebar) :
       echo '<div class="grid__col single-product-sections__col single-product-sections__col--left">';
     endif;
+
+    do_action('codetot_single_product_sections');
   }
 
   public function after_single_product_container_grid_close() {

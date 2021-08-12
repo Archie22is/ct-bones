@@ -32,7 +32,7 @@ class Codetot_WooCommerce_Viewed_Products {
       $this->enable = !empty(get_global_option('codetot_woocommerce_enable_viewed_products_section'));
 
       if ($this->enable) {
-        add_action('woocommerce_after_single_product_summary', 'codetot_render_viewed_products_section', 75);
+        add_action('codetot_single_product_sections', 'codetot_render_viewed_products_section', 40);
       }
     });
 
