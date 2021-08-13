@@ -400,6 +400,12 @@ if (!function_exists('codetot_sidebar_id')) {
       return 'post-sidebar';
     }
 
+    $blog_page_id = get_option('page_for_posts');
+
+    if (!empty($blog_page_id) && is_home()) {
+      return 'post-sidebar';
+    }
+
     return $sidebar;
   }
 }
