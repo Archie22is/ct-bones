@@ -193,7 +193,6 @@ require_once CODETOT_DIR . '/features/back-to-top.php';
 require_once CODETOT_DIR . '/features/store-locator.php';
 require_once CODETOT_DIR . '/features/google-maps.php';
 require_once CODETOT_DIR . '/features/mega-menu.php';
-require_once CODETOT_DIR . '/features/insert-script.php';
 
 add_action('wp', function() {
   // Layout hooks
