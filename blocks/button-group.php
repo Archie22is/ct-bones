@@ -14,7 +14,9 @@ if( !empty($buttons) ) : ?>
           'url' => !empty($button['button_url']) ? $button['button_url'] : '',
           'attr' => !empty($button['button_attr']) ? $button['button_attr'] : '',
           'target' => !empty($button['button_target']) ? $button['button_target'] : '',
-          'icon' => !empty($icon) ? $icon : ''
+          'rel' => !empty($button['rel']) ? $button['rel'] : '',
+          'icon' => !empty($icon) ? $icon : '',
+          'icon_html' => !empty($button['icon_html']) ? $button['icon_html'] : ''
         )); ?>
       </div>
     <?php endforeach; ?>

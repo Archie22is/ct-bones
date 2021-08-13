@@ -15,11 +15,8 @@ $_class .= !empty($type) && in_array($type, $button_types) ? ' button--' . $type
 $_class .= !empty($class) ? ' ' . $class : '';
 
 $_attr = !empty($attr) ? $attr : '';
-$_attr .= !empty($target) ? ' target="' . esc_attr($target) . '"' : '';
-
-if (!empty($url)) {
-  $_attr .= isset($rel) ? ' rel="' . esc_attr($rel) . '"' : ' rel="nofollow"';
-}
+$_attr .= !empty($target) ? ' target="' . esc_html($target) . '"' : '';
+$_attr .= !empty($rel) ? ' rel="' . esc_html($rel) . '"' : '';
 
 $_url = !empty($url) ? $url : '';
 $content = !empty($button) ? '<span class="button__text">' . esc_html($button) . '</span>' : '';
