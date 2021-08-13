@@ -110,7 +110,7 @@ class Codetot_Breadcrumb
       'container' => 'nav',
       'before' => '',
       'after' => '',
-      'browse_tag' => 'h2',
+      'browse_tag' => 'span',
       'list_tag' => 'ul',
       'item_tag' => 'li',
       'show_on_front' => true,

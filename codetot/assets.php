@@ -147,9 +147,10 @@ class Codetot_Assets
 
     $locale_settings = array(
       'ajax' => array(
+        'restUrl' => get_rest_url(null, 'codetot/v1'),
         'url' => admin_url('admin-ajax.php'),
         "ajax_error" => __('Sorry, something went wrong. Please refresh this page and try again!', 'ct-bones'),
-        'nonce' => wp_create_nonce('codetot-config-nonce'),
+        'nonce' => wp_create_nonce('codetot-config-nonce')
       ),
       'themePath' => get_template_directory_uri()
     );

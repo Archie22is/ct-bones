@@ -133,7 +133,14 @@ class Codetot_CT_Theme_WooCommerce_Settings
       ),
       array(
         'type' => 'switch',
-        'name' => __('Facebook Comment', 'ct-bones'),
+        'name' => __('Single Product: Hide Product Stock Status', 'ct-bones'),
+        'id'   => $this->prefix . 'woocommerce_hide_product_stock_status',
+        'std'  => 0,
+        'desc' => __('Hide product status on single product page.', 'ct-bones')
+      ),
+      array(
+        'type' => 'switch',
+        'name' => __('Single Product: Facebook Comment', 'ct-bones'),
         'desc' => __('Display a Facebook comment in each product page', 'ct-bones'),
         'id'   => $this->prefix . 'woocommerce_enable_facebook_comment',
         'std'  => 0
@@ -232,20 +239,7 @@ class Codetot_CT_Theme_WooCommerce_Settings
           4 => 4,
           5 => 5,
         ]
-      ),
-      array(
-        'type' => 'select',
-        'name' => __('Viewed Products Columns', 'ct-bones'),
-        'id'   => $this->prefix . 'woocommerce_viewed_products_colums',
-        'std'  => 4,
-        'options' => [
-          1 => 1,
-          2 => 2,
-          3 => 3,
-          4 => 4,
-          5 => 5,
-        ]
-      ),
+      )
     );
 
     $meta_boxes[] = [

@@ -53,7 +53,7 @@ jobs:
             rm -rf src/
             rm -rf postcss.config.js
             rm -rf package*.json
-            rm -rf .babelrc .browserslistrc .editorconfig .eslintrc.js .prettierignore .stylelintrc
+            rm -rf .babelrc .browserslistrc .eslintrc.js .prettierignore .stylelintrc
             git add .
             git commit -m "Release package"
             git push origin HEAD:production-temp --force

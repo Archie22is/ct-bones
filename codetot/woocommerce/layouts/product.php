@@ -102,8 +102,8 @@ class Codetot_Woocommerce_Layout_Product
 
     remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
     remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50);
-    add_action('woocommerce_single_product_summary',  array($this, 'woocommerce_single_meta'), 35);
-    add_action('woocommerce_single_product_summary',  array($this, 'woocommerce_single_meta_tag'), 40);
+    add_action('woocommerce_single_product_summary',  'codetot_woocommerce_single_meta', 35);
+    add_action('woocommerce_single_product_summary',  'codetot_woocommerce_single_meta_tag', 40);
 
     add_filter('woocommerce_product_tabs', array($this, 'woo_custom_description_tab'), 98);
     remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
@@ -113,10 +113,9 @@ class Codetot_Woocommerce_Layout_Product
     add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_grid_open'), 40);
     add_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 45);
 
-    add_action('woocommerce_after_single_product_summary', 'codetot_render_related_products', 50);
-    add_action('woocommerce_after_single_product_summary', 'codetot_render_cross_sell_products', 60);
-    add_action('woocommerce_after_single_product_summary', 'codetot_render_upsell_sections', 70);
-    add_action('woocommerce_after_single_product_summary', 'codetot_render_viewed_products_section', 75);
+    add_action('codetot_single_product_sections', 'codetot_render_related_products', 10);
+    add_action('codetot_single_product_sections', 'codetot_render_cross_sell_products', 20);
+    add_action('codetot_single_product_sections', 'codetot_render_upsell_sections', 30);
 
     add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_grid_close'), 100);
     add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_close'), 110);
@@ -271,89 +270,6 @@ class Codetot_Woocommerce_Layout_Product
     echo '<div class="single-product-top__col single-product-top__col--sidebar">';
   }
 
-  public function woocommerce_single_meta() {
-    global $product;
-
-    echo  '<div class="mt-05 single-product-meta">';
-
-    do_action( 'woocommerce_product_meta_start' );
-
-    if ( wc_product_sku_enabled() && !empty($product->get_sku()) ) :
-      printf('<p class="product-meta product-meta--sku"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
-      str_replace(':', '', esc_html__( 'SKU: ', 'woocommerce' )),
-      $product->get_sku()
-    );
-    endif;
-
-    if ($product->has_weight()) {
-      $weight_unit = get_option('woocommerce_weight_unit');
-
-      printf('<p class="product-meta product-meta--weight"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
-        esc_html__('Weight', 'woocommerce'),
-        $product->get_weight() . $weight_unit
-      );
-    }
-
-    $availability = $product->get_availability();
-    printf('<p class="product-meta product-meta--stock"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
-      esc_html__( 'Stock', 'woocommerce' ),
-      $availability['class'] != 'in-stock' ? $availability['availability'] : esc_html__( 'In stock', 'woocommerce' )
-    );
-
-    if ( !empty( $product->get_height() ) || !empty( $product->get_width() ) || !empty( $product->get_length() ) ) {
-      $space = ' x ';
-
-      ob_start();
-      if(!empty($product->get_height())) :
-        echo '<span class="height">';
-        echo  $product->get_height() . get_option( 'woocommerce_dimension_unit' );
-        echo '</span>';
-        echo $space;
-      endif;
-
-      if(!empty($product->get_width()) && !empty($product->get_height())) :
-        echo '<span class="width">';
-        echo  $product->get_width() . get_option( 'woocommerce_dimension_unit' );
-        echo '</span>';
-        echo $space;
-      endif;
-
-      if(!empty($product->get_length()) && !empty($product->get_width())) :
-        echo '<span class="length">';
-        echo  $product->get_length() . get_option( 'woocommerce_dimension_unit' );
-        echo '</span>';
-      endif;
-      $dimesions_html = ob_get_clean();
-
-      printf('<p class="product-meta product-meta--dimesions"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
-        esc_html__( 'Size', 'woocommerce' ),
-        $dimesions_html
-      );
-    }
-
-    $product_categories = get_the_terms($product->get_id(), 'product_cat');
-    if (!empty($product_categories) && !is_wp_error($product_categories)) {
-      $product_category_label = _n('Category', 'Categories', count($product_categories), 'woocommerce');
-
-      printf('<p class="product-meta product-meta--categories"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
-        $product_category_label,
-        wc_get_product_category_list($product->get_id(), ', ')
-      );
-    }
-
-    do_action( 'woocommerce_product_meta_end' );
-
-    echo '</div>' ;
-
-  }
-
-  public function woocommerce_single_meta_tag() {
-    global $product;
-    do_action( 'woocommerce_product_meta_start' );
-    echo wc_get_product_tag_list( $product->get_id(), ', ', '<div class="single-product-tag tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</div>' );
-    do_action( 'woocommerce_product_meta_end' );
-  }
-
   public function single_product_title_open() {
     echo '<div class="single-product-top__header">';
   }
@@ -428,6 +344,8 @@ class Codetot_Woocommerce_Layout_Product
     if ($this->enable_bottom_sidebar) :
       echo '<div class="grid__col single-product-sections__col single-product-sections__col--left">';
     endif;
+
+    do_action('codetot_single_product_sections');
   }
 
   public function after_single_product_container_grid_close() {
@@ -598,74 +516,93 @@ function codetot_render_upsell_sections() {
   ));
 }
 
-function codetot_render_viewed_products_section() {
-  $viewed_products = ! empty( $_COOKIE['woocommerce_recently_viewed'] ) ? (array) explode( '|', wp_unslash( $_COOKIE['woocommerce_recently_viewed'] ) ) : array(); // @codingStandardsIgnoreLine
-  $viewed_products = array_reverse( array_filter( array_map( 'absint', $viewed_products ) ) );
+function codetot_woocommerce_single_meta_tag() {
+  global $product;
+  do_action( 'woocommerce_product_meta_start' );
+  echo wc_get_product_tag_list( $product->get_id(), ', ', '<div class="single-product-tag tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</div>' );
+  do_action( 'woocommerce_product_meta_end' );
+}
 
-  if ( empty( $viewed_products ) ) {
-    return;
-  }
+function codetot_woocommerce_single_meta() {
+  global $product;
 
-  $columns = get_global_option('codetot_woocommerce_viewed_products_colums') ?? 4;
+  echo  '<div class="mt-05 single-product-meta">';
 
-  $post_args = array(
-    'posts_per_page' => apply_filters('codetot_viewed_products_number', $columns),
-    'no_found_rows'  => 1,
-    'post_status'    => 'publish',
-    'post_type'      => 'product',
-    'post__in'       => $viewed_products,
-    'orderby'        => 'post__in',
+  do_action( 'woocommerce_product_meta_start' );
+
+  if ( wc_product_sku_enabled() && !empty($product->get_sku()) ) :
+    printf('<p class="product-meta product-meta--sku"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+    str_replace(':', '', esc_html__( 'SKU: ', 'woocommerce' )),
+    $product->get_sku()
   );
+  endif;
 
-  if ( 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) ) {
-    $post_args['tax_query'] = array(
-      array(
-        'taxonomy' => 'product_visibility',
-        'field'    => 'name',
-        'terms'    => 'outofstock',
-        'operator' => 'NOT IN',
-      ),
+  if ($product->has_weight()) {
+    $weight_unit = get_option('woocommerce_weight_unit');
+
+    printf('<p class="product-meta product-meta--weight"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+      esc_html__('Weight', 'woocommerce'),
+      $product->get_weight() . $weight_unit
     );
   }
 
-  $_post_args = apply_filters( 'woocommerce_recently_viewed_products_widget_query_args', $post_args);
+  $availability = $product->get_availability();
+  $hide_stock_status = get_global_option('codetot_woocommerce_hide_product_stock_status') ?? false;
 
-  $post_query = new WP_Query($_post_args);
+  if (!$hide_stock_status) :
 
-  $_class = 'section default-section--no-container product-grid--viewed-products';
+    printf('<p class="product-meta product-meta--stock"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+      esc_html__( 'Stock', 'woocommerce' ),
+      $availability['class'] != 'in-stock' ? $availability['availability'] : esc_html__( 'In stock', 'woocommerce' )
+    );
 
-  if ($post_query->have_posts()) :
-    the_block('product-grid', array(
-      'class' => $_class,
-      'title' => apply_filters( 'codetot_product_viewed_products_heading', __( 'Recently Viewed Products', 'woocommerce' )),
-      'query' => $post_query,
-      'columns' => $columns
-    ));
   endif;
-}
-add_action( 'template_redirect', 'codetot_track_product_view', 20 );
 
-function codetot_track_product_view() {
-	if ( ! is_singular( 'product' ) ) {
-		return;
-	}
+  if ( !empty( $product->get_height() ) || !empty( $product->get_width() ) || !empty( $product->get_length() ) ) {
+    $space = ' x ';
 
-	global $post;
+    ob_start();
+    if(!empty($product->get_height())) :
+      echo '<span class="height">';
+      echo  $product->get_height() . get_option( 'woocommerce_dimension_unit' );
+      echo '</span>';
+      echo $space;
+    endif;
 
-	if ( empty( $_COOKIE['woocommerce_recently_viewed'] ) )
-		$viewed_products = array();
-	else
-		$viewed_products = (array) explode( '|', $_COOKIE['woocommerce_recently_viewed'] );
+    if(!empty($product->get_width()) && !empty($product->get_height())) :
+      echo '<span class="width">';
+      echo  $product->get_width() . get_option( 'woocommerce_dimension_unit' );
+      echo '</span>';
+      echo $space;
+    endif;
 
-	if ( ! in_array( $post->ID, $viewed_products ) ) {
-		$viewed_products[] = $post->ID;
-	}
+    if(!empty($product->get_length()) && !empty($product->get_width())) :
+      echo '<span class="length">';
+      echo  $product->get_length() . get_option( 'woocommerce_dimension_unit' );
+      echo '</span>';
+    endif;
+    $dimesions_html = ob_get_clean();
 
-	if ( sizeof( $viewed_products ) > 15 ) {
-		array_shift( $viewed_products );
-	}
+    printf('<p class="product-meta product-meta--dimesions"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+      esc_html__( 'Size', 'woocommerce' ),
+      $dimesions_html
+    );
+  }
 
-	wc_setcookie( 'woocommerce_recently_viewed', implode( '|', $viewed_products ) );
+  $product_categories = get_the_terms($product->get_id(), 'product_cat');
+  if (!empty($product_categories) && !is_wp_error($product_categories)) {
+    $product_category_label = _n('Category', 'Categories', count($product_categories), 'woocommerce');
+
+    printf('<p class="product-meta product-meta--categories"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+      $product_category_label,
+      wc_get_product_category_list($product->get_id(), ', ')
+    );
+  }
+
+  do_action( 'woocommerce_product_meta_end' );
+
+  echo '</div>' ;
+
 }
 
 Codetot_Woocommerce_Layout_Product::instance();

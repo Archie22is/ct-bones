@@ -38,34 +38,15 @@ class CodeTot_Optimize
 
     add_action('wp_enqueue_scripts', array($this, 'enqueue_frontend_styles'), 10);
     add_action('wp_enqueue_scripts', array($this, 'enqueue_frontend_scripts'));
-
-    add_action('wp_print_scripts', array($this, 'remove_scripts'));
-    add_action('wp_print_styles', array($this, 'remove_styles'));
     add_action('wp_head', array($this, 'dns_prefetch'), 0);
 
-    add_filter('style_loader_tag', array($this, 'remove_type_attr'), 10, 2);
+    add_filter('style_loader_tag', array($this, 'remove_type_attr'));
     add_filter('script_loader_tag', array($this, 'remove_type_attr'), 10, 2);
     add_filter('gform_get_form_filter', array($this, 'filter_tag_html5_gravity_forms'));
   }
 
-  public function remove_scripts()
-  {
-    wp_dequeue_script('toc-front');
-  }
-
-  public function remove_styles()
-  {
-    wp_dequeue_style('dashicons');
-    /** Table of Content Plus plugin  **/
-    wp_dequeue_style('toc-screen');
-  }
-
   public function enqueue_frontend_styles()
   {
-    if (is_singular('post')) {
-      wp_enqueue_style('toc-screen');
-    }
-
     $first_screen_url = get_template_directory_uri() . '/assets/css/first-screen-style' . $this->theme_environment . '.css';
     // Load file
     wp_enqueue_style('codetot-first-screen', $first_screen_url, array(), CODETOT_VERSION);
@@ -108,7 +89,7 @@ class CodeTot_Optimize
    * @param string $handle
    * @return void
    */
-  public function remove_type_attr($tag, $handle) {
+  public function remove_type_attr($tag) {
     return preg_replace( "/type=['\"]text\/(javascript|css)['\"]/", '', $tag );
   }
 
