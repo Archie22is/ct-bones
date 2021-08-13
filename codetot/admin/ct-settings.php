@@ -40,11 +40,6 @@ class Codetot_CT_Settings
         'position'    => 120,
         'redirect'		=> false
       ));
-      $child = acf_add_options_sub_page(array(
-        'page_title'  => __('Insert Scripts', 'ct-bones'),
-        'menu_title'  => __('Insert Scripts', 'ct-bones'),
-        'parent_slug' => $parent['menu_slug']
-    ));
     }
   }
 
@@ -73,87 +68,6 @@ class Codetot_CT_Settings
         'hide_on_screen' => '',
         'active' => true,
         'description' => ''
-      ));
-
-      acf_add_local_field_group(array(
-        'key' => 'group_60efdfcf3ba71',
-        'title' => 'Insert Scripts',
-        'fields' => array(
-          array(
-            'key' => 'field_ctscriptsinheader',
-            'label' => 'Scripts in Header',
-            'name' => 'ct_scripts_in_header',
-            'type' => 'textarea',
-            'instructions' => 'These scripts will be printed in the head section.',
-            'required' => 0,
-            'conditional_logic' => 0,
-            'wrapper' => array(
-              'width' => '',
-              'class' => '',
-              'id' => '',
-            ),
-            'default_value' => '',
-            'placeholder' => '',
-            'maxlength' => '',
-            'rows' => 12,
-            'new_lines' => '',
-          ),
-          array(
-            'key' => 'field_ctscriptsinbody',
-            'label' => 'Scripts in Body',
-            'name' => 'ct_scripts_in_body',
-            'type' => 'textarea',
-            'instructions' => 'These scripts will be printed just below the opening body tag.',
-            'required' => 0,
-            'conditional_logic' => 0,
-            'wrapper' => array(
-              'width' => '',
-              'class' => '',
-              'id' => '',
-            ),
-            'default_value' => '',
-            'placeholder' => '',
-            'maxlength' => '',
-            'rows' => 12,
-            'new_lines' => '',
-          ),
-          array(
-            'key' => 'field_ctscriptsinfooter',
-            'label' => 'Scripts in Footer',
-            'name' => 'ct_scripts_in_footer',
-            'type' => 'textarea',
-            'instructions' => 'These scripts will be printed above the closing body tag.',
-            'required' => 0,
-            'conditional_logic' => 0,
-            'wrapper' => array(
-              'width' => '',
-              'class' => '',
-              'id' => '',
-            ),
-            'default_value' => '',
-            'placeholder' => '',
-            'maxlength' => '',
-            'rows' => 12,
-            'new_lines' => '',
-          ),
-        ),
-        'location' => array(
-          array(
-            array(
-              'param' => 'options_page',
-              'operator' => '==',
-              'value' => 'acf-options-insert-scripts',
-            ),
-          ),
-        ),
-        'menu_order' => 0,
-        'position' => 'normal',
-        'style' => 'default',
-        'label_placement' => 'top',
-        'instruction_placement' => 'label',
-        'hide_on_screen' => '',
-        'active' => true,
-        'description' => '',
       ));
 
     endif;

@@ -509,6 +509,9 @@ class Codetot_Breadcrumb
     $post = get_queried_object();
     $post_id = get_queried_object_id();
 
+    if ($post->post_type === 'post' && !empty(get_option('page_for_posts')))
+      $this->add_post_parents(get_option('page_for_posts'));
+
     // If the post has a parent, follow the parent trail.
     if (0 < $post->post_parent)
       $this->add_post_parents($post->post_parent);

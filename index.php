@@ -39,18 +39,11 @@ if (!is_front_page()) {
     <?php endif; ?>
 
     <?php
-    global $wp_query;
-
-    $columns = [];
-
-    $post_count = $wp_query->post_count;
-
-    the_block('post-list', array(
-      'class' => 'section default-section--no-container',
-      'query' => $wp_query
-    ));
-
-    the_block('pagination');
+    /**
+     * @hook codetot_layout_post_list_html - 5
+     * @hook codetot_layout_post_list_pagination - 10
+     */
+    do_action('codetot_index_main_layout');
 
   else :
 
