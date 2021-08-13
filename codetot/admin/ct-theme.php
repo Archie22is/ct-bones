@@ -249,38 +249,48 @@ class Codetot_CT_Theme_Settings
             'style-3' => sprintf(__('Style %s', 'ct-bones'), 3),
             'style-4' => sprintf(__('Style %s', 'ct-bones'), 4)
           ],
-        ]
-        ),
-        array(
-          [
-            'type' => 'heading',
-            'name' => __('Single Post Layout', 'ct-bones'),
-          ],
-          [
-            'name'    => __('Hide Post Meta (date, category and author)', 'ct-bones'),
-            'id'      => $this->filter_prefix . 'hide_post_meta',
-            'type'    => 'switch',
-            'style'   => 'rounded'
-          ],
-          [
-            'name'    => __('Hide Social Share', 'ct-bones'),
-            'id'      => $this->filter_prefix . 'hide_social_share',
-            'type'    => 'switch',
-            'style'   => 'rounded'
-          ],
-          [
-            'name'    => __('Hide Featured Image', 'ct-bones'),
-            'id'      => $this->filter_prefix . 'hide_featured_image',
-            'type'    => 'switch',
-            'style'   => 'rounded'
-          ],
-          [
-            'name'    => __('Hide Related Posts', 'ct-bones'),
-            'id'      => $this->filter_prefix . 'hide_related_posts',
-            'type'    => 'switch',
-            'style'   => 'rounded'
+        ],
+        [
+          'name'    => __('Post List Layout', 'ct-bones'),
+          'id'      => $this->prefix . 'post_list_layout',
+          'type'    => 'select',
+          'std'     => 'row',
+          'options' => [
+            'row' => esc_html__('Row', 'ct-bones'),
+            'grid' => esc_html__('Grid', 'ct-bones')
           ]
-        )
+        ]
+      ),
+      array(
+        [
+          'type' => 'heading',
+          'name' => __('Single Post Layout', 'ct-bones'),
+        ],
+        [
+          'name'    => __('Hide Post Meta (date, category and author)', 'ct-bones'),
+          'id'      => $this->filter_prefix . 'hide_post_meta',
+          'type'    => 'switch',
+          'style'   => 'rounded'
+        ],
+        [
+          'name'    => __('Hide Social Share', 'ct-bones'),
+          'id'      => $this->filter_prefix . 'hide_social_share',
+          'type'    => 'switch',
+          'style'   => 'rounded'
+        ],
+        [
+          'name'    => __('Hide Featured Image', 'ct-bones'),
+          'id'      => $this->filter_prefix . 'hide_featured_image',
+          'type'    => 'switch',
+          'style'   => 'rounded'
+        ],
+        [
+          'name'    => __('Hide Related Posts', 'ct-bones'),
+          'id'      => $this->filter_prefix . 'hide_related_posts',
+          'type'    => 'switch',
+          'style'   => 'rounded'
+        ]
+      )
     );
 
     $meta_boxes[] = [
