@@ -30,8 +30,9 @@ class Codetot_Theme_Layout
    */
   private function __construct()
   {
-    add_action( 'codetot_sidebar', 'codetot_get_sidebar', 10 );
+    add_action('codetot_sidebar', 'codetot_get_sidebar', 10);
     add_action('codetot_after_content_post', array($this, 'codetot_share_button'), 5);
+    add_action('codetot_footer_row_middle', 'codetot_render_footer_copyright_block', 10);
 
     $is_not_flexible_page = get_page_template_slug( get_the_ID()) !== 'flexible';
     $is_not_woocommerce_pages = class_exists('WooCommerce') ? (!is_account_page() && !is_cart() && !is_checkout()) : !class_exists('WooCommerce');
@@ -223,28 +224,30 @@ class Codetot_Theme_Layout
   }
 }
 
-function codetot_layout_post_list_html() {
-  global $wp_query;
+function codetot_render_footer_copyright_block() {
+  $remove_footer_copyright = get_global_option('codetot_settings_remove_theme_copyright') ?? false;
+  $footer_copyright = codetot_get_footer_copyright();
+  $hide_social_links = get_global_option('codetot_settings_footer_hide_social_links') ?? false;
+  $social_links_html = get_block('social-links', array(
+    'class' => 'social-links--dark-contract social-links--footer-bottom'
+  ));
 
-  $post_list_layout = get_global_option('codetot_post_list_layout') ?? 'row';
-  $columns = get_global_option('codetot_category_column_number') ?? 3;
-
-  if ($post_list_layout === 'row') {
-    the_block('post-list', array(
-      'class' => 'section default-section--no-container',
-      'query' => $wp_query
-    ));
-  } else {
-    the_block('post-grid', array(
-      'class' => 'section default-section--no-container',
-      'columns' => $columns,
-      'query' => $wp_query
-    ));
-  }
-}
-
-function codetot_layout_post_list_pagination() {
-  the_block('pagination');
+  if (!$remove_footer_copyright && !empty($footer_copyright) ): ?>
+    <div class="footer__bottom">
+      <div class="container footer__container">
+        <div class="grid footer__bottom-grid">
+          <div class="grid__col footer__bottom-col footer__bottom-col--left">
+            <div class="footer__copyright-text"><?php echo $footer_copyright; ?></div>
+          </div>
+          <?php if (!$hide_social_links && !empty(strip_tags($social_links_html))) : ?>
+            <div class="grid__col footer__bottom-col footer__bottom-col--right">
+              <?php echo $social_links_html; ?>
+            </div>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+  <?php endif;
 }
 
 Codetot_Theme_Layout::instance();

@@ -3,9 +3,6 @@
 $container = 'container';
 $columns = get_global_option('codetot_footer_columns') ? str_replace('-columns', '', get_global_option('codetot_footer_columns')) : 3;
 $footer_background = get_global_option('codetot_footer_background_color') ?? 'dark';
-$remove_footer_copyright = get_global_option('codetot_settings_remove_theme_copyright') ?? false;
-$footer_copyright = codetot_get_footer_copyright();
-$hide_social_links = get_global_option('codetot_settings_footer_hide_social_links') ?? false;
 $disable_top_footer_spacing = is_page() && rwmb_meta('codetot_disable_footer_top_spacing') ?? false;
 
 $footer_class = 'footer';
@@ -26,10 +23,6 @@ for ($widget_index = 1; $widget_index <= $columns; $widget_index++) :
   }
 endfor;
 
-$social_links_html = get_block('social-links', array(
-  'class' => 'social-links--dark-contract social-links--footer-bottom'
-));
-
 ?>
 <footer class="<?php echo $footer_class; ?>">
   <?php do_action('codetot_footer_row_top'); ?>
@@ -48,21 +41,5 @@ $social_links_html = get_block('social-links', array(
     </div>
   <?php endif; ?>
   <?php do_action('codetot_footer_row_middle'); ?>
-  <?php if (!$remove_footer_copyright && !empty($footer_copyright) ): ?>
-    <div class="footer__bottom">
-      <div class="<?php echo $container; ?> footer__container">
-        <div class="grid footer__bottom-grid">
-          <div class="grid__col footer__bottom-col footer__bottom-col--left">
-            <div class="footer__copyright-text"><?php echo $footer_copyright; ?></div>
-          </div>
-          <?php if (!$hide_social_links && !empty(strip_tags($social_links_html))) : ?>
-            <div class="grid__col footer__bottom-col footer__bottom-col--right">
-              <?php echo $social_links_html; ?>
-            </div>
-          <?php endif; ?>
-        </div>
-      </div>
-    </div>
-  <?php endif; ?>
   <?php do_action('codetot_footer_row_bottom'); ?>
 </footer>
