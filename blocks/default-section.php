@@ -2,7 +2,6 @@
 $_attrs = '';
 $_attrs .= !empty($id) ? sprintf(' id="%s"', esc_attr($id)) : '';
 $_attrs .= !empty($attributes) ? ' ' . $attributes : '';
-$container = 'container';
 $_class = 'default-section';
 $_class .= !empty($class) ? ' ' . $class : '';
 $_tag = !empty($tag) ? $tag : 'section';
@@ -30,7 +29,7 @@ if (!empty($content)) : ?>
     <?php if (!empty($before_header)) : echo $before_header; endif; ?>
     <?php if (!empty($header)) : ?>
       <div class="default-section__header">
-        <div class="<?php echo $container; ?> default-section__container default-section__container--header">
+        <div class="container default-section__container default-section__container--header">
           <div class="default-section__inner default-section__inner--header">
             <?php echo $header; ?>
           </div>
@@ -39,7 +38,7 @@ if (!empty($content)) : ?>
     <?php endif; ?>
     <?php if (!empty($before_main)) : echo $before_main; endif; ?>
     <div class="default-section__main">
-      <div class="<?php echo $container; ?> default-section__container default-section__container--main">
+      <div class="container default-section__container default-section__container--main">
         <div class="default-section__inner default-section__inner--main<?php if ($_enable_lazyload) : ?> is-not-loaded js-main-content<?php endif; ?>">
           <?php
           if ($_enable_lazyload) :
@@ -59,7 +58,7 @@ if (!empty($content)) : ?>
     <?php if (!empty($after_main)) : echo $after_main; endif; ?>
     <?php if (!empty($footer)) : ?>
       <div class="default-section__footer">
-        <div class="<?php echo $container; ?> default-section__container default-section__container--footer">
+        <div class="container default-section__container default-section__container--footer">
           <div class="default-section__inner default-section__inner--footer">
             <?php echo $footer; ?>
           </div>
