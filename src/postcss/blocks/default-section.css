@@ -20,43 +20,43 @@
 
 .default-section.has-2-columns .default-section__col {
   @media (--xs) {
-    @mixin column-item 2, 1em;
+    @mixin column-item 2, 2em;
   }
 }
 
 .default-section.has-3-columns .default-section__col {
   @media (--m) {
-    @mixin column-item 3, 1em;
+    @mixin column-item 3, 2em;
   }
 }
 
 .default-section.has-4-columns .default-section__col {
   @media (--xs) {
-    @mixin column-item 2, 1em;
+    @mixin column-item 2, 2em;
   }
 
   @media (--m) {
-    @mixin column-item 4, 1em;
+    @mixin column-item 4, 2em;
   }
 }
 
 .default-section.has-5-columns .default-section__col {
   @media (--xs) {
-    @mixin column-item 2, 1em;
+    @mixin column-item 2, 2em;
   }
 
   @media (--m) {
-    @mixin column-item 5, 1em;
+    @mixin column-item 5, 2em;
   }
 }
 
 .default-section.has-6-columns .default-section__col {
   @media (--xs) {
-    @mixin column-item 2, 1em;
+    @mixin column-item 2, 2em;
   }
 
   @media (--m) {
-    @mixin column-item 6, 1em;
+    @mixin column-item 6, 2em;
   }
 }
 
@@ -130,6 +130,23 @@
 
       pointer-events: visible;
       z-index: 2;
+    }
+  }
+}
+
+.default-section.has-bg-image {
+  position: relative;
+
+  & .default-section__background-image {
+    @mixin abs-full;
+
+    pointer-events: none;
+    z-index: 0;
+
+    & .image__img {
+      @mixin abs-full;
+
+      object-fit: cover;
     }
   }
 }
