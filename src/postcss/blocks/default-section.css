@@ -20,43 +20,43 @@
 
 .default-section.has-2-columns .default-section__col {
   @media (--xs) {
-    @mixin column-item 2, 1em;
+    @mixin column-item 2, 2em;
   }
 }
 
 .default-section.has-3-columns .default-section__col {
   @media (--m) {
-    @mixin column-item 3, 1em;
+    @mixin column-item 3, 2em;
   }
 }
 
 .default-section.has-4-columns .default-section__col {
   @media (--xs) {
-    @mixin column-item 2, 1em;
+    @mixin column-item 2, 2em;
   }
 
   @media (--m) {
-    @mixin column-item 4, 1em;
+    @mixin column-item 4, 2em;
   }
 }
 
 .default-section.has-5-columns .default-section__col {
   @media (--xs) {
-    @mixin column-item 2, 1em;
+    @mixin column-item 2, 2em;
   }
 
   @media (--m) {
-    @mixin column-item 5, 1em;
+    @mixin column-item 5, 2em;
   }
 }
 
 .default-section.has-6-columns .default-section__col {
   @media (--xs) {
-    @mixin column-item 2, 1em;
+    @mixin column-item 2, 2em;
   }
 
   @media (--m) {
-    @mixin column-item 6, 1em;
+    @mixin column-item 6, 2em;
   }
 }
 
