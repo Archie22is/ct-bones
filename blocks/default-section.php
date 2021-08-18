@@ -3,6 +3,7 @@ $_attrs = '';
 $_attrs .= !empty($id) ? sprintf(' id="%s"', esc_attr($id)) : '';
 $_attrs .= !empty($attributes) ? ' ' . $attributes : '';
 $_class = 'default-section';
+$_class .= !empty($background_image) ? ' has-bg-image' : '';
 $_class .= !empty($class) ? ' ' . $class : '';
 $_tag = !empty($tag) ? $tag : 'section';
 
@@ -26,6 +27,14 @@ if (!empty($content)) {
 
 if (!empty($content)) : ?>
   <<?php echo $_tag; ?> class="<?php echo $_class; ?>"<?php if (!empty($_attrs)) : echo ' ' . $_attrs; endif; ?>>
+    <?php if (!empty($background_image)) :
+      the_block('image', array(
+        'image' => $background_image,
+        'class' => 'default-section__background-image',
+        'lazyload' => false,
+        'size' => wp_is_mobile() ? 'medium' : 'large'
+      ));
+    endif; ?>
     <?php if (!empty($before_header)) : echo $before_header; endif; ?>
     <?php if (!empty($header)) : ?>
       <div class="default-section__header">

@@ -133,3 +133,20 @@
     }
   }
 }
+
+.default-section.has-bg-image {
+  position: relative;
+
+  & .default-section__background-image {
+    @mixin abs-full;
+
+    pointer-events: none;
+    z-index: 0;
+
+    & .image__img {
+      @mixin abs-full;
+
+      object-fit: cover;
+    }
+  }
+}
