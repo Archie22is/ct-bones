@@ -62,7 +62,7 @@ class Codetot_Assets
   }
 
   public function get_heading_font() {
-    return  get_global_option('codetot_font_family') ?? 'Averta';
+    return  get_global_option('codetot_font_heading') ?? 'Averta';
   }
 
   public function load_fonts()
