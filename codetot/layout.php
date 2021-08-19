@@ -224,6 +224,30 @@ class Codetot_Theme_Layout
   }
 }
 
+function codetot_layout_post_list_html() {
+  global $wp_query;
+
+  $post_list_layout = get_global_option('codetot_post_list_layout') ?? 'row';
+  $columns = get_global_option('codetot_category_column_number') ?? 3;
+
+  if ($post_list_layout === 'row') {
+    the_block('post-list', array(
+      'class' => 'section default-section--no-container',
+      'query' => $wp_query
+    ));
+  } else {
+    the_block('post-grid', array(
+      'class' => 'section default-section--no-container',
+      'columns' => $columns,
+      'query' => $wp_query
+    ));
+  }
+}
+
+function codetot_layout_post_list_pagination() {
+    the_block('pagination');
+}
+
 function codetot_render_footer_copyright_block() {
   $remove_footer_copyright = get_global_option('codetot_settings_remove_theme_copyright') ?? false;
   $footer_copyright = codetot_get_footer_copyright();

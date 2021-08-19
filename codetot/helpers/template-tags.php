@@ -233,9 +233,11 @@ if (!function_exists('codetot_header_class')) {
     $text_contract_color = get_global_option('codetot_header_color_contract') ?? 'light';
     $class[] = !empty($text_contract_color) ? 'header--' . esc_attr($text_contract_color) . '-contract' : 'header--dark-contract';
 
-    $class = implode(' ', array_filter($class));
+    $_class = apply_filters('codetot_header_classes', $class);
 
-    return esc_attr($class);
+    $_class = implode(' ', array_filter($_class));
+
+    return esc_attr($_class);
   }
 }
 
