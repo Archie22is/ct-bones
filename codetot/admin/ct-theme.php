@@ -247,7 +247,8 @@ class Codetot_CT_Theme_Settings
             'style-1' => sprintf(__('Style %s', 'ct-bones'), 1),
             'style-2' => sprintf(__('Style %s', 'ct-bones'), 2),
             'style-3' => sprintf(__('Style %s', 'ct-bones'), 3),
-            'style-4' => sprintf(__('Style %s', 'ct-bones'), 4)
+            'style-4' => sprintf(__('Style %s', 'ct-bones'), 4),
+            'style-5' => sprintf(__('Style %s', 'ct-bones'), 5)
           ],
         ],
         [

@@ -239,7 +239,8 @@ function codetot_layout_post_list_html() {
     the_block('post-grid', array(
       'class' => 'section default-section--no-container',
       'columns' => $columns,
-      'query' => $wp_query
+      'query' => $wp_query,
+      'card_style' => get_global_option('codetot_post_card_style') ?? 'style-1'
     ));
   }
 }
