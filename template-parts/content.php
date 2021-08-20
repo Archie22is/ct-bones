@@ -10,27 +10,41 @@
 
 $hide_featured_image = get_global_option('codetot_settings_hide_featured_image') ?? false;
 $hide_post_meta = get_global_option('codetot_settings_hide_post_meta') ?? false;
+$_hide_post_meta = 'post' === get_post_type() && !$hide_post_meta;
+$hide_header = apply_filters('codetot_hide_single_post_header', false);
+
+ob_start();
+ct_bones_posted_on();
+ct_bones_posted_by();
+ct_bones_entry_categories();
+$post_meta = ob_get_clean();
+
+if ($_hide_post_meta) {
+  $post_meta = '';
+}
+
+ob_start();
+if (is_singular()) :
+  the_title('<h1 class="entry-title">', '</h1>');
+else :
+  the_title('<h2 class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>');
+endif;
+$header = ob_get_clean();
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-  <header class="entry-header">
-    <?php
-    if (is_singular()) :
-      the_title('<h1 class="entry-title">', '</h1>');
-    else :
-      the_title('<h2 class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>');
-    endif;
-    if ('post' === get_post_type() && !$hide_post_meta) : ?>
-      <div class="entry-meta">
-        <?php
-        ct_bones_posted_on();
-        ct_bones_posted_by();
-        ct_bones_entry_categories();
-        ?>
-      </div><!-- .entry-meta -->
-    <?php endif; ?>
-  </header><!-- .entry-header -->
-
+  <?php if (!$hide_header) : ?>
+    <header class="entry-header">
+      <?php
+      echo $header;
+      if (apply_filters('codetot_single_post_meta', $post_meta) !== '') : ?>
+        <div class="entry-meta">
+          <?php echo $post_meta; ?>
+        </div>
+      <?php endif;
+      ?>
+    </header>
+  <?php endif; ?>
   <?php if (!$hide_featured_image) : ?>
     <div class="entry-thumbnail">
       <?php ct_bones_post_thumbnail(); ?>

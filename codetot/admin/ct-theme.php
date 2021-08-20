@@ -268,6 +268,13 @@ class Codetot_CT_Theme_Settings
           'name' => __('Single Post Layout', 'ct-bones'),
         ],
         [
+          'name' => __('Display Hero Image Layout', 'ct-bones'),
+          'id'   => $this->filter_prefix . 'enable_hero_image_single_post',
+          'type' => 'switch',
+          'style' => 'rounded',
+          'std' => 0,
+        ],
+        [
           'name'    => __('Hide Post Meta (date, category and author)', 'ct-bones'),
           'id'      => $this->filter_prefix . 'hide_post_meta',
           'type'    => 'switch',
