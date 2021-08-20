@@ -134,7 +134,14 @@ class Codetot_Theme_Layout
   }
 
   public function generate_post_layout() {
-    $sidebar_layout = get_global_option('codetot_post_layout');
+    $sidebar_layout = get_global_option('codetot_post_layout') ?? 'left-sidebar';
+    $enable_hero_image = get_global_option('codetot_settings_enable_hero_image_single_post') ?? false;
+
+    if ($enable_hero_image) {
+      add_action('codetot_after_header', 'codetot_layout_single_post_hero_image_html', 2);
+      add_filter('codetot_hide_single_post_header', '__return_true');
+    }
+
     add_action('codetot_after_header', array($this, 'load_breadcrumbs'), 9);
     add_action('codetot_after_header', function() use ($sidebar_layout) {
         echo $this->page_block_open('page-block--page ' . $sidebar_layout, false);
@@ -171,8 +178,6 @@ class Codetot_Theme_Layout
   }
 
   public function generate_default_index_layout() {
-    $sidebar_layout = get_global_option('codetot_category_layout') ?? 'sidebar-right';
-
     add_action('codetot_before_index_main', function() {
       if (is_category()) {
         $sidebar_layout = get_global_option('codetot_category_layout') ?? 'sidebar-right';
@@ -222,6 +227,35 @@ class Codetot_Theme_Layout
     echo '</div>'; // Close .page-block
     return ob_get_clean();
   }
+}
+
+function codetot_layout_single_post_hero_image_html() {
+  global $post;
+
+  $categories = get_the_category();
+  $category_html = '<ul class="hero-image__post-meta">';
+
+  if (!empty($categories)) {
+    foreach ($categories as $category) :
+      $category_html .= sprintf('<li class="hero-image__post-meta__item"><a class="hero-image__post-meta__link" href="%1$s">%2$s</a></li>',
+      get_term_link($category, 'category'),
+      $category->name
+    );
+    endforeach;
+  }
+
+  $category_html .= '</ul>';
+
+  the_block('hero-image', array(
+    'label' => $category_html,
+    'title' => $post->post_title,
+    'class' => 'hero-image--single-post',
+    'image' => get_post_thumbnail_id(),
+    'spacing' => 'large',
+    'background_contract' => 'dark',
+    'content_alignment' => 'center',
+    'overlay' => '0.4'
+  ));
 }
 
 function codetot_layout_post_list_html() {
