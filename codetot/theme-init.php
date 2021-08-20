@@ -204,6 +204,8 @@ class Codetot_Theme_Init
   }
 
   public function wrap_embeds( $html, $url, $attr, $post_id ) {
+    $html = str_replace('src="', 'loading="lazy" src="', $html);
+
     return '<div class="video-responsive">' . $html . '</div>';
   }
 }
