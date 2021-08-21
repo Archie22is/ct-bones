@@ -1,6 +1,23 @@
 .social-links__list {
   display: flex;
   align-items: center;
+
+  & [data-type='youtube'],
+  & [data-type='tiktok'] {
+    border-radius: 50%;
+    border: 3px solid black;
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & svg {
+      width: 0.8em;
+      height: 0.8em;
+    }
+  }
 }
 
 .social-links__label {
