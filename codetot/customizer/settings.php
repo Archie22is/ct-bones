@@ -331,6 +331,15 @@ class Codetot_Customizer_Settings
       ), $wp_customize);
     }
 
+    codetot_customizer_register_control(array(
+      'id' => 'display_phone_number',
+      'label' => esc_html__('Display Phone Number', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'control_args' => array(
+        'type' => 'checkbox'
+      )
+    ), $wp_customize);
+
     return $wp_customize;
   }
 
