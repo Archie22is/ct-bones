@@ -34,6 +34,7 @@ class Codetot_Customizer_Woocommerce_Settings {
     add_action('customize_register', array($this, 'register_addon_settings'));
     add_action('customize_register', array($this, 'register_global_layout_settings'));
     add_action('customize_register', array($this, 'register_single_product_settings'));
+    add_action('customize_register', array($this, 'register_other_settings'));
   }
 
   public function header_hide_elements_options($options) {
@@ -162,6 +163,16 @@ class Codetot_Customizer_Woocommerce_Settings {
         'description' => esc_html__('Display product star rating in archive and product category even if no star was given. Default is 5 stars.', 'ct-bones')
       )
     ), $wp_customize);
+
+    codetot_customizer_register_control(array(
+      'id' => 'quick_view_short_description',
+      'label' => esc_html__('Display Short Description on Quick View popup', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'option_type' => $this->settings_id,
+      'control_args' => array(
+        'type' => 'checkbox'
+      )
+    ), $wp_customize);
   }
 
   public function register_single_product_settings($wp_customize) {
@@ -238,7 +249,7 @@ class Codetot_Customizer_Woocommerce_Settings {
       'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'select',
-        'description' => sprintf(esc_html__('Only if %s has been checked.', 'ct-bones'), esc_html__('Enable Viewed Product Section', 'ct-bones')),
+        'description' => esc_html__('You must enable Quick View feature to apply those settings.', 'ct-bones'),
         'choices' => codetot_customizer_get_column_options()
       )
     ), $wp_customize);
@@ -254,8 +265,60 @@ class Codetot_Customizer_Woocommerce_Settings {
     ), $wp_customize);
 
     codetot_customizer_register_control(array(
+      'id' => 'single_product_facebook_comment_app_id',
+      'label' => esc_html__('Facebook Comment App ID', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'option_type' => $this->settings_id,
+      'control_args' => array(
+        'type' => 'text',
+        'placeholder' => esc_html__('Enter your Facebook app ID.', 'ct-bones')
+      )
+    ), $wp_customize);
+
+    codetot_customizer_register_control(array(
       'id' => 'single_product_hide_product_stock_status',
       'label' => esc_html__('Hide Product Stock Status', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'option_type' => $this->settings_id,
+      'control_args' => array(
+        'type' => 'checkbox'
+      )
+    ), $wp_customize);
+
+    codetot_customizer_register_control(array(
+      'id' => 'single_product_countdown_style',
+      'label' => esc_html__('Countdown Style', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'option_type' => $this->settings_id,
+      'control_args' => array(
+        'type' => 'select',
+        'description' => esc_html__('You must enable Countdown feature to apply those settings.', 'ct-bones'),
+        'choices' => array(
+          'default' => esc_html__('Gradient', 'ct-bones'),
+          'primary' => esc_html__('Primary', 'ct-bones'),
+          'secondary' => esc_html__('Secondary', 'ct-bones'),
+          'dark' => esc_html__('Dark', 'ct-bones'),
+          'custom' => esc_html__('Custom Theme', 'ct-bones')
+        )
+      )
+    ), $wp_customize);
+
+    return $wp_customize;
+  }
+
+  public function register_other_settings($wp_customize) {
+    $section_settings_id = 'codetot_woocommerce_other_settings';
+
+    codetot_customizer_register_section(array(
+      'id' => $section_settings_id,
+      'label' => esc_html__('Other Settings', 'ct-bones'),
+      'panel' => 'codetot_woocommerce_options',
+      'priority' => 100
+    ), $wp_customize);
+
+    codetot_customizer_register_control(array(
+      'id' => 'hide_sticky_bar_editing_products',
+      'label' => esc_html__('Admin: Hide sticky bar when editing products', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'option_type' => $this->settings_id,
       'control_args' => array(
