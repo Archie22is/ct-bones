@@ -28,22 +28,37 @@ class Codetot_Customizer_Settings
    */
   private function __construct()
   {
-    add_action('customize_register', array($this, 'register_panel'));
+    add_action('customize_register', array($this, 'register_panels'));
+
+    // Global Theme Options
     add_action('customize_register', array($this, 'register_color_schemas_settings'));
     add_action('customize_register', array($this, 'register_typography_settings'));
     add_action('customize_register', array($this, 'register_layout_settings'));
     add_action('customize_register', array($this, 'register_topbar_settings'));
     add_action('customize_register', array($this, 'register_header_settings'));
     add_action('customize_register', array($this, 'register_footer_settings'));
+    add_action('customize_register', array($this, 'register_single_post_settings'));
+
+    // PRO Options
+    add_action('customize_register', array($this, 'register_pro_addon_settings'));
+    add_action('customize_register', array($this, 'register_pro_seo_settings'));
   }
 
-  public function register_panel($wp_customize)
+  public function register_panels($wp_customize)
   {
     $wp_customize->add_panel(
       'codetot_theme_options',
       array(
         'priority' => 50,
-        'title'    => __('[CT] Theme Options', 'ct-bones'),
+        'title'    => esc_html__('[CT] Theme Options', 'ct-bones'),
+      )
+    );
+
+    $wp_customize->add_panel(
+      'codetot_pro_options',
+      array(
+        'priority' => 60,
+        'title' => esc_html__('[CT] Pro Settings', 'ct-bones')
       )
     );
 
@@ -81,8 +96,8 @@ class Codetot_Customizer_Settings
 
     $font_family_options = codetot_get_font_family_options();
     $font_types = array(
-      'codetot_theme_body_font' => __('Body Font Family', 'ct-bones'),
-      'codetot_theme_heading_font' => __('Heading Font Family', 'ct-bones')
+      'codetot_theme_body_font' => esc_html__('Body Font Family', 'ct-bones'),
+      'codetot_theme_heading_font' => esc_html__('Heading Font Family', 'ct-bones')
     );
 
     foreach ($font_types as $font_id => $font_type) {
@@ -100,14 +115,14 @@ class Codetot_Customizer_Settings
     }
 
     $font_sizes = apply_filters('codetot_theme_font_size_scale_options', array(
-      '1067' => __('1.067 - Minor Second', 'ct-bones'),
-      '1125' => __('1.125 - Major Second', 'ct-bones'),
-      '1200' => __('1.200 - Minor Third', 'ct-bones'),
-      '1250' => __('1.250 - Major Third', 'ct-bones'),
-      '1333' => __('1.333  Perfect Fourth', 'ct-bones'),
-      '1444' => __('1.444 - Augmented Fourth', 'ct-bones'),
-      '1500' => __('1.500 - Perfect Fifth', 'ct-bones'),
-      '1618' => __('1.618 - Golden Ratio', 'ct-bones')
+      '1067' => esc_html__('1.067 - Minor Second', 'ct-bones'),
+      '1125' => esc_html__('1.125 - Major Second', 'ct-bones'),
+      '1200' => esc_html__('1.200 - Minor Third', 'ct-bones'),
+      '1250' => esc_html__('1.250 - Major Third', 'ct-bones'),
+      '1333' => esc_html__('1.333  Perfect Fourth', 'ct-bones'),
+      '1444' => esc_html__('1.444 - Augmented Fourth', 'ct-bones'),
+      '1500' => esc_html__('1.500 - Perfect Fifth', 'ct-bones'),
+      '1618' => esc_html__('1.618 - Golden Ratio', 'ct-bones')
     ));
 
     $this->register_control(array(
@@ -135,9 +150,9 @@ class Codetot_Customizer_Settings
     ), $wp_customize);
 
     $layout_options = apply_filters('codetot_theme_layout_options', array(
-      'category' => __('Category', 'ct-bones'),
-      'post' => __('Post', 'ct-bones'),
-      'page' => __('Page', 'ct-bones')
+      'category' => esc_html__('Category', 'ct-bones'),
+      'post' => esc_html__('Post', 'ct-bones'),
+      'page' => esc_html__('Page', 'ct-bones')
     ));
     foreach ($layout_options as $layout_id => $layout_label) :
       $settings_id = 'codetot_' . $layout_id . '_layout';
@@ -199,19 +214,19 @@ class Codetot_Customizer_Settings
     ), $wp_customize);
 
     $header_layout_options = apply_filters('codetot_theme_header_layout_options', array(
-      'header-1' => __('Header 1', 'ct-bones'),
-      'header-2' => __('Header 2', 'ct-bones'),
-      'header-3' => __('Header 3', 'ct-bones'),
-      'header-4' => __('Header 4', 'ct-bones'),
-      'header-5' => __('Header 5', 'ct-bones'),
-      'header-6' => __('Header 6', 'ct-bones'),
-      'header-theme' => __('Custom Theme Header', 'ct-bones')
+      'header-1' => esc_html__('Header 1', 'ct-bones'),
+      'header-2' => esc_html__('Header 2', 'ct-bones'),
+      'header-3' => esc_html__('Header 3', 'ct-bones'),
+      'header-4' => esc_html__('Header 4', 'ct-bones'),
+      'header-5' => esc_html__('Header 5', 'ct-bones'),
+      'header-6' => esc_html__('Header 6', 'ct-bones'),
+      'header-theme' => esc_html__('Custom Theme Header', 'ct-bones')
     ));
 
     // Header layout
     $this->register_control(array(
       'id' => 'codetot_theme_header_layout',
-      'label' => __('Header Layout', 'ct-bones'),
+      'label' => esc_html__('Header Layout', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'setting_args' => array('default' => 'header-1'),
       'control_args' => array(
@@ -245,9 +260,9 @@ class Codetot_Customizer_Settings
     ), $wp_customize);
 
     $sticky_header_options = apply_filters('codetot_theme_header_sticky_options', array(
-      'none' => __('No Sticky Header', 'ct-bones'),
-      'jump-down' => __('Jump Down', 'ct-bones'),
-      'visible-scroll-up' => __('Visible when Scrolling up', 'ct-bones')
+      'none' => esc_html__('No Sticky Header', 'ct-bones'),
+      'jump-down' => esc_html__('Jump Down', 'ct-bones'),
+      'visible-scroll-up' => esc_html__('Visible when Scrolling up', 'ct-bones')
     ));
 
     $this->register_control(array(
@@ -277,7 +292,7 @@ class Codetot_Customizer_Settings
     // Enable Topbar
     $this->register_control(array(
       'id' => 'codetot_theme_enable_topbar_widget',
-      'label' => __('Enable Topbar', 'ct-bones'),
+      'label' => esc_html__('Enable Topbar', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'control_args' => array(
         'type' => 'checkbox'
@@ -287,14 +302,14 @@ class Codetot_Customizer_Settings
     // Topbar Columns
     $this->register_control(array(
       'id' => 'codetot_theme_topbar_widget_column',
-      'label' => __('Topbar Column', 'ct-bones'),
+      'label' => esc_html__('Topbar Column', 'ct-bones'),
       'setting_args' => array('default' => 1),
       'section_settings_id' => $section_settings_id,
       'control_args' => array(
         'type' => 'select',
         'choices' => apply_filters('codetot_theme_topbar_column_options', array(
-          1 => __('1 Column', 'ct-bones'),
-          2 => __('2 Columns', 'ct-bones')
+          1 => esc_html__('1 Column', 'ct-bones'),
+          2 => esc_html__('2 Columns', 'ct-bones')
         ))
       )
     ), $wp_customize);
@@ -341,7 +356,7 @@ class Codetot_Customizer_Settings
     // Display Copyright text
     $this->register_control(array(
       'id' => 'codetot_theme_hide_footer_copyright',
-      'label' => __('Display Footer Copyright Text', 'ct-bones'),
+      'label' => esc_html__('Display Footer Copyright Text', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'control_args' => array(
         'type' => 'checkbox'
@@ -355,7 +370,7 @@ class Codetot_Customizer_Settings
       'section_settings_id' => $section_settings_id,
       'setting_args' => array(
         'default' => sprintf(
-          __('Copyright &copy; by %1$s. Build with %2$s (version %3$s).', 'ct-bones'),
+          esc_html__('Copyright &copy; by %1$s. Build with %2$s (version %3$s).', 'ct-bones'),
           get_bloginfo('name'),
           sprintf('<a href="%1$s" rel="sponsored" target="_blank">%2$s</a>', $parent_theme->Get('AuthorURI'), $parent_theme->Get('Author')),
           $theme_version
@@ -369,7 +384,7 @@ class Codetot_Customizer_Settings
     // Hide footer widget
     $this->register_control(array(
       'id' => 'codetot_theme_hide_footer_widgets',
-      'label' => __('Hide Footer Widgets', 'ct-bones'),
+      'label' => esc_html__('Hide Footer Widgets', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'control_args' => array(
         'type' => 'checkbox'
@@ -415,6 +430,108 @@ class Codetot_Customizer_Settings
     return $wp_customize;
   }
 
+  public function register_single_post_settings($wp_customize) {
+    $section_settings_id = 'codetot_theme_single_post_settings';
+
+    $this->register_section(array(
+      'id' => $section_settings_id,
+      'label' => esc_html__('Single Post', 'ct-bones')
+    ), $wp_customize);
+
+    $hide_options = array(
+      'codetot_theme_hide_post_meta' => esc_html__('Hide post meta', 'ct-bones'),
+      'codetot_theme_hide_social_share' => esc_html__('Hide social share', 'ct-bones'),
+      'codetot_theme_hide_comments' => esc_html__('Hide comments', 'ct-bones'),
+      'codetot_theme_hide_featured_image' => esc_html__('Hide featured image', 'ct-bones'),
+      'codetot_theme_hide_related_posts' => esc_html__('Hide related posts', 'ct-bones')
+    );
+
+    foreach ($hide_options as $settings_id => $label) {
+      $this->register_control(array(
+        'id' => $settings_id,
+        'label' => $label,
+        'section_settings_id' => $section_settings_id,
+        'control_args' => array(
+          'type' => 'checkbox'
+        )
+      ), $wp_customize);
+    }
+
+    $this->register_control(array(
+      'id' => 'codetot_theme_related_posts_number',
+      'label' => esc_html__('Related Posts Number', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'setting_args' => array('default' => 3),
+      'control_args' => array(
+        'type'     => 'number',
+        'sanitize_callback' => 'absint',
+        'input_attrs' => array(
+          'min' => 2,
+          'max' => 5
+        )
+      )
+    ), $wp_customize);
+
+    return $wp_customize;
+  }
+
+  public function register_pro_addon_settings($wp_customize) {
+    $section_settings_id = 'codetot_addon_settings';
+
+    $this->register_section(array(
+      'id' => $section_settings_id,
+      'label' => esc_html__('Addons Settings', 'ct-bones'),
+      'panel' => 'codetot_pro_options'
+    ), $wp_customize);
+
+    $this->register_control(array(
+      'id' => 'codetot_theme_enable_megamenu',
+      'label' => esc_html__('Enable Megamenu', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'control_args' => array(
+        'type' => 'checkbox'
+      )
+    ), $wp_customize);
+
+    $this->register_control(array(
+      'id' => 'codetot_theme_enable_back_to_top',
+      'label' => esc_html__('Enable Back to top Button', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'control_args' => array(
+        'type' => 'checkbox'
+      )
+    ), $wp_customize);
+
+    return $wp_customize;
+  }
+
+  public function register_pro_seo_settings($wp_customize) {
+    $section_settings_id = 'codetot_seo_settings';
+
+    $this->register_section(array(
+      'id' => $section_settings_id,
+      'label' => esc_html__('SEO Settings', 'ct-bones'),
+      'panel' => 'codetot_pro_options'
+    ), $wp_customize);
+
+    $this->register_control(array(
+      'id' => 'codetot_theme_seo_h1_homepage',
+      'label' => esc_html__('Homepage H1 Heading Text', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'section_settings' => array('default' => 'none'),
+      'control_args' => array(
+        'type' => 'checkbox',
+        'choices' => apply_filters('codetot_theme_seo_h1_homepage_options', array(
+          'none' => __('None', 'ct-bones'),
+          'page_title' => __('Using Homepage Title', 'ct-bones'),
+          'logo' => __('Using Logo Title', 'ct-bones')
+        ))
+      )
+    ), $wp_customize);
+
+    return $wp_customize;
+  }
+
   public function get_sidebar_options()
   {
     return array(
@@ -427,30 +544,30 @@ class Codetot_Customizer_Settings
   public function get_sidebar_column_options()
   {
     return array(
-      1 => __('1 Column', 'ct-bones'),
-      2 => __('2 Columns', 'ct-bones'),
-      3 => __('3 Columns', 'ct-bones'),
-      4 => __('4 Columns', 'ct-bones')
+      1 => esc_html__('1 Column', 'ct-bones'),
+      2 => esc_html__('2 Columns', 'ct-bones'),
+      3 => esc_html__('3 Columns', 'ct-bones'),
+      4 => esc_html__('4 Columns', 'ct-bones')
     );
   }
 
   public function get_background_color_options()
   {
     return array(
-      'transparent' => __('Transparent (No Background Color)', 'ct-bones'),
-      'primary'     => __('Primary', 'ct-bones'),
-      'secondary'   => __('Secondary', 'ct-bones'),
-      'white'       => __('White', 'ct-bones'),
-      'dark'        => __('Dark', 'ct-bones'),
-      'gray'        => __('Gray', 'ct-bones')
+      'transparent' => esc_html__('Transparent (No Background Color)', 'ct-bones'),
+      'primary'     => esc_html__('Primary', 'ct-bones'),
+      'secondary'   => esc_html__('Secondary', 'ct-bones'),
+      'white'       => esc_html__('White', 'ct-bones'),
+      'dark'        => esc_html__('Dark', 'ct-bones'),
+      'gray'        => esc_html__('Gray', 'ct-bones')
     );
   }
 
   public function get_background_text_contract_options()
   {
     return array(
-      'light' => __('Light Background - Dark Text', 'ct-bones'),
-      'dark' => __('Dark Background - White Text', 'ct-bones')
+      'light' => esc_html__('Light Background - Dark Text', 'ct-bones'),
+      'dark' => esc_html__('Dark Background - White Text', 'ct-bones')
     );
   }
 
@@ -458,7 +575,7 @@ class Codetot_Customizer_Settings
   {
     $wp_customize->add_section($args['id'], array(
       'title' => $args['label'],
-      'panel' => 'codetot_theme_options',
+      'panel' => !empty($args['panel']) ? $args['panel'] : 'codetot_theme_options',
       'priority' => $args['priority']
     ));
   }
@@ -493,7 +610,7 @@ class Codetot_Customizer_Settings
       empty($args['section_settings_id']) ||
       empty($wp_customize)
     ) {
-      return new \WP_Error('400', __('Missing parameter.', 'ct-bones'));
+      return new \WP_Error('400', esc_html__('Missing parameter.', 'ct-bones'));
     }
 
     $default_control_args = array(
