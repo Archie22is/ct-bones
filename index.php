@@ -15,8 +15,6 @@
 
 get_header();
 
-$number_columns = get_global_option('codetot_category_column_number') ?? 3;
-
 if (!is_front_page()) {
   the_block('breadcrumbs');
 }

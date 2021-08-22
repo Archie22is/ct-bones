@@ -168,12 +168,17 @@ include_once CODETOT_DIR . '/helpers/template-tags.php';
 include_once CODETOT_DIR . '/helpers/deprecated.php';
 include_once CODETOT_DIR . '/customizer/helpers.php';
 
+if (class_exists('WooCommerce')) {
+  require_once CODETOT_DIR . '/customizer/woocommerce-settings.php';
+}
+
 require_once CODETOT_DIR . '/customizer/settings.php';
 require_once CODETOT_DIR . '/theme-init.php';
 require_once CODETOT_DIR . '/assets.php';
 require_once CODETOT_DIR . '/api.php';
 require_once CODETOT_DIR . '/seo-support.php';
 
+require_once CODETOT_DIR . '/features/related-posts.php';
 
 // Admin
 require_once CODETOT_ADMIN_DIR . '/init.php';
@@ -202,7 +207,6 @@ add_action('wp', function() {
   require_once CODETOT_DIR . '/layout.php';
   require_once CODETOT_DIR . '/features/multiple-headers.php';
   require_once CODETOT_DIR . '/features/breadcrumbs.php';
-  require_once CODETOT_DIR . '/features/related-posts.php';
   require_once CODETOT_DIR . '/features/facebook-comments.php';
 }, 10);
 
@@ -235,3 +239,5 @@ if (class_exists('WooCommerce')) {
 }
 
 require_once CODETOT_DIR . '/optimize.php';
+
+require_once __DIR__ . '/sync-settings.php';
