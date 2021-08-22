@@ -42,6 +42,7 @@ class Codetot_Customizer_Settings
     // PRO Options
     add_action('customize_register', array($this, 'register_pro_addon_settings'));
     add_action('customize_register', array($this, 'register_pro_widget_settings'));
+    add_action('customize_register', array($this, 'register_pro_layout_settings'));
     add_action('customize_register', array($this, 'register_pro_seo_settings'));
   }
 
@@ -485,7 +486,8 @@ class Codetot_Customizer_Settings
     $this->register_section(array(
       'id' => $section_settings_id,
       'label' => esc_html__('Addons Settings', 'ct-bones'),
-      'panel' => 'codetot_pro_options'
+      'panel' => 'codetot_pro_options',
+      'priority' => 10
     ), $wp_customize);
 
     $this->register_control(array(
@@ -517,7 +519,8 @@ class Codetot_Customizer_Settings
     $this->register_section(array(
       'id' => $section_settings_id,
       'label' => esc_html__('Extra Widgets Settings', 'ct-bones'),
-      'panel' => 'codetot_pro_options'
+      'panel' => 'codetot_pro_options',
+      'priority' => 20,
     ), $wp_customize);
 
     $available_widgets = apply_filters('codetot_pro_widget_options', array(
@@ -541,17 +544,46 @@ class Codetot_Customizer_Settings
     }
   }
 
+  public function register_pro_layout_settings($wp_customize) {
+    $section_settings_id = 'codetot_pro_layout_settings';
+
+    $this->register_section(array(
+      'id' => $section_settings_id,
+      'label' => esc_html__('Extra Layout Settings', 'ct-bones'),
+      'panel' => 'codetot_pro_options',
+      'priority' => 30,
+    ), $wp_customize);
+
+    $this->register_control(array(
+      'id' => 'extra_single_post_layout',
+      'label' => esc_html__('Extra Post Layout', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'is_pro' => true,
+      'setting_args' => array('default' => 'none'),
+      'control_args' => array(
+        'type' => 'select',
+        'choices' => apply_filters('codetot_extra_single_post_options', array(
+          'none' => esc_html__('Default Layout', 'ct-bones'),
+          'hero_image' => esc_html__('Hero Image', 'ct-bones')
+        ))
+      )
+    ), $wp_customize);
+
+    return $wp_customize;
+  }
+
   public function register_pro_seo_settings($wp_customize) {
     $section_settings_id = 'codetot_pro_seo_settings';
 
     $this->register_section(array(
       'id' => $section_settings_id,
       'label' => esc_html__('SEO Settings', 'ct-bones'),
-      'panel' => 'codetot_pro_options'
+      'panel' => 'codetot_pro_options',
+      'priority' => 40
     ), $wp_customize);
 
     $this->register_control(array(
-      'id' => 'codetot_pro_seo_h1_homepage',
+      'id' => 'seo_h1_homepage',
       'label' => esc_html__('Homepage H1 Heading Text', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'section_settings' => array('default' => 'none'),
