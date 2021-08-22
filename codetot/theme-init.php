@@ -141,11 +141,11 @@ class Codetot_Theme_Init
       );
     }
 
-    $enable_topbar_widget = get_global_option('codetot_header_topbar_enable') ?? false;
-    $topbar_widgets = get_global_option('codetot_topbar_layout') ?? 1;
+    $enable_topbar_widget = codetot_get_theme_mod('enable_topbar') ?? false;
+    $topbar_widget_column       = codetot_get_theme_mod('topbar_widget_column') ?? 1;
 
     if ($enable_topbar_widget) {
-      for ($i = 1; $i <= $topbar_widgets; $i++) {
+      for ($i = 1; $i <= $topbar_widget_column; $i++) {
         register_sidebar(
           array(
             'name' => sprintf(__('Topbar Column #%s', 'ct-bones'), $i),
