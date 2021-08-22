@@ -359,7 +359,7 @@ class Codetot_Customizer_Settings
     // Display Copyright text
     $this->register_control(array(
       'id' => 'hide_footer_copyright',
-      'label' => esc_html__('Display Footer Copyright Text', 'ct-bones'),
+      'label' => esc_html__('Hide Footer Copyright Text', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'control_args' => array(
         'type' => 'checkbox'
