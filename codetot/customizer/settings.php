@@ -220,6 +220,25 @@ class Codetot_Customizer_Settings
       )
     ), $wp_customize);
 
+    codetot_customizer_register_control(array(
+      'id' => 'post_card_style',
+      'label' => esc_html__('Post Card Style', 'ct-bones'),
+      'setting_args' => array('default' => 'default'),
+      'section_settings_id' => $section_settings_id,
+      'control_args' => array(
+        'type' => 'select',
+        'choices' => apply_filters('codetot_theme_post_card_style_options', array(
+          'default' => esc_html__('Default', 'ct-bones'),
+          1 => esc_html__('Style 1', 'ct-bones'),
+          2 => esc_html__('Style 2', 'ct-bones'),
+          3 => esc_html__('Style 3', 'ct-bones'),
+          4 => esc_html__('Style 4', 'ct-bones'),
+          5 => esc_html__('Style 5', 'ct-bones'),
+          'theme' => esc_html__('Theme Style', 'ct-bones')
+        ))
+      )
+    ), $wp_customize);
+
     return $wp_customize;
   }
 
