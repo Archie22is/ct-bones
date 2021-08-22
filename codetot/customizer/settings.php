@@ -463,8 +463,7 @@ class Codetot_Customizer_Settings
       'hide_post_meta' => esc_html__('Hide post meta', 'ct-bones'),
       'hide_social_share' => esc_html__('Hide social share', 'ct-bones'),
       'hide_comments' => esc_html__('Hide comments', 'ct-bones'),
-      'hide_featured_image' => esc_html__('Hide featured image', 'ct-bones'),
-      'hide_related_posts' => esc_html__('Hide related posts', 'ct-bones')
+      'hide_featured_image' => esc_html__('Hide featured image', 'ct-bones')
     );
 
     foreach ($hide_options as $settings_id => $label) {
@@ -477,21 +476,6 @@ class Codetot_Customizer_Settings
         )
       ), $wp_customize);
     }
-
-    $this->register_control(array(
-      'id' => 'related_posts_number',
-      'label' => esc_html__('Related Posts Number', 'ct-bones'),
-      'section_settings_id' => $section_settings_id,
-      'setting_args' => array('default' => 3),
-      'control_args' => array(
-        'type'     => 'number',
-        'sanitize_callback' => 'absint',
-        'input_attrs' => array(
-          'min' => 2,
-          'max' => 5
-        )
-      )
-    ), $wp_customize);
 
     return $wp_customize;
   }
@@ -605,7 +589,7 @@ class Codetot_Customizer_Settings
       'section_settings' => array('default' => 'none'),
       'is_pro' => true,
       'control_args' => array(
-        'type' => 'checkbox',
+        'type' => 'select',
         'choices' => apply_filters('codetot_theme_seo_h1_homepage_options', array(
           'none' => __('None', 'ct-bones'),
           'page_title' => __('Using Homepage Title', 'ct-bones'),

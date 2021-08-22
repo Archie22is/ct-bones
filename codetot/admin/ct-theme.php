@@ -295,6 +295,7 @@ class Codetot_CT_Theme_Settings
         [
           'name'    => __('Hide Related Posts', 'ct-bones'),
           'id'      => $this->filter_prefix . 'hide_related_posts',
+          'desc' => esc_html__('[DEPRECATED] This setting has been replaced. Visit Customizer to edit this setting.', 'ct-bones'),
           'type'    => 'switch',
           'style'   => 'rounded'
         ]
@@ -399,12 +400,14 @@ class Codetot_CT_Theme_Settings
             'type' => 'switch',
             'name' => sprintf(__('Enable %s', 'ct-bones'), esc_html__('Topbar', 'ct-bones')),
             'id'   => $this->prefix . 'header_topbar_enable',
+            'desc' => esc_html__('[DEPRECATED] This setting has been replaced. Visit Customizer to edit this setting.', 'ct-bones'),
             'std' => 1
           ],
           [
             'type' => 'radio',
             'name' => sprintf(__('%s Layout', 'ct-bones'), esc_html__('Topbar', 'ct-bones')),
             'id'   => $this->prefix . 'topbar_layout',
+            'desc' => esc_html__('[DEPRECATED] This setting has been replaced. Visit Customizer to edit this setting.', 'ct-bones'),
             'options' => array(
               1 => sprintf(__('%s Column', 'ct-bones'), 1),
               2 => sprintf(__('%s Columns', 'ct-bones'), 2)

@@ -174,6 +174,7 @@ require_once CODETOT_DIR . '/assets.php';
 require_once CODETOT_DIR . '/api.php';
 require_once CODETOT_DIR . '/seo-support.php';
 
+require_once CODETOT_DIR . '/features/related-posts.php';
 
 // Admin
 require_once CODETOT_ADMIN_DIR . '/init.php';
@@ -202,7 +203,6 @@ add_action('wp', function() {
   require_once CODETOT_DIR . '/layout.php';
   require_once CODETOT_DIR . '/features/multiple-headers.php';
   require_once CODETOT_DIR . '/features/breadcrumbs.php';
-  require_once CODETOT_DIR . '/features/related-posts.php';
   require_once CODETOT_DIR . '/features/facebook-comments.php';
 }, 10);
 

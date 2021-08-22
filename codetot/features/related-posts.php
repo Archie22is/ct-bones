@@ -39,12 +39,48 @@ class Codetot_Related_Posts
    */
   public function __construct()
   {
-    $this->hide = get_global_option('codetot_settings_hide_related_posts') ?? false;
-    $this->query_type = get_global_option('codetot_related_posts_type') ?? 'category';
+    add_action('customize_register', array($this, 'register_customizer_settings'));
 
-    if (!$this->hide) {
-      add_action('codetot_after_post', array($this, 'render_section'), 10);
-    }
+    $this->query_type = codetot_get_theme_mod('related_posts_query_type') ?? 'category';
+
+    add_action('codetot_after_post', array($this, 'render_section'), 10);
+  }
+
+  public function register_customizer_settings($wp_customize) {
+    $section_settings_id = 'codetot_theme_single_post_settings';
+
+    Codetot_Customizer_Settings::instance()->register_control(array(
+      'id' => 'related_posts_query_type',
+      'label' => esc_html__('Related Posts Query Type', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'setting_args' => array('default' => 'category_tag'),
+      'control_args' => array(
+        'type' => 'select',
+        'choices' => array(
+          'none' => __('Hide Related Posts', 'ct-bones'),
+          'category_tag' => __('Both of Tags and Categories', 'ct-bones'),
+          'category' => esc_html__('Same Category', 'ct-bones'),
+          'tag' => esc_html__('Same Tag', 'ct-bones')
+        )
+      )
+    ), $wp_customize);
+
+    Codetot_Customizer_Settings::instance()->register_control(array(
+      'id' => 'related_posts_number',
+      'label' => esc_html__('Related Posts Number', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'setting_args' => array('default' => 3),
+      'control_args' => array(
+        'type'     => 'number',
+        'sanitize_callback' => 'absint',
+        'input_attrs' => array(
+          'min' => 2,
+          'max' => 5
+        )
+      )
+    ), $wp_customize);
+
+    return $wp_customize;
   }
 
   public function get_categories() {
@@ -63,14 +99,14 @@ class Codetot_Related_Posts
     if (!is_singular('post')) {
       return new WP_Error(
         '400',
-        __('This query must work with singular post only.', 'ct-bones')
+        __('This query only works with singular post only.', 'ct-bones')
       );
     }
 
     $post_id = get_the_ID();
 
     $post_args = array(
-      'posts_per_page' => apply_filters('codetot_related_posts_number', 3),
+      'posts_per_page' => codetot_get_theme_mod('related_posts_number') ?? 3,
       'post__not_in' => array($post_id)
     );
 
@@ -96,7 +132,7 @@ class Codetot_Related_Posts
         break;
 
       // Both of categories and tags
-      default:
+      case 'category_tag':
 
         $categories = $this->get_categories();
 
@@ -126,13 +162,24 @@ class Codetot_Related_Posts
 
         $post_args['tax_query'] = $tax_query;
 
+      default :
+        return [];
+
     endswitch;
 
     return $post_args;
   }
 
   public function render_section() {
+    if ($this->query_type === 'none') {
+      return '';
+    }
+
     $post_args = $this->get_query_args();
+
+    if (empty($post_args)) {
+      return '';
+    }
 
     $post_query = new WP_Query($post_args);
     $class = 'post-grid--related-posts default-section--no-container';
