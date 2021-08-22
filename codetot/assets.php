@@ -58,11 +58,11 @@ class Codetot_Assets
   }
 
   public function get_body_font() {
-    return  get_global_option('codetot_font_family') ?? 'Averta';
+    return codetot_get_theme_mod('body_font') ?? 'Averta';
   }
 
   public function get_heading_font() {
-    return  get_global_option('codetot_font_heading') ?? 'Averta';
+    return codetot_get_theme_mod('heading_font') ?? 'Averta';
   }
 
   public function load_fonts()
