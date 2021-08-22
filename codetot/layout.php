@@ -134,7 +134,7 @@ class Codetot_Theme_Layout
   }
 
   public function generate_post_layout() {
-    $sidebar_layout = get_global_option('codetot_post_layout') ?? 'left-sidebar';
+    $sidebar_layout = codetot_get_theme_mod('post_layout') ?? 'right-sidebar';
     $enable_hero_image = get_global_option('codetot_settings_enable_hero_image_single_post') ?? false;
 
     if ($enable_hero_image) {
