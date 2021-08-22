@@ -206,12 +206,12 @@ class Codetot_Customizer_Woocommerce_Settings {
       'id' => 'single_product_gallery_thumbnail_style',
       'label' => esc_html__('Product Thumbnail Style', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
-      'setting_args' => array('default' => 'view-all'),
+      'setting_args' => array('default' => 'default'),
       'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'select',
         'choices' => apply_filters('single_product_gallery_thumbnail_style_options', array(
-          'view-all' => esc_html__('View all thumbnails','ct-bones'),
+          'default' => esc_html__('View all thumbnails', 'ct-bones'),
           'popup' => esc_html__('Open more images in popup', 'ct-bones')
         ))
       )
