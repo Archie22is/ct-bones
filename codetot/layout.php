@@ -53,7 +53,7 @@ class Codetot_Theme_Layout
   }
 
   public function load_page_header() {
-    $sidebar_layout = get_global_option('codetot_page_layout') ?? 'left-sidebar';
+    $sidebar_layout = codetot_get_theme_mod('page_layout') ?? 'no-sidebar';
     $header_class = $sidebar_layout !== 'no-sidebar' ? 'page-header--no-container' : ' mt-1';
     $header_class .= ' mb-1';
 
@@ -68,7 +68,7 @@ class Codetot_Theme_Layout
   }
 
   public function generate_page_layout() {
-    $sidebar_layout = get_global_option('codetot_page_layout') ?? 'no-sidebar';
+    $sidebar_layout = codetot_get_theme_mod('page_layout') ?? 'no-sidebar';
 
     if ( !is_front_page() ) {
       add_action('codetot_after_header', array($this, 'load_breadcrumbs'), 9);
@@ -180,9 +180,9 @@ class Codetot_Theme_Layout
   public function generate_default_index_layout() {
     add_action('codetot_before_index_main', function() {
       if (is_category()) {
-        $sidebar_layout = get_global_option('codetot_category_layout') ?? 'sidebar-right';
+        $sidebar_layout = codetot_get_theme_mod('category_layout') ?? 'no-sidebar';
       } else {
-        $sidebar_layout = get_global_option('codetot_post_layout') ?? 'sidebar-right';
+        $sidebar_layout = codetot_get_theme_mod('post_layout') ?? 'no-sidebar';
       }
 
       echo $this->page_block_open('page-block--archive ' . esc_attr($sidebar_layout), false);
@@ -275,7 +275,7 @@ function codetot_layout_single_post_hero_image_html() {
 function codetot_layout_post_list_html() {
   global $wp_query;
 
-  $post_list_layout = get_global_option('codetot_post_list_layout') ?? 'row';
+  $post_list_layout = get_global_option('archive_post_layout') ?? 'row';
   $columns = get_global_option('codetot_category_column_number') ?? 3;
 
   if ($post_list_layout === 'row') {
@@ -294,7 +294,7 @@ function codetot_layout_post_list_html() {
 }
 
 function codetot_layout_post_list_pagination() {
-    the_block('pagination');
+  the_block('pagination');
 }
 
 function codetot_render_footer_copyright_block() {

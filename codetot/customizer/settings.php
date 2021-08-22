@@ -164,7 +164,7 @@ class Codetot_Customizer_Settings
       $this->register_control(array(
         'id' => $settings_id,
         'label' => sprintf(__('%s Layout', 'ct-bones'), $layout_label),
-        'setting_args' => array('default' => 'sidebar-right'),
+        'setting_args' => array('default' => 'no-sidebar'),
         'section_settings_id' => $section_settings_id,
         'control_args' => array(
           'type'     => 'select',
