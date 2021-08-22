@@ -62,7 +62,7 @@ class Codetot_Customizer_Woocommerce_Settings {
       'enable_product_video' => esc_html__('Enable Product Video', 'ct-bones'),
       'enable_mini_cart' => esc_html__('Enable Mini Cart', 'ct-bones'),
       'enable_login_popup' => esc_html__('Enable Login Popup', 'ct-bones'),
-      'enable_countdown_single_product' => esc_html__('Enable Countdown on product page', 'ct-bones'),
+      'single_product_enable_countdown' => esc_html__('Enable Countdown on product page', 'ct-bones'),
       'enable_viewed_product_section' => esc_html__('Enable Viewed Product Section', 'ct-bones')
     ));
 

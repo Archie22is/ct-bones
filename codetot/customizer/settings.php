@@ -332,7 +332,7 @@ class Codetot_Customizer_Settings
     }
 
     codetot_customizer_register_control(array(
-      'id' => 'display_phone_number',
+      'id' => 'header_display_phone_number',
       'label' => esc_html__('Display Phone Number', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'control_args' => array(
@@ -341,7 +341,7 @@ class Codetot_Customizer_Settings
     ), $wp_customize);
 
     codetot_customizer_register_control(array(
-      'id' => 'add_menu_home_icon',
+      'id' => 'header_menu_home_icon',
       'label' => esc_html__('Display Home icon in Primary menu', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'control_args' => array(
@@ -497,6 +497,15 @@ class Codetot_Customizer_Settings
       'control_args' => array(
         'type' => 'select',
         'choices' => $this->get_background_text_contract_options()
+      )
+    ), $wp_customize);
+
+    codetot_customizer_register_control(array(
+      'id' => 'footer_hide_social_links',
+      'label' => esc_html__('Hide Footer Social Links', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'control_args' => array(
+        'type' => 'checkbox'
       )
     ), $wp_customize);
 
