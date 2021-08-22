@@ -31,7 +31,7 @@ class Codetot_Theme_Layout
   private function __construct()
   {
     add_action('codetot_sidebar', 'codetot_get_sidebar', 10);
-    add_action('codetot_after_content_post', array($this, 'codetot_share_button'), 5);
+    add_action('codetot_after_content_post', 'codetot_layout_single_post_social_share_html', 5);
     add_action('codetot_footer_row_middle', 'codetot_render_footer_copyright_block', 10);
 
     $is_not_flexible_page = get_page_template_slug( get_the_ID()) !== 'flexible';
@@ -53,7 +53,7 @@ class Codetot_Theme_Layout
   }
 
   public function load_page_header() {
-    $sidebar_layout = get_global_option('codetot_page_layout') ?? 'left-sidebar';
+    $sidebar_layout = codetot_get_theme_mod('page_layout') ?? 'no-sidebar';
     $header_class = $sidebar_layout !== 'no-sidebar' ? 'page-header--no-container' : ' mt-1';
     $header_class .= ' mb-1';
 
@@ -68,7 +68,7 @@ class Codetot_Theme_Layout
   }
 
   public function generate_page_layout() {
-    $sidebar_layout = get_global_option('codetot_page_layout') ?? 'no-sidebar';
+    $sidebar_layout = codetot_get_theme_mod('page_layout') ?? 'no-sidebar';
 
     if ( !is_front_page() ) {
       add_action('codetot_after_header', array($this, 'load_breadcrumbs'), 9);
@@ -134,10 +134,10 @@ class Codetot_Theme_Layout
   }
 
   public function generate_post_layout() {
-    $sidebar_layout = get_global_option('codetot_post_layout') ?? 'left-sidebar';
-    $enable_hero_image = get_global_option('codetot_settings_enable_hero_image_single_post') ?? false;
+    $sidebar_layout    = codetot_get_theme_mod('post_layout') ?? 'right-sidebar';
+    $enable_hero_image = codetot_get_theme_mod('extra_single_post_layout') ?? 'none';
 
-    if ($enable_hero_image) {
+    if ($enable_hero_image === 'hero_image') {
       add_action('codetot_after_header', 'codetot_layout_single_post_hero_image_html', 2);
       add_filter('codetot_hide_single_post_header', '__return_true');
     }
@@ -156,7 +156,7 @@ class Codetot_Theme_Layout
   }
 
   public function codetot_share_button() {
-    $hide_social_share = get_global_option('codetot_settings_hide_social_share') ?? false;
+    $hide_social_share = codetot_get_theme_mod('hide_social_share') ?? false;
     if (!$hide_social_share) :
       global $post;
 
@@ -180,9 +180,9 @@ class Codetot_Theme_Layout
   public function generate_default_index_layout() {
     add_action('codetot_before_index_main', function() {
       if (is_category()) {
-        $sidebar_layout = get_global_option('codetot_category_layout') ?? 'sidebar-right';
+        $sidebar_layout = codetot_get_theme_mod('category_layout') ?? 'no-sidebar';
       } else {
-        $sidebar_layout = get_global_option('codetot_post_layout') ?? 'sidebar-right';
+        $sidebar_layout = codetot_get_theme_mod('post_layout') ?? 'no-sidebar';
       }
 
       echo $this->page_block_open('page-block--archive ' . esc_attr($sidebar_layout), false);
@@ -229,6 +229,20 @@ class Codetot_Theme_Layout
   }
 }
 
+function codetot_layout_single_post_social_share_html() {
+  $hide_social_share = codetot_get_theme_mod('hide_social_share') ?? false;
+
+  if (!$hide_social_share) :
+    global $post;
+
+    the_block('social-links', array(
+      'class' => 'social-links--share',
+      'label' => __('Share', 'ct-theme'),
+      'items' => codetot_get_share_post_links($post)
+    ));
+  endif;
+}
+
 function codetot_layout_single_post_hero_image_html() {
   global $post;
 
@@ -261,10 +275,11 @@ function codetot_layout_single_post_hero_image_html() {
 function codetot_layout_post_list_html() {
   global $wp_query;
 
-  $post_list_layout = get_global_option('codetot_post_list_layout') ?? 'row';
-  $columns = get_global_option('codetot_category_column_number') ?? 3;
+  $archive_layout = codetot_get_theme_mod('archive_post_layout') ?? 'row';
+  $columns        = codetot_get_theme_mod('archive_post_column') ?? 3;
+  $post_card_style = get_global_option('codetot_post_card_style') ?? 'style-1';
 
-  if ($post_list_layout === 'row') {
+  if ($archive_layout === 'row') {
     the_block('post-list', array(
       'class' => 'section default-section--no-container',
       'query' => $wp_query
@@ -274,13 +289,13 @@ function codetot_layout_post_list_html() {
       'class' => 'section default-section--no-container',
       'columns' => $columns,
       'query' => $wp_query,
-      'card_style' => get_global_option('codetot_post_card_style') ?? 'style-1'
+      'card_style' => $post_card_style
     ));
   }
 }
 
 function codetot_layout_post_list_pagination() {
-    the_block('pagination');
+  the_block('pagination');
 }
 
 function codetot_render_footer_copyright_block() {
