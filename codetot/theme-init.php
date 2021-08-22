@@ -125,8 +125,9 @@ class Codetot_Theme_Init
       )
     );
 
-    $footer_column = get_global_option('codetot_footer_columns') ? str_replace('-columns', '', get_global_option('codetot_footer_columns')) : 3;
-    for ($i = 1; $i <= $footer_column; $i++) {
+    $footer_widget_columns = codetot_get_theme_mod('footer_widget_column') ?? 3;
+
+    for ($i = 1; $i <= $footer_widget_columns; $i++) {
       register_sidebar(
         array(
           'name' => sprintf(__('Footer Column #%s', 'ct-bones'), $i),

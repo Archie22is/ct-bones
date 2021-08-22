@@ -426,6 +426,7 @@ class Codetot_CT_Theme_Settings
       'type' => 'image_select',
       'std'  => '3-columns',
       'columns' => 6,
+      'desc' => esc_html__('[DEPRECATED] This setting has been replaced. Visit Customizer to edit this setting.', 'ct-bones'),
       'options' => apply_filters('codetot_footer_columns_options', codetot_footer_widget_columns())
     );
 
@@ -435,6 +436,7 @@ class Codetot_CT_Theme_Settings
         'type' => 'radio',
         'name' => __('Footer Background Color', 'ct-bones'),
         'id' => $this->prefix . 'footer_background_color',
+        'desc' => esc_html__('[DEPRECATED] This setting has been replaced. Visit Customizer to edit this setting.', 'ct-bones'),
         'columns' => 6,
         'options' => apply_filters(
           $this->filter_prefix . 'footer_background_colors_options',
@@ -446,13 +448,15 @@ class Codetot_CT_Theme_Settings
         'id'      => $this->filter_prefix . 'remove_theme_copyright',
         'type'    => 'switch',
         'style'   => 'rounded',
+        'desc' => esc_html__('[DEPRECATED] This setting has been replaced. Visit Customizer to edit this setting.', 'ct-bones'),
         'columns' => 2,
       ],
       [
         'name'    => __('Hide Footer Social Links', 'ct-bones'),
         'id'      => $this->filter_prefix . 'footer_hide_social_links',
         'columns' => 2,
-        'type'    => 'switch'
+        'type'    => 'switch',
+        'desc' => esc_html__('[DEPRECATED] This setting has been removed.', 'ct-bones')
       ]
     ]);
 
