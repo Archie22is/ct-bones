@@ -629,6 +629,7 @@ class Codetot_Customizer_Settings
   public function get_sidebar_column_options()
   {
     return array(
+      0 => esc_html__('Disable Sidebar', 'ct-bones'),
       1 => esc_html__('1 Column', 'ct-bones'),
       2 => esc_html__('2 Columns', 'ct-bones'),
       3 => esc_html__('3 Columns', 'ct-bones'),

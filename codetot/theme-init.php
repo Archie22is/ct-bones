@@ -92,54 +92,68 @@ class Codetot_Theme_Init
 
   public function register_sidebars()
   {
-    register_sidebar(
-      array(
-        'id' => 'post-sidebar',
-        'name' => __('Post Sidebar', 'ct-bones'),
-        'before_widget' => '<div id="%1$s" class="widget widget--post %2$s">',
-        'after_widget' => '</div><!-- Close widget -->',
-        'before_title' => '<p class="widget__title">',
-        'after_title' => '</p>'
-      )
-    );
+    $post_layout = codetot_get_theme_mod('post_layout') ?? 'no-sidebar';
 
-    register_sidebar(
-      array(
-        'id' => 'page-sidebar',
-        'name' => __('Page Sidebar', 'ct-bones'),
-        'before_widget' => '<div id="%1$s" class="widget widget--page %2$s">',
-        'after_widget' => '</div><!-- Close widget -->',
-        'before_title' => '<p class="widget__title">',
-        'after_title' => '</p>'
-      )
-    );
-
-    register_sidebar(
-      array(
-        'id' => 'category-sidebar',
-        'name' => __('Category Sidebar', 'ct-bones'),
-        'before_widget' => '<div id="%1$s" class="widget widget--category %2$s">',
-        'after_widget' => '</div><!-- Close widget -->',
-        'before_title' => '<p class="widget__title">',
-        'after_title' => '</p>'
-      )
-    );
-
-    $footer_widget_columns = codetot_get_theme_mod('footer_widget_column') ?? 3;
-
-    for ($i = 1; $i <= $footer_widget_columns; $i++) {
+    if ($post_layout !== 'no-sidebar') :
       register_sidebar(
         array(
-          'name' => sprintf(__('Footer Column #%s', 'ct-bones'), $i),
-          'description' => __('Add widgets to display in footer column.', 'ct-bones'),
-          'id' => 'footer-column-' . $i,
-          'before_widget' => '<div id="%1$s" class="widget widget--footer %2$s">',
+          'id' => 'post-sidebar',
+          'name' => __('Post Sidebar', 'ct-bones'),
+          'before_widget' => '<div id="%1$s" class="widget widget--post %2$s">',
           'after_widget' => '</div><!-- Close widget -->',
           'before_title' => '<p class="widget__title">',
-          'after_title' => '</p>',
+          'after_title' => '</p>'
         )
       );
-    }
+    endif;
+
+    $page_layout = codetot_get_theme_mod('page_layout') ?? 'no-sidebar';
+
+    if ($page_layout !== 'no-sidebar') :
+      register_sidebar(
+        array(
+          'id' => 'page-sidebar',
+          'name' => __('Page Sidebar', 'ct-bones'),
+          'before_widget' => '<div id="%1$s" class="widget widget--page %2$s">',
+          'after_widget' => '</div><!-- Close widget -->',
+          'before_title' => '<p class="widget__title">',
+          'after_title' => '</p>'
+        )
+      );
+    endif;
+
+    $archive_layout = codetot_get_theme_mod('category_layout') ?? 'no-sidebar';
+
+    if ($archive_layout !== 'no-sidebar') :
+      register_sidebar(
+        array(
+          'id' => 'category-sidebar',
+          'name' => __('Category Sidebar', 'ct-bones'),
+          'before_widget' => '<div id="%1$s" class="widget widget--category %2$s">',
+          'after_widget' => '</div><!-- Close widget -->',
+          'before_title' => '<p class="widget__title">',
+          'after_title' => '</p>'
+        )
+      );
+    endif;
+
+    $footer_widget_column = codetot_get_theme_mod('footer_widget_column') ?? 3;
+
+    if ($footer_widget_column > 0) :
+      for ($i = 1; $i <= $footer_widget_column; $i++) {
+        register_sidebar(
+          array(
+            'name' => sprintf(__('Footer Column #%s', 'ct-bones'), $i),
+            'description' => __('Add widgets to display in footer column.', 'ct-bones'),
+            'id' => 'footer-column-' . $i,
+            'before_widget' => '<div id="%1$s" class="widget widget--footer %2$s">',
+            'after_widget' => '</div><!-- Close widget -->',
+            'before_title' => '<p class="widget__title">',
+            'after_title' => '</p>',
+          )
+        );
+      }
+    endif;
 
     $enable_topbar_widget = codetot_get_theme_mod('enable_topbar') ?? false;
     $topbar_widget_column       = codetot_get_theme_mod('topbar_widget_column') ?? 1;
