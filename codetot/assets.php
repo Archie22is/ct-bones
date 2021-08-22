@@ -129,11 +129,11 @@ class Codetot_Assets
 
   public function load_font_size_scale()
   {
-    $font_size_scale = get_global_option('codetot_font_size_scale') ?? '1200';
+    $font_size_scale = codetot_get_theme_mod('font_scale') ?? '1125';
 
     wp_enqueue_style(
       'codetot-typography-style',
-      get_template_directory_uri() . '/dynamic-assets/typography-style/' . $font_size_scale . '.css',
+      esc_url(get_template_directory_uri() . '/dynamic-assets/typography-style/' . $font_size_scale . '.css'),
       [],
       CODETOT_VERSION
     );
