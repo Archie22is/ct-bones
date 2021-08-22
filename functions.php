@@ -235,3 +235,5 @@ if (class_exists('WooCommerce')) {
 }
 
 require_once CODETOT_DIR . '/optimize.php';
+
+require_once __DIR__ . '/sync-settings.php';
