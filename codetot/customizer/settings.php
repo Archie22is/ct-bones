@@ -41,6 +41,7 @@ class Codetot_Customizer_Settings
 
     // PRO Options
     add_action('customize_register', array($this, 'register_pro_addon_settings'));
+    add_action('customize_register', array($this, 'register_pro_widget_settings'));
     add_action('customize_register', array($this, 'register_pro_seo_settings'));
   }
 
@@ -476,7 +477,7 @@ class Codetot_Customizer_Settings
   }
 
   public function register_pro_addon_settings($wp_customize) {
-    $section_settings_id = 'codetot_addon_settings';
+    $section_settings_id = 'codetot_pro_addon_settings';
 
     $this->register_section(array(
       'id' => $section_settings_id,
@@ -485,7 +486,7 @@ class Codetot_Customizer_Settings
     ), $wp_customize);
 
     $this->register_control(array(
-      'id' => 'codetot_theme_enable_megamenu',
+      'id' => 'codetot_pro_enable_megamenu',
       'label' => esc_html__('Enable Megamenu', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'control_args' => array(
@@ -494,7 +495,7 @@ class Codetot_Customizer_Settings
     ), $wp_customize);
 
     $this->register_control(array(
-      'id' => 'codetot_theme_enable_back_to_top',
+      'id' => 'codetot_pro_enable_back_to_top',
       'label' => esc_html__('Enable Back to top Button', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'control_args' => array(
@@ -505,8 +506,37 @@ class Codetot_Customizer_Settings
     return $wp_customize;
   }
 
+  public function register_pro_widget_settings($wp_customize) {
+    $section_settings_id = 'codetot_pro_widgets_settings';
+
+    $this->register_section(array(
+      'id' => $section_settings_id,
+      'label' => esc_html__('Extra Widgets Settings', 'ct-bones'),
+      'panel' => 'codetot_pro_options'
+    ), $wp_customize);
+
+    $available_widgets = apply_filters('codetot_pro_widget_options', array(
+      'company_info' => esc_html__('Company Info', 'ct-bones'),
+      'related_posts' => esc_html__('Related Posts', 'ct-bones'),
+      'latest_posts' => esc_html__('Latest Posts', 'ct-bones'),
+      'icon_box' => esc_html__('Icon Box', 'ct-bones'),
+      'social_links' => esc_html__('Social Links', 'ct-bones')
+    ));
+
+    foreach ($available_widgets as $widget_id => $label) {
+      $this->register_control(array(
+        'id' => 'codetot_pro_widget_' . esc_html($widget_id),
+        'label' => sprintf(__('Enable widget: [CT] %s', 'ct-bones'), $label),
+        'section_settings_id' => $section_settings_id,
+        'control_args' => array(
+          'type' => 'checkbox'
+        )
+      ), $wp_customize);
+    }
+  }
+
   public function register_pro_seo_settings($wp_customize) {
-    $section_settings_id = 'codetot_seo_settings';
+    $section_settings_id = 'codetot_pro_seo_settings';
 
     $this->register_section(array(
       'id' => $section_settings_id,
@@ -515,7 +545,7 @@ class Codetot_Customizer_Settings
     ), $wp_customize);
 
     $this->register_control(array(
-      'id' => 'codetot_theme_seo_h1_homepage',
+      'id' => 'codetot_pro_seo_h1_homepage',
       'label' => esc_html__('Homepage H1 Heading Text', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'section_settings' => array('default' => 'none'),
@@ -590,7 +620,8 @@ class Codetot_Customizer_Settings
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $color['id'], array(
       'label'    => $color['name'],
       'section'  => $section_settings_id,
-      'settings' => $color['id']
+      'settings' => $color['id'],
+      'sanitize_callback' => 'sanitize_hex_color'
     )));
   }
 
