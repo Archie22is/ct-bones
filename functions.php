@@ -171,6 +171,7 @@ require_once CODETOT_DIR . '/theme-init.php';
 require_once CODETOT_DIR . '/assets.php';
 require_once CODETOT_DIR . '/api.php';
 require_once CODETOT_DIR . '/seo-support.php';
+require_once CODETOT_DIR . '/customizer/settings.php';
 
 // Admin
 require_once CODETOT_ADMIN_DIR . '/init.php';
