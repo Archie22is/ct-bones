@@ -79,6 +79,8 @@ class Codetot_Customizer_Settings
     // Register color schemas
     $color_options = codetot_get_color_options();
     foreach ($color_options as $color) {
+      $color['id'] = str_replace('codetot_', '', $color['id']);
+
       $this->register_color_control($color, $section_settings_id, $wp_customize);
     }
 
@@ -97,8 +99,8 @@ class Codetot_Customizer_Settings
 
     $font_family_options = codetot_get_font_family_options();
     $font_types = array(
-      'codetot_theme_body_font' => esc_html__('Body Font Family', 'ct-bones'),
-      'codetot_theme_heading_font' => esc_html__('Heading Font Family', 'ct-bones')
+      'body_font' => esc_html__('Body Font Family', 'ct-bones'),
+      'heading_font' => esc_html__('Heading Font Family', 'ct-bones')
     );
 
     foreach ($font_types as $font_id => $font_type) {
@@ -127,7 +129,7 @@ class Codetot_Customizer_Settings
     ));
 
     $this->register_control(array(
-      'id' => 'codetot_theme_font_scale',
+      'id' => 'font_scale',
       'label' => esc_html__('Font Size Scale Size', 'ct-bones'),
       'setting_args' => array('default' => '1125'),
       'section_settings_id' => $section_settings_id,
@@ -156,7 +158,7 @@ class Codetot_Customizer_Settings
       'page' => esc_html__('Page', 'ct-bones')
     ));
     foreach ($layout_options as $layout_id => $layout_label) :
-      $settings_id = 'codetot_' . $layout_id . '_layout';
+      $settings_id = $layout_id . '_layout';
 
       $this->register_control(array(
         'id' => $settings_id,
@@ -172,7 +174,7 @@ class Codetot_Customizer_Settings
 
     // Global Container width
     $this->register_control(array(
-      'id' => 'codetot_theme_container_width',
+      'id' => 'container_width',
       'label' => esc_html__('Container Width', 'ct-bones') . ' (pixel)',
       'setting_args' => array('default' => '1280'),
       'section_settings_id' => $section_settings_id,
@@ -188,7 +190,7 @@ class Codetot_Customizer_Settings
 
     // Archive Layout
     $this->register_control(array(
-      'id' => 'codetot_theme_archive_post_layout',
+      'id' => 'archive_post_layout',
       'label' => esc_html__('Archive Post Layout', 'ct-bones'),
       'setting_args' => array('default' => 'list'),
       'section_settings_id' => $section_settings_id,
@@ -226,7 +228,7 @@ class Codetot_Customizer_Settings
 
     // Header layout
     $this->register_control(array(
-      'id' => 'codetot_theme_header_layout',
+      'id' => 'header_layout',
       'label' => esc_html__('Header Layout', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'setting_args' => array('default' => 'header-1'),
@@ -238,7 +240,7 @@ class Codetot_Customizer_Settings
 
     // Header Background Color
     $this->register_control(array(
-      'id' => 'codetot_theme_header_background_color',
+      'id' => 'header_background_color',
       'label' => esc_html__('Header Background Color', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'setting_args' => array('default' => 'transparent'),
@@ -250,7 +252,7 @@ class Codetot_Customizer_Settings
 
     // Header Text Contract
     $this->register_control(array(
-      'id' => 'codetot_theme_header_text_contract',
+      'id' => 'header_text_contract',
       'label' => esc_html__('Header Text Contract', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'setting_args' => array('default' => 'light'),
@@ -267,7 +269,7 @@ class Codetot_Customizer_Settings
     ));
 
     $this->register_control(array(
-      'id' => 'codetot_theme_header_sticky_type',
+      'id' => 'header_sticky_type',
       'label' => esc_html__('Sticky Header Type', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'setting_args' => array('default' => 'none'),
@@ -292,7 +294,7 @@ class Codetot_Customizer_Settings
 
     // Enable Topbar
     $this->register_control(array(
-      'id' => 'codetot_theme_enable_topbar_widget',
+      'id' => 'enable_topbar_widget',
       'label' => esc_html__('Enable Topbar', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'control_args' => array(
@@ -302,7 +304,7 @@ class Codetot_Customizer_Settings
 
     // Topbar Columns
     $this->register_control(array(
-      'id' => 'codetot_theme_topbar_widget_column',
+      'id' => 'topbar_widget_column',
       'label' => esc_html__('Topbar Column', 'ct-bones'),
       'setting_args' => array('default' => 1),
       'section_settings_id' => $section_settings_id,
@@ -317,7 +319,7 @@ class Codetot_Customizer_Settings
 
     // Topbar Background Color
     $this->register_control(array(
-      'id' => 'codetot_theme_topbar_background_color',
+      'id' => 'topbar_background_color',
       'label' => esc_html__('Topbar Background Color', 'ct-bones'),
       'setting_args' => array('default' => 'transparent'),
       'section_settings_id' => $section_settings_id,
@@ -329,7 +331,7 @@ class Codetot_Customizer_Settings
 
     // Topbar Text Contract
     $this->register_control(array(
-      'id' => 'codetot_theme_topbar_text_contract',
+      'id' => 'topbar_text_contract',
       'label' => esc_html__('Topbar Text Contract', 'ct-bones'),
       'setting_args' => array('default' => 'light'),
       'section_settings_id' => $section_settings_id,
@@ -356,7 +358,7 @@ class Codetot_Customizer_Settings
 
     // Display Copyright text
     $this->register_control(array(
-      'id' => 'codetot_theme_hide_footer_copyright',
+      'id' => 'hide_footer_copyright',
       'label' => esc_html__('Display Footer Copyright Text', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'control_args' => array(
@@ -366,7 +368,7 @@ class Codetot_Customizer_Settings
 
     // Customize Copyright text
     $this->register_control(array(
-      'id' => 'codetot_theme_footer_copyright_text',
+      'id' => 'footer_copyright_text',
       'label' => esc_html__('Footer Copyright Text', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'setting_args' => array(
@@ -384,7 +386,7 @@ class Codetot_Customizer_Settings
 
     // Hide footer widget
     $this->register_control(array(
-      'id' => 'codetot_theme_hide_footer_widgets',
+      'id' => 'hide_footer_widgets',
       'label' => esc_html__('Hide Footer Widgets', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'control_args' => array(
@@ -394,7 +396,7 @@ class Codetot_Customizer_Settings
 
     // Footer columns
     $this->register_control(array(
-      'id' => 'codetot_theme_footer_widget_column',
+      'id' => 'footer_widget_column',
       'label' => esc_html__('Footer Widget Column', 'ct-bones'),
       'setting_args' => array('default' => 3),
       'section_settings_id' => $section_settings_id,
@@ -406,7 +408,7 @@ class Codetot_Customizer_Settings
 
     // Footer Background Color
     $this->register_control(array(
-      'id' => 'codetot_theme_footer_background_color',
+      'id' => 'footer_background_color',
       'label' => esc_html__('Footer Background Color', 'ct-bones'),
       'setting_args' => array('default' => 'transparent'),
       'section_settings_id' => $section_settings_id,
@@ -418,7 +420,7 @@ class Codetot_Customizer_Settings
 
     // Footer Text Contract
     $this->register_control(array(
-      'id' => 'codetot_theme_footer_text_contract',
+      'id' => 'footer_text_contract',
       'label' => esc_html__('Footer Text Contract', 'ct-bones'),
       'setting_args' => array('default' => 'light'),
       'section_settings_id' => $section_settings_id,
@@ -459,7 +461,7 @@ class Codetot_Customizer_Settings
     }
 
     $this->register_control(array(
-      'id' => 'codetot_theme_related_posts_number',
+      'id' => 'related_posts_number',
       'label' => esc_html__('Related Posts Number', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'setting_args' => array('default' => 3),
@@ -489,6 +491,7 @@ class Codetot_Customizer_Settings
       'id' => 'codetot_pro_enable_megamenu',
       'label' => esc_html__('Enable Megamenu', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
+      'is_pro' => true,
       'control_args' => array(
         'type' => 'checkbox'
       )
@@ -498,6 +501,7 @@ class Codetot_Customizer_Settings
       'id' => 'codetot_pro_enable_back_to_top',
       'label' => esc_html__('Enable Back to top Button', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
+      'is_pro' => true,
       'control_args' => array(
         'type' => 'checkbox'
       )
@@ -528,6 +532,7 @@ class Codetot_Customizer_Settings
         'id' => 'codetot_pro_widget_' . esc_html($widget_id),
         'label' => sprintf(__('Enable widget: [CT] %s', 'ct-bones'), $label),
         'section_settings_id' => $section_settings_id,
+        'is_pro' => true,
         'control_args' => array(
           'type' => 'checkbox'
         )
@@ -549,6 +554,7 @@ class Codetot_Customizer_Settings
       'label' => esc_html__('Homepage H1 Heading Text', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'section_settings' => array('default' => 'none'),
+      'is_pro' => true,
       'control_args' => array(
         'type' => 'checkbox',
         'choices' => apply_filters('codetot_theme_seo_h1_homepage_options', array(
@@ -606,7 +612,7 @@ class Codetot_Customizer_Settings
     $wp_customize->add_section($args['id'], array(
       'title' => $args['label'],
       'panel' => !empty($args['panel']) ? $args['panel'] : 'codetot_theme_options',
-      'priority' => $args['priority']
+      'priority' => !empty($args['priority']) ? $args['priority'] : 10
     ));
   }
 
@@ -644,20 +650,23 @@ class Codetot_Customizer_Settings
       return new \WP_Error('400', esc_html__('Missing parameter.', 'ct-bones'));
     }
 
+    $settings_id = (isset($args['is_pro']) && $args['is_pro']) ? sprintf('codetot_pro_settings[%s]', $args['id']) : sprintf('codetot_theme_settings[%s]', $args['id']);
+
     $default_control_args = array(
       'label' => $args['label'],
-      'section' => $args['section_settings_id']
+      'section' => $args['section_settings_id'],
+      'settings' => $settings_id
     );
 
     $control_args = wp_parse_args($args['control_args'], $default_control_args);
 
     if (!empty($args['setting_args'])) :
       $wp_customize->add_setting(
-        $args['id'],
+        $settings_id,
         $args['setting_args']
       );
     else :
-      $wp_customize->add_setting($args['id']);
+      $wp_customize->add_setting($settings_id);
     endif;
 
     $wp_customize->add_control(new WP_Customize_Control($wp_customize, $args['id'], $control_args));
