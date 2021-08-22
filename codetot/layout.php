@@ -31,7 +31,7 @@ class Codetot_Theme_Layout
   private function __construct()
   {
     add_action('codetot_sidebar', 'codetot_get_sidebar', 10);
-    add_action('codetot_after_content_post', array($this, 'codetot_share_button'), 5);
+    add_action('codetot_after_content_post', 'codetot_layout_single_post_social_share_html', 5);
     add_action('codetot_footer_row_middle', 'codetot_render_footer_copyright_block', 10);
 
     $is_not_flexible_page = get_page_template_slug( get_the_ID()) !== 'flexible';
@@ -156,7 +156,7 @@ class Codetot_Theme_Layout
   }
 
   public function codetot_share_button() {
-    $hide_social_share = get_global_option('codetot_settings_hide_social_share') ?? false;
+    $hide_social_share = codetot_get_theme_mod('hide_social_share') ?? false;
     if (!$hide_social_share) :
       global $post;
 
@@ -227,6 +227,20 @@ class Codetot_Theme_Layout
     echo '</div>'; // Close .page-block
     return ob_get_clean();
   }
+}
+
+function codetot_layout_single_post_social_share_html() {
+  $hide_social_share = codetot_get_theme_mod('hide_social_share') ?? false;
+
+  if (!$hide_social_share) :
+    global $post;
+
+    the_block('social-links', array(
+      'class' => 'social-links--share',
+      'label' => __('Share', 'ct-theme'),
+      'items' => codetot_get_share_post_links($post)
+    ));
+  endif;
 }
 
 function codetot_layout_single_post_hero_image_html() {
