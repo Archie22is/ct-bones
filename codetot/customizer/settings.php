@@ -340,6 +340,15 @@ class Codetot_Customizer_Settings
       )
     ), $wp_customize);
 
+    codetot_customizer_register_control(array(
+      'id' => 'add_menu_home_icon',
+      'label' => esc_html__('Display Home icon in Primary menu', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'control_args' => array(
+        'type' => 'checkbox'
+      )
+    ), $wp_customize);
+
     return $wp_customize;
   }
 
@@ -664,7 +673,8 @@ class Codetot_Customizer_Settings
       'secondary'   => esc_html__('Secondary', 'ct-bones'),
       'white'       => esc_html__('White', 'ct-bones'),
       'dark'        => esc_html__('Dark', 'ct-bones'),
-      'gray'        => esc_html__('Gray', 'ct-bones')
+      'gray'        => esc_html__('Gray', 'ct-bones'),
+      'light'       => esc_html__('Light', 'ct-bones')
     );
   }
 
