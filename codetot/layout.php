@@ -134,10 +134,10 @@ class Codetot_Theme_Layout
   }
 
   public function generate_post_layout() {
-    $sidebar_layout = codetot_get_theme_mod('post_layout') ?? 'right-sidebar';
-    $enable_hero_image = get_global_option('codetot_settings_enable_hero_image_single_post') ?? false;
+    $sidebar_layout    = codetot_get_theme_mod('post_layout') ?? 'right-sidebar';
+    $enable_hero_image = codetot_get_theme_mod('extra_single_post_layout') ?? 'none';
 
-    if ($enable_hero_image) {
+    if ($enable_hero_image === 'hero_image') {
       add_action('codetot_after_header', 'codetot_layout_single_post_hero_image_html', 2);
       add_filter('codetot_hide_single_post_header', '__return_true');
     }
