@@ -491,7 +491,7 @@ class Codetot_Customizer_Settings
     ), $wp_customize);
 
     $this->register_control(array(
-      'id' => 'codetot_pro_enable_megamenu',
+      'id' => 'enable_mega_menu',
       'label' => esc_html__('Enable Megamenu', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'is_pro' => true,
@@ -501,7 +501,7 @@ class Codetot_Customizer_Settings
     ), $wp_customize);
 
     $this->register_control(array(
-      'id' => 'codetot_pro_enable_back_to_top',
+      'id' => 'enable_back_to_top',
       'label' => esc_html__('Enable Back to top Button', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'is_pro' => true,
