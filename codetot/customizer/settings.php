@@ -204,6 +204,22 @@ class Codetot_Customizer_Settings
       )
     ), $wp_customize);
 
+    $this->register_control(array(
+      'id' => 'archive_post_column',
+      'label' => esc_html__('Archive Post Column', 'ct-bones'),
+      'setting_args' => array('default' => 3),
+      'section_settings_id' => $section_settings_id,
+      'control_args' => array(
+        'type' => 'select',
+        'description' => sprintf(esc_html__('Only if %1$s has a selection is %2$s.', 'ct-bones'), esc_html__('Archive Post Layout', 'ct-bones'), esc_html__('Post Grid', 'ct-bones')),
+        'choices' => apply_filters('archive_post_column_options', array(
+          2 => esc_html__('2 Columns', 'ct-bones'),
+          3 => esc_html__('3 Columns', 'ct-bones'),
+          4 => esc_html__('4 Columns', 'ct-bones')
+        ))
+      )
+    ), $wp_customize);
+
     return $wp_customize;
   }
 
