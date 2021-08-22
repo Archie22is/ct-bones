@@ -443,11 +443,11 @@ class Codetot_Customizer_Settings
     ), $wp_customize);
 
     $hide_options = array(
-      'codetot_theme_hide_post_meta' => esc_html__('Hide post meta', 'ct-bones'),
-      'codetot_theme_hide_social_share' => esc_html__('Hide social share', 'ct-bones'),
-      'codetot_theme_hide_comments' => esc_html__('Hide comments', 'ct-bones'),
-      'codetot_theme_hide_featured_image' => esc_html__('Hide featured image', 'ct-bones'),
-      'codetot_theme_hide_related_posts' => esc_html__('Hide related posts', 'ct-bones')
+      'hide_post_meta' => esc_html__('Hide post meta', 'ct-bones'),
+      'hide_social_share' => esc_html__('Hide social share', 'ct-bones'),
+      'hide_comments' => esc_html__('Hide comments', 'ct-bones'),
+      'hide_featured_image' => esc_html__('Hide featured image', 'ct-bones'),
+      'hide_related_posts' => esc_html__('Hide related posts', 'ct-bones')
     );
 
     foreach ($hide_options as $settings_id => $label) {
