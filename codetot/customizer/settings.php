@@ -438,7 +438,8 @@ class Codetot_Customizer_Settings
 
     $this->register_section(array(
       'id' => $section_settings_id,
-      'label' => esc_html__('Single Post', 'ct-bones')
+      'label' => esc_html__('Single Post', 'ct-bones'),
+      'priority' => 110
     ), $wp_customize);
 
     $hide_options = array(
