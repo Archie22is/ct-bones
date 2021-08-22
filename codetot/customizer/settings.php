@@ -618,15 +618,17 @@ class Codetot_Customizer_Settings
 
   public function register_color_control($color, $section_settings_id, $wp_customize)
   {
+    $settings_id = sprintf('codetot_theme_settings[%s]', $color['id']);
+
     $wp_customize->add_setting(
-      $color['id'],
+      $settings_id,
       array('default' => $color['std'])
     );
 
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $color['id'], array(
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $settings_id, array(
       'label'    => $color['name'],
       'section'  => $section_settings_id,
-      'settings' => $color['id'],
+      'settings' => $settings_id,
       'sanitize_callback' => 'sanitize_hex_color'
     )));
   }

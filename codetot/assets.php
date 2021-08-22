@@ -52,7 +52,7 @@ class Codetot_Assets
 
   public function register_pwa_meta()
   {
-    $primary_color = get_global_option('codetot_primary_color') ?? '#000';
+    $primary_color = codetot_get_theme_mod('primary_color') ?? '#000';
 
     echo '<meta name="theme-color" content="' . esc_attr($primary_color). '">';
   }
@@ -176,16 +176,16 @@ class Codetot_Assets
     // TODO: Write to new settings.css file to cache.
     $lines = [];
     $keys = apply_filters('codetot_custom_color_options', [
-      'primary' => 'codetot_primary_color',
-      'secondary' => 'codetot_secondary_color',
-      'body-text-color' => 'codetot_base_color',
-      'dark' => 'codetot_dark_color',
-      'gray' => 'codetot_gray_color',
-      'light' => 'codetot_light_color',
+      'primary' => 'primary_color',
+      'secondary' => 'secondary_color',
+      'body-text-color' => 'base_color',
+      'dark' => 'dark_color',
+      'gray' => 'gray_color',
+      'light' => 'light_color',
     ]);
 
     foreach ($keys as $key => $field_name) {
-      $value = get_global_option($field_name);
+      $value = codetot_get_theme_mod($field_name);
       if (!empty($value)) {
         $lines[] = sprintf('--%s: %s;', $key, $value);
       }
