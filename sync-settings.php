@@ -3,6 +3,8 @@
 add_action('init', 'codetot_sync_settings');
 
 function codetot_sync_settings() {
+  // Access url: site.com??upgrade=ct_theme
+  // Khi kiểm tra thấy dữ liệu có thể đồng bộ đúng, click vào nút Update settings ở cuối cùng
   if (!empty($_GET['upgrade']) && $_GET['upgrade'] === 'ct_theme' && WP_DEBUG) :
     $old_settings = get_option('ct_theme');
     $existing_new_theme_settings = get_theme_mod('codetot_theme_settings');
@@ -11,8 +13,9 @@ function codetot_sync_settings() {
     $new_theme_settings = [];
     $pro_settings = [];
 
-    // Font size + font body + font heading
+    // From old theme key to new theme key, save on codetot_theme_options
     $exchange_theme_keys = array(
+      // Excude colors
       // Typography settings
       'codetot_font_size_scale' => 'font_scale',
       'codetot_font_family' => 'body_font',
@@ -25,6 +28,9 @@ function codetot_sync_settings() {
       'codetot_header_background_color' => 'header_background_color',
       'codetot_header_color_contract' => 'header_text_contract',
       'codetot_header_enable_sticky' => 'header_sticky_type',
+      'codetot_header_hide_account_icon' => 'header_hide_account_icon',
+      'codetot_header_hide_search_icon' => 'header_hide_search_icon',
+      'codetot_header_hide_cart_icon' => 'header_hide_cart_icon',
       // Topbar settings
       'codetot_header_topbar_enable' => 'enable_topbar',
       'codetot_topbar_layout' => 'topbar_widget_column',
@@ -37,17 +43,22 @@ function codetot_sync_settings() {
       'codetot_category_layout' => 'category_layout'
     );
 
+    // From old theme key to new pro key, save on codetot_pro_options
     $exchange_pro_keys = array(
       'codetot_enable_mega_menu' => 'enable_mega_menu',
       'codetot_settings_enable_back_to_top' => 'enable_back_to_top'
     );
 
-    // Colors
+    // Because colors are calling as array, we run
     $color_keys = codetot_get_color_options();
     foreach ($color_keys as $color_key) {
       $new_key = str_replace('codetot_', '', $color_key['id']);
+      $value = $old_settings[$color_key['id']];
 
-      $new_theme_settings[$new_key] = $old_settings[$color_key['id']];
+      echo '<p>';
+      echo "SUCCESS: Updating $new_key with value $value";
+      echo '</p>';
+      $new_theme_settings[$new_key] = $value;
     }
 
     foreach ($exchange_theme_keys as $old_key => $new_key) {
@@ -57,20 +68,26 @@ function codetot_sync_settings() {
 
         $new_theme_settings[$new_key] = $new_value;
       else :
-        echo "$old_key has no value." . PHP_EOL;
+        echo '<p>' . 'exchange_theme_keys:: ';
+        echo "$old_key has no value.";
+        echo '</p>';
       endif;
     }
 
     foreach ($exchange_pro_keys as $old_key => $new_key) {
       if (isset($old_settings[$old_key])) :
+        $new_value = $old_settings[$old_key];
+
         if (is_string($old_settings[$old_key])) {
-          $new_value = str_replace('-columns', '', $old_settings[$old_key]);
+          $new_value = str_replace('-columns', '', $new_value);
           $new_value = str_replace('header-', '', $new_value);
         }
 
         $pro_settings[$new_key] = $new_value;
       else :
-        echo "$old_key has no value." . PHP_EOL;
+        echo '<p>';
+        echo "$old_key has no value";
+        echo '</p>';
       endif;
     }
 
@@ -87,6 +104,8 @@ function codetot_sync_settings() {
       }
     }
 
+    echo '<br><hr>';
+
     // Process keys
 
     echo 'Old settings';
@@ -98,9 +117,28 @@ function codetot_sync_settings() {
     echo 'Pro Settings';
     var_dump($existing_pro_settings);
 
+    echo 'New Theme Settings';
     var_dump($new_theme_settings);
 
+    echo 'New Pro Settings';
+    var_dump($pro_settings);
+
+    echo '<p>Ready to update? Please backup database before starting!</p>';
+
+    global $wp;
+    $current_url = home_url( add_query_arg( array(), $wp->request ) );
+
+    printf('<p><a href="%1$s">Update query</a></p>',
+      add_query_arg('action', 'update', $current_url)
+    );
+
+    if (isset($_GET['action']) && $_GET['action'] === 'update') {
+      set_theme_mod('codetot_theme_options', $new_theme_settings);
+      set_theme_mod('codetot_pro_options', $pro_settings);
+    }
+
     exit;
+
 
   endif;
 }

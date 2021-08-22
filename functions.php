@@ -168,6 +168,10 @@ include_once CODETOT_DIR . '/helpers/template-tags.php';
 include_once CODETOT_DIR . '/helpers/deprecated.php';
 include_once CODETOT_DIR . '/customizer/helpers.php';
 
+if (class_exists('WooCommerce')) {
+  require_once CODETOT_DIR . '/customizer/woocommerce-settings.php';
+}
+
 require_once CODETOT_DIR . '/customizer/settings.php';
 require_once CODETOT_DIR . '/theme-init.php';
 require_once CODETOT_DIR . '/assets.php';

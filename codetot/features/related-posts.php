@@ -49,7 +49,7 @@ class Codetot_Related_Posts
   public function register_customizer_settings($wp_customize) {
     $section_settings_id = 'codetot_theme_single_post_settings';
 
-    Codetot_Customizer_Settings::instance()->register_control(array(
+    codetot_customizer_register_control(array(
       'id' => 'related_posts_query_type',
       'label' => esc_html__('Related Posts Query Type', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
@@ -65,7 +65,7 @@ class Codetot_Related_Posts
       )
     ), $wp_customize);
 
-    Codetot_Customizer_Settings::instance()->register_control(array(
+    codetot_customizer_register_control(array(
       'id' => 'related_posts_number',
       'label' => esc_html__('Related Posts Number', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
