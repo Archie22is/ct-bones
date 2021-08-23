@@ -30,7 +30,7 @@ class Codetot_WooCommerce_Product_Video
     $this->tab_id = 'ct_product_video';
     $this->data_key = 'ct_product_video_data';
 
-    $enable = get_global_option('codetot_woocommerce_enable_product_video') ?? false;
+    $enable = codetot_get_theme_mod('enable_product_video', 'woocommerce') ?? false;
 
     if ($enable) {
       add_action('wp', function() {
@@ -180,7 +180,7 @@ function codetot_woocommerce_product_video_section()
 
         codetot_woocommerce_render_video();
 
-        if ($post_thumbnail_id) {
+        if (!empty($post_thumbnail_id)) {
           $html = wc_get_gallery_image_html($post_thumbnail_id, true);
         } else {
           $html  = '<div class="woocommerce-product-gallery__image js-slider-item woocommerce-product-gallery__image--placeholder">';
