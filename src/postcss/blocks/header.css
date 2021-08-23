@@ -305,6 +305,14 @@
   & svg {
     fill: var(--white);
   }
+
+  & .header__menu {
+    & > .menu-item-has-children {
+      & .icon-toggle {
+        background: var(--white);
+      }
+    }
+  }
 }
 
 .header--layout-6.header--dark-contract,
