@@ -26,6 +26,7 @@ function codetot_sync_settings() {
       'codetot_font_family' => 'body_font',
       'codetot_font_heading' => 'heading_font',
       // Footer settings
+      'codetot_footer_background_color' => 'footer_background_color',
       'codetot_footer_columns' => 'footer_widget_column',
       'codetot_settings_remove_theme_copyright' => 'hide_footer_copyright',
       'codetot_settings_footer_hide_social_links' => 'footer_hide_social_links',
@@ -83,7 +84,11 @@ function codetot_sync_settings() {
       'codetot_woocommerce_cross_sell_products_colums' => 'single_product_cross_sell_column',
       'codetot_woocommerce_upsells_products_colums' => 'single_product_upsell_column',
       'codetot_woocommerce_enable_viewed_products_section' => 'enable_viewed_product_section',
-      'codetot_woocommerce_viewed_products_colums' => 'single_product_viewed_products_column'
+      'codetot_woocommerce_viewed_products_colums' => 'single_product_viewed_products_column',
+      'codetot_product_layout' => 'product_layout',
+      'codetot_shop_layout' => 'shop_layout',
+      'codetot_product_category_layout' => 'product_category_layout',
+      'codetot_woocommerce_hide_sticky_bar_editing_products' => 'hide_sticky_bar_editing_products'
     );
 
     // Because colors are calling as array, we run
