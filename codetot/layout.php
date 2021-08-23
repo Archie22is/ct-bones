@@ -275,9 +275,9 @@ function codetot_layout_single_post_hero_image_html() {
 function codetot_layout_post_list_html() {
   global $wp_query;
 
-  $archive_layout = codetot_get_theme_mod('archive_post_layout') ?? 'row';
-  $columns        = codetot_get_theme_mod('archive_post_column') ?? 3;
-  $post_card_style = get_global_option('codetot_post_card_style') ?? 'style-1';
+  $archive_layout  = codetot_get_theme_mod('archive_post_layout') ?? 'row';
+  $columns         = codetot_get_theme_mod('archive_post_column') ?? 3;
+  $post_card_style = codetot_get_theme_mod('post_card_style') ?? 'default';
 
   if ($archive_layout === 'row') {
     the_block('post-list', array(
