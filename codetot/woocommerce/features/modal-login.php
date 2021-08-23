@@ -15,7 +15,7 @@ class Codetot_Woocommerce_Modal_Login {
 
   public function __construct()
   {
-    $enable_popup = get_global_option('codetot_woocommerce_login_popup') ?? false;
+    $enable_popup = codetot_get_theme_mod('enable_login_popup', 'woocommerce') ?? false;
 
     if ($enable_popup) {
       add_action('wp_footer', array($this, 'modal_login_block'));
