@@ -12,10 +12,12 @@ if ( !function_exists('codetot_get_theme_mod') ) :
     // Equal to Cusstomizer settings: codetot_theme_setings, codetot_pro_settings, codetot_woocommerce_settings
     $allow_types = ['theme', 'pro', 'woocommerce'];
     if (!empty($type) && in_array($type, $allow_types)) :
-      $options = sprintf('codetot_%s_settings', sanitize_key($type));
+      $settings = sprintf('codetot_%s_settings', sanitize_key($type));
     else :
-      $options = 'codetot_theme_settings';
+      $settings = 'codetot_theme_settings';
     endif;
+
+    $options = get_theme_mod($settings);
 
     if ( !empty($field_id) && isset($options[sanitize_key($field_id)]) ) {
       return $options[sanitize_key($field_id)];
