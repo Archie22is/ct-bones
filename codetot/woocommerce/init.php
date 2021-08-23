@@ -276,7 +276,7 @@ class Codetot_WooCommerce_Init
 
   public function hide_product_bar_editing_product_screen()
   {
-    $enable = get_global_option('codetot_woocommerce_hide_sticky_bar_editing_products') ?? false;
+    $enable = codetot_get_theme_mod('hide_sticky_bar_editing_products', 'woocommerce') ?? false;
     $script_id = 'codetot-admin-woocommerce-hide-product-bar';
 
     $css_content = '
