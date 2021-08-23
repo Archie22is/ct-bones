@@ -253,7 +253,7 @@ class Codetot_WooCommerce_Init
 
   public function body_class($classes)
   {
-    $product_card_style = get_global_option('codetot_woocommerce_product_card_style') ?? 1;
+    $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'default';
     $product_image_visible = get_global_option('codetot_woocommerce_product_image_visible') ?? 'cover';
 
     $classes[] = 'has-product-card-style-' . esc_attr($product_card_style);
