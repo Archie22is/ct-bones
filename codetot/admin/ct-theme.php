@@ -214,7 +214,7 @@ class Codetot_CT_Theme_Settings
           'name'    => __('Container Width', 'ct-bones'),
           'id'      => $this->prefix . 'container_width',
           'type'    => 'number',
-          'desc'    => __('(pixel) Only work with boxed container layout.', 'ct-bones'),
+          'desc' =>  esc_html__('[DEPRECATED] Please config this settings from Customizer.', 'ct-bones'),
           'min'     => 900,
           'max'     => 1440,
           'std'     => 1280
@@ -228,6 +228,7 @@ class Codetot_CT_Theme_Settings
         [
           'name'    => __('Archive/Category: Posts Per Row', 'ct-bones'),
           'id'      => $this->prefix . 'category_column_number',
+          'desc' =>  esc_html__('[DEPRECATED] Please config this settings from Customizer.', 'ct-bones'),
           'type'    => 'select',
           'std'     => 3,
           'options' => [
@@ -243,6 +244,7 @@ class Codetot_CT_Theme_Settings
           'id'      => $this->prefix . 'post_card_style',
           'type'    => 'select',
           'std'     => 'style-1',
+          'desc' =>  esc_html__('[DEPRECATED] Please config this settings from Customizer.', 'ct-bones'),
           'options' => [
             'style-1' => sprintf(__('Style %s', 'ct-bones'), 1),
             'style-2' => sprintf(__('Style %s', 'ct-bones'), 2),

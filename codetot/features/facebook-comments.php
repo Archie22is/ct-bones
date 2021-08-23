@@ -29,14 +29,13 @@ class Codetot_Facebook_Comments
    */
   public function __construct()
   {
-    $enable_post_comments = get_global_option('codetot_enable_post_facebook_comments') ?? false;
-    $enable_product_comments = (class_exists('WooCommerce') && get_global_option('codetot_woocommerce_enable_facebook_comment')) ?? false;
-
-    if ($enable_post_comments) {
+    $enable_post_comment = codetot_get_theme_mod('single_post_enable_facebook_comment') ?? false;
+    if ($enable_post_comment) {
       add_action('codetot_after_post', array($this, 'load_facebook_comments'), 20);
     }
 
-    if ($enable_product_comments) {
+    $enable_product_comment = (class_exists('WooCommerce') && codetot_get_theme_mod('single_product_enable_facebook_comment')) ?? false;
+    if ($enable_product_comment) {
       // Add new tab
       add_filter( 'woocommerce_product_tabs', array($this, 'product_tabs_facebook_reviews'), 98 );
     }
@@ -50,11 +49,14 @@ class Codetot_Facebook_Comments
       unset($tabs['reviews']);
     }
 
-    $tabs['reviews'] = array(
-      'title' => apply_filters('woocommerce_reviews_title', esc_html__('Reviews', 'woocommerce')),
-      'priority' => 90,
-      'callback' => array($this, 'load_facebook_comments')
-    );
+    if (!empty($tabs)) :
+      $tabs['reviews'] = array(
+        'title' => apply_filters('woocommerce_reviews_title', esc_html__('Reviews', 'woocommerce')),
+        'priority' => 90,
+        'callback' => array($this, 'load_facebook_comments')
+      );
+
+    endif;
 
     return $tabs;
   }

@@ -50,7 +50,7 @@ class Codetot_Woocommerce_Layout_Product
    */
   private function __construct()
   {
-    $this->sidebar_layout = get_global_option('codetot_product_layout') ?? 'no-sidebar';
+    $this->sidebar_layout = codetot_get_theme_mod('product_layout', 'woocommerce') ?? 'no-sidebar';
     $this->enable_sidebar = $this->sidebar_layout !== 'no-sidebar';
     $this->enable_top_sidebar = is_active_sidebar('top-product-sidebar');
     $this->enable_bottom_sidebar = is_active_sidebar('bottom-product-sidebar');
@@ -94,7 +94,6 @@ class Codetot_Woocommerce_Layout_Product
     // Product Title
     add_action('woocommerce_single_product_summary', array($this, 'single_product_title_open'), 1);
     add_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
-    // add_action('woocommerce_single_product_summary', array($this, 'display_product_stars'), 6);
     add_action('woocommerce_single_product_summary', array($this, 'single_product_title_close'), 15);
 
     add_action('woocommerce_after_single_product_summary', array($this, 'single_product_column_close'), 4); // .grid__col
@@ -121,7 +120,7 @@ class Codetot_Woocommerce_Layout_Product
     add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_close'), 110);
 
     add_filter('woocommerce_product_thumbnails_columns', function() {
-      $columns = get_global_option('codetot_woocommerce_product_thumbnails_columns') ?? 4;
+      $columns = codetot_get_theme_mod('single_product_gallery_thumbnail_column', 'woocommerce') ?? 4;
 
       return $columns;
     });
@@ -179,24 +178,6 @@ class Codetot_Woocommerce_Layout_Product
       endif;
       echo '</div>'; // close .page-block__container
       echo '</div>'; // close .page-block--product-category
-    endif;
-  }
-
-  public function display_product_stars() {
-    global $product;
-
-    $average = $product->get_average_rating();
-    $enable_star_rating = get_global_option('codetot_woocommerce_enable_product_star_rating_in_list') ?? false;
-
-    if (!empty($average) || $enable_star_rating) :
-      if ($enable_star_rating && $average == 0) {
-        $average = 5;
-      }
-      ?>
-      <div class="product__rating">
-        <?php echo '<div class="product__rating-stars"><span style="width:'.( ( $average / 5 ) * 100 ) . '%"></span></div>'; ?>
-      </div>
-      <?php
     endif;
   }
 
@@ -378,8 +359,8 @@ class Codetot_Woocommerce_Layout_Product
 function codetot_render_bottom_product_gallery() {
   global $product;
 
-  $thumbnail_type = get_global_option('codetot_woocommerce_product_thumbnails_count') ?? 'default';
-  $enable_view_more_button = $thumbnail_type === 'default';
+  $thumbnail_type = codetot_get_theme_mod('single_product_gallery_thumbnail_style', 'woocommerce') ?? 'all';
+  $enable_view_more_button = $thumbnail_type === 'popup';
   $columns = (int) apply_filters('woocommerce_product_thumbnails_columns', 4);
   $attachment_ids = $product->get_gallery_image_ids();
   $image_size = 'full';
@@ -429,7 +410,7 @@ function codetot_render_related_products() {
   }
 
   global $product;
-  $columns = get_global_option('codetot_woocommerce_cross_sell_products_colums') ?? 4;
+  $columns = codetot_get_theme_mod('single_product_cross_sell_column', 'woocommerce') ?? 4;
   $related_product_ids = wc_get_related_products($product->get_id());
 
   if (empty($related_product_ids)) {
@@ -465,7 +446,7 @@ function codetot_render_cross_sell_products() {
   global $post;
 
   $cross_sell_product_ids = get_post_meta( $post->ID, '_crosssell_ids',true);
-  $columns = get_global_option('codetot_woocommerce_cross_sell_products_colums') ?? 4;
+  $columns = codetot_get_theme_mod('single_product_cross_sell_column ', 'woocommerce') ?? 4;
 
   if (empty($cross_sell_product_ids)) {
     return '';
@@ -498,7 +479,7 @@ function codetot_render_upsell_sections() {
     return;
   }
 
-  $columns = get_global_option('codetot_woocommerce_upsells_products_colums') ?? 4;
+  $columns = codetot_get_theme_mod('single_product_upsell_column', 'woocommerce') ?? 4;
 
   $upsell_products = codetot_get_upsell_products($columns, $columns);
 
@@ -547,7 +528,7 @@ function codetot_woocommerce_single_meta() {
   }
 
   $availability = $product->get_availability();
-  $hide_stock_status = get_global_option('codetot_woocommerce_hide_product_stock_status') ?? false;
+  $hide_stock_status = codetot_get_theme_mod('hide_product_stock_status', 'woocommerce') ?? false;
 
   if (!$hide_stock_status) :
 
