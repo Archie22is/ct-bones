@@ -39,7 +39,7 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
   private function __construct()
   {
     // Settings
-    $this->enable = get_global_option('codetot_woocommerce_enable_quick_view') ?? false;
+    $this->enable = codetot_get_theme_mod('enable_quick_view', 'woocommerce') ?? false;
 
     if ($this->enable) {
       add_action('wp_enqueue_scripts', array($this, 'load_assets'));
