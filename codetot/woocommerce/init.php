@@ -90,7 +90,7 @@ class Codetot_WooCommerce_Init
 
   public function register_woocommerce_sidebars()
   {
-    $shop_sidebar_layout = get_global_option('codetot_shop_layout') ?? 'sidebar-left';
+    $shop_sidebar_layout = codetot_get_theme_mod('shop_layout', 'woocommerce') ?? 'sidebar-left';
     if ($shop_sidebar_layout !== 'no-sidebar') :
       register_sidebar(
         array(
@@ -104,7 +104,7 @@ class Codetot_WooCommerce_Init
       );
     endif;
 
-    $product_sidebar_layout = get_global_option('codetot_product_layout') ?? 'sidebar-left';
+    $product_sidebar_layout = codetot_get_theme_mod('product_layout', 'woocommerce') ?? 'sidebar-left';
     if ($product_sidebar_layout !== 'no-sidebar') :
       register_sidebar(array(
         'name' => __('Product Sidebar', 'ct-bones'),
@@ -134,7 +134,7 @@ class Codetot_WooCommerce_Init
       'after_title' => '</p>'
     ));
 
-    $product_category_sidebar_layout = get_global_option('codetot_product_category_layout') ?? 'sidebar-left';
+    $product_category_sidebar_layout = codetot_get_theme_mod('product_category_layout', 'woocommerce') ?? 'sidebar-left';
     if ($product_category_sidebar_layout !== 'no-sidebar') :
       register_sidebar(array(
         'name' => __('Product Category Sidebar', 'ct-bones'),
@@ -253,7 +253,7 @@ class Codetot_WooCommerce_Init
 
   public function body_class($classes)
   {
-    $product_card_style = get_global_option('codetot_woocommerce_product_card_style') ?? 1;
+    $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'default';
     $product_image_visible = get_global_option('codetot_woocommerce_product_image_visible') ?? 'cover';
 
     $classes[] = 'has-product-card-style-' . esc_attr($product_card_style);
@@ -276,7 +276,7 @@ class Codetot_WooCommerce_Init
 
   public function hide_product_bar_editing_product_screen()
   {
-    $enable = get_global_option('codetot_woocommerce_hide_sticky_bar_editing_products') ?? false;
+    $enable = codetot_get_theme_mod('hide_sticky_bar_editing_products', 'woocommerce') ?? false;
     $script_id = 'codetot-admin-woocommerce-hide-product-bar';
 
     $css_content = '

@@ -28,41 +28,30 @@ class Codetot_WooCommerce_Viewed_Products {
   {
     $this->prefix = 'codetot_';
 
+    add_action('customize_register', array($this, 'register_customizer_settings'));
     add_action('wp', function() {
-      $this->enable = !empty(get_global_option('codetot_woocommerce_enable_viewed_products_section'));
+      $this->enable = codetot_get_theme_mod('enable_viewed_product_section', 'woocommerce') ?? true;
 
       if ($this->enable) {
         add_action('codetot_single_product_sections', 'codetot_render_viewed_products_section', 40);
       }
     });
-
-    add_filter('codetot_settings_woocommerce_fields', array($this, 'register_fields'));
   }
 
-  function register_fields($fields) {
-    $fields = array_merge($fields, array(
-      array(
-        'type' => 'switch',
-        'name' => __('Enable Viewed Products section', 'ct-bones'),
-        'id'   => $this->prefix . 'woocommerce_enable_viewed_products_section',
-        'std'  => 1,
-        'desc' => __('Display viewed products section on single product page.', 'ct-bones')
-      ),
-      array(
-        'type' => 'select',
-        'name' => __('Viewed Products Columns', 'ct-bones'),
-        'id'   => $this->prefix . 'woocommerce_viewed_products_colums',
-        'std'  => 4,
-        'options' => [
-          3 => 3,
-          4 => 4,
-          5 => 5,
-          6 => 6
-        ]
-      ),
-    ));
+  public function register_customizer_settings($wp_customize) {
+    $section_settings_id = 'codetot_woocommerce_addon_settings';
 
-    return $fields;
+    codetot_customizer_register_control(array(
+      'id' => 'enable_viewed_product_section',
+      'label' => esc_html__('Enable Viewed Product Section', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'option_type' => 'codetot_woocommerce_settings',
+      'control_args' => array(
+        'type' => 'checkbox'
+      )
+    ), $wp_customize);
+
+    return $wp_customize;
   }
 }
 

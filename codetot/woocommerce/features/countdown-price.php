@@ -27,8 +27,8 @@ class Codetot_WooCommerce_Countdown_Price
 
   private function __construct()
   {
-    $enable_countdown_price = get_global_option('codetot_woocommerce_enable_countdown_price') ?? true;
-    $this->countdown_style = get_global_option('codetot_woocommerce_countdown_product_style') ?? 'default';
+    $enable_countdown_price = codetot_get_theme_mod('single_product_enable_countdown', 'woocommerce') ?? true;
+    $this->countdown_style  = codetot_get_theme_mod('single_product_countdown_style') ?? 'default';
     $this->start_date_format = 'D M d Y 00:00:00 O';
     $this->end_date_format = 'D M d Y 23:59:59 O';
 

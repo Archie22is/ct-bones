@@ -374,29 +374,29 @@ if (!function_exists('codetot_sidebar_id')) {
 
     if (class_exists('woocommerce') && (is_shop() || is_product_taxonomy())) {
       if (is_product_taxonomy()) {
-        $sidebar_layout = get_global_option('codetot_product_category_layout') ?? 'no-sidebar';
+        $sidebar_layout = codetot_get_theme_mod('product_category_layout', 'woocommerce') ?? 'no-sidebar';
         return $sidebar_layout !== 'no-sidebar' ? 'product-category-sidebar' : 'no-sidebar';
       } elseif (is_shop()) {
-        $sidebar_layout = get_global_option('codetot_shop_layout') ?? 'no-sidebar';
+        $sidebar_layout = codetot_get_theme_mod('shop_layout', 'woocommerce') ?? 'no-sidebar';
         return $sidebar_layout !== 'no-sidebar' ? 'shop-sidebar' : 'no-sidebar';
       }
     } elseif (class_exists('woocommerce') && is_singular('product')) {
-      $sidebar_layout = get_global_option('codetot_product_layout') ?? 'no-sidebar';
+      $sidebar_layout = codetot_get_theme_mod('product_layout', 'woocommerce') ?? 'no-sidebar';
 
       // Product page.
       return $sidebar_layout !== 'no-sidebar' ? 'product-sidebar' : 'no-sidebar';
     } elseif (is_page()) {
-      $sidebar_layout = get_global_option('codetot_page_layout') ?? 'no-sidebar';
+      $sidebar_layout = codetot_get_theme_mod('page_layout') ?? 'no-sidebar';
 
       return $sidebar_layout !== 'no-sidebar' ? 'page-sidebar' : 'no-sidebar';
 
     } elseif (is_category()) {
-      $sidebar_layout = get_global_option('codetot_category_layout') ?? 'sidebar-right';
+      $sidebar_layout = codetot_get_theme_mod('category_layout') ?? 'sidebar-right';
 
       return $sidebar_layout !== 'no-sidebar' ? 'category-sidebar' : 'no-sidebar';
 
     } elseif (is_singular('post') || is_front_page() || is_tag() || is_author() || is_date()) {
-      $sidebar_layout = get_global_option('codetot_post_layout') ?? 'no-sidebar';
+      $sidebar_layout = codetot_get_theme_mod('post_layout') ?? 'no-sidebar';
 
       // Post page.
       return 'post-sidebar';

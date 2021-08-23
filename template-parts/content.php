@@ -8,8 +8,8 @@
  * @package CT_Bones
  */
 
-$hide_featured_image = get_global_option('codetot_settings_hide_featured_image') ?? false;
-$hide_post_meta = get_global_option('codetot_settings_hide_post_meta') ?? false;
+$hide_featured_image = codetot_get_theme_mod('hide_featured_image') ?? false;
+$hide_post_meta      = codetot_get_theme_mod('hide_post_meta') ?? false;
 $_hide_post_meta = 'post' === get_post_type() && !$hide_post_meta;
 $hide_header = apply_filters('codetot_hide_single_post_header', false);
 
