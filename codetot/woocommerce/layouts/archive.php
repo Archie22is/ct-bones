@@ -128,9 +128,9 @@ class Codetot_Woocommerce_Layout_Archive
     $sidebar_layout = 'no-sidebar';
 
     if ( is_shop() ) :
-      $sidebar_layout = get_global_option('codetot_shop_layout') ?? 'sidebar-left';
+      $sidebar_layout = codetot_get_theme_mod('shop_layout', 'woocommerce') ?? 'sidebar-left';
     elseif( is_product_category() || is_product_tag()) :
-      $sidebar_layout = get_global_option('codetot_product_category_layout') ?? 'sidebar-left';
+      $sidebar_layout = codetot_get_theme_mod('product_category_layout', 'woocommerce') ?? 'sidebar-left';
     endif;
 
     $content = get_field($field_name, 'product_cat_' . esc_attr($obj->term_id));
@@ -201,10 +201,10 @@ class Codetot_Woocommerce_Layout_Archive
 
     if ( is_shop() ) :
       $class .= ' page-block--shop';
-      $sidebar_layout = get_global_option('codetot_shop_layout') ?? 'sidebar-left';
+      $sidebar_layout = codetot_get_theme_mod('shop_layout', 'woocommerce') ?? 'sidebar-left';
     elseif( is_product_category() || is_product_tag()) :
       $class .= ' page-block--product-category';
-      $sidebar_layout = get_global_option('codetot_product_category_layout') ?? 'sidebar-left';
+      $sidebar_layout = codetot_get_theme_mod('product_category_layout', 'woocommerce') ?? 'sidebar-left';
     endif;
 
     $class .= !empty($sidebar_layout) ? ' ' . esc_attr($sidebar_layout) : '';
@@ -296,7 +296,7 @@ class Codetot_Woocommerce_Layout_Archive
     global $product;
 
     $average = $product->get_average_rating();
-    $enable_star_rating = get_global_option('codetot_woocommerce_enable_product_star_rating_in_list') ?? false;
+    $enable_star_rating = codetot_get_theme_mod('archive_product_star_rating', 'woocommerce') ?? false;
 
     if (!empty($average) || $enable_star_rating) :
       if ($enable_star_rating && $average == 0) {
@@ -323,9 +323,9 @@ class Codetot_Woocommerce_Layout_Archive
   }
 
   public function loop_product_add_to_cart_button_text($button) {
-    $product_card_style = get_global_option('codetot_woocommerce_product_card_style');
+    $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'default';
 
-    if (!in_array($product_card_style, array('2', '3'))) {
+    if (!in_array($product_card_style, array('2', '3', 'default', 0))) {
       return $button;
     }
 
@@ -451,7 +451,7 @@ class Codetot_Woocommerce_Layout_Archive
 
   public function update_product_card_style()
   {
-    $product_card_style = get_global_option('codetot_woocommerce_product_card_style') ?? '';
+    $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'default';
 
     switch ($product_card_style):
 
