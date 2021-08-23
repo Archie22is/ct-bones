@@ -9,7 +9,13 @@
  */
 if ( !function_exists('codetot_get_theme_mod') ) :
   function codetot_get_theme_mod($field_id, $type = 'default') {
-    $options = isset($type) && $type === 'pro' ? get_theme_mod('codetot_pro_settings') : get_theme_mod('codetot_theme_settings');
+    // Equal to Cusstomizer settings: codetot_theme_setings, codetot_pro_settings, codetot_woocommerce_settings
+    $allow_types = ['theme', 'pro', 'woocommerce'];
+    if (!empty($type) && in_array($type, $allow_types)) :
+      $options = sprintf('codetot_%s_settings', sanitize_key($type));
+    else :
+      $options = 'codetot_theme_settings';
+    endif;
 
     if ( !empty($field_id) && isset($options[sanitize_key($field_id)]) ) {
       return $options[sanitize_key($field_id)];
