@@ -289,6 +289,7 @@ class Codetot_Customizer_Woocommerce_Settings {
       'id' => 'single_product_countdown_style',
       'label' => esc_html__('Countdown Style', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
+      'setting_args' => array('default' => 'default'),
       'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'select',
