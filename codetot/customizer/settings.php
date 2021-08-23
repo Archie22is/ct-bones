@@ -464,6 +464,16 @@ class Codetot_Customizer_Settings
       )
     ), $wp_customize);
 
+    // Hide footer bottom social links
+    codetot_customizer_register_control(array(
+      'id' => 'footer_hide_social_links',
+      'label' => esc_html__('Hide Footer Social Links', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'control_args' => array(
+        'type' => 'checkbox'
+      )
+    ), $wp_customize);
+
     // Footer columns
     codetot_customizer_register_control(array(
       'id' => 'footer_widget_column',
@@ -497,15 +507,6 @@ class Codetot_Customizer_Settings
       'control_args' => array(
         'type' => 'select',
         'choices' => $this->get_background_text_contract_options()
-      )
-    ), $wp_customize);
-
-    codetot_customizer_register_control(array(
-      'id' => 'footer_hide_social_links',
-      'label' => esc_html__('Hide Footer Social Links', 'ct-bones'),
-      'section_settings_id' => $section_settings_id,
-      'control_args' => array(
-        'type' => 'checkbox'
       )
     ), $wp_customize);
 

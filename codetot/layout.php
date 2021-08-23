@@ -299,14 +299,14 @@ function codetot_layout_post_list_pagination() {
 }
 
 function codetot_render_footer_copyright_block() {
-  $remove_footer_copyright = get_global_option('codetot_settings_remove_theme_copyright') ?? false;
+  $hide_footer_copyright = codetot_get_theme_mod('hide_footer_copyright') ?? false;
+  $hide_social_links = codetot_get_theme_mod('footer_hide_social_links') ?? false;
   $footer_copyright = codetot_get_footer_copyright();
-  $hide_social_links = get_global_option('codetot_settings_footer_hide_social_links') ?? false;
-  $social_links_html = get_block('social-links', array(
+  $social_links_html = apply_filters('codetot_footer_social_links_html', get_block('social-links', array(
     'class' => 'social-links--dark-contract social-links--footer-bottom'
-  ));
+  )));
 
-  if (!$remove_footer_copyright && !empty($footer_copyright) ): ?>
+  if (!$hide_footer_copyright && !empty($footer_copyright) ): ?>
     <div class="footer__bottom">
       <div class="container footer__container">
         <div class="grid footer__bottom-grid">
