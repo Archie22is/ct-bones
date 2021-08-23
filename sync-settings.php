@@ -200,7 +200,7 @@ function codetot_sync_settings() {
 
     // Process keys
 
-    echo '<h2>Old settings - If you update, those settings will be lost.</h2>';
+    echo '<h2>Old settings - If you update, those settings will be deprecated (no longer available when removing CT-Theme).</h2>';
     echo '(It could be a feature which we define in another way or deprecated feature.)';
     var_dump($old_settings);
     echo '<p>Deprecated features below:</p>';
