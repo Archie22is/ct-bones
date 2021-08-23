@@ -196,7 +196,7 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
 
 function codetot_quick_view_button() {
   global $product;
-  $product_card_style = get_global_option('codetot_woocommerce_product_card_style') ?? 1;
+  $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'default';
   ?>
   <div class="product__quick-view">
       <span title="<?php esc_attr_e('Quick view', 'ct-bones'); ?>"
