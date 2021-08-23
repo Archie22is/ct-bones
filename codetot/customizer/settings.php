@@ -566,6 +566,7 @@ class Codetot_Customizer_Settings
       'id' => 'enable_back_to_top',
       'label' => esc_html__('Enable Back to top Button', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
+      'section_settings' => array('default' => 1),
       'option_type' => 'codetot_pro_settings',
       'control_args' => array(
         'type' => 'checkbox'
