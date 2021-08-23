@@ -165,7 +165,6 @@ include_once CODETOT_DIR . '/helpers/acf.php';
 include_once CODETOT_DIR . '/helpers/metabox.php';
 include_once CODETOT_DIR . '/helpers/generator.php';
 include_once CODETOT_DIR . '/helpers/template-tags.php';
-include_once CODETOT_DIR . '/helpers/deprecated.php';
 include_once CODETOT_DIR . '/customizer/helpers.php';
 
 if (class_exists('WooCommerce')) {

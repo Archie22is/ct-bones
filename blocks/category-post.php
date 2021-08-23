@@ -1,13 +1,14 @@
 <?php
-$layout = get_global_option('codetot_category_layout') ?? 'sidebar-left';
-$post_grid_columns = codetot_get_category_column_number();
-$post_card_style = codetot_get_category_post_card_style();
-$container = 'container';
-$class = 'category-post page-block page-block--category';
-$class .= !empty($layout) ? ' ' . esc_attr($layout) : '';
+$layout          = codetot_get_theme_mod('category_layout') ?? 'sidebar-left';
+$post_column     = codetot_get_theme_mod('archive_post_column') ?? 3;
+$post_card_style = codetot_get_theme_mod('post_card_style') ?? 'default';
+
+$_class = 'category-post page-block page-block--category';
+$_class .= !empty($layout) ? ' ' . esc_attr($layout) : '';
+$_class .= !empty($class) ? ' ' . esc_html($class) : '';
 ?>
-<div class="<?php echo $class; ?>">
-  <div class="<?php echo $container; ?> page-block__container">
+<div class="<?php echo $_class; ?>">
+  <div class="container page-block__container">
     <div class="grid page-block__grid">
       <?php if (!empty($layout) && $layout !== 'no-sidebar' && is_active_sidebar('category-sidebar')) : ?>
         <div class="page-block__col page-block__col--sidebar">
@@ -29,8 +30,8 @@ $class .= !empty($layout) ? ' ' . esc_attr($layout) : '';
           if (!empty($query) && $query->have_posts()) :
             the_block('post-grid', array(
               'query' => $query,
-              'columns' => !empty($post_grid_columns) ? $post_grid_columns : '3',
-              'card_style' => !empty($post_card_style) ? $post_card_style : 'style-1'
+              'columns' => $post_column,
+              'card_style' => $post_card_style
             ));
 
             the_block('pagination');
