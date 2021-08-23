@@ -539,6 +539,16 @@ class Codetot_Customizer_Settings
       ), $wp_customize);
     }
 
+    // Enable Facebook comment
+    codetot_customizer_register_control(array(
+      'id' => 'single_post_enable_facebook_comment',
+      'label' => esc_html__('Enable Facebook comment', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'control_args' => array(
+        'type' => 'checkbox'
+      )
+    ), $wp_customize);
+
     return $wp_customize;
   }
 

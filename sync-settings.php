@@ -68,7 +68,8 @@ function codetot_sync_settings() {
       'codetot_settings_hide_post_meta' => 'hide_post_meta',
       'codetot_settings_hide_social_share' => 'hide_social_share',
       'codetot_settings_hide_featured_image' => 'hide_featured_image',
-      'codetot_settings_hide_related_posts' => 'hide_related_posts'
+      'codetot_settings_hide_related_posts' => 'hide_related_posts',
+      'codetot_enable_post_facebook_comments' => 'single_post_enable_facebook_comment'
     );
 
     // From old theme key to new pro key, save on codetot_pro_options
@@ -101,7 +102,8 @@ function codetot_sync_settings() {
       'codetot_product_layout' => 'product_layout',
       'codetot_shop_layout' => 'shop_layout',
       'codetot_product_category_layout' => 'product_category_layout',
-      'codetot_woocommerce_hide_sticky_bar_editing_products' => 'hide_sticky_bar_editing_products'
+      'codetot_woocommerce_hide_sticky_bar_editing_products' => 'hide_sticky_bar_editing_products',
+      'codetot_woocommerce_enable_facebook_comment' => 'single_product_enable_facebook_comment'
     );
 
     echo '<h3>DRY RUN</h3>';
