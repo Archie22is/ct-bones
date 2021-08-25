@@ -97,11 +97,11 @@ endif;
 if ( !function_exists('codetot_customizer_get_column_options') ) :
   function codetot_customizer_get_column_options() {
     return array(
-      2 => esc_html__('2 Columns', 'ct-bones'),
-      3 => esc_html__('3 Columns', 'ct-bones'),
-      4 => esc_html__('4 Columns', 'ct-bones'),
-      5 => esc_html__('5 Columns', 'ct-bones'),
-      6 => esc_html__('6 Columns', 'ct-bones')
+      '2-col' => esc_html__('2 Columns', 'ct-bones'),
+      '3-col' => esc_html__('3 Columns', 'ct-bones'),
+      '4-col' => esc_html__('4 Columns', 'ct-bones'),
+      '5-col' => esc_html__('5 Columns', 'ct-bones'),
+      '6-col' => esc_html__('6 Columns', 'ct-bones')
     );
   }
 endif;

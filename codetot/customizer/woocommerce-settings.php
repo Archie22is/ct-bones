@@ -217,39 +217,113 @@ class Codetot_Customizer_Woocommerce_Settings {
     ), $wp_customize);
 
     codetot_customizer_register_control(array(
-      'id' => 'single_product_cross_sell_column',
-      'label' => esc_html__('Cross Sell Column', 'ct-bones'),
+      'id' => 'single_product_sections_enable_container',
+      'label' => esc_html__('Sections: Enable Container', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
-      'setting_args' => array('default' => 3),
+      'setting_args' => array('default' => 1),
+      'option_type' => $this->settings_id,
+      'control_args' => array(
+        'type' => 'checkbox'
+      )
+    ), $wp_customize);
+
+    codetot_customizer_register_control(array(
+      'id' => 'single_product_cross_sell_column',
+      'label' => esc_html__('Cross Sell Products: Column', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'setting_args' => array('default' => '4-col'),
       'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'select',
-        'choices' => codetot_customizer_get_column_options()
+        'choices' => wp_parse_args(array(
+          'hide' => esc_html__('Hide this block', 'ct-bones')
+        ), codetot_customizer_get_column_options())
       )
     ), $wp_customize);
 
     codetot_customizer_register_control(array(
       'id' => 'single_product_upsell_column',
-      'label' => esc_html__('Upsell Column', 'ct-bones'),
+      'label' => esc_html__('Upsell Products: Column', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
-      'setting_args' => array('default' => 3),
+      'setting_args' => array('default' => '4-col'),
       'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'select',
-        'choices' => codetot_customizer_get_column_options()
+        'choices' => wp_parse_args(array(
+          'hide' => esc_html__('Hide this block', 'ct-bones')
+        ), codetot_customizer_get_column_options())
       )
     ), $wp_customize);
 
     codetot_customizer_register_control(array(
       'id' => 'single_product_viewed_products_column',
-      'label' => esc_html__('Viewed Products Column', 'ct-bones'),
+      'label' => esc_html__('Viewed Products: Column', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
-      'setting_args' => array('default' => 3),
+      'setting_args' => array('default' => '4-col'),
       'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'select',
-        'description' => esc_html__('You must enable Quick View feature to apply those settings.', 'ct-bones'),
-        'choices' => codetot_customizer_get_column_options()
+        'choices' => wp_parse_args(array(
+          'hide' => esc_html__('Hide this block', 'ct-bones')
+        ), codetot_customizer_get_column_options())
+      )
+    ), $wp_customize);
+
+    codetot_customizer_register_control(array(
+      'id' => 'single_product_related_products_column',
+      'label' => esc_html__('Related Products: Column', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'setting_args' => array('default' => '4-col'),
+      'option_type' => $this->settings_id,
+      'control_args' => array(
+        'type' => 'select',
+        'choices' => wp_parse_args(array(
+          'hide' => esc_html__('Hide this block', 'ct-bones')
+        ), codetot_customizer_get_column_options())
+      )
+    ), $wp_customize);
+
+    codetot_customizer_register_control(array(
+      'id' => 'single_product_cross_sell_enable_slider',
+      'label' => esc_html__('Cross Sell Products: Enable Slider', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'setting_args' => array('default' => 0),
+      'option_type' => $this->settings_id,
+      'control_args' => array(
+        'type' => 'checkbox'
+      )
+    ), $wp_customize);
+
+    codetot_customizer_register_control(array(
+      'id' => 'single_product_upsell_enable_slider',
+      'label' => esc_html__('Upsell Products: Enable Slider', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'setting_args' => array('default' => 0),
+      'option_type' => $this->settings_id,
+      'control_args' => array(
+        'type' => 'checkbox'
+      )
+    ), $wp_customize);
+
+    codetot_customizer_register_control(array(
+      'id' => 'single_product_viewed_products_enable_slider',
+      'label' => esc_html__('Viewed Products: Enable Slider', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'setting_args' => array('default' => 0),
+      'option_type' => $this->settings_id,
+      'control_args' => array(
+        'type' => 'checkbox'
+      )
+    ), $wp_customize);
+
+    codetot_customizer_register_control(array(
+      'id' => 'single_product_related_products_enable_slider',
+      'label' => esc_html__('Related Products: Enable Slider', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'setting_args' => array('default' => 0),
+      'option_type' => $this->settings_id,
+      'control_args' => array(
+        'type' => 'checkbox'
       )
     ), $wp_customize);
 
