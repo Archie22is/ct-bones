@@ -1,9 +1,9 @@
 <?php
+$enable_topbar = codetot_get_theme_mod('enable_topbar_widget') ?? false;
+$columns = codetot_get_theme_mod('topbar_widget_column') ?? 1;
+
 $class = 'header-topbar';
 $class .= $columns <= 1 ? ' has-1-column' : ' has-' .$columns . '-columns';
-
-$enable_topbar = codetot_get_theme_mod('enable_topbar_widget') ?? false;
-$columns = (int) codetot_get_theme_mod('topbar_widget_column') ?? 1;
 
 if ($enable_topbar) : ?>
   <div class="<?php echo $class; ?>">
