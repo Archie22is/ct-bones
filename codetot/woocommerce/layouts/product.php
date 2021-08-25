@@ -467,6 +467,7 @@ function codetot_render_cross_sell_products() {
   if ($post_query->have_posts() && $display_section) :
     the_block('product-grid', array(
       'class' => $_class,
+      'enable_slider' => true,
       'title' => apply_filters( 'woocommerce_product_cross_sells_products_heading', __( 'You may be interested in&hellip;', 'woocommerce' )),
       'query' => $post_query,
       'columns' => $columns
@@ -491,6 +492,7 @@ function codetot_render_upsell_sections() {
 
   the_block('product-grid', array(
     'class' => $_class,
+    'enable_slider' => true,
     'title' => apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'woocommerce' ) ),
     'list' => $upsell_products,
     'columns' => $columns
