@@ -4,7 +4,7 @@ $topbar_widget_column = codetot_get_theme_mod('topbar_widget_column') ?? '1-col'
 $topbar_widget_column = str_replace('-col', '', $topbar_widget_column);
 
 $class = 'header-topbar';
-$class .= $columns <= 1 ? ' has-1-column' : ' has-' .$columns . '-columns';
+$class .= ' has-' . $topbar_widget_column . '-columns';
 
 if ($enable_topbar) : ?>
   <div class="<?php echo $class; ?>">
