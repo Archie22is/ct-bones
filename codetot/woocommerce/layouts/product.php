@@ -421,7 +421,7 @@ function codetot_render_related_products($class = '') {
   $columns = codetot_get_theme_mod('single_product_related_products_column', 'woocommerce') ?? '4-col';
   $columns = str_replace('-col', '', $columns);
   $enable_slider = codetot_get_theme_mod('single_product_related_products_enable_slider', 'woocommerce') ?? true;
-  $enable_container = codetot_get_theme_mod('single_product_sections_enable_container', 'woocommerce') ?? true;
+  $enable_container = codetot_get_theme_mod('single_product_sections_enable_container', 'woocommerce') ?? false;
   $related_product_ids = wc_get_related_products($product->get_id());
 
   if (empty($related_product_ids)) {
@@ -436,7 +436,7 @@ function codetot_render_related_products($class = '') {
   );
 
   $_class = 'section product-grid--related-products';
-  $_class .= !$enable_container ? ' default-section--no-container' : '';
+  $_class .= $enable_container ? ' default-section--no-container' : '';
   $_class .= !empty($class) ? ' ' . esc_html($class) : '';
 
   $post_query = new WP_Query($post_args);
@@ -465,7 +465,7 @@ function codetot_render_cross_sell_products($class = '') {
   $columns = codetot_get_theme_mod('single_product_cross_sell_column ', 'woocommerce') ?? '4-col';
   $columns = str_replace('-col', '', $columns);
   $enable_slider = codetot_get_theme_mod('single_product_cross_sell_enable_slider', 'woocommerce') ?? true;
-  $enable_container = codetot_get_theme_mod('single_product_sections_enable_container', 'woocommerce') ?? true;
+  $enable_container = codetot_get_theme_mod('single_product_sections_enable_container', 'woocommerce') ?? false;
 
   if (empty($cross_sell_product_ids)) {
     return '';
@@ -479,7 +479,7 @@ function codetot_render_cross_sell_products($class = '') {
   );
 
   $_class = 'section product-grid--cross-sell-products';
-  $_class .= !$enable_container ? ' default-section--no-container' : '';
+  $_class .= $enable_container ? ' default-section--no-container' : '';
   $_class .= !empty($class) ? ' ' . esc_html($class) : '';
 
   $post_query = new WP_Query($post_args);
@@ -503,7 +503,7 @@ function codetot_render_upsell_sections($class = '') {
   $columns = codetot_get_theme_mod('single_product_upsell_column', 'woocommerce') ?? '4-col';
   $columns = str_replace('-col', '', $columns);
   $enable_slider = codetot_get_theme_mod('single_product_upsell_enable_slider', 'woocommerce') ?? true;
-  $enable_container = codetot_get_theme_mod('single_product_sections_enable_container', 'woocommerce') ?? true;
+  $enable_container = codetot_get_theme_mod('single_product_sections_enable_container', 'woocommerce') ?? false;
 
   $upsell_products = codetot_get_upsell_products($columns, $columns);
 
@@ -512,7 +512,7 @@ function codetot_render_upsell_sections($class = '') {
   }
 
   $_class = 'section product-grid--upsells';
-  $_class .= !$enable_container ? ' default-section--no-container' : '';
+  $_class .= $enable_container ? ' default-section--no-container' : '';
   $_class .= !empty($class) ? ' ' . esc_html($class) : '';
 
   if ($columns !== 'hide') :
