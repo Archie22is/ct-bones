@@ -223,6 +223,10 @@ function codetot_get_google_maps_api_key() {
   return get_codetot_data('codetot_google_maps_api_key');
 }
 
+function codetot_get_facebook_app_id() {
+  return get_codetot_data('codetot_facebook_app_id');
+}
+
 function codetot_get_social_links() {
   $items = [];
   $setting_prefix = 'codetot_company_';
