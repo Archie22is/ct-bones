@@ -1,6 +1,7 @@
 <?php
 // Default values.
-$footer_widget_columns = codetot_get_theme_mod('footer_widget_column') ?? 3;
+$footer_widget_column = codetot_get_theme_mod('footer_widget_column') ?? '3-col';
+$footer_widget_column = str_replace('-col', '', $footer_widget_column);
 $footer_text_contract = codetot_get_theme_mod('footer_text_contract') ?? 'light';
 $footer_background = codetot_get_theme_mod('footer_background_color') ?? 'transparent';
 $disable_top_footer_spacing = is_page() && function_exists('rwmb_meta') && rwmb_meta('codetot_disable_footer_top_spacing') ?? false;
@@ -8,10 +9,10 @@ $disable_top_footer_spacing = is_page() && function_exists('rwmb_meta') && rwmb_
 $footer_class = 'footer';
 $footer_class .= !$disable_top_footer_spacing ? ' mt-2' : '';
 $footer_class .= !empty($footer_background) ? ' bg-' . esc_attr($footer_background) : ' bg-transparent';
-$footer_class .= !empty($footer_widget_columns) ? ' footer--' . esc_html($footer_widget_columns) . '-columns' : ' footer--3-columns';
+$footer_class .= !empty($footer_widget_column) ? ' footer--' . esc_html($footer_widget_column) . '-columns' : ' footer--3-columns';
 
 $widgets = array();
-for ($widget_index = 1; $widget_index <= $footer_widget_columns; $widget_index++) :
+for ($widget_index = 1; $widget_index <= $footer_widget_column; $widget_index++) :
   ob_start();
   dynamic_sidebar('footer-column-' . $widget_index);
   $widget_html = ob_get_clean();

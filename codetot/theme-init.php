@@ -137,7 +137,8 @@ class Codetot_Theme_Init
       );
     endif;
 
-    $footer_widget_column = codetot_get_theme_mod('footer_widget_column') ?? 3;
+    $footer_widget_column = codetot_get_theme_mod('footer_widget_column') ?? '3-col';
+    $footer_widget_column = str_replace('-col', '', $footer_widget_column);
 
     if ($footer_widget_column > 0) :
       for ($i = 1; $i <= $footer_widget_column; $i++) {
