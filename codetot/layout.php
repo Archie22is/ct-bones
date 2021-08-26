@@ -280,7 +280,7 @@ function codetot_layout_post_list_html() {
   $post_card_style = codetot_get_theme_mod('post_card_style') ?? 'style-default';
   $post_card_style = str_replace('style-', '', $post_card_style);
 
-  if ($archive_layout === 'row') {
+  if ($archive_layout === 'list') {
     the_block('post-list', array(
       'class' => 'section default-section--no-container',
       'query' => $wp_query
