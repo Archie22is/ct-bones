@@ -11,7 +11,6 @@
 get_header();
 
 global $wp_query;
-$post_card_style = codetot_get_theme_mod('post_card_style') ?? 'style-default';
 $post_column  = codetot_get_theme_mod('archive_post_column') ?? 3;
 ?>
 
@@ -33,9 +32,7 @@ $post_column  = codetot_get_theme_mod('archive_post_column') ?? 3;
 
       $columns = [];
       while( $wp_query->have_posts() ) : $wp_query->the_post();
-        $columns[] = get_block('post-card',array(
-          'card_style' => !empty($card_style) ? $card_style : 'default'
-        ));
+        $columns[] = get_block('post-card');
       endwhile; wp_reset_postdata();
 
       $content = codetot_build_grid_columns($columns, 'post-grid', array(

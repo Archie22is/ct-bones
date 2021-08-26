@@ -183,14 +183,12 @@ class Codetot_Related_Posts
 
     $post_query = new WP_Query($post_args);
     $class = 'post-grid--related-posts default-section--no-container';
-    $post_card_style = codetot_get_theme_mod('post_card_style') ?? 'style-default';
 
     if ($post_query->have_posts()) {
       the_block('post-grid', array(
         'class' => $class,
         'title' => esc_html__('Related posts', 'ct-bones'),
-        'query' => $post_query,
-        'card_style' => $post_card_style
+        'query' => $post_query
       ));
     }
   }

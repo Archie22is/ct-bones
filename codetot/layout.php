@@ -277,7 +277,6 @@ function codetot_layout_post_list_html() {
 
   $archive_layout  = codetot_get_theme_mod('archive_post_layout') ?? 'row';
   $columns         = codetot_get_theme_mod('archive_post_column') ?? 3;
-  $post_card_style = codetot_get_theme_mod('post_card_style') ?? 'style-default';
 
   if ($archive_layout === 'list') {
     the_block('post-list', array(
@@ -288,8 +287,7 @@ function codetot_layout_post_list_html() {
     the_block('post-grid', array(
       'class' => 'section default-section--no-container',
       'columns' => $columns,
-      'query' => $wp_query,
-      'card_style' => $post_card_style
+      'query' => $wp_query
     ));
   }
 }

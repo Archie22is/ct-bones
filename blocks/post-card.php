@@ -4,6 +4,7 @@ $category = !empty($categories) ? $categories[0] : '';
 
 $_format_date = !empty($format_date) ? $format_date : get_option('format_date');
 $post_date = get_the_date($_format_date);
+$card_style = codetot_get_theme_mod('post_card_style') ?? 'style-default';
 
 // Fallback default to style-1
 if (!empty($card_style) && $card_style === 'style-default') {

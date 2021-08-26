@@ -1,7 +1,6 @@
 <?php
 $layout          = codetot_get_theme_mod('category_layout') ?? 'sidebar-left';
 $post_column     = codetot_get_theme_mod('archive_post_column') ?? 3;
-$post_card_style = codetot_get_theme_mod('post_card_style') ?? 'style-default';
 
 $_class = 'category-post page-block page-block--category';
 $_class .= !empty($layout) ? ' ' . esc_attr($layout) : '';
@@ -30,8 +29,7 @@ $_class .= !empty($class) ? ' ' . esc_html($class) : '';
           if (!empty($query) && $query->have_posts()) :
             the_block('post-grid', array(
               'query' => $query,
-              'columns' => $post_column,
-              'card_style' => $post_card_style
+              'columns' => $post_column
             ));
 
             the_block('pagination');

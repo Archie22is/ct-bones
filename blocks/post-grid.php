@@ -9,9 +9,7 @@ $header = !empty($title) ? codetot_build_content_block(array(
 
 $columns = [];
 while( $query->have_posts() ) : $query->the_post();
-  $columns[] = get_block('post-card',array(
-    'card_style' => !empty($card_style) ? $card_style : 'style-1'
-  ));
+  $columns[] = get_block('post-card');
 endwhile; wp_reset_postdata();
 
 $content = codetot_build_grid_columns($columns, 'post-grid', array(
