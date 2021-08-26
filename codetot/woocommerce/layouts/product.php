@@ -435,8 +435,8 @@ function codetot_render_related_products($class = '') {
     'post__in' => $related_product_ids
   );
 
-  $_class = 'section default-section--no-container product-grid--related-products';
-  $_class .= $enable_container ? ' default-section--no-container' : '';
+  $_class = 'section product-grid--related-products';
+  $_class .= !$enable_container ? ' default-section--no-container' : '';
   $_class .= !empty($class) ? ' ' . esc_html($class) : '';
 
   $post_query = new WP_Query($post_args);
@@ -479,7 +479,7 @@ function codetot_render_cross_sell_products($class = '') {
   );
 
   $_class = 'section product-grid--cross-sell-products';
-  $_class .= $enable_container ? ' default-section--no-container' : '';
+  $_class .= !$enable_container ? ' default-section--no-container' : '';
   $_class .= !empty($class) ? ' ' . esc_html($class) : '';
 
   $post_query = new WP_Query($post_args);
@@ -512,7 +512,7 @@ function codetot_render_upsell_sections($class = '') {
   }
 
   $_class = 'section product-grid--upsells';
-  $_class .= $enable_container ? ' default-section--no-container' : '';
+  $_class .= !$enable_container ? ' default-section--no-container' : '';
   $_class .= !empty($class) ? ' ' . esc_html($class) : '';
 
   if ($columns !== 'hide') :
