@@ -323,7 +323,8 @@ class Codetot_Woocommerce_Layout_Archive
   }
 
   public function loop_product_add_to_cart_button_text($button) {
-    $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'default';
+    $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'style-default';
+    $product_card_style = str_replace('style-', '', $product_card_style);
 
     if (!in_array($product_card_style, array('2', '3', 'default', 0))) {
       return $button;
@@ -451,7 +452,8 @@ class Codetot_Woocommerce_Layout_Archive
 
   public function update_product_card_style()
   {
-    $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'default';
+    $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'style-default';
+    $product_card_style = str_replace('style-', '', $product_card_style);
 
     switch ($product_card_style):
 

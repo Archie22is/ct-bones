@@ -15,7 +15,7 @@ $_display_description = !empty($card_style) && (in_array($card_style, array('sty
 
 $word_count = !empty($post_description_length) ? (int) $post_description_length :  (int) apply_filters('codetot_post_card_excerpt_number', 20);
 
-the_block('post-card-' . esc_attr($card_style), array(
+the_block('post-card-style-' . esc_attr($card_style), array(
   'class' => !empty($class) ? $class : '',
   'post_date' => $post_date,
   'category_name' => !empty($category) ? $category->name : '',

@@ -11,7 +11,8 @@
 get_header();
 
 global $wp_query;
-$post_card_style = codetot_get_theme_mod('post_card_style') ?? 'default';
+$post_card_style = codetot_get_theme_mod('post_card_style') ?? 'style-default';
+$post_card_style = str_replace('style-', '', $post_card_style);
 $post_column  = codetot_get_theme_mod('archive_post_column') ?? 3;
 ?>
 

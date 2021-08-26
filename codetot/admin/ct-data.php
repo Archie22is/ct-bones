@@ -129,6 +129,12 @@ class Codetot_CT_Data_Settings {
           'id'      => $this->prefix . 'google_maps_api_key',
           'desc'    => esc_html__('Using Google Maps API Key to create map interactive with visitors.', 'ct-bones'),
           'type'    => 'text',
+        ],
+        [
+          'name'    => __( 'Facebook App ID', 'ct-bones' ),
+          'id'      => $this->prefix . 'facebook_app_id',
+          'desc'    => esc_html__('Using Facebook App ID Key to load facebook plugin.', 'ct-bones'),
+          'type'    => 'text',
         ]
       ],
     ];

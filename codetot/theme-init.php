@@ -137,7 +137,8 @@ class Codetot_Theme_Init
       );
     endif;
 
-    $footer_widget_column = codetot_get_theme_mod('footer_widget_column') ?? 3;
+    $footer_widget_column = codetot_get_theme_mod('footer_widget_column') ?? '3-col';
+    $footer_widget_column = str_replace('-col', '', $footer_widget_column);
 
     if ($footer_widget_column > 0) :
       for ($i = 1; $i <= $footer_widget_column; $i++) {
@@ -156,7 +157,9 @@ class Codetot_Theme_Init
     endif;
 
     $enable_topbar_widget = codetot_get_theme_mod('enable_topbar') ?? false;
-    $topbar_widget_column       = codetot_get_theme_mod('topbar_widget_column') ?? 1;
+    $topbar_widget_column = codetot_get_theme_mod('topbar_widget_column') ?? '1-col';
+    $topbar_widget_column = str_replace('-col', '', $topbar_widget_column);
+
 
     if ($enable_topbar_widget) {
       for ($i = 1; $i <= $topbar_widget_column; $i++) {

@@ -228,13 +228,13 @@ class Codetot_Customizer_Settings
       'control_args' => array(
         'type' => 'select',
         'choices' => apply_filters('codetot_theme_post_card_style_options', array(
-          'default' => esc_html__('Default', 'ct-bones'),
-          1 => esc_html__('Style 1', 'ct-bones'),
-          2 => esc_html__('Style 2', 'ct-bones'),
-          3 => esc_html__('Style 3', 'ct-bones'),
-          4 => esc_html__('Style 4', 'ct-bones'),
-          5 => esc_html__('Style 5', 'ct-bones'),
-          'theme' => esc_html__('Theme Style', 'ct-bones')
+          'style-default' => esc_html__('Default', 'ct-bones'),
+          'style-1' => esc_html__('Style 1', 'ct-bones'),
+          'style-2' => esc_html__('Style 2', 'ct-bones'),
+          'style-3' => esc_html__('Style 3', 'ct-bones'),
+          'style-4' => esc_html__('Style 4', 'ct-bones'),
+          'style-5' => esc_html__('Style 5', 'ct-bones'),
+          'style-theme' => esc_html__('Theme Style', 'ct-bones')
         ))
       )
     ), $wp_customize);
@@ -381,8 +381,8 @@ class Codetot_Customizer_Settings
       'control_args' => array(
         'type' => 'select',
         'choices' => apply_filters('codetot_theme_topbar_column_options', array(
-          1 => esc_html__('1 Column', 'ct-bones'),
-          2 => esc_html__('2 Columns', 'ct-bones')
+          '1-col' => esc_html__('1 Column', 'ct-bones'),
+          '2-col' => esc_html__('2 Columns', 'ct-bones')
         ))
       )
     ), $wp_customize);
@@ -679,10 +679,10 @@ class Codetot_Customizer_Settings
   {
     return array(
       0 => esc_html__('Disable Sidebar', 'ct-bones'),
-      1 => esc_html__('1 Column', 'ct-bones'),
-      2 => esc_html__('2 Columns', 'ct-bones'),
-      3 => esc_html__('3 Columns', 'ct-bones'),
-      4 => esc_html__('4 Columns', 'ct-bones')
+      '1-col' => esc_html__('1 Column', 'ct-bones'),
+      '2-col' => esc_html__('2 Columns', 'ct-bones'),
+      '3-col' => esc_html__('3 Columns', 'ct-bones'),
+      '4-col' => esc_html__('4 Columns', 'ct-bones')
     );
   }
 
