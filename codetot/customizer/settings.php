@@ -228,7 +228,6 @@ class Codetot_Customizer_Settings
       'control_args' => array(
         'type' => 'select',
         'choices' => apply_filters('codetot_theme_post_card_style_options', array(
-          'style-default' => esc_html__('Default', 'ct-bones'),
           'style-1' => esc_html__('Style 1', 'ct-bones'),
           'style-2' => esc_html__('Style 2', 'ct-bones'),
           'style-3' => esc_html__('Style 3', 'ct-bones'),

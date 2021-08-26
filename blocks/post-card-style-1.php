@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <article class="bg-white fa1 f fdc post-card post-card post-card--style-1">
   <a class="f post-card__image-wrapper" href="<?php the_permalink(); ?>">
     <?php
@@ -26,7 +22,7 @@
       <a class="post-card__link" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
     </h3>
     <?php if(!empty($post_date)) : ?>
-    <p class="mt-05 mb-05 post-card__meta">
+      <p class="mt-05 mb-05 post-card__meta">
         <span class="post-card__meta-date"><?php echo $post_date; ?></span>
       </p>
     <?php endif; ?>

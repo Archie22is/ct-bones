@@ -5,6 +5,11 @@ $category = !empty($categories) ? $categories[0] : '';
 $_format_date = !empty($format_date) ? $format_date : get_option('format_date');
 $post_date = get_the_date($_format_date);
 
+// Fallback default to style-1
+if (!empty($card_style) && $card_style === 'style-default') {
+  $card_style = 'style-1';
+}
+
 // Visible condition
 $_display_category = !empty($card_style) && (in_array($card_style, array('style-3')));
 $_display_author = !empty($card_style) && (in_array($card_style, array('style-4')));
@@ -15,7 +20,7 @@ $_display_description = !empty($card_style) && (in_array($card_style, array('sty
 
 $word_count = !empty($post_description_length) ? (int) $post_description_length :  (int) apply_filters('codetot_post_card_excerpt_number', 20);
 
-the_block('post-card-style-' . esc_attr($card_style), array(
+the_block('post-card-' . esc_attr($card_style), array(
   'class' => !empty($class) ? $class : '',
   'post_date' => $post_date,
   'category_name' => !empty($category) ? $category->name : '',

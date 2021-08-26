@@ -278,7 +278,6 @@ function codetot_layout_post_list_html() {
   $archive_layout  = codetot_get_theme_mod('archive_post_layout') ?? 'row';
   $columns         = codetot_get_theme_mod('archive_post_column') ?? 3;
   $post_card_style = codetot_get_theme_mod('post_card_style') ?? 'style-default';
-  $post_card_style = str_replace('style-', '', $post_card_style);
 
   if ($archive_layout === 'list') {
     the_block('post-list', array(
