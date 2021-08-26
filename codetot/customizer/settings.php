@@ -381,8 +381,8 @@ class Codetot_Customizer_Settings
       'control_args' => array(
         'type' => 'select',
         'choices' => apply_filters('codetot_theme_topbar_column_options', array(
-          1 => esc_html__('1 Column', 'ct-bones'),
-          2 => esc_html__('2 Columns', 'ct-bones')
+          '1-col' => esc_html__('1 Column', 'ct-bones'),
+          '2-col' => esc_html__('2 Columns', 'ct-bones')
         ))
       )
     ), $wp_customize);
