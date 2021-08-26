@@ -1,7 +1,8 @@
 <?php
 $layout          = codetot_get_theme_mod('category_layout') ?? 'sidebar-left';
 $post_column     = codetot_get_theme_mod('archive_post_column') ?? 3;
-$post_card_style = codetot_get_theme_mod('post_card_style') ?? 'default';
+$post_card_style = codetot_get_theme_mod('post_card_style') ?? 'style-default';
+$post_card_style = str_replace('style-', '', $post_card_style);
 
 $_class = 'category-post page-block page-block--category';
 $_class .= !empty($layout) ? ' ' . esc_attr($layout) : '';
