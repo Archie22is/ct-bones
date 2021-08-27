@@ -76,7 +76,7 @@ class Codetot_Facebook_Comments
 
   public function load_embed($url) {
     ?>
-    <div class="fb-comments" data-href="<?php echo esc_url($url); ?>" data-width="" data-numposts="5"></div>
+    <div class="fb-comments" data-href="<?php echo esc_url($url); ?>" data-width="100%" data-numposts="5"></div>
     <?php
   }
 
