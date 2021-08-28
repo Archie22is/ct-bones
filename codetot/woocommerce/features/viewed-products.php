@@ -63,7 +63,7 @@ function codetot_render_viewed_products_section() {
     return;
   }
 
-  $columns = get_global_option('codetot_woocommerce_viewed_products_colums') ?? 4;
+  $columns = codetot_get_theme_mod('single_product_viewed_products_column', 'woocommerce') ?? 4;
 
   $post_args = array(
     'posts_per_page' => apply_filters('codetot_viewed_products_number', $columns),

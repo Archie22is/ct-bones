@@ -60,7 +60,7 @@ require_once CODETOT_DIR . '/features/google-maps.php';
 require_once CODETOT_DIR . '/features/mega-menu.php';
 
 /**
- * To enable fallback in child theme, please set:
+ * To enable fallback in child theme, please set in functions.php
  * define('CT_THEME', true);
  */
 

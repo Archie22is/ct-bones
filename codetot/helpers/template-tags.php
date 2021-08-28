@@ -218,8 +218,9 @@ if (!function_exists('codetot_header_class')) {
   {
     $class[] = 'header';
 
-    $header_layout = codetot_get_theme_mod('header_layout') ?? 1;
-    $class[] = apply_filters('codetot_header_layout_classes', 'header--layout-' . $header_layout);
+    $header_layout = codetot_get_theme_mod('header_layout') ?? 'header-1';
+    $header_layout_number = str_replace('header-', '', $header_layout);
+    $class[] = apply_filters('codetot_header_layout_classes', 'header--layout-' . $header_layout_number);
 
     $enable_header_transparent = is_page() && function_exists('rwmb_meta') ? rwmb_meta('codetot_enable_header_transparent') : false;
     if ($enable_header_transparent) {
@@ -229,8 +230,8 @@ if (!function_exists('codetot_header_class')) {
     $header_background_color = codetot_get_theme_mod('header_background_color') ?? 'white';
     $class[] = !empty($header_background_color) && $header_background_color !== 'bg-white' ? 'header--has-bg bg-' . esc_attr($header_background_color) : 'bg-white';
 
-    $text_contract_color = codetot_get_theme_mod('header_color_contract') ?? 'light';
-    $class[] = !empty($text_contract_color) ? 'header--' . esc_attr($text_contract_color) . '-contract' : 'header--dark-contract';
+    $text_contract_color = codetot_get_theme_mod('header_text_contract') ?? 'light';
+    $class[] = !empty($text_contract_color) ? 'header--' . sanitize_text_field($text_contract_color) . '-contract' : 'header--light-contract';
 
     $_class = apply_filters('codetot_header_classes', $class);
 

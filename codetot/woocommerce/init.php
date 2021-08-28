@@ -50,7 +50,6 @@ class Codetot_WooCommerce_Init
 
     add_action('wp_enqueue_scripts', array($this, 'load_woocommerce_css'), 90);
     add_action('wp_enqueue_scripts', array($this, 'load_woocommerce_js'), 91);
-    add_action('wp_enqueue_scripts', array($this, 'plugin_assets'));
 
     add_action('wp_footer', array($this, 'fix_load_country_edit_address'), 90);
     add_filter('body_class', array($this, 'body_class'));
@@ -254,20 +253,13 @@ class Codetot_WooCommerce_Init
   public function body_class($classes)
   {
     $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'style-default';
-    $product_card_style = str_replace('style-', '', $product_card_style);
-    $product_image_visible = get_global_option('codetot_woocommerce_product_image_visible') ?? 'cover';
+    $product_card_style_number = str_replace('style-', '', $product_card_style);
+    $product_image_visible = codetot_get_theme_mod('product_card_image_type') ?? 'cover';
 
-    $classes[] = 'has-product-card-style-' . esc_attr($product_card_style);
-    $classes[] = 'has-product-card-image-' . esc_attr($product_image_visible);
+    $classes[] = 'has-product-card-style-' . sanitize_key($product_card_style_number);
+    $classes[] = 'has-product-card-image-' . sanitize_key($product_image_visible);
 
     return $classes;
-  }
-
-  public function plugin_assets()
-  {
-    if (is_plugin_active('woocommerce-products-filter/index.php')) {
-      wp_enqueue_style('codetot-woof', get_template_directory_uri() . '/dynamic-assets/plugins/woof.css', array(), '1.0.0');
-    }
   }
 
   public function replace_cart_remove_icon($html, $cart_item_key)

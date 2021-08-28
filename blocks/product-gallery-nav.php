@@ -11,7 +11,7 @@ if (empty($product)) {
   global $product;
 }
 
-$thumbnail_type = get_global_option('codetot_woocommerce_product_thumbnails_count') ?? 'default';
+$thumbnail_type = codetot_get_theme_mod('single_product_gallery_thumbnail_style', 'woocommerce') ?? 'default';
 $enable_view_more_button = $thumbnail_type === 'default';
 $columns = apply_filters( 'woocommerce_product_thumbnails_columns', 5);
 $attachment_ids = $product->get_gallery_image_ids();

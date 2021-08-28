@@ -34,7 +34,8 @@ class Codetot_Multiple_Headers
    */
   public function __construct()
   {
-    $this->layout = !empty(get_global_option('codetot_header_layout')) ? str_replace('header-', '', get_global_option('codetot_header_layout')) : '1';
+    $this->layout = codetot_get_theme_mod('header_layout') ?? 'header-1';
+    $this->layout = str_replace('header-', '', $this->layout);
 
     $this->switch_header_layout();
   }
