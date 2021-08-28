@@ -1,5 +1,5 @@
 <?php
-$hide_icon = get_global_option('codetot_header_hide_cart_icon') ?? false;
+$hide_icon = codetot_get_theme_mod('header_hide_cart_icon') ?? false;
 
 if (!$hide_icon && class_exists('WooCommerce')) :
   echo apply_filters('codetot_header_cart_icon', do_shortcode('[cart-icon

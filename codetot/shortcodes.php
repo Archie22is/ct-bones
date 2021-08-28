@@ -103,8 +103,8 @@ class CodeTot_Shortcode
 
   public function render_cart_icon($atts) {
     $settings = shortcode_atts(array(
-      'hide_icon' => get_global_option('codetot_header_hide_cart_icon') ?? false,
-      'link' => class_exists('WooCommerce') ? wc_get_cart_url() : null,
+      'hide_icon' => codetot_get_theme_mod('header_hide_cart_icon') ?? false,
+      'link' => class_exists('WooCommerce') && function_exists('wc_get_cart_url') ? wc_get_cart_url() : null,
       'svg_icon' => 'cart',
       'class' => 'cart-shortcode',
       'span_class' => ''

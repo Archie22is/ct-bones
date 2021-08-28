@@ -1,5 +1,5 @@
 <?php
-$display = get_global_option('codetot_header_display_phone') ?? false;
+$display = codetot_get_theme_mod('header_display_phone_number') ?? false;
 $phone_number = get_codetot_data('codetot_company_hotline') ?? null;
 $phone_link = preg_replace('/\D/', '', $phone_number);
 $phone_link = 'tel:' . esc_attr($phone_link);

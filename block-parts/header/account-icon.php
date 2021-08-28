@@ -1,5 +1,5 @@
 <?php
-$hide_icon = get_global_option('codetot_header_hide_account_icon') ?? false;
+$hide_icon = codetot_get_theme_mod('header_hide_account_icon') ?? false;
 if (class_exists('WooCommerce') && !$hide_icon && function_exists('wc_get_account_endpoint_url')) :
   ob_start(); ?>
   <a class="header__menu-icons__item header__menu-icons__link header__menu-icons__item--account" href="<?php echo wc_get_account_endpoint_url('dashboard'); ?>">

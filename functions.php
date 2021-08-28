@@ -39,7 +39,9 @@ require_once CODETOT_DIR . '/features/related-posts.php';
 require_once CODETOT_ADMIN_DIR . '/init.php';
 require_once CODETOT_ADMIN_DIR . '/acf.php';
 require_once CODETOT_ADMIN_DIR . '/ct-settings.php';
-require_once CODETOT_ADMIN_DIR . '/ct-theme.php';
+if (defined('CT_THEME')) :
+  require_once CODETOT_ADMIN_DIR . '/ct-theme.php';
+endif;
 require_once CODETOT_ADMIN_DIR . '/ct-data.php';
 // require_once CODETOT_ADMIN_DIR . '/theme-sync.php';
 require_once CODETOT_ADMIN_DIR . '/page-settings.php';
@@ -61,6 +63,7 @@ require_once CODETOT_DIR . '/features/mega-menu.php';
  * To enable fallback in child theme, please set:
  * define('CT_THEME', true);
  */
+
 if (defined('CT_THEME')) :
   require_once CODETOT_DIR . '/woocommerce/ct-theme.php';
 endif;

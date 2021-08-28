@@ -218,19 +218,18 @@ if (!function_exists('codetot_header_class')) {
   {
     $class[] = 'header';
 
-    $header_layout = !empty(get_global_option('codetot_header_layout')) ? str_replace('header-', '', get_global_option('codetot_header_layout')) : '1';
-    $header_style_number = !empty($header_layout) ? str_replace('style-', '', esc_attr($header_layout)) : '1';
-    $class[] = apply_filters('codetot_header_layout_classes', 'header--layout-' . $header_style_number);
+    $header_layout = codetot_get_theme_mod('header_layout') ?? 1;
+    $class[] = apply_filters('codetot_header_layout_classes', 'header--layout-' . $header_layout);
 
     $enable_header_transparent = is_page() && function_exists('rwmb_meta') ? rwmb_meta('codetot_enable_header_transparent') : false;
     if ($enable_header_transparent) {
       $class[] = 'header--transparent';
     }
 
-    $header_background_color = get_global_option('codetot_header_background_color') ?? 'white';
+    $header_background_color = codetot_get_theme_mod('header_background_color') ?? 'white';
     $class[] = !empty($header_background_color) && $header_background_color !== 'bg-white' ? 'header--has-bg bg-' . esc_attr($header_background_color) : 'bg-white';
 
-    $text_contract_color = get_global_option('codetot_header_color_contract') ?? 'light';
+    $text_contract_color = codetot_get_theme_mod('header_color_contract') ?? 'light';
     $class[] = !empty($text_contract_color) ? 'header--' . esc_attr($text_contract_color) . '-contract' : 'header--dark-contract';
 
     $_class = apply_filters('codetot_header_classes', $class);
@@ -248,7 +247,7 @@ if (!function_exists('codetot_logo_or_site_title')) {
    */
   function codetot_logo_or_site_title($echo = false)
   {
-    $homepage_heading = get_global_option('codetot_homepage_heading') ?? false;
+    $homepage_heading = codetot_get_theme_mod('seo_h1_homepage', 'pro') ?? false;
     $is_homepage_heading = is_front_page() && $homepage_heading === '1';
     $titleAttribute = $is_homepage_heading ? 'title="' . get_the_title( get_option('page_on_front')) . '"' : '';
     $tag = $is_homepage_heading && is_front_page() ? 'h1' : 'div';
