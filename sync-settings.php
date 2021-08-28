@@ -126,7 +126,21 @@ function codetot_sync_settings() {
     foreach ($exchange_theme_keys as $old_key => $new_key) {
       if (!empty($old_settings[$old_key])) :
         $new_value = str_replace('-columns', '', $old_settings[$old_key]);
-        $new_value = str_replace('header-', '', $new_value);
+
+        // Convert header custom to header-theme option
+        if ($new_key === 'header_layout' && !is_numeric($new_value)) :
+          $new_value = 'header-theme';
+        endif;
+
+        // Convert column to x-col
+        $columns_keys = [
+          'footer_widget_column',
+          'archive_post_column',
+          'topbar_widget_column'
+        ];
+        if (in_array($new_key, $columns_keys)) :
+          $new_value = $new_value . '-col';
+        endif;
 
         $new_theme_settings[$new_key] = $new_value;
       else :
@@ -140,11 +154,6 @@ function codetot_sync_settings() {
     foreach ($exchange_pro_keys as $old_key => $new_key) {
       if (isset($old_settings[$old_key])) :
         $new_value = $old_settings[$old_key];
-
-        if (is_string($old_settings[$old_key])) {
-          $new_value = str_replace('-columns', '', $new_value);
-          $new_value = str_replace('header-', '', $new_value);
-        }
 
         $pro_settings[$new_key] = $new_value;
 
@@ -163,10 +172,16 @@ function codetot_sync_settings() {
       if (isset($old_settings[$old_key])) :
         $new_value = $old_settings[$old_key];
 
-        if (is_string($old_settings[$old_key])) {
-          $new_value = str_replace('-columns', '', $new_value);
-          $new_value = str_replace('header-', '', $new_value);
-        }
+        // Convert column from number x to 'x-col'
+        $columns_keys = [
+          'single_product_gallery_thumbnail_column',
+          'single_product_cross_sell_column',
+          'single_product_upsell_column',
+          'single_product_viewed_products_column'
+        ];
+        if (in_array($new_key, $columns_keys)) :
+          $new_value = $new_value . '-col';
+        endif;
 
         $woo_settings[$new_key] = $new_value;
 
