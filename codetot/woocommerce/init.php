@@ -253,10 +253,9 @@ class Codetot_WooCommerce_Init
   public function body_class($classes)
   {
     $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'style-default';
-    $product_card_style_number = str_replace('style-', '', $product_card_style);
     $product_image_visible = codetot_get_theme_mod('product_card_image_type') ?? 'cover';
 
-    $classes[] = 'has-product-card-style-' . sanitize_key($product_card_style_number);
+    $classes[] = 'has-product-card-' . sanitize_key($product_card_style);
     $classes[] = 'has-product-card-image-' . sanitize_key($product_image_visible);
 
     return $classes;

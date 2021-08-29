@@ -326,7 +326,7 @@ class Codetot_Woocommerce_Layout_Archive
     $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'style-default';
     $product_card_style = str_replace('style-', '', $product_card_style);
 
-    if (!in_array($product_card_style, array('2', '3', 'default', 0))) {
+    if (!in_array($product_card_style, array('2', '3'))) {
       return $button;
     }
 
