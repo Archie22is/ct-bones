@@ -42,7 +42,6 @@ class Codetot_WooCommerce_Init
     add_filter('woocommerce_product_add_to_cart_text', array($this, 'update_add_to_cart_button_text'));
 
     add_filter('woocommerce_breadcrumb_defaults', array($this, 'breadcrumbs_container'));
-    add_filter('woocommerce_get_breadcrumb', array($this, 'woocommerce_breadcrumb'), 10, 2);
     add_action('pre_get_posts', array($this, 'search_product_only'));
 
     add_filter('woocommerce_reviews_title', array($this, 'change_review_title'));
@@ -230,19 +229,6 @@ class Codetot_WooCommerce_Init
     if (apply_filters('codetot_is_search_product_only', true) === true &&  !is_admin() && $query->is_main_query() && $query->is_search) {
       $query->set('post_type', 'product');
     }
-  }
-
-  public function woocommerce_breadcrumb($crumbs, $Breadcrumb)
-  {
-    $shop_page_id = wc_get_page_id('shop');
-    if ($shop_page_id > 0 && !is_shop()) {
-      $new_breadcrumb = [
-        _x('Shop', 'breadcrumb', 'woocommerce'), //Title
-        get_permalink(wc_get_page_id('shop')) // URL
-      ];
-      array_splice($crumbs, 1, 0, [$new_breadcrumb]);
-    }
-    return $crumbs;
   }
 
   public function change_review_title()
