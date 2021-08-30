@@ -192,6 +192,7 @@ class Codetot_Theme_Layout
       echo $this->page_block_between();
     }, 1);
 
+    add_action('codetot_index_main_layout', 'codetot_layout_archive_page_header_html', 1);
     add_action('codetot_index_main_layout', 'codetot_layout_post_list_html', 5);
     add_action('codetot_index_main_layout', 'codetot_layout_post_list_pagination', 10);
 
@@ -228,6 +229,20 @@ class Codetot_Theme_Layout
     return ob_get_clean();
   }
 }
+
+function codetot_layout_archive_page_header_html() { ?>
+  <?php if (!is_front_page()) :
+
+  $description = get_the_archive_description();
+  ?>
+  <header class="mt-05 mb-1 page-header">
+    <?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
+    <?php if ( $description ) : ?>
+      <div class="archive-description"><?php echo wp_kses_post( wpautop( $description ) ); ?></div>
+    <?php endif; ?>
+  </header><!-- .page-header -->
+  <?php endif; ?>
+<?php }
 
 function codetot_layout_single_post_social_share_html() {
   $hide_social_share = codetot_get_theme_mod('hide_social_share') ?? false;

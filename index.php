@@ -23,21 +23,9 @@ if (!is_front_page()) {
 <?php do_action('codetot_before_index_main'); ?>
 <main id="primary" class="site-main">
   <?php if (have_posts()) : ?>
-
-    <?php if (!is_front_page()) :
-
-      $description = get_the_archive_description();
-      ?>
-      <header class="mt-05 mb-1 page-header">
-        <?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
-        <?php if ( $description ) : ?>
-          <div class="archive-description"><?php echo wp_kses_post( wpautop( $description ) ); ?></div>
-        <?php endif; ?>
-      </header><!-- .page-header -->
-    <?php endif; ?>
-
     <?php
     /**
+     * @hook codetot_layout_archive_page_header_html - 1
      * @hook codetot_layout_post_list_html - 5
      * @hook codetot_layout_post_list_pagination - 10
      */
