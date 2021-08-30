@@ -15,12 +15,13 @@
 
 get_header();
 
-if (!is_front_page()) {
-  the_block('breadcrumbs');
-}
-
 ?>
-<?php do_action('codetot_before_index_main'); ?>
+<?php
+/**
+ * @hooks codetot_breadcrumbs_html - 1
+ */
+do_action('codetot_before_index_main');
+?>
 <main id="primary" class="site-main">
   <?php if (have_posts()) : ?>
     <?php
