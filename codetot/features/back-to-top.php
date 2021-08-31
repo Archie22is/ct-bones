@@ -33,24 +33,12 @@ class Codetot_Back_To_Top
 
     if ($enable) {
       add_action('codetot_footer', 'codetot_render_back_to_top_section', 30);
-      add_action('wp_enqueue_scripts', 'codetot_enqueue_back_to_top_assets');
     }
   }
 }
 
-function codetot_enqueue_back_to_top_assets() {
-  if (!WP_DEBUG) {
-    $theme_env = '.min';
-  } else {
-    $theme_env = '';
-  }
-
-  wp_enqueue_style('codetot-back-to-top', get_template_directory_uri() . '/dynamic-assets/blocks/back-to-top' . $theme_env . '.css', array(), '1.0.0');
-  wp_enqueue_script('codetot-back-to-top', get_template_directory_uri() . '/dynamic-assets/blocks/back-to-top' . $theme_env . '.js', array(), '1.0.0', true);
-}
-
 function codetot_render_back_to_top_section() {
-  get_template_part('dynamic-assets/blocks/back-to-top');
+  the_block('back-to-top');
 }
 
 Codetot_Back_To_Top::instance();

@@ -12,35 +12,33 @@
   z-index: 10;
   transition: all 0.3s;
   border: 0;
+
+  @media (--m) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+
+    &:hover {
+      background-color: var(--dark);
+    }
+  }
+
+  &.back-to-top--visible {
+    opacity: 1;
+  }
 }
 
 .back-to-top__icon {
   width: 16px;
   height: 16px;
-}
 
-.back-to-top__icon svg {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
-  stroke: var(--white);
-}
-
-@media screen and (min-width: 1024px) {
-  .back-to-top {
+  & svg {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .back-to-top:hover {
-    background-color: var(--dark);
-  }
-
-  .back-to-top.back-to-top--visible {
-    opacity: 1;
-    visibility: visible;
+    width: 16px;
+    height: 16px;
+    stroke: var(--white);
   }
 }
