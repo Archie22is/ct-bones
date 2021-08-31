@@ -89,7 +89,7 @@ class Codetot_WooCommerce_Product_Card_Style {
       'control_args' => array(
         'type' => 'select',
         'choices' => apply_filters('product_card_discount_badge_style_options', array(
-          'default' => esc_html__('Default (Circle)', 'ct-bones'),
+          'style-default' => esc_html__('Default (Circle)', 'ct-bones'),
           'style-1' => esc_html__('Style 1 (Rectangle - All radius)', 'ct-bones'),
           'style-2' => esc_html__('Style 2 (Rectangle - Radius left)', 'ct-bones'),
           'style-3' => esc_html__('Style 3 (Rectangle - Radius right)', 'ct-bones'),
@@ -108,7 +108,7 @@ class Codetot_WooCommerce_Product_Card_Style {
       'control_args' => array(
         'type' => 'select',
         'choices' => apply_filters('product_card_discount_badge_position_options', array(
-          'style-default' => esc_html__('Top Right Image', 'ct-bones'),
+          'style-default' => esc_html__('Default (Top Right Image)', 'ct-bones'),
           'style-1' => esc_html__('Top Left Image', 'ct-bones'),
           'style-2' => esc_html__('After sale price in same row', 'ct-bones'),
           'style-3' => esc_html__('Replace sale price', 'ct-bones'),
