@@ -184,6 +184,28 @@ class Codetot_Customizer_Woocommerce_Settings {
     ), $wp_customize);
 
     codetot_customizer_register_control(array(
+      'id' => 'single_product_enable_top_widget',
+      'label' => esc_html__('Enable Top Widget', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'setting_args' => array('default' => 1),
+      'option_type' => $this->settings_id,
+      'control_args' => array(
+        'type' => 'checkbox'
+      )
+    ), $wp_customize);
+
+    codetot_customizer_register_control(array(
+      'id' => 'single_product_enable_bottom_widget',
+      'label' => esc_html__('Enable Bottom Widget', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'setting_args' => array('default' => 1),
+      'option_type' => $this->settings_id,
+      'control_args' => array(
+        'type' => 'checkbox'
+      )
+    ), $wp_customize);
+
+    codetot_customizer_register_control(array(
       'id' => 'single_product_cross_sell_column',
       'label' => esc_html__('Cross Sell Products: Column', 'ct-bones'),
       'section_settings_id' => $section_settings_id,

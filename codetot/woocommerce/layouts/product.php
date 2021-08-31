@@ -53,8 +53,8 @@ class Codetot_Woocommerce_Layout_Product
     $this->sidebar_layout = codetot_get_theme_mod('product_layout', 'woocommerce') ?? 'no-sidebar';
     $this->enable_sidebar = $this->sidebar_layout !== 'no-sidebar';
     $this->enable_container = codetot_get_theme_mod('single_product_sections_enable_container', 'woocommerce') ?? true;
-    $this->enable_top_sidebar = is_active_sidebar('top-product-sidebar');
-    $this->enable_bottom_sidebar = is_active_sidebar('bottom-product-sidebar');
+    $this->enable_top_sidebar = codetot_get_theme_mod('single_product_enable_top_widget', 'woocommerce') ?? true;
+    $this->enable_bottom_sidebar = codetot_get_theme_mod('single_product_enable_bottom_widget', 'woocommerce') ?? true;
 
     $this->generate_wrapper();
 
@@ -89,7 +89,7 @@ class Codetot_Woocommerce_Layout_Product
     add_action('woocommerce_before_single_product_summary', 'codetot_render_bottom_product_gallery', 40);
     add_action('woocommerce_before_single_product_summary', array($this, 'single_product_column_close'), 50); // /.grid__col
 
-    // Column: Product Detail (Right)
+    // Column: Top Sidebar Widget
     add_action('woocommerce_before_single_product_summary', array($this, 'single_product_column_open_secondary'), 60); // .grid__col
 
     // Product Title
@@ -268,16 +268,22 @@ class Codetot_Woocommerce_Layout_Product
 
   public function top_product_sidebar_open() {
     echo '<div class="single-product-top__main">';
-    echo '<div class="grid single-product-top__main-grid">';
-    echo '<div class="grid__col single-product-top__main-col single-product-top__main-col--left">';
+    if ($this->enable_top_sidebar) :
+      echo '<div class="grid single-product-top__main-grid">';
+      echo '<div class="grid__col single-product-top__main-col single-product-top__main-col--left">';
+    endif;
   }
 
   public function top_product_sidebar_close() {
-    echo '</div>'; // Close .single-product-top__main-col--left
-    echo '<div class="grid__col single-product-top__main-col single-product-top__main-col--right">';
-    dynamic_sidebar('top-product-sidebar');
-    echo '</div>'; // Close .single-product-top__main-col--right
-    echo '</div>'; // Close .single-product-top__main-grid
+    if ($this->enable_top_sidebar) :
+      echo '</div>'; // Close .single-product-top__main-col--left
+
+        echo '<div class="grid__col single-product-top__main-col single-product-top__main-col--right">';
+        dynamic_sidebar('top-product-sidebar');
+        echo '</div>'; // Close .single-product-top__main-col--right
+
+      echo '</div>'; // Close .single-product-top__main-grid
+    endif;
     echo '</div>'; // Close .single-product-top__main
   }
 
