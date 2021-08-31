@@ -115,11 +115,10 @@ class Codetot_Woocommerce_Layout_Product
     add_filter('woocommerce_product_tabs', array($this, 'woo_custom_description_tab'), 98);
     remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
 
-    // Output sections
-    add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_open'), 30);
+    // Output bottom sections
+    add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_open'), 6);
     add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_grid_open'), 40);
-    add_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 45);
-
+    add_action('codetot_single_product_left_bottom_sections', 'woocommerce_output_product_data_tabs', 5);
     add_action('codetot_single_product_sections', 'codetot_render_related_products', 10);
     add_action('codetot_single_product_sections', 'codetot_render_cross_sell_products', 20);
     add_action('codetot_single_product_sections', 'codetot_render_upsell_sections', 30);
@@ -318,44 +317,46 @@ class Codetot_Woocommerce_Layout_Product
   }
 
   public function after_single_product_container_open() {
-    echo '<div class="single-product-sections">';
+    echo '<div class="single-product-bottom">';
 
     if (!$this->enable_sidebar && $this->enable_container) :
-      echo '<div class="container single-product-sections__container">';
+      echo '<div class="container single-product-bottom__container">';
     endif;
 
     if ($this->enable_bottom_sidebar) :
-      echo '<div class="grid single-product-sections__grid">';
+      echo '<div class="grid single-product-bottom__grid">';
     endif;
   }
 
   public function after_single_product_container_grid_open() {
     if ($this->enable_bottom_sidebar) :
-      echo '<div class="grid__col single-product-sections__col single-product-sections__col--left">';
+      echo '<div class="grid__col single-product-bottom__col single-product-bottom__col--left">';
     endif;
 
-    do_action('codetot_single_product_sections');
+    do_action('codetot_single_product_left_bottom_sections');
   }
 
   public function after_single_product_container_grid_close() {
     if ($this->enable_bottom_sidebar) :
-      echo '</div>'; // Close .single-product-sections__col--left
-      echo '<div class="grid__col single-product-sections__col single-product-sections__col--right">';
+      echo '</div>'; // Close .single-product-bottom__col--left
+      echo '<div class="grid__col single-product-bottom__col single-product-bottom__col--right">';
       dynamic_sidebar('bottom-product-sidebar');
-      echo '</div>'; // Close .single-product-sections__col--right
+      echo '</div>'; // Close .single-product-bottom__col--right
     endif;
   }
 
   public function after_single_product_container_close() {
     if ($this->enable_bottom_sidebar) :
-      echo '</div>'; // Close .single-product-sections__grid
+      echo '</div>'; // Close .single-product-bottom__grid
     endif;
 
     if (!$this->enable_sidebar) :
-      echo '</div>'; // Close .single-product-sections__container
+      echo '</div>'; // Close .single-product-bottom__container
     endif;
 
-    echo '</div>'; // Close .single-product-sections
+    echo '</div>'; // Close .single-product-bottom
+
+    do_action('codetot_single_product_sections');
   }
 
   // Remove default <a></a> link in product gallery

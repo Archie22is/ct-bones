@@ -568,12 +568,12 @@
   }
 }
 
-.single-product-sections {
+.single-product-bottom {
   margin-top: var(--section-space);
   margin-bottom: var(--section-space);
 }
 
-.single-product-sections__col--left {
+.single-product-bottom__col--left {
   width: 100%;
 
   @media (--m) {
@@ -582,7 +582,7 @@
   }
 }
 
-.single-product-sections__col--right {
+.single-product-bottom__col--right {
   width: 100%;
   margin-top: 1em;
 
