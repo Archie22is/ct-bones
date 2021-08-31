@@ -29,6 +29,9 @@ class Codetot_WooCommerce_Product_Card_Style {
     $this->settings_id = 'codetot_woocommerce_settings';
 
     add_action('customize_register', array($this, 'register_product_card_settings'));
+
+    add_filter('body_class', array($this, 'update_body_class_product_badge_style_classes'));
+    add_filter('body_class', array($this, 'update_body_class_product_badge_position_classes'));
   }
 
   public function register_product_card_settings($wp_customize) {
@@ -122,6 +125,23 @@ class Codetot_WooCommerce_Product_Card_Style {
     ), $wp_customize);
 
     return $wp_customize;
+  }
+
+  public function update_body_class_product_badge_style_classes($classes) {
+    $setting = codetot_get_theme_mod('product_card_discount_badge_style', 'woocommerce') ?? 'style-default';
+
+    $classes[] = 'has-product-card-discount-badge-' . sanitize_key($setting);
+
+    return $classes;
+  }
+
+  public function update_body_class_product_badge_position_classes($classes) {
+    $setting = codetot_get_theme_mod('product_card_discount_badge_position', 'woocommerce') ?? 'style-default';
+    $setting = str_replace('style-', 'position-', $setting);
+
+    $classes[] = 'has-product-card-discount-badge-' . sanitize_key($setting);
+
+    return $classes;
   }
 
   public function update_product_card_style_hooks()
