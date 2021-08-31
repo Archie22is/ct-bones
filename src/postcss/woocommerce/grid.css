@@ -419,6 +419,42 @@
   }
 }
 
+.has-product-card-style-4 {
+  & .products > .product {
+    & .product__inner {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & .product__content {
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+    }
+
+    & .product__cta {
+      margin-top: auto;
+      padding-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    & .product__button {
+      justify-content: center;
+      width: 100%;
+      padding: 3px 10px;
+      font-size: 0.85rem;
+      text-align: center;
+
+      &:hover {
+        @media (--m) {
+          border-color: var(--primary);
+        }
+      }
+    }
+  }
+}
+
 .has-product-card-discount-badge-style {
   & .products > .product {
     & .product__tag {
