@@ -51,7 +51,6 @@ class Codetot_Woocommerce_Layout_Archive
     add_action('wp', array($this, 'build_wrapper'));
 
     $this->build_product_column();
-    $this->update_product_card_style();
   }
 
   public function remove_default_hooks()
@@ -82,8 +81,6 @@ class Codetot_Woocommerce_Layout_Archive
 
   public function build_product_column()
   {
-    add_filter('codetot_woocommerce_archive_loop_button', array($this, 'loop_product_add_to_cart_button_text'));
-
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_image_wrapper_open'), 20);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'print_out_of_stock_label'), 22);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'change_sale_flash'), 23);
@@ -94,14 +91,10 @@ class Codetot_Woocommerce_Layout_Archive
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_content_open'), 100);
 
     add_action('woocommerce_after_shop_loop_item_title', array($this, 'loop_product_rating'), 2);
-    add_action('woocommerce_after_shop_loop_item_title', array($this, 'loop_product_meta_open'), 5);
-    add_action('woocommerce_after_shop_loop_item_title', array($this, 'loop_product_add_to_cart_button'), 15);
 
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_link_close'), 60);
 
     add_action('woocommerce_shop_loop_item_title', array($this, 'add_template_loop_product_title'), 10);
-
-    add_action('woocommerce_after_shop_loop_item', array($this, 'loop_product_meta_close'), 20);
     add_action('woocommerce_after_shop_loop_item', array($this, 'loop_product_content_close'), 50);
   }
 
@@ -322,24 +315,6 @@ class Codetot_Woocommerce_Layout_Archive
     echo '</div>';
   }
 
-  public function loop_product_add_to_cart_button_text($button) {
-    $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'style-default';
-    $product_card_style = str_replace('style-', '', $product_card_style);
-
-    if (!in_array($product_card_style, array('2', '3'))) {
-      return $button;
-    }
-
-    global $product;
-
-    ob_start();
-    printf('<a class="add-to-cart-icon button" href="%1$s">%2$s</a>',
-      $product->get_permalink(),
-      $product_card_style === 2 ? codetot_svg('cart', false) : apply_filters('woocommerce_product_add_to_cart_text', esc_html__('Add to cart', 'woocommerce'))
-    );
-    return ob_get_clean();
-  }
-
   public function loop_product_add_to_cart_button()
   {
     global $product;
@@ -448,23 +423,6 @@ class Codetot_Woocommerce_Layout_Archive
     ?>
     <span class="product__tag product__tag--out-of-stock"><?php _e('Out of stock', 'woocommerce'); ?></span>
 <?php
-  }
-
-  public function update_product_card_style()
-  {
-    $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'style-default';
-    $product_card_style = str_replace('style-', '', $product_card_style);
-
-    switch ($product_card_style):
-
-      case '2':
-      case '3':
-        add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_add_to_cart_button'), 24);
-        remove_action('woocommerce_after_shop_loop_item_title', array($this, 'change_sale_flash'), 11);
-        remove_action('woocommerce_after_shop_loop_item_title', array($this, 'loop_product_add_to_cart_button'), 15);
-        break;
-
-    endswitch;
   }
 
   public function print_errors()
