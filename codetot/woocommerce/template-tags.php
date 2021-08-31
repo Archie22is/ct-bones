@@ -39,7 +39,6 @@ function codetot_archive_product_product_rating_html()
   global $product;
 
   $average = $product->get_average_rating();
-  $rating_count = $product->get_rating_count();
   $review_count = $product->get_review_count();
   $enable_star_rating = codetot_get_theme_mod('archive_product_star_rating', 'woocommerce') ?? false;
   $svg_icon = '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" color="#fdd836" height="14" width="14" xmlns="http://www.w3.org/2000/svg" style="color: rgb(253, 216, 54);"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>';
@@ -56,6 +55,9 @@ function codetot_archive_product_product_rating_html()
           <?php echo $svg_icon; ?>
         <?php endfor; ?>
       </div>
+      <?php if (!empty($review_count)) : ?>
+        <div class="product__rating-count">(<?php echo absint($review_count); ?>)</div>
+      <?php endif; ?>
     </div>
     <?php
   endif;

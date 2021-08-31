@@ -189,6 +189,7 @@ h3:empty {
 
 .product__rating {
   display: flex;
+  align-items: center;
   width: 70px;
   height: 14px;
 }
@@ -201,6 +202,12 @@ h3:empty {
     width: 14px;
     height: 14px;
   }
+}
+
+.product__rating-count {
+  padding-left: 2px;
+  font-size: 0.85rem;
+  color: var(--gray);
 }
 
 .quick-view-modal,
