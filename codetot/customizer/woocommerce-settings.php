@@ -104,8 +104,16 @@ class Codetot_Customizer_Woocommerce_Settings {
       'product' => esc_html__('Product Page', 'ct-bones'),
       'product_category' => esc_html__('Product Category', 'ct-bones')
     ));
+
     foreach ($layout_options as $layout_id => $layout_label) :
       $settings_id = $layout_id . '_layout';
+      $options = codetot_customizer_get_sidebar_options();
+
+      if (in_array($layout_id, array('shop', 'product_category'))) {
+        $options = wp_parse_args(array(
+          'top-sidebar' => esc_html__('Top Sidebar', 'ct-bones')
+        ), $options);
+      }
 
       codetot_customizer_register_control(array(
         'id' => $settings_id,
@@ -114,7 +122,7 @@ class Codetot_Customizer_Woocommerce_Settings {
         'section_settings_id' => $section_settings_id,
         'control_args' => array(
           'type'     => 'select',
-          'choices'  => codetot_customizer_get_sidebar_options()
+          'choices'  => $options
         )
       ), $wp_customize);
     endforeach;
