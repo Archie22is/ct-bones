@@ -79,6 +79,7 @@ add_action('wp', function() {
 if (class_exists('WooCommerce')) {
   include_once CODETOT_DIR . '/helpers/woocommerce.php';
 
+  include_once CODETOT_DIR . '/woocommerce/template-tags.php';
   require_once CODETOT_DIR . '/woocommerce/init.php';
   require_once CODETOT_DIR . '/woocommerce/ct-settings.php';
 

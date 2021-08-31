@@ -32,6 +32,8 @@ class Codetot_WooCommerce_Product_Card_Style {
 
     add_filter('body_class', array($this, 'update_body_class_product_badge_style_classes'));
     add_filter('body_class', array($this, 'update_body_class_product_badge_position_classes'));
+
+    add_action('wp', array($this, 'update_product_card_hooks'), 20);
   }
 
   public function register_product_card_settings($wp_customize) {
@@ -144,21 +146,27 @@ class Codetot_WooCommerce_Product_Card_Style {
     return $classes;
   }
 
-  public function update_product_card_style_hooks()
+  public function update_product_card_hooks()
   {
-    $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'style-default';
-    $product_card_style = str_replace('style-', '', $product_card_style);
+    global $product;
+    $card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'style-default';
+    $badge_position = codetot_get_theme_mod('product_card_discount_badge_position', 'woocommerce') ?? 'style-default';
+    $display_product_star_rating = codetot_get_theme_mod('archive_product_star_rating', 'woocommerce') ?? false;
 
-    switch ($product_card_style):
+    if ($display_product_star_rating) {
+      add_action('woocommerce_after_shop_loop_item_title', 'codetot_archive_product_product_rating_html', 2);
+    }
 
-      case '2':
-      case '3':
-        add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_add_to_cart_button'), 24);
-        remove_action('woocommerce_after_shop_loop_item_title', array($this, 'change_sale_flash'), 11);
-        remove_action('woocommerce_after_shop_loop_item_title', array($this, 'loop_product_add_to_cart_button'), 15);
-        break;
+    // Display on right price or Replace sale price
+    if ($badge_position === 'style-3' || $badge_position === 'style-2') {
+      remove_action('woocommerce_before_shop_loop_item_title', 'codetot_archive_product_sale_flash_html', 23);
+      add_filter('woocommerce_get_price_html', function($price_html) {
+        global $product;
+        $badge_html = codetot_archive_product_sale_flash_html($product);
 
-    endswitch;
+        return $price_html . ' ' . $badge_html;
+      }, 100, 1);
+    }
   }
 }
 
