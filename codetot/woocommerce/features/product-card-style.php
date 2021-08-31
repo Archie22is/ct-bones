@@ -33,7 +33,7 @@ class Codetot_WooCommerce_Product_Card_Style {
     add_filter('body_class', array($this, 'update_body_class_product_badge_style_classes'));
     add_filter('body_class', array($this, 'update_body_class_product_badge_position_classes'));
 
-    add_action('wp', array($this, 'update_product_card_hooks'), 20);
+    add_action('wp', array($this, 'update_product_card_hooks'), 1);
   }
 
   public function register_product_card_settings($wp_customize) {
@@ -92,7 +92,9 @@ class Codetot_WooCommerce_Product_Card_Style {
           'default' => esc_html__('Default (Circle)', 'ct-bones'),
           'style-1' => esc_html__('Style 1 (Rectangle - All radius)', 'ct-bones'),
           'style-2' => esc_html__('Style 2 (Rectangle - Radius left)', 'ct-bones'),
-          'style-3' => esc_html__('Style 3 (Rectangle - Radius right)', 'ct-bones')
+          'style-3' => esc_html__('Style 3 (Rectangle - Radius right)', 'ct-bones'),
+          'style-4' => esc_html__('Style 4 (Rerctangle - Leaf style)', 'ct-bones'),
+          'style-5' => esc_html__('Style 5 (Flag)', 'ct-bones')
         ))
       )
     ), $wp_customize);
@@ -106,7 +108,7 @@ class Codetot_WooCommerce_Product_Card_Style {
       'control_args' => array(
         'type' => 'select',
         'choices' => apply_filters('product_card_discount_badge_position_options', array(
-          'default' => esc_html__('Top Right Image', 'ct-bones'),
+          'style-default' => esc_html__('Top Right Image', 'ct-bones'),
           'style-1' => esc_html__('Top Left Image', 'ct-bones'),
           'style-2' => esc_html__('After sale price in same row', 'ct-bones'),
           'style-3' => esc_html__('Replace sale price', 'ct-bones'),
@@ -148,7 +150,6 @@ class Codetot_WooCommerce_Product_Card_Style {
 
   public function update_product_card_hooks()
   {
-    global $product;
     $card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'style-default';
     $badge_position = codetot_get_theme_mod('product_card_discount_badge_position', 'woocommerce') ?? 'style-default';
     $display_product_star_rating = codetot_get_theme_mod('archive_product_star_rating', 'woocommerce') ?? false;
@@ -157,12 +158,16 @@ class Codetot_WooCommerce_Product_Card_Style {
       add_action('woocommerce_after_shop_loop_item_title', 'codetot_archive_product_product_rating_html', 2);
     }
 
+    if ($badge_position === 'style-default' || $badge_position === 'style-1') {
+      add_action('woocommerce_before_shop_loop_item_title', function () {
+        echo codetot_archive_product_sale_flash_html();
+      }, 23);
+    }
+
     // Display on right price or Replace sale price
     if ($badge_position === 'style-3' || $badge_position === 'style-2') {
-      remove_action('woocommerce_before_shop_loop_item_title', 'codetot_archive_product_sale_flash_html', 23);
       add_filter('woocommerce_get_price_html', function($price_html) {
-        global $product;
-        $badge_html = codetot_archive_product_sale_flash_html($product);
+        $badge_html = codetot_archive_product_sale_flash_html();
 
         return $price_html . ' ' . $badge_html;
       }, 100, 1);

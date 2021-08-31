@@ -134,7 +134,7 @@
 }
 
 .woocommerce-loop-product__title {
-  margin-bottom: 0.25em;
+  margin-bottom: 5px;
   font-size: 0.85rem;
   font-weight: var(--font-normal);
 
@@ -182,13 +182,8 @@
   display: inline-flex;
   width: 42px;
   height: 42px;
-  padding: 5px;
-  background: var(--primary);
-  color: var(--white);
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
   font-size: 0.85rem;
   pointer-events: none;
-  border-radius: 50%;
   z-index: 3;
 }
 
@@ -328,13 +323,14 @@
   }
 }
 
+.has-product-card-style-1,
 .has-product-card-style-default {
   & .products > .product {
     & .product__content {
       margin-top: 1em;
     }
 
-    & .price {
+    & .product__price {
       display: block;
       margin-top: 0.25em;
       font-weight: var(--font-bold);
@@ -354,6 +350,88 @@
   }
 }
 
+.has-product-card-style-1 {
+  & .products > .product {
+    & .product__inner {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+    }
+
+    & .product__content {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 0;
+      padding: 10px;
+    }
+
+    & .product__title {
+      max-height: 44px;
+      overflow: hidden;
+    }
+
+    & .product__price {
+      margin-top: auto;
+    }
+  }
+}
+
+.has-product-card-style-2 {
+  & .products > .product {
+    & .product__inner {
+      padding: 20px;
+    }
+
+    & .product__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    & .product__title {
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+
+    & .product__price {
+      margin-top: 0;
+    }
+
+    & .product__price {
+      display: block;
+      margin-top: 0.25em;
+      font-weight: var(--font-bold);
+      color: var(--primary);
+      line-height: 1.4;
+      order: -1;
+
+      & del {
+        opacity: 0.65;
+        color: var(--dark);
+        font-weight: var(--font-normal);
+      }
+    }
+
+    & .product__rating {
+      margin-top: 5px;
+    }
+  }
+}
+
+.has-product-card-discount-badge-style {
+  & .products > .product {
+    & .product__tag {
+      padding: 5px;
+      background: var(--primary);
+      color: var(--white);
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+    }
+  }
+}
+
 /** Rectangle with all border-radius **/
 .has-product-card-discount-badge-style-1 {
   & .products > .product {
@@ -362,6 +440,17 @@
       height: auto;
       padding: 2px 5px;
       border-radius: var(--border-radius);
+    }
+  }
+}
+
+.has-product-card-discount-badge-style-4 {
+  & .products > .product {
+    & .product__tag {
+      width: auto;
+      height: auto;
+      padding: 2px 5px;
+      border-radius: var(--border-radius) 0 var(--border-radius) 0;
     }
   }
 }
@@ -376,6 +465,14 @@
       border-radius: var(--border-radius) 0 0 var(--border-radius);
     }
   }
+
+  &.has-product-card-discount-badge-position-default {
+    & .products > .product {
+      & .product__tag {
+        right: 0;
+      }
+    }
+  }
 }
 
 /** Rectangle with right radius **/
@@ -388,12 +485,79 @@
       border-radius: 0 var(--border-radius) var(--border-radius) 0;
     }
   }
+
+  &.has-product-card-discount-badge-position-1 {
+    & .products > .product {
+      & .product__tag {
+        left: 0;
+      }
+    }
+  }
 }
 
+.has-product-card-discount-badge-position-default {
+  & .products > .product {
+    & .product__tag {
+      top: 10px;
+      right: 10px;
+      left: auto;
+    }
+  }
+}
+
+/** Style: Flag down **/
+.has-product-card-discount-badge-style-5 {
+  & .products > .product {
+    & .product__tag {
+      width: 42px;
+      height: 36px;
+      background: var(--primary);
+      color: var(--white);
+
+      &::after {
+        content: '';
+        width: 0;
+        height: 0;
+        left: 0;
+        bottom: -4px;
+        position: absolute;
+        border-color: transparent var(--primary);
+        border-style: solid;
+        border-width: 0 21px 4px;
+      }
+    }
+  }
+
+  &.has-product-card-discount-badge-position-default,
+  &.has-product-card-discount-badge-position-1 {
+    & .products > .product {
+      & .product__tag {
+        top: 0;
+      }
+    }
+  }
+
+  &.has-product-card-discount-badge-position-3,
+  &.has-product-card-discount-badge-position-2 {
+    & .products > .product {
+      & .product__tag {
+        height: auto;
+        border-radius: var(--border-radius);
+
+        &::after {
+          content: none;
+        }
+      }
+    }
+  }
+}
+
+/** Position: Top left **/
 .has-product-card-discount-badge-position-1 {
   & .products > .product {
     & .product__tag {
-      left: 0;
+      top: 10px;
+      left: 10px;
       right: auto;
     }
   }

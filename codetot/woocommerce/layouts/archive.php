@@ -84,7 +84,6 @@ class Codetot_Woocommerce_Layout_Archive
   {
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_image_wrapper_open'), 20);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'print_out_of_stock_label'), 22);
-    add_action('woocommerce_before_shop_loop_item_title', 'codetot_archive_product_sale_flash_html', 23);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_link_open'), 30);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_hover_image'), 40);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_image'), 50);

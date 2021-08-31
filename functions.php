@@ -94,13 +94,13 @@ if (class_exists('WooCommerce')) {
   require_once CODETOT_DIR . '/woocommerce/features/product-video.php';
   require_once CODETOT_DIR . '/woocommerce/features/viewed-products.php';
   require_once CODETOT_DIR . '/woocommerce/features/product-card-style.php';
-  require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
 
   add_action('wp', function() {
     require_once CODETOT_DIR . '/woocommerce/layouts/product.php';
     require_once CODETOT_DIR . '/woocommerce/layouts/account.php';
     require_once CODETOT_DIR . '/woocommerce/layouts/cart.php';
     require_once CODETOT_DIR . '/woocommerce/layouts/checkout.php';
+    require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
   });
 }
 
