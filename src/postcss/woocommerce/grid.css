@@ -43,6 +43,11 @@
     font-weight: var(--font-bold);
     color: var(--primary);
     line-height: 1.4;
+    font-size: 0.85rem;
+
+    @media (--m) {
+      font-size: 0.9125rem;
+    }
 
     & del {
       opacity: 0.65;
@@ -455,7 +460,7 @@
   }
 }
 
-.has-product-card-discount-badge-style {
+.has-product-card-discount-badge-style-default {
   & .products > .product {
     & .product__tag {
       padding: 5px;
