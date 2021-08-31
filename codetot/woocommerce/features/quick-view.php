@@ -55,6 +55,8 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
 
       add_action('wp_ajax_shop_quick_view_add_to_cart', array($this, 'add_to_cart_json'));
       add_action('wp_ajax_nopriv_shop_quick_view_add_to_cart', array($this, 'add_to_cart_json'));
+
+      add_action('codetot_product_quick_view_markup', 'codetot_product_quick_view_icon_html', 1);
     }
   }
 
@@ -191,7 +193,10 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
 
     wp_die();
   }
+}
 
+function codetot_product_quick_view_icon_html() {
+  echo apply_filters('codetot_product_quick_view_html', codetot_svg('eyeglasses', false));
 }
 
 function codetot_quick_view_button() {
@@ -203,11 +208,11 @@ function codetot_quick_view_button() {
       <span title="<?php esc_attr_e('Quick view', 'ct-bones'); ?>"
             data-quick-view-modal-id="<?php echo esc_attr($product->get_id()); ?>"
             class="product__quick-view-text">
-        <?php if (!empty($product_card_style) && in_array($product_card_style, array('1', '2'))) : ?>
-          <?php codetot_svg('eyeglasses', true); ?>
-        <?php else : ?>
-          <?php esc_attr_e('Quick View', 'ct-bones'); ?>
-        <?php endif; ?>
+          <?php
+          /**
+           * @hook codetot_product_quick_view_icon_html - 1
+           */
+          do_action('codetot_product_quick_view_markup'); ?>
       </span>
   </div>
   <?php
