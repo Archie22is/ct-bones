@@ -154,8 +154,12 @@ class Codetot_WooCommerce_Product_Card_Style {
     $badge_position = codetot_get_theme_mod('product_card_discount_badge_position', 'woocommerce') ?? 'style-default';
     $display_product_star_rating = codetot_get_theme_mod('archive_product_star_rating', 'woocommerce') ?? false;
 
+    if ($card_style === 'style-4') {
+      add_action('woocommerce_after_shop_loop_item_title', 'codetot_archive_product_button_html', 15);
+    }
+
     if ($display_product_star_rating) {
-      add_action('woocommerce_after_shop_loop_item_title', 'codetot_archive_product_product_rating_html', 2);
+      add_action('woocommerce_after_shop_loop_item_title', 'codetot_archive_product_rating_html', 2);
     }
 
     if ($badge_position === 'style-default' || $badge_position === 'style-1') {

@@ -34,7 +34,7 @@ function codetot_archive_product_sale_flash_html()
   endif;
 }
 
-function codetot_archive_product_product_rating_html()
+function codetot_archive_product_rating_html()
 {
   global $product;
 
@@ -61,4 +61,18 @@ function codetot_archive_product_product_rating_html()
     </div>
     <?php
   endif;
+}
+
+function codetot_archive_product_button_html() {
+  global $post;
+  ?>
+  <div class="product__cta">
+    <?php the_block('button', array(
+      'button' => apply_filters('codetot_archive_product_button_text', esc_html__('View product', 'woocommerce')),
+      'url' => get_permalink($post),
+      'type' => apply_filters('codetot_archive_product_button_style', 'outline'),
+      'class' => 'product__button'
+    )); ?>
+  </div>
+  <?php
 }
