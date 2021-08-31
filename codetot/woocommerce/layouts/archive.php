@@ -51,7 +51,6 @@ class Codetot_Woocommerce_Layout_Archive
     add_action('wp', array($this, 'build_wrapper'));
 
     $this->build_product_column();
-    $this->update_product_card_style();
   }
 
   public function remove_default_hooks()
@@ -66,6 +65,7 @@ class Codetot_Woocommerce_Layout_Archive
     remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
     remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10);
     remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5);
+    remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10);
     remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
   }
 
@@ -82,26 +82,17 @@ class Codetot_Woocommerce_Layout_Archive
 
   public function build_product_column()
   {
-    add_filter('codetot_woocommerce_archive_loop_button', array($this, 'loop_product_add_to_cart_button_text'));
-
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_image_wrapper_open'), 20);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'print_out_of_stock_label'), 22);
-    add_action('woocommerce_before_shop_loop_item_title', array($this, 'change_sale_flash'), 23);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_link_open'), 30);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_hover_image'), 40);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_image'), 50);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_image_wrapper_close'), 90);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_content_open'), 100);
-
-    add_action('woocommerce_after_shop_loop_item_title', array($this, 'loop_product_rating'), 2);
-    add_action('woocommerce_after_shop_loop_item_title', array($this, 'loop_product_meta_open'), 5);
-    add_action('woocommerce_after_shop_loop_item_title', array($this, 'loop_product_add_to_cart_button'), 15);
-
+    add_action('woocommerce_after_shop_loop_item_title', 'codetot_archive_product_price_html', 10);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_link_close'), 60);
 
     add_action('woocommerce_shop_loop_item_title', array($this, 'add_template_loop_product_title'), 10);
-
-    add_action('woocommerce_after_shop_loop_item', array($this, 'loop_product_meta_close'), 20);
     add_action('woocommerce_after_shop_loop_item', array($this, 'loop_product_content_close'), 50);
   }
 
@@ -291,25 +282,6 @@ class Codetot_Woocommerce_Layout_Archive
     echo '</div>';
   }
 
-  public function loop_product_rating()
-  {
-    global $product;
-
-    $average = $product->get_average_rating();
-    $enable_star_rating = codetot_get_theme_mod('archive_product_star_rating', 'woocommerce') ?? false;
-
-    if (!empty($average) || $enable_star_rating) :
-      if ($enable_star_rating && $average == 0) {
-        $average = 5;
-      }
-      ?>
-      <div class="product__rating">
-        <?php echo '<div class="product__rating-stars"><span style="width:'.( ( $average / 5 ) * 100 ) . '%"></span></div>'; ?>
-      </div>
-      <?php
-    endif;
-  }
-
   public function loop_product_meta_open()
   {
     echo '<div class="product__meta">';
@@ -320,24 +292,6 @@ class Codetot_Woocommerce_Layout_Archive
   {
     echo '</div>';
     echo '</div>';
-  }
-
-  public function loop_product_add_to_cart_button_text($button) {
-    $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'style-default';
-    $product_card_style = str_replace('style-', '', $product_card_style);
-
-    if (!in_array($product_card_style, array('2', '3'))) {
-      return $button;
-    }
-
-    global $product;
-
-    ob_start();
-    printf('<a class="add-to-cart-icon button" href="%1$s">%2$s</a>',
-      $product->get_permalink(),
-      $product_card_style === 2 ? codetot_svg('cart', false) : apply_filters('woocommerce_product_add_to_cart_text', esc_html__('Add to cart', 'woocommerce'))
-    );
-    return ob_get_clean();
   }
 
   public function loop_product_add_to_cart_button()
@@ -421,22 +375,6 @@ class Codetot_Woocommerce_Layout_Archive
     echo $title_tag_close;
   }
 
-  public function change_sale_flash()
-  {
-    global $product;
-
-    $final_price = codetot_get_price_discount_percentage($product, 'percentage');
-    $classes = ['product__tag', 'product__tag--onsale'];
-
-    if (!empty($final_price) ) :
-      ?>
-      <span class="<?php echo esc_attr(implode(' ', array_filter($classes))); ?>">
-        <?php echo esc_html($final_price); ?>
-      </span>
-      <?php
-    endif;
-  }
-
   public function print_out_of_stock_label()
   {
     global $product;
@@ -448,23 +386,6 @@ class Codetot_Woocommerce_Layout_Archive
     ?>
     <span class="product__tag product__tag--out-of-stock"><?php _e('Out of stock', 'woocommerce'); ?></span>
 <?php
-  }
-
-  public function update_product_card_style()
-  {
-    $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'style-default';
-    $product_card_style = str_replace('style-', '', $product_card_style);
-
-    switch ($product_card_style):
-
-      case '2':
-      case '3':
-        add_action('woocommerce_before_shop_loop_item_title', array($this, 'loop_product_add_to_cart_button'), 24);
-        remove_action('woocommerce_after_shop_loop_item_title', array($this, 'change_sale_flash'), 11);
-        remove_action('woocommerce_after_shop_loop_item_title', array($this, 'loop_product_add_to_cart_button'), 15);
-        break;
-
-    endswitch;
   }
 
   public function print_errors()

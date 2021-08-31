@@ -46,7 +46,7 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
       add_filter('body_class', array($this, 'add_body_class'));
 
       // Add elements
-      add_action('woocommerce_before_shop_loop_item_title', 'codetot_quick_view_button', 21);
+      // add_action('woocommerce_before_shop_loop_item_title', 'codetot_quick_view_button', 21);
       add_action('wp_footer', 'codetot_quick_view_modal');
 
       // Load JSON content
@@ -55,6 +55,8 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
 
       add_action('wp_ajax_shop_quick_view_add_to_cart', array($this, 'add_to_cart_json'));
       add_action('wp_ajax_nopriv_shop_quick_view_add_to_cart', array($this, 'add_to_cart_json'));
+
+      add_action('codetot_product_quick_view_markup', 'codetot_product_quick_view_icon_html', 1);
     }
   }
 
@@ -191,24 +193,24 @@ class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
 
     wp_die();
   }
+}
 
+function codetot_product_quick_view_icon_html() {
+  echo apply_filters('codetot_product_quick_view_html', codetot_svg('eyeglasses', false));
 }
 
 function codetot_quick_view_button() {
-  global $product;
-  $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'style-default';
-  $product_card_style = str_replace('style-', '', $product_card_style);
-  ?>
+  global $product; ?>
   <div class="product__quick-view">
-      <span title="<?php esc_attr_e('Quick view', 'ct-bones'); ?>"
-            data-quick-view-modal-id="<?php echo esc_attr($product->get_id()); ?>"
-            class="product__quick-view-text">
-        <?php if (!empty($product_card_style) && in_array($product_card_style, array('1', '2'))) : ?>
-          <?php codetot_svg('eyeglasses', true); ?>
-        <?php else : ?>
-          <?php esc_attr_e('Quick View', 'ct-bones'); ?>
-        <?php endif; ?>
-      </span>
+    <span title="<?php esc_attr_e('Quick view', 'ct-bones'); ?>"
+      data-quick-view-modal-id="<?php echo esc_attr($product->get_id()); ?>"
+      class="product__quick-view-text">
+        <?php
+        /**
+         * @hook codetot_product_quick_view_icon_html - 1
+         */
+        do_action('codetot_product_quick_view_markup'); ?>
+    </span>
   </div>
   <?php
 }

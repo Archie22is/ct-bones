@@ -120,51 +120,6 @@ class Codetot_Customizer_Woocommerce_Settings {
     endforeach;
 
     codetot_customizer_register_control(array(
-      'id' => 'product_card_style',
-      'label' => esc_html__('Product Card Style', 'ct-bones'),
-      'section_settings_id' => $section_settings_id,
-      'setting_args' => array('default' => 'default'),
-      'option_type' => $this->settings_id,
-      'control_args' => array(
-        'type' => 'select',
-        'choices' => apply_filters('product_card_style_options', array(
-          'style-default' => esc_html__('Default', 'ct-bones'),
-          'style-1' => esc_html__('Style 1', 'ct-bones'),
-          'style-2' => esc_html__('Style 2', 'ct-bones'),
-          'style-3' => esc_html__('Style 3', 'ct-bones'),
-          'style-4' => esc_html__('Style 4', 'ct-bones')
-        ))
-      )
-    ), $wp_customize);
-
-    codetot_customizer_register_control(array(
-      'id' => 'product_card_image_type',
-      'label' => esc_html__('Product Card Image Style', 'ct-bones'),
-      'section_settings_id' => $section_settings_id,
-      'setting_args' => array('default' => 'default'),
-      'option_type' => $this->settings_id,
-      'control_args' => array(
-        'type' => 'select',
-        'choices' => apply_filters('product_card_image_type_options', array(
-          'default' => esc_html__('Default', 'ct-bones'),
-          'cover' => esc_html__('Image Cover', 'ct-bones'),
-          'contain' => esc_html__('Image Contain', 'ct-bones')
-        ))
-      )
-    ), $wp_customize);
-
-    codetot_customizer_register_control(array(
-      'id' => 'archive_product_star_rating',
-      'label' => esc_html__('Enable Product Star Rating', 'ct-bones'),
-      'section_settings_id' => $section_settings_id,
-      'option_type' => $this->settings_id,
-      'control_args' => array(
-        'type' => 'checkbox',
-        'description' => esc_html__('Display product star rating in archive and product category even if no star was given. Default is 5 stars.', 'ct-bones')
-      )
-    ), $wp_customize);
-
-    codetot_customizer_register_control(array(
       'id' => 'quick_view_short_description',
       'label' => esc_html__('Display Short Description on Quick View popup', 'ct-bones'),
       'section_settings_id' => $section_settings_id,

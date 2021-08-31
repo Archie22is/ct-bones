@@ -214,6 +214,21 @@
   }
 }
 
+.single-product-top__sale-tag {
+  width: 42px;
+  height: 42px;
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+
+  @media (--m) {
+    width: 60px;
+    height: 60px;
+    font-size: 1.05rem;
+  }
+}
+
 .single-product-top__inner {
   position: relative;
 }

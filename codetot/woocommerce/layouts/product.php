@@ -297,7 +297,7 @@ class Codetot_Woocommerce_Layout_Product
     global $product;
 
     $final_price = codetot_get_price_discount_percentage($product, 'percentage');
-    $classes = ['product__tag', 'product__tag--onsale'];
+    $classes = ['product__tag', 'single-product-top__sale-tag'];
 
     if (!empty($final_price) ) :
       ?>

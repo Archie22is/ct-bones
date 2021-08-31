@@ -79,6 +79,7 @@ add_action('wp', function() {
 if (class_exists('WooCommerce')) {
   include_once CODETOT_DIR . '/helpers/woocommerce.php';
 
+  include_once CODETOT_DIR . '/woocommerce/template-tags.php';
   require_once CODETOT_DIR . '/woocommerce/init.php';
   require_once CODETOT_DIR . '/woocommerce/ct-settings.php';
 
@@ -92,6 +93,7 @@ if (class_exists('WooCommerce')) {
   require_once CODETOT_DIR . '/woocommerce/features/global-guarantee-list.php';
   require_once CODETOT_DIR . '/woocommerce/features/product-video.php';
   require_once CODETOT_DIR . '/woocommerce/features/viewed-products.php';
+  require_once CODETOT_DIR . '/woocommerce/features/product-card-style.php';
   require_once CODETOT_DIR . '/woocommerce/layouts/archive.php';
 
   add_action('wp', function() {
