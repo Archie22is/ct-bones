@@ -370,11 +370,6 @@
       padding: 10px;
     }
 
-    & .product__title {
-      max-height: 44px;
-      overflow: hidden;
-    }
-
     & .product__price {
       margin-top: auto;
     }
