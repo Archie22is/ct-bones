@@ -200,20 +200,17 @@ function codetot_product_quick_view_icon_html() {
 }
 
 function codetot_quick_view_button() {
-  global $product;
-  $product_card_style = codetot_get_theme_mod('product_card_style', 'woocommerce') ?? 'style-default';
-  $product_card_style = str_replace('style-', '', $product_card_style);
-  ?>
+  global $product; ?>
   <div class="product__quick-view">
-      <span title="<?php esc_attr_e('Quick view', 'ct-bones'); ?>"
-            data-quick-view-modal-id="<?php echo esc_attr($product->get_id()); ?>"
-            class="product__quick-view-text">
-          <?php
-          /**
-           * @hook codetot_product_quick_view_icon_html - 1
-           */
-          do_action('codetot_product_quick_view_markup'); ?>
-      </span>
+    <span title="<?php esc_attr_e('Quick view', 'ct-bones'); ?>"
+      data-quick-view-modal-id="<?php echo esc_attr($product->get_id()); ?>"
+      class="product__quick-view-text">
+        <?php
+        /**
+         * @hook codetot_product_quick_view_icon_html - 1
+         */
+        do_action('codetot_product_quick_view_markup'); ?>
+    </span>
   </div>
   <?php
 }
