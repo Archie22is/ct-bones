@@ -127,9 +127,9 @@ class Codetot_Woocommerce_Layout_Product
     add_action('woocommerce_after_single_product_summary', array($this, 'after_single_product_container_close'), 110);
 
     add_filter('woocommerce_product_thumbnails_columns', function() {
-      $columns = codetot_get_theme_mod('single_product_gallery_thumbnail_column', 'woocommerce') ?? 4;
+      $columns = codetot_get_theme_mod('single_product_gallery_thumbnail_column', 'woocommerce') ?? '4-col';
 
-      return $columns;
+      return (int) str_replace('-col', '', $columns);
     });
   }
 

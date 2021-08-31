@@ -144,15 +144,15 @@ class Codetot_Customizer_Woocommerce_Settings {
       'id' => 'single_product_gallery_thumbnail_column',
       'label' => esc_html__('Product Thumbnail Columns', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
-      'setting_args' => array('default' => 4),
+      'setting_args' => array('default' => '4-col'),
       'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'select',
         'choices' => apply_filters('single_product_gallery_thumbnail_column_options', array(
-          3 => esc_html__('3 Thumbnails', 'ct-bones'),
-          4 => esc_html__('4 Thumbnails', 'ct-bones'),
-          5 => esc_html__('5 Thumbnails', 'ct-bones'),
-          6 => esc_html__('6 Thumbnails', 'ct-bones')
+          '3-col' => esc_html__('3 Thumbnails', 'ct-bones'),
+          '4-col' => esc_html__('4 Thumbnails (Default)', 'ct-bones'),
+          '5-col' => esc_html__('5 Thumbnails', 'ct-bones'),
+          '6-col' => esc_html__('6 Thumbnails', 'ct-bones')
         ))
       )
     ), $wp_customize);
