@@ -6,10 +6,7 @@ class Codetot_WooCommerce_Init
    * @var Codetot_WooCommerce_Init
    */
   private static $instance;
-  /**
-   * @var string
-   */
-  private $theme_version;
+
   /**
    * @var string
    */
@@ -56,6 +53,8 @@ class Codetot_WooCommerce_Init
     add_filter('woocommerce_cart_item_remove_link', array($this, 'replace_cart_remove_icon'), 10, 2);
 
     add_action('admin_enqueue_scripts', array($this, 'hide_product_bar_editing_product_screen'));
+
+    add_filter('woocommerce_format_sale_price', array($this, 'swap_woocommerce_sale_price'), 100, 3);
   }
 
   public function woocommerce_support()
@@ -229,6 +228,12 @@ class Codetot_WooCommerce_Init
     if (apply_filters('codetot_is_search_product_only', true) === true &&  !is_admin() && $query->is_main_query() && $query->is_search) {
       $query->set('post_type', 'product');
     }
+  }
+
+  public function swap_woocommerce_sale_price($price,$regular_price, $sale_price) {
+    $price = '<ins>' . ( is_numeric( $sale_price ) ? wc_price( $sale_price ) : $sale_price ) . '</ins> <del aria-hidden="true">' . ( is_numeric( $regular_price ) ? wc_price( $regular_price ) : $regular_price ) . '</del>';
+
+    return $price;
   }
 
   public function change_review_title()
