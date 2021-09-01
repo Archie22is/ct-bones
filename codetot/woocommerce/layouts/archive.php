@@ -43,6 +43,9 @@ class Codetot_Woocommerce_Layout_Archive
       $this->build_wrapper();
     endif;
 
+    $this->shop_sidebar = codetot_get_theme_mod('shop_layout', 'woocommerce') ?? 'sidebar-left';
+    $this->product_category_sidebar = codetot_get_theme_mod('product_category_layout', 'woocommerce') ?? 'sidebar-left';
+
     add_action('woocommerce_before_shop_loop', array($this, 'sorting_open'), 12);
     add_action('woocommerce_before_shop_loop', array($this, 'sorting_close'), 31);
     add_action('woocommerce_before_shop_loop', array($this, 'product_grid_open'), 32);
@@ -121,9 +124,9 @@ class Codetot_Woocommerce_Layout_Archive
     $sidebar_layout = 'no-sidebar';
 
     if ( is_shop() ) :
-      $sidebar_layout = codetot_get_theme_mod('shop_layout', 'woocommerce') ?? 'sidebar-left';
+      $sidebar_layout = $this->shop_sidebar;
     elseif( is_product_category() || is_product_tag()) :
-      $sidebar_layout = codetot_get_theme_mod('product_category_layout', 'woocommerce') ?? 'sidebar-left';
+      $sidebar_layout = $this->product_category_sidebar;
     endif;
 
     $content = get_field($field_name, 'product_cat_' . esc_attr($obj->term_id));
@@ -191,13 +194,14 @@ class Codetot_Woocommerce_Layout_Archive
 
   public function page_block_open() {
     $class = 'page-block';
+    $sidebar_layout = '';
 
     if ( is_shop() ) :
       $class .= ' page-block--shop';
-      $sidebar_layout = codetot_get_theme_mod('shop_layout', 'woocommerce') ?? 'sidebar-left';
-    elseif( is_product_category() || is_product_tag()) :
+      $sidebar_layout = $this->shop_sidebar;
+    elseif( is_product_category() || is_product_tag() ) :
       $class .= ' page-block--product-category';
-      $sidebar_layout = codetot_get_theme_mod('product_category_layout', 'woocommerce') ?? 'sidebar-left';
+      $sidebar_layout = $this->product_category_sidebar;
     endif;
 
     $class .= !empty($sidebar_layout) ? ' ' . esc_attr($sidebar_layout) : '';
@@ -208,23 +212,47 @@ class Codetot_Woocommerce_Layout_Archive
       echo '<div class="' . esc_attr($class) . '" data-block="page-block">';
       echo '<div class="container page-block__container">';
       do_action('codetot_archive_product_after_container');
-      echo '<div class="grid page-block__grid">';
-      echo '<div class="grid__col page-block__col page-block__col--main">';
+
+      if (in_array($sidebar_layout, array('sidebar-left', 'sidebar-right'))) :
+        echo '<div class="grid page-block__grid">';
+        echo '<div class="grid__col page-block__col page-block__col--main">';
+      elseif ($sidebar_layout === 'top-sidebar') :
+        echo '<div class="page-block__top-sidebar">';
+        dynamic_sidebar('product-category-sidebar');
+        echo '</div>';
+      endif;
+
       do_action('codetot_product_archive_after_page_block_main');
     endif;
   }
 
   public function page_block_between() {
+    if ( is_shop() ) :
+      $sidebar_layout = $this->shop_sidebar;
+    elseif( is_product_category() || is_product_tag() ) :
+      $sidebar_layout = $this->product_category_sidebar;
+    endif;
+
     if (is_shop() || is_product_category() || is_product_tag()) :
-      echo '</div>'; // Close .page-block__col--main
-      echo '<div class="grid__col page-block__col page-block__col--sidebar">';
+      if (in_array($sidebar_layout, array('sidebar-left', 'sidebar-right'))) :
+        echo '</div>'; // Close .page-block__col--main
+        echo '<div class="grid__col page-block__col page-block__col--sidebar">';
+      endif;
     endif;
   }
 
   public function page_block_close() {
+    if ( is_shop() ) :
+      $sidebar_layout = $this->shop_sidebar;
+    elseif( is_product_category() || is_product_tag() ) :
+      $sidebar_layout = $this->product_category_sidebar;
+    endif;
+
     if (is_shop() || is_product_category() || is_product_tag()) :
-      echo '</div>'; // close .page-block__col--sidebar
-      echo '</div>'; // close .page-block__grid
+      if (in_array($sidebar_layout, array('sidebar-left', 'sidebar-right'))) :
+        echo '</div>'; // close .page-block__col--sidebar
+        echo '</div>'; // close .page-block__grid
+      endif;
       echo '</div>'; // close .page-block__container
       echo '</div>'; // close .page-block--product-category
     endif;

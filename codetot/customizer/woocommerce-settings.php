@@ -53,6 +53,8 @@ class Codetot_Customizer_Woocommerce_Settings {
         'title'    => esc_html__('[CT] WooCommerce Settings', 'ct-bones'),
       )
     );
+
+    return $wp_customize;
   }
 
   public function register_addon_settings($wp_customize) {
@@ -120,6 +122,7 @@ class Codetot_Customizer_Woocommerce_Settings {
         'label' => sprintf(__('%s Layout', 'ct-bones'), $layout_label),
         'setting_args' => array('default' => 'no-sidebar'),
         'section_settings_id' => $section_settings_id,
+        'option_type' => $this->settings_id,
         'control_args' => array(
           'type'     => 'select',
           'choices'  => $options
