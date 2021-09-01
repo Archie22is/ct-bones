@@ -24,6 +24,7 @@ include_once CODETOT_DIR . '/helpers/template-tags.php';
  */
 include_once CODETOT_DIR . '/customizer/helpers.php';
 require_once CODETOT_DIR . '/customizer/settings.php';
+require_once CODETOT_DIR . '/customizer/pro-settings.php';
 if (class_exists('WooCommerce')) {
   require_once CODETOT_DIR . '/customizer/woocommerce-settings.php';
 }
