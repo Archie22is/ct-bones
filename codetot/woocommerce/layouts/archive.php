@@ -94,6 +94,8 @@ class Codetot_Woocommerce_Layout_Archive
 
     add_action('woocommerce_shop_loop_item_title', array($this, 'add_template_loop_product_title'), 10);
     add_action('woocommerce_after_shop_loop_item', array($this, 'loop_product_content_close'), 50);
+
+    add_action('codetot_archive_product_after_container', 'codetot_archive_product_mobile_filter_button', 5);
   }
 
   public function archive_title()
@@ -205,11 +207,7 @@ class Codetot_Woocommerce_Layout_Archive
     if (is_shop() || is_product_category() || is_product_tag()) :
       echo '<div class="' . esc_attr($class) . '" data-block="page-block">';
       echo '<div class="container page-block__container">';
-      the_block('page-block-mobile-trigger', array(
-        'class' => 'has-icon',
-        'button_icon' => codetot_svg('menu', false),
-        'button_text' => esc_html__('Filter', 'woocommerce')
-      ));
+      do_action('codetot_archive_product_after_container');
       echo '<div class="grid page-block__grid">';
       echo '<div class="grid__col page-block__col page-block__col--main">';
       do_action('codetot_product_archive_after_page_block_main');
@@ -396,6 +394,14 @@ class Codetot_Woocommerce_Layout_Archive
       ));
     }
   }
+}
+
+function codetot_archive_product_mobile_filter_button() {
+  the_block('page-block-mobile-trigger', array(
+    'class' => 'has-icon',
+    'button_icon' => codetot_svg('menu', false),
+    'button_text' => esc_html__('Filter', 'woocommerce')
+  ));
 }
 
 Codetot_Woocommerce_Layout_Archive::instance();
