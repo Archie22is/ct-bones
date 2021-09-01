@@ -63,12 +63,13 @@ function codetot_render_viewed_products_section($class = '') {
     return;
   }
 
-  $columns = codetot_get_theme_mod('single_product_viewed_products_column', 'woocommerce') ?? 4;
+  $columns = codetot_get_theme_mod('single_product_viewed_products_column', 'woocommerce') ?? '4-col';
+  $_columns = str_replace('-col', '', $columns);
   $enable_slider = codetot_get_theme_mod('single_product_viewed_products_enable_slider', 'woocommerce') ?? true;
   $enable_container = codetot_get_theme_mod('single_product_sections_enable_container', 'woocommerce') ?? false;
 
   $post_args = array(
-    'posts_per_page' => apply_filters('codetot_viewed_products_number', $columns),
+    'posts_per_page' => apply_filters('codetot_viewed_products_number', $_columns),
     'no_found_rows'  => 1,
     'post_status'    => 'publish',
     'post_type'      => 'product',
@@ -104,7 +105,7 @@ function codetot_render_viewed_products_section($class = '') {
       'class' => $_class,
       'title' => apply_filters( 'codetot_product_viewed_products_heading', __( 'Recently Viewed Products', 'woocommerce' )),
       'query' => $post_query,
-      'columns' => $columns
+      'columns' => $_columns
     ));
   endif;
 }
