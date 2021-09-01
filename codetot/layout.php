@@ -211,7 +211,7 @@ function codetot_breadcrumbs_html() {
 
 function codetot_layout_page_block_open_html()
 {
-  if (is_category()) {
+  if (is_category() || is_archive()) {
     $sidebar_layout = codetot_get_theme_mod('category_layout') ?? 'no-sidebar';
   } else {
     $sidebar_layout = codetot_get_theme_mod('post_layout') ?? 'no-sidebar';
