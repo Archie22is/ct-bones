@@ -64,6 +64,7 @@ function codetot_render_viewed_products_section($class = '') {
   }
 
   $columns = codetot_get_theme_mod('single_product_viewed_products_column', 'woocommerce') ?? 4;
+  $enable_slider = codetot_get_theme_mod('single_product_viewed_products_enable_slider', 'woocommerce') ?? true;
   $enable_container = codetot_get_theme_mod('single_product_sections_enable_container', 'woocommerce') ?? false;
 
   $post_args = array(
@@ -99,6 +100,7 @@ function codetot_render_viewed_products_section($class = '') {
       'loop_args' => array(
         'name' => 'viewed_products'
       ),
+      'enable_slider' => $enable_slider,
       'class' => $_class,
       'title' => apply_filters( 'codetot_product_viewed_products_heading', __( 'Recently Viewed Products', 'woocommerce' )),
       'query' => $post_query,
