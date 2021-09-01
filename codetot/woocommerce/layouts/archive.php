@@ -76,6 +76,7 @@ class Codetot_Woocommerce_Layout_Archive
   {
     add_action('codetot_product_archive_after_page_block_main', array($this, 'archive_title'), 10);
     add_action('codetot_product_archive_after_page_block_main', array($this, 'top_product_category_content'), 20);
+    add_action('codetot_product_archive_after_page_block_main', 'codetot_archive_product_top_widget', 25);
     add_action('codetot_after_header', array($this, 'breadcrumbs'), 10);
     add_action('codetot_after_header', array($this, 'page_block_open'), 50);
     add_action('woocommerce_after_shop_loop', array($this, 'bottom_product_category_content'), 10);
@@ -216,10 +217,6 @@ class Codetot_Woocommerce_Layout_Archive
       if (in_array($sidebar_layout, array('sidebar-left', 'sidebar-right'))) :
         echo '<div class="grid page-block__grid">';
         echo '<div class="grid__col page-block__col page-block__col--main">';
-      elseif ($sidebar_layout === 'top-sidebar') :
-        echo '<div class="page-block__top-sidebar">';
-        dynamic_sidebar('product-category-sidebar');
-        echo '</div>';
       endif;
 
       do_action('codetot_product_archive_after_page_block_main');
@@ -412,6 +409,20 @@ class Codetot_Woocommerce_Layout_Archive
       ));
     }
   }
+}
+
+function codetot_archive_product_top_widget() {
+  if ( is_shop() ) :
+    $sidebar_layout = codetot_get_theme_mod('shop_layout', 'woocommerce') ?? 'sidebar-left';
+  elseif( is_product_category() || is_product_tag() ) :
+    $sidebar_layout = codetot_get_theme_mod('product_category_layout', 'woocommerce') ?? 'sidebar-left';
+  endif;
+
+  if ($sidebar_layout === 'top-sidebar') :
+    echo '<div class="page-block__top-sidebar">';
+    dynamic_sidebar('product-category-sidebar');
+    echo '</div>';
+  endif;
 }
 
 function codetot_archive_product_mobile_filter_button() {
