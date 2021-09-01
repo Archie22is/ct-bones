@@ -27,6 +27,7 @@ class Codetot_Customizer_Woocommerce_Settings {
   private function __construct()
   {
     $this->settings_id = 'codetot_woocommerce_settings';
+    $this->panel_id = 'codetot_woocommerce_options';
 
     add_filter('codetot_theme_header_hide_elements_options', array($this, 'header_hide_elements_options'));
 
@@ -44,15 +45,15 @@ class Codetot_Customizer_Woocommerce_Settings {
   }
 
   public function register_panel_settings($wp_customize) {
-    $panel_id = 'codetot_woocommerce_options';
-
     $wp_customize->add_panel(
-      $panel_id,
+      $this->panel_id,
       array(
         'priority' => 70,
         'title'    => esc_html__('[CT] WooCommerce Settings', 'ct-bones'),
       )
     );
+
+    return $wp_customize;
   }
 
   public function register_addon_settings($wp_customize) {
@@ -67,19 +68,17 @@ class Codetot_Customizer_Woocommerce_Settings {
 
     $enable_features_count_text = sprintf(_n('%d feature', '%d features', count($enable_features), 'ct-bones'), count($enable_features));
 
-    codetot_customizer_register_section(array(
+    $this->register_section(array(
       'id' => $section_settings_id,
       'label' => sprintf(esc_html__('Addons (%s)', 'ct-bones'), $enable_features_count_text),
-      'panel' => 'codetot_woocommerce_options',
       'priority' => 10
     ), $wp_customize);
 
     foreach ($enable_features as $id => $label) {
-      codetot_customizer_register_control(array(
+      $this->register_control(array(
         'id' => $id,
         'label' => $label,
         'section_settings_id' => $section_settings_id,
-        'option_type' => 'codetot_woocommerce_settings',
         'control_args' => array(
           'type' => 'checkbox'
         )
@@ -92,10 +91,9 @@ class Codetot_Customizer_Woocommerce_Settings {
   public function register_global_layout_settings($wp_customize) {
     $section_settings_id = 'codetot_woocommerce_layout_settings';
 
-    codetot_customizer_register_section(array(
+    $this->register_section(array(
       'id' => $section_settings_id,
       'label' => esc_html__('Global Layout', 'ct-bones'),
-      'panel' => 'codetot_woocommerce_options',
       'priority' => 20
     ), $wp_customize);
 
@@ -104,26 +102,33 @@ class Codetot_Customizer_Woocommerce_Settings {
       'product' => esc_html__('Product Page', 'ct-bones'),
       'product_category' => esc_html__('Product Category', 'ct-bones')
     ));
+
     foreach ($layout_options as $layout_id => $layout_label) :
       $settings_id = $layout_id . '_layout';
+      $options = codetot_customizer_get_sidebar_options();
 
-      codetot_customizer_register_control(array(
+      if (in_array($layout_id, array('shop', 'product_category'))) {
+        $options = wp_parse_args(array(
+          'top-sidebar' => esc_html__('Top Sidebar', 'ct-bones')
+        ), $options);
+      }
+
+      $this->register_control(array(
         'id' => $settings_id,
         'label' => sprintf(__('%s Layout', 'ct-bones'), $layout_label),
         'setting_args' => array('default' => 'no-sidebar'),
         'section_settings_id' => $section_settings_id,
         'control_args' => array(
           'type'     => 'select',
-          'choices'  => codetot_customizer_get_sidebar_options()
+          'choices'  => $options
         )
       ), $wp_customize);
     endforeach;
 
-    codetot_customizer_register_control(array(
+    $this->register_control(array(
       'id' => 'quick_view_short_description',
       'label' => esc_html__('Display Short Description on Quick View popup', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
-      'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'checkbox'
       )
@@ -133,36 +138,33 @@ class Codetot_Customizer_Woocommerce_Settings {
   public function register_single_product_settings($wp_customize) {
     $section_settings_id = 'codetot_woocommerce_single_product_settings';
 
-    codetot_customizer_register_section(array(
+    $this->register_section(array(
       'id' => $section_settings_id,
       'label' => esc_html__('Single Product', 'ct-bones'),
-      'panel' => 'codetot_woocommerce_options',
       'priority' => 30
     ), $wp_customize);
 
-    codetot_customizer_register_control(array(
+    $this->register_control(array(
       'id' => 'single_product_gallery_thumbnail_column',
       'label' => esc_html__('Product Thumbnail Columns', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
-      'setting_args' => array('default' => 4),
-      'option_type' => $this->settings_id,
+      'setting_args' => array('default' => '4-col'),
       'control_args' => array(
         'type' => 'select',
         'choices' => apply_filters('single_product_gallery_thumbnail_column_options', array(
-          3 => esc_html__('3 Thumbnails', 'ct-bones'),
-          4 => esc_html__('4 Thumbnails', 'ct-bones'),
-          5 => esc_html__('5 Thumbnails', 'ct-bones'),
-          6 => esc_html__('6 Thumbnails', 'ct-bones')
+          '3-col' => esc_html__('3 Thumbnails', 'ct-bones'),
+          '4-col' => esc_html__('4 Thumbnails (Default)', 'ct-bones'),
+          '5-col' => esc_html__('5 Thumbnails', 'ct-bones'),
+          '6-col' => esc_html__('6 Thumbnails', 'ct-bones')
         ))
       )
     ), $wp_customize);
 
-    codetot_customizer_register_control(array(
+    $this->register_control(array(
       'id' => 'single_product_gallery_thumbnail_style',
       'label' => esc_html__('Product Thumbnail Style', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'setting_args' => array('default' => 'default'),
-      'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'select',
         'choices' => apply_filters('single_product_gallery_thumbnail_style_options', array(
@@ -172,23 +174,41 @@ class Codetot_Customizer_Woocommerce_Settings {
       )
     ), $wp_customize);
 
-    codetot_customizer_register_control(array(
+    $this->register_control(array(
       'id' => 'single_product_sections_enable_container',
       'label' => esc_html__('Sections: Enable Container', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'setting_args' => array('default' => 1),
-      'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'checkbox'
       )
     ), $wp_customize);
 
-    codetot_customizer_register_control(array(
+    $this->register_control(array(
+      'id' => 'single_product_enable_top_widget',
+      'label' => esc_html__('Enable Top Widget', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'setting_args' => array('default' => 1),
+      'control_args' => array(
+        'type' => 'checkbox'
+      )
+    ), $wp_customize);
+
+    $this->register_control(array(
+      'id' => 'single_product_enable_bottom_widget',
+      'label' => esc_html__('Enable Bottom Widget', 'ct-bones'),
+      'section_settings_id' => $section_settings_id,
+      'setting_args' => array('default' => 1),
+      'control_args' => array(
+        'type' => 'checkbox'
+      )
+    ), $wp_customize);
+
+    $this->register_control(array(
       'id' => 'single_product_cross_sell_column',
       'label' => esc_html__('Cross Sell Products: Column', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'setting_args' => array('default' => '4-col'),
-      'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'select',
         'choices' => wp_parse_args(array(
@@ -197,12 +217,11 @@ class Codetot_Customizer_Woocommerce_Settings {
       )
     ), $wp_customize);
 
-    codetot_customizer_register_control(array(
+    $this->register_control(array(
       'id' => 'single_product_upsell_column',
       'label' => esc_html__('Upsell Products: Column', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'setting_args' => array('default' => '4-col'),
-      'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'select',
         'choices' => wp_parse_args(array(
@@ -211,12 +230,11 @@ class Codetot_Customizer_Woocommerce_Settings {
       )
     ), $wp_customize);
 
-    codetot_customizer_register_control(array(
+    $this->register_control(array(
       'id' => 'single_product_viewed_products_column',
       'label' => esc_html__('Viewed Products: Column', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'setting_args' => array('default' => '4-col'),
-      'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'select',
         'choices' => wp_parse_args(array(
@@ -225,12 +243,11 @@ class Codetot_Customizer_Woocommerce_Settings {
       )
     ), $wp_customize);
 
-    codetot_customizer_register_control(array(
+    $this->register_control(array(
       'id' => 'single_product_related_products_column',
       'label' => esc_html__('Related Products: Column', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'setting_args' => array('default' => '4-col'),
-      'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'select',
         'choices' => wp_parse_args(array(
@@ -239,87 +256,79 @@ class Codetot_Customizer_Woocommerce_Settings {
       )
     ), $wp_customize);
 
-    codetot_customizer_register_control(array(
+    $this->register_control(array(
       'id' => 'single_product_cross_sell_enable_slider',
       'label' => esc_html__('Cross Sell Products: Enable Slider', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'setting_args' => array('default' => 0),
-      'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'checkbox'
       )
     ), $wp_customize);
 
-    codetot_customizer_register_control(array(
+    $this->register_control(array(
       'id' => 'single_product_upsell_enable_slider',
       'label' => esc_html__('Upsell Products: Enable Slider', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'setting_args' => array('default' => 0),
-      'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'checkbox'
       )
     ), $wp_customize);
 
-    codetot_customizer_register_control(array(
+    $this->register_control(array(
       'id' => 'single_product_viewed_products_enable_slider',
       'label' => esc_html__('Viewed Products: Enable Slider', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'setting_args' => array('default' => 0),
-      'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'checkbox'
       )
     ), $wp_customize);
 
-    codetot_customizer_register_control(array(
+    $this->register_control(array(
       'id' => 'single_product_related_products_enable_slider',
       'label' => esc_html__('Related Products: Enable Slider', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'setting_args' => array('default' => 0),
-      'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'checkbox'
       )
     ), $wp_customize);
 
-    codetot_customizer_register_control(array(
+    $this->register_control(array(
       'id' => 'single_product_enable_facebook_comment',
       'label' => esc_html__('Enable Facebook Comment', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
-      'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'checkbox'
       )
     ), $wp_customize);
 
-    codetot_customizer_register_control(array(
+    $this->register_control(array(
       'id' => 'single_product_facebook_comment_app_id',
       'label' => esc_html__('Facebook Comment App ID', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
-      'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'text',
         'placeholder' => esc_html__('Enter your Facebook app ID.', 'ct-bones')
       )
     ), $wp_customize);
 
-    codetot_customizer_register_control(array(
+    $this->register_control(array(
       'id' => 'single_product_hide_product_stock_status',
       'label' => esc_html__('Hide Product Stock Status', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
-      'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'checkbox'
       )
     ), $wp_customize);
 
-    codetot_customizer_register_control(array(
+    $this->register_control(array(
       'id' => 'single_product_countdown_style',
       'label' => esc_html__('Countdown Style', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
       'setting_args' => array('default' => 'default'),
-      'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'select',
         'description' => esc_html__('You must enable Countdown feature to apply those settings.', 'ct-bones'),
@@ -346,15 +355,35 @@ class Codetot_Customizer_Woocommerce_Settings {
       'priority' => 100
     ), $wp_customize);
 
-    codetot_customizer_register_control(array(
+    $this->register_control(array(
       'id' => 'hide_sticky_bar_editing_products',
       'label' => esc_html__('Admin: Hide sticky bar when editing products', 'ct-bones'),
       'section_settings_id' => $section_settings_id,
-      'option_type' => $this->settings_id,
       'control_args' => array(
         'type' => 'checkbox'
       )
     ), $wp_customize);
+
+    return $wp_customize;
+  }
+
+  public function register_section($args, $wp_customize) {
+    codetot_customizer_register_section(array(
+      'id' => $args['id'],
+      'label' => $args['label'],
+      'panel' => $this->panel_id,
+      'priority' => $args['priority']
+    ), $wp_customize);
+
+    return $wp_customize;
+  }
+
+  public function register_control($args, $wp_customize) {
+    $final_args = wp_parse_args(array(
+      'option_type' => $this->settings_id
+    ), $args);
+
+    codetot_customizer_register_control($final_args, $wp_customize);
 
     return $wp_customize;
   }

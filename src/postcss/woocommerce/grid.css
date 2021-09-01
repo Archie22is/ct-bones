@@ -3,9 +3,7 @@
   display: flex;
   flex-direction: column;
 
-  & .product__inner {
-    flex: 1 0 auto;
-
+  &.change-image {
     &:hover {
       & .product__image-hover {
         @media (--m) {
@@ -17,6 +15,10 @@
         }
       }
     }
+  }
+
+  & .product__inner {
+    flex: 1 0 auto;
   }
 
   &.outofstock {
@@ -368,11 +370,6 @@
       flex-direction: column;
       flex: 1 1 0;
       padding: 10px;
-    }
-
-    & .product__title {
-      max-height: 44px;
-      overflow: hidden;
     }
 
     & .product__price {
