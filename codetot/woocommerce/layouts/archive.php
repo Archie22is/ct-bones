@@ -240,16 +240,6 @@ class Codetot_Woocommerce_Layout_Archive
     echo '</div>'; // close .product-grid
   }
 
-  public function long_description_category()
-  {
-    $curent_obj_id = get_queried_object_id();
-    $long_description = get_field('description_product', 'product_cat_' . $curent_obj_id);
-
-    if (!empty($long_description)) {
-      echo '<div class="page-block__footer">' . $long_description . '</div>';
-    }
-  }
-
   public function change_woocommerce_arrow_pagination($args)
   {
     $args['prev_text'] = esc_attr__('Previous');
