@@ -156,7 +156,7 @@ class Codetot_Woocommerce_Layout_Archive
 
   public function bottom_product_category_content() {
     if (is_product_category()) {
-      $this->display_product_category_content('bottom_content', 'message-block--archive-top-content');
+      $this->display_product_category_content('bottom_content', 'message-block--archive-bottom-content');
     }
   }
 
