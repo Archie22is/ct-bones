@@ -113,23 +113,29 @@ class Codetot_WooCommerce_Init
       ));
     endif;
 
-    register_sidebar(array(
-      'name' => __('Top Product Sidebar', 'ct-bones'),
-      'id' => 'top-product-sidebar',
-      'before_widget' => '<aside id="%1$s" class="widget widget--top-product %2$s"><div class="widget__inner">',
-      'after_widget' => '</div></aside>',
-      'before_title' => '<p class="widget__title">',
-      'after_title' => '</p>'
-    ));
+    $enable_top_widget = codetot_get_theme_mod('single_product_enable_top_widget', 'woocommerce') ?? true;
+    if ($enable_top_widget) :
+      register_sidebar(array(
+        'name' => __('Top Product Sidebar', 'ct-bones'),
+        'id' => 'top-product-sidebar',
+        'before_widget' => '<aside id="%1$s" class="widget widget--top-product %2$s"><div class="widget__inner">',
+        'after_widget' => '</div></aside>',
+        'before_title' => '<p class="widget__title">',
+        'after_title' => '</p>'
+      ));
+    endif;
 
-    register_sidebar(array(
-      'name' => __('Bottom Product Sidebar', 'ct-bones'),
-      'id' => 'bottom-product-sidebar',
-      'before_widget' => '<aside id="%1$s" class="widget widget--bottom-product %2$s"><div class="widget__inner">',
-      'after_widget' => '</div></aside>',
-      'before_title' => '<p class="widget__title">',
-      'after_title' => '</p>'
-    ));
+    $enable_bottom_widget = codetot_get_theme_mod('single_product_enable_bottom_widget', 'woocommerce') ?? true;
+    if ($enable_bottom_widget) :
+      register_sidebar(array(
+        'name' => __('Bottom Product Sidebar', 'ct-bones'),
+        'id' => 'bottom-product-sidebar',
+        'before_widget' => '<aside id="%1$s" class="widget widget--bottom-product %2$s"><div class="widget__inner">',
+        'after_widget' => '</div></aside>',
+        'before_title' => '<p class="widget__title">',
+        'after_title' => '</p>'
+      ));
+    endif;
 
     $product_category_sidebar_layout = codetot_get_theme_mod('product_category_layout', 'woocommerce') ?? 'sidebar-left';
     if ($product_category_sidebar_layout !== 'no-sidebar') :
@@ -193,6 +199,10 @@ class Codetot_WooCommerce_Init
       CODETOT_VERSION,
       true
     );
+
+    if (is_singular('product')) {
+      wp_enqueue_script('woo-variation-swatches-pro');
+    }
 
     if (is_cart()) {
       wp_enqueue_script(

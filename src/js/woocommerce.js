@@ -6,6 +6,7 @@ import {
   trigger,
   delegate,
   closest,
+  addClass,
   hasClass,
   getData
 } from 'lib/dom'
@@ -39,19 +40,28 @@ const initImageHoverProductCard = () => {
   delegate(
     'mouseover',
     debounce(e => {
-      const parentEl = hasClass('.js-product-inner', e.target)
+      const wrapperEl = hasClass('js-product-inner', e.target)
         ? e.target
         : closest('.js-product-inner', e.target)
-      const imageHoverEl = parentEl ? select('.js-hover-image', parentEl) : null
+      const imageHoverEl = wrapperEl
+        ? select('.js-hover-image', wrapperEl)
+        : null
       const hoverImageUrl = imageHoverEl
         ? getData('image-url', imageHoverEl)
         : null
+      const parentEl = closest('.product', wrapperEl)
 
       if (hoverImageUrl && !imageHoverEl.innerHTML) {
         imageHoverEl.innerHTML = getProductImageMarkup(hoverImageUrl)
+
+        addClass('hover-image-loaded', parentEl)
+      }
+
+      if (!hasClass('wvs-pro-product', parentEl)) {
+        addClass('change-image', parentEl)
       }
     }, 100),
-    '.product__inner',
+    '.js-product-inner',
     document.body
   )
 }
