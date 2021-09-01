@@ -451,6 +451,9 @@ function codetot_render_related_products($class = '') {
   if ($columns !== 'hide') :
 
     the_block('product-grid', array(
+      'loop_args' => array(
+        'name' => 'related_products'
+      ),
       'class' => $_class,
       'enable_slider' => $enable_slider,
       'title' => apply_filters( 'woocommerce_product_related_products_heading', __( 'Related products', 'woocommerce' ) ),
@@ -493,6 +496,9 @@ function codetot_render_cross_sell_products($class = '') {
 
   if ($columns !== 'hide') :
     the_block('product-grid', array(
+      'loop_args' => array(
+        'name' => 'cross_sell_products'
+      ),
       'class' => $_class,
       'enable_slider' => $enable_slider,
       'title' => apply_filters( 'woocommerce_product_cross_sells_products_heading', __( 'You may be interested in&hellip;', 'woocommerce' )),
@@ -524,6 +530,9 @@ function codetot_render_upsell_sections($class = '') {
 
   if ($columns !== 'hide') :
     the_block('product-grid', array(
+      'loop_args' => array(
+        'name' => 'upsell_products'
+      ),
       'class' => $_class,
       'enable_slider' => $enable_slider,
       'title' => apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'woocommerce' ) ),
@@ -541,13 +550,10 @@ function codetot_woocommerce_single_meta_tag() {
 }
 
 function codetot_woocommerce_single_meta() {
-  global $product;
-
   echo  '<div class="mt-05 single-product-meta">';
   do_action( 'woocommerce_product_meta_start' );
   do_action( 'woocommerce_product_meta_end' );
   echo '</div>' ;
-
 }
 
 function codetot_render_product_sku_meta() {

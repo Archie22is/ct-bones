@@ -96,6 +96,9 @@ function codetot_render_viewed_products_section($class = '') {
 
   if ($post_query->have_posts()) :
     the_block('product-grid', array(
+      'loop_args' => array(
+        'name' => 'viewed_products'
+      ),
       'class' => $_class,
       'title' => apply_filters( 'codetot_product_viewed_products_heading', __( 'Recently Viewed Products', 'woocommerce' )),
       'query' => $post_query,
