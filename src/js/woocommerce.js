@@ -43,7 +43,9 @@ const initImageHoverProductCard = () => {
       const wrapperEl = hasClass('js-product-inner', e.target)
         ? e.target
         : closest('.js-product-inner', e.target)
-      const imageHoverEl = wrapperEl ? select('.js-hover-image', wrapperEl) : null
+      const imageHoverEl = wrapperEl
+        ? select('.js-hover-image', wrapperEl)
+        : null
       const hoverImageUrl = imageHoverEl
         ? getData('image-url', imageHoverEl)
         : null
