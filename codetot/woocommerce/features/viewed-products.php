@@ -55,7 +55,7 @@ class Codetot_WooCommerce_Viewed_Products {
   }
 }
 
-function codetot_render_viewed_products_section() {
+function codetot_render_viewed_products_section($class = '') {
   $viewed_products = ! empty( $_COOKIE['woocommerce_recently_viewed'] ) ? (array) explode( '|', wp_unslash( $_COOKIE['woocommerce_recently_viewed'] ) ) : array(); // @codingStandardsIgnoreLine
   $viewed_products = array_reverse( array_filter( array_map( 'absint', $viewed_products ) ) );
 
@@ -64,6 +64,7 @@ function codetot_render_viewed_products_section() {
   }
 
   $columns = codetot_get_theme_mod('single_product_viewed_products_column', 'woocommerce') ?? 4;
+  $enable_container = codetot_get_theme_mod('single_product_sections_enable_container', 'woocommerce') ?? false;
 
   $post_args = array(
     'posts_per_page' => apply_filters('codetot_viewed_products_number', $columns),
@@ -89,7 +90,9 @@ function codetot_render_viewed_products_section() {
 
   $post_query = new WP_Query($_post_args);
 
-  $_class = 'section default-section--no-container product-grid--viewed-products';
+  $_class = 'section product-grid--viewed-products';
+  $_class .= $enable_container ? ' default-section--no-container' : '';
+  $_class .= !empty($class) ? ' ' . esc_html($class) : '';
 
   if ($post_query->have_posts()) :
     the_block('product-grid', array(
