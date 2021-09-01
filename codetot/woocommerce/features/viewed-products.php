@@ -91,7 +91,7 @@ function codetot_render_viewed_products_section($class = '') {
   $post_query = new WP_Query($_post_args);
 
   $_class = 'section product-grid--viewed-products';
-  $_class .= $enable_container ? ' default-section--no-container' : '';
+  $_class .= !$enable_container ? ' default-section--no-container' : '';
   $_class .= !empty($class) ? ' ' . esc_html($class) : '';
 
   if ($post_query->have_posts()) :
