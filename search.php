@@ -48,6 +48,8 @@ $post_column  = codetot_get_theme_mod('archive_post_column') ?? 3;
 
     else :
 
+      $post_column = apply_filters( 'loop_shop_columns', 4 );
+
       the_block('product-grid', array(
         'class' => 'section product-grid--search',
         'loop_args' => array(
