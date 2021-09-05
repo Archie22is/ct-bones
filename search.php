@@ -50,6 +50,10 @@ $post_column  = codetot_get_theme_mod('archive_post_column') ?? 3;
 
       the_block('product-grid', array(
         'class' => 'section product-grid--search',
+        'loop_args' => array(
+          'name' => 'search_products'
+        ),
+        'columns' => $post_column,
         'query' => $wp_query
       ));
 
