@@ -141,19 +141,6 @@ class Codetot_Theme_Layout
     add_action('codetot_footer', 'codetot_layout_page_block_close_html', 10);
   }
 
-  public function codetot_share_button() {
-    $hide_social_share = codetot_get_theme_mod('hide_social_share') ?? false;
-    if (!$hide_social_share) :
-      global $post;
-
-      the_block('social-links', array(
-        'class' => 'social-links--share',
-        'label' => __('Share', 'ct-theme'),
-        'items' => codetot_get_share_post_links($post)
-      ));
-    endif;
-  }
-
   public function generate_comments() {
     ob_start();
       if ( comments_open() || get_comments_number() ) :
