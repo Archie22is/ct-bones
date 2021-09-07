@@ -3,6 +3,11 @@
 // Prevent direct access.
 if (!defined('ABSPATH')) exit;
 
+/**
+ * Old Theme Settings via menu CT Theme
+ *
+ * @deprecated 5.7.0
+ */
 class Codetot_CT_Theme_Settings
 {
   /**
