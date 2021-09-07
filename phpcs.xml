@@ -15,7 +15,7 @@
 	<config name="minimum_supported_wp_version" value="5.0.0"/>
 	<rule ref="WordPress.WP.I18n">
 		<properties>
-			<property name="text_domain" value="ct-blocks"/>
+			<property name="text_domain" value="ct-bones"/>
 		</properties>
 	</rule>
 	<rule ref="WordPress-VIP-Go" />
@@ -23,7 +23,7 @@
 		<properties>
 			<property name="prefixes" type="array">
 				<element value="codetot"/>
-				<element value="ct_blocks"/>
+				<element value="ct_bones"/>
 			</property>
 		</properties>
 	</rule>
