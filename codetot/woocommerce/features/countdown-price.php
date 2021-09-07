@@ -44,12 +44,16 @@ class Codetot_WooCommerce_Countdown_Price
 				add_action('woocommerce_single_product_summary', array($this, 'render_countdown_block'), 12);
 			}, 20);
 
-			ob_start();
-			printf('var CODETOT_COUNTDOWN_LABELS = \'%s\'', json_encode($this->get_labels()));
-			$labels_js_content = ob_get_clean();
-
-			ct_bones_register_inline_script('codetot-countdown-labels', $labels_js_content);
+			add_action('wp_enqueue_scripts', array($this, 'load_assets'));
 		}
+	}
+
+	public function load_assets() {
+		ob_start();
+		printf('var CODETOT_COUNTDOWN_LABELS = \'%s\'', json_encode($this->get_labels()));
+		$labels_js_content = ob_get_clean();
+
+		ct_bones_register_inline_script('codetot-countdown-labels', $labels_js_content);
 	}
 
 	public function get_timezone()
