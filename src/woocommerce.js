@@ -11,8 +11,9 @@ import {
   getData
 } from 'lib/dom'
 import { debounce } from 'lib/utils'
-import { initQuantity } from './woocommerce/quantity'
-import { widgetProductCategories } from './woocommerce/widget-product-categories'
+import { initQuantity } from './js/woocommerce/quantity'
+import { widgetProductCategories } from './js/woocommerce/widget-product-categories'
+import './postcss/woocommerce.css'
 
 const $ = jQuery
 

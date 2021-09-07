@@ -1,6 +1,7 @@
 /* global codetotConfig */
 import { select, selectAll } from 'lib/dom'
 import { initStyle } from 'lib/scripts'
+import './postcss/frontend.css'
 
 const blocks = document.querySelectorAll('[data-block]')
 

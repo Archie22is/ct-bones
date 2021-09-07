@@ -168,7 +168,7 @@ class Codetot_Assets
 
   public function is_localhost()
   {
-    return !empty($_SERVER['HTTP_X_CODETOT_HEADER']) && $_SERVER['HTTP_X_CODETOT_HEADER'] === 'development';
+    return !empty($_SERVER['HTTP_X_CODETOT_PARENT_THEME_HEADER']) && $_SERVER['HTTP_X_CODETOT_PARENT_THEME_HEADER'] === 'development';
   }
 
   public function load_custom_color_options()
