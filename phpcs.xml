@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="CodeTot_Blocks">
-    <description>PHP Ruleset for Code Tot Blocks plugin.</description>
+<ruleset name="CodeTot_Bones">
+    <description>PHP Ruleset for Code Tot Bones theme.</description>
 	<arg name="extensions" value="php" />
 	<arg name="basepath" value="./" />
 	<file>./</file>
