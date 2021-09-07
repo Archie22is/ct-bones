@@ -76,7 +76,7 @@ class Codetot_Woocommerce_Layout_Checkout extends Codetot_Woocommerce_Layout
     add_filter('woocommerce_after_checkout_form', array($this, 'sticky_mobile_checkout_block'), 100);
 
     // Move shipping section
-    //add_filter('woocommerce_cart_ready_to_calc_shipping', '__return_false');
+    // add_filter('woocommerce_cart_ready_to_calc_shipping', '__return_false');
   }
 
   public function checkout_content()

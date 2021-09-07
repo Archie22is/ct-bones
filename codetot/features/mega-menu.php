@@ -25,8 +25,8 @@ class Codetot_Mega_Menu
   }
 
   /**
- * Class constructor
- */
+   * Class constructor
+   */
   public function __construct()
   {
     $enable_mega_menu = codetot_get_theme_mod('enable_mega_menu', 'pro') ?? true;

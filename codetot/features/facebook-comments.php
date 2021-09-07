@@ -25,8 +25,8 @@ class Codetot_Facebook_Comments
   }
 
     /**
-   * Class constructor
-   */
+     * Class constructor
+     */
   public function __construct()
   {
     $enable_post_comment = codetot_get_theme_mod('single_post_enable_facebook_comment') ?? false;
@@ -65,6 +65,7 @@ class Codetot_Facebook_Comments
    * Load Javascript SDK
    *
    * Taken from https://developers.facebook.com/docs/plugins/comments
+   *
    * @return void
    */
   public function load_script() {

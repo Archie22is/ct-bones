@@ -62,4 +62,4 @@ if (!empty($url)) :
 else :
   printf('<button class="%1$s"%2$s>%3$s</button>', esc_attr($_class), $_attr, $content);
 endif;
-?>
+

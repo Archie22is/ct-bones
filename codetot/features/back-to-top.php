@@ -25,8 +25,8 @@ class Codetot_Back_To_Top
   }
 
     /**
-   * Class constructor
-   */
+     * Class constructor
+     */
   public function __construct()
   {
     $enable = codetot_get_theme_mod('enable_back_to_top', 'pro') ?? true;

@@ -1049,7 +1049,7 @@ class Codetot_Breadcrumb
   /**
    * Adds a post's terms from a specific taxonomy to the items array.
    *
-   * @param int $post_id The ID of the post to get the terms for.
+   * @param int    $post_id The ID of the post to get the terms for.
    * @param string $taxonomy The taxonomy to get the terms from.
    * @return void
    * @since  1.0.0
@@ -1147,7 +1147,7 @@ class Codetot_Breadcrumb
    * Searches for term parents of hierarchical taxonomies.  This function is similar to the WordPress
    * function get_category_parents() but handles any type of taxonomy.
    *
-   * @param int $term_id ID of the term to get the parents of.
+   * @param int    $term_id ID of the term to get the parents of.
    * @param string $taxonomy Name of the taxonomy for the given term.
    * @return void
    * @since  1.0.0
@@ -1182,9 +1182,9 @@ class Codetot_Breadcrumb
    * post type.  In the future, maybe it'll handle a wider variety of possibilities, especially for custom post
    * types.
    *
-   * @param int $post_id ID of the post whose parents we want.
+   * @param int    $post_id ID of the post whose parents we want.
    * @param string $path Path of a potential parent page.
-   * @param array $args Mixed arguments for the menu.
+   * @param array  $args Mixed arguments for the menu.
    * @return array
    * @since  0.6.0
    * @access protected
