@@ -10,4 +10,7 @@ node_modules/
 .stylelintrc
 webpack.config.js
 src/postcss/mixins
+src/js/vendors/
 composer.json
+vendors/
+acf-json/*.json
