@@ -18,6 +18,7 @@ include_once CODETOT_DIR . '/helpers/acf.php';
 include_once CODETOT_DIR . '/helpers/metabox.php';
 include_once CODETOT_DIR . '/helpers/generator.php';
 include_once CODETOT_DIR . '/helpers/template-tags.php';
+include_once CODETOT_DIR . '/helpers/utils.php';
 
 /**
  * Customizer Support
@@ -30,6 +31,7 @@ if (class_exists('WooCommerce')) {
 }
 
 require_once CODETOT_DIR . '/theme-init.php';
+require_once CODETOT_DIR . '/typography.php';
 require_once CODETOT_DIR . '/assets.php';
 require_once CODETOT_DIR . '/api.php';
 require_once CODETOT_DIR . '/seo-support.php';

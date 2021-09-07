@@ -14,10 +14,6 @@ class Codetot_Assets
    * @var string
    */
   private $theme_environment;
-  /**
-   * @var array
-   */
-  private $premium_fonts;
 
   /**
    * Get singleton instance.
@@ -36,18 +32,14 @@ class Codetot_Assets
   {
     $this->theme_version = $this->is_localhost() ? substr(sha1(rand()), 0, 6) : CODETOT_VERSION;
     $this->theme_environment = $this->is_localhost() ? '' : '.min';
-    $this->premium_fonts = array_keys(codetot_premium_fonts());
 
     add_action('wp_head', array($this, 'register_pwa_meta'));
-    add_action('wp_enqueue_scripts', array($this, 'load_fonts'), 1);
-    add_action('wp_enqueue_scripts', array($this, 'load_font_size_scale'));
     add_action('wp_enqueue_scripts', array($this, 'load_frontend_js'), 20);
     add_action('wp_head', array($this, 'output_inline_styles'), 100);
 
     // Frontend inline css
     add_action('codetot_custom_style_css_before', array($this, 'default_variables_css_inline'));
     add_action('codetot_custom_style_css_variables', array($this, 'custom_color_options_css_inline'));
-    add_action('codetot_custom_style_css', array($this, 'custom_font_options_css_inline'));
   }
 
   public function register_pwa_meta()
@@ -55,88 +47,6 @@ class Codetot_Assets
     $primary_color = codetot_get_theme_mod('primary_color') ?? '#000';
 
     echo '<meta name="theme-color" content="' . esc_attr($primary_color). '">';
-  }
-
-  public function get_body_font() {
-    return codetot_get_theme_mod('body_font') ?? 'Averta';
-  }
-
-  public function get_heading_font() {
-    return codetot_get_theme_mod('heading_font') ?? 'Averta';
-  }
-
-  public function load_fonts()
-  {
-    $body_font = $this->get_body_font();
-    $heading_font = $this->get_heading_font();
-
-    if (empty($body_font) && empty($heading_font)) {
-      return;
-    }
-
-    if ($body_font == $heading_font) {
-      $this->load_font_local_or_google_fonts($body_font, 'body');
-    } else {
-      $this->load_font_local_or_google_fonts($body_font, 'body');
-      $this->load_font_local_or_google_fonts($heading_font, 'heading');
-    }
-  }
-
-  function load_font_local_or_google_fonts($font, $type)
-  {
-    if ($this->is_premium_font($font)) {
-      $local_font_css_file = $this->get_local_font_url($font);
-      $local_font_css_inline = file_exists($local_font_css_file) ? file_get_contents($local_font_css_file) : '';
-
-      if (!empty($local_font_css_inline)) {
-        $this->register_inline_style('codetot-premium-fonts-' . esc_attr($type), $this->update_font_assets_path($local_font_css_inline, $font));
-      }
-    } else {
-      $google_fonts_css_inline = $this->get_google_fonts_css_inline($font);
-
-      $this->register_inline_style('codetot-google-fonts', $google_fonts_css_inline);
-    }
-  }
-
-  function is_premium_font($font)
-  {
-    return in_array($font, $this->premium_fonts);
-  }
-
-  function get_local_font_url($font)
-  {
-    $font_path = $this->update_local_font_url($font);
-
-    return get_template_directory() . '/dynamic-assets/fonts/' . esc_attr($font_path) . '/font.css';
-  }
-
-  function update_local_font_url($font_name)
-  {
-    return strtolower(str_replace(' ', '-', $font_name));
-  }
-
-  function get_google_fonts_css_inline($font)
-  {
-    $font_path = $this->update_google_font_url($font);
-
-    return "@import url('https://fonts.googleapis.com/css?family=" . esc_attr($font_path) . ":wght@300;400;500;600;700&display=swap');";
-  }
-
-  function update_google_font_url($font_name)
-  {
-    return str_replace(' ', '+', $font_name);
-  }
-
-  public function load_font_size_scale()
-  {
-    $font_size_scale = codetot_get_theme_mod('font_scale') ?? '1125';
-
-    wp_enqueue_style(
-      'codetot-typography-style',
-      esc_url(get_template_directory_uri() . '/dynamic-assets/typography-style/' . $font_size_scale . '.css'),
-      [],
-      CODETOT_VERSION
-    );
   }
 
   public function load_frontend_js()
@@ -164,11 +74,6 @@ class Codetot_Assets
     );
 
     wp_localize_script('codetot-global-script', 'codetotConfig', $locale_settings);
-  }
-
-  public function is_localhost()
-  {
-    return !empty($_SERVER['HTTP_X_CODETOT_PARENT_THEME_HEADER']) && $_SERVER['HTTP_X_CODETOT_PARENT_THEME_HEADER'] === 'development';
   }
 
   public function load_custom_color_options()
@@ -200,36 +105,16 @@ class Codetot_Assets
     $file_content = file_exists($variables_file) ? file_get_contents($variables_file) : '';
 
     if (!empty($file_content)) {
-      echo $this->filter_css_variables($file_content);
+      echo ct_bones_filter_css_variables($file_content);
     } else {
       echo '/** No variables.css found **/';
     }
-  }
-
-  public function filter_css_variables($context) {
-    $context = preg_replace('/@custom-media(.*);/', '', $context);
-    $context = preg_replace('/\s+/', '', $context);
-
-    return $context;
   }
 
   public function custom_color_options_css_inline()
   {
     $variables_rows = $this->load_custom_color_options();
     echo implode('', $variables_rows);
-  }
-
-  public function custom_font_options_css_inline()
-  {
-    $body_font = $this->get_body_font();
-    $heading_font = $this->get_heading_font();
-
-    if (!empty($body_font)) {
-      echo 'body{font-family: ' . esc_attr($body_font) . ', sans-serif;}';
-    }
-    if (!empty($heading_font)) {
-      echo 'h1,h2,h3,h4,h5,h6{font-family: ' . esc_attr($heading_font) . ', sans-serif;}';
-    }
   }
 
   public function output_inline_styles()
@@ -243,42 +128,9 @@ class Codetot_Assets
     echo '</style>';
   }
 
-  /**
-   * @param $id
-   * @param $content
-   * @return bool
-   */
-  public function register_inline_style($id, $content)
+	public function is_localhost()
   {
-    if (empty($content)) {
-      return;
-    }
-
-    wp_register_style($id, false);
-    wp_enqueue_style($id);
-    return wp_add_inline_style($id, $this->minify_inline_css($content));
-  }
-
-  public function update_font_assets_path($content, $font)
-  {
-    $font_path = $this->update_local_font_url($font);
-
-    return str_replace('url(\'', 'url(\'' . get_template_directory_uri() . '/dynamic-assets/fonts/' . $font_path . '/', $content);
-  }
-
-  public function minify_inline_css($content)
-  {
-    $minified = str_replace("\n", "", $content);
-    $minified = str_replace("  ", " ", $minified);
-    $minified = str_replace("  ", " ", $minified);
-    $minified = str_replace(" {", "{", $minified);
-    $minified = str_replace("{ ", "{", $minified);
-    $minified = str_replace(" }", "}", $minified);
-    $minified = str_replace("} ", "}", $minified);
-    $minified = str_replace(", ", ",", $minified);
-    $minified = str_replace("; ", ";", $minified);
-
-    return str_replace(": ", ":", $minified);
+    return !empty($_SERVER['HTTP_X_CODETOT_PARENT_THEME_HEADER']) && $_SERVER['HTTP_X_CODETOT_PARENT_THEME_HEADER'] === 'development';
   }
 }
 
