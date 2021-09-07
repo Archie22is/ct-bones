@@ -87,7 +87,7 @@ module.exports = {
       patterns: [
         {
           from: '**/vendors/*.js',
-          to: '[path][name].min.[ext]',
+          to: '[path][name].min[ext]',
           context: path.resolve(process.cwd(), 'src/js/')
         },
         {
@@ -97,7 +97,7 @@ module.exports = {
         },
         {
           from: '**/svg/*.svg',
-          to: '[path][name].svg',
+          to: '[path][name][ext]',
           context: path.resolve(process.cwd(), 'src/')
         }
       ]
