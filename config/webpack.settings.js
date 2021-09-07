@@ -1,13 +1,11 @@
 module.exports = {
   entries: {
     // JS File
-    global: './src/js/global.js',
-    // CSS Files
-    'global-style': './src/postcss/global.css',
-    'first-screen-style': './src/postcss/first-screen.css',
-    'admin-acf-style': './src/postcss/admin-acf.css',
-    'woocommerce-style': './src/postcss/woocommerce.css',
-    'woocommerce-script': './src/js/woocommerce.js',
+    'frontend-script': './src/js/frontend.js',
+    'frontend-style': './src/postcss/frontend.css',
+    'admin-style': './src/postcss/admin.css',
+    'woo-frontend-style': './src/postcss/woocommerce.css',
+    'woo-frontend-script': './src/js/woocommerce.js',
     cart: './src/js/cart.js',
     checkout: './src/js/checkout.js'
   },
