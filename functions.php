@@ -39,7 +39,6 @@ require_once CODETOT_DIR . '/seo-support.php';
 require_once CODETOT_DIR . '/features/related-posts.php';
 
 // Admin
-require_once CODETOT_ADMIN_DIR . '/init.php';
 require_once CODETOT_ADMIN_DIR . '/acf.php';
 require_once CODETOT_ADMIN_DIR . '/ct-settings.php';
 if (defined('CT_THEME')) :
