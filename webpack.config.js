@@ -59,7 +59,7 @@ module.exports = {
                   'autoprefixer',
                   'postcss-import',
 									postcssMixins({
-										mixinsDir: path.resolve(process.cwd(), './src/postcss/mixins')
+										mixinsDir: path.resolve(process.cwd(), 'src/postcss/mixins')
 									}),
                   'postcss-preset-env',
                   postcssPresetEnv({
@@ -88,17 +88,17 @@ module.exports = {
         {
           from: '**/vendors/*.js',
           to: '[path][name].min.[ext]',
-          context: path.resolve(process.cwd(), './src/js/vendors')
+          context: path.resolve(process.cwd(), 'src/js/')
         },
         {
-          from: '**/*.{jpg,jpeg,png,gif}',
-          to: '[path][name].[ext]',
-          context: path.resolve(process.cwd(), './src/img/')
+          from: '**/img/*.{jpg,jpeg,png,gif}',
+          to: '[path][name][ext]',
+          context: path.resolve(process.cwd(), 'src/')
         },
         {
-          from: '**/*.svg',
-          to: '[path][name].[ext]',
-          context: path.resolve(process.cwd(), ',/src/svg/')
+          from: '**/svg/*.svg',
+          to: '[path][name].svg',
+          context: path.resolve(process.cwd(), 'src/')
         }
       ]
     }),

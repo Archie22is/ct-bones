@@ -75,7 +75,7 @@ const initBlocks = () => {
 				return
 			}
 
-			require(`./woocommerce-blocks/${blockName}.js`).default(block)
+			require(`./js/woocommerce-blocks/${blockName}.js`).default(block)
 		})
 	}
 }

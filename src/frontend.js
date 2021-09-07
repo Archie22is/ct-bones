@@ -13,7 +13,7 @@ const initBlocks = () => {
 				return
 			}
 
-			require(`./blocks/${blockName}.js`).default(block)
+			require(`./js/blocks/${blockName}.js`).default(block)
 		})
 	}
 }
