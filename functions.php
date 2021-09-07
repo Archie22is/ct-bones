@@ -9,7 +9,6 @@
  */
 define('CODETOT_DIR', get_template_directory() . '/codetot');
 define('CODETOT_ADMIN_DIR', get_template_directory() . '/codetot/admin');
-define('CODETOT_ADMIN_PATH', get_template_directory_uri() . '/codetot/admin');
 define('CODETOT_ADMIN_ASSETS_URI', get_template_directory_uri() . '/codetot/admin/assets');
 define('CODETOT_ASSETS_URI', get_template_directory_uri(). '/assets');
 
