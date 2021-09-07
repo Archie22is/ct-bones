@@ -55,6 +55,11 @@ class Codetot_Assets
       wp_enqueue_script('comment-reply');
     }
 
+    if (!wp_script_is('lazysizes', 'enqueued')) {
+      wp_register_script('lazysizes', get_template_directory_uri() . '/assets/vendors/lazysizes.min.js', array(), '5.2.2', false);
+      wp_enqueue_script('lazysizes');
+    }
+
     $locale_settings = array(
       'ajax' => array(
         'restUrl' => get_rest_url(null, 'codetot/v1'),
@@ -65,15 +70,16 @@ class Codetot_Assets
       'themePath' => get_template_directory_uri()
     );
 
-    wp_enqueue_script(
+    wp_register_script(
       'codetot-global-script',
-      get_template_directory_uri() . '/assets/js/global' . $this->theme_environment . '.js',
+      get_template_directory_uri() . '/assets/js/frontend' . $this->theme_environment . '.js',
       ['jquery'],
       $this->theme_version,
       true
     );
 
     wp_localize_script('codetot-global-script', 'codetotConfig', $locale_settings);
+    wp_enqueue_script('codetot-global-script');
   }
 
   public function load_custom_color_options()
