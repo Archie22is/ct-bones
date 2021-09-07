@@ -3,8 +3,9 @@
 /**
  * Display header layout based on selection.
  *
- * @package codetot
- * @version 0.0.1
+ * @package Codetot
+ * @subpackage Codetot_Google_Maps
+ * @since 0.0.1
  */
 
 // Prevent direct access.

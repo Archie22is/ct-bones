@@ -2,15 +2,16 @@
 
 add_action('init', 'codetot_sync_settings');
 
-function codetot_sync_settings() {
-  // Access url: site.com??upgrade=ct_theme
-  // Khi kiểm tra thấy dữ liệu có thể đồng bộ đúng, click vào nút Update settings ở cuối cùng
-  if (!empty($_GET['upgrade']) && $_GET['upgrade'] === 'ct_theme' && !WP_DEBUG) :
+function codetot_sync_settings()
+{
+    // Access url: site.com??upgrade=ct_theme
+    // Khi kiểm tra thấy dữ liệu có thể đồng bộ đúng, click vào nút Update settings ở cuối cùng
+    if (!empty($_GET['upgrade']) && $_GET['upgrade'] === 'ct_theme' && !WP_DEBUG) :
     echo '<h1>You must enable WP_DEBUG to continue.</h1>';
     exit;
-  endif;
+    endif;
 
-  if (!empty($_GET['upgrade']) && $_GET['upgrade'] === 'ct_theme' && WP_DEBUG) :
+    if (!empty($_GET['upgrade']) && $_GET['upgrade'] === 'ct_theme' && WP_DEBUG) :
     $old_settings = get_option('ct_theme');
     $existing_new_theme_settings = get_theme_mod('codetot_theme_settings');
     $existing_pro_settings = get_theme_mod('codetot_pro_settings');
@@ -113,18 +114,18 @@ function codetot_sync_settings() {
     echo '<p class="title">Mapping color schemas - theme -settings</p>';
     $color_keys = codetot_get_color_options();
     foreach ($color_keys as $color_key) {
-      $new_key = str_replace('codetot_', '', $color_key['id']);
-      $value = $old_settings[$color_key['id']];
+        $new_key = str_replace('codetot_', '', $color_key['id']);
+        $value = $old_settings[$color_key['id']];
 
-      echo '<p>';
-      echo "SUCCESS: Updating $new_key with value $value";
-      echo '</p>';
-      $new_theme_settings[$new_key] = $value;
+        echo '<p>';
+        echo "SUCCESS: Updating $new_key with value $value";
+        echo '</p>';
+        $new_theme_settings[$new_key] = $value;
     }
 
     echo '<p class="title">Mapping theme settings</p>';
     foreach ($exchange_theme_keys as $old_key => $new_key) {
-      if (!empty($old_settings[$old_key])) :
+        if (!empty($old_settings[$old_key])) :
         $new_value = str_replace('-columns', '', $old_settings[$old_key]);
 
         // Convert header custom to header-theme option
@@ -142,34 +143,32 @@ function codetot_sync_settings() {
           $new_value = $new_value . '-col';
         endif;
 
-        $new_theme_settings[$new_key] = $new_value;
-      else :
+        $new_theme_settings[$new_key] = $new_value; else :
         echo '<p>';
         echo "WARNING: $old_key has no value, but you could skip this warning.";
         echo '</p>';
-      endif;
+        endif;
     }
 
     echo '<p class="title">Mapping pro settings</p>';
     foreach ($exchange_pro_keys as $old_key => $new_key) {
-      if (isset($old_settings[$old_key])) :
+        if (isset($old_settings[$old_key])) :
         $new_value = $old_settings[$old_key];
 
         $pro_settings[$new_key] = $new_value;
 
         echo '<p>';
         echo "SUCCESS: Updating $new_key with value $new_value";
-        echo '</p>';
-      else :
+        echo '</p>'; else :
         echo '<p>';
         echo "WARNING: $old_key has no value, but you could skip this warning.";
         echo '</p>';
-      endif;
+        endif;
     }
 
     echo '<p class="title">Mapping woocommerce settings</p>';
     foreach ($exchange_woo_keys as $old_key => $new_key) {
-      if (isset($old_settings[$old_key])) :
+        if (isset($old_settings[$old_key])) :
         $new_value = $old_settings[$old_key];
 
         // Convert column from number x to 'x-col'
@@ -187,12 +186,11 @@ function codetot_sync_settings() {
 
         echo '<p>';
         echo "SUCCESS: Updating $new_key with value $new_value";
-        echo '</p>';
-      else :
+        echo '</p>'; else :
         echo '<p>';
         echo "WARNING: $old_key has no value, but you could skip this warning.";
         echo '</p>';
-      endif;
+        endif;
     }
 
     $old_theme_keys = wp_parse_args(array_keys($exchange_theme_keys), wp_list_pluck($color_keys, 'id'));
@@ -200,17 +198,17 @@ function codetot_sync_settings() {
     $woo_keys = array_keys($exchange_woo_keys);
 
     foreach ($old_settings as $key => $value) {
-      if (in_array($key, $old_theme_keys)) {
-        unset($old_settings[$key]);
-      }
+        if (in_array($key, $old_theme_keys)) {
+            unset($old_settings[$key]);
+        }
 
-      if (in_array($key, $pro_keys)) {
-        unset($old_settings[$key]);
-      }
+        if (in_array($key, $pro_keys)) {
+            unset($old_settings[$key]);
+        }
 
-      if (in_array($key, $woo_keys)) {
-        unset($old_settings[$key]);
-      }
+        if (in_array($key, $woo_keys)) {
+            unset($old_settings[$key]);
+        }
     }
 
     echo '<br><hr>';
@@ -248,20 +246,21 @@ function codetot_sync_settings() {
     global $wp;
     $current_url = home_url(add_query_arg(array($_GET), $wp->request));
 
-    printf('<p style="margin: 2em 0 4em;"><a class="button" href="%1$s">Update query</a></p>',
-      add_query_arg('action', 'update', $current_url)
+    printf(
+        '<p style="margin: 2em 0 4em;"><a class="button" href="%1$s">Update query</a></p>',
+        add_query_arg('action', 'update', $current_url)
     );
 
     if (isset($_GET['action']) && $_GET['action'] === 'update') {
-      set_theme_mod('codetot_theme_settings', $new_theme_settings);
-      set_theme_mod('codetot_pro_settings', $pro_settings);
-      set_theme_mod('codetot_woocommerce_settings', $woo_settings);
+        set_theme_mod('codetot_theme_settings', $new_theme_settings);
+        set_theme_mod('codetot_pro_settings', $pro_settings);
+        set_theme_mod('codetot_woocommerce_settings', $woo_settings);
 
-      echo '<p style="margin-bottom: 4em; color: green;">The process has been completed</p>';
+        echo '<p style="margin-bottom: 4em; color: green;">The process has been completed</p>';
     }
 
     exit;
 
 
-  endif;
+    endif;
 }

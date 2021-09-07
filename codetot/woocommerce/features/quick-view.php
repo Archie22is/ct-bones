@@ -6,10 +6,10 @@ if (!defined('ABSPATH')) {
 
 /**
  * @link       https://codetot.com
- * @since      1.0.0
+ * @since      4.8.0
  * @package    Codetot_Woocommerce
- * @subpackage Codetot_Woocommerce/includes/features
- * @author     CODE TOT JSC <khoi@codetot.com>
+ * @subpackage Codetot_Woocommerce_Quick_View
+ * @author     CODE TOT JSC <dev@codetot.com>
  */
 class Codetot_Woocommerce_Quick_View extends Codetot_Woocommerce_Layout
 {

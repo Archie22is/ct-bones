@@ -3,6 +3,13 @@
 // Prevent direct access.
 if (!defined('ABSPATH')) exit;
 
+/**
+ * @link       https://codetot.com
+ * @since      5.0.0
+ * @package    Codetot_Woocommerce
+ * @subpackage Codetot_WooCommerce_Countdown_Price
+ * @author     CODE TOT JSC <dev@codetot.com>
+ */
 class Codetot_WooCommerce_Countdown_Price
 {
 	/**

@@ -5,7 +5,8 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package CT_Bones
+ * @package Codetot
+ * @since 0.0.1
  */
 
 if (!function_exists('ct_bones_posted_on')) :

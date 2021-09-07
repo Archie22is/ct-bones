@@ -6,10 +6,10 @@ if (!defined('ABSPATH')) {
 
 /**
  * @link       https://codetot.com
- * @since      1.0.0
+ * @since      3.0.0
  * @package    Codetot_Woocommerce
- * @subpackage Codetot_Woocommerce/includes/features
- * @author     CODE TOT JSC <khoi@codetot.com>
+ * @subpackage Codetot_WooCommerce_Countdown_Price
+ * @author     CODE TOT JSC <dev@codetot.com>
  */
 class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout
 {

@@ -3,6 +3,13 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
+/**
+ * @link       https://codetot.com
+ * @since      4.8.0
+ * @package    Codetot_Woocommerce
+ * @subpackage Codetot_WooCommerce_Viewed_Products
+ * @author     CODE TOT JSC <dev@codetot.com>
+ */
 class Codetot_WooCommerce_Viewed_Products
 {
     /**

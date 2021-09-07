@@ -3,6 +3,13 @@ if (! defined('WPINC')) {
     die;
 }
 
+/**
+ * @link       https://codetot.com
+ * @since      5.1.0
+ * @package    Codetot_Woocommerce
+ * @subpackage Codetot_Woocommerce_Modal_Login
+ * @author     CODE TOT JSC <dev@codetot.com>
+ */
 class Codetot_Woocommerce_Modal_Login
 {
     private static $instance;

@@ -14,7 +14,7 @@ if ($display_sidebar) : ?>
   <?php do_action('codetot_before_sidebar'); ?>
 
   <aside id="secondary" class="widget-area">
-    <?php dynamic_sidebar( $sidebar ); ?>
+    <?php dynamic_sidebar($sidebar); ?>
   </aside><!-- #secondary -->
 
   <?php do_action('codetot_after_sidebar'); ?>
