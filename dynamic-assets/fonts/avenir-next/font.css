@@ -1,30 +1,29 @@
 @font-face {
-    font-family: 'Avenir Next';
-    src: url('AvenirNext-Medium.woff2') format('woff2'),
-        url('AvenirNext-Medium.woff') format('woff'),
-        url('AvenirNext-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
+	font-family: 'Avenir Next';
+	src: url('AvenirNext-Medium.woff2') format('woff2'),
+		url('AvenirNext-Medium.woff') format('woff'),
+		url('AvenirNext-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-    font-family: 'Avenir Next';
-    src: url('AvenirNext-Bold.woff2') format('woff2'),
-        url('AvenirNext-Bold.woff') format('woff'),
-        url('AvenirNext-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+	font-family: 'Avenir Next';
+	src: url('AvenirNext-Bold.woff2') format('woff2'),
+		url('AvenirNext-Bold.woff') format('woff'),
+		url('AvenirNext-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-    font-family: 'Avenir Next';
-    src: url('AvenirNext-Regular.woff2') format('woff2'),
-        url('AvenirNext-Regular.woff') format('woff'),
-        url('AvenirNext-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+	font-family: 'Avenir Next';
+	src: url('AvenirNext-Regular.woff2') format('woff2'),
+		url('AvenirNext-Regular.woff') format('woff'),
+		url('AvenirNext-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
 }
-

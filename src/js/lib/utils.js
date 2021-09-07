@@ -27,15 +27,15 @@ const not = val => !val
  * @return {Function} The curried function
  */
 const curry = (f, ...args) =>
-  args.length >= f.length ? f(...args) : curry.bind(this, f, ...args)
+	args.length >= f.length ? f(...args) : curry.bind(this, f, ...args)
 
 const allPass = fs => (...args) => {
-  for (let i = 0; i < fs.length; i++) {
-    if (!fs[i].apply(this, args)) {
-      return false
-    }
-  }
-  return true
+	for (let i = 0; i < fs.length; i++) {
+		if (!fs[i].apply(this, args)) {
+			return false
+		}
+	}
+	return true
 }
 
 /**
@@ -47,13 +47,13 @@ const allPass = fs => (...args) => {
  * @return {Function}
  */
 const anyPass = fs => (...args) => {
-  for (let i = 0; i < fs.length; i++) {
-    if (fs[i].apply(this, args)) {
-      return true
-    }
-  }
+	for (let i = 0; i < fs.length; i++) {
+		if (fs[i].apply(this, args)) {
+			return true
+		}
+	}
 
-  return false
+	return false
 }
 
 /**
@@ -68,13 +68,13 @@ const anyPass = fs => (...args) => {
  * @return {Function} Encapsulated function
  */
 const cond = pairs => (...args) => {
-  for (let i = 0; i < pairs.length; i++) {
-    if (pairs[i][0].apply(this, args)) {
-      return pairs[i][1].apply(this, args)
-    }
-  }
+	for (let i = 0; i < pairs.length; i++) {
+		if (pairs[i][0].apply(this, args)) {
+			return pairs[i][1].apply(this, args)
+		}
+	}
 
-  return undefined
+	return undefined
 }
 
 /**
@@ -86,16 +86,16 @@ const cond = pairs => (...args) => {
  * @return {Function} Encapsulated function
  */
 const ifElse = (p, fT, fF) =>
-  cond([
-    [p, fT],
-    [returnTrue, fF]
-  ])
+	cond([
+		[p, fT],
+		[returnTrue, fF]
+	])
 
 const when = (p, f) =>
-  cond([
-    [p, f],
-    [returnTrue, identity]
-  ])
+	cond([
+		[p, f],
+		[returnTrue, identity]
+	])
 
 /**
  * Functional wrapper for array map function.
@@ -106,7 +106,7 @@ const when = (p, f) =>
 const map = curry((f, arr) => (Array.isArray(arr) ? arr.map(f) : f(arr)))
 
 const filter = curry((f, arr) =>
-  Array.isArray(arr) ? arr.filter(f) : f(arr) ? arr : undefined
+	Array.isArray(arr) ? arr.filter(f) : f(arr) ? arr : undefined
 )
 
 /**
@@ -124,9 +124,9 @@ const partial = (f, ...args) => f.bind(this, ...args)
  * @return {*}
  */
 const pipe = (...funcs) =>
-  function (val) {
-    return funcs.reduce((acc, f) => f.apply(this, [acc]), val)
-  }
+	function (val) {
+		return funcs.reduce((acc, f) => f.apply(this, [acc]), val)
+	}
 
 const always = val => partial(val)
 
@@ -140,14 +140,14 @@ const always = val => partial(val)
  * @return {*}
  */
 const getProp = curry((prop, obj) => {
-  return obj[prop]
+	return obj[prop]
 })
 
 const lt = curry((b, a) => a < b)
 
 const setProp = curry((prop, value, obj) => {
-  obj[prop] = value
-  return obj
+	obj[prop] = value
+	return obj
 })
 
 /**
@@ -162,10 +162,10 @@ const setProp = curry((prop, value, obj) => {
  * @private
  */
 const _staggerCallback = (initial, step, callback, items) =>
-  items.reduce((delay, item) => {
-    setTimeout(() => callback(item), delay)
-    return delay + step
-  }, initial)
+	items.reduce((delay, item) => {
+		setTimeout(() => callback(item), delay)
+		return delay + step
+	}, initial)
 
 /**
  * Delay execution of callback used on individual items of a list.
@@ -192,15 +192,15 @@ const staggerCallback = curry(_staggerCallback)
  * @return {Function} Encapsulated function
  */
 const tryCatch = (tryer, catcher) => (...args) => {
-  try {
-    return tryer(...args)
-  } catch (e) {
-    return catcher(e, ...args)
-  }
+	try {
+		return tryer(...args)
+	} catch (e) {
+		return catcher(e, ...args)
+	}
 }
 
 const whileDo = (pred, fn, initial) =>
-  pred(initial) ? whileDo(pred, fn, fn(initial)) : initial
+	pred(initial) ? whileDo(pred, fn, fn(initial)) : initial
 
 const divide = curry((b, a) => a / b)
 const multiply = curry((b, a) => a * b)
@@ -224,7 +224,7 @@ const inArray = curry((array, item) => array.indexOf(item) !== -1)
  * @return {*}
  */
 const nth = curry((index, array) =>
-  index < 0 ? array[array.length + index] : array[index]
+	index < 0 ? array[array.length + index] : array[index]
 )
 
 /**
@@ -240,9 +240,9 @@ const add = curry((b, a) => a + b)
 const _add1ToLast = pipe(last, add(1))
 
 const range = (from, to) =>
-  whileDo(pipe(_add1ToLast, lt(to)), array => [...array, _add1ToLast(array)], [
-    from
-  ])
+	whileDo(pipe(_add1ToLast, lt(to)), array => [...array, _add1ToLast(array)], [
+		from
+	])
 
 const flipArgs = f => curry((arg1, arg2) => f.apply(this, [arg2, arg1]))
 
@@ -263,45 +263,45 @@ const makeArray = arrayLike => Array.prototype.slice.call(arrayLike)
  * @returns {*}
  */
 const log = val => {
-  console.log(val)
-  return val
+	console.log(val)
+	return val
 }
 
 const logWrap = fn => (...args) => log(fn.apply(this, args))
 
 const logArgs = fn => (...args) => {
-  log(args)
-  return fn.apply(this, args)
+	log(args)
+	return fn.apply(this, args)
 }
 
 const debounce = (callback, wait, context = this) => {
-  let timeout = null
-  let callbackArgs = null
+	let timeout = null
+	let callbackArgs = null
 
-  const later = () => callback.apply(context, callbackArgs)
+	const later = () => callback.apply(context, callbackArgs)
 
-  return function () {
-    callbackArgs = arguments
-    clearTimeout(timeout)
-    timeout = setTimeout(later, wait)
-  }
+	return function () {
+		callbackArgs = arguments
+		clearTimeout(timeout)
+		timeout = setTimeout(later, wait)
+	}
 }
 
 const then = curry((f, promise) => promise.then(f))
 const reject = curry((f, promise) => promise.catch(f))
 
 const parseOptions = (string, def = {}) => {
-  let options = {}
-  try {
-    options = JSON.parse(string)
-  } catch (e) {
-    console.warn('Invalid option JSON string.')
-    console.trace()
+	let options = {}
+	try {
+		options = JSON.parse(string)
+	} catch (e) {
+		console.warn('Invalid option JSON string.')
+		console.trace()
 
-    return def
-  }
+		return def
+	}
 
-  return Object.assign({}, def, options)
+	return Object.assign({}, def, options)
 }
 
 /**
@@ -312,66 +312,66 @@ const parseOptions = (string, def = {}) => {
  */
 
 const throttle = (fn, threshold, scope) => {
-  if (!threshold) {
-    threshold = 250
-  }
+	if (!threshold) {
+		threshold = 250
+	}
 
-  var last, deferTimer
+	var last, deferTimer
 
-  return function () {
-    var context = scope || this
-    var now = +new Date()
-    var args = arguments
+	return function () {
+		var context = scope || this
+		var now = +new Date()
+		var args = arguments
 
-    if (last && now < last + threshold) {
-      // hold on to it
-      clearTimeout(deferTimer)
-      deferTimer = setTimeout(function () {
-        last = now
-        fn.apply(context, args)
-      }, threshold)
-    } else {
-      last = now
-      fn.apply(context, args)
-    }
-  }
+		if (last && now < last + threshold) {
+			// hold on to it
+			clearTimeout(deferTimer)
+			deferTimer = setTimeout(function () {
+				last = now
+				fn.apply(context, args)
+			}, threshold)
+		} else {
+			last = now
+			fn.apply(context, args)
+		}
+	}
 }
 
 const doesSupportObjectFit = () => {
-  const i = document.createElement('img')
-  return 'objectFit' in i.style
+	const i = document.createElement('img')
+	return 'objectFit' in i.style
 }
 
 const doesSupportObjectPosition = () => {
-  const i = document.createElement('img')
-  return 'objectPosition' in i.style
+	const i = document.createElement('img')
+	return 'objectPosition' in i.style
 }
 
 const isMobile = {
-  Android: function () {
-    return navigator.userAgent.match(/Android/i)
-  },
-  BlackBerry: function () {
-    return navigator.userAgent.match(/BlackBerry/i)
-  },
-  iOS: function () {
-    return navigator.userAgent.match(/iPhone|iPad|iPod/i)
-  },
-  Opera: function () {
-    return navigator.userAgent.match(/Opera Mini/i)
-  },
-  Windows: function () {
-    return navigator.userAgent.match(/IEMobile/i)
-  },
-  any: function () {
-    return (
-      isMobile.Android() ||
-      isMobile.BlackBerry() ||
-      isMobile.iOS() ||
-      isMobile.Opera() ||
-      isMobile.Windows()
-    )
-  }
+	Android: function () {
+		return navigator.userAgent.match(/Android/i)
+	},
+	BlackBerry: function () {
+		return navigator.userAgent.match(/BlackBerry/i)
+	},
+	iOS: function () {
+		return navigator.userAgent.match(/iPhone|iPad|iPod/i)
+	},
+	Opera: function () {
+		return navigator.userAgent.match(/Opera Mini/i)
+	},
+	Windows: function () {
+		return navigator.userAgent.match(/IEMobile/i)
+	},
+	any: function () {
+		return (
+			isMobile.Android() ||
+			isMobile.BlackBerry() ||
+			isMobile.iOS() ||
+			isMobile.Opera() ||
+			isMobile.Windows()
+		)
+	}
 }
 
 /**
@@ -380,94 +380,94 @@ const isMobile = {
  * @param {String} url
  */
 const removeQueryArg = (param, url = window.location.href) => {
-  const [queryParams] = url.split('?')
-  let preservedQueryParams = ''
+	const [queryParams] = url.split('?')
+	let preservedQueryParams = ''
 
-  if (queryParams) {
-    preservedQueryParams = queryParams
-      .split('&')
-      .filter(
-        queryParam =>
-          !(queryParam === param || queryParam.startsWith(`${param}=`))
-      )
-      .join('&')
-  }
+	if (queryParams) {
+		preservedQueryParams = queryParams
+			.split('&')
+			.filter(
+				queryParam =>
+					!(queryParam === param || queryParam.startsWith(`${param}=`))
+			)
+			.join('&')
+	}
 
-  return preservedQueryParams
+	return preservedQueryParams
 }
 
 const getQueryVar = query => {
-  const match = RegExp('[?&]' + query + '=([^&]*)').exec(window.location.search)
+	const match = RegExp('[?&]' + query + '=([^&]*)').exec(window.location.search)
 
-  return match && decodeURIComponent(match[1].replace(/\+/g, ' '))
+	return match && decodeURIComponent(match[1].replace(/\+/g, ' '))
 }
 
 const initScript = (src, id = '') => {
-  const script = document.createElement('script')
-  script.src = src
-  script.async = true
-  if (id) {
-    script.id = id
-  }
-  document.getElementsByTagName('head')[0].appendChild(script)
+	const script = document.createElement('script')
+	script.src = src
+	script.async = true
+	if (id) {
+		script.id = id
+	}
+	document.getElementsByTagName('head')[0].appendChild(script)
 }
 
 const initStyle = (src, id = '') => {
-  const script = document.createElement('link')
-  script.rel = 'stylesheet'
-  script.href = src
-  if (id) {
-    script.id = id
-  }
-  document.head.appendChild(script)
+	const script = document.createElement('link')
+	script.rel = 'stylesheet'
+	script.href = src
+	if (id) {
+		script.id = id
+	}
+	document.head.appendChild(script)
 }
 
 export {
-  add,
-  allPass,
-  always,
-  anyPass,
-  cond,
-  count,
-  debounce,
-  doesSupportObjectFit,
-  doesSupportObjectPosition,
-  getQueryVar,
-  initScript,
-  initStyle,
-  log,
-  logArgs,
-  logWrap,
-  makeArray,
-  curry,
-  divide,
-  filter,
-  first,
-  flipArgs,
-  getProp,
-  identity,
-  ifElse,
-  inArray,
-  isMobile,
-  parseOptions,
-  last,
-  lt,
-  map,
-  multiply,
-  not,
-  nth,
-  partial,
-  pipe,
-  range,
-  returnTrue,
-  returnFalse,
-  removeQueryArg,
-  setProp,
-  staggerCallback,
-  then,
-  throttle,
-  reject,
-  tryCatch,
-  when,
-  whileDo
+	add,
+	allPass,
+	always,
+	anyPass,
+	cond,
+	count,
+	debounce,
+	doesSupportObjectFit,
+	doesSupportObjectPosition,
+	getQueryVar,
+	initScript,
+	initStyle,
+	log,
+	logArgs,
+	logWrap,
+	makeArray,
+	curry,
+	divide,
+	filter,
+	first,
+	flipArgs,
+	getProp,
+	identity,
+	ifElse,
+	inArray,
+	isMobile,
+	parseOptions,
+	last,
+	lt,
+	map,
+	multiply,
+	not,
+	nth,
+	partial,
+	pipe,
+	range,
+	returnTrue,
+	returnFalse,
+	removeQueryArg,
+	setProp,
+	staggerCallback,
+	then,
+	throttle,
+	reject,
+	tryCatch,
+	when,
+	whileDo
 }

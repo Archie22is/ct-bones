@@ -1,5 +1,5 @@
 .mobile-only {
-  @media (--xs) {
-    display: none;
-  }
+	@media (--xs) {
+		display: none;
+	}
 }

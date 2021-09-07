@@ -1,50 +1,50 @@
 .post-meta-list {
-  @mixin list-reset;
+	@mixin list-reset;
 
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-top: 0.5em;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	margin-top: 0.5em;
 }
 
 .post-meta-list__icon {
-  @mixin icon 16px;
+	@mixin icon 16px;
 
-  display: inline-flex;
-  align-items: center;
-  margin-right: 5px;
-  opacity: 0.5;
+	display: inline-flex;
+	align-items: center;
+	margin-right: 5px;
+	opacity: 0.5;
 }
 
 .post-meta-list__title,
 .post-meta-list__link {
-  font-size: 0.925rem;
+	font-size: 0.925rem;
 }
 
 .post-meta-list__title {
-  margin-right: 3px;
-  color: var(--dark);
+	margin-right: 3px;
+	color: var(--dark);
 }
 
 .post-meta-list__link {
-  display: inline-block;
-  padding-right: 3px;
-  color: var(--dark);
+	display: inline-block;
+	padding-right: 3px;
+	color: var(--dark);
 
-  @media (--m) {
-    &:hover {
-      color: var(--primary);
-      text-decoration: underline;
-    }
-  }
+	@media (--m) {
+		&:hover {
+			color: var(--primary);
+			text-decoration: underline;
+		}
+	}
 
-  &::after {
-    content: ', ';
-  }
+	&::after {
+		content: ', ';
+	}
 
-  &:last-child {
-    &::after {
-      content: none;
-    }
-  }
+	&:last-child {
+		&::after {
+			content: none;
+		}
+	}
 }

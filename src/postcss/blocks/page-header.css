@@ -1,28 +1,28 @@
 .page-header--no-container {
-  & .page-header__container {
-    max-width: 100%;
-    padding: 0;
-  }
+	& .page-header__container {
+		max-width: 100%;
+		padding: 0;
+	}
 }
 
 .page-header--account {
-  text-align: left;
+	text-align: left;
 
-  & .page-header__title {
-    @mixin h2;
-  }
+	& .page-header__title {
+		@mixin h2;
+	}
 }
 
 .page-header--archive,
 .page-header--single {
-  margin: 1em 0;
+	margin: 1em 0;
 }
 
 .page-header--account,
 .page-header--shop {
-  margin-bottom: 1em;
+	margin-bottom: 1em;
 }
 
 .page-header--404 {
-  text-align: center;
+	text-align: center;
 }

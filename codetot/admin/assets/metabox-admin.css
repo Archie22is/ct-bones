@@ -1,37 +1,37 @@
 .codetot-text-select .rwmb-input,
 .codetot-text-select .rwmb-label,
 .codetot-text-select .rwmb-label ~ .rwmb-input {
-  width: 100%;
+	width: 100%;
 }
 
 .codetot-text-select .rwmb-label {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .codetot-text-select .rwmb-label ~ .rwmb-input {
-  display: flex;
-  flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .codetot-text-select .rwmb-image-select {
-  width: calc(50% - 20px);
-  height: auto;
-  float: none;
+	width: calc(50% - 20px);
+	height: auto;
+	float: none;
 }
 
 @media screen and (min-width: 1024px) {
-  .codetot-text-select .rwmb-image-select {
-    width: calc(33.33% - 20px);
-  }
+	.codetot-text-select .rwmb-image-select {
+		width: calc(33.33% - 20px);
+	}
 }
 
 @media screen and (min-width: 1280px) {
-  .codetot-text-select .rwmb-image-select {
-    width: calc(16.66% - 20px);
-  }
+	.codetot-text-select .rwmb-image-select {
+		width: calc(16.66% - 20px);
+	}
 }
 
 .codetot-image-select .rwmb-image-select img,
 .codetot-text-select .rwmb-image-select img {
-  object-fit: contain;
+	object-fit: contain;
 }

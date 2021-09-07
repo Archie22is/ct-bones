@@ -1,72 +1,72 @@
 .widget ul.contact-shortcode,
 ul.contact-shortcode {
-  @mixin list-reset;
+	@mixin list-reset;
 
-  display: flex;
-  flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 
-  & li.contact-shortcode__item {
-    display: flex;
-    align-items: flex-start;
-    margin-top: 0;
+	& li.contact-shortcode__item {
+		display: flex;
+		align-items: flex-start;
+		margin-top: 0;
 
-    & a {
-      display: flex;
-      align-items: center;
-      color: var(--dark);
-      text-decoration: none;
+		& a {
+			display: flex;
+			align-items: center;
+			color: var(--dark);
+			text-decoration: none;
 
-      &:hover {
-        color: var(--primary);
-      }
-    }
-  }
+			&:hover {
+				color: var(--primary);
+			}
+		}
+	}
 }
 
 .header-topbar {
-  & .widget .ul.contact-shortcode,
-  & ul.contact-shortcode {
-    & .contact-shortcode__content {
-      font-size: 0.85rem;
-    }
+	& .widget .ul.contact-shortcode,
+	& ul.contact-shortcode {
+		& .contact-shortcode__content {
+			font-size: 0.85rem;
+		}
 
-    & li.contact-shortcode__item {
-      align-items: center;
-      margin-right: 1em;
-    }
-  }
+		& li.contact-shortcode__item {
+			align-items: center;
+			margin-right: 1em;
+		}
+	}
 }
 
 .contact-shortcode__icon {
-  @mixin icon 20px;
+	@mixin icon 20px;
 
-  display: flex;
-  margin-top: 0.15em;
-  margin-right: 0.5em;
+	display: flex;
+	margin-top: 0.15em;
+	margin-right: 0.5em;
 }
 
 .widget a.cart-shortcode,
 a.cart-shortcode {
-  position: relative;
-  display: inline-flex;
-  color: var(--dark);
+	position: relative;
+	display: inline-flex;
+	color: var(--dark);
 }
 
 .cart-shortcode__inner {
-  display: flex;
+	display: flex;
 }
 
 .cart-shortcode__count {
-  position: absolute;
-  right: 0;
-  top: 0;
-  display: inline-block;
-  color: var(--white);
-  background-color: var(--primary);
-  border-radius: 50%;
-  text-align: center;
-  width: 14px;
-  height: 14px;
-  font-size: 10px;
-  line-height: 14px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: inline-block;
+	color: var(--white);
+	background-color: var(--primary);
+	border-radius: 50%;
+	text-align: center;
+	width: 14px;
+	height: 14px;
+	font-size: 10px;
+	line-height: 14px;
 }

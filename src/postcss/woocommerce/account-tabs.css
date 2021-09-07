@@ -1,94 +1,94 @@
 .account-tabs__nav-list {
-  display: flex;
-  justify-content: center;
-  padding: 0 0 0 1em 0;
+	display: flex;
+	justify-content: center;
+	padding: 0 0 0 1em 0;
 }
 
 .account-tabs__nav-button {
-  position: relative;
-  margin-right: 1em;
-  padding-bottom: 0.5em;
-  opacity: 0.75;
-  transition: all 0.3s linear;
+	position: relative;
+	margin-right: 1em;
+	padding-bottom: 0.5em;
+	opacity: 0.75;
+	transition: all 0.3s linear;
 
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--dark);
-    transition: width 0.3s ease-in-out;
-  }
+	&::before {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0;
+		height: 1px;
+		background: var(--dark);
+		transition: width 0.3s ease-in-out;
+	}
 
-  &:last-child {
-    margin-right: 0;
-  }
+	&:last-child {
+		margin-right: 0;
+	}
 }
 
 .account-tabs__nav-button--active {
-  opacity: 1;
+	opacity: 1;
 
-  &::before {
-    width: 100%;
-  }
+	&::before {
+		width: 100%;
+	}
 }
 
 .account-tabs {
-  max-width: var(--xs);
-  margin: 1em auto 0;
-  overflow: hidden;
+	max-width: var(--xs);
+	margin: 1em auto 0;
+	overflow: hidden;
 
-  & .u-columns {
-    display: flex;
-    width: 200%;
-    transition: all 0.25s cubic-bezier(0.104, 0.204, 0.492, 1);
-  }
+	& .u-columns {
+		display: flex;
+		width: 200%;
+		transition: all 0.25s cubic-bezier(0.104, 0.204, 0.492, 1);
+	}
 
-  & .col-1,
-  & .col-2 {
-    width: 100%;
-    padding: 0 1px;
-    will-change: opacity;
+	& .col-1,
+	& .col-2 {
+		width: 100%;
+		padding: 0 1px;
+		will-change: opacity;
 
-    & h2 {
-      display: none;
-    }
-  }
+		& h2 {
+			display: none;
+		}
+	}
 
-  & .col-1 {
-    @mixin fade-in;
-  }
+	& .col-1 {
+		@mixin fade-in;
+	}
 
-  & .col-2 {
-    @mixin fade-out;
-  }
+	& .col-2 {
+		@mixin fade-out;
+	}
 }
 
 .account-tabs--register-screen {
-  & .u-columns {
-    transform: translateX(-50%);
-  }
+	& .u-columns {
+		transform: translateX(-50%);
+	}
 
-  & .col-1 {
-    @mixin fade-out;
-  }
+	& .col-1 {
+		@mixin fade-out;
+	}
 
-  & .col-2 {
-    @mixin fade-in;
-  }
+	& .col-2 {
+		@mixin fade-in;
+	}
 }
 
 .woocommerce-table--order-details,
 .woocommerce-table--order-details tr,
 .woocommerce-table--order-details td,
 .woocommerce-table--order-details th {
-  border: 1px solid var(--border);
-  border-radius: 0;
-  padding: var(--grid-gutter);
+	border: 1px solid var(--border);
+	border-radius: 0;
+	padding: var(--grid-gutter);
 }
 
 .woocommerce-table--order-details thead {
-  background: var(--border);
+	background: var(--border);
 }

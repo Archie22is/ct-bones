@@ -1,5 +1,5 @@
 const renderHtml = () => {
-  return `
+	return `
     <span class="single-product__price__bottom">
       <span class="single-product__price__label js-label"></span>
       <span class="single-product__price__countdown js-countdown">

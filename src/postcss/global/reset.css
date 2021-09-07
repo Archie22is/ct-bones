@@ -8,65 +8,65 @@ h5,
 h6,
 p,
 ul {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 button,
 input[type='button'],
 input[type='submit'] {
-  cursor: pointer;
+	cursor: pointer;
 
-  &:disabled {
-    cursor: not-allowed;
-  }
+	&:disabled {
+		cursor: not-allowed;
+	}
 
-  &:focus {
-    outline: 0;
-  }
+	&:focus {
+		outline: 0;
+	}
 }
 
 address {
-  font-style: normal;
+	font-style: normal;
 }
 
 ins,
 abbr[title] {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 fieldset {
-  margin: 0;
-  padding: 0;
-  border: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
 
-  & legend {
-    display: block;
-    margin: 1em 0 0;
-  }
+	& legend {
+		display: block;
+		margin: 1em 0 0;
+	}
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
+	width: 100%;
+	border-collapse: collapse;
 }
 
 svg {
-  width: 24px;
-  height: 24px;
+	width: 24px;
+	height: 24px;
 }
 
 button {
-  padding: 0;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
+	padding: 0;
+	background: transparent;
+	border: 0;
+	border-radius: 0;
 }
 
 pre {
-  white-space: break-spaces;
+	white-space: break-spaces;
 }

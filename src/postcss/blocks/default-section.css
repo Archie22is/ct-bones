@@ -1,152 +1,152 @@
 .default-section__header {
-  margin-bottom: 1em;
+	margin-bottom: 1em;
 
-  @media (--m) {
-    margin-bottom: 2em;
-  }
+	@media (--m) {
+		margin-bottom: 2em;
+	}
 }
 
 .default-section__description {
-  margin-top: 0.5em;
+	margin-top: 0.5em;
 }
 
 .default-section__footer {
-  margin-top: 1em;
+	margin-top: 1em;
 }
 
 .default-section__col {
-  @mixin column-item 1, 1em;
+	@mixin column-item 1, 1em;
 }
 
 .default-section.has-2-columns .default-section__col {
-  @media (--xs) {
-    @mixin column-item 2, 2em;
-  }
+	@media (--xs) {
+		@mixin column-item 2, 2em;
+	}
 }
 
 .default-section.has-3-columns .default-section__col {
-  @media (--m) {
-    @mixin column-item 3, 2em;
-  }
+	@media (--m) {
+		@mixin column-item 3, 2em;
+	}
 }
 
 .default-section.has-4-columns .default-section__col {
-  @media (--xs) {
-    @mixin column-item 2, 2em;
-  }
+	@media (--xs) {
+		@mixin column-item 2, 2em;
+	}
 
-  @media (--m) {
-    @mixin column-item 4, 2em;
-  }
+	@media (--m) {
+		@mixin column-item 4, 2em;
+	}
 }
 
 .default-section.has-5-columns .default-section__col {
-  @media (--xs) {
-    @mixin column-item 2, 2em;
-  }
+	@media (--xs) {
+		@mixin column-item 2, 2em;
+	}
 
-  @media (--m) {
-    @mixin column-item 5, 2em;
-  }
+	@media (--m) {
+		@mixin column-item 5, 2em;
+	}
 }
 
 .default-section.has-6-columns .default-section__col {
-  @media (--xs) {
-    @mixin column-item 2, 2em;
-  }
+	@media (--xs) {
+		@mixin column-item 2, 2em;
+	}
 
-  @media (--m) {
-    @mixin column-item 6, 2em;
-  }
+	@media (--m) {
+		@mixin column-item 6, 2em;
+	}
 }
 
 .default-section.is-header-center .default-section__header {
-  text-align: center;
+	text-align: center;
 
-  & .section-header {
-    text-align: center;
-  }
+	& .section-header {
+		text-align: center;
+	}
 }
 
 .default-section.is-header-right .default-section__header {
-  text-align: right;
+	text-align: right;
 
-  & .section-header {
-    text-align: right;
-  }
+	& .section-header {
+		text-align: right;
+	}
 }
 
 .default-section.is-footer-center .default-section__footer {
-  text-align: center;
+	text-align: center;
 
-  & .button-group {
-    justify-content: center;
-  }
+	& .button-group {
+		justify-content: center;
+	}
 }
 
 .default-section.is-footer-right .default-section__footer {
-  text-align: right;
+	text-align: right;
 }
 
 .default-section--no-container {
-  & .default-section__container {
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-  }
+	& .default-section__container {
+		max-width: 100%;
+		margin: 0;
+		padding: 0;
+	}
 }
 
 .default-section.has-lazyload {
-  & .default-section__container--main {
-    position: relative;
-  }
+	& .default-section__container--main {
+		position: relative;
+	}
 
-  & .default-section__inner--main,
-  & .loader {
-    transition: opacity 0.3s, visibility 0.3s;
-  }
+	& .default-section__inner--main,
+	& .loader {
+		transition: opacity 0.3s, visibility 0.3s;
+	}
 
-  & .loader {
-    @mixin fade-out;
-    @mixin abs-full;
-    @mixin flex-center;
+	& .loader {
+		@mixin fade-out;
+		@mixin abs-full;
+		@mixin flex-center;
 
-    pointer-events: none;
-  }
+		pointer-events: none;
+	}
 
-  &.is-loading {
-    & .default-section__container--main {
-      min-height: 80px;
-    }
+	&.is-loading {
+		& .default-section__container--main {
+			min-height: 80px;
+		}
 
-    & .default-section__inner--main {
-      @mixin fade-out;
+		& .default-section__inner--main {
+			@mixin fade-out;
 
-      z-index: 1;
-    }
+			z-index: 1;
+		}
 
-    & .loader {
-      @mixin fade-in;
+		& .loader {
+			@mixin fade-in;
 
-      pointer-events: visible;
-      z-index: 2;
-    }
-  }
+			pointer-events: visible;
+			z-index: 2;
+		}
+	}
 }
 
 .default-section.has-bg-image {
-  position: relative;
+	position: relative;
 
-  & .default-section__background-image {
-    @mixin abs-full;
+	& .default-section__background-image {
+		@mixin abs-full;
 
-    pointer-events: none;
-    z-index: 0;
+		pointer-events: none;
+		z-index: 0;
 
-    & .image__img {
-      @mixin abs-full;
+		& .image__img {
+			@mixin abs-full;
 
-      object-fit: cover;
-    }
-  }
+			object-fit: cover;
+		}
+	}
 }

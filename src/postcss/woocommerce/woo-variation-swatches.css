@@ -1,17 +1,17 @@
 .woo-variation-swatches.wvs-show-label .variations td label {
-  opacity: 0.75;
-  font-weight: var(--font-normal);
+	opacity: 0.75;
+	font-weight: var(--font-normal);
 }
 
 .woo-variation-swatches
-  .variations_form
-  .variations
-  .woo-selected-variation-item-name {
-  opacity: 1;
-  color: var(--primary);
-  font-weight: var(--font-bold);
+	.variations_form
+	.variations
+	.woo-selected-variation-item-name {
+	opacity: 1;
+	color: var(--primary);
+	font-weight: var(--font-bold);
 }
 
 .woo-variation-swatches .variable-items-wrapper .variable-item img {
-  object-fit: cover;
+	object-fit: cover;
 }
