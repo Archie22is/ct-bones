@@ -1,27 +1,27 @@
 .fw {
-  flex-wrap: wrap;
+	flex-wrap: wrap;
 }
 .fdc {
-  flex-direction: column;
+	flex-direction: column;
 }
 .ais {
-  align-items: flex-start;
+	align-items: flex-start;
 }
 .aic {
-  align-items: center;
+	align-items: center;
 }
 .aie {
-  align-items: flex-end;
+	align-items: flex-end;
 }
 .jcc {
-  justify-content: center;
+	justify-content: center;
 }
 .jce {
-  justify-content: flex-end;
+	justify-content: flex-end;
 }
 .jcb {
-  justify-content: space-between;
+	justify-content: space-between;
 }
 .fa1 {
-  flex-grow: 1;
+	flex-grow: 1;
 }

@@ -1,13 +1,13 @@
 .two-up-content__col {
-  width: 100%;
-  margin-bottom: 1em;
+	width: 100%;
+	margin-bottom: 1em;
 
-  &:last-child {
-    margin-bottom: 0;
-  }
+	&:last-child {
+		margin-bottom: 0;
+	}
 
-  @media (--s) {
-    width: 50%;
-    margin-bottom: 0;
-  }
+	@media (--s) {
+		width: 50%;
+		margin-bottom: 0;
+	}
 }

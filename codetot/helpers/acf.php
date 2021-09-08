@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Get contact section - primary layout settings
+ *
+ * @return array
+ */
 function codetot_primary_contact_layouts()
 {
     return array(
@@ -10,6 +15,9 @@ function codetot_primary_contact_layouts()
     );
 }
 
+/**
+ * Get contact section - secondary layout settings
+ */
 function codetot_secondary_contact_layouts()
 {
     return array(
@@ -20,6 +28,11 @@ function codetot_secondary_contact_layouts()
     );
 }
 
+/**
+ * Get image type
+ *
+ * @return array
+ */
 function codetot_image_types()
 {
     return apply_filters('codetot_image_types', array(
@@ -29,6 +42,11 @@ function codetot_image_types()
     ));
 }
 
+/**
+ * Get section vertical spaces
+ *
+ * @return array
+ */
 function codetot_block_vertical_spaces()
 {
     return apply_filters('codetot_block_vertical_spaces', array(
@@ -40,6 +58,11 @@ function codetot_block_vertical_spaces()
     ));
 }
 
+/**
+ * Get background types
+ *
+ * @return array
+ */
 function codetot_background_types()
 {
     return apply_filters('codetot_background_types', array(
@@ -53,6 +76,11 @@ function codetot_background_types()
     ));
 }
 
+/**
+ * Get background contracts
+ *
+ * @return array
+ */
 function codetot_background_contracts()
 {
     return apply_filters('codetot_background_contracts', array(
@@ -61,6 +89,11 @@ function codetot_background_contracts()
     ));
 }
 
+/**
+ * Get text alignments
+ *
+ * @return array
+ */
 function codetot_text_alignments()
 {
     return apply_filters('codetot_text_alignments', array(
@@ -70,6 +103,11 @@ function codetot_text_alignments()
     ));
 }
 
+/**
+ * Get button sizes
+ *
+ * @return array
+ */
 function codetot_button_sizes()
 {
     return apply_filters('codetot_button_sizes', array(
@@ -79,6 +117,11 @@ function codetot_button_sizes()
     ));
 }
 
+/**
+ * Get button targets
+ *
+ * @return array
+ */
 function codetot_button_targets()
 {
     return apply_filters('codetot_button_targets', array(
@@ -87,6 +130,11 @@ function codetot_button_targets()
     ));
 }
 
+/**
+ * Get button styles
+ *
+ * @return void
+ */
 function codetot_button_styles()
 {
     return apply_filters('codetot_button_styles', array(
@@ -100,6 +148,11 @@ function codetot_button_styles()
     ));
 }
 
+/**
+ * Get premium fonts
+ *
+ * @return array
+ */
 function codetot_premium_fonts()
 {
     return apply_filters('codetot_premium_fonts', array(
@@ -115,6 +168,11 @@ function codetot_premium_fonts()
     ));
 }
 
+/**
+ * Get Google fonts
+ *
+ * @return array
+ */
 function codetot_google_fonts()
 {
     return apply_filters('codetot_google_fonts', array(
@@ -130,6 +188,11 @@ function codetot_google_fonts()
     ));
 }
 
+/**
+ * Get Footer background colors
+ *
+ * @return array
+ */
 function codetot_footer_background_colors() {
     return array(
         'primary' => __('Brand', 'ct-bones'),
@@ -139,6 +202,11 @@ function codetot_footer_background_colors() {
       );
 }
 
+/**
+ * Get Header background colors
+ *
+ * @return array
+ */
 function codetot_header_background_colors() {
     return array(
         'primary' => __('Brand', 'ct-bones'),
@@ -148,6 +216,12 @@ function codetot_header_background_colors() {
     );
 }
 
+/**
+ * Undocumented function
+ *
+ * @return void
+ * @deprecated 5.7.0
+ */
 function codetot_footer_widget_columns() {
     return array(
         '2-columns' => CODETOT_ADMIN_ASSETS_URI . '/2-columns.svg',
@@ -156,6 +230,12 @@ function codetot_footer_widget_columns() {
       );
 }
 
+/**
+ * Undocumented function
+ *
+ * @return void
+ * @deprecated 5.7.0
+ */
 function codetot_sidebar_layouts()
 {
     return array(
@@ -165,6 +245,12 @@ function codetot_sidebar_layouts()
     );
 }
 
+/**
+ * Undocumented function
+ *
+ * @return void
+ * @deprecated 5.7.0
+ */
 function codetot_container_layout_options() {
   return array(
     'fullwidth' => __('Fullwidth', 'ct-bones'),
@@ -172,6 +258,12 @@ function codetot_container_layout_options() {
   );
 }
 
+/**
+ * Undocumented function
+ *
+ * @return void
+ * @deprecated 5.7.0
+ */
 function codetot_container_layouts() {
     return array(
         'boxed' => CODETOT_ADMIN_ASSETS_URI . '/container-boxed.svg',
@@ -179,6 +271,12 @@ function codetot_container_layouts() {
     );
 }
 
+/**
+ * Undocumented function
+ *
+ * @return array
+ * @deprecated 5.7.0
+ */
 function codetot_font_size_scales()
 {
     return array('1067', '1125', '1200', '1250', '1333', '1414');

@@ -98,7 +98,7 @@ class CodeTot_Admin {
 
   /**
    * @param array $settings
-   * @param bool $redirect
+   * @param bool  $redirect
    * @return bool
    */
   public function update_settings($settings, $redirect = true) {

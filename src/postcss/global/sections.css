@@ -1,21 +1,21 @@
 .section {
-  margin-top: var(--section-space);
+	margin-top: var(--section-space);
 
-  & + .section-bg {
-    margin-top: var(--section-space);
-  }
+	& + .section-bg {
+		margin-top: var(--section-space);
+	}
 }
 
 .section-bg {
-  padding: var(--section-space) 0;
+	padding: var(--section-space) 0;
 
-  & + .section {
-    margin-top: var(--section-space);
-  }
+	& + .section {
+		margin-top: var(--section-space);
+	}
 }
 
 .section--hide-mobile {
-  @media (--max-mobile) {
-    display: none;
-  }
+	@media (--max-mobile) {
+		display: none;
+	}
 }

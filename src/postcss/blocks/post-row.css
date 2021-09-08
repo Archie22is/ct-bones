@@ -1,44 +1,44 @@
 .post-row__meta-date {
-  color: var(--dark);
-  opacity: 0.75;
+	color: var(--dark);
+	opacity: 0.75;
 }
 
 .post-row__meta-link {
-  color: var(--primary);
+	color: var(--primary);
 
-  &:hover {
-    @media (--m) {
-      color: var(--dark);
-    }
-  }
+	&:hover {
+		@media (--m) {
+			color: var(--dark);
+		}
+	}
 }
 
 .post-row__col--image {
-  width: 100px;
+	width: 100px;
 
-  @media (--xs) {
-    width: 140px;
-  }
+	@media (--xs) {
+		width: 140px;
+	}
 
-  @media (--s) {
-    width: 200px;
-  }
+	@media (--s) {
+		width: 200px;
+	}
 
-  @media (--sm) {
-    width: 240px;
-  }
+	@media (--sm) {
+		width: 240px;
+	}
 }
 
 .post-row__col--content {
-  width: auto;
-  flex: 1 1 0;
+	width: auto;
+	flex: 1 1 0;
 }
 
 .post-row__description,
 .post-row__footer {
-  display: none;
+	display: none;
 
-  @media (--xs) {
-    display: block;
-  }
+	@media (--xs) {
+		display: block;
+	}
 }

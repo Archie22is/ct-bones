@@ -12,7 +12,7 @@
 @import url('global/sections.css');
 @import url('global/responsive.css');
 @import url('others/gravity-forms.css');
-@import url('blocks/image.css'); /** High priority **/
+@import url('blocks/image.css');
 @import url('wp/widgets.css');
 @import url('wp/content.css');
 @import url('wp/single-post.css');
@@ -21,6 +21,7 @@
 @import url('others/flickity.css');
 
 /** Header **/
+@import url('blocks/slideout-menu.css');
 @import url('blocks/header.css');
 @import url('blocks/header-topbar.css');
 @import url('blocks/page-header.css');
@@ -48,3 +49,16 @@
 /** First layout widgets **/
 @import url('blocks/ct-widget-icon.css');
 @import url('blocks/back-to-top.css');
+
+/* Glboal styles **/
+
+@import url('blocks/loader.css');
+@import url('blocks/social-links.css');
+@import url('blocks/post-meta-list.css');
+@import url('blocks/ct-widget-icon.css');
+@import url('blocks/two-up-content.css');
+
+/** Modals **/
+@import url('blocks/modal.css');
+@import url('blocks/modal-login.css');
+@import url('blocks/modal-search-form.css');

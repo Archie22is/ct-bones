@@ -5,7 +5,8 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package CT_Bones
+ * @package Codetot
+ * @since 0.0.1
  */
 
 if (!function_exists('ct_bones_posted_on')) :
@@ -174,9 +175,9 @@ if (!function_exists('wp_body_open')) :
 endif;
 
 /**
- * @param null $id
+ * @param null   $id
  * @param string $alt
- * @param bool $placeholder
+ * @param bool   $placeholder
  * @return mixed|string
  */
 function codetot_image_alt($id = null, $alt = '', $placeholder = false)

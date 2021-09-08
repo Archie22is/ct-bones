@@ -1,27 +1,26 @@
 @font-face {
-    font-family: 'Sanomat Sans';
-    src: url('SVN-SanomatSans.woff2') format('woff2'),
-        url('SVN-SanomatSans.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+	font-family: 'Sanomat Sans';
+	src: url('SVN-SanomatSans.woff2') format('woff2'),
+		url('SVN-SanomatSans.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-    font-family: 'Sanomat Sans';
-    src: url('SVN-SanomatSansMedium.woff2') format('woff2'),
-        url('SVN-SanomatSansMedium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
+	font-family: 'Sanomat Sans';
+	src: url('SVN-SanomatSansMedium.woff2') format('woff2'),
+		url('SVN-SanomatSansMedium.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-    font-family: 'Sanomat Sans';
-    src: url('SVN-SanomatSansBold.woff2') format('woff2'),
-        url('SVN-SanomatSansBold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+	font-family: 'Sanomat Sans';
+	src: url('SVN-SanomatSansBold.woff2') format('woff2'),
+		url('SVN-SanomatSansBold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
 }
-

@@ -1,8 +1,38 @@
-body{font-size: 1rem;line-height:1.75;}
-h1,h2,h3,h4,h5{line-height: 1.3;}
-h1,.h1{font-size:2.488rem;}
-h2,.h2{font-size:2.074rem;}
-h3,.h3{font-size:1.728rem;}
-h4,.h4{font-size:1.44rem;}
-h5,.h5,.large-text{font-size:1.2rem;}
-h6,.h6,small,.small-text{font-size:0.833rem;}
+body {
+	font-size: 1rem;
+	line-height: 1.75;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+	line-height: 1.3;
+}
+h1,
+.h1 {
+	font-size: 2.488rem;
+}
+h2,
+.h2 {
+	font-size: 2.074rem;
+}
+h3,
+.h3 {
+	font-size: 1.728rem;
+}
+h4,
+.h4 {
+	font-size: 1.44rem;
+}
+h5,
+.h5,
+.large-text {
+	font-size: 1.2rem;
+}
+h6,
+.h6,
+small,
+.small-text {
+	font-size: 0.833rem;
+}

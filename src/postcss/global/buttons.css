@@ -1,222 +1,222 @@
 .button {
-  @mixin button-normal;
-  @mixin button-default;
+	@mixin button-normal;
+	@mixin button-default;
 }
 
 .button[type='submit'],
 .button--primary {
-  @mixin button-style-primary;
+	@mixin button-style-primary;
 }
 
 .button--secondary {
-  @mixin button-style-secondary;
+	@mixin button-style-secondary;
 }
 
 .button--dark {
-  @mixin button-style-dark;
+	@mixin button-style-dark;
 }
 
 .button--white {
-  @mixin button-style-white;
+	@mixin button-style-white;
 }
 
 .button--outline,
 .button--outline-primary,
 .button--outline-dark,
 .button--outline-white {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none !important;
+	display: inline-flex;
+	align-items: center;
+	text-decoration: none !important;
 
-  & svg {
-    padding-left: 5px;
-    width: auto;
-    height: 15px;
-  }
+	& svg {
+		padding-left: 5px;
+		width: auto;
+		height: 15px;
+	}
 }
 
 .button--outline {
-  background: transparent;
-  color: var(--dark);
-  border: 1px solid var(--dark);
+	background: transparent;
+	color: var(--dark);
+	border: 1px solid var(--dark);
 
-  &:hover {
-    @media (--m) {
-      background: var(--primary);
-      color: var(--white);
-    }
-  }
+	&:hover {
+		@media (--m) {
+			background: var(--primary);
+			color: var(--white);
+		}
+	}
 }
 
 .button--outline-white {
-  background: transparent;
-  color: var(--white);
-  border: 1px solid var(--white);
+	background: transparent;
+	color: var(--white);
+	border: 1px solid var(--white);
 
-  &:hover {
-    @media (--m) {
-      background-color: var(--primary);
-      color: var(--white);
-    }
-  }
+	&:hover {
+		@media (--m) {
+			background-color: var(--primary);
+			color: var(--white);
+		}
+	}
 }
 
 .button--outline-primary {
-  background: transparent;
-  color: var(--primary);
-  border: 1px solid var(--primary);
+	background: transparent;
+	color: var(--primary);
+	border: 1px solid var(--primary);
 
-  &:hover {
-    @media (--m) {
-      background-color: var(--primary);
-      color: var(--white);
-    }
-  }
+	&:hover {
+		@media (--m) {
+			background-color: var(--primary);
+			color: var(--white);
+		}
+	}
 }
 
 .button--outline-secondary {
-  background: transparent;
-  color: var(--secondary);
-  border: 1px solid var(--secondary);
+	background: transparent;
+	color: var(--secondary);
+	border: 1px solid var(--secondary);
 
-  &:hover {
-    @media (--m) {
-      background-color: var(--primary);
-      color: var(--white);
-    }
-  }
+	&:hover {
+		@media (--m) {
+			background-color: var(--primary);
+			color: var(--white);
+		}
+	}
 }
 
 .button.button--link {
-  @mixin button-link;
+	@mixin button-link;
 
-  color: var(--dark);
+	color: var(--dark);
 
-  &::after {
-    background-color: var(--dark);
-  }
+	&::after {
+		background-color: var(--dark);
+	}
 
-  &:hover {
-    @media (--m) {
-      color: var(--primary);
+	&:hover {
+		@media (--m) {
+			color: var(--primary);
 
-      &::after {
-        background-color: var(--primary);
-      }
-    }
-  }
+			&::after {
+				background-color: var(--primary);
+			}
+		}
+	}
 }
 
 .button.button--link-primary {
-  @mixin button-link;
+	@mixin button-link;
 
-  color: var(--primary);
+	color: var(--primary);
 
-  &::after {
-    background-color: var(--primary);
-  }
+	&::after {
+		background-color: var(--primary);
+	}
 
-  &:hover {
-    @media (--m) {
-      color: var(--secondary);
+	&:hover {
+		@media (--m) {
+			color: var(--secondary);
 
-      &::after {
-        background-color: var(--secondary);
-      }
-    }
-  }
+			&::after {
+				background-color: var(--secondary);
+			}
+		}
+	}
 }
 
 .button.button--link-secondary {
-  @mixin button-link;
+	@mixin button-link;
 
-  color: var(--secondary);
+	color: var(--secondary);
 
-  &::after {
-    background-color: var(--secondary);
-  }
+	&::after {
+		background-color: var(--secondary);
+	}
 
-  &:hover {
-    @media (--m) {
-      color: var(--primary);
+	&:hover {
+		@media (--m) {
+			color: var(--primary);
 
-      &::after {
-        background-color: var(--primary);
-      }
-    }
-  }
+			&::after {
+				background-color: var(--primary);
+			}
+		}
+	}
 }
 
 .button.button--link-white {
-  @mixin button-link;
+	@mixin button-link;
 
-  color: var(--white);
+	color: var(--white);
 
-  &::after {
-    background: var(--white);
-  }
+	&::after {
+		background: var(--white);
+	}
 }
 
 .button--small {
-  @mixin small;
-  @mixin button-small;
+	@mixin small;
+	@mixin button-small;
 
-  &.button--link {
-    padding: 0 0 10px !important;
-  }
+	&.button--link {
+		padding: 0 0 10px !important;
+	}
 }
 
 .button--large {
-  @mixin large;
-  @mixin button-large;
+	@mixin large;
+	@mixin button-large;
 
-  &.button--link {
-    padding: 0 0 10px !important;
-  }
+	&.button--link {
+		padding: 0 0 10px !important;
+	}
 }
 
 .button--icon {
-  display: inline-flex;
-  align-items: center;
+	display: inline-flex;
+	align-items: center;
 
-  &.button--link {
-    &::after {
-      content: none;
-    }
-  }
+	&.button--link {
+		&::after {
+			content: none;
+		}
+	}
 
-  & .button__icon {
-    display: flex;
-    width: 16px;
-    height: 16px;
-    margin: 0 5px;
+	& .button__icon {
+		display: flex;
+		width: 16px;
+		height: 16px;
+		margin: 0 5px;
 
-    @media (--m) {
-      width: 18px;
-      height: 18px;
-    }
-  }
+		@media (--m) {
+			width: 18px;
+			height: 18px;
+		}
+	}
 
-  & svg {
-    width: 16px;
-    height: 16px;
+	& svg {
+		width: 16px;
+		height: 16px;
 
-    @media (--m) {
-      width: 18px;
-      height: 18px;
-    }
-  }
+		@media (--m) {
+			width: 18px;
+			height: 18px;
+		}
+	}
 }
 
 .button-group--multiple {
-  display: flex;
-  flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 
-  & .button-group__item {
-    margin-left: 1em;
+	& .button-group__item {
+		margin-left: 1em;
 
-    &:first-child {
-      margin-left: 0;
-    }
-  }
+		&:first-child {
+			margin-left: 0;
+		}
+	}
 }

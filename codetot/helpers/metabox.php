@@ -5,11 +5,11 @@ if (!defined('ABSPATH')) exit;
 if (!function_exists('get_global_option')) {
 
   /**
-   * @deprecated
    * A CT Theme Settings has been replaced with Customizer Settings.
    *
    * @param string $field_name
    * @return void
+   * @deprecated
    */
   function get_global_option($field_name) {
     trigger_error(__FUNCTION__ . ': ' . esc_html__('This function has been deprecated from version 5.4.0.', 'ct-bones'), E_USER_NOTICE);

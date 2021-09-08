@@ -1,11 +1,11 @@
 .section-header {
-  text-align: left;
+	text-align: left;
 }
 
 .section-header--center {
-  text-align: center;
+	text-align: center;
 }
 
 .section-header--right {
-  text-align: right;
+	text-align: right;
 }

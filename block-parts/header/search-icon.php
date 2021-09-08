@@ -6,4 +6,4 @@ if (!$hide_icon) :
     button_attributes="data-open-modal="modal-search-form"
     span_class="header__menu-icons__icon"
   ]'));
-endif; ?>
+endif; 
