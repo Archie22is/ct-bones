@@ -56,20 +56,19 @@ module.exports = {
             options: {
               postcssOptions: {
                 plugins: [
-                  'autoprefixer',
-                  'postcss-import',
+                  require('autoprefixer'),
+                  require('postcss-import'),
 									postcssMixins({
-										mixinsDir: path.resolve(process.cwd(), 'src/postcss/mixins')
+										mixinsDir: path.join(__dirname, 'src/postcss/mixins')
 									}),
-                  'postcss-preset-env',
                   postcssPresetEnv({
-                    stage: 3,
-                    browsers: 'last 2 versions',
+										importFrom: path.join(__dirname, 'src/postcss/variables.css'),
+										exportTo: 'variables.css',
+                    stage: 1,
                     features: {
                       'custom-media-queries': true,
                       'nesting-rules': true
-                    },
-                    autoprefixer: { grid: true }
+                    }
                   })
                 ]
               }
