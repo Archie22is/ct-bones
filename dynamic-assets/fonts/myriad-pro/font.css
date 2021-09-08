@@ -1,36 +1,35 @@
 @font-face {
-    font-family: 'Myriad Pro';
-    src: url('MyriadPro-SemiCn.woff2') format('woff2'),
-        url('MyriadPro-SemiCn.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+	font-family: 'Myriad Pro';
+	src: url('MyriadPro-SemiCn.woff2') format('woff2'),
+		url('MyriadPro-SemiCn.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-    font-family: 'Myriad Pro';
-    src: url('MyriadPro-Regular.woff2') format('woff2'),
-        url('MyriadPro-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+	font-family: 'Myriad Pro';
+	src: url('MyriadPro-Regular.woff2') format('woff2'),
+		url('MyriadPro-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-    font-family: 'Myriad Pro';
-    src: url('MyriadPro-SemiboldIt.woff2') format('woff2'),
-        url('MyriadPro-SemiboldIt.woff') format('woff');
-    font-weight: 600;
-    font-style: italic;
-    font-display: swap;
+	font-family: 'Myriad Pro';
+	src: url('MyriadPro-SemiboldIt.woff2') format('woff2'),
+		url('MyriadPro-SemiboldIt.woff') format('woff');
+	font-weight: 600;
+	font-style: italic;
+	font-display: swap;
 }
 
 @font-face {
-    font-family: 'Myriad Pro';
-    src: url('MyriadPro-Bold.woff2') format('woff2'),
-        url('MyriadPro-Bold.woff') format('woff');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
+	font-family: 'Myriad Pro';
+	src: url('MyriadPro-Bold.woff2') format('woff2'),
+		url('MyriadPro-Bold.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
 }
-

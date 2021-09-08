@@ -10,8 +10,8 @@ class Codetot_CT_Data_Settings {
    */
   private static $instance;
     /**
-   * @var string
-   */
+     * @var string
+     */
   public $prefix;
   /**
    * @var string
@@ -22,10 +22,10 @@ class Codetot_CT_Data_Settings {
    */
   public $setting_id;
     /**
-   * Get singleton instance.
-   *
-   * @return Codetot_CT_Data_Settings
-   */
+     * Get singleton instance.
+     *
+     * @return Codetot_CT_Data_Settings
+     */
   public final static function instance() {
     if (is_null(self::$instance)) {
       self::$instance = new self();

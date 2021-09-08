@@ -1,11 +1,11 @@
 .select-wrapper {
-  @mixin select-wrapper;
+	@mixin select-wrapper;
 
-  & select {
-    @mixin select-in-wrapper;
-  }
+	& select {
+		@mixin select-in-wrapper;
+	}
 }
 
 .radio-wrapper-default {
-  @mixin custom-radio;
+	@mixin custom-radio;
 }

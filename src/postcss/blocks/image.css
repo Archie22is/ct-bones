@@ -1,67 +1,67 @@
 .image--contain,
 .image--cover {
-  position: relative;
-  display: flex;
+	position: relative;
+	display: flex;
 
-  & img {
-    @mixin abs-full;
+	& img {
+		@mixin abs-full;
 
-    z-index: 1;
-  }
+		z-index: 1;
+	}
 }
 
 .image--default {
-  display: flex;
+	display: flex;
 
-  & img,
-  & .image__img {
-    position: static;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-  }
+	& img,
+	& .image__img {
+		position: static;
+		width: auto;
+		max-width: 100%;
+		height: auto;
+	}
 }
 
 .image--cover {
-  & source,
-  & img,
-  & .image__img {
-    object-fit: cover;
-  }
+	& source,
+	& img,
+	& .image__img {
+		object-fit: cover;
+	}
 }
 
 .image--contain {
-  & img,
-  & .image__img {
-    object-fit: contain;
-  }
+	& img,
+	& .image__img {
+		object-fit: contain;
+	}
 }
 
 .image--square {
-  @mixin ratio 1/1;
+	@mixin ratio 1/1;
 }
 
 .image-placeholder {
-  position: relative;
-  background: var(--light);
-  overflow: hidden;
+	position: relative;
+	background: var(--light);
+	overflow: hidden;
 }
 
 .image--hd {
-  @mixin ratio 9/16;
+	@mixin ratio 9/16;
 }
 
 .image-placeholder--icon {
-  @mixin ratio 9/16;
+	@mixin ratio 9/16;
 }
 
 .image-placeholder__logo {
-  @mixin flex-center;
-  @mixin abs-full;
+	@mixin flex-center;
+	@mixin abs-full;
 }
 
 .image-placeholder__image-logo {
-  width: 100px;
-  max-width: 100px;
-  height: auto;
+	width: 100px;
+	max-width: 100px;
+	height: auto;
 }

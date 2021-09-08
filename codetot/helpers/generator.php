@@ -81,9 +81,9 @@ if (!function_exists('codetot_build_grid_columns')) {
   /**
    * Generate HTML markup for grid columns
    *
-   * @param array $columns
+   * @param array  $columns
    * @param string $prefix_class
-   * @param array $args
+   * @param array  $args
    * @return string
    */
   function codetot_build_grid_columns($columns, $prefix_class, $args = []) {
@@ -119,7 +119,7 @@ if (!function_exists('codetot_build_grid_columns')) {
 
 /**
  * @param WP_Post $post
- * @param array $types
+ * @param array   $types
  * @return array
  */
 function codetot_get_share_post_links($post) {
@@ -140,7 +140,7 @@ function codetot_get_share_post_links($post) {
 
 /**
  * @param WP_Post $post
- * @param string $type
+ * @param string  $type
  * @return string
  */
 function codetot_get_share_post_link($post, $type) {

@@ -17,7 +17,7 @@ if ( !defined('CODETOT_VERSION') ) {
 if (!function_exists('get_block')) {
   /**
    * @param string $block_name
-   * @param array $args
+   * @param array  $args
    * @return false|string
    */
   function get_block($block_name, $args = array())

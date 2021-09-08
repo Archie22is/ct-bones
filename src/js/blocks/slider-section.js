@@ -1,7 +1,7 @@
 import { getData } from 'lib/dom'
 
 export default el => {
-  const options = getData('options', el)
+	const options = getData('options', el)
 
-  console.log(options)
+	console.log(options)
 }

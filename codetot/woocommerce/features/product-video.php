@@ -3,6 +3,13 @@
 // Prevent direct access.
 if (!defined('ABSPATH')) exit;
 
+/**
+ * @link       https://codetot.com
+ * @since      5.4.0
+ * @package    Codetot_Woocommerce
+ * @subpackage Codetot_WooCommerce_Product_Video
+ * @author     CODE TOT JSC <dev@codetot.com>
+ */
 class Codetot_WooCommerce_Product_Video
 {
   /**

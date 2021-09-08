@@ -1,59 +1,59 @@
 .entry-header {
-  margin-bottom: 1em;
+	margin-bottom: 1em;
 
-  & a {
-    text-decoration: underline;
-  }
+	& a {
+		text-decoration: underline;
+	}
 }
 
 .entry-title {
-  margin-bottom: 0.5em;
+	margin-bottom: 0.5em;
 }
 
 .entry-thumbnail {
-  margin: 1em 0 0;
+	margin: 1em 0 0;
 }
 
 .entry-meta {
-  opacity: 0.75;
+	opacity: 0.75;
 
-  & .cat-links {
-    &::before {
-      content: ' | ';
-    }
-  }
+	& .cat-links {
+		&::before {
+			content: ' | ';
+		}
+	}
 }
 
 .entry-content {
-  margin-top: 1em;
+	margin-top: 1em;
 }
 
 .entry-footer {
-  margin-top: 1em;
+	margin-top: 1em;
 
-  @media (--ml) {
-    margin-top: 2em;
-  }
+	@media (--ml) {
+		margin-top: 2em;
+	}
 
-  & .post-edit-link {
-    text-decoration: underline;
+	& .post-edit-link {
+		text-decoration: underline;
 
-    &:hover {
-      @media (--m) {
-        color: var(--primary);
-      }
-    }
-  }
+		&:hover {
+			@media (--m) {
+				color: var(--primary);
+			}
+		}
+	}
 }
 
 .entry-tags__label {
-  @mixin label-text;
+	@mixin label-text;
 
-  font-weight: var(--font-bold);
+	font-weight: var(--font-bold);
 }
 
 .entry-tags__list {
-  & a {
-    text-decoration: underline;
-  }
+	& a {
+		text-decoration: underline;
+	}
 }

@@ -1,57 +1,57 @@
 .modal--search-form {
-  & .modal__wrapper {
-    width: calc(100vw - 40px);
-    background-color: var(--white);
+	& .modal__wrapper {
+		width: calc(100vw - 40px);
+		background-color: var(--white);
 
-    @media (--s) {
-      width: 360px;
-    }
+		@media (--s) {
+			width: 360px;
+		}
 
-    @media (--m) {
-      width: 600px;
-    }
-  }
+		@media (--m) {
+			width: 600px;
+		}
+	}
 
-  & .modal__header {
-    position: relative;
-    margin: 0;
-    padding: 0.5em 40px 0.5em 20px;
-    background: var(--white);
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-  }
+	& .modal__header {
+		position: relative;
+		margin: 0;
+		padding: 0.5em 40px 0.5em 20px;
+		background: var(--white);
+		border-radius: var(--border-radius) var(--border-radius) 0 0;
+	}
 
-  & .modal__title {
-    margin: 0;
-    padding: 0;
-    border: 0;
-  }
+	& .modal__title {
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}
 
-  & .modal__content {
-    position: relative;
-    background: var(--light);
-    border-top: 1px solid var(--border);
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
-    overflow: hidden;
-  }
+	& .modal__content {
+		position: relative;
+		background: var(--light);
+		border-top: 1px solid var(--border);
+		border-radius: 0 0 var(--border-radius) var(--border-radius);
+		overflow: hidden;
+	}
 
-  & .modal__close-button {
-    @mixin button-reset;
-    @mixin flex-center;
+	& .modal__close-button {
+		@mixin button-reset;
+		@mixin flex-center;
 
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 44px;
-    height: 44px;
-    cursor: pointer;
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 44px;
+		height: 44px;
+		cursor: pointer;
 
-    @media (--m) {
-      width: 60px;
-    }
+		@media (--m) {
+			width: 60px;
+		}
 
-    & svg {
-      width: 18px;
-      height: 18px;
-    }
-  }
+		& svg {
+			width: 18px;
+			height: 18px;
+		}
+	}
 }
