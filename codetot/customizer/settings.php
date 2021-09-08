@@ -402,6 +402,7 @@ class Codetot_Customizer_Settings
 	public function register_footer_settings($wp_customize)
 	{
 		$parent_theme = wp_get_theme()->parent();
+		$main_theme = !empty($parent_theme) ? $parent_theme : wp_get_theme();
 		$theme_version = !empty($parent_theme) ? $parent_theme->Version : wp_get_theme()->Get('Version');
 		$section_settings_id = 'codetot_theme_footer_settings';
 
@@ -430,7 +431,7 @@ class Codetot_Customizer_Settings
 				'default' => sprintf(
 					esc_html__('Copyright &copy; by %1$s. Build with %2$s (version %3$s).', 'ct-bones'),
 					get_bloginfo('name'),
-					sprintf('<a href="%1$s" rel="sponsored" target="_blank">%2$s</a>', $parent_theme->Get('AuthorURI'), $parent_theme->Get('Author')),
+					sprintf('<a href="%1$s" rel="sponsored" target="_blank">%2$s</a>', $main_theme->Get('AuthorURI'), $main_theme->Get('Author')),
 					$theme_version
 				)
 			),
