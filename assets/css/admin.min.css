@@ -82,10 +82,6 @@
 				text-indent: 0;
 				list-style-type: none;
 
-				display: -webkit-box;
-
-				display: -ms-flexbox;
-
 				display: flex;
 				flex-wrap: wrap;
 				margin: 0 -0.5em;
@@ -95,8 +91,6 @@
 				width: 50%;
 				margin-top: 0.25em;
 				padding: 0 0.5em;
-				display: -webkit-box;
-				display: -ms-flexbox;
 				display: flex
 			}
 
@@ -109,14 +103,13 @@
 				border-radius: 4px;
 				text-decoration: none;
 				transition: all 0.3s;
-				display: -webkit-box;
-				display: -ms-flexbox;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 				padding: 1em;
 				flex: 1 1 auto;
 				text-align: center;
+				color: #1346af;
 				color: var(--primary);
 				font-weight: 600
 			}
@@ -129,6 +122,7 @@
 
 #poststuff #codetot-flexible-button .ct__block-list a > svg {
 					margin-bottom: 0.5em;
+					fill: #1346af;
 					fill: var(--primary);
 				}
 
@@ -151,6 +145,7 @@
 			width: 400px;
 			max-height: 70%;
 			height: 500px;
+			background-color: #fff;
 			background-color: var(--white);
 			border: 1px solid #ddd;
 			z-index: 0;
@@ -213,6 +208,7 @@
 			}
 
 #poststuff #codetot-flexible-button .ct__preview-block-item:hover > img {
+					border-color: #1346af;
 					border-color: var(--primary);
 				}
 
