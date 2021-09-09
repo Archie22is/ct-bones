@@ -111,7 +111,6 @@ class Codetot_Woocommerce_Layout_Product
     add_action('woocommerce_product_meta_start', 'codetot_render_product_dimesion_meta', 20);
     add_action('woocommerce_product_meta_start', 'codetot_render_product_categories_meta', 25);
 
-    add_action('woocommerce_single_product_summary', 'codetot_woocommerce_single_meta_tag', 40);
     add_filter('woocommerce_product_tabs', array($this, 'woo_custom_description_tab'), 98);
     remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
 
@@ -542,16 +541,11 @@ function codetot_render_upsell_sections($class = '') {
   endif;
 }
 
-function codetot_woocommerce_single_meta_tag() {
+function codetot_woocommerce_single_meta() {
+  echo  '<div class="mt-05 single-product-meta">';
   global $product;
   do_action( 'woocommerce_product_meta_start' );
   echo wc_get_product_tag_list( $product->get_id(), ', ', '<div class="single-product-tag tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</div>' );
-  do_action( 'woocommerce_product_meta_end' );
-}
-
-function codetot_woocommerce_single_meta() {
-  echo  '<div class="mt-05 single-product-meta">';
-  do_action( 'woocommerce_product_meta_start' );
   do_action( 'woocommerce_product_meta_end' );
   echo '</div>' ;
 }
