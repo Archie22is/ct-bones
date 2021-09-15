@@ -154,7 +154,7 @@ class Codetot_Customizer_Pro_Settings
 			'id' => 'seo_h1_homepage',
 			'label' => esc_html__('Homepage H1 Heading Text', 'ct-bones'),
 			'section_settings_id' => $section_settings_id,
-			'section_settings' => array('default' => 'none'),
+			'setting_args' => array('default' => 'none'),
 			'control_args' => array(
 				'type' => 'select',
 				'choices' => apply_filters('codetot_theme_seo_h1_homepage_options', array(
