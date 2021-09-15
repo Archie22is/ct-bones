@@ -209,7 +209,7 @@ class Codetot_Customizer_Settings
 		codetot_customizer_register_control(array(
 			'id' => 'post_card_style',
 			'label' => esc_html__('Post Card Style', 'ct-bones'),
-			'setting_args' => array('default' => 'default'),
+			'setting_args' => array('default' => 'style-1'),
 			'section_settings_id' => $section_settings_id,
 			'control_args' => array(
 				'type' => 'select',
