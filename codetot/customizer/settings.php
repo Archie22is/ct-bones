@@ -361,7 +361,7 @@ class Codetot_Customizer_Settings
 		codetot_customizer_register_control(array(
 			'id' => 'topbar_widget_column',
 			'label' => esc_html__('Topbar Column', 'ct-bones'),
-			'setting_args' => array('default' => 1),
+			'setting_args' => array('default' => '1-col'),
 			'section_settings_id' => $section_settings_id,
 			'control_args' => array(
 				'type' => 'select',
@@ -464,7 +464,7 @@ class Codetot_Customizer_Settings
 		codetot_customizer_register_control(array(
 			'id' => 'footer_widget_column',
 			'label' => esc_html__('Footer Widget Column', 'ct-bones'),
-			'setting_args' => array('default' => 3),
+			'setting_args' => array('default' => '3-col'),
 			'section_settings_id' => $section_settings_id,
 			'control_args' => array(
 				'type' => 'select',
