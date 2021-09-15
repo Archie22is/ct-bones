@@ -19,7 +19,7 @@ ct_bones_posted_by();
 ct_bones_entry_categories();
 $post_meta = ob_get_clean();
 
-if ($_hide_post_meta) {
+if ($_hide_post_meta === false) {
   $post_meta = '';
 }
 
