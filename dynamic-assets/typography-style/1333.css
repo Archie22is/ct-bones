@@ -10,12 +10,12 @@
 }
 
 html {
-	font-size: calc(--scale-int);
+	font-size: var(--scale-int);
 }
 
 @media screen and (min-width: 1024px) {
 	html {
-		font-size: 112.5%;
+		font-size: 100%;
 	}
 }
 
