@@ -1,7 +1,7 @@
 :root {
 	--scale-int: 0.875rem;
 	--scale0: 1rem;
-	--h1: calc(1.488 * var(--scale-int));
+	--h1: calc(2.488 * var(--scale-int));
 	--h2: calc(2.074 * var(--scale-int));
 	--h3: calc(1.728 * var(--scale-int));
 	--h4: calc(1.44 * var(--scale-int));
