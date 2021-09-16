@@ -1,7 +1,29 @@
-body {
-	font-size: 1rem;
-	line-height: 1.75;
+:root {
+	--scale-int: 0.9125rem;
+	--scale0: 1rem;
+	--h1: calc(3.052 * var(--scale-int));
+	--h2: calc(2.441 * var(--scale-int));
+	--h3: calc(1.953 * var(--scale-int));
+	--h4: calc(1.563 * var(--scale-int));
+	--h5: calc(1.25 * var(--scale-int));
+	--h6: calc(0.8 * var(--scale-int));
 }
+
+html {
+	font-size: calc(--scale-int);
+}
+
+@media screen and (min-width: 1024px) {
+	html {
+		font-size: 112.5%;
+	}
+}
+
+body {
+	font-size: var(--scale0);
+	line-height: 1.45;
+}
+
 h1,
 h2,
 h3,
@@ -9,30 +31,31 @@ h4,
 h5 {
 	line-height: 1.3;
 }
+
 h1,
 .h1 {
-	font-size: 3.052rem;
+	font-size: var(--h1);
 }
 h2,
 .h2 {
-	font-size: 2.441rem;
+	font-size: var(--h2);
 }
 h3,
 .h3 {
-	font-size: 1.953rem;
+	font-size: var(--h3);
 }
 h4,
 .h4 {
-	font-size: 1.563rem;
+	font-size: var(--h4);
 }
 h5,
 .h5,
 .large-text {
-	font-size: 1.25rem;
+	font-size: var(--h5);
 }
 h6,
 .h6,
 small,
 .small-text {
-	font-size: 0.8rem;
+	font-size: var(--h6);
 }
