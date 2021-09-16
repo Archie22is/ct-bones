@@ -14,3 +14,4 @@ src/js/vendors/
 composer.json
 vendors/
 acf-json/*.json
+variables.css
