@@ -31,7 +31,7 @@ if (!empty($content)) : ?>
       the_block('image', array(
         'image' => $background_image,
         'class' => 'default-section__background-image',
-        'lazyload' => false,
+        'lazyload' => $_enable_lazyload,
         'size' => wp_is_mobile() ? 'medium' : 'large'
       ));
     endif; ?>
