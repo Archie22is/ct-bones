@@ -1,5 +1,5 @@
 :root {
-	--scale-int: 0.9125rem;
+	--scale-int: 0.875rem;
 	--scale0: 1rem;
 	--h1: calc(4.209 * var(--scale-int));
 	--h2: calc(3.157 * var(--scale-int));
@@ -7,21 +7,6 @@
 	--h4: calc(1.777 * var(--scale-int));
 	--h5: calc(1.333 * var(--scale-int));
 	--h6: calc(0.75 * var(--scale-int));
-}
-
-html {
-	font-size: var(--scale-int);
-}
-
-@media screen and (min-width: 1024px) {
-	html {
-		font-size: 100%;
-	}
-}
-
-body {
-	font-size: var(--scale0);
-	line-height: 1.45;
 }
 
 h1,
