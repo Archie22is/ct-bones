@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 5.7.2
+
+- Update global typography scale, add `html` font-size attribute responsive screen.
+- Disable check `variables.css` for prettier.
+
 ## 5.7.1
 
 - Fix default Customizer settings:
