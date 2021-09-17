@@ -180,7 +180,7 @@ class Codetot_Theme_Init
 
   public function add_arrow_to_primary_menu($output, $item, $depth, $args)
   {
-    if ('primary' == $args->theme_location && $depth === 0) {
+    if ('primary' == $args->theme_location && $depth <= 2) {
       if (in_array("menu-item-has-children", $item->classes)) {
         $output .= '<span class="icon-toggle js-toggle-sub-menu"></span>';
       }
