@@ -237,8 +237,58 @@
 			}
 
 			& > .menu-item-has-children {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+
+				& .icon-toggle {
+					display: block;
+					position: relative;
+					width: 20px;
+					height: 20px;
+					background: #1346af;
+					background: var(--primary);
+
+					&::before {
+						content: '';
+						position: absolute;
+						height: 10px;
+						width: 2px;
+						top: 5px;
+						left: 9px;
+						background: var(--white);
+						transition: all 0.3s;
+					}
+
+					&::after {
+						content: '';
+						position: absolute;
+						height: 2px;
+						width: 10px;
+						top: 9px;
+						left: 5px;
+						background: var(--white);
+					}
+
+					&.is-active {
+						&::before {
+							transform: rotate(90deg);
+						}
+					}
+				}
+
 				& > .sub-menu {
-					display: none;
+					padding-left: 10px;
+					height: 0;
+					overflow: hidden;
+					width: 100%;
+					transition: height 15s ease;
+				}
+
+				&.is-active {
+					& > .sub-menu {
+						height: auto;
+					}
 				}
 			}
 		}

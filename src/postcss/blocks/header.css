@@ -79,6 +79,7 @@
 	}
 
 	& > .menu-item {
+		position: relative;
 		padding: 0 15px;
 
 		&:first-child {
@@ -121,7 +122,6 @@
 				& > a {
 					display: inherit;
 					padding: 6px 10px;
-					background: var(--white);
 					border-top: 1px solid var(--primary-light);
 
 					&:hover {
@@ -150,6 +150,24 @@
 				box-shadow: 0 0 6px 0 var(--primary-light);
 
 				& .menu-item-has-children {
+					position: relative;
+
+					& > .icon-toggle {
+						clip-path: polygon(100% 0, 0 0, 50% 100%);
+						width: 10px;
+						height: 5px;
+						background: var(--black);
+						position: absolute;
+						top: 45%;
+						right: 8px;
+						display: block;
+						transform: rotate(265deg);
+					}
+
+					& > a {
+						padding-right: 30px;
+					}
+
 					& > .sub-menu {
 						@mixin fade-out;
 
@@ -161,6 +179,16 @@
 					}
 
 					&:hover {
+						background: var(--black);
+
+						& > a {
+							color: var(--white);
+						}
+
+						& > .icon-toggle {
+							background: var(--white);
+						}
+
 						& > .sub-menu {
 							@mixin fade-in;
 						}
@@ -175,6 +203,8 @@
 
 				& .sub-menu {
 					@mixin fade-in;
+
+					background: var(--white);
 				}
 			}
 		}
