@@ -156,7 +156,7 @@ class Codetot_Theme_Init
       }
     endif;
 
-    $enable_topbar_widget = codetot_get_theme_mod('enable_topbar') ?? false;
+    $enable_topbar_widget = codetot_get_theme_mod('enable_topbar_widget') ?? false;
     $topbar_widget_column = codetot_get_theme_mod('topbar_widget_column') ?? '1-col';
     $topbar_widget_column = str_replace('-col', '', $topbar_widget_column);
 
