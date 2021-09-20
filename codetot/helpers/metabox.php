@@ -142,11 +142,6 @@ function codetot_get_company_info_inputs()
       'id'   => $prefix . 'company_google_maps_link',
       'type' => 'text',
       'desc' => __('When visiting a Contact page, the direcction link will point user directly to app Google Maps.', 'ct-bones')
-    ],
-    [
-      'name'    => __('Footer Copyright', 'ct-bones'),
-      'id'      => $prefix . 'footer_copyright',
-      'type'    => 'wysiwyg',
     ]
   );
 }
@@ -210,23 +205,6 @@ function codetot_get_social_media_options()
       'type' => 'url',
     ]
   ));
-}
-
-/**
- * @return string
- */
-function codetot_get_footer_copyright()
-{
-  return !empty(get_codetot_data('codetot_footer_copyright'))
-    ? get_codetot_data('codetot_footer_copyright')
-    : '<p>' . sprintf(
-      __('Copyright &copy; by <strong>%1$s</strong>. Built with <a href="%2$s" target="_blank">%3$s</a> (version: %4$s).', 'ct-bones') . '</p>',
-      get_bloginfo('name'),
-      esc_url('https://codetot.com'),
-      esc_html__('CT Web Builder', 'ct-bones'),
-      CODETOT_VERSION
-    )
-  ;
 }
 
 function codetot_get_google_maps_api_key() {

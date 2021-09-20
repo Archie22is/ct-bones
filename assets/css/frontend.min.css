@@ -4804,6 +4804,11 @@ https://flickity.metafizzy.co
 .header-topbar__content .widget_nav_menu .menu-item-has-children .sub-menu {
 				display: none;
 			}
+.header-topbar.is-dark-contract .widget--topbar p,
+		.header-topbar.is-dark-contract .widget--topbar a {
+			color: #fff;
+			color: var(--white);
+		}
 .page-header--no-container .page-header__container {
 		max-width: 100%;
 		padding: 0;
