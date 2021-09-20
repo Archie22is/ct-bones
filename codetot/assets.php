@@ -55,7 +55,7 @@ class Codetot_Assets
 			wp_enqueue_script('comment-reply');
 		}
 
-		wp_enqueue_style('codetot-global', CODETOT_ASSETS_URI . '/css/frontend' . $this->theme_environment . '.css', array(), $this->theme_version);
+		wp_enqueue_style('codetot-global', CODETOT_ASSETS_URI . '/css/frontend.min.css', array(), $this->theme_version);
 
 		if (!wp_script_is('lazysizes', 'enqueued')) {
 			wp_register_script('lazysizes', CODETOT_ASSETS_URI . '/vendors/lazysizes.min.js', array(), '5.2.2', false);

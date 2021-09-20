@@ -45,3 +45,12 @@
 		}
 	}
 }
+
+.header-topbar.is-dark-contract {
+	& .widget--topbar {
+		& p,
+		& a {
+			color: var(--white);
+		}
+	}
+}
