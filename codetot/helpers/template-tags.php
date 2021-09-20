@@ -430,3 +430,22 @@ if (!function_exists('codetot_get_sidebar')) {
     get_sidebar();
   }
 }
+
+/**
+ * @return string
+ */
+function codetot_get_footer_copyright()
+{
+	$data = codetot_get_theme_mod('footer_copyright_text') ?? null;
+
+  return !empty($data)
+    ? $data
+    : '<p>' . sprintf(
+      __('Copyright &copy; by <strong>%1$s</strong>. Built with <a href="%2$s" target="_blank" rel="sponsored noopener">%3$s</a> (version: %4$s).', 'ct-bones') . '</p>',
+      get_bloginfo('name'),
+      esc_url('https://codetot.com'),
+      esc_html__('CT Web Builder', 'ct-bones'),
+      CODETOT_VERSION
+    )
+  ;
+}

@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## 5.7.3
+
+- Fix top header background contract and background
+- Load frontend.min.css to ensure all dependencies load correctly
+- Change footer copyright text data to Customize settings
+- Fix header 3rd level position
+- Fix wrong h1 typography font size in 1200.css
+
 ## 5.7.2
 
 - Update global typography scale, add `html` font-size attribute responsive screen.
