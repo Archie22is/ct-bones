@@ -66,8 +66,6 @@ class Codetot_Customizer_Settings
 		// Register color schemas
 		$color_options = codetot_get_color_options();
 		foreach ($color_options as $color) {
-			$color['id'] = str_replace('codetot_', '', $color['id']);
-
 			codetot_customizer_register_color_control($color, $section_settings_id, $wp_customize);
 		}
 
