@@ -34,6 +34,7 @@ class CT_Gutenberg_Init {
 	function theme_supports() {
 		add_theme_support( 'editor-color-palette', $this->load_color_palette());
 		add_theme_support( 'editor-font-sizes', $this->load_font_sizes() );
+		add_theme_support( 'block-templates' );
 	}
 
 	function load_color_palette() {
