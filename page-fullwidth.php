@@ -5,6 +5,10 @@
  */
 get_header();
 
+echo '<div class="sections">';
+
 the_content();
+
+echo '</div>';
 
 get_footer();
