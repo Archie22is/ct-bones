@@ -21,3 +21,8 @@
 		display: none;
 	}
 }
+
+.wp-block-cover__inner-container {
+	@mixin container;
+	@mixin container-from-s;
+}
