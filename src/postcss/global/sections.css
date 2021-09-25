@@ -1,3 +1,4 @@
+.wysiwyg > .section,
 .section {
 	margin-top: var(--section-space);
 
@@ -6,6 +7,7 @@
 	}
 }
 
+.wysiwyg > .wp-block-group.has-background,
 .section-bg {
 	padding: var(--section-space) 0;
 
