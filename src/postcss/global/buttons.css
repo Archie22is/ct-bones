@@ -1,8 +1,10 @@
+.wp-block-button__link,
 .button {
 	@mixin button-normal;
 	@mixin button-default;
 }
 
+.wp-block-button__link.has-primary-background-color.has-white-color,
 .button[type='submit'],
 .button--primary {
 	@mixin button-style-primary;
