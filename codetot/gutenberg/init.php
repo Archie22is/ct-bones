@@ -11,6 +11,11 @@ class CT_Gutenberg_Init {
 	private static $instance;
 
 	/**
+	 * @var array|false|string
+	 */
+	private $theme_version;
+
+	/**
 	 * Get singleton instance.
 	 *
 	 * @return CT_Gutenberg_Init
@@ -28,6 +33,8 @@ class CT_Gutenberg_Init {
 	 */
 	public function __construct()
 	{
+		$this->theme_version = $this->is_localhost() ? substr(sha1(rand()), 0, 6) : CODETOT_VERSION;
+
 		add_action('after_setup_theme', array($this, 'theme_supports'));
 	}
 
@@ -38,6 +45,7 @@ class CT_Gutenberg_Init {
 
 		// Custom CSS and JS
 		add_theme_support( 'editor-styles' );
+		add_action('enqueue_block_editor_assets', array($this, 'load_editor_assets'));
 	}
 
 	function load_color_palette() {
@@ -57,6 +65,21 @@ class CT_Gutenberg_Init {
 		}
 
 		return $output_scales;
+	}
+
+	function load_editor_assets() {
+		$env = !$this->is_localhost() ? '.min' : '';
+
+		wp_enqueue_script('ct-bones-editor-js', CODETOT_ASSETS_URI . '/js/editor' . $env . '.js', array('wp-blocks', 'wp-i18n', 'wp-dom-ready'), $this->theme_version, true);
+
+		if (!$this->is_localhost()) {
+			wp_enqueue_style('ct-bones-editor-css', CODETOT_ASSETS_URI . '/css/editor.min.css', array(), $this->theme_version);
+		}
+	}
+
+	public function is_localhost()
+	{
+		return !empty($_SERVER['HTTP_X_CODETOT_PARENT_THEME_HEADER']) && $_SERVER['HTTP_X_CODETOT_PARENT_THEME_HEADER'] === 'development';
 	}
 }
 
