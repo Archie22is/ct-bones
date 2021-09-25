@@ -33,21 +33,26 @@ class CT_Gutenberg_Init {
 
 	function theme_supports() {
 		add_theme_support( 'editor-color-palette', $this->load_color_palette());
+		add_theme_support( 'editor-font-sizes', $this->load_font_sizes() );
 	}
 
 	function load_color_palette() {
-		$output_colors = [];
-		$colors = codetot_get_color_options();
+		return wp_parse_args(ct_bones_get_color_schemas(), ct_bones_get_default_colors());
+	}
 
-		foreach ($colors as $color) {
-			$output_colors[] = array(
-				'name' => esc_html($color['name']),
-				'slug' => esc_html($color['id']),
-				'color' => esc_html($color['std'])
+	function load_font_sizes() {
+		$config = ct_bones_get_font_scales();
+		$output_scales = [];
+
+		foreach ($config as $slug => $value) {
+			$output_scales[] = array(
+				'name' => esc_attr($slug),
+				'slug' => str_replace('h', 'heading', esc_attr($slug)),
+				'size' => 16 * number_format($value, 3, '.', '')
 			);
 		}
 
-		return $output_colors;
+		return $output_scales;
 	}
 }
 

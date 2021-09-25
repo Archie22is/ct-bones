@@ -40,6 +40,7 @@ class Codetot_Assets
 		// Frontend inline css
 		add_action('codetot_custom_style_css_before', array($this, 'default_variables_css_inline'));
 		add_action('codetot_custom_style_css_variables', array($this, 'custom_color_options_css_inline'));
+		add_action('codetot_custom_style_css_variables', array($this, 'custom_font_scale_css_inline'));
 	}
 
 	public function register_pwa_meta()
@@ -55,7 +56,9 @@ class Codetot_Assets
 			wp_enqueue_script('comment-reply');
 		}
 
-		wp_enqueue_style('codetot-global', CODETOT_ASSETS_URI . '/css/frontend.min.css', array(), $this->theme_version);
+		if (!$this->is_localhost()) :
+			wp_enqueue_style('codetot-global', CODETOT_ASSETS_URI . '/css/frontend.min.css', array(), $this->theme_version);
+		endif;
 
 		if (!wp_script_is('lazysizes', 'enqueued')) {
 			wp_register_script('lazysizes', CODETOT_ASSETS_URI . '/vendors/lazysizes.min.js', array(), '5.2.2', false);
@@ -99,9 +102,22 @@ class Codetot_Assets
 
 		foreach ($keys as $key => $field_name) {
 			$value = codetot_get_theme_mod($field_name);
+
 			if (!empty($value)) {
 				$lines[] = sprintf('--%s: %s;', $key, $value);
 			}
+		}
+
+		return $lines;
+	}
+
+	public function load_custom_font_scale()
+	{
+		$config = ct_bones_get_font_scales();
+		$lines = [];
+
+		foreach ($config as $variable => $value) {
+			$lines[] = esc_html(sprintf('--%s: %s;', $variable, $value . 'rem'));
 		}
 
 		return $lines;
@@ -122,6 +138,11 @@ class Codetot_Assets
 	public function custom_color_options_css_inline()
 	{
 		$variables_rows = $this->load_custom_color_options();
+		echo implode('', $variables_rows);
+	}
+
+	public function custom_font_scale_css_inline() {
+		$variables_rows = $this->load_custom_font_scale();
 		echo implode('', $variables_rows);
 	}
 

@@ -24,23 +24,10 @@ class Codetot_Theme_Typography {
     $this->theme_version = $this->is_localhost() ? substr(sha1(rand()), 0, 6) : CODETOT_VERSION;
     $this->premium_fonts = array_keys(codetot_premium_fonts());
 
-	add_action('wp_enqueue_scripts', array($this, 'load_font_size_scale'));
 	add_action('wp_enqueue_scripts', array($this, 'load_fonts'), 1);
 
 	// Load CSS inline
 	add_action('codetot_custom_style_css', array($this, 'custom_font_options_css_inline'));
-  }
-
-  public function load_font_size_scale()
-  {
-    $font_size_scale = codetot_get_theme_mod('font_scale') ?? '1125';
-
-    wp_enqueue_style(
-      'codetot-typography-style',
-      esc_url(get_template_directory_uri() . '/dynamic-assets/typography-style/' . $font_size_scale . '.css'),
-      [],
-      CODETOT_VERSION
-    );
   }
 
   public function get_body_font() {

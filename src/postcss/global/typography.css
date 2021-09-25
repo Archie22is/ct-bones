@@ -55,6 +55,39 @@ h5,
 h6 {
 	font-family: var(--font-default);
 	font-weight: var(--font-bold);
+	line-height: 1.25;
+}
+
+.has-heading-1-font-size,
+h1 {
+	font-size: var(--h1);
+}
+
+.has-heading-2-font-size,
+h2 {
+	font-size: var(--h2);
+}
+
+.has-heading-3-font-size,
+h3 {
+	font-size: var(--h3);
+}
+
+.has-heading-4-font-size,
+h4 {
+	font-size: var(--h4);
+}
+
+.has-heading-5-font-size,
+h5 {
+	font-size: var(--h5);
+}
+
+.has-heading-6-font-size,
+small,
+.small-text,
+h6 {
+	font-size: var(--h6);
 }
 
 a {
@@ -70,11 +103,6 @@ a {
 .bold-text,
 strong {
 	font-weight: var(--font-bold);
-}
-
-.entry-content,
-.wysiwyg {
-	@mixin wysiwyg;
 }
 
 .align-c {
