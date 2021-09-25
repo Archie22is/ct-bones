@@ -1,0 +1,8 @@
+.wp-block {
+	max-width: 100%;
+}
+
+.wp-block-cover .block-editor-block-list__layout {
+	max-width: var(--m);
+	margin: 0 auto;
+}
