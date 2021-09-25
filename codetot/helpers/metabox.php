@@ -30,8 +30,6 @@ if (!function_exists('get_codetot_data')) {
 
 function codetot_get_color_options()
 {
-    $prefix = '';
-
     return array(
         [
             'name'    => sprintf(__('%s Color', 'ct-bones'), __('Primary', 'ct-bones')),
