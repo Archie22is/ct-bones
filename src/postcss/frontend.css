@@ -63,3 +63,7 @@
 @import url('legacy-blocks/modal.css');
 @import url('legacy-blocks/modal-login.css');
 @import url('legacy-blocks/modal-search-form.css');
+
+/** WP Blocks **/
+@import url('wp-block/spacer.css');
+@import url('wp-block/button.css');

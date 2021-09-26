@@ -1,0 +1,35 @@
+.wp-block-button__link.has-primary-background-color.has-white-color {
+	@mixin button-style-primary;
+}
+
+.wp-block-button__link.has-secondary-background-color.has-white-color {
+	@mixin button-style-secondary;
+}
+
+.wp-block-button {
+	&.is-style-outline,
+	&.is-style-fill {
+		& .wp-block-button__link {
+			@mixin button-normal;
+			@mixin button-default;
+		}
+	}
+
+	&.is-style-link {
+		position: relative;
+
+		& .wp-block-button__link {
+			background: transparent;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			background: var(--primary);
+		}
+	}
+}
