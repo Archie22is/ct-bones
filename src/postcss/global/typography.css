@@ -105,10 +105,17 @@ strong {
 	font-weight: var(--font-bold);
 }
 
+.text-left,
+.align-l {
+	text-align: left;
+}
+
+.text-center,
 .align-c {
 	text-align: center;
 }
 
+.text-right,
 .align-r {
 	text-align: right;
 }

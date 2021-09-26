@@ -22,9 +22,3 @@
 		display: none;
 	}
 }
-
-.section.wp-block-group .wp-block-group__inner-container,
-.wp-block-cover__inner-container {
-	@mixin container;
-	@mixin container-from-s;
-}

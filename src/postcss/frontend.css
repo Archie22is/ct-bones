@@ -1,6 +1,6 @@
 @import url('global/normalize.css');
 @import url('global/reset.css');
-@import url('global/helpers.css');
+@import url('global/helpers/_index.css');
 @import url('global/typography.css');
 @import url('global/buttons.css');
 @import url('global/colors.css');
@@ -65,5 +65,6 @@
 @import url('legacy-blocks/modal-search-form.css');
 
 /** WP Blocks **/
+@import url('wp-block/layout.css');
 @import url('wp-block/spacer.css');
 @import url('wp-block/button.css');

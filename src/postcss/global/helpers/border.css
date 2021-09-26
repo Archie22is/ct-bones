@@ -1,0 +1,29 @@
+.has-border-style {
+	border-width: 1px;
+	border-style: solid;
+	border-radius: var(--border-radius);
+}
+
+.has-border-color-primary {
+	border-color: var(--primary);
+}
+
+.has-border-color-secondary {
+	border-color: var(--secondary);
+}
+
+.has-border-color-dark {
+	border-color: var(--dark);
+}
+
+.has-border-color-gray {
+	border-color: var(--gray);
+}
+
+.has-border-color-light {
+	border-color: var(--light);
+}
+
+.has-border-color-white {
+	border-color: var(--white);
+}

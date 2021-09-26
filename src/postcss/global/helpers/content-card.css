@@ -1,0 +1,5 @@
+.content-card {
+	&.has-border-style {
+		padding: 20px;
+	}
+}
