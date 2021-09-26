@@ -45,12 +45,14 @@
 	--text-small: 0.85rem;
 }
 
-@custom-media --xxs (min-width: 376px);
+@custom-media --xxs (min-width: 380px);
 @custom-media --xs (min-width: 480px);
-@custom-media --s (min-width: 768px);
+@custom-media --s (min-width: 600px);
+@custom-media --sm (min-width: 782px);
 @custom-media --sm (min-width: 960px);
-@custom-media --m (min-width: 1024px);
+@custom-media --m (min-width: 1080px);
 @custom-media --ml (min-width: 1280px);
 @custom-media --l (min-width: 1440px);
 @custom-media --xl (min-width: 1600px);
 @custom-media --max-mobile (max-width: 479px);
+@custom-media --max-tablet (max-width: 1079px);
