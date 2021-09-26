@@ -1,19 +1,15 @@
-.has-white-color,
 .c-white {
 	color: var(--white);
 }
 
-.has-black-color,
 .c-black {
 	color: var(--black);
 }
 
-.has-primary-color,
 .c-primary {
 	color: var(--primary);
 }
 
-.has-secondary-color,
 .c-secondary {
 	color: var(--secondary);
 }
@@ -23,47 +19,38 @@
 	color: var(--dark);
 }
 
-.has-gray-color,
 .c-gray {
 	color: var(--gray);
 }
 
-.has-light-color,
 .c-light {
 	color: var(--light);
 }
 
-.has-white-background-color,
 .bg-white {
 	background-color: var(--white);
 }
 
-.has-black-background-color,
 .bg-black {
 	background-color: var(--black);
 }
 
-.has-primary-background-color,
 .bg-primary {
 	background-color: var(--primary);
 }
 
-.has-secondary-background-color,
 .bg-secondary {
 	background: var(--secondary);
 }
 
-.has-light-background-color,
 .bg-light {
 	background-color: var(--light);
 }
 
-.has-dark-background-color,
 .bg-dark {
 	background-color: var(--dark);
 }
 
-.has-gray-background-color,
 .bg-gray {
 	background-color: var(--gray);
 }

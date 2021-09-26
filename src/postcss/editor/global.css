@@ -6,3 +6,7 @@
 	max-width: var(--m);
 	margin: 0 auto;
 }
+
+.block-editor-rich-text__editable > a {
+	text-decoration: none;
+}

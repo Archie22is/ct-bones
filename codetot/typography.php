@@ -50,12 +50,12 @@ class Codetot_Theme_Typography {
       $local_font_css_inline = file_exists($local_font_css_file) ? file_get_contents($local_font_css_file) : '';
 
       if (!empty($local_font_css_inline)) {
-        ct_bones_register_inline_style('codetot-premium-fonts-' . esc_attr($type), ct_bones_format_font_assets_path($local_font_css_inline, $font));
+        ct_bones_register_inline_style('ct-bones-fonts-' . esc_attr($type), ct_bones_format_font_assets_path($local_font_css_inline, $font));
       }
     } else {
       $google_fonts_css_inline = ct_bones_get_google_fonts_css_inline($font);
 
-      ct_bones_register_inline_style('codetot-google-fonts', $google_fonts_css_inline);
+      ct_bones_register_inline_style('ct-bones-fonts', $google_fonts_css_inline);
     }
   }
 

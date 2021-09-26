@@ -34,7 +34,7 @@ class Codetot_Assets
 		$this->theme_environment = $this->is_localhost() ? '' : '.min';
 
 		add_action('wp_head', array($this, 'register_pwa_meta'));
-		add_action('wp_enqueue_scripts', array($this, 'load_assets'), 20);
+		add_action('wp_enqueue_scripts', array($this, 'load_assets'), 1);
 		add_action('wp_head', array($this, 'output_inline_styles'), 100);
 
 		// Frontend inline css

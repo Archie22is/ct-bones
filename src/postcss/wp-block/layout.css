@@ -8,6 +8,9 @@
 	}
 
 	&.wp-block-cover {
+		padding: 0;
+		min-height: 0;
+
 		& > .wp-block-cover__inner-container {
 			@mixin container;
 			@mixin container-from-s;
@@ -45,4 +48,8 @@
 			margin-top: 40px;
 		}
 	}
+}
+
+div.wp-block-columns {
+	margin-bottom: 0;
 }

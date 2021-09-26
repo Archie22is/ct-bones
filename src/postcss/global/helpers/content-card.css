@@ -1,5 +1,5 @@
-.content-card {
-	&.has-border-style {
+[class*='is-style-border-'] {
+	&.content-card {
 		padding: 20px;
 	}
 }

@@ -10,6 +10,7 @@ const devMode = process.env.NODE_ENV !== 'production'
 module.exports = {
   entry: {
     admin: path.resolve(process.cwd(), './src/admin.js'),
+		editor: path.resolve(process.cwd(), './src/editor.js'),
 		cart: path.resolve(process.cwd(), './src/cart.js'),
 		checkout: path.resolve(process.cwd(), './src/checkout.js'),
 		frontend: path.resolve(process.cwd(), './src/frontend.js'),
