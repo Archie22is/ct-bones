@@ -1,13 +1,14 @@
-.wysiwyg > .section,
+.wp-block-cover,
 .section {
 	margin-top: var(--section-space);
 
-	& + .section-bg {
+	& + .has-background {
 		margin-top: var(--section-space);
 	}
 }
 
-.wysiwyg > .wp-block-group.has-background,
+.wp-block-cover.has-background,
+.wp-block-group.has-background,
 .section-bg {
 	padding: var(--section-space) 0;
 
@@ -22,6 +23,7 @@
 	}
 }
 
+.section.wp-block-group .wp-block-group__inner-container,
 .wp-block-cover__inner-container {
 	@mixin container;
 	@mixin container-from-s;
