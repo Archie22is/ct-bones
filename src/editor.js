@@ -39,4 +39,9 @@ domReady(() => {
 		label: __('Desktop Only', 'ct-bones'),
 		isDefault: false,
 	});
+
+	wp.blocks.registerBlockStyle('core/button', {
+		name: 'link',
+		label: __('Link', 'ct-bones')
+	});
 })
