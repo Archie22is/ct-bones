@@ -26,7 +26,6 @@ function ct_bones_minify_inline_css($content)
  *
  * @param string $id
  * @param string $content
- * @return void
  */
 function ct_bones_register_inline_style($id, $content)
 {
@@ -38,7 +37,7 @@ function ct_bones_register_inline_style($id, $content)
 
 	wp_register_style($id, false);
 	wp_enqueue_style($id);
-	return wp_add_inline_style($id, ct_bones_minify_inline_css($content));
+	wp_add_inline_style($id, ct_bones_minify_inline_css($content));
 }
 
 function ct_bones_register_inline_script($id, $content)

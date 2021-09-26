@@ -13,7 +13,7 @@ import {
 import { debounce } from 'lib/utils'
 import { initQuantity } from './js/woocommerce/quantity'
 import { widgetProductCategories } from './js/woocommerce/widget-product-categories'
-import './postcss/woocommerce.css'
+import './postcss/legacy/woocommerce/_index.css'
 
 const $ = jQuery
 

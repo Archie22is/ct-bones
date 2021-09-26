@@ -24,10 +24,10 @@ class Codetot_Theme_Typography {
     $this->theme_version = $this->is_localhost() ? substr(sha1(rand()), 0, 6) : CODETOT_VERSION;
     $this->premium_fonts = array_keys(codetot_premium_fonts());
 
-	add_action('wp_enqueue_scripts', array($this, 'load_fonts'), 1);
+		add_action('wp_enqueue_scripts', array($this, 'load_fonts_assets'), 1);
 
-	// Load CSS inline
-	add_action('codetot_custom_style_css', array($this, 'custom_font_options_css_inline'));
+		// Load CSS inline
+		add_action('codetot_custom_style_css', array($this, 'custom_font_options_css_inline'));
   }
 
   public function get_body_font() {
@@ -59,7 +59,7 @@ class Codetot_Theme_Typography {
     }
   }
 
-  public function load_fonts()
+  public function load_fonts_assets()
   {
     $body_font = $this->get_body_font();
     $heading_font = $this->get_heading_font();
@@ -82,10 +82,10 @@ class Codetot_Theme_Typography {
     $heading_font = $this->get_heading_font();
 
     if (!empty($body_font)) {
-      echo 'body{font-family: ' . esc_attr($body_font) . ', sans-serif;}';
+      echo 'body {font-family: "' . esc_attr($body_font) . '", Arial, Helvetica, sans-serif;}';
     }
     if (!empty($heading_font)) {
-      echo 'h1,h2,h3,h4,h5,h6{font-family: ' . esc_attr($heading_font) . ', sans-serif;}';
+      echo 'h1, h2, h3, h4, h5, h6{font-family: ' . esc_attr($heading_font) . ', sans-serif;}';
     }
   }
 
