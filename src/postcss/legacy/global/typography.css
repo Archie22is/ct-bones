@@ -79,6 +79,7 @@ h4 {
 }
 
 .has-heading-5-font-size,
+.large-text,
 h5 {
 	font-size: var(--h5);
 }
