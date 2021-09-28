@@ -1,14 +1,7 @@
-.wp-block-cover,
 .section {
 	margin-top: var(--section-space);
-
-	& + .has-background {
-		margin-top: var(--section-space);
-	}
 }
 
-.wp-block-cover.has-background,
-.wp-block-group.has-background,
 .section-bg {
 	padding: var(--section-space) 0;
 
