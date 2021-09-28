@@ -1,5 +1,3 @@
-html,
-body,
 p,
 ol,
 li,
@@ -21,6 +19,12 @@ h4,
 h5,
 h6 {
 	margin: var(--element-space) 0 0 0;
+	padding: 0;
+}
+
+html,
+body {
+	margin: 0;
 	padding: 0;
 }
 
