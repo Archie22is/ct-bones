@@ -19,6 +19,12 @@
 		& .wp-block-button__link {
 			border-width: 1px;
 			border-style: solid;
+
+			&.has-secondary-color.has-white-background-color {
+				&:hover {
+					color: var(--secondary);
+				}
+			}
 		}
 	}
 

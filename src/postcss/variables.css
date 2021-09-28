@@ -44,6 +44,7 @@
 	--header-breakpoint: 1024px;
 	--text-large: 1.15rem;
 	--text-small: 0.85rem;
+	--element-space: 20px;
 }
 
 @custom-media --xxs (min-width: 380px);
