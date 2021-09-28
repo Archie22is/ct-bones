@@ -1,1 +1,1 @@
-import './postcss/legacy/admin/_index.css';
+import './postcss/legacy/admin/_index.css'
