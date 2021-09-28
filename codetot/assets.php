@@ -34,7 +34,7 @@ class Codetot_Assets
 		$this->theme_environment = $this->is_localhost() ? '' : '.min';
 
 		add_action('wp_head', array($this, 'register_pwa_meta'));
-		add_action('wp_enqueue_scripts', array($this, 'load_assets'), 1);
+		add_action('wp_enqueue_scripts', array($this, 'load_assets'), 10);
 		add_action('wp_head', array($this, 'output_inline_styles'), 100);
 
 		// Frontend inline css
@@ -57,11 +57,11 @@ class Codetot_Assets
 		}
 
 		if (!$this->is_localhost()) :
+			wp_enqueue_style('codetot-global', CODETOT_ASSETS_URI . '/css/legacy-frontend.min.css', array(), $this->theme_version);
+
 			if ( function_exists('has_blocks') ) {
 				wp_enqueue_style('ct-bones-frontend-css', CODETOT_ASSETS_URI . '/css/frontend.min.css', array(), $this->theme_version);
 			}
-
-			wp_enqueue_style('codetot-global', CODETOT_ASSETS_URI . '/css/legacy-frontend.min.css', array(), $this->theme_version);
 		endif;
 
 		if (!wp_script_is('lazysizes', 'enqueued')) {
