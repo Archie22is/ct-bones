@@ -45,6 +45,7 @@
 	--text-large: 1.15rem;
 	--text-small: 0.85rem;
 	--element-space: 20px;
+	--column-space: 20px;
 }
 
 @custom-media --xxs (min-width: 380px);
@@ -57,6 +58,6 @@
 @custom-media --l (min-width: 1440px);
 @custom-media --xl (min-width: 1600px);
 @custom-media --max-small-mobile (max-width: 379px);
-@custom-media --max-mobile (max-width: 479px);
+@custom-media --max-mobile (max-width: 599px);
 @custom-media --max-small-tablet (max-width: 781px);
 @custom-media --max-tablet (max-width: 1079px);
