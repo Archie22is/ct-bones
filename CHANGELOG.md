@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 5.7.4 - 05/10/2021
+
+- Update security patchs npm
+- Fix wrong constructor in blocks
+
 ## 5.7.3
 
 - Fix top header background contract and background
