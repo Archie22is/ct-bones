@@ -31,6 +31,12 @@ html {
 	}
 }
 
+@media screen and (min-width: 1140px) {
+	html {
+		font-size: 115%;
+	}
+}
+
 /* stylelint-disable */
 body {
 	background: var(--white);
