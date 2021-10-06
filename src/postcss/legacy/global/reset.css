@@ -1,6 +1,5 @@
 p,
 ol,
-li,
 dl,
 dt,
 dd,
@@ -20,6 +19,10 @@ h5,
 h6 {
 	margin: var(--element-space) 0 0 0;
 	padding: 0;
+}
+
+li {
+	margin: 10px 0 0 0;
 }
 
 html,
