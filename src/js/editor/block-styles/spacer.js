@@ -9,26 +9,26 @@ export default () => {
 	})
 
 	wp.blocks.registerBlockStyle('core/spacer', {
-		name: 'small',
-		label: __('Small', 'ct-bones'),
-		isDefault: false
-	})
-
-	wp.blocks.registerBlockStyle('core/spacer', {
-		name: 'medium',
-		label: __('Medium', 'ct-bones'),
-		isDefault: false
-	})
-
-	wp.blocks.registerBlockStyle('core/spacer', {
-		name: 'large',
-		label: __('Large', 'ct-bones'),
-		isDefault: false
-	})
-
-	wp.blocks.registerBlockStyle('core/spacer', {
 		name: 'mobile-only',
 		label: __('Mobile Only', 'ct-bones'),
+		isDefault: false
+	})
+
+	wp.blocks.registerBlockStyle('core/spacer', {
+		name: 'from-tablet',
+		label: __('From Tablet', 'ct-bones'),
+		isDefault: false
+	})
+
+	wp.blocks.registerBlockStyle('core/spacer', {
+		name: 'max-tablet',
+		label: __('Max Tablet', 'ct-bones'),
+		isDefault: false
+	})
+
+	wp.blocks.registerBlockStyle('core/spacer', {
+		name: 'tablet-only',
+		label: __('Tablet Only', 'ct-bones'),
 		isDefault: false
 	})
 
