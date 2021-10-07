@@ -22,6 +22,14 @@ ul.gfield_radio {
 }
 
 .wp-block-group.has-primary-background-color,
+.wp-block-cover.has-primary-background-color {
+	& input[type='submit'],
+	& button[type='submit'] {
+		background: var(--secondary);
+	}
+}
+
+.wp-block-group.has-primary-background-color,
 .wp-block-group.has-secondary-background-color,
 .wp-block-cover.has-primary-background-color,
 .wp-block-cover.has-secondary-background-color {
@@ -29,6 +37,8 @@ ul.gfield_radio {
 		color: var(--white);
 
 		& .gfield_radio {
+			margin-top: 0;
+
 			& > li {
 				position: relative;
 				padding-left: 30px;
@@ -40,6 +50,8 @@ ul.gfield_radio {
 		}
 
 		& .gfield_checkbox {
+			margin-top: 0;
+
 			& > li {
 				position: relative;
 				padding-left: 30px;
