@@ -1,0 +1,57 @@
+.gfield_radio {
+	& input[type='radio'] {
+		@mixin custom-radio var(--dark), var(--dark);
+	}
+}
+
+.gfield_checkbox {
+	& input[type='checkbox'] {
+		@mixin custom-checkbox var(--dark), var(--dark);
+
+		&:checked ~ label {
+			color: var(--dark);
+		}
+	}
+}
+
+ul.gfield_checkbox,
+ul.gfield_radio {
+	@mixin list-reset;
+
+	margin: var(--element-space) 0 0 0;
+}
+
+.wp-block-group.has-primary-background-color,
+.wp-block-group.has-secondary-background-color,
+.wp-block-cover.has-primary-background-color,
+.wp-block-cover.has-secondary-background-color {
+	& .gform_wrapper {
+		color: var(--white);
+
+		& .gfield_radio {
+			& > li {
+				position: relative;
+				padding-left: 30px;
+			}
+
+			& input[type='radio'] {
+				@mixin custom-radio var(--white), var(--white);
+			}
+		}
+
+		& .gfield_checkbox {
+			& > li {
+				position: relative;
+				padding-left: 30px;
+			}
+
+			& input[type='checkbox'] {
+				@mixin custom-checkbox var(--white), var(--white);
+
+				&:checked ~ label {
+					color: var(--white);
+				}
+			}
+		}
+	}
+}
