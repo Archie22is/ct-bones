@@ -45,7 +45,7 @@ class Codetot_Theme_Layout
       $this->generate_page_layout();
     }
 
-    if (is_singular('post')) {
+    if (is_singular() && !is_singular('product')) {
       $this->generate_post_layout();
     }
 
