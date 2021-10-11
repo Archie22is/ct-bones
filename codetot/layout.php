@@ -45,10 +45,6 @@ class Codetot_Theme_Layout
       $this->generate_page_layout();
     }
 
-    if (is_singular() && !is_singular('product') && !is_singular('page')) {
-      $this->generate_post_layout();
-    }
-
     $this->generate_default_index_layout();
   }
 
@@ -122,16 +118,6 @@ class Codetot_Theme_Layout
 
     add_action('codetot_before_sidebar', 'codetot_layout_page_block_between_html', 10);
     add_action('codetot_footer', 'codetot_layout_page_block_close_html', 10);
-  }
-
-  public function generate_post_layout() {
-    $sidebar_layout    = codetot_get_theme_mod('post_layout') ?? 'right-sidebar';
-    $enable_hero_image = codetot_get_theme_mod('extra_single_post_layout', 'pro') ?? 'none';
-
-    if ($enable_hero_image === 'hero_image') {
-      add_action('codetot_after_header', 'codetot_layout_single_post_hero_image_html', 2);
-      add_filter('codetot_hide_single_post_header', '__return_true');
-    }
   }
 
   public function generate_comments() {
