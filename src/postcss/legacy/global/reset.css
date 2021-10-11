@@ -25,6 +25,11 @@ li {
 	margin: 10px 0 0 0;
 }
 
+ul,
+ol {
+	padding-left: 1em;
+}
+
 html,
 body {
 	margin: 0;
