@@ -32,8 +32,9 @@
 	--section-space: 2em;
 	--xxs: 380px;
 	--xs: 480px;
-	--s: 600px;
-	--sm: 960px;
+	--s: 588px;
+	--sm: 782px;
+	--sml: 960px;
 	--m: 1080px;
 	--ml: 1280px;
 	--l: 1440px;
@@ -50,14 +51,14 @@
 
 @custom-media --xxs (min-width: 380px);
 @custom-media --xs (min-width: 480px);
-@custom-media --s (min-width: 600px);
+@custom-media --s (min-width: 588px);
 @custom-media --sm (min-width: 782px);
-@custom-media --sm (min-width: 960px);
+@custom-media --sml (min-width: 960px);
 @custom-media --m (min-width: 1080px);
 @custom-media --ml (min-width: 1280px);
 @custom-media --l (min-width: 1440px);
 @custom-media --xl (min-width: 1600px);
 @custom-media --max-small-mobile (max-width: 379px);
-@custom-media --max-mobile (max-width: 599px);
+@custom-media --max-mobile (max-width: 587px);
 @custom-media --max-small-tablet (max-width: 781px);
 @custom-media --max-tablet (max-width: 1079px);
