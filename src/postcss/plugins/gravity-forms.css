@@ -59,21 +59,6 @@
 			margin-left: 5px;
 		}
 	}
-
-	& .gfield_checkbox,
-	& .gfield_radio {
-		display: flex;
-		flex-wrap: wrap;
-
-		& > li {
-			margin-right: 1rem;
-
-			& input {
-				margin-right: 5px;
-				width: unset;
-			}
-		}
-	}
 }
 
 table.gfield_list {
