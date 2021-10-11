@@ -15,6 +15,10 @@
 	max-width: var(--s);
 }
 
+.container--sm {
+	max-width: var(--sm);
+}
+
 .container--m {
 	max-width: var(--m);
 }
@@ -29,4 +33,15 @@
 
 .container--xl {
 	max-width: var(--xl);
+}
+
+.section.wp-block-group.section--no-container,
+.section.wp-block-cover.section--no-container {
+	& > .wp-block-cover__inner-container,
+	& > .wp-block-group__inner-container {
+		@media (--ml) {
+			max-width: 100%;
+			padding: 0;
+		}
+	}
 }
