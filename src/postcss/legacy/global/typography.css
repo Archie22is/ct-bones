@@ -19,21 +19,15 @@ html {
 	font-size: 87.5%;
 }
 
-@media screen and (min-width: 480px) {
+@media (--xs) {
 	html {
 		font-size: 93.75%;
 	}
 }
 
-@media screen and (min-width: 1024px) {
+@media (--sm) {
 	html {
 		font-size: 100%;
-	}
-}
-
-@media screen and (min-width: 1140px) {
-	html {
-		font-size: 115%;
 	}
 }
 
