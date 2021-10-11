@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## 5.7.5 - 11/10/2021
+
+- Fix single post template conflict with other post type in child theme
+- Replace default metabox page css class with pure metabox
+- Remove top footer spacing toggle in admin ui
+- Complete remove Metabox requirement from a theme
+- Update security npm packages
+
 ## 5.7.4 - 05/10/2021
 
 - Update security patchs npm
