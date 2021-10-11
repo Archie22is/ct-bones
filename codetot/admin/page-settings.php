@@ -55,8 +55,20 @@ class Codetot_Page_Settings
 	 */
     public function render_page_settings_metabox($post)
     {
-        $page_css_class_value = get_post_meta($post->ID, 'page_css_class', true); ?>
+		$warning_message = '';
+        $page_css_class_value = get_post_meta($post->ID, 'page_css_class', true);
+		$old_page_class = function_exists('rwmb_meta') ? rwmb_meta('codetot_page_class') : '';
+
+		// Request to update current page with new page setting
+		if (!empty($old_page_class) && empty($page_css_class_value)) {
+			$warning_message = __('Please save this page once to update page CSS class. Old setting and Metabox will be remove completely in next version.', 'ct-bones');
+			$page_css_class_value = $old_page_class;
+		}
+		?>
 		<div class="components-base-control">
+			<?php if (!empty($warning_message)) : ?>
+				<p style="color: red; margin-bottom: 10px;"><?php echo $warning_message; ?></p>
+			<?php endif; ?>
 			<div class="components-base-control__field">
 				<label clas="components-base-control__label" for="page_css_class" style="display: block; margin-bottom: 8px;"><?php _e('Page CSS Class', 'ct-bones'); ?></label>
 				<input class="components-text-control__input" name="page_css_class" id="page_css_class" value="<?php echo esc_html($page_css_class_value); ?>">
