@@ -33,7 +33,6 @@ class Codetot_Theme_Init
     add_action('after_setup_theme', array($this, 'theme_supports'));
     add_action('widgets_init', array($this, 'register_sidebars'));
     add_action('wp_footer', array($this, 'codetot_extra_blocks'));
-    add_filter('body_class', array($this, 'page_body_class'));
 
     add_filter('walker_nav_menu_start_el', array($this, 'add_arrow_to_primary_menu'), 10, 4);
     add_filter('codetot_search_button', array($this, 'search_button_icon'));
@@ -195,23 +194,6 @@ class Codetot_Theme_Init
     // Sticky blocks
     the_block('slideout-menu');
     the_block_part('modal-search-form');
-  }
-
-  public function page_body_class($classes)
-  {
-    if (!function_exists('rwmb_meta')) {
-      return $classes;
-    }
-
-    if (is_page()) {
-      $page_class = rwmb_meta('codetot_page_class') ?? '';
-
-      if (!empty($page_class)) {
-        $classes[] = esc_attr(rwmb_meta('codetot_page_class'));
-      }
-    }
-
-    return $classes;
   }
 
   public function search_button_icon() {
