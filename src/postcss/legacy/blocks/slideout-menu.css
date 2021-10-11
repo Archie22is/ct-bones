@@ -177,6 +177,7 @@
 	flex-direction: column;
 
 	& > .menu-item {
+		margin: 0;
 		padding: 0.5em 0;
 
 		& > a {
@@ -233,6 +234,7 @@
 			transition: height 15s ease;
 
 			& > .menu-item {
+				margin: 0;
 				padding: 0.25em 0;
 			}
 
