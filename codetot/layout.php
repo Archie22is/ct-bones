@@ -132,13 +132,6 @@ class Codetot_Theme_Layout
       add_action('codetot_after_header', 'codetot_layout_single_post_hero_image_html', 2);
       add_filter('codetot_hide_single_post_header', '__return_true');
     }
-
-    add_action('codetot_after_header', 'codetot_breadcrumbs_html', 9);
-    add_action('codetot_after_header', function() use ($sidebar_layout) {
-        echo codetot_layout_page_block_open('page-block--page ' . $sidebar_layout, false);
-    }, 10);
-    add_action('codetot_before_sidebar', 'codetot_layout_page_block_between_html', 10);
-    add_action('codetot_footer', 'codetot_layout_page_block_close_html', 10);
   }
 
   public function generate_comments() {
@@ -226,12 +219,11 @@ function codetot_layout_page_block_close_html() {
 
 function codetot_layout_archive_page_header_html() { ?>
   <?php if (!is_front_page()) :
-
   $description = get_the_archive_description();
   ?>
   <header class="mt-05 mb-1 page-header">
     <?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
-    <?php if ( $description ) : ?>
+    <?php if ( !empty($description) ) : ?>
       <div class="archive-description"><?php echo wp_kses_post( wpautop( $description ) ); ?></div>
     <?php endif; ?>
   </header><!-- .page-header -->
@@ -250,35 +242,6 @@ function codetot_layout_single_post_social_share_html() {
       'items' => codetot_get_share_post_links($post)
     ));
   endif;
-}
-
-function codetot_layout_single_post_hero_image_html() {
-  global $post;
-
-  $categories = get_the_category();
-  $category_html = '<ul class="hero-image__post-meta">';
-
-  if (!empty($categories)) {
-    foreach ($categories as $category) :
-      $category_html .= sprintf('<li class="hero-image__post-meta__item"><a class="hero-image__post-meta__link" href="%1$s">%2$s</a></li>',
-      get_term_link($category, 'category'),
-      $category->name
-    );
-    endforeach;
-  }
-
-  $category_html .= '</ul>';
-
-  the_block('hero-image', array(
-    'label' => $category_html,
-    'title' => $post->post_title,
-    'class' => 'hero-image--single-post',
-    'image' => get_post_thumbnail_id(),
-    'spacing' => 'large',
-    'background_contract' => 'dark',
-    'content_alignment' => 'center',
-    'overlay' => '0.4'
-  ));
 }
 
 function codetot_layout_post_list_html() {
