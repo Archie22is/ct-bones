@@ -4,4 +4,12 @@
 			display: none;
 		}
 	}
+
+	&.is-style-desktop-only {
+		display: none;
+
+		@media (--sm) {
+			display: block;
+		}
+	}
 }
