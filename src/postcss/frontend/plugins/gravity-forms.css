@@ -18,7 +18,13 @@ ul.gfield_checkbox,
 ul.gfield_radio {
 	@mixin list-reset;
 
-	margin: var(--element-space) 0 0 0;
+	position: relative;
+	margin: 0;
+
+	& > li {
+		position: relative;
+		padding-left: 30px;
+	}
 }
 
 .wp-block-group.has-primary-background-color,
@@ -39,11 +45,6 @@ ul.gfield_radio {
 		& .gfield_radio {
 			margin-top: 0;
 
-			& > li {
-				position: relative;
-				padding-left: 30px;
-			}
-
 			& input[type='radio'] {
 				@mixin custom-radio var(--white), var(--white);
 			}
@@ -51,11 +52,6 @@ ul.gfield_radio {
 
 		& .gfield_checkbox {
 			margin-top: 0;
-
-			& > li {
-				position: relative;
-				padding-left: 30px;
-			}
 
 			& input[type='checkbox'] {
 				@mixin custom-checkbox var(--white), var(--white);
