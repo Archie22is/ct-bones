@@ -48,3 +48,11 @@ h6 {
 .align-r {
 	text-align: right;
 }
+
+.entry-content a {
+	color: var(--primary);
+}
+
+.video-responsive {
+	padding-top: 56.25%;
+}
