@@ -1,34 +1,44 @@
-version: 2
-jobs:
-  test_code:
-    docker:
-      # specify the version you desire here
-      # - image: circleci/php:7.0-fpm-node-browsers
-      - image: cimg/node:12.18
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies and Test
-          command: |
-            npm ci
-            npm run test
+version: 2.1
+orbs:
+  node: circleci/node@4.7.0
 
-  deploy:
-    docker:
-      - image: cimg/node:12.18
+commands:
+  setup_git:
     steps:
-      - checkout
       - add_ssh_keys:
           fingerprints:
-            - "f2:c2:4b:d3:72:1b:b7:b2:3f:6b:4b:41:78:e8:f4:ba"
+            - '85:6e:5d:a6:3b:97:82:a2:6b:de:20:67:1f:f8:ba:d0'
       - run:
-          name: Install dependencies and Build assets
+          name: Setup git config global
           command: |
-            npm ci
-            npm run build
+            git config user.email "dev@codetot.com"
+            git config user.name "CODE TOT JSC"
+
+jobs:
+  test:
+    executor:
+      name: node/default
+      tag: '14.17.6'
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: npm run test
+  build:
+    executor:
+      name: node/default
+      tag: '14.17.6'
+    steps:
+      - checkout
+      - setup_git
+      - node/install-packages
+      - run:
+          name: Build assets
+          command: npm run build
+      - run:
+          name: Commit if assets changes
+          command: |
             if [ -n "$(git status --porcelain)" ]; then
-              git config user.email "dev@codetot.com"
-              git config user.name "CODE TOT JSC"
               git add .
               git commit -m "Process styles and scripts [skip ci]"
               git push origin HEAD:${CIRCLE_BRANCH}
@@ -37,44 +47,47 @@ jobs:
               exit 0
             fi
   release:
-    docker:
-      - image: cimg/node:12.18
+    executor:
+      name: node/default
+      tag: '14.17.6'
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "f2:c2:4b:d3:72:1b:b7:b2:3f:6b:4b:41:78:e8:f4:ba"
+      - setup_git
       - run:
-          name: Install dependencies and Build assets
+          name: Remove source
           command: |
-            git config user.email "dev@codetot.com"
-            git config user.name "CODE TOT JSC"
-            rm -rf assets/js/*.js.LICENSE.txt
-            rm -rf src/
-            rm -rf postcss.config.js
-            rm -rf package*.json
+            rm -rf assets/js/*.js.LICENSE.txt src/ package.json package-lock.json
             rm -rf .babelrc .browserslistrc .eslintrc.js .prettierignore .stylelintrc
+            rm -rf components/*/src/ components/*/.browserslistrc components/*/.eslintrc.js components/*/.prettierignore components/*/.stylelintrc
+      - run:
+          name: Commit assets changes
+          command: |
             git add .
-            git commit -m "Release package"
+            git commit -m "Prepare production package"
             git push origin HEAD:production-temp --force
+      - run:
+          name: Merge to branch production
+          command: |
             git reset --hard origin/production
-            git merge origin/production-temp --no-ff --no-edit
+            git merge origin/production-temp --no-ff --no-edit -m "Release package"
             git push origin HEAD:production
             git push origin :production-temp
 
 workflows:
-  version: 2
-  build_and_test:
+  test_assets:
     jobs:
-      - test_code:
+      - test:
           filters:
             branches:
               only: /(feature|bugfix|hotfix)\/?(.*)/
-      - deploy:
+  build_assets:
+    jobs:
+      - build:
           filters:
             branches:
               only: /(develop|feature\/ci)/
-
+  release_package:
+    jobs:
       - release:
           filters:
             branches:
