@@ -35,12 +35,15 @@ class Codetot_Theme_Layout
     add_action('codetot_footer_row_middle', 'codetot_render_footer_copyright_block', 10);
 
     $is_not_flexible_page = get_page_template_slug( get_the_ID()) !== 'flexible';
+		$is_fullwidth_page = get_page_template_slug( get_the_ID() ) === 'page-fullwidth.php';
+
     $is_not_woocommerce_pages = class_exists('WooCommerce') ? (!is_account_page() && !is_cart() && !is_checkout()) : !class_exists('WooCommerce');
 
     if (
       is_page() &&
       $is_not_flexible_page &&
-      $is_not_woocommerce_pages
+      $is_not_woocommerce_pages &&
+			!$is_fullwidth_page
     ) {
       $this->generate_page_layout();
     }

@@ -29,6 +29,11 @@ if (class_exists('WooCommerce')) {
   require_once CODETOT_DIR . '/customizer/woocommerce-settings.php';
 }
 
+/**
+ * Gutenberg Support
+ */
+require_once CODETOT_DIR . '/gutenberg/init.php';
+
 require_once CODETOT_DIR . '/theme-init.php';
 require_once CODETOT_DIR . '/typography.php';
 require_once CODETOT_DIR . '/assets.php';

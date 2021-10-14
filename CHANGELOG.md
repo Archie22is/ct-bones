@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.0.0 - 14/10/2021
+
+- Release first Gutenberg compatitible version.
+
 ## 5.7.5 - 11/10/2021
 
 - Fix single post template conflict with other post type in child theme

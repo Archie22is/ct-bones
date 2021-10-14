@@ -9,15 +9,18 @@ const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   entry: {
-    admin: path.resolve(process.cwd(), './src/admin.js'),
+		frontend: path.resolve(process.cwd(), './src/frontend.js'),
+		editor: path.resolve(process.cwd(), './src/editor.js'),
 		cart: path.resolve(process.cwd(), './src/cart.js'),
 		checkout: path.resolve(process.cwd(), './src/checkout.js'),
-		frontend: path.resolve(process.cwd(), './src/frontend.js'),
-		woocommerce: path.resolve(process.cwd(), './src/woocommerce.js')
+		'legacy-admin': path.resolve(process.cwd(), './src/legacy-admin.js'),
+		'legacy-frontend': path.resolve(process.cwd(), './src/legacy-frontend.js'),
+		'legacy-woocommerce': path.resolve(process.cwd(), './src/legacy-woocommerce.js')
   },
   output: {
     path: path.resolve(__dirname, 'assets'),
-    filename: !devMode ? './js/[name].min.js' : './js/[name].js'
+    filename: !devMode ? './js/[name].min.js' : './js/[name].js',
+		clean: true
   },
   watch: devMode,
   devtool: 'eval-cheap-source-map',
@@ -111,7 +114,7 @@ module.exports = {
       port: 3000,
       watch: true,
       proxy: {
-        target: 'http://codetot-theme.test/',
+        target: 'http://kweb.test/',
         proxyReq: [
           proxyReq => {
             proxyReq.setHeader(

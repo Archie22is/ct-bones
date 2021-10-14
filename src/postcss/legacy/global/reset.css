@@ -1,0 +1,140 @@
+p,
+ol,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: var(--element-space) 0 0 0;
+	padding: 0;
+}
+
+li {
+	margin: 10px 0 0 0;
+}
+
+ul,
+ol {
+	padding-left: 1em;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	margin-top: var(--element-space);
+	margin-left: 1em;
+	padding: 0;
+}
+
+ul.list-reset {
+	margin: var(--element-space) 0 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+img,
+embed,
+object,
+audio,
+video {
+	height: auto;
+	max-width: 100%;
+}
+
+iframe {
+	border: 0;
+	max-width: 100%;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+td,
+th {
+	padding: 0;
+	text-align: left;
+}
+
+abbr,
+acronym {
+	text-decoration: none;
+}
+
+button,
+input[type='button'],
+input[type='submit'] {
+	cursor: pointer;
+
+	&:disabled {
+		cursor: not-allowed;
+	}
+
+	&:focus {
+		outline: 0;
+	}
+}
+
+address {
+	font-style: normal;
+}
+
+ins,
+abbr[title] {
+	text-decoration: none;
+}
+
+fieldset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+
+	& legend {
+		display: block;
+		margin: 1em 0 0;
+	}
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+svg {
+	width: 24px;
+	height: 24px;
+}
+
+button {
+	padding: 0;
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+}
+
+pre {
+	white-space: break-spaces;
+}
