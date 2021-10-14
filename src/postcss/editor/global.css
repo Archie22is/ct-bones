@@ -3,7 +3,9 @@
 	margin: 0 auto;
 }
 
-.block-editor-rich-text__editable > a {
+.wp-block-paragraph a,
+.wp-block-list a {
+	color: var(--primary);
 	text-decoration: none;
 }
 
