@@ -227,7 +227,7 @@
 	padding: 0 var(--container-gutter);
 }
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .container-default {
     padding: 0 40px;
@@ -264,8 +264,13 @@
 }
 
 .container--s {
-	max-width: 600px;
+	max-width: 588px;
 	max-width: var(--s);
+}
+
+.container--sm {
+	max-width: 782px;
+	max-width: var(--sm);
 }
 
 .container--m {
@@ -288,6 +293,68 @@
 	max-width: var(--xl);
 }
 
+@media (min-width: 1280px) {
+
+.section.wp-block-group.section--no-container > .wp-block-cover__inner-container,
+	.section.wp-block-group.section--no-container > .wp-block-group__inner-container,
+	.section.wp-block-cover.section--no-container > .wp-block-cover__inner-container,
+	.section.wp-block-cover.section--no-container > .wp-block-group__inner-container {
+			max-width: 100%;
+			padding: 0
+	}
+		}
+
+.has-heading-1-font-size,
+h1 {
+	font-size: var(--h1);
+}
+
+.has-heading-2-font-size,
+h2 {
+	font-size: var(--h2);
+}
+
+.has-heading-3-font-size,
+h3 {
+	font-size: var(--h3);
+}
+
+.has-heading-4-font-size,
+h4 {
+	font-size: var(--h4);
+}
+
+.has-heading-5-font-size,
+.large-text,
+h5 {
+	font-size: var(--h5);
+}
+
+.has-heading-6-font-size,
+small,
+.small-text,
+h6 {
+	font-size: var(--h6);
+}
+
+.alignleft,
+.text-left,
+.align-l {
+	text-align: left;
+}
+
+.aligncenter,
+.text-center,
+.align-c {
+	text-align: center;
+}
+
+.alignright,
+.text-right,
+.align-r {
+	text-align: right;
+}
+
 
 		.section.wp-block-group > .wp-block-group__inner-container, .section-bg.wp-block-group > .wp-block-group__inner-container {
 			margin: 0 auto;
@@ -295,7 +362,7 @@
 			padding: 0 var(--container-gutter);
 		}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .section.wp-block-group > .wp-block-group__inner-container, .section-bg.wp-block-group > .wp-block-group__inner-container {
     padding: 0 40px;
@@ -322,7 +389,6 @@
   }
 
 .section.wp-block-cover, .section-bg.wp-block-cover {
-		padding: 0;
 		min-height: 0
 	}
 
@@ -332,7 +398,7 @@
 			padding: 0 var(--container-gutter);
 		}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .section.wp-block-cover > .wp-block-cover__inner-container, .section-bg.wp-block-cover > .wp-block-cover__inner-container {
     padding: 0 40px;
@@ -362,7 +428,7 @@
 		margin-bottom: 20px
 	}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .section .wp-block-group.section__header, .section-bg .wp-block-group.section__header {
 			margin-bottom: 30px
@@ -391,7 +457,7 @@
 		margin-top: 20px
 	}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .section .wp-block-group.section__footer, .section-bg .wp-block-group.section__footer {
 			margin-top: 30px
@@ -405,14 +471,52 @@
 	}
 		}
 
+.section.wp-block-cover,
+	.section.wp-block-group {
+		margin-top: 2em;
+		margin-top: var(--section-space)
+	}
+
+.section.wp-block-cover + .section-bg.wp-block-cover,
+		.section.wp-block-cover + .section-bg.wp-block-group,
+		.section.wp-block-group + .section-bg.wp-block-cover,
+		.section.wp-block-group + .section-bg.wp-block-group {
+			margin-top: 2em;
+			margin-top: var(--section-space);
+		}
+
+.section-bg.wp-block-cover,
+	.section-bg.wp-block-group {
+		padding-top: 2em;
+		padding-top: var(--section-space);
+		padding-bottom: 2em;
+		padding-bottom: var(--section-space);
+	}
+
 div.wp-block-columns {
 	margin-bottom: 0;
+}
+
+.wp-block-column {
+	margin-top: 20px;
+	margin-top: var(--column-space);
 }
 
 @media (min-width: 480px) {
 
 .wp-block-spacer.is-style-mobile-only {
 			display: none
+	}
+		}
+
+.wp-block-spacer.is-style-desktop-only {
+		display: none
+	}
+
+@media (min-width: 782px) {
+
+.wp-block-spacer.is-style-desktop-only {
+			display: block
 	}
 		}
 
@@ -460,8 +564,13 @@ div.wp-block-columns {
 
 .wp-block-button.is-style-outline .wp-block-button__link {
 			border-width: 1px;
-			border-style: solid;
+			border-style: solid
 		}
+
+.wp-block-button.is-style-outline .wp-block-button__link.has-secondary-color.has-white-background-color:hover {
+					color: #f1592a;
+					color: var(--secondary);
+				}
 
 .wp-block-button.is-style-link {
 		position: relative
@@ -481,4 +590,528 @@ div.wp-block-columns {
 			background: #1346af;
 			background: var(--primary);
 		}
+
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+	border-width: 1px 0 0 1px;
+	margin: 0 0 20px;
+	width: 100%;
+	word-break: initial;
+}
+
+.wp-block-table {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.wp-block-table figcaption {
+	margin: 15px auto;
+	text-align: center;
+}
+
+.wp-block-table.is-style-stripes {
+	border: 0;
+}
+
+.wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
+	background-color: var(--nv-light-bg);
+}
+
+th,
+td {
+	padding: 20px;
+}
+
+th {
+	padding-bottom: 10px;
+}
+
+td {
+	font-size: 0.9em;
+	border-bottom: 2px solid var(--nv-text-color);
+}
+
+.wp-block-separator {
+	border-bottom: 0;
+	border-top: 2px solid;
+}
+
+.wp-block-separator.is-style-wide {
+	border-width: 4px;
+}
+
+.wp-block-separator.is-style-dots {
+	border-top: 4px dotted;
+}
+
+.wp-block-separator.is-style-dots::before {
+	content: none;
+}
+
+blockquote {
+	margin: 40px 0;
+	border-color: var(--nv-text-color);
+	border-style: solid;
+	border-width: 0 0 0 4px;
+	padding: 0 0 0 20px;
+}
+
+blockquote p {
+	margin-bottom: 10px;
+}
+
+blockquote cite {
+	font-style: normal;
+	font-size: 0.9em !important;
+}
+
+blockquote.has-text-align-center {
+	border: 0;
+	padding: 0;
+}
+
+blockquote.has-text-align-right {
+	border-width: 0 4px 0 0;
+	padding: 0 20px 0 0;
+}
+
+blockquote.is-style-large {
+	border: 0;
+	padding: 0;
+}
+
+blockquote.is-style-large.wp-block-quote > p {
+	margin-bottom: 20px;
+	font-style: normal;
+	font-size: 1.25em;
+}
+
+.wp-block-pullquote {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border-top: 4px solid var(--nv-text-color);
+	border-bottom: 4px solid var(--nv-text-color);
+	padding: 30px 20px;
+}
+
+.wp-block-pullquote p {
+	font-size: 1.5em !important;
+}
+
+.wp-block-pullquote blockquote {
+	padding-left: 0;
+	border-left: 0;
+	margin: 0;
+}
+
+.wp-block-pullquote.alignleft {
+	text-align: left;
+}
+
+.wp-block-pullquote.alignright {
+	text-align: right;
+}
+
+.wp-block-pullquote.is-style-solid-color {
+	background-color: var(--nv-light-bg);
+}
+
+.wp-block-pullquote.is-style-solid-color blockquote {
+	text-align: inherit;
+	max-width: 90%;
+}
+
+.gfield_radio input[type='radio'] {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		-webkit-appearance: none;
+		   -moz-appearance: none;
+		        appearance: none;
+		opacity: 0;
+	}
+
+.gfield_radio input[type='radio']:checked ~ span::before,
+    .gfield_radio input[type='radio']:checked ~ label::before {
+      border-color: #1e1e1e;
+      border-color: var(--dark);
+    }
+
+.gfield_radio input[type='radio']:checked ~ span,
+    .gfield_radio input[type='radio']:checked ~ label {
+      color: #1e1e1e;
+      color: var(--dark);
+    }
+
+.gfield_radio input[type='radio']:checked ~ span::after,
+    .gfield_radio input[type='radio']:checked ~ label::after {
+      opacity: 1;
+    }
+
+.gfield_radio input[type='radio'] ~ span,
+  .gfield_radio input[type='radio'] ~ label {
+    pointer-events: none
+  }
+
+.gfield_radio input[type='radio'] ~ span::before, .gfield_radio input[type='radio'] ~ label::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      width: 18px;
+      height: 18px;
+      border: 1px solid #1e1e1e;
+      border: 1px solid var(--dark);
+      border-radius: 50%;
+      transition: border-color 0.3s cubic-bezier(0.1, 0.1, 0.25, 1);
+    }
+
+.gfield_radio input[type='radio'] ~ span::after, .gfield_radio input[type='radio'] ~ label::after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 3px;
+      width: 13px;
+      height: 13px;
+      background: #1e1e1e;
+      background: var(--dark);
+      -webkit-clip-path: circle(50% at 50% 50%);
+              clip-path: circle(50% at 50% 50%);
+      opacity: 0;
+    }
+
+.gfield_checkbox input[type='checkbox'] {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		-webkit-appearance: none;
+		   -moz-appearance: none;
+		        appearance: none;
+		opacity: 0
+	}
+
+.gfield_checkbox input[type='checkbox']:checked ~ span::before,
+    .gfield_checkbox input[type='checkbox']:checked ~ label::before {
+      border-color: #1e1e1e;
+      border-color: var(--dark);
+    }
+
+.gfield_checkbox input[type='checkbox']:checked ~ span,
+    .gfield_checkbox input[type='checkbox']:checked ~ label {
+      color: #1e1e1e;
+      color: var(--dark);
+    }
+
+.gfield_checkbox input[type='checkbox']:checked ~ span::after,
+    .gfield_checkbox input[type='checkbox']:checked ~ label::after {
+      opacity: 1;
+    }
+
+.gfield_checkbox input[type='checkbox'] ~ span,
+  .gfield_checkbox input[type='checkbox'] ~ label {
+    pointer-events: none;
+    line-height: 48px; /* Fix mobile SEO score */
+    transition: color 0.3s cubic-bezier(0.1, 0.1, 0.25, 1)
+  }
+
+@media (min-width: 1080px) {
+
+.gfield_checkbox input[type='checkbox'] ~ span,
+  .gfield_checkbox input[type='checkbox'] ~ label {
+      line-height: 36px
+  }
+    }
+
+.gfield_checkbox input[type='checkbox'] ~ span::before, .gfield_checkbox input[type='checkbox'] ~ label::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      width: 19px;
+      height: 19px;
+      top: 13px;
+      border: 1px solid #1e1e1e;
+      border: 1px solid var(--dark);
+      transition: border-color 0.3s cubic-bezier(0.1, 0.1, 0.25, 1)
+    }
+
+@media (min-width: 1080px) {
+
+.gfield_checkbox input[type='checkbox'] ~ span::before, .gfield_checkbox input[type='checkbox'] ~ label::before {
+        top: 7px
+    }
+      }
+
+.gfield_checkbox input[type='checkbox'] ~ span::after, .gfield_checkbox input[type='checkbox'] ~ label::after {
+      content: '';
+      position: absolute;
+      top: 16px;
+      left: 3px;
+      width: 15px;
+      height: 15px;
+      background: #1e1e1e;
+      background: var(--dark);
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+              clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      opacity: 0
+    }
+
+@media (min-width: 1080px) {
+
+.gfield_checkbox input[type='checkbox'] ~ span::after, .gfield_checkbox input[type='checkbox'] ~ label::after {
+        top: 10px
+    }
+      }
+
+.gfield_checkbox input[type='checkbox']:checked ~ label {
+			color: #1e1e1e;
+			color: var(--dark);
+		}
+
+ul.gfield_checkbox,
+ul.gfield_radio {
+	margin: 0;
+	padding: 0;
+	text-indent: 0;
+	list-style-type: none;
+
+	position: relative;
+	margin: 0
+}
+
+ul.gfield_checkbox > li, ul.gfield_radio > li {
+		position: relative;
+		padding-left: 30px;
+	}
+
+.wp-block-group.has-primary-background-color input[type='submit'],
+	.wp-block-group.has-primary-background-color button[type='submit'],
+	.wp-block-cover.has-primary-background-color input[type='submit'],
+	.wp-block-cover.has-primary-background-color button[type='submit'] {
+		background: #f1592a;
+		background: var(--secondary);
+	}
+
+.wp-block-group.has-primary-background-color .gform_wrapper, .wp-block-group.has-secondary-background-color .gform_wrapper, .wp-block-cover.has-primary-background-color .gform_wrapper, .wp-block-cover.has-secondary-background-color .gform_wrapper {
+		color: #fff;
+		color: var(--white)
+	}
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio {
+			margin-top: 0
+		}
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'], .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'], .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'], .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				-webkit-appearance: none;
+				   -moz-appearance: none;
+				        appearance: none;
+				opacity: 0;
+			}
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span::before,
+    .wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label::before,
+    .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span::before,
+    .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label::before,
+    .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span::before,
+    .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label::before,
+    .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span::before,
+    .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label::before {
+      border-color: #fff;
+      border-color: var(--white);
+    }
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span,
+    .wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label,
+    .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span,
+    .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label,
+    .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span,
+    .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label,
+    .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span,
+    .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label {
+      color: #fff;
+      color: var(--white);
+    }
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span::after,
+    .wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label::after,
+    .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span::after,
+    .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label::after,
+    .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span::after,
+    .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label::after,
+    .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span::after,
+    .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label::after {
+      opacity: 1;
+    }
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span,
+  .wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label,
+  .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span,
+  .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label,
+  .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span,
+  .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label,
+  .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span,
+  .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label {
+    pointer-events: none
+  }
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span::before, .wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label::before, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span::before, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label::before, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span::before, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label::before, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span::before, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      width: 18px;
+      height: 18px;
+      border: 1px solid #fff;
+      border: 1px solid var(--white);
+      border-radius: 50%;
+      transition: border-color 0.3s cubic-bezier(0.1, 0.1, 0.25, 1);
+    }
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span::after, .wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label::after, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span::after, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label::after, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span::after, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label::after, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span::after, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label::after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 3px;
+      width: 13px;
+      height: 13px;
+      background: #fff;
+      background: var(--white);
+      -webkit-clip-path: circle(50% at 50% 50%);
+              clip-path: circle(50% at 50% 50%);
+      opacity: 0;
+    }
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox {
+			margin-top: 0
+		}
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'], .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'], .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'], .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				-webkit-appearance: none;
+				   -moz-appearance: none;
+				        appearance: none;
+				opacity: 0
+			}
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ span::before,
+    .wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label::before,
+    .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ span::before,
+    .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label::before,
+    .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ span::before,
+    .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label::before,
+    .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ span::before,
+    .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label::before {
+      border-color: #fff;
+      border-color: var(--white);
+    }
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ span,
+    .wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label,
+    .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ span,
+    .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label,
+    .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ span,
+    .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label,
+    .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ span,
+    .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label {
+      color: #fff;
+      color: var(--white);
+    }
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ span::after,
+    .wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label::after,
+    .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ span::after,
+    .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label::after,
+    .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ span::after,
+    .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label::after,
+    .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ span::after,
+    .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label::after {
+      opacity: 1;
+    }
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span,
+  .wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label,
+  .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span,
+  .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label,
+  .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span,
+  .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label,
+  .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span,
+  .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label {
+    pointer-events: none;
+    line-height: 48px; /* Fix mobile SEO score */
+    transition: color 0.3s cubic-bezier(0.1, 0.1, 0.25, 1)
+  }
+
+@media (min-width: 1080px) {
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span,
+  .wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label,
+  .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span,
+  .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label,
+  .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span,
+  .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label,
+  .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span,
+  .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label {
+      line-height: 36px
+  }
+    }
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span::before, .wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label::before, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span::before, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label::before, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span::before, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label::before, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span::before, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      width: 19px;
+      height: 19px;
+      top: 13px;
+      border: 1px solid #fff;
+      border: 1px solid var(--white);
+      transition: border-color 0.3s cubic-bezier(0.1, 0.1, 0.25, 1)
+    }
+
+@media (min-width: 1080px) {
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span::before, .wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label::before, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span::before, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label::before, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span::before, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label::before, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span::before, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label::before {
+        top: 7px
+    }
+      }
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span::after, .wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label::after, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span::after, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label::after, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span::after, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label::after, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span::after, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label::after {
+      content: '';
+      position: absolute;
+      top: 16px;
+      left: 3px;
+      width: 15px;
+      height: 15px;
+      background: #fff;
+      background: var(--white);
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+              clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      opacity: 0
+    }
+
+@media (min-width: 1080px) {
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span::after, .wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label::after, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span::after, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label::after, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span::after, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label::after, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ span::after, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox'] ~ label::after {
+        top: 10px
+    }
+      }
+
+.wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label {
+					color: #fff;
+					color: var(--white);
+				}
 

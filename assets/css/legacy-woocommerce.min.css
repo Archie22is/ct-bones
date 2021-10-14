@@ -13,7 +13,7 @@ h3:empty {
 	color: var(--dark)
 }
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .woocommerce-result-count {
 		width: auto
@@ -38,7 +38,7 @@ h3:empty {
 	margin-top: 1em
 }
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .woocommerce-ordering {
 		width: auto;
@@ -270,7 +270,7 @@ h3:empty {
       font-size: 1.3rem;
     }
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .woocommerce-privacy-policy-text blockquote p:first-child {
     font-size: 1.5rem;
@@ -403,7 +403,7 @@ h3:empty {
 		font-size: 1.3rem
 	}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .quick-view-modal .price, .entry-summary .price {
     font-size: 1.5rem
@@ -607,7 +607,7 @@ h3:empty {
 	border-radius: var(--border-radius)
 }
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .woocommerce-message,
 .woocommerce-error,
@@ -830,7 +830,7 @@ h3:empty {
 	border-radius: 6px
 }
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .woocommerce-MyAccount-content {
 		padding: 2em
@@ -1112,7 +1112,7 @@ h3:empty {
 			padding: 0 1em
 		}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .woocommerce-customer-details .woocommerce-columns--2 .woocommerce-column {
 				width: calc(100% / 2);
@@ -1327,7 +1327,7 @@ h3:empty {
 		padding: 0 10px
 	}
 
-@media (min-width: 960px) {
+@media (min-width: 782px) {
 
 .products.columns-5 > .product {
 			width: 20%
@@ -1340,7 +1340,7 @@ h3:empty {
 		padding: 0 10px
 	}
 
-@media (min-width: 960px) {
+@media (min-width: 782px) {
 
 .products.columns-4 > .product {
 			width: 25%
@@ -1353,7 +1353,7 @@ h3:empty {
 		padding: 0 10px
 	}
 
-@media (min-width: 960px) {
+@media (min-width: 782px) {
 
 .products.columns-3 > .product {
 			width: 33.33%
@@ -1394,7 +1394,7 @@ h3:empty {
 	font-weight: var(--font-normal)
 }
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .woocommerce-loop-product__title {
 		font-size: 1rem
@@ -1888,7 +1888,7 @@ h3:empty {
 	flex-wrap: wrap
 }
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .single-product-top__grid {
 		margin: 0 -1em
@@ -1904,7 +1904,7 @@ h3:empty {
     margin-top: 0;
   }
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .single-product-top__col {
 		margin: 0;
@@ -1912,7 +1912,7 @@ h3:empty {
 }
 	}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .single-product-top__col:nth-child(1) {
 			width: 35%
@@ -1926,7 +1926,7 @@ h3:empty {
 	}
 		}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .single-product-top__col:nth-child(2) {
 			width: 65%
@@ -1944,7 +1944,7 @@ h3:empty {
 		width: 100%
 	}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .page-block--product.sidebar-left .single-product-top__col:nth-child(1), .page-block--product.sidebar-right .single-product-top__col:nth-child(1) {
 				width: 35%
@@ -1958,7 +1958,7 @@ h3:empty {
 		}
 			}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .page-block--product.sidebar-left .single-product-top__col:nth-child(2), .page-block--product.sidebar-right .single-product-top__col:nth-child(2) {
 				width: 65%
@@ -2026,7 +2026,7 @@ h3:empty {
 		width: calc(20% - 10px);
 	}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .single-product-top {
 		margin-top: 1em
@@ -2267,7 +2267,7 @@ h3:empty {
       font-size: 1.3rem;
     }
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .single-product-top .woocommerce-product-details__short-description blockquote p:first-child {
     font-size: 1.5rem;
@@ -2335,7 +2335,7 @@ h3:empty {
 	transition: all 0.3s
 }
 
-@media (min-width: 960px) {
+@media (min-width: 782px) {
 
 .product-price--countdown {
 		align-items: center;
@@ -2409,7 +2409,7 @@ h3:empty {
 		color: var(--white)
 	}
 
-@media (min-width: 960px) {
+@media (min-width: 782px) {
 
 .single-product__price__top .price {
 			flex-direction: column-reverse;
@@ -2430,7 +2430,7 @@ h3:empty {
 	width: 100%
 }
 
-@media (min-width: 960px) {
+@media (min-width: 782px) {
 
 .single-product__price__top,
 .single-product__price__bottom {
@@ -2466,7 +2466,7 @@ h3:empty {
 	margin-right: 0.25em
 }
 
-@media (min-width: 960px) {
+@media (min-width: 782px) {
 
 .single-product__price__bottom__inner {
 		display: flex;
@@ -2788,7 +2788,7 @@ h3:empty {
       font-size: 1.3rem;
     }
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .woocommerce-tabs .woocommerce-Tabs-panel--description blockquote p:first-child {
     font-size: 1.5rem;
@@ -2937,7 +2937,7 @@ h3:empty {
 		font-size: 1.5rem;
 	}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .single-product .product_title {
     font-size: 1.75rem;
@@ -2987,7 +2987,7 @@ h3:empty {
 		padding-left: 1em
 	}
 
-@media (min-width: 960px) {
+@media (min-width: 782px) {
 
 .product-price--countdown del {
 			padding-left: 0
@@ -3031,7 +3031,7 @@ a.product-gallery__item {
 	margin: 1em auto 0
 }
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .woocommerce-product-gallery {
 		max-width: 100%;
@@ -3181,7 +3181,7 @@ body.woocommerce-cart .footer_top,
 		flex-direction: column
 	}
 
-@media (min-width: 960px) {
+@media (min-width: 782px) {
 
 .page-block--cart .page-block__grid {
 			flex-direction: row
@@ -3192,7 +3192,7 @@ body.woocommerce-cart .footer_top,
 		width: 100%
 	}
 
-@media (min-width: 960px) {
+@media (min-width: 782px) {
 
 .page-block--cart .page-block__col--main {
 			width: auto;
@@ -3205,7 +3205,7 @@ body.woocommerce-cart .footer_top,
 		margin-top: 1em
 	}
 
-@media (min-width: 960px) {
+@media (min-width: 782px) {
 
 .page-block--cart .page-block__col--sidebar {
 			width: 33.33%;
@@ -3213,6 +3213,7 @@ body.woocommerce-cart .footer_top,
 	}
 
 			.page-block--cart .page-block__col--sidebar .page-block__inner {
+				position: -webkit-sticky;
 				position: sticky;
 				top: 10px;
 				width: 100%;
@@ -3263,7 +3264,7 @@ body.woocommerce-cart .footer_top,
 	font-size: 1.05rem;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .woocommerce .woocommerce-info.cart-empty {
     font-size: 1.15rem;
@@ -3416,7 +3417,7 @@ body.woocommerce-cart .footer_top,
 		line-height: 1.25
 	}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .shop_table.woocommerce-cart-form__contents th:not(:first-child):not(.product-thumbnail),
 	.shop_table.woocommerce-cart-form__contents td:not(:first-child):not(.product-thumbnail) {
@@ -3611,7 +3612,7 @@ body.woocommerce-cart .footer_top,
 			line-height: 44px
 		}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .shop_table.woocommerce-cart-form__contents .coupon button[type='submit'] {
 				padding-left: 1em;
@@ -3652,7 +3653,7 @@ body.woocommerce-cart .footer_top,
 			opacity: 0.25;
 		}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .shop_table.woocommerce-cart-form__contents button[name='update_cart'] {
 			float: right;
@@ -3718,7 +3719,7 @@ body.woocommerce-checkout.woocommerce-order-received h2 {
 
 .woocommerce-order {
 	padding: 1em 0;
-	max-width: 600px;
+	max-width: 588px;
 	max-width: var(--s);
 	margin: auto
 }
@@ -3769,7 +3770,7 @@ body.woocommerce-checkout.woocommerce-order-received h2 {
     margin-top: 0;
   }
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .woocommerce-order .woocommerce-order-overview > li {
 				width: calc(100% / 2);
@@ -3860,14 +3861,14 @@ body.woocommerce-checkout.woocommerce-order-received h2 {
 				margin-top: 0;
 			}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .woocommerce-order .wc-bacs-bank-details {
 			font-size: 1rem
 	}
 		}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .woocommerce-order .woocommerce-customer-details .woocomerce-columns--2 {
 				display: flex;
@@ -3877,7 +3878,7 @@ body.woocommerce-checkout.woocommerce-order-received h2 {
 		}
 			}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .woocommerce-order .woocommerce-customer-details .woocommerce-columns--2 .woocommerce-column {
 				width: calc(100% / 2);
@@ -4009,7 +4010,7 @@ body.woocommerce-checkout.woocommerce-order-received h2 {
 		width: 100%
 	}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .archive-product--top-sidebar .archive-product__sidebar {
 			display: block
@@ -4020,7 +4021,7 @@ body.woocommerce-checkout.woocommerce-order-received h2 {
 			}
 		}
 
-@media (min-width: 600px) and (min-width: 1080px) {
+@media (min-width: 588px) and (min-width: 1080px) {
 
 .archive-product--top-sidebar .archive-product__sidebar {
 				display: block
@@ -4031,7 +4032,7 @@ body.woocommerce-checkout.woocommerce-order-received h2 {
 				}
 			}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 			.archive-product--top-sidebar .archive-product__sidebar .archive-product__inner {
 				display: flex;
@@ -4062,7 +4063,7 @@ body.woocommerce-checkout.woocommerce-order-received h2 {
 			width: 100%;
 		}
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .archive-product--no-sidebar .woocommerce-ordering {
 			width: 30%;
@@ -4348,7 +4349,7 @@ body.is-quick-view-modal-visible .quick-view-modal {
 	width: 100%
 }
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .quick-view-modal__col {
 		width: 50%
@@ -4702,7 +4703,7 @@ body.is-mini-cart-updating .mini-cart__head,
 	z-index: 2
 }
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .mini-cart__wrapper {
 		width: 340px
@@ -5368,7 +5369,7 @@ body.woocommerce-checkout .woocommerce .woocommerce-error {
 		margin-top: 1em
 	}
 
-@media (min-width: 960px) {
+@media (min-width: 782px) {
 
 .page-block--checkout .page-block__col--sidebar {
 			width: 300px;
@@ -5383,7 +5384,7 @@ body.woocommerce-checkout .woocommerce .woocommerce-error {
 	}
 		}
 
-@media (min-width: 960px) {
+@media (min-width: 782px) {
 
 .page-block--checkout .page-block__col--main {
 			width: auto;
@@ -5761,7 +5762,7 @@ ul.checkout-coupon-form__list {
 	margin-bottom: 1em
 }
 
-@media (min-width: 600px) {
+@media (min-width: 588px) {
 
 .checkout-total {
 		margin-top: 0
@@ -5792,7 +5793,7 @@ ul.checkout-coupon-form__list {
 	border: 0
 }
 
-@media (min-width: 960px) {
+@media (min-width: 782px) {
 
 .checkout-coupon-form__input {
 		font-size: 0.85rem
@@ -5811,7 +5812,7 @@ ul.checkout-coupon-form__list {
 		pointer-events: none;
 	}
 
-@media (min-width: 960px) {
+@media (min-width: 782px) {
 
 .button.checkout-coupon-form__button {
 		font-size: 0.85rem
