@@ -41,6 +41,7 @@ class CodeTot_Shortcode
     add_shortcode('search-icon', array($this, 'render_search_icon'));
     add_shortcode('social-share', array($this, 'render_social_share_shortcode'));
     add_shortcode('icon', array($this, 'render_icon_shortcode'));
+		add_shortcode('ct_post_grid', array($this, 'render_post_grid'));
   }
 
   public function render_social_link_shortcode($atts) {
@@ -159,6 +160,53 @@ class CodeTot_Shortcode
     echo '</button>';
     return ob_get_clean();
   }
+
+	public function render_post_grid($atts) {
+		$attributes = shortcode_atts( array(
+			'columns' => 3,
+			'number' => 3,
+			'category' => null
+		), $atts );
+
+		if (!is_array($attributes['category'])) {
+			$attributes['category'] = explode(',', $attributes['category']);
+		}
+
+		$post_args = array(
+			'post_type' => 'post',
+			'posts_per_page' => (int) $attributes['number']
+		);
+
+		if (!empty($attributes['category']) && is_array($attributes['category'])) {
+			$post_args['category__in'] = $attributes['category'];
+		}
+
+		$post_query = new WP_Query($post_args);
+
+		$_class = 'wp-block-group ct-post-grid';
+		$_class .= ' has-' . esc_html($attributes['columns']) . '-columns';
+
+		ob_start();
+		if ($post_query->have_posts()) :
+			echo '<div class="wp-block-columns">';
+			while ($post_query->have_posts())  : $post_query->the_post();
+				echo '<div class="wp-block-column">';
+				the_block('post-card', array(
+					'class' => 'card-content',
+					'card_style' => !empty($post_card_style) ? $post_card_style : 'style-1'
+				));
+				echo '</div>';
+			endwhile; wp_reset_postdata();
+			echo '</div>';
+		endif;
+		$content = ob_get_clean();
+
+		ob_start();
+		echo '<div class="' . $_class . '">';
+		echo $content;
+		echo '</div>';
+		return ob_get_clean();
+	}
 }
 
 CodeTot_Shortcode::instance();
