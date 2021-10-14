@@ -1,37 +1,39 @@
-/* global codetotConfig */
-import { select, selectAll } from 'lib/dom'
-import { initStyle } from 'lib/scripts'
-import './postcss/frontend.css'
+import { getHeight, getTopOffset, on, select, selectAll, scrollTo } from 'lib/dom';
+import './postcss/global/_index.css';
+import './postcss/frontend/_index.css';
 
-const blocks = document.querySelectorAll('[data-block]')
+const initAnchorLinks = () => {
+	const linkEls = selectAll('a[href^="#"');
+	let scrolling = false;
 
-const initBlocks = () => {
-	if (blocks) {
-		blocks.forEach(block => {
-			const blockName = block.getAttribute('data-block')
-			if (!blockName) {
-				return
-			}
+	if (linkEls && linkEls.length) {
+		on(
+			'click',
+			e => {
+				if (scrolling) {
+					return;
+				}
 
-			require(`./js/blocks/${blockName}.js`).default(block)
-		})
-	}
-}
+				const target = e.target.href
+				const targetParts = target.split('#')
+				const targetContext = targetParts[targetParts.length - 1]
+				const targetEl = targetContext ? select(`#${targetContext}`) : null
+				const position = targetEl ? getTopOffset(targetEl) : null
+				const offsetEl = select('.header')
+				const offset = offsetEl ? getHeight(offsetEl) : 0
 
-const checkjQueryUIStyle = () => {
-	const datePickerEl = select('.ui-date-picker')
-	const datePickerTrigger = selectAll('.datepicker')
+				if (targetEl && position) {
+					scrolling = true
+					scrollTo(position - offset)
 
-	if (datePickerEl && datePickerTrigger) {
-		setTimeout(() => {
-			initStyle(
-				`${codetotConfig.themePath}/dynamic-assets/plugins/jquery-ui.min.css`
-			)
-		}, 10000)
+					scrolling = false
+				}
+			},
+			linkEls
+		)
 	}
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-	initBlocks()
-	checkjQueryUIStyle()
-})
+	initAnchorLinks();
+});

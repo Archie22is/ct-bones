@@ -30,50 +30,42 @@ if (!function_exists('get_codetot_data')) {
 
 function codetot_get_color_options()
 {
-    $prefix = 'codetot_';
-
     return array(
         [
             'name'    => sprintf(__('%s Color', 'ct-bones'), __('Primary', 'ct-bones')),
-            'id'      => $prefix . 'primary_color',
+            'id'      => 'primary_color',
             'type'    => 'color',
-            'std'     => '#1e73be',
-            'columns' => 3,
+            'std'     => '#1e73be'
         ],
         [
             'name'    => sprintf(__('%s Color', 'ct-bones'), __('Secondary', 'ct-bones')),
-            'id'      => $prefix . 'secondary_color',
+            'id'      => 'secondary_color',
             'type'    => 'color',
-            'std'     => '#d43d3d',
-            'columns' => 9,
+            'std'     => '#d43d3d'
         ],
         [
             'name'    => sprintf(__('%s Color', 'ct-bones'), __('Dark', 'ct-bones')),
-            'id'      => $prefix . 'dark_color',
+            'id'      => 'dark_color',
             'type'    => 'color',
-            'std'     => '#3a3a3a',
-            'columns' => 3,
+            'std'     => '#3a3a3a'
         ],
         [
             'name'    => sprintf(__('%s Color', 'ct-bones'), __('Body Text', 'ct-bones')),
-            'id'      => $prefix . 'base_color',
+            'id'      => 'base_color',
             'type'    => 'color',
-            'std'     => '#595959',
-            'columns' => 3,
+            'std'     => '#595959'
         ],
         [
             'name'    => sprintf(__('%s Color', 'ct-bones'), __('Gray', 'ct-bones')),
-            'id'      => $prefix . 'gray_color',
+            'id'      => 'gray_color',
             'type'    => 'color',
-            'std'     => '#b2b2b2',
-            'columns' => 3,
+            'std'     => '#b2b2b2'
         ],
         [
             'name'    => sprintf(__('%s Color', 'ct-bones'), __('Light', 'ct-bones')),
-            'id'      => $prefix . 'light_color',
+            'id'      => 'light_color',
             'type'    => 'color',
-            'std'     => '#f2f2f2',
-            'columns' => 3,
+            'std'     => '#f2f2f2'
         ]
     );
 }

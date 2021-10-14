@@ -1,0 +1,45 @@
+@define-mixin has-border {
+	border-width: 2px;
+	border-style: solid;
+	border-radius: var(--border-radius);
+}
+
+.is-style-border-primary {
+	@mixin has-border;
+
+	border-color: var(--primary);
+}
+
+.is-style-border-secondary {
+	@mixin has-border;
+
+	border-color: var(--secondary);
+}
+
+.is-style-border-dark {
+	@mixin has-border;
+
+	border-color: var(--dark);
+}
+
+.is-style-border-gray {
+	@mixin has-border;
+
+	border-color: var(--gray);
+}
+
+.is-style-border-light {
+	@mixin has-border;
+
+	border-color: var(--light);
+}
+
+.is-style-border-white {
+	@mixin has-border;
+
+	border-color: var(--white);
+}
+
+.is-style-border-theme {
+	@mixin has-border;
+}

@@ -34,8 +34,6 @@
 }
 
 .widget__title {
-	@mixin large-text;
-
 	margin-bottom: 0.5em;
 	text-transform: uppercase;
 	font-weight: var(--font-bold);

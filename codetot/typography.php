@@ -24,23 +24,10 @@ class Codetot_Theme_Typography {
     $this->theme_version = $this->is_localhost() ? substr(sha1(rand()), 0, 6) : CODETOT_VERSION;
     $this->premium_fonts = array_keys(codetot_premium_fonts());
 
-	add_action('wp_enqueue_scripts', array($this, 'load_font_size_scale'));
-	add_action('wp_enqueue_scripts', array($this, 'load_fonts'), 1);
+		add_action('wp_enqueue_scripts', array($this, 'load_fonts_assets'), 1);
 
-	// Load CSS inline
-	add_action('codetot_custom_style_css', array($this, 'custom_font_options_css_inline'));
-  }
-
-  public function load_font_size_scale()
-  {
-    $font_size_scale = codetot_get_theme_mod('font_scale') ?? '1125';
-
-    wp_enqueue_style(
-      'codetot-typography-style',
-      esc_url(get_template_directory_uri() . '/dynamic-assets/typography-style/' . $font_size_scale . '.css'),
-      [],
-      CODETOT_VERSION
-    );
+		// Load CSS inline
+		add_action('codetot_custom_style_css', array($this, 'custom_font_options_css_inline'));
   }
 
   public function get_body_font() {
@@ -63,16 +50,16 @@ class Codetot_Theme_Typography {
       $local_font_css_inline = file_exists($local_font_css_file) ? file_get_contents($local_font_css_file) : '';
 
       if (!empty($local_font_css_inline)) {
-        ct_bones_register_inline_style('codetot-premium-fonts-' . esc_attr($type), ct_bones_format_font_assets_path($local_font_css_inline, $font));
+        ct_bones_register_inline_style('ct-bones-fonts-' . esc_attr($type), ct_bones_format_font_assets_path($local_font_css_inline, $font));
       }
     } else {
       $google_fonts_css_inline = ct_bones_get_google_fonts_css_inline($font);
 
-      ct_bones_register_inline_style('codetot-google-fonts', $google_fonts_css_inline);
+      ct_bones_register_inline_style('ct-bones-fonts', $google_fonts_css_inline);
     }
   }
 
-  public function load_fonts()
+  public function load_fonts_assets()
   {
     $body_font = $this->get_body_font();
     $heading_font = $this->get_heading_font();
@@ -95,10 +82,10 @@ class Codetot_Theme_Typography {
     $heading_font = $this->get_heading_font();
 
     if (!empty($body_font)) {
-      echo 'body{font-family: ' . esc_attr($body_font) . ', sans-serif;}';
+      echo 'body {font-family: "' . esc_attr($body_font) . '", Arial, Helvetica, sans-serif;}';
     }
     if (!empty($heading_font)) {
-      echo 'h1,h2,h3,h4,h5,h6{font-family: ' . esc_attr($heading_font) . ', sans-serif;}';
+      echo 'h1, h2, h3, h4, h5, h6{font-family: ' . esc_attr($heading_font) . ', sans-serif;}';
     }
   }
 

@@ -1,0 +1,196 @@
+.wp-block {
+	max-width: 100%;
+}
+
+.wp-block-cover .block-editor-block-list__layout {
+	max-width: 1080px;
+	max-width: var(--m);
+	margin: 0 auto;
+}
+
+.block-editor-rich-text__editable > a {
+	text-decoration: none;
+}
+
+.is-style-border-primary {
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 6px;
+	border-radius: var(--border-radius);
+
+	border-color: #1346af;
+
+	border-color: var(--primary);
+}
+
+.is-style-border-secondary {
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 6px;
+	border-radius: var(--border-radius);
+
+	border-color: #f1592a;
+
+	border-color: var(--secondary);
+}
+
+.is-style-border-dark {
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 6px;
+	border-radius: var(--border-radius);
+
+	border-color: #1e1e1e;
+
+	border-color: var(--dark);
+}
+
+.is-style-border-gray {
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 6px;
+	border-radius: var(--border-radius);
+
+	border-color: #8f8f8f;
+
+	border-color: var(--gray);
+}
+
+.is-style-border-light {
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 6px;
+	border-radius: var(--border-radius);
+
+	border-color: #f8f8f8;
+
+	border-color: var(--light);
+}
+
+.is-style-border-white {
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 6px;
+	border-radius: var(--border-radius);
+
+	border-color: #fff;
+
+	border-color: var(--white);
+}
+
+.is-style-border-theme {
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 6px;
+	border-radius: var(--border-radius);
+}
+
+.has-primary-color {
+	color: #1346af;
+	color: var(--primary)
+}
+
+.has-primary-color > a {
+		color: #1346af;
+		color: var(--primary);
+	}
+
+.has-secondary-color {
+	color: #f1592a;
+	color: var(--secondary)
+}
+
+.has-secondary-color > a {
+		color: #f1592a;
+		color: var(--secondary);
+	}
+
+.has-black-color {
+	color: #000;
+	color: var(--black)
+}
+
+.has-black-color > a {
+		color: #000;
+		color: var(--black);
+	}
+
+.has-dark-color {
+	color: #1e1e1e;
+	color: var(--dark)
+}
+
+.has-dark-color > a {
+		color: #1e1e1e;
+		color: var(--dark);
+	}
+
+.has-gray-color {
+	color: #8f8f8f;
+	color: var(--gray)
+}
+
+.has-gray-color > a {
+		color: #8f8f8f;
+		color: var(--gray);
+	}
+
+.has-light-color {
+	color: #f8f8f8;
+	color: var(--light)
+}
+
+.has-light-color > a {
+		color: #f8f8f8;
+		color: var(--light);
+	}
+
+.has-white-color {
+	color: #fff;
+	color: var(--white)
+}
+
+.has-white-color > a {
+		color: #fff;
+		color: var(--white);
+	}
+
+.has-primary-background-color {
+	background-color: #1346af;
+	background-color: var(--primary);
+}
+
+.has-secondary-background-color {
+	background: #f1592a;
+	background: var(--secondary);
+}
+
+.has-black-background-color {
+	background-color: #000;
+	background-color: var(--black);
+}
+
+.has-light-background-color {
+	background-color: #f8f8f8;
+	background-color: var(--light);
+}
+
+.has-dark-background-color {
+	background-color: #1e1e1e;
+	background-color: var(--dark);
+}
+
+.has-gray-background-color {
+	background-color: #8f8f8f;
+	background-color: var(--gray);
+}
+
+.has-white-background-color {
+	background-color: #fff;
+	background-color: var(--white);
+}
+
+[class*='is-style-border-'].content-card {
+		padding: 20px;
+	}
+
