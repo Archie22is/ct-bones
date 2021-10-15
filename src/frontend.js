@@ -8,6 +8,23 @@ import {
 } from 'lib/dom'
 import './postcss/global/_index.css'
 import './postcss/frontend/_index.css'
+import SlideOutMenu from './theme-components/SlideoutMenu'
+import ModalSearchForm from './theme-components/ModalSearchForm'
+import { render, Fragment } from '@wordpress/element'
+
+const App = () => {
+	const slideOutMenuEl =
+		select('[data-theme-component="slideout-menu"]') ?? null
+	const modalSearchFormEl =
+		select('[data-theme-component="modal-search-form"]') ?? null
+
+	return (
+		<Fragment>
+			<SlideOutMenu el={slideOutMenuEl} />
+			<ModalSearchForm el={modalSearchFormEl} />
+		</Fragment>
+	)
+}
 
 const initAnchorLinks = () => {
 	const linkEls = selectAll('a[href^="#"')
@@ -43,4 +60,6 @@ const initAnchorLinks = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
 	initAnchorLinks()
+
+	render(<App />, select('#ct-bones-app'))
 })

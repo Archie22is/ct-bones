@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.0.3 - 15/10/2021
+
+- Convert Slideout menu to React component
+- Convert Modal search form to React component
+
 ## 6.0.2 - 15/10/2021
 
 - Fix missing assets CSS woocommerce.

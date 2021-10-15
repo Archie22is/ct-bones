@@ -139,7 +139,7 @@ class CodeTot_Shortcode
   public function render_search_icon($atts) {
     $settings = shortcode_atts(array(
       'button_class' => 'search-icon',
-      'button_attributes' => 'data-open-modal="modal-search-form"',
+      'button_attributes' => 'data-modal-component-open="modal-search-form"',
       'span_class' => 'search-icon__icon',
       'svg_icon' => 'search',
       'text' => ''

@@ -4,7 +4,7 @@ import { select, on, addClass, removeClass, trigger, getData } from '../lib/dom'
 const body = document.body
 const $ = jQuery
 export default el => {
-	const slideoutTrigger = select('.js-open-mobile-menu', el)
+	const slideoutTrigger = select('.js-open-slideout-menu', el)
 	const enableSticky = getData('sticky-header', el)
 	const scrollUp = 'scroll-up'
 	const scrollDown = 'scroll-down'
