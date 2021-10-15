@@ -1,17 +1,24 @@
-import { getHeight, getTopOffset, on, select, selectAll, scrollTo } from 'lib/dom';
-import './postcss/global/_index.css';
-import './postcss/frontend/_index.css';
+import {
+	getHeight,
+	getTopOffset,
+	on,
+	select,
+	selectAll,
+	scrollTo
+} from 'lib/dom'
+import './postcss/global/_index.css'
+import './postcss/frontend/_index.css'
 
 const initAnchorLinks = () => {
-	const linkEls = selectAll('a[href^="#"');
-	let scrolling = false;
+	const linkEls = selectAll('a[href^="#"')
+	let scrolling = false
 
 	if (linkEls && linkEls.length) {
 		on(
 			'click',
 			e => {
 				if (scrolling) {
-					return;
+					return
 				}
 
 				const target = e.target.href
@@ -35,5 +42,5 @@ const initAnchorLinks = () => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-	initAnchorLinks();
-});
+	initAnchorLinks()
+})
