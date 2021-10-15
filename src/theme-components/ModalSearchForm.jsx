@@ -12,7 +12,7 @@ const ModalSearchForm = props => {
 		if (!loaded && props.el) {
 			const closeButtonEl = select('#modal-search-form-close-button', props.el)
 			const titleEl = select('#modal-search-form-title', props.el)
-			const contentEl= select('#modal-search-form', props.el)
+			const contentEl = select('#modal-search-form', props.el)
 
 			if (closeButtonEl) {
 				setCloseButton(closeButtonEl.innerHTML)
@@ -34,12 +34,12 @@ const ModalSearchForm = props => {
 
 	return (
 		<Modal
-		className={'modal--search-form'}
-		id={'modal-search-form'}
-		closeButton={closeButton}
-		header={title}
-		content={content}
-		hasOverlay={true}
+			className={'modal--search-form'}
+			id={'modal-search-form'}
+			closeButton={closeButton}
+			header={title}
+			content={content}
+			hasOverlay={true}
 		/>
 	)
 }
