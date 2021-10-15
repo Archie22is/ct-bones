@@ -173,11 +173,10 @@
 }
 
 .video-responsive {
-	@mixin ratio 9/16;
-
 	width: 100%;
 	position: relative;
 	overflow: hidden;
+	padding-top: 56.25%;
 
 	& iframe {
 		@mixin abs-full;
