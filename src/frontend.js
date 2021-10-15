@@ -12,7 +12,7 @@ import SlideOutMenu from './theme-components/SlideoutMenu'
 import { render } from '@wordpress/element'
 
 const App = () => {
-	const slideOutMenuEl = select('#slideout-menu-data')
+	const slideOutMenuEl = select('[data-theme-component="slideout-menu"]')
 
 	return <SlideOutMenu el={slideOutMenuEl} />
 }
