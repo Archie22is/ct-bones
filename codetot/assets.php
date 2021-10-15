@@ -58,6 +58,7 @@ class Codetot_Assets
 
 		if (!$this->is_localhost()) :
 			wp_enqueue_style('codetot-global', CODETOT_ASSETS_URI . '/css/legacy-frontend.min.css', array(), $this->theme_version);
+			wp_enqueue_style('codetot-woocommerce', CODETOT_ASSETS_URI . '/css/legacy-woocommerce.min.css', array(), $this->theme_version);
 
 			if ( function_exists('has_blocks') ) {
 				wp_enqueue_style('ct-bones-frontend-css', CODETOT_ASSETS_URI . '/css/frontend.min.css', array(), $this->theme_version);
@@ -82,6 +83,14 @@ class Codetot_Assets
 		wp_register_script(
 			'codetot-global-script',
 			get_template_directory_uri() . '/assets/js/legacy-frontend' . $this->theme_environment . '.js',
+			['jquery'],
+			$this->theme_version,
+			true
+		);
+
+		wp_register_script(
+			'codetot-global-script',
+			get_template_directory_uri() . '/assets/js/legacy-woocommerce' . $this->theme_environment . '.js',
 			['jquery'],
 			$this->theme_version,
 			true
