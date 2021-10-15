@@ -355,6 +355,15 @@ h6 {
 	text-align: right;
 }
 
+.entry-content a {
+	color: #1346af;
+	color: var(--primary);
+}
+
+.video-responsive {
+	padding-top: 56.25%;
+}
+
 
 		.section.wp-block-group > .wp-block-group__inner-container, .section-bg.wp-block-group > .wp-block-group__inner-container {
 			margin: 0 auto;
