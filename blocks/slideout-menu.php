@@ -3,7 +3,7 @@ $default_menu_location = !empty($menu) ? $menu : 'primary';
 $menu_location = apply_filters('codetot_slideout_menu_location', $default_menu_location);
 ?>
 
-<div class="hidden" id="slideout-menu-data">
+<div class="hidden" data-theme-component="slideout-menu">
 	<noscript id="slideout-menu-close-button"><?php codetot_svg('close', true); ?></noscript>
 	<noscript id="slideout-menu-search-form"><?php echo apply_filters('codetot_slideout_menu_search', get_search_form(array('id' => 'slideout-menu'))); ?></noscript>
 	<?php if ( function_exists('icl_object_id') ) : ?>
