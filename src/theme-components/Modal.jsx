@@ -7,17 +7,27 @@ const MODAL_CLASS = 'is-modal-active'
 
 const Modal = props => {
 	const [active, setActive] = useState(false)
-	const classNames = classnames('modal', props.className, active ? 'modal--visible' : '')
+	const classNames = classnames(
+		'modal',
+		props.className,
+		active ? 'modal--visible' : ''
+	)
 
 	useEffect(() => {
-		const triggerEls = selectAll('[data-modal-component-open="' + props.id + '"]')
+		const triggerEls = selectAll(
+			'[data-modal-component-open="' + props.id + '"]'
+		)
 
 		if (triggerEls.length) {
-			on('click', () => {
-				setActive(true)
+			on(
+				'click',
+				() => {
+					setActive(true)
 
-				addClass(MODAL_CLASS, body)
-			}, triggerEls)
+					addClass(MODAL_CLASS, body)
+				},
+				triggerEls
+			)
 		}
 	}, [])
 
@@ -29,11 +39,37 @@ const Modal = props => {
 
 	return (
 		<div className={classNames} id={props.id}>
-			{ props.hasOverlay ? <div className={'modal__overlay'} onClick={handleClose}></div> : ''}
+			{props.hasOverlay ? (
+				<div className={'modal__overlay'} onClick={handleClose}></div>
+			) : (
+				''
+			)}
 			<div className={'modal__wrapper'}>
-				{ props.closeButton ? <button className={'modal__close-button'} dangerouslySetInnerHTML={{ __html: props.closeButton }} onClick={handleClose}></button> : ''}
-				{ props.header ? <div className={'modal__header'} dangerouslySetInnerHTML={{ __html: props.header }}></div> : ''}
-				{ props.content ? <div className={'modal__content'} dangerouslySetInnerHTML={{ __html: props.content }}></div> : ''}
+				{props.closeButton ? (
+					<button
+						className={'modal__close-button'}
+						dangerouslySetInnerHTML={{ __html: props.closeButton }}
+						onClick={handleClose}
+					></button>
+				) : (
+					''
+				)}
+				{props.header ? (
+					<div
+						className={'modal__header'}
+						dangerouslySetInnerHTML={{ __html: props.header }}
+					></div>
+				) : (
+					''
+				)}
+				{props.content ? (
+					<div
+						className={'modal__content'}
+						dangerouslySetInnerHTML={{ __html: props.content }}
+					></div>
+				) : (
+					''
+				)}
 			</div>
 		</div>
 	)
