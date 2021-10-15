@@ -76,7 +76,7 @@ class Codetot_Woocommerce_Layout_Archive
   {
     add_action('codetot_product_archive_after_page_block_main', array($this, 'archive_title'), 10);
     add_action('codetot_product_archive_after_page_block_main', array($this, 'top_product_category_content'), 20);
-    add_action('codetot_product_archive_after_page_block_main', 'codetot_archive_product_top_widget', 25);
+   	add_action('codetot_product_archive_after_page_block_main', 'codetot_archive_product_top_widget', 25);
     add_action('codetot_after_header', array($this, 'breadcrumbs'), 10);
     add_action('codetot_after_header', array($this, 'page_block_open'), 50);
     add_action('woocommerce_after_shop_loop', array($this, 'bottom_product_category_content'), 10);
@@ -424,15 +424,17 @@ function codetot_archive_product_top_widget() {
   $sidebar_html = ob_get_clean();
 
   if ( is_shop() && $shop_sidebar_layout === 'top-sidebar' ) :
-    add_filter('codetot_sidebar_display_shop_sidebar', '__return_false');
+    if ( !empty($sidebar_html) ) :
+			echo $sidebar_html;
+		endif;
+		remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
   endif;
 
   if( (is_product_category() || is_product_tag()) && $product_category_sidebar_layout === 'top-sidebar' ) :
-    add_filter('codetot_sidebar_display_product_category_sidebar', '__return_false');
-  endif;
-
-  if ( !empty($sidebar_html) ) :
-    echo $sidebar_html;
+		if ( !empty($sidebar_html) ) :
+			echo $sidebar_html;
+		endif;
+		remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
   endif;
 }
 
