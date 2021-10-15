@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.0.2 - 15/10/2021
+
+- Fix missing assets CSS woocommerce.
+- Fix ci
+
 ## 6.0.1 - 15/10/2021
 
 - Fix editor style with link and content layout.
