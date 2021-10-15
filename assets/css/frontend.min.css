@@ -1471,3 +1471,110 @@ ul.gfield_checkbox > li, ul.gfield_radio > li {
 			pointer-events: visible;
 		}
 
+.modal--search-form .modal__overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		cursor: pointer;
+		z-index: 1;
+	}
+
+.modal--search-form .modal__wrapper {
+		position: relative;
+		width: calc(100vw - 40px);
+		background-color: #fff;
+		background-color: var(--white);
+		border-radius: 6px;
+		border-radius: var(--border-radius);
+		transform: translateY(15px);
+		transition: transform 0.3s;
+		z-index: 2
+	}
+
+@media (min-width: 588px) {
+
+.modal--search-form .modal__wrapper {
+			width: 360px
+	}
+		}
+
+@media (min-width: 1080px) {
+
+.modal--search-form .modal__wrapper {
+			width: 600px
+	}
+		}
+
+.modal--search-form .modal__header {
+		position: relative;
+		height: 44px;
+		display: flex;
+		align-items: center;
+		margin: 0;
+		padding: 0 40px 0 20px;
+		background: #fff;
+		background: var(--white);
+		border-radius: 6px 6px 0 0;
+		border-radius: var(--border-radius) var(--border-radius) 0 0;
+	}
+
+.modal--search-form .modal__title {
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}
+
+.modal--search-form .modal__content {
+		position: relative;
+		background: #f8f8f8;
+		background: var(--light);
+		border-top: 1px solid #ddd;
+		border-top: 1px solid var(--border);
+		border-radius: 0 0 6px 6px;
+		border-radius: 0 0 var(--border-radius) var(--border-radius);
+		overflow: hidden;
+	}
+
+.modal--search-form .modal__close-button {
+		background: none;
+		border: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 44px;
+		height: 44px;
+		cursor: pointer;
+		z-index: 3
+	}
+
+@media (min-width: 1080px) {
+
+.modal--search-form .modal__close-button {
+			right: 9px
+	}
+		}
+
+.modal--search-form .modal__close-button svg {
+			width: 18px;
+			height: 18px;
+		}
+
+.modal--search-form.modal--visible {
+		opacity: 1;
+		z-index: 1001;
+		pointer-events: visible
+	}
+
+.modal--search-form.modal--visible .modal__wrapper {
+			transform: translateY(0);
+			transition-delay: 0.1s;
+		}
+

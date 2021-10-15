@@ -2903,8 +2903,8 @@ strong {
 		position: absolute;
 		top: 0;
 		right: 0;
-		width: 40px;
-		height: 40px;
+		width: 42px;
+		height: 42px;
 		background: transparent;
 		border: 0;
 		z-index: 2
@@ -4514,13 +4514,12 @@ a.cart-shortcode {
 /** Modals **/
 
 .modal {
-	opacity: 0;
-	visibility: hidden;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 
+	opacity: 0;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -4530,7 +4529,6 @@ a.cart-shortcode {
 	pointer-events: none;
 	z-index: 990;
 	transition: opacity 0.3s, visibility 0.3s;
-	display: none;
 }
 
 .is-modal-activate .modal--visible {
@@ -4641,81 +4639,6 @@ a.cart-shortcode {
 .modal--login .woocommerce-form.woocommerce-form-login .form-row:first-child {
 					margin-top: 0;
 				}
-
-.modal--search-form .modal__wrapper {
-		width: calc(100vw - 40px);
-		background-color: #fff;
-		background-color: var(--white)
-	}
-
-@media (min-width: 588px) {
-
-.modal--search-form .modal__wrapper {
-			width: 360px
-	}
-		}
-
-@media (min-width: 1080px) {
-
-.modal--search-form .modal__wrapper {
-			width: 600px
-	}
-		}
-
-.modal--search-form .modal__header {
-		position: relative;
-		margin: 0;
-		padding: 0.5em 40px 0.5em 20px;
-		background: #fff;
-		background: var(--white);
-		border-radius: 6px 6px 0 0;
-		border-radius: var(--border-radius) var(--border-radius) 0 0;
-	}
-
-.modal--search-form .modal__title {
-		margin: 0;
-		padding: 0;
-		border: 0;
-	}
-
-.modal--search-form .modal__content {
-		position: relative;
-		background: #f8f8f8;
-		background: var(--light);
-		border-top: 1px solid #eaeaea;
-		border-top: 1px solid var(--border);
-		border-radius: 0 0 6px 6px;
-		border-radius: 0 0 var(--border-radius) var(--border-radius);
-		overflow: hidden;
-	}
-
-.modal--search-form .modal__close-button {
-		background: none;
-		border: 0;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-
-		position: absolute;
-		top: 0;
-		right: 0;
-		width: 44px;
-		height: 44px;
-		cursor: pointer
-	}
-
-@media (min-width: 1080px) {
-
-.modal--search-form .modal__close-button {
-			width: 60px
-	}
-		}
-
-.modal--search-form .modal__close-button svg {
-			width: 18px;
-			height: 18px;
-		}
 
 .widget {
 	width: calc(100% / 1);
