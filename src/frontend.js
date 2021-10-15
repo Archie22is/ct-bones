@@ -8,6 +8,14 @@ import {
 } from 'lib/dom'
 import './postcss/global/_index.css'
 import './postcss/frontend/_index.css'
+import SlideOutMenu from './theme-components/SlideoutMenu'
+import { render } from '@wordpress/element'
+
+const App = () => {
+	const slideOutMenuEl = select('#slideout-menu-data')
+
+	return <SlideOutMenu el={slideOutMenuEl} />
+}
 
 const initAnchorLinks = () => {
 	const linkEls = selectAll('a[href^="#"')
@@ -43,4 +51,6 @@ const initAnchorLinks = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
 	initAnchorLinks()
+
+	render(<App />, select('#ct-bones-app'))
 })
