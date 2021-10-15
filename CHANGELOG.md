@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.0.1 - 15/10/2021
+
+- Fix editor style with link and content layout.
+- Fix video responsive style
+- Update build workflow CircleCI
+
 ## 6.0.0 - 14/10/2021
 
 - Release first Gutenberg compatitible version.
