@@ -1,6 +1,6 @@
-import classnames from 'classnames';
-import { useEffect, useState } from '@wordpress/element';
-import { select, trigger, on, remove } from 'lib/dom';
+import classnames from 'classnames'
+import { useEffect, useState } from '@wordpress/element'
+import { select, trigger, on, remove } from 'lib/dom'
 
 const SlideOutMenu = props => {
 	const [active, setActive] = useState(false)
@@ -34,13 +34,21 @@ const SlideOutMenu = props => {
 			setWpmlFlags(wpmlFlagsEl.innerHTML)
 		}
 
-		on('slideout.visible', () => {
-			setActive(true)
-		}, document.body)
+		on(
+			'slideout.visible',
+			() => {
+				setActive(true)
+			},
+			document.body
+		)
 
-		on('slideout.hidden', () => {
-			setActive(false)
-		}, document.body)
+		on(
+			'slideout.hidden',
+			() => {
+				setActive(false)
+			},
+			document.body
+		)
 
 		setLoaded(true)
 
@@ -55,23 +63,51 @@ const SlideOutMenu = props => {
 
 	return (
 		<>
-			{ loaded ?
+			{loaded ? (
 				<div className={classNames}>
-					{ closeButton ?
+					{closeButton ? (
 						<div className={'slideout-menu__overlay'}>
-							<button className={'slideout-menu__close-button'} dangerouslySetInnerHTML={{__html: closeButton}} onClick={handleClose}></button>
-						</div> :
+							<button
+								className={'slideout-menu__close-button'}
+								dangerouslySetInnerHTML={{ __html: closeButton }}
+								onClick={handleClose}
+							></button>
+						</div>
+					) : (
 						''
-					}
+					)}
 					<div className={'slideout-menu__wrapper'}>
 						<div className={'slideout-menu__inner'}>
-							{ searchForm ? <div className={'slideout-menu__block is-search-form'} dangerouslySetInnerHTML={{__html: searchForm}}></div> : ''}
-							{ menu ? <div className={'slideout-menu__block is-menu'} dangerouslySetInnerHTML={{__html: menu}}></div> : ''}
-							{ wpmlFlags ? <div className={'slideout-menu__block is-wpml-flags'} dangerouslySetInnerHTML={{__html: wpmlFlags}}></div> : ''}
+							{searchForm ? (
+								<div
+									className={'slideout-menu__block is-search-form'}
+									dangerouslySetInnerHTML={{ __html: searchForm }}
+								></div>
+							) : (
+								''
+							)}
+							{menu ? (
+								<div
+									className={'slideout-menu__block is-menu'}
+									dangerouslySetInnerHTML={{ __html: menu }}
+								></div>
+							) : (
+								''
+							)}
+							{wpmlFlags ? (
+								<div
+									className={'slideout-menu__block is-wpml-flags'}
+									dangerouslySetInnerHTML={{ __html: wpmlFlags }}
+								></div>
+							) : (
+								''
+							)}
 						</div>
 					</div>
-				</div> : ''
-			}
+				</div>
+			) : (
+				''
+			)}
 		</>
 	)
 }
