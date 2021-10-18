@@ -80,6 +80,7 @@
 
 	& > .menu-item {
 		position: relative;
+		margin-top: 0;
 		padding: 0 15px;
 
 		&:first-child {
@@ -119,6 +120,8 @@
 
 		@media (--m) {
 			& .menu-item {
+				margin-top: 0;
+
 				& > a {
 					display: inherit;
 					padding: 6px 10px;
