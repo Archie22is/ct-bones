@@ -8,12 +8,6 @@
 	& .image__img {
 		transition: all 0.3s ease;
 	}
-
-	&:hover {
-		& .image__img {
-			filter: grayscale(1);
-		}
-	}
 }
 
 .post-card__title {
