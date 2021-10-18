@@ -3816,10 +3816,6 @@ a.cart-shortcode {
 		transition: all 0.3s ease;
 	}
 
-.post-card:hover .image__img {
-			filter: grayscale(1);
-		}
-
 .post-card__title {
 	font-size: inherit
 }
