@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.0.4 - 18/10/2021
+
+- Fix embed block with aspect ratio, remove legacy class .video-responsive
+- Fix spacing header menu item in desktop
+
 ## 6.0.3 - 15/10/2021
 
 - Convert Slideout menu to React component
