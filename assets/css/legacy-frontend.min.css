@@ -1501,6 +1501,7 @@ strong {
 
 .header__menu > .menu-item {
 		position: relative;
+		margin-top: 0;
 		padding: 0 15px
 	}
 
@@ -1548,6 +1549,10 @@ strong {
 		}
 
 @media (min-width: 1080px) {
+			.header__menu > .menu-item-has-children .menu-item {
+				margin-top: 0
+			}
+
 				.header__menu > .menu-item-has-children .menu-item > a {
 					display: inherit;
 					padding: 6px 10px;
