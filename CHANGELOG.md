@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.0.5 - 19/10/2021
+
+- Fix path load for css, js woocommerce.
+
 ## 6.0.4 - 18/10/2021
 
 - Fix embed block with aspect ratio, remove legacy class .video-responsive
