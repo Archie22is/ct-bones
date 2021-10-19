@@ -1190,62 +1190,13 @@ ul.gfield_checkbox > li, ul.gfield_radio > li {
 	transition: all 0.3s
 }
 
-.slideout-menu .header__vertical--logo {
-		width: 100%;
-		max-width: 120px;
-		margin: 0 auto 1em
-	}
-
-.slideout-menu .header__vertical--logo * {
-			width: 100%;
-			height: auto;
-		}
-
-.slideout-menu .header__vertical-header {
-		color: #fff;
-		color: var(--white);
-		font-size: 14px;
-		display: flex;
-		align-items: center;
-		margin-bottom: 1em;
-		background-color: #1346af;
-		background-color: var(--primary);
-		padding: 0.25em 1.5em
-	}
-
-.slideout-menu .header__vertical-header svg {
-			fill: #fff;
-			fill: var(--white);
-			width: 1em;
-			height: 1em;
-		}
-
-.slideout-menu .header__vertical-header .header__vertical-title {
-			margin-left: 0.5em;
-		}
-
-.slideout-menu li {
-		list-style: none;
-		font-size: 0.85rem;
-		font-weight: 400;
-		font-weight: var(--font-normal);
-		margin-bottom: 0.5em;
-		border-bottom: 1px solid #ddd;
-		border-bottom: 1px solid var(--border);
-		padding-bottom: 0.25em
-	}
-
-.slideout-menu li:last-child {
-			border-bottom: 0;
-		}
-
 .slideout-menu .sub-menu {
 		padding-top: 0.5em
 	}
 
 .slideout-menu .sub-menu li {
 			font-weight: 500;
-			font-size: 12px;
+			font-size: 1rem;
 			margin-bottom: 0.25em;
 			padding-bottom: 0.15em;
 			border-bottom: 0;
@@ -1386,13 +1337,20 @@ ul.gfield_checkbox > li, ul.gfield_radio > li {
 
 .slideout-menu__menu > .menu-item {
 		margin: 0;
-		padding: 0.5em 0
+		padding: 10px 0;
+		border-top: 1px solid #ddd;
+		border-top: 1px solid var(--border)
 	}
+
+.slideout-menu__menu > .menu-item:first-child {
+			border-top: 0;
+		}
 
 .slideout-menu__menu > .menu-item > a {
 			display: block;
 			font-weight: 700;
 			font-weight: var(--font-bold);
+			font-size: 1.1rem;
 		}
 
 .slideout-menu__menu > .menu-item-has-children {
@@ -1438,11 +1396,13 @@ ul.gfield_checkbox > li, ul.gfield_radio > li {
 				}
 
 .slideout-menu__menu > .menu-item-has-children > .sub-menu {
-			padding-left: 10px;
+			list-style: none;
+			margin: 0;
+			padding: 0 0 0 15px;
 			height: 0;
 			overflow: hidden;
 			width: 100%;
-			transition: height 15s ease
+			transition: height 0.15s ease
 		}
 
 .slideout-menu__menu > .menu-item-has-children > .sub-menu > .menu-item {
@@ -1461,7 +1421,6 @@ ul.gfield_checkbox > li, ul.gfield_radio > li {
 					position: relative;
 					width: 20px;
 					height: 20px;
-					background: #1346af;
 					background: #1346af;
 					background: var(--primary)
 				}
@@ -1498,7 +1457,7 @@ ul.gfield_checkbox > li, ul.gfield_radio > li {
 					height: 0;
 					overflow: hidden;
 					width: 100%;
-					transition: height 15s ease;
+					transition: height 0.15s ease;
 				}
 
 .slideout-menu__menu > .menu-item-has-children > .sub-menu > .menu-item-has-children.is-active > .sub-menu {
