@@ -1,6 +1,19 @@
 import classnames from 'classnames'
 import { useEffect, useState } from '@wordpress/element'
-import { select, trigger, on, remove } from 'lib/dom'
+import {
+	select,
+	trigger,
+	on,
+	remove,
+	addClass,
+	removeClass,
+	hasClass,
+	closest,
+	delegate
+} from 'lib/dom'
+
+const SUB_MENU_VISIBLE_CLASS = 'is-active'
+const body = document.body
 
 const SlideOutMenu = props => {
 	const [active, setActive] = useState(false)
@@ -39,7 +52,7 @@ const SlideOutMenu = props => {
 			() => {
 				setActive(true)
 			},
-			document.body
+			body
 		)
 
 		on(
@@ -47,7 +60,7 @@ const SlideOutMenu = props => {
 			() => {
 				setActive(false)
 			},
-			document.body
+			body
 		)
 
 		setLoaded(true)
@@ -58,8 +71,27 @@ const SlideOutMenu = props => {
 	}, [props.el, loaded])
 
 	const handleClose = () => {
-		trigger('slideout.hidden', document.body)
+		trigger('slideout.hidden', body)
 	}
+
+	useEffect(() => {
+		delegate(
+			'click',
+			e => {
+				e.stopPropagation()
+
+				const parentTrigger = closest('.menu-item-has-children', e.target)
+
+				if (hasClass(SUB_MENU_VISIBLE_CLASS, parentTrigger)) {
+					removeClass(SUB_MENU_VISIBLE_CLASS, parentTrigger)
+				} else {
+					addClass(SUB_MENU_VISIBLE_CLASS, parentTrigger)
+				}
+			},
+			'.is-menu .js-toggle-sub-menu',
+			body
+		)
+	}, [])
 
 	return (
 		<>
