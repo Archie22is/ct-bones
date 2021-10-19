@@ -185,7 +185,7 @@ class Codetot_WooCommerce_Init
 
   public function load_woocommerce_css()
   {
-    wp_enqueue_style('codetot-woocommerce', get_template_directory_uri() . '/assets/css/woocommerce' . $this->theme_environment . '.css', array(), CODETOT_VERSION);
+    wp_enqueue_style('ct-bones-legacy-woocommerce-frontend', get_template_directory_uri() . '/assets/css/legacy-woocommerce' . $this->theme_environment . '.css', array(), CODETOT_VERSION);
   }
 
   public function load_woocommerce_js()
@@ -193,8 +193,8 @@ class Codetot_WooCommerce_Init
     wp_enqueue_script('wc-add-to-cart-variation');
 
     wp_enqueue_script(
-      'codetot-woocommerce',
-      get_template_directory_uri() . '/assets/js/woocommerce' . $this->theme_environment . '.js',
+      'ct-bones-legacy-woocommerce-frontend',
+      get_template_directory_uri() . '/assets/js/legacy-woocommerce' . $this->theme_environment . '.js',
       array(),
       CODETOT_VERSION,
       true
