@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.0.6 - 19/10/2021
+
+- Fix slideout menu trigger to open/collapse sub-menu
+- Fix slideout menu style
+
 ## 6.0.5 - 19/10/2021
 
 - Fix path load for css, js woocommerce.
