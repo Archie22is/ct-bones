@@ -73,17 +73,17 @@ class Codetot_Woocommerce_Layout_Account
 
   public function login_title()
   {
-    echo '<h1 class="h2 align-c page-block__title">' . esc_html__('My account', 'woocommerce') . '</h1>';
+    echo '<h1 class="has-heading-5-font-size align-c page-block__title">' . esc_html__('My account', 'woocommerce') . '</h1>';
   }
 
   public function reset_password_title()
   {
-    echo '<h1 class="h2 align-c page-block__title">' . esc_html__('Reset Password') . '</h1>';
+    echo '<h1 class="has-heading-5-font-size align-c page-block__title">' . esc_html__('Reset Password') . '</h1>';
   }
 
   public function lost_password_title()
   {
-    echo '<h1 class="h2 align-c page-block__title">' . esc_html__('Lost Password') . '</h1>';
+    echo '<h1 class="has-heading-5-font-size align-c page-block__title">' . esc_html__('Lost Password') . '</h1>';
   }
 
   public function lost_password_form_layout()
@@ -142,7 +142,7 @@ class Codetot_Woocommerce_Layout_Account
     echo '<div class="page-block__header">';
     echo '<div class="grid page-block__grid page-block__grid page-block__grid--header">';
     echo '<div class="grid__col page-block__col page-block__col--header-left">';
-    echo '<h1 class="h2 align-c page-block__title">' . esc_attr($title) . '</h1>';
+    echo '<h1 class="has-heading-5-font-size align-c page-block__title">' . esc_attr($title) . '</h1>';
     echo '</div>'; // Close .page-block__col--header-left
     echo '<div class="grid__col page-block__col page-block__col--header-right">';
     the_block('page-block-mobile-trigger', array(
