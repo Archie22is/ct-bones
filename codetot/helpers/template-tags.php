@@ -143,6 +143,7 @@ if (!function_exists('ct_bones_post_thumbnail')) :
 
       <?php the_block('image', array(
         'class' => 'image--default entry-thumbnail__image',
+				'lazyload' => false,
         'image' => get_post_thumbnail_id()
       )); ?>
 
