@@ -12,8 +12,6 @@ get_header();
 $sidebar_layout    = codetot_get_theme_mod('post_layout') ?? 'right-sidebar';
 $enable_hero_image = codetot_get_theme_mod('extra_single_post_layout', 'pro') ?? 'none';
 
-the_block('breadcrumbs');
-
 if (is_singular('post') && $enable_hero_image) :
 	$categories = get_the_category();
 	$category_html = '<ul class="hero-image__post-meta">';
@@ -39,10 +37,11 @@ if (is_singular('post') && $enable_hero_image) :
 		'content_alignment' => 'center',
 		'overlay' => '0.4'
 	));
+
 	?>
 
 <?php endif;
-
+the_block('breadcrumbs');
 echo codetot_layout_page_block_open('page-block--page ' . $sidebar_layout, false);
 
 ?>
