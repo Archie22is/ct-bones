@@ -25,7 +25,6 @@ if (!empty($image) && !empty($class)) :
       ));
 
       $image_html = str_replace('srcset="', 'srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-srcset="', $image_html);
-      $image_html = preg_replace('/[ ]sizes="[^"]*"/', '', $image_html);
       $image_html = str_replace(' data-srcset="', ' data-sizes="auto" data-srcset="', $image_html);
     else :
       $image_html = wp_get_attachment_image($image_id, $_size, false, array(
