@@ -8,6 +8,7 @@ $footer_background = codetot_get_theme_mod('footer_background_color') ?? 'transp
 $footer_class = 'footer';
 $footer_class .= !empty($footer_background) ? ' bg-' . esc_attr($footer_background) : ' bg-transparent';
 $footer_class .= !empty($footer_widget_column) ? ' footer--' . esc_html($footer_widget_column) . '-columns' : ' footer--3-columns';
+$footer_class .= (!empty($footer_text_contract) && $footer_text_contract !== 'dark') ? ' has-dark-color' : ' has-light-color';
 
 $widgets = array();
 for ($widget_index = 1; $widget_index <= $footer_widget_column; $widget_index++) :
