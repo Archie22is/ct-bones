@@ -1,11 +1,12 @@
 .slideout-menu {
+	@mixin fade-out;
+
 	position: fixed;
 	z-index: 100;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
-	opacity: 0;
 	pointer-events: none;
 	transition: all 0.3s;
 
@@ -302,20 +303,20 @@
 	}
 }
 
-.slideout-menu {
-	&.is-active {
-		opacity: 1;
+.is-slideout-visible {
+	& .slideout-menu {
+		@mixin fade-in;
+	}
 
-		& .slideout-menu__close-button {
-			transform: translate3d(0, 0, 0);
-		}
+	& .slideout-menu__close-button {
+		transform: translate3d(0, 0, 0);
+	}
 
-		& .slideout-menu__wrapper {
-			transform: translate3d(0, 0, 0);
-		}
+	& .slideout-menu__wrapper {
+		transform: translate3d(0, 0, 0);
+	}
 
-		& * {
-			pointer-events: visible;
-		}
+	& * {
+		pointer-events: visible;
 	}
 }
