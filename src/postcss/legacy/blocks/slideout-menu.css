@@ -10,37 +10,6 @@
 	pointer-events: none;
 	transition: all 0.3s;
 
-	& .header__vertical--logo {
-		width: 100%;
-		max-width: 120px;
-		margin: 0 auto 1em;
-
-		& * {
-			width: 100%;
-			height: auto;
-		}
-	}
-
-	& .header__vertical-header {
-		color: var(--white);
-		font-size: 14px;
-		display: flex;
-		align-items: center;
-		margin-bottom: 1em;
-		background-color: var(--primary);
-		padding: 0.25em 1.5em;
-
-		& svg {
-			fill: var(--white);
-			width: 1em;
-			height: 1em;
-		}
-
-		& .header__vertical-title {
-			margin-left: 0.5em;
-		}
-	}
-
 	& li {
 		list-style: none;
 		font-size: 0.85rem;
