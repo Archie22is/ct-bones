@@ -101,7 +101,7 @@ const SlideOutMenu = props => {
 						<div className={'slideout-menu__overlay'} onClick={handleClose}>
 							<button
 								className={'slideout-menu__close-button'}
-								dangerouslySetInnerHTML={{ __html: `${closeButton}` }}
+								dangerouslySetInnerHTML={{ __html: closeButton }}
 							></button>
 						</div>
 					) : (
@@ -112,7 +112,7 @@ const SlideOutMenu = props => {
 							{searchForm ? (
 								<div
 									className={'slideout-menu__block is-search-form'}
-									dangerouslySetInnerHTML={{ __html: `${searchForm}` }}
+									dangerouslySetInnerHTML={{ __html: searchForm }}
 								></div>
 							) : (
 								''
@@ -120,7 +120,7 @@ const SlideOutMenu = props => {
 							{menu ? (
 								<div
 									className={'slideout-menu__block is-menu'}
-									dangerouslySetInnerHTML={{ __html: `${menu}` }}
+									dangerouslySetInnerHTML={{ __html: menu }}
 								></div>
 							) : (
 								''
@@ -128,7 +128,7 @@ const SlideOutMenu = props => {
 							{wpmlFlags ? (
 								<div
 									className={'slideout-menu__block is-wpml-flags'}
-									dangerouslySetInnerHTML={{ __html: `${wpmlFlags}` }}
+									dangerouslySetInnerHTML={{ __html: wpmlFlags }}
 								></div>
 							) : (
 								''
