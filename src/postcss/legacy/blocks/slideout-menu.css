@@ -55,11 +55,9 @@
 	}
 
 	& .sub-menu {
-		padding-top: 0.5em;
-
 		& li {
 			font-weight: 500;
-			font-size: 12px;
+			font-size: 0.875rem;
 			margin-bottom: 0.25em;
 			padding-bottom: 0.15em;
 			border-bottom: 0;
@@ -227,6 +225,7 @@
 		}
 
 		& > .sub-menu {
+			margin: 0;
 			padding-left: 10px;
 			height: 0;
 			overflow: hidden;
