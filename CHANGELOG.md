@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.0.8 - 6.0.9 - 30/10/2021
+
+- Fix #490: Restore slideout menu, modal search form - iOS render bug with React.
+
 ## 6.0.7 - 30/10/2021
 
 - Fix break link in post content
