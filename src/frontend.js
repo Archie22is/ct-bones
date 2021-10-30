@@ -13,10 +13,8 @@ import ModalSearchForm from './theme-components/ModalSearchForm'
 import { render, Fragment } from '@wordpress/element'
 
 const App = () => {
-	const slideOutMenuEl =
-		select('[data-theme-component="slideout-menu"]') ?? null
-	const modalSearchFormEl =
-		select('[data-theme-component="modal-search-form"]') ?? null
+	const slideOutMenuEl = select('[data-theme-component="slideout-menu"]') ?? null
+	const modalSearchFormEl = select('[data-theme-component="modal-search-form"]') ?? null
 
 	return (
 		<Fragment>
