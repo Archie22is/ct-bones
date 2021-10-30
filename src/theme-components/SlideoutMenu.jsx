@@ -98,10 +98,11 @@ const SlideOutMenu = props => {
 			{loaded ? (
 				<div className={classNames}>
 					{closeButton ? (
-						<div className={'slideout-menu__overlay'} onClick={handleClose}>
+						<div className={'slideout-menu__overlay'}>
 							<button
 								className={'slideout-menu__close-button'}
 								dangerouslySetInnerHTML={{ __html: closeButton }}
+								onClick={handleClose}
 							></button>
 						</div>
 					) : (
