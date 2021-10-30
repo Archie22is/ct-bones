@@ -51,4 +51,6 @@ h6 {
 
 .entry-content a {
 	color: var(--primary);
+	overflow-wrap: break-word;
+	word-break: break-word;
 }
