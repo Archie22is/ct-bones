@@ -9,12 +9,43 @@
 	pointer-events: none;
 	transition: all 0.3s;
 
+	& .header__vertical--logo {
+		width: 100%;
+		max-width: 120px;
+		margin: 0 auto 1em;
+
+		& * {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	& .header__vertical-header {
+		color: var(--white);
+		font-size: 14px;
+		display: flex;
+		align-items: center;
+		margin-bottom: 1em;
+		background-color: var(--primary);
+		padding: 0.25em 1.5em;
+
+		& svg {
+			fill: var(--white);
+			width: 1em;
+			height: 1em;
+		}
+
+		& .header__vertical-title {
+			margin-left: 0.5em;
+		}
+	}
+
 	& .sub-menu {
 		padding-top: 0.5em;
 
 		& li {
 			font-weight: 500;
-			font-size: 1rem;
+			font-size: 0.875rem;
 			margin-bottom: 0.25em;
 			padding-bottom: 0.15em;
 			border-bottom: 0;
@@ -143,7 +174,7 @@
 		& > a {
 			display: block;
 			font-weight: var(--font-bold);
-			font-size: 1.1rem;
+			font-size: 1rem;
 		}
 	}
 
@@ -188,7 +219,6 @@
 		}
 
 		& > .sub-menu {
-			list-style: none;
 			margin: 0;
 			padding: 0 0 0 15px;
 			height: 0;
@@ -211,6 +241,7 @@
 					position: relative;
 					width: 20px;
 					height: 20px;
+					background: #1346af;
 					background: var(--primary);
 
 					&::before {
@@ -246,7 +277,7 @@
 					height: 0;
 					overflow: hidden;
 					width: 100%;
-					transition: height 0.15s ease;
+					transition: height 15s ease;
 				}
 
 				&.is-active {
