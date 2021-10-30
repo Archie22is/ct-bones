@@ -40,12 +40,25 @@
 		}
 	}
 
+	& li {
+		list-style: none;
+		font-size: 0.85rem;
+		font-weight: var(--font-normal);
+		margin-bottom: 0.5em;
+		border-bottom: 1px solid var(--border);
+		padding-bottom: 0.25em;
+
+		&:last-child {
+			border-bottom: 0;
+		}
+	}
+
 	& .sub-menu {
 		padding-top: 0.5em;
 
 		& li {
 			font-weight: 500;
-			font-size: 0.875rem;
+			font-size: 12px;
 			margin-bottom: 0.25em;
 			padding-bottom: 0.15em;
 			border-bottom: 0;
@@ -164,17 +177,11 @@
 
 	& > .menu-item {
 		margin: 0;
-		padding: 10px 0;
-		border-top: 1px solid var(--border);
-
-		&:first-child {
-			border-top: 0;
-		}
+		padding: 0.5em 0;
 
 		& > a {
 			display: block;
 			font-weight: var(--font-bold);
-			font-size: 1rem;
 		}
 	}
 
@@ -219,12 +226,11 @@
 		}
 
 		& > .sub-menu {
-			margin: 0;
-			padding: 0 0 0 15px;
+			padding-left: 10px;
 			height: 0;
 			overflow: hidden;
 			width: 100%;
-			transition: height 0.15s ease;
+			transition: height 15s ease;
 
 			& > .menu-item {
 				margin: 0;
