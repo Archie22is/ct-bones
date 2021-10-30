@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.0.7 - 30/10/2021
+
+- Fix break link in post content
+
 ## 6.0.6 - 19/10/2021
 
 - Fix slideout menu trigger to open/collapse sub-menu

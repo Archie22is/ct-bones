@@ -32,7 +32,7 @@ class Codetot_Back_To_Top
 		$enable = codetot_get_theme_mod('enable_back_to_top', 'pro') ?? true;
 
 		if ($enable) {
-			add_action('codetot_footer', 'codetot_render_back_to_top_section', 30);
+			add_action('wp_footer', 'codetot_render_back_to_top_section');
 		}
 	}
 }
