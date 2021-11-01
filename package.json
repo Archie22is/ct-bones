@@ -16,7 +16,8 @@
     "dev": "cross-env BABEL_ENV=default NODE_ENV=development webpack",
     "build": "cross-env BABEL_ENV=default NODE_ENV=production webpack",
     "fix": "prettier-standard --format '**/*.{php,js,jsx,css}'",
-    "test": "prettier-standard --check '**/*.{php,json,js,jsx,css}'"
+    "test": "prettier-standard --check '**/*.{php,json,js,jsx,css}'",
+    "test:cov": "jest --coverage"
   },
   "license": "MIT",
   "engines": {
@@ -29,6 +30,7 @@
     "@wordpress/eslint-plugin": "^9.1.1",
     "@wordpress/prettier-config": "^1.1.0",
     "autoprefixer": "^10.3.3",
+    "babel-jest": "^27.3.1",
     "babel-loader": "^8.2.2",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "browser-sync": "^2.27.5",
@@ -41,7 +43,9 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-prettier-standard": "^4.0.1",
+    "eslint-config-standard": "^16.0.3",
     "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.3.1",
     "mini-css-extract-plugin": "^2.2.0",
     "postcss": "^8.3.6",
     "postcss-import": "^14.0.2",
@@ -80,5 +84,8 @@
   },
   "prettier": {
     "singleQuote": true
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   }
 }
