@@ -9,6 +9,7 @@ import {
 	setData,
 	select,
 	selectAll,
+	remove
 } from './dom';
 
 beforeEach(() => {
@@ -85,4 +86,11 @@ test('test selectAll', () => {
 	const targetEls = selectAll('.one');
 
 	expect(targetEls.length === 1).toEqual(true);
+});
+
+test('test remove', () => {
+	const targetEl = document.querySelector('.one');
+	remove(targetEl);
+
+	expect(document.querySelector('.one') === null).toBe(true);
 })
