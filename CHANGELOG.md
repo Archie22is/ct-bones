@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.0.10 - 01/11/2021
+
+- Add unit test for library dom.js (WIP) via npm run test:cov
+
 ## 6.0.8 - 6.0.9 - 30/10/2021
 
 - Fix #490: Restore slideout menu, modal search form - iOS render bug with React.

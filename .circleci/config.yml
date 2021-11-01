@@ -24,6 +24,15 @@ jobs:
       - node/install-packages
       - run:
           command: npm run test
+  test_cov:
+    executor:
+      name: node/default
+      tag: '14.17.6'
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: npm run test:cov
   build:
     executor:
       name: node/default
@@ -77,6 +86,10 @@ workflows:
   test_assets:
     jobs:
       - test:
+          filters:
+            branches:
+              only: /(feature|bugfix|hotfix)\/?(.*)/
+      - test_cov:
           filters:
             branches:
               only: /(feature|bugfix|hotfix)\/?(.*)/
