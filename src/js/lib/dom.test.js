@@ -7,6 +7,7 @@ import {
 	setAttribute,
 	getData,
 	setData,
+	setStyle,
 	select,
 	selectAll,
 	remove
@@ -74,6 +75,13 @@ test('test setData', () => {
 
 	expect(targetEl.getAttribute('data-block')).toEqual('test');
 });
+
+test('test setStyle', () => {
+	const targetEl = document.body.querySelector('.one');
+	setStyle('display', 'block', targetEl);
+
+	expect(targetEl.style.display === 'block').toBe(true);
+})
 
 test('test select', () => {
 	const targetEl = document.body.querySelector('.one');
