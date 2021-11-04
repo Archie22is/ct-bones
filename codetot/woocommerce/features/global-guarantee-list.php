@@ -158,7 +158,7 @@ class Codetot_WooCommerce_Global_Guarantee_List
 
     public function render_section()
     {
-        $data = get_field('guarantee_list', 'options');
+        $data = function_exists('get_field') && get_field('guarantee_list', 'options');
         $footer_background = codetot_get_theme_mod('footer_background_color') ?? 'dark';
 
         $class = 'section-bg guarantee-list--' . $this->position;

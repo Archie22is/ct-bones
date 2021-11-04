@@ -130,7 +130,7 @@ class Codetot_Woocommerce_Layout_Archive
       $sidebar_layout = $this->product_category_sidebar;
     endif;
 
-    $content = get_field($field_name, 'product_cat_' . esc_attr($obj->term_id));
+    $content = function_exists('get_field') && get_field($field_name, 'product_cat_' . esc_attr($obj->term_id));
 
     if (!empty($content)) {
       ob_start();
