@@ -34,6 +34,7 @@ class Codetot_Assets
 		$this->theme_environment = $this->is_localhost() ? '' : '.min';
 
 		add_action('wp_head', array($this, 'register_pwa_meta'));
+		add_action('enqueue_block_assets', array($this, 'load_editor_assets'));
 		add_action('wp_enqueue_scripts', array($this, 'load_assets'), 10);
 		add_action('wp_head', array($this, 'output_inline_styles'), 100);
 
@@ -47,15 +48,10 @@ class Codetot_Assets
 	{
 		$primary_color = codetot_get_theme_mod('primary_color') ?? '#000';
 
-		echo '<meta name="theme-color" content="' . esc_attr($primary_color) . '">';
+		echo '<meta name="theme-color" content="' . sanitize_hex_color($primary_color) . '">';
 	}
 
-	public function load_assets()
-	{
-		if (is_singular() && comments_open() && get_option('thread_comments')) {
-			wp_enqueue_script('comment-reply');
-		}
-
+	public function load_editor_assets() {
 		if (!$this->is_localhost()) :
 			wp_enqueue_style('codetot-global', CODETOT_ASSETS_URI . '/css/legacy-frontend.min.css', array(), $this->theme_version);
 			wp_enqueue_style('codetot-woocommerce', CODETOT_ASSETS_URI . '/css/legacy-woocommerce.min.css', array(), $this->theme_version);
@@ -68,6 +64,13 @@ class Codetot_Assets
 		if (!wp_script_is('lazysizes', 'enqueued')) {
 			wp_register_script('lazysizes', CODETOT_ASSETS_URI . '/vendors/lazysizes.min.js', array(), '5.2.2', false);
 			wp_enqueue_script('lazysizes');
+		}
+	}
+
+	public function load_assets()
+	{
+		if (is_singular() && comments_open() && get_option('thread_comments')) {
+			wp_enqueue_script('comment-reply');
 		}
 
 		$locale_settings = array(
