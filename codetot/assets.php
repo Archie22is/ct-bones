@@ -47,7 +47,7 @@ class Codetot_Assets
 	{
 		$primary_color = codetot_get_theme_mod('primary_color') ?? '#000';
 
-		echo '<meta name="theme-color" content="' . esc_attr($primary_color) . '">';
+		echo '<meta name="theme-color" content="' . sanitize_hex_color($primary_color) . '">';
 	}
 
 	public function load_assets()
