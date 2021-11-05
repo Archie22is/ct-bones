@@ -126,8 +126,8 @@ class Codetot_Mega_Menu
 	public function wp_nav_menu_objects($items, $args)
 	{
 		foreach ($items as &$item) {
-			$is_enable = get_field('display_mega_menu', $item);
-			$column = get_field('column', $item);
+			$is_enable = function_exists('get_field') && get_field('display_mega_menu', $item);
+			$column = function_exists('get_field') && get_field('column', $item);
 			if ($is_enable == true && $item->menu_item_parent == 0) {
 				$item->classes[] = sprintf('has-mega-menu mega-%s', $column['value']);
 			}

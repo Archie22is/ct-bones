@@ -1,8 +1,11 @@
 .widget {
 	@mixin column-item 1, 1.5em;
 
+	& > .widget__inner > ul,
 	& > ul {
 		@mixin list-reset;
+
+		margin: 0;
 	}
 
 	& a {

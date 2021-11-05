@@ -427,7 +427,7 @@ function codetot_render_related_products($class = '') {
   $columns = codetot_get_theme_mod('single_product_related_products_column', 'woocommerce') ?? '4-col';
   $columns = str_replace('-col', '', $columns);
   $enable_slider = codetot_get_theme_mod('single_product_related_products_enable_slider', 'woocommerce') ?? true;
-  $enable_container = codetot_get_theme_mod('single_product_sections_enable_container', 'woocommerce') ?? false;
+  $enable_container = codetot_get_theme_mod('single_product_sections_enable_container', 'woocommerce') ?? true;
   $related_product_ids = wc_get_related_products($product->get_id());
 
   if (empty($related_product_ids)) {
@@ -474,7 +474,7 @@ function codetot_render_cross_sell_products($class = '') {
   $columns = codetot_get_theme_mod('single_product_cross_sell_column ', 'woocommerce') ?? '4-col';
   $columns = str_replace('-col', '', $columns);
   $enable_slider = codetot_get_theme_mod('single_product_cross_sell_enable_slider', 'woocommerce') ?? true;
-  $enable_container = codetot_get_theme_mod('single_product_sections_enable_container', 'woocommerce') ?? false;
+  $enable_container = codetot_get_theme_mod('single_product_sections_enable_container', 'woocommerce') ?? true;
 
   if (empty($cross_sell_product_ids)) {
     return '';
@@ -515,7 +515,7 @@ function codetot_render_upsell_sections($class = '') {
   $columns = codetot_get_theme_mod('single_product_upsell_column', 'woocommerce') ?? '4-col';
   $columns = str_replace('-col', '', $columns);
   $enable_slider = codetot_get_theme_mod('single_product_upsell_enable_slider', 'woocommerce') ?? true;
-  $enable_container = codetot_get_theme_mod('single_product_sections_enable_container', 'woocommerce') ?? false;
+  $enable_container = codetot_get_theme_mod('single_product_sections_enable_container', 'woocommerce') ?? true;
 
   $upsell_products = codetot_get_upsell_products($columns, $columns);
 
