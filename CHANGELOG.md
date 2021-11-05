@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.1.0 - 06/11/2021
+
+- Set default container in single product sections
+- Fix tabs spacing in single product page
+- Fix widget product categories spacing
+- Fix sanitize hex color meta key
+- Enqueue admin editor styles (to render server side block in Block Editor)
+
 ## 6.0.10 - 01/11/2021
 
 - Add unit test for library dom.js (WIP) via npm run test:cov
