@@ -2617,7 +2617,8 @@ h3:empty {
 
 .woocommerce-tabs .tabs {
 		display: flex;
-		flex-wrap: wrap
+		flex-wrap: wrap;
+		margin: 0
 	}
 
 .woocommerce-tabs .tabs li {
