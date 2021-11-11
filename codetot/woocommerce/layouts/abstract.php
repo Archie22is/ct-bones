@@ -1,6 +1,8 @@
 <?php
 // Prevent direct access.
-if (!defined('ABSPATH')) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * @link       https://codetot.com
@@ -10,10 +12,12 @@ if (!defined('ABSPATH')) exit;
  * @author     CODE TOT JSC <khoi@codetot.com>
  */
 abstract class Codetot_Woocommerce_Layout {
-  public function print_errors()
-  {
-    the_block('message-block', array(
-      'content' => wc_print_notices(true)
-    ));
-  }
+	public function print_errors() {
+		the_block(
+			'message-block',
+			array(
+				'content' => wc_print_notices( true ),
+			)
+		);
+	}
 }

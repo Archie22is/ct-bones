@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.1.1 - 11/11/2021
+
+- Update phpcs and composer packages
+- Run compose standards fix automatically
+- Fix button outline color css style
+
 ## 6.1.0 - 06/11/2021
 
 - Set default container in single product sections
