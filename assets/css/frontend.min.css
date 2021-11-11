@@ -593,6 +593,13 @@ div.wp-block-columns {
 			border: 1px solid var(--dark)
 		}
 
+.wp-block-button.is-style-outline .wp-block-button__link:hover {
+				color: #1346af;
+				color: var(--primary);
+				border-color: #1346af;
+				border-color: var(--primary);
+			}
+
 .wp-block-button.is-style-outline .wp-block-button__link.has-primary-color {
 				border-color: #1346af;
 				border-color: var(--primary)
@@ -615,6 +622,18 @@ div.wp-block-columns {
 					color: var(--primary);
 					border-color: #1346af;
 					border-color: var(--primary);
+				}
+
+.wp-block-button.is-style-outline .wp-block-button__link.has-white-color {
+				border-color: #fff;
+				border-color: var(--white)
+			}
+
+.wp-block-button.is-style-outline .wp-block-button__link.has-white-color:hover {
+					color: #fff;
+					color: var(--white);
+					border-color: #fff;
+					border-color: var(--white);
 				}
 
 .wp-block-button.is-style-link {
