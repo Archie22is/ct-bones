@@ -1,38 +1,39 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 class Codetot_Api {
-  /**
-   * Singleton instance
-   *
-   * @var Codetot_Api
-   */
-  private static $instance;
+	/**
+	 * Singleton instance
+	 *
+	 * @var Codetot_Api
+	 */
+	private static $instance;
 
-  /**
-   * @var string
-   */
-  private $route_name;
+	/**
+	 * @var string
+	 */
+	private $route_name;
 
-  /**
-   * Get singleton instance.
-   *
-   * @return Codetot_Api
-   */
-  public final static function instance() {
-    if ( is_null( self::$instance ) ) {
-      self::$instance = new self();
-    }
-    return self::$instance;
-  }
+	/**
+	 * Get singleton instance.
+	 *
+	 * @return Codetot_Api
+	 */
+	final public static function instance() {
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
+	}
 
-  /**
-   * Class constructor
-   */
-  private function __construct()
-  {
-    $this->route_name = 'codetot/v1';
-  }
+	/**
+	 * Class constructor
+	 */
+	private function __construct() {
+		$this->route_name = 'codetot/v1';
+	}
 }
 
 Codetot_Api::instance();

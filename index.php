@@ -20,37 +20,40 @@ get_header();
 /**
  * @hooks codetot_breadcrumbs_html - 1
  */
-do_action('codetot_before_index_main');
+do_action( 'codetot_before_index_main' );
 ?>
 <main id="primary" class="site-main">
-  <?php if (have_posts()) : ?>
-    <?php
-    /**
-     * @hook codetot_layout_archive_page_header_html - 1
-     * @hook codetot_layout_post_list_html - 5
-     * @hook codetot_layout_post_list_pagination - 10
-     */
-    do_action('codetot_index_main_layout');
+  <?php if ( have_posts() ) : ?>
+		<?php
+		/**
+		 * @hook codetot_layout_archive_page_header_html - 1
+		 * @hook codetot_layout_post_list_html - 5
+		 * @hook codetot_layout_post_list_pagination - 10
+		 */
+		do_action( 'codetot_index_main_layout' );
 
   else :
 
-    the_block('message-block', array(
-      'content' => esc_html__('There is no posts to display.', 'ct-bones')
-    ));
+    the_block(
+		'message-block',
+		array(
+			'content' => esc_html__( 'There is no posts to display.', 'ct-bones' ),
+		)
+	  );
 
   endif;
-  ?>
+	?>
 </main><!-- #main -->
 
-<?php do_action('codetot_before_index_sidebar'); ?>
+<?php do_action( 'codetot_before_index_sidebar' ); ?>
 <?php
-if (is_category()) {
-  get_sidebar();
+if ( is_category() ) {
+	get_sidebar();
 } else {
-  get_sidebar('post-sidebar');
+	get_sidebar( 'post-sidebar' );
 }
 ?>
-<?php do_action('codetot_after_index_main'); ?>
+<?php do_action( 'codetot_after_index_main' ); ?>
 
 <?php
 get_footer();
