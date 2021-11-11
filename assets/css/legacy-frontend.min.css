@@ -5028,11 +5028,14 @@ a.cart-shortcode {
     margin-top: 0;
   }
 
-.widget > ul {
+.widget > .widget__inner > ul,
+	.widget > ul {
 		margin: 0;
 		padding: 0;
 		text-indent: 0;
 		list-style-type: none;
+
+		margin: 0;
 	}
 
 .widget a {

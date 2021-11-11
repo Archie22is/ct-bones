@@ -1,23 +1,25 @@
 {
-    "name": "codetot/ct-bones",
-    "type": "wordpress-theme",
-    "license": "GPLv3",
-    "require": {
-      "php": ">=7.0"
-    },
-    "config": {
-      "platform": {
-        "php": "7.3"
-      }
-    },
-    "require-dev": {
-        "automattic/vipwpcs": "^2.3",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
-        "wp-coding-standards/wpcs": "^2.3",
-        "phpunit/phpunit": "^9.5"
-    },
-    "scripts": {
-      "lint": "@php ./vendor/bin/phpcs",
-      "fix": "@php ./vendor/bin/phpcbf"
-    }
+  "name": "codetot-web/ct-bones",
+  "type": "package",
+  "keywords": [
+      "WordPress",
+      "Themes"
+  ],
+  "license": "GPL-2.0-or-later",
+  "require": {
+      "php": ">=5.6"
+  },
+  "require-dev": {
+      "composer/installers": "~1.0",
+      "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+      "php-parallel-lint/php-parallel-lint": "^1.2",
+      "szepeviktor/phpstan-wordpress": "^0.6.0",
+      "wptrt/wpthemereview": "^0.2.1"
+  },
+  "scripts": {
+      "standards:check": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
+      "standards:fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf",
+      "lint": "@php ./vendor/bin/parallel-lint --exclude .git --exclude vendor .",
+      "analyze": "@php ./vendor/bin/phpstan analyze"
+  }
 }

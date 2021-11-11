@@ -9,10 +9,12 @@
  */
 
 // Prevent direct access.
-if (!defined('ABSPATH')) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-class Codetot_Google_Maps
-{
+class Codetot_Google_Maps {
+
 	/**
 	 * Singleton instance
 	 *
@@ -29,9 +31,8 @@ class Codetot_Google_Maps
 	 *
 	 * @return Codetot_Google_Maps
 	 */
-	public final static function instance()
-	{
-		if (is_null(self::$instance)) {
+	final public static function instance() {
+		if ( is_null( self::$instance ) ) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -40,24 +41,21 @@ class Codetot_Google_Maps
 	/**
 	 * Class constructor
 	 */
-	private function __construct()
-	{
-		$this->google_maps_api_key = get_codetot_data('codetot_google_maps_api_key') ?? null;
+	private function __construct() {
+		$this->google_maps_api_key = get_codetot_data( 'codetot_google_maps_api_key' ) ?? null;
 
-		if (!empty($this->google_maps_api_key)) {
-			add_filter('acf/init', array($this, 'load_google_maps_api_key'));
-			add_action('wp_head', array($this, 'load_google_maps_key_header'));
+		if ( ! empty( $this->google_maps_api_key ) ) {
+			add_filter( 'acf/init', array( $this, 'load_google_maps_api_key' ) );
+			add_action( 'wp_head', array( $this, 'load_google_maps_key_header' ) );
 		}
 	}
 
-	public function load_google_maps_api_key()
-	{
-		acf_update_setting('google_api_key', $this->google_maps_api_key);
+	public function load_google_maps_api_key() {
+		acf_update_setting( 'google_api_key', $this->google_maps_api_key );
 	}
 
-	public function load_google_maps_key_header()
-	{
-		echo '<script>';
+	public function load_google_maps_key_header() {
+		 echo '<script>';
 		echo 'var GOOGLE_MAPS_API_KEY = "' . $this->google_maps_api_key . '"';
 		echo '</script>';
 	}
