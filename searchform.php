@@ -20,7 +20,7 @@ if ( empty( $ct_bones_placeholder ) ) {
 }
 ?>
 <form role="search" method="get" class="search-form<?php echo esc_html( $ct_bones_extra_class ); ?>" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-  <label class="screen-reader-text" for="<?php echo esc_attr( $ct_bones_unique_id ); ?>"><?php _e( 'Search&hellip;', 'ct-bones' ); // phpcs:ignore: WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></label>
-  <input type="search" id="<?php echo esc_attr( $ct_bones_unique_id ); ?>" class="search-field" value="<?php echo get_search_query(); ?>" name="s" placeholder="<?php echo esc_html( $ct_bones_placeholder ); ?>" />
-  <?php echo $ct_bones_button_html; // phpcs:ignore: WordPress.Security.EscapeOutput.OutputNotEscaped -- ?>
+	<label class="screen-reader-text" for="<?php echo esc_attr( $ct_bones_unique_id ); ?>"><?php _e( 'Search&hellip;', 'ct-bones' ); // phpcs:ignore: WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></label>
+	<input type="search" id="<?php echo esc_attr( $ct_bones_unique_id ); ?>" class="search-field" value="<?php echo get_search_query(); ?>" name="s" placeholder="<?php echo esc_html( $ct_bones_placeholder ); ?>" />
+	<?php echo $ct_bones_button_html; // phpcs:ignore: WordPress.Security.EscapeOutput.OutputNotEscaped -- ?>
 </form>
