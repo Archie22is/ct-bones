@@ -12,6 +12,8 @@
 get_header();
 
 /**
+ * Before index main hook
+ *
  * @hooks codetot_breadcrumbs_html - 1
  */
 do_action( 'codetot_before_index_main' );
@@ -20,6 +22,8 @@ do_action( 'codetot_before_index_main' );
   	<?php if ( have_posts() ) : ?>
 		<?php
 		/**
+		 * Main layout hook
+		 *
 		 * @hook codetot_layout_archive_page_header_html - 1
 		 * @hook codetot_layout_post_list_html - 5
 		 * @hook codetot_layout_post_list_pagination - 10
@@ -39,6 +43,9 @@ do_action( 'codetot_before_index_main' );
 </main><!-- #main -->
 
 <?php
+/**
+ * Before sidebar hook
+ */
 do_action( 'codetot_before_index_sidebar' );
 
 if ( is_category() ) :

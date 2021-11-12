@@ -52,7 +52,7 @@ echo esc_html( codetot_layout_page_block_open( 'page-block--page ' . $sidebar_la
 ?>
 
 <main id="primary" class="site-main">
-  	<?php
+	<?php
 	if ( is_singular( 'post' ) ) :
 		do_action( 'codetot_before_post' );
 	endif;

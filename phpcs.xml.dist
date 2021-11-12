@@ -44,7 +44,7 @@
 		 Multiple valid text domains can be provided as a comma-delimited list. -->
 	<rule ref="WordPress.WP.I18n">
 		<properties>
-			<property name="text_domain" type="array" value="ct-bones" />
+			<property name="text_domain" type="array" value="ct-bones, woocommerce" />
 		</properties>
 	</rule>
 
@@ -67,6 +67,7 @@
 
 	<rule ref="PHPCompatibility">
         <exclude name="PHPCompatibility.Operators.NewOperators.t_coalesceFound"/>
+		<exclude name="PHPCompatibility.LanguageConstructs.NewEmptyNonVariable.Found"/>
     </rule>
 
 	<!-- Include sniffs for PHP cross-version compatibility. -->
