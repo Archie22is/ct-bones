@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.1.2 - 12/11/2021
+
+- Optimize image block
+- Composer fix phpcs standards
+
 ## 6.1.1 - 11/11/2021
 
 - Update phpcs and composer packages
