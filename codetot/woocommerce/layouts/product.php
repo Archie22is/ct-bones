@@ -573,7 +573,7 @@ function codetot_woocommerce_single_meta() {
 function codetot_render_product_sku_meta() {
 	global $product;
 
-	if ( wc_product_sku_enabled() && ! empty( $product->get_sku() ) ) :
+	if ( ( function_exists( 'wc_product_sku_enabled' ) && wc_product_sku_enabled() ) && ! empty( $product->get_sku() ) ) :
 		printf(
 			'<p class="product-meta product-meta--sku"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
 			str_replace( ':', '', esc_html__( 'SKU: ', 'woocommerce' ) ),
@@ -591,7 +591,7 @@ function codetot_render_product_weight_meta() {
 		printf(
 			'<p class="product-meta product-meta--weight"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
 			esc_html__( 'Weight', 'woocommerce' ),
-			$product->get_weight() . $weight_unit
+			esc_html($product->get_weight() . $weight_unit)
 		);
 	}
 }
@@ -622,21 +622,21 @@ function codetot_render_product_dimesion_meta() {
 		ob_start();
 		if ( ! empty( $product->get_height() ) ) :
 			echo '<span class="height">';
-			echo $product->get_height() . get_option( 'woocommerce_dimension_unit' );
+			echo esc_html( $product->get_height() . get_option( 'woocommerce_dimension_unit' ) );
 			echo '</span>';
 			echo $space;
 	  endif;
 
 		if ( ! empty( $product->get_width() ) && ! empty( $product->get_height() ) ) :
 			echo '<span class="width">';
-			echo $product->get_width() . get_option( 'woocommerce_dimension_unit' );
+			echo esc_html( $product->get_width() . get_option( 'woocommerce_dimension_unit' ) );
 			echo '</span>';
 			echo $space;
 	  endif;
 
 		if ( ! empty( $product->get_length() ) && ! empty( $product->get_width() ) ) :
 			echo '<span class="length">';
-			echo $product->get_length() . get_option( 'woocommerce_dimension_unit' );
+			echo esc_html( $product->get_length() . get_option( 'woocommerce_dimension_unit' ) );
 			echo '</span>';
 	  endif;
 		$dimesions_html = ob_get_clean();

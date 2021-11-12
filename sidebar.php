@@ -15,9 +15,9 @@ if ( $ct_bones_display_sidebar ) : ?>
 
 	<?php do_action( 'codetot_before_sidebar' ); ?>
 
-  <aside id="secondary" class="widget-area">
-	<?php dynamic_sidebar( $ct_bones_sidebar_id ); ?>
-  </aside><!-- #secondary -->
+	<aside id="secondary" class="widget-area">
+		<?php dynamic_sidebar( $ct_bones_sidebar_id ); ?>
+	</aside><!-- #secondary -->
 
 	<?php do_action( 'codetot_after_sidebar' ); ?>
 
