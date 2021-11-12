@@ -1,5 +1,4 @@
 <?php
-
 /**
  * CT Bones functions and definitions
  *
@@ -7,6 +6,7 @@
  *
  * @package CT_Bones
  */
+
 define( 'CODETOT_DIR', get_template_directory() . '/codetot' );
 define( 'CODETOT_ADMIN_DIR', get_template_directory() . '/codetot/admin' );
 define( 'CODETOT_ADMIN_ASSETS_URI', get_template_directory_uri() . '/codetot/admin/assets' );
@@ -30,7 +30,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 }
 
 /**
- * Gutenberg Support
+ * Block Editor support
  */
 require_once CODETOT_DIR . '/gutenberg/init.php';
 
@@ -42,14 +42,12 @@ require_once CODETOT_DIR . '/seo-support.php';
 
 require_once CODETOT_DIR . '/features/related-posts.php';
 
-// Admin
 require_once CODETOT_ADMIN_DIR . '/acf.php';
 require_once CODETOT_ADMIN_DIR . '/ct-settings.php';
 if ( defined( 'CT_THEME' ) ) :
 	require_once CODETOT_ADMIN_DIR . '/ct-theme.php';
 endif;
 require_once CODETOT_ADMIN_DIR . '/ct-data.php';
-// require_once CODETOT_ADMIN_DIR . '/theme-sync.php';
 require_once CODETOT_ADMIN_DIR . '/page-settings.php';
 
 require_once CODETOT_DIR . '/shortcodes.php';
@@ -77,7 +75,6 @@ endif;
 add_action(
 	'wp',
 	function() {
-		// Layout hooks
 		require_once CODETOT_DIR . '/layout.php';
 		require_once CODETOT_DIR . '/features/multiple-headers.php';
 		require_once CODETOT_DIR . '/features/breadcrumbs.php';
@@ -93,7 +90,6 @@ if ( class_exists( 'WooCommerce' ) ) {
 	require_once CODETOT_DIR . '/woocommerce/init.php';
 	require_once CODETOT_DIR . '/woocommerce/ct-settings.php';
 
-	// Custom Layout
 	require_once CODETOT_DIR . '/woocommerce/layouts/abstract.php';
 
 	require_once CODETOT_DIR . '/woocommerce/features/mini-cart.php';
@@ -118,5 +114,3 @@ if ( class_exists( 'WooCommerce' ) ) {
 }
 
 require_once CODETOT_DIR . '/optimize.php';
-
-require_once __DIR__ . '/sync-settings.php';
