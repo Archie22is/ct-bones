@@ -67,12 +67,12 @@ echo codetot_layout_page_block_open( 'page-block--page ' . $sidebar_layout, fals
 			do_action( 'codetot_after_content_post' );
 	endif;
 
-	// If comments are open or we have at least one comment, load up the comment template.
-	if ( comments_open() || get_comments_number() ) :
-		comments_template();
+		// If comments are open or we have at least one comment, load up the comment template.
+		if ( comments_open() || get_comments_number() ) :
+			comments_template();
 	endif;
 
-  	endwhile; // End of the loop.
+	endwhile; // End of the loop.
 
 	if ( is_singular( 'post' ) ) :
 		do_action( 'codetot_after_post' );
@@ -83,7 +83,8 @@ echo codetot_layout_page_block_open( 'page-block--page ' . $sidebar_layout, fals
 
 </main><!-- #main -->
 
-<?php do_action( 'codetot_sidebar' );
+<?php 
+do_action( 'codetot_sidebar' );
 
 echo '</div>'; // Close .page-block__col--sidebar
 echo '</div>'; // Close .page-block__grid

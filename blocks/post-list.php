@@ -51,6 +51,6 @@ the_block(
 		'header'  => $header,
 		'content' => $content,
 )
-);
+	);
 
 endif;

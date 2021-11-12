@@ -42,12 +42,12 @@ $_class .= ! empty( $class ) ? ' ' . esc_html( $class ) : '';
 
 		  else :
 
-			  the_block(
+            the_block(
 				'message-block',
 				array(
 					'content' => esc_html__( 'There is no posts to display.', 'ct-bones' ),
 				)
-            );
+			  );
 
 		  endif;
 			?>
