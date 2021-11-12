@@ -1,18 +1,28 @@
 <?php
+/**
+ * Template tags for WooCommerce
+ *
+ * @package ct-bones
+ * @author codetot
+ * @since 1.0.1
+ */
 
+/**
+ * Display product price in archive page
+ *
+ * @return void
+ */
 function codetot_archive_product_price_html() {
 	global $product;
 	$price_html = $product->get_price_html();
-	?>
 
-	<?php if ( ! empty( $price_html ) ) : ?>
-	<span class="product__price price"><?php echo $price_html; ?></span>
-		<?php 
-  endif;
+	if ( ! empty( $price_html ) ) : ?>
+		<span class="product__price price"><?php echo $price_html; ?></span>
+	<?php endif;
 }
 
 /**
- * Get product discount badge html
+ * Display product discount badge html
  *
  * @return void
  */
@@ -22,16 +32,14 @@ function codetot_archive_product_sale_flash_html() {
 	$classes     = array( 'product__tag', 'product__tag--onsale' );
 
 	if ( ! empty( $final_price ) ) :
-		ob_start();
-		?>
-	<span class="<?php echo esc_attr( implode( ' ', array_filter( $classes ) ) ); ?>">
-		<?php echo esc_html( $final_price ); ?>
-	</span>
-		<?php
-		return ob_get_clean();
-  else :
-	  return '';
-  endif;
+		ob_start(); ?>
+		<span class="<?php echo esc_attr( implode( ' ', array_filter( $classes ) ) ); ?>">
+			<?php echo esc_html( $final_price ); ?>
+		</span>
+		<?php return ob_get_clean();
+  	else :
+	  	return '';
+  	endif;
 }
 
 function codetot_archive_product_rating_html() {
@@ -66,7 +74,7 @@ function codetot_archive_product_button_html() {
 	global $post;
 	?>
   <div class="product__cta">
-	<?php 
+	<?php
 	the_block(
 		'button',
 		array(
@@ -75,7 +83,7 @@ function codetot_archive_product_button_html() {
 			'type'   => apply_filters( 'codetot_archive_product_button_style', 'outline' ),
 			'class'  => 'product__button',
 		)
-	); 
+	);
 	?>
   </div>
 	<?php

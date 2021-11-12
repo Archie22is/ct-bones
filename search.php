@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The template for displaying search results pages
  *
@@ -11,37 +10,38 @@
 get_header();
 
 global $wp_query;
-$post_column  = codetot_get_theme_mod('archive_post_column') ?? 3;
+$post_column = codetot_get_theme_mod( 'archive_post_column' ) ?? 3;
 ?>
 
 <main id="primary" class="site-main">
 
-  <?php
-  the_block('breadcrumbs');
+	<?php
+	the_block( 'breadcrumbs' );
 
-  if (have_posts()) :
+  if ( have_posts() ) :
     global $wp_query;
 
-    the_block('page-header', array(
-      'class' => 'mt-1 page-header--search',
-      /* translators: %s: search query. */
-      'title' => sprintf(esc_html__('Search Results for: %s', 'ct-bones'), '<span>' . get_search_query() . '</span>')
-    ));
+		the_block(
+			'page-header',
+			array(
+				'class' => 'mt-1 page-header--search',
+				/* translators: %s: search query. */
+				'title' => sprintf(esc_html__('Search Results for: %s', 'ct-bones'), '<span>' . get_search_query() . '</span>')
+			)
+		);
 
-    if (!class_exists('WooCommerce')) :
+    if ( ! class_exists( 'WooCommerce' ) ) :
 
       $columns = [];
       while( $wp_query->have_posts() ) : $wp_query->the_post();
-        $columns[] = get_block('post-card');
+        $columns[] = get_block( 'post-card' );
       endwhile; wp_reset_postdata();
-
-      $content = codetot_build_grid_columns($columns, 'post-grid', array(
-        'column_class' => 'f fdc default-section__col'
-      ));
 
       printf('<div class="mt-1 site-main__main-category default-section %s">', 'has-'. esc_attr($number_columns) . '-columns');
       echo '<div class="container">';
-      echo $content;
+      echo codetot_build_grid_columns( $columns, 'post-grid', array(
+        'column_class' => 'f fdc default-section__col'
+      ) );
       echo '</div>';
       // the_block('pagination');
       echo '</div>';
@@ -50,31 +50,36 @@ $post_column  = codetot_get_theme_mod('archive_post_column') ?? 3;
 
       $post_column = apply_filters( 'loop_shop_columns', 4 );
 
-      the_block('product-grid', array(
-        'class' => 'section product-grid--search',
-        'loop_args' => array(
-          'name' => 'search_products'
-        ),
-        'columns' => $post_column,
-        'query' => $wp_query
-      ));
+      the_block(
+				'product-grid',
+				array(
+					'class' => 'section product-grid--search',
+					'loop_args' => array(
+						'name' => 'search_products'
+					),
+					'columns' => $post_column,
+					'query' => $wp_query
+				)
+			);
 
     endif;
 
-    the_block('pagination');
+    the_block( 'pagination' );
 
   else :
 
     ob_start();
 
-    the_block('page-header', array(
-      'class' => 'page-header--search page-header--search-not-found',
-      'title' => apply_filters('codetot_404_title', sprintf(__('No Result for keyword %s', 'ct-bones'), '<span>' . get_search_query() . '</span>'))
-    ));
+    the_block( 'page-header' ,
+			array(
+				'class' => 'page-header--search page-header--search-not-found',
+				'title' => apply_filters( 'codetot_404_title', sprintf( __( 'No Result for keyword %s', 'ct-bones' ), '<span>' . get_search_query() . '</span>' ) )
+			)
+		);
 
     the_block('message-block', array(
       'class' => 'message-block--search',
-      'content' => apply_filters('codetot_404_content', sprintf(__('It seems we can\'t find any %s matching your search keyword.', 'ct-bones'), 'post'))
+      'content' => apply_filters( 'codetot_404_content', sprintf( __( 'It seems we can\'t find any %s matching your search keyword.', 'ct-bones' ), 'post') )
     ));
 
   endif;
@@ -82,7 +87,7 @@ $post_column  = codetot_get_theme_mod('archive_post_column') ?? 3;
 
 </main><!-- #main -->
 
-<?php do_action('codetot_sidebar'); ?>
+<?php do_action( 'codetot_sidebar' ); ?>
 
 <?php
 get_footer();

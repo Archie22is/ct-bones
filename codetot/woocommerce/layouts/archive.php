@@ -144,13 +144,13 @@ class Codetot_Woocommerce_Layout_Archive {
 			  $_class .= ' message-block--no-container';
 		  }
 
-		  the_block(
+        the_block(
 			'message-block',
 			array(
 				'class'   => $_class,
 				'content' => $html,
 			)
-        );
+		  );
 	  }
 	}
 
