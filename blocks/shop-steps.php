@@ -56,11 +56,11 @@ $steps[] = array(
 				$html
 			);
 	  else :
-        printf(
+		  printf(
 			'<span class="%1$s">%2$s</span>',
 			'shop-steps__item' . ( ! empty( $step['is_active'] ) ? ' shop-steps__item--active' : '' ),
 			$html
-        );
+		  );
 	  endif;
 	  endforeach; 
 	?>

@@ -41,7 +41,7 @@ if ( ! empty( $image ) && ! empty( $class ) ) :
 			$_size,
 			false,
 			array(
-				'class' => 'wp-post-image image__img'
+				'class' => 'wp-post-image image__img',
 			)
 		);
 

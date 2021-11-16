@@ -27,7 +27,8 @@ $hide_header         = apply_filters( 'codetot_hide_single_post_header', $enable
 				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 			endif;
 
-			if ( ! $_hide_post_meta ) : ?>
+			if ( ! $_hide_post_meta ) : 
+				?>
 				<div class="entry-meta">
 					<?php
 					ct_bones_posted_on();

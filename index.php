@@ -19,7 +19,7 @@ get_header();
 do_action( 'codetot_before_index_main' );
 ?>
 <main id="primary" class="site-main">
-  	<?php if ( have_posts() ) : ?>
+	<?php if ( have_posts() ) : ?>
 		<?php
 		/**
 		 * Main layout hook
@@ -30,16 +30,17 @@ do_action( 'codetot_before_index_main' );
 		 */
 		do_action( 'codetot_index_main_layout' );
 
-  	else :
+	else :
 
-	  	the_block(
+		the_block(
 			'message-block',
 			array(
 				'content' => esc_html__( 'There is no posts to display.', 'ct-bones' ),
 			)
 		);
 
-  	endif; ?>
+	endif; 
+	?>
 </main><!-- #main -->
 
 <?php

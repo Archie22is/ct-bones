@@ -18,7 +18,8 @@ function codetot_archive_product_price_html() {
 
 	if ( ! empty( $price_html ) ) : ?>
 		<span class="product__price price"><?php echo $price_html; ?></span>
-	<?php endif;
+		<?php 
+	endif;
 }
 
 /**
@@ -32,14 +33,16 @@ function codetot_archive_product_sale_flash_html() {
 	$classes     = array( 'product__tag', 'product__tag--onsale' );
 
 	if ( ! empty( $final_price ) ) :
-		ob_start(); ?>
+		ob_start(); 
+		?>
 		<span class="<?php echo esc_attr( implode( ' ', array_filter( $classes ) ) ); ?>">
 			<?php echo esc_html( $final_price ); ?>
 		</span>
-		<?php return ob_get_clean();
-  	else :
-	  	return '';
-  	endif;
+		<?php 
+		return ob_get_clean();
+	else :
+		return '';
+	endif;
 }
 
 function codetot_archive_product_rating_html() {

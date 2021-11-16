@@ -397,7 +397,8 @@ class Codetot_Woocommerce_Layout_Product {
 			<span class="<?php echo esc_attr( implode( ' ', array_filter( $classes ) ) ); ?>">
 					<?php echo esc_html( $final_price ); ?>
 			</span>
-		<?php endif;
+			<?php 
+		endif;
 	}
 
 	/**
@@ -466,16 +467,18 @@ class Codetot_Woocommerce_Layout_Product {
 	 * @return void
 	 */
 	public function after_single_product_container_close() {
-		if ( $this->enable_bottom_sidebar ) : ?>
+		if ( $this->enable_bottom_sidebar ) : 
+			?>
 			</div><!-- Close .single-product-bottom__grid -->
-	  	<?php endif; ?>
+		<?php endif; ?>
 		<?php if ( ! $this->enable_sidebar ) : ?>
 			</div><!-- Close .single-product-bottom__container -->
-	  	<?php endif; ?>
+		<?php endif; ?>
 
 		</div><!-- Close .single-product-bottom -->
 
-		<?php do_action( 'codetot_single_product_sections' );
+		<?php 
+		do_action( 'codetot_single_product_sections' );
 	}
 
 	// Remove default <a></a> link in product gallery
@@ -741,7 +744,7 @@ function codetot_render_product_weight_meta() {
 		printf(
 			'<p class="product-meta product-meta--weight"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
 			esc_html__( 'Weight', 'woocommerce' ),
-			esc_html($product->get_weight() . $weight_unit)
+			esc_html( $product->get_weight() . $weight_unit )
 		);
 	}
 }
