@@ -47,7 +47,7 @@ if ( is_singular( 'post' ) && $enable_hero_image ) :
 	<?php
 endif;
 the_block( 'breadcrumbs' );
-echo esc_html( codetot_layout_page_block_open( 'page-block--page ' . $sidebar_layout, false ) );
+echo codetot_layout_page_block_open( 'page-block--page ' . $sidebar_layout, false );
 
 ?>
 
