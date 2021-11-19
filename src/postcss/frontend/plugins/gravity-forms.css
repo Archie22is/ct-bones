@@ -18,14 +18,6 @@ ul.gfield_radio {
 	& .gform_wrapper {
 		color: var(--white);
 
-		& .gfield_radio {
-			margin-top: 0;
-
-			& input[type='radio'] {
-				@mixin custom-radio var(--white), var(--white);
-			}
-		}
-
 		& .gfield_checkbox {
 			margin-top: 0;
 		}
