@@ -7,6 +7,6 @@
  * @package CT_Bones
  */
 
-the_block('page-404');
+the_block( 'page-404' );
 
 

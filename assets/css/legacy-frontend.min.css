@@ -302,11 +302,12 @@ h6 {
 	padding: 0;
 }
 li {
-	margin: 10px 0 0 0;
+	margin: calc(0.5 * 20px) 0 0 0;
+	margin: calc(0.5 * var(--element-space)) 0 0 0;
 }
 ul,
 ol {
-	padding-left: 1em;
+	padding-left: 0;
 }
 html,
 body {
@@ -316,7 +317,7 @@ body {
 ul {
 	margin-top: 20px;
 	margin-top: var(--element-space);
-	margin-left: 1em;
+	margin-left: 18px;
 	padding: 0;
 }
 ul.list-reset {
@@ -919,9 +920,9 @@ strong {
 }
 @media (min-width: 1080px) {
 .button--small {
-    font-size: 0.85rem
+		font-size: 0.85rem
 }
-  }
+	}
 .button--small {
 	padding: 6px 10px
 }
@@ -933,9 +934,9 @@ strong {
 }
 @media (min-width: 1080px) {
 .button--large {
-    font-size: 1.15rem
+		font-size: 1.15rem
 }
-  }
+	}
 .button--large {
 	padding: 10px 20px
 }
@@ -3021,16 +3022,16 @@ strong {
 @media (min-width: 588px) {
 
 .page-header--account .page-header__title {
-    font-size: 1.75rem;
+		font-size: 1.75rem;
 	}
-  }
+	}
 
 @media (min-width: 1080px) {
 
 .page-header--account .page-header__title {
-    font-size: 1.8rem;
+		font-size: 1.8rem;
 	}
-  }
+	}
 
 .page-header--archive,
 .page-header--single {
@@ -3414,6 +3415,10 @@ a.cart-shortcode {
 	font-size: 14px;
 	opacity: 0.75
 }
+
+.footer__copyright-text p:first-child {
+		margin-top: 0;
+	}
 
 .footer__copyright-text a {
 		text-decoration: underline
@@ -4140,9 +4145,9 @@ a.cart-shortcode {
 @media (min-width: 588px) {
 
 .post-card__link {
-    font-size: 1.15rem;
+		font-size: 1.15rem;
 }
-  }
+	}
 
 .post-card__link {
 
@@ -4857,9 +4862,9 @@ a.cart-shortcode {
 @media (min-width: 588px) {
 
 .modal__title {
-    font-size: 1.15rem;
+		font-size: 1.15rem;
 }
-  }
+	}
 
 .modal__title {
 
@@ -5028,11 +5033,14 @@ a.cart-shortcode {
     margin-top: 0;
   }
 
-.widget > ul {
+.widget > .widget__inner > ul,
+	.widget > ul {
 		margin: 0;
 		padding: 0;
 		text-indent: 0;
 		list-style-type: none;
+
+		margin: 0;
 	}
 
 .widget a {
@@ -5051,162 +5059,162 @@ a.cart-shortcode {
 	}
 
 .widget.widget_text .textwidget h1,
-  .widget.widget_text .textwidget h2,
-  .widget.widget_text .textwidget h3,
-  .widget.widget_text .textwidget h4,
-  .widget.widget_text .textwidget h5,
-  .widget.widget_text .textwidget h6,
-  .widget.widget_text .textwidget blockquote,
-  .widget.widget_text .textwidget ul,
-  .widget.widget_text .textwidget p {
-    margin-top: 1em;
-    word-wrap: anywhere;
-  }
+	.widget.widget_text .textwidget h2,
+	.widget.widget_text .textwidget h3,
+	.widget.widget_text .textwidget h4,
+	.widget.widget_text .textwidget h5,
+	.widget.widget_text .textwidget h6,
+	.widget.widget_text .textwidget blockquote,
+	.widget.widget_text .textwidget ul,
+	.widget.widget_text .textwidget p {
+		margin-top: 1em;
+		word-wrap: anywhere;
+	}
 
 .widget.widget_text .textwidget a {
-    color: #1346af;
-    color: var(--primary);
-    text-decoration: underline;
-    word-wrap: anywhere
-  }
+		color: #1346af;
+		color: var(--primary);
+		text-decoration: underline;
+		word-wrap: anywhere
+	}
 
 .widget.widget_text .textwidget a:hover {
-      color: #1e1e1e;
-      color: var(--dark);
-    }
+			color: #1e1e1e;
+			color: var(--dark);
+		}
 
 .widget.widget_text .textwidget img {
-    max-width: 100%;
-    height: auto;
-  }
+		max-width: 100%;
+		height: auto;
+	}
 
 .widget.widget_text .textwidget ol {
-    margin-left: 1em;
-    padding-left: 0.5em
-  }
+		margin-left: 1em;
+		padding-left: 0.5em
+	}
 
 .widget.widget_text .textwidget ol ol {
-      margin-top: 0.25em
-    }
+			margin-top: 0.25em
+		}
 
 .widget.widget_text .textwidget ol ol > li {
-        font-size: 0.95rem;
-      }
+				font-size: 0.95rem;
+			}
 
 .widget.widget_text .textwidget ul {
-    list-style-type: disc;
-    margin-left: 1em;
-    padding-left: 0.5em
-  }
+		list-style-type: disc;
+		margin-left: 1em;
+		padding-left: 0.5em
+	}
 
 .widget.widget_text .textwidget ul ul {
-      margin-top: 0.25em
-    }
+			margin-top: 0.25em
+		}
 
 .widget.widget_text .textwidget ul ul > li {
-        font-size: 0.95rem;
-      }
+				font-size: 0.95rem;
+			}
 
 .widget.widget_text .textwidget li {
-    margin-top: 0.25em
-  }
+		margin-top: 0.25em
+	}
 
 .widget.widget_text .textwidget li:first-child {
-      margin-top: 0;
-    }
+			margin-top: 0;
+		}
 
 .widget.widget_text .textwidget .small {
-    font-size: 0.75rem;
-  }
+		font-size: 0.75rem;
+	}
 
 @media (min-width: 1080px) {
 
 .widget.widget_text .textwidget .small {
-    font-size: 0.85rem;
-  }
-  }
+		font-size: 0.85rem;
+	}
+	}
 
 .widget.widget_text .textwidget .large {
-    font-size: 1.05rem;
-  }
+		font-size: 1.05rem;
+	}
 
 @media (min-width: 1080px) {
 
 .widget.widget_text .textwidget .large {
-    font-size: 1.15rem;
-  }
-  }
+		font-size: 1.15rem;
+	}
+	}
 
 .widget.widget_text .textwidget .gform_wrapper {
-    margin-top: 1em;
-  }
+		margin-top: 1em;
+	}
 
 .widget.widget_text .textwidget table {
-    margin-top: 1em;
-    border-collapse: collapse;
-    border-spacing: 0;
-    empty-cells: show;
-    border: 1px solid #ddd;
-    border: 1px solid var(--border);
-  }
+		margin-top: 1em;
+		border-collapse: collapse;
+		border-spacing: 0;
+		empty-cells: show;
+		border: 1px solid #ddd;
+		border: 1px solid var(--border);
+	}
 
 .widget.widget_text .textwidget table tbody th {
-    background: #f8f8f8;
-    background: var(--light);
-  }
+		background: #f8f8f8;
+		background: var(--light);
+	}
 
 .widget.widget_text .textwidget table th,
-  .widget.widget_text .textwidget table td {
-    padding: 0.5em 1em;
-    border-left: 1px solid #ddd;
-    border-left: 1px solid var(--border);
-    border-bottom: 1px solid #ddd;
-    border-bottom: 1px solid var(--border);
-    border-right-width: 0;
-    border-top-width: 0;
-    font-size: inherit;
-    margin: 0;
-    overflow: visible
-  }
+	.widget.widget_text .textwidget table td {
+		padding: 0.5em 1em;
+		border-left: 1px solid #ddd;
+		border-left: 1px solid var(--border);
+		border-bottom: 1px solid #ddd;
+		border-bottom: 1px solid var(--border);
+		border-right-width: 0;
+		border-top-width: 0;
+		font-size: inherit;
+		margin: 0;
+		overflow: visible
+	}
 
 .widget.widget_text .textwidget table th p, .widget.widget_text .textwidget table td p {
-      margin: 0;
-    }
+			margin: 0;
+		}
 
 .widget.widget_text .textwidget blockquote {
-    margin-top: 1em;
-    padding-left: 1.5em;
-    border-left: 3px solid #1e1e1e;
-    border-left: 3px solid var(--dark)
-  }
+		margin-top: 1em;
+		padding-left: 1.5em;
+		border-left: 3px solid #1e1e1e;
+		border-left: 3px solid var(--dark)
+	}
 
 .widget.widget_text .textwidget blockquote p:first-child {
-      font-size: 1.3rem;
-    }
+			font-size: 1.3rem;
+		}
 
 @media (min-width: 588px) {
 
 .widget.widget_text .textwidget blockquote p:first-child {
-    font-size: 1.5rem;
-    }
-  }
+		font-size: 1.5rem;
+		}
+	}
 
 @media (min-width: 1080px) {
 
 .widget.widget_text .textwidget blockquote p:first-child {
-    font-size: 1.7rem;
-    }
-  }
+		font-size: 1.7rem;
+		}
+	}
 
 .widget.widget_text .textwidget blockquote p:first-child {
 
-      margin-top: 0;
-    }
+			margin-top: 0;
+		}
 
 .widget.widget_text .textwidget .video-response {
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
 
 .widget.widget_text .textwidget .gform_fields {
 			margin: 0;
@@ -5622,9 +5630,9 @@ img.alignright {
 @media (min-width: 1080px) {
 
 .wp-caption-text {
-    font-size: 0.85rem;
+		font-size: 0.85rem;
 }
-  }
+	}
 
 .wp-caption-text {
 
@@ -5715,16 +5723,16 @@ img.alignright {
 @media (min-width: 588px) {
 
 .comment-reply-title {
-    font-size: 1.5rem
+		font-size: 1.5rem
 }
-  }
+	}
 
 @media (min-width: 1080px) {
 
 .comment-reply-title {
-    font-size: 1.7rem
+		font-size: 1.7rem
 }
-  }
+	}
 
 .comment-reply-title {
 
@@ -5882,173 +5890,173 @@ p.comment-form-title label, p.comment-form-author label, p.comment-form-email la
 	}
 
 .comment-text .description h1,
-  .comment-text .description h2,
-  .comment-text .description h3,
-  .comment-text .description h4,
-  .comment-text .description h5,
-  .comment-text .description h6,
-  .comment-text .description blockquote,
-  .comment-text .description ul,
-  .comment-text .description p,
-  .comment-content h1,
-  .comment-content h2,
-  .comment-content h3,
-  .comment-content h4,
-  .comment-content h5,
-  .comment-content h6,
-  .comment-content blockquote,
-  .comment-content ul,
-  .comment-content p {
-    margin-top: 1em;
-    word-wrap: anywhere;
-  }
+	.comment-text .description h2,
+	.comment-text .description h3,
+	.comment-text .description h4,
+	.comment-text .description h5,
+	.comment-text .description h6,
+	.comment-text .description blockquote,
+	.comment-text .description ul,
+	.comment-text .description p,
+	.comment-content h1,
+	.comment-content h2,
+	.comment-content h3,
+	.comment-content h4,
+	.comment-content h5,
+	.comment-content h6,
+	.comment-content blockquote,
+	.comment-content ul,
+	.comment-content p {
+		margin-top: 1em;
+		word-wrap: anywhere;
+	}
 
 .comment-text .description a, .comment-content a {
-    color: #1346af;
-    color: var(--primary);
-    text-decoration: underline;
-    word-wrap: anywhere
-  }
+		color: #1346af;
+		color: var(--primary);
+		text-decoration: underline;
+		word-wrap: anywhere
+	}
 
 .comment-text .description a:hover, .comment-content a:hover {
-      color: #1e1e1e;
-      color: var(--dark);
-    }
+			color: #1e1e1e;
+			color: var(--dark);
+		}
 
 .comment-text .description img, .comment-content img {
-    max-width: 100%;
-    height: auto;
-  }
+		max-width: 100%;
+		height: auto;
+	}
 
 .comment-text .description ol, .comment-content ol {
-    margin-left: 1em;
-    padding-left: 0.5em
-  }
+		margin-left: 1em;
+		padding-left: 0.5em
+	}
 
 .comment-text .description ol ol, .comment-content ol ol {
-      margin-top: 0.25em
-    }
+			margin-top: 0.25em
+		}
 
 .comment-text .description ol ol > li, .comment-content ol ol > li {
-        font-size: 0.95rem;
-      }
+				font-size: 0.95rem;
+			}
 
 .comment-text .description ul, .comment-content ul {
-    list-style-type: disc;
-    margin-left: 1em;
-    padding-left: 0.5em
-  }
+		list-style-type: disc;
+		margin-left: 1em;
+		padding-left: 0.5em
+	}
 
 .comment-text .description ul ul, .comment-content ul ul {
-      margin-top: 0.25em
-    }
+			margin-top: 0.25em
+		}
 
 .comment-text .description ul ul > li, .comment-content ul ul > li {
-        font-size: 0.95rem;
-      }
+				font-size: 0.95rem;
+			}
 
 .comment-text .description li, .comment-content li {
-    margin-top: 0.25em
-  }
+		margin-top: 0.25em
+	}
 
 .comment-text .description li:first-child, .comment-content li:first-child {
-      margin-top: 0;
-    }
+			margin-top: 0;
+		}
 
 .comment-text .description .small, .comment-content .small {
-    font-size: 0.75rem;
-  }
+		font-size: 0.75rem;
+	}
 
 @media (min-width: 1080px) {
 
 .comment-text .description .small, .comment-content .small {
-    font-size: 0.85rem;
-  }
-  }
+		font-size: 0.85rem;
+	}
+	}
 
 .comment-text .description .large, .comment-content .large {
-    font-size: 1.05rem;
-  }
+		font-size: 1.05rem;
+	}
 
 @media (min-width: 1080px) {
 
 .comment-text .description .large, .comment-content .large {
-    font-size: 1.15rem;
-  }
-  }
+		font-size: 1.15rem;
+	}
+	}
 
 .comment-text .description .gform_wrapper, .comment-content .gform_wrapper {
-    margin-top: 1em;
-  }
+		margin-top: 1em;
+	}
 
 .comment-text .description table, .comment-content table {
-    margin-top: 1em;
-    border-collapse: collapse;
-    border-spacing: 0;
-    empty-cells: show;
-    border: 1px solid #ddd;
-    border: 1px solid var(--border);
-  }
+		margin-top: 1em;
+		border-collapse: collapse;
+		border-spacing: 0;
+		empty-cells: show;
+		border: 1px solid #ddd;
+		border: 1px solid var(--border);
+	}
 
 .comment-text .description table tbody th, .comment-content table tbody th {
-    background: #f8f8f8;
-    background: var(--light);
-  }
+		background: #f8f8f8;
+		background: var(--light);
+	}
 
 .comment-text .description table th,
-  .comment-text .description table td,
-  .comment-content table th,
-  .comment-content table td {
-    padding: 0.5em 1em;
-    border-left: 1px solid #ddd;
-    border-left: 1px solid var(--border);
-    border-bottom: 1px solid #ddd;
-    border-bottom: 1px solid var(--border);
-    border-right-width: 0;
-    border-top-width: 0;
-    font-size: inherit;
-    margin: 0;
-    overflow: visible
-  }
+	.comment-text .description table td,
+	.comment-content table th,
+	.comment-content table td {
+		padding: 0.5em 1em;
+		border-left: 1px solid #ddd;
+		border-left: 1px solid var(--border);
+		border-bottom: 1px solid #ddd;
+		border-bottom: 1px solid var(--border);
+		border-right-width: 0;
+		border-top-width: 0;
+		font-size: inherit;
+		margin: 0;
+		overflow: visible
+	}
 
 .comment-text .description table th p, .comment-text .description table td p, .comment-content table th p, .comment-content table td p {
-      margin: 0;
-    }
+			margin: 0;
+		}
 
 .comment-text .description blockquote, .comment-content blockquote {
-    margin-top: 1em;
-    padding-left: 1.5em;
-    border-left: 3px solid #1e1e1e;
-    border-left: 3px solid var(--dark)
-  }
+		margin-top: 1em;
+		padding-left: 1.5em;
+		border-left: 3px solid #1e1e1e;
+		border-left: 3px solid var(--dark)
+	}
 
 .comment-text .description blockquote p:first-child, .comment-content blockquote p:first-child {
-      font-size: 1.3rem;
-    }
+			font-size: 1.3rem;
+		}
 
 @media (min-width: 588px) {
 
 .comment-text .description blockquote p:first-child, .comment-content blockquote p:first-child {
-    font-size: 1.5rem;
-    }
-  }
+		font-size: 1.5rem;
+		}
+	}
 
 @media (min-width: 1080px) {
 
 .comment-text .description blockquote p:first-child, .comment-content blockquote p:first-child {
-    font-size: 1.7rem;
-    }
-  }
+		font-size: 1.7rem;
+		}
+	}
 
 .comment-text .description blockquote p:first-child, .comment-content blockquote p:first-child {
 
-      margin-top: 0;
-    }
+			margin-top: 0;
+		}
 
 .comment-text .description .video-response, .comment-content .video-response {
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
 
 .comment-text .description > *:first-child, .comment-content > *:first-child {
 		margin-top: 0;
@@ -6628,7 +6636,8 @@ https://flickity.metafizzy.co
 	margin-bottom: 1em;
 }
 .gfield {
-	margin-top: 1em
+	margin-top: 20px;
+	margin-top: var(--element-space)
 }
 .gfield [type='checkbox'],
 	.gfield [type='radio'] {
@@ -6705,25 +6714,25 @@ table.gfield_list {
 	border: 1px solid var(--border);
 }
 table.gfield_list tbody th {
-    background: #f8f8f8;
-    background: var(--light);
-  }
+		background: #f8f8f8;
+		background: var(--light);
+	}
 table.gfield_list th,
-  table.gfield_list td {
-    padding: 0.5em 1em;
-    border-left: 1px solid #ddd;
-    border-left: 1px solid var(--border);
-    border-bottom: 1px solid #ddd;
-    border-bottom: 1px solid var(--border);
-    border-right-width: 0;
-    border-top-width: 0;
-    font-size: inherit;
-    margin: 0;
-    overflow: visible
-  }
+	table.gfield_list td {
+		padding: 0.5em 1em;
+		border-left: 1px solid #ddd;
+		border-left: 1px solid var(--border);
+		border-bottom: 1px solid #ddd;
+		border-bottom: 1px solid var(--border);
+		border-right-width: 0;
+		border-top-width: 0;
+		font-size: inherit;
+		margin: 0;
+		overflow: visible
+	}
 table.gfield_list th p, table.gfield_list td p {
-      margin: 0;
-    }
+			margin: 0;
+		}
 .gform_wrapper .gform_footer,
 	.gform_wrapper .gform_page_footer {
 		margin-top: 1em;
@@ -6759,9 +6768,8 @@ table.gfield_list th p, table.gfield_list td p {
 	}
 .gform_wrapper .gfield_label {
 		display: block;
-		margin-bottom: 0.25em;
-		font-weight: 700;
-		font-weight: var(--font-bold);
+		margin: 0 0 calc(0.5 * 20px) 0;
+		margin: 0 0 calc(0.5 * var(--element-space)) 0;
 	}
 .hidden_label .gfield_label {
 		display: none;
@@ -6778,186 +6786,6 @@ table.gfield_list th p, table.gfield_list td p {
 .entry-content .validation_error, .wysiwyg .validation_error, .widget.gform_widget .validation_error, .widget.widget_text .validation_error {
 		display: none;
 	}
-.entry-content form:not(.gform_dark) .gfield_radio input[type='radio'], .wysiwyg form:not(.gform_dark) .gfield_radio input[type='radio'], .widget.gform_widget form:not(.gform_dark) .gfield_radio input[type='radio'], .widget.widget_text form:not(.gform_dark) .gfield_radio input[type='radio'] {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				-webkit-appearance: none;
-				   -moz-appearance: none;
-				        appearance: none;
-				opacity: 0;
-			}
-.entry-content form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ span::before,
-    .entry-content form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ label::before,
-    .wysiwyg form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ span::before,
-    .wysiwyg form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ label::before,
-    .widget.gform_widget form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ span::before,
-    .widget.gform_widget form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ label::before,
-    .widget.widget_text form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ span::before,
-    .widget.widget_text form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ label::before {
-      border-color: #1346af;
-      border-color: var(--primary);
-    }
-.entry-content form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ span,
-    .entry-content form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ label,
-    .wysiwyg form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ span,
-    .wysiwyg form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ label,
-    .widget.gform_widget form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ span,
-    .widget.gform_widget form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ label,
-    .widget.widget_text form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ span,
-    .widget.widget_text form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ label {
-      color: #1346af;
-      color: var(--primary);
-    }
-.entry-content form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ span::after,
-    .entry-content form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ label::after,
-    .wysiwyg form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ span::after,
-    .wysiwyg form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ label::after,
-    .widget.gform_widget form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ span::after,
-    .widget.gform_widget form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ label::after,
-    .widget.widget_text form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ span::after,
-    .widget.widget_text form:not(.gform_dark) .gfield_radio input[type='radio']:checked ~ label::after {
-      opacity: 1;
-    }
-.entry-content form:not(.gform_dark) .gfield_radio input[type='radio'] ~ span,
-  .entry-content form:not(.gform_dark) .gfield_radio input[type='radio'] ~ label,
-  .wysiwyg form:not(.gform_dark) .gfield_radio input[type='radio'] ~ span,
-  .wysiwyg form:not(.gform_dark) .gfield_radio input[type='radio'] ~ label,
-  .widget.gform_widget form:not(.gform_dark) .gfield_radio input[type='radio'] ~ span,
-  .widget.gform_widget form:not(.gform_dark) .gfield_radio input[type='radio'] ~ label,
-  .widget.widget_text form:not(.gform_dark) .gfield_radio input[type='radio'] ~ span,
-  .widget.widget_text form:not(.gform_dark) .gfield_radio input[type='radio'] ~ label {
-    pointer-events: none
-  }
-.entry-content form:not(.gform_dark) .gfield_radio input[type='radio'] ~ span::before, .entry-content form:not(.gform_dark) .gfield_radio input[type='radio'] ~ label::before, .wysiwyg form:not(.gform_dark) .gfield_radio input[type='radio'] ~ span::before, .wysiwyg form:not(.gform_dark) .gfield_radio input[type='radio'] ~ label::before, .widget.gform_widget form:not(.gform_dark) .gfield_radio input[type='radio'] ~ span::before, .widget.gform_widget form:not(.gform_dark) .gfield_radio input[type='radio'] ~ label::before, .widget.widget_text form:not(.gform_dark) .gfield_radio input[type='radio'] ~ span::before, .widget.widget_text form:not(.gform_dark) .gfield_radio input[type='radio'] ~ label::before {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 0;
-      width: 18px;
-      height: 18px;
-      border: 1px solid #ddd;
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      transition: border-color 0.3s cubic-bezier(0.1, 0.1, 0.25, 1);
-    }
-.entry-content form:not(.gform_dark) .gfield_radio input[type='radio'] ~ span::after, .entry-content form:not(.gform_dark) .gfield_radio input[type='radio'] ~ label::after, .wysiwyg form:not(.gform_dark) .gfield_radio input[type='radio'] ~ span::after, .wysiwyg form:not(.gform_dark) .gfield_radio input[type='radio'] ~ label::after, .widget.gform_widget form:not(.gform_dark) .gfield_radio input[type='radio'] ~ span::after, .widget.gform_widget form:not(.gform_dark) .gfield_radio input[type='radio'] ~ label::after, .widget.widget_text form:not(.gform_dark) .gfield_radio input[type='radio'] ~ span::after, .widget.widget_text form:not(.gform_dark) .gfield_radio input[type='radio'] ~ label::after {
-      content: '';
-      position: absolute;
-      top: 5px;
-      left: 3px;
-      width: 13px;
-      height: 13px;
-      background: #1346af;
-      background: var(--primary);
-      -webkit-clip-path: circle(50% at 50% 50%);
-              clip-path: circle(50% at 50% 50%);
-      opacity: 0;
-    }
-.entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox'], .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox'], .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox'], .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				-webkit-appearance: none;
-				   -moz-appearance: none;
-				        appearance: none;
-				opacity: 0;
-			}
-.entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ span::before,
-    .entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ label::before,
-    .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ span::before,
-    .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ label::before,
-    .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ span::before,
-    .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ label::before,
-    .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ span::before,
-    .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ label::before {
-      border-color: #1346af;
-      border-color: var(--primary);
-    }
-.entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ span,
-    .entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ label,
-    .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ span,
-    .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ label,
-    .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ span,
-    .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ label,
-    .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ span,
-    .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ label {
-      color: #1346af;
-      color: var(--primary);
-    }
-.entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ span::after,
-    .entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ label::after,
-    .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ span::after,
-    .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ label::after,
-    .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ span::after,
-    .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ label::after,
-    .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ span::after,
-    .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox']:checked ~ label::after {
-      opacity: 1;
-    }
-.entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span,
-  .entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label,
-  .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span,
-  .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label,
-  .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span,
-  .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label,
-  .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span,
-  .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label {
-    pointer-events: none;
-    line-height: 48px; /* Fix mobile SEO score */
-    transition: color 0.3s cubic-bezier(0.1, 0.1, 0.25, 1)
-  }
-@media (min-width: 1080px) {
-.entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span,
-  .entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label,
-  .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span,
-  .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label,
-  .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span,
-  .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label,
-  .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span,
-  .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label {
-      line-height: 36px
-  }
-    }
-.entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span::before, .entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label::before, .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span::before, .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label::before, .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span::before, .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label::before, .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span::before, .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label::before {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 0;
-      width: 19px;
-      height: 19px;
-      top: 13px;
-      border: 1px solid #ddd;
-      border: 1px solid var(--border);
-      transition: border-color 0.3s cubic-bezier(0.1, 0.1, 0.25, 1)
-    }
-@media (min-width: 1080px) {
-.entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span::before, .entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label::before, .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span::before, .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label::before, .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span::before, .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label::before, .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span::before, .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label::before {
-        top: 7px
-    }
-      }
-.entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span::after, .entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label::after, .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span::after, .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label::after, .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span::after, .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label::after, .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span::after, .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label::after {
-      content: '';
-      position: absolute;
-      top: 16px;
-      left: 3px;
-      width: 15px;
-      height: 15px;
-      background: #1346af;
-      background: var(--primary);
-      -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-              clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-      opacity: 0
-    }
-@media (min-width: 1080px) {
-.entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span::after, .entry-content form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label::after, .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span::after, .wysiwyg form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label::after, .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span::after, .widget.gform_widget form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label::after, .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ span::after, .widget.widget_text form:not(.gform_dark) .gfield_checkbox input[type='checkbox'] ~ label::after {
-        top: 10px
-    }
-      }
 .entry-content .gfield_description .validation_message, .wysiwyg .gfield_description .validation_message, .widget.gform_widget .gfield_description .validation_message, .widget.widget_text .gfield_description .validation_message {
 			margin-top: 0.25em;
 		}
@@ -7007,138 +6835,8 @@ table.gfield_list th p, table.gfield_list td p {
 		}
 .gform_dark_wrapper {
 	color: #fff;
-	color: var(--white)
+	color: var(--white);
 }
-.gform_dark_wrapper .gfield_radio input[type='radio'] {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			-webkit-appearance: none;
-			   -moz-appearance: none;
-			        appearance: none;
-			opacity: 0;
-		}
-.gform_dark_wrapper .gfield_radio input[type='radio']:checked ~ span::before,
-    .gform_dark_wrapper .gfield_radio input[type='radio']:checked ~ label::before {
-      border-color: #fff;
-      border-color: var(--white);
-    }
-.gform_dark_wrapper .gfield_radio input[type='radio']:checked ~ span,
-    .gform_dark_wrapper .gfield_radio input[type='radio']:checked ~ label {
-      color: #fff;
-      color: var(--white);
-    }
-.gform_dark_wrapper .gfield_radio input[type='radio']:checked ~ span::after,
-    .gform_dark_wrapper .gfield_radio input[type='radio']:checked ~ label::after {
-      opacity: 1;
-    }
-.gform_dark_wrapper .gfield_radio input[type='radio'] ~ span,
-  .gform_dark_wrapper .gfield_radio input[type='radio'] ~ label {
-    pointer-events: none
-  }
-.gform_dark_wrapper .gfield_radio input[type='radio'] ~ span::before, .gform_dark_wrapper .gfield_radio input[type='radio'] ~ label::before {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 0;
-      width: 18px;
-      height: 18px;
-      border: 1px solid #fff;
-      border: 1px solid var(--white);
-      border-radius: 50%;
-      transition: border-color 0.3s cubic-bezier(0.1, 0.1, 0.25, 1);
-    }
-.gform_dark_wrapper .gfield_radio input[type='radio'] ~ span::after, .gform_dark_wrapper .gfield_radio input[type='radio'] ~ label::after {
-      content: '';
-      position: absolute;
-      top: 5px;
-      left: 3px;
-      width: 13px;
-      height: 13px;
-      background: #fff;
-      background: var(--white);
-      -webkit-clip-path: circle(50% at 50% 50%);
-              clip-path: circle(50% at 50% 50%);
-      opacity: 0;
-    }
-.gform_dark_wrapper .gfield_checkbox input[type='checkbox'] {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			-webkit-appearance: none;
-			   -moz-appearance: none;
-			        appearance: none;
-			opacity: 0
-		}
-.gform_dark_wrapper .gfield_checkbox input[type='checkbox']:checked ~ span::before,
-    .gform_dark_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label::before {
-      border-color: #fff;
-      border-color: var(--white);
-    }
-.gform_dark_wrapper .gfield_checkbox input[type='checkbox']:checked ~ span,
-    .gform_dark_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label {
-      color: #fff;
-      color: var(--white);
-    }
-.gform_dark_wrapper .gfield_checkbox input[type='checkbox']:checked ~ span::after,
-    .gform_dark_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label::after {
-      opacity: 1;
-    }
-.gform_dark_wrapper .gfield_checkbox input[type='checkbox'] ~ span,
-  .gform_dark_wrapper .gfield_checkbox input[type='checkbox'] ~ label {
-    pointer-events: none;
-    line-height: 48px; /* Fix mobile SEO score */
-    transition: color 0.3s cubic-bezier(0.1, 0.1, 0.25, 1)
-  }
-@media (min-width: 1080px) {
-.gform_dark_wrapper .gfield_checkbox input[type='checkbox'] ~ span,
-  .gform_dark_wrapper .gfield_checkbox input[type='checkbox'] ~ label {
-      line-height: 36px
-  }
-    }
-.gform_dark_wrapper .gfield_checkbox input[type='checkbox'] ~ span::before, .gform_dark_wrapper .gfield_checkbox input[type='checkbox'] ~ label::before {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 0;
-      width: 19px;
-      height: 19px;
-      top: 13px;
-      border: 1px solid #fff;
-      border: 1px solid var(--white);
-      transition: border-color 0.3s cubic-bezier(0.1, 0.1, 0.25, 1)
-    }
-@media (min-width: 1080px) {
-.gform_dark_wrapper .gfield_checkbox input[type='checkbox'] ~ span::before, .gform_dark_wrapper .gfield_checkbox input[type='checkbox'] ~ label::before {
-        top: 7px
-    }
-      }
-.gform_dark_wrapper .gfield_checkbox input[type='checkbox'] ~ span::after, .gform_dark_wrapper .gfield_checkbox input[type='checkbox'] ~ label::after {
-      content: '';
-      position: absolute;
-      top: 16px;
-      left: 3px;
-      width: 15px;
-      height: 15px;
-      background: #fff;
-      background: var(--white);
-      -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-              clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-      opacity: 0
-    }
-@media (min-width: 1080px) {
-.gform_dark_wrapper .gfield_checkbox input[type='checkbox'] ~ span::after, .gform_dark_wrapper .gfield_checkbox input[type='checkbox'] ~ label::after {
-        top: 10px
-    }
-      }
-.gform_dark_wrapper .gfield_checkbox input[type='checkbox']:checked ~ label {
-				color: #fff;
-				color: var(--white);
-			}
 @media (min-width: 1080px) {
 .gform_wrapper.gform_inline_wrapper .gform_fields {
 			display: flex;

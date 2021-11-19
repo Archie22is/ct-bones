@@ -1,9 +1,11 @@
 <?php
 // Prevent direct access.
-if (!defined('ABSPATH')) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-class Codetot_Back_To_Top
-{
+class Codetot_Back_To_Top {
+
 	/**
 	 * Singleton instance
 	 *
@@ -16,9 +18,8 @@ class Codetot_Back_To_Top
 	 *
 	 * @return Codetot_Back_To_Top
 	 */
-	public final static function instance()
-	{
-		if (is_null(self::$instance)) {
+	final public static function instance() {
+		if ( is_null( self::$instance ) ) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -27,19 +28,17 @@ class Codetot_Back_To_Top
 	/**
 	 * Class constructor
 	 */
-	public function __construct()
-	{
-		$enable = codetot_get_theme_mod('enable_back_to_top', 'pro') ?? true;
+	public function __construct() {
+		 $enable = codetot_get_theme_mod( 'enable_back_to_top', 'pro' ) ?? true;
 
-		if ($enable) {
-			add_action('wp_footer', 'codetot_render_back_to_top_section');
+		if ( $enable ) {
+			add_action( 'wp_footer', 'codetot_render_back_to_top_section' );
 		}
 	}
 }
 
-function codetot_render_back_to_top_section()
-{
-	the_block('back-to-top');
+function codetot_render_back_to_top_section() {
+	 the_block( 'back-to-top' );
 }
 
 Codetot_Back_To_Top::instance();

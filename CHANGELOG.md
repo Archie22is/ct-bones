@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.1.3 - 19/11/2021
+
+- Remove top spacing footer copyright
+- Move block footer outside of hook
+- Fix spacing ul > li, follow vietmoz report
+- Format style file typography
+- Remove custom radio + checkbox style
+- Fix default field row spacing
+- Update login form style on frontend
+
+## 6.1.2 - 12/11/2021
+
+- Optimize image block
+- Composer fix phpcs standards
+
+## 6.1.1 - 11/11/2021
+
+- Update phpcs and composer packages
+- Run compose standards fix automatically
+- Fix button outline color css style
+
+## 6.1.0 - 06/11/2021
+
+- Set default container in single product sections
+- Fix tabs spacing in single product page
+- Fix widget product categories spacing
+- Fix sanitize hex color meta key
+- Enqueue admin editor styles (to render server side block in Block Editor)
+
 ## 6.0.10 - 01/11/2021
 
 - Add unit test for library dom.js (WIP) via npm run test:cov
