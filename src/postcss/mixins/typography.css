@@ -1,204 +1,204 @@
 @define-mixin small {
-  font-size: 0.75rem;
+	font-size: 0.75rem;
 
-  @media (--m) {
-    font-size: 0.85rem;
-  }
+	@media (--m) {
+		font-size: 0.85rem;
+	}
 }
 
 @define-mixin large {
-  font-size: 1.05rem;
+	font-size: 1.05rem;
 
-  @media (--m) {
-    font-size: 1.15rem;
-  }
+	@media (--m) {
+		font-size: 1.15rem;
+	}
 }
 
 @define-mixin heading {
-  letter-spacing: 0;
+	letter-spacing: 0;
 }
 
 @define-mixin h1 {
-  @mixin heading;
+	@mixin heading;
 
-  font-size: 1.5rem;
+	font-size: 1.5rem;
 
-  @media (--s) {
-    font-size: 2.5rem;
-  }
+	@media (--s) {
+		font-size: 2.5rem;
+	}
 
-  @media (--m) {
-    font-size: 4.209rem;
-  }
+	@media (--m) {
+		font-size: 4.209rem;
+	}
 }
 
 @define-mixin h2 {
-  font-size: 1.5rem;
+	font-size: 1.5rem;
 
-  @media (--s) {
-    font-size: 1.75rem;
-  }
+	@media (--s) {
+		font-size: 1.75rem;
+	}
 
-  @media (--m) {
-    font-size: 1.8rem;
-  }
+	@media (--m) {
+		font-size: 1.8rem;
+	}
 }
 
 @define-mixin h3 {
-  font-size: 1.3rem;
+	font-size: 1.3rem;
 
-  @media (--s) {
-    font-size: 1.5rem;
-  }
+	@media (--s) {
+		font-size: 1.5rem;
+	}
 
-  @media (--m) {
-    font-size: 1.7rem;
-  }
+	@media (--m) {
+		font-size: 1.7rem;
+	}
 }
 
 @define-mixin label-text {
-  text-transform: uppercase;
-  font-size: 1rem;
+	text-transform: uppercase;
+	font-size: 1rem;
 }
 
 @define-mixin large-text {
-  font-size: 1.05rem;
+	font-size: 1.05rem;
 
-  @media (--s) {
-    font-size: 1.15rem;
-  }
+	@media (--s) {
+		font-size: 1.15rem;
+	}
 }
 
 @define-mixin small-text {
-  font-size: 0.75rem;
+	font-size: 0.75rem;
 
-  @media (--s) {
-    font-size: 0.85rem;
-  }
+	@media (--s) {
+		font-size: 0.85rem;
+	}
 }
 
 @define-mixin table-border {
-  margin-top: 1em;
-  border-collapse: collapse;
-  border-spacing: 0;
-  empty-cells: show;
-  border: 1px solid var(--border);
+	margin-top: 1em;
+	border-collapse: collapse;
+	border-spacing: 0;
+	empty-cells: show;
+	border: 1px solid var(--border);
 
-  & tbody th {
-    background: var(--light);
-  }
+	& tbody th {
+		background: var(--light);
+	}
 
-  & th,
-  & td {
-    padding: 0.5em 1em;
-    border-left: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    border-right-width: 0;
-    border-top-width: 0;
-    font-size: inherit;
-    margin: 0;
-    overflow: visible;
+	& th,
+	& td {
+		padding: 0.5em 1em;
+		border-left: 1px solid var(--border);
+		border-bottom: 1px solid var(--border);
+		border-right-width: 0;
+		border-top-width: 0;
+		font-size: inherit;
+		margin: 0;
+		overflow: visible;
 
-    & p {
-      margin: 0;
-    }
-  }
+		& p {
+			margin: 0;
+		}
+	}
 }
 
 @define-mixin wysiwyg {
-  & h1,
-  & h2,
-  & h3,
-  & h4,
-  & h5,
-  & h6,
-  & blockquote,
-  & ul,
-  & p {
-    margin-top: 1em;
-    overflow-wrap: anywhere;
-  }
+	& h1,
+	& h2,
+	& h3,
+	& h4,
+	& h5,
+	& h6,
+	& blockquote,
+	& ul,
+	& p {
+		margin-top: 1em;
+		overflow-wrap: anywhere;
+	}
 
-  & a {
-    color: var(--primary);
-    text-decoration: underline;
-    overflow-wrap: anywhere;
+	& a {
+		color: var(--primary);
+		text-decoration: underline;
+		overflow-wrap: anywhere;
 
-    &:hover {
-      color: var(--dark);
-    }
-  }
+		&:hover {
+			color: var(--dark);
+		}
+	}
 
-  & img {
-    max-width: 100%;
-    height: auto;
-  }
+	& img {
+		max-width: 100%;
+		height: auto;
+	}
 
-  & ol {
-    margin-left: 1em;
-    padding-left: 0.5em;
+	& ol {
+		margin-left: 1em;
+		padding-left: 0.5em;
 
-    & ol {
-      margin-top: 0.25em;
+		& ol {
+			margin-top: 0.25em;
 
-      & > li {
-        font-size: 0.95rem;
-      }
-    }
-  }
+			& > li {
+				font-size: 0.95rem;
+			}
+		}
+	}
 
-  & ul {
-    list-style-type: disc;
-    margin-left: 1em;
-    padding-left: 0.5em;
+	& ul {
+		list-style-type: disc;
+		margin-left: 1em;
+		padding-left: 0.5em;
 
-    & ul {
-      margin-top: 0.25em;
+		& ul {
+			margin-top: 0.25em;
 
-      & > li {
-        font-size: 0.95rem;
-      }
-    }
-  }
+			& > li {
+				font-size: 0.95rem;
+			}
+		}
+	}
 
-  & li {
-    margin-top: 0.25em;
+	& li {
+		margin-top: 0.25em;
 
-    &:first-child {
-      margin-top: 0;
-    }
-  }
+		&:first-child {
+			margin-top: 0;
+		}
+	}
 
-  & .small {
-    @mixin small;
-  }
+	& .small {
+		@mixin small;
+	}
 
-  & .large {
-    @mixin large;
-  }
+	& .large {
+		@mixin large;
+	}
 
-  & .gform_wrapper {
-    margin-top: 1em;
-  }
+	& .gform_wrapper {
+		margin-top: 1em;
+	}
 
-  & table {
-    @mixin table-border;
-  }
+	& table {
+		@mixin table-border;
+	}
 
-  & blockquote {
-    margin-top: 1em;
-    padding-left: 1.5em;
-    border-left: 3px solid var(--dark);
+	& blockquote {
+		margin-top: 1em;
+		padding-left: 1.5em;
+		border-left: 3px solid var(--dark);
 
-    & p:first-child {
-      @mixin h3;
+		& p:first-child {
+			@mixin h3;
 
-      margin-top: 0;
-    }
-  }
+			margin-top: 0;
+		}
+	}
 
-  & .video-response {
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
+	& .video-response {
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
 }

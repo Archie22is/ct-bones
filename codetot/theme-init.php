@@ -185,8 +185,6 @@ class Codetot_Theme_Init {
 	}
 
 	public function codetot_extra_blocks() {
-		the_block_part( 'footer' );
-
 		// Sticky blocks
 		the_block( 'slideout-menu' );
 		the_block_part( 'modal-search-form' );
