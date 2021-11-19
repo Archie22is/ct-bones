@@ -31,3 +31,15 @@ ul.gfield_radio {
 		}
 	}
 }
+
+/** Password field - toggle visible password **/
+.gfield .password_input_container {
+	position: relative;
+
+	& .gform_show_password {
+		position: absolute;
+		top: 50%;
+		right: 5px;
+		transform: translateY(-50%);
+	}
+}

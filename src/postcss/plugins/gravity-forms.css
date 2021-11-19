@@ -11,6 +11,7 @@
 		width: 15px;
 	}
 
+	& [type='password'],
 	& [type='number'],
 	& [type='text'],
 	& [type='tel'],
