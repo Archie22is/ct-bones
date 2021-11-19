@@ -3,7 +3,7 @@
 }
 
 .gfield {
-	margin-top: 1em;
+	margin-top: var(--element-space);
 
 	& [type='checkbox'],
 	& [type='radio'] {
