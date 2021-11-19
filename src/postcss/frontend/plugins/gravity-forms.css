@@ -1,30 +1,6 @@
-.gfield_radio {
-	& input[type='radio'] {
-		@mixin custom-radio var(--dark), var(--dark);
-	}
-}
-
-.gfield_checkbox {
-	& input[type='checkbox'] {
-		@mixin custom-checkbox var(--dark), var(--dark);
-
-		&:checked ~ label {
-			color: var(--dark);
-		}
-	}
-}
-
 ul.gfield_checkbox,
 ul.gfield_radio {
 	@mixin list-reset;
-
-	position: relative;
-	margin: 0;
-
-	& > li {
-		position: relative;
-		padding-left: 30px;
-	}
 }
 
 .wp-block-group.has-primary-background-color,
@@ -52,14 +28,6 @@ ul.gfield_radio {
 
 		& .gfield_checkbox {
 			margin-top: 0;
-
-			& input[type='checkbox'] {
-				@mixin custom-checkbox var(--white), var(--white);
-
-				&:checked ~ label {
-					color: var(--white);
-				}
-			}
 		}
 	}
 }
