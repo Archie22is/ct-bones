@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.1.3 - 19/11/2021
+
+- Remove top spacing footer copyright
+- Move block footer outside of hook
+- Fix spacing ul > li, follow vietmoz report
+- Format style file typography
+- Remove custom radio + checkbox style
+- Fix default field row spacing
+- Update login form style on frontend
+
 ## 6.1.2 - 12/11/2021
 
 - Optimize image block
