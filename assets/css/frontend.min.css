@@ -922,96 +922,20 @@ ul.gfield_radio {
 		color: var(--white)
 	}
 
-.wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio {
-			margin-top: 0
-		}
-
-.wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'], .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'], .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'], .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				-webkit-appearance: none;
-				   -moz-appearance: none;
-				        appearance: none;
-				opacity: 0;
-			}
-
-.wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span::before,
-    .wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label::before,
-    .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span::before,
-    .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label::before,
-    .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span::before,
-    .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label::before,
-    .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span::before,
-    .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label::before {
-      border-color: #fff;
-      border-color: var(--white);
-    }
-
-.wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span,
-    .wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label,
-    .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span,
-    .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label,
-    .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span,
-    .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label,
-    .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span,
-    .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label {
-      color: #fff;
-      color: var(--white);
-    }
-
-.wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span::after,
-    .wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label::after,
-    .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span::after,
-    .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label::after,
-    .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span::after,
-    .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label::after,
-    .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ span::after,
-    .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio']:checked ~ label::after {
-      opacity: 1;
-    }
-
-.wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span,
-  .wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label,
-  .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span,
-  .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label,
-  .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span,
-  .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label,
-  .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span,
-  .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label {
-    pointer-events: none
-  }
-
-.wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span::before, .wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label::before, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span::before, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label::before, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span::before, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label::before, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span::before, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label::before {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 0;
-      width: 18px;
-      height: 18px;
-      border: 1px solid #fff;
-      border: 1px solid var(--white);
-      border-radius: 50%;
-      transition: border-color 0.3s cubic-bezier(0.1, 0.1, 0.25, 1);
-    }
-
-.wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span::after, .wp-block-group.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label::after, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span::after, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label::after, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span::after, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label::after, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ span::after, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_radio input[type='radio'] ~ label::after {
-      content: '';
-      position: absolute;
-      top: 5px;
-      left: 3px;
-      width: 13px;
-      height: 13px;
-      background: #fff;
-      background: var(--white);
-      -webkit-clip-path: circle(50% at 50% 50%);
-              clip-path: circle(50% at 50% 50%);
-      opacity: 0;
-    }
-
 .wp-block-group.has-primary-background-color .gform_wrapper .gfield_checkbox, .wp-block-group.has-secondary-background-color .gform_wrapper .gfield_checkbox, .wp-block-cover.has-primary-background-color .gform_wrapper .gfield_checkbox, .wp-block-cover.has-secondary-background-color .gform_wrapper .gfield_checkbox {
 			margin-top: 0;
 		}
+
+/** Password field - toggle visible password **/
+
+.gfield .password_input_container {
+	position: relative
+}
+
+.gfield .password_input_container .gform_show_password {
+		position: absolute;
+		top: 50%;
+		right: 5px;
+		transform: translateY(-50%);
+	}
 
