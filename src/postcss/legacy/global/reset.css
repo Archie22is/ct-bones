@@ -22,12 +22,12 @@ h6 {
 }
 
 li {
-	margin: 10px 0 0 0;
+	margin: calc(0.5 * var(--element-space)) 0 0 0;
 }
 
 ul,
 ol {
-	padding-left: 1em;
+	padding-left: 0;
 }
 
 html,
@@ -38,7 +38,7 @@ body {
 
 ul {
 	margin-top: var(--element-space);
-	margin-left: 1em;
+	margin-left: 18px;
 	padding: 0;
 }
 

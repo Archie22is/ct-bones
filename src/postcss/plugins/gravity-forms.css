@@ -3,7 +3,7 @@
 }
 
 .gfield {
-	margin-top: 1em;
+	margin-top: var(--element-space);
 
 	& [type='checkbox'],
 	& [type='radio'] {
@@ -11,6 +11,7 @@
 		width: 15px;
 	}
 
+	& [type='password'],
 	& [type='number'],
 	& [type='text'],
 	& [type='tel'],
@@ -87,8 +88,7 @@ table.gfield_list {
 
 	& .gfield_label {
 		display: block;
-		margin-bottom: 0.25em;
-		font-weight: var(--font-bold);
+		margin: 0 0 calc(0.5 * var(--element-space)) 0;
 	}
 }
 
@@ -120,20 +120,6 @@ table.gfield_list {
 .widget.widget_text {
 	& .validation_error {
 		display: none;
-	}
-
-	& form:not(.gform_dark) {
-		& .gfield_radio {
-			& input[type='radio'] {
-				@mixin custom-radio var(--primary), var(--border);
-			}
-		}
-
-		& .gfield_checkbox {
-			& input[type='checkbox'] {
-				@mixin custom-checkbox var(--primary), var(--border);
-			}
-		}
 	}
 
 	& .gfield_description {
@@ -188,22 +174,6 @@ table.gfield_list {
 
 .gform_dark_wrapper {
 	color: var(--white);
-
-	& .gfield_radio {
-		& input[type='radio'] {
-			@mixin custom-radio var(--white), var(--white);
-		}
-	}
-
-	& .gfield_checkbox {
-		& input[type='checkbox'] {
-			@mixin custom-checkbox var(--white), var(--white);
-
-			&:checked ~ label {
-				color: var(--white);
-			}
-		}
-	}
 }
 
 .gform_wrapper.gform_inline_wrapper {

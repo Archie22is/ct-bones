@@ -1,0 +1,25 @@
+form[name='loginform'] {
+	& .login-username,
+	& .login-password,
+	& .login-remember {
+		margin: var(--element-space) 0 0 0;
+
+		& label {
+			display: block;
+			margin: 0 0 calc(0.5 * var(--element-space)) 0;
+		}
+
+		& input[type='text'],
+		& input[type='password'] {
+			@mixin input-field;
+		}
+	}
+
+	& .login-submit {
+		margin: var(--element-space) 0 0 0;
+
+		& input[type='submit'] {
+			width: 100%;
+		}
+	}
+}

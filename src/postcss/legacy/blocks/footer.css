@@ -79,6 +79,10 @@
 	font-size: 14px;
 	opacity: 0.75;
 
+	& p:first-child {
+		margin-top: 0;
+	}
+
 	& a {
 		text-decoration: underline;
 
