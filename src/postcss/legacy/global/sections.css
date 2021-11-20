@@ -2,6 +2,7 @@
 	margin-top: var(--section-space);
 }
 
+.section.has-background,
 .section-bg {
 	padding: var(--section-space) 0;
 
