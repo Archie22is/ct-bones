@@ -1239,11 +1239,13 @@ strong {
 	margin-top: 2em;
 	margin-top: var(--section-space);
 }
+.section.has-background,
 .section-bg {
+	margin-top: 0;
 	padding: 2em 0;
 	padding: var(--section-space) 0
 }
-.section-bg + .section {
+.section.has-background + .section, .section-bg + .section {
 		margin-top: 2em;
 		margin-top: var(--section-space);
 	}
