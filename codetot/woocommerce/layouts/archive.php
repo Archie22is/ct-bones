@@ -356,7 +356,8 @@ class Codetot_Woocommerce_Layout_Archive {
 			)
 		);
 		$image_html = ob_get_clean();
-		$image_html = str_replace( ' src="', ' src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto"', $image_html );
+		$image_html = str_replace( ' src="', ' src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="', $image_html );
+		$image_html = str_replace(' srcset="', ' data-srcset="', $image_html);
 
 		echo '<figure class="product__image">';
 		echo $image_html;
