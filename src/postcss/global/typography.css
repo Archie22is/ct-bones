@@ -54,3 +54,11 @@ h6 {
 	overflow-wrap: break-word;
 	word-break: break-word;
 }
+
+cite > a,
+figcaption > a,
+ol li > a,
+ul li > a,
+p > a {
+	text-decoration: underline;
+}
