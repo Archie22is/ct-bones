@@ -17,18 +17,24 @@ $post_column = codetot_get_theme_mod( 'archive_post_column' ) ?? 3;
 
 	<?php
   if ( have_posts() ) :
-    global $wp_query;
 
     if ( ! class_exists( 'WooCommerce' ) ) :
 
-			the_block('page-header', array(
-				'class' => 'section wp-block-group',
-				'title' => sprintf(esc_html__('Search Results for: %s', 'ct-bones'), '<span>' . get_search_query() . '</span>')
-			));
+		$all_posts = absint($wp_query->found_posts);
+		$first_post = absint( $wp_query->get('paged') - 1 ) * $wp_query->get('posts_per_page') + 1;
+		$last_post = $first_post + $wp_query->post_count - 1;
 
-			the_block('post-list', array(
-				'query' => $wp_query
-			));
+		$description = sprintf(__('Displaying %1$s - %2$s of %3$s items', 'ct-bones'), $first_post, $last_post, $all_posts);
+
+		the_block('page-header', array(
+			'class' => 'section wp-block-group',
+			'title' => sprintf(esc_html__('Search Results for: %s', 'ct-bones'), '<span>' . get_search_query() . '</span>'),
+			'description' => $description
+		));
+
+		the_block('post-list', array(
+			'query' => $wp_query
+		));
 
     else :
 
