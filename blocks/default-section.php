@@ -15,25 +15,25 @@ if ( $_enable_lazyload ) {
 	$_class .= ' is-loading has-lazyload';
 }
 
+ob_start();
 if ( ! empty( $content ) ) {
 	if ( ! is_array( $content ) ) {
-		$_content = $content;
+		echo $content;
 	} else {
-		$_content = codetot_build_grid_columns( $content, 'default-section' );
+		echo codetot_build_grid_columns( $content, 'default-section' );
 	}
-} else {
-	$_content = '';
 }
+$_content = ob_get_clean();
 
 if ( ! empty( $content ) ) : ?>
   <<?php echo $_tag; ?> class="<?php echo $_class; ?>"
-			  <?php 
+			  <?php
 				if ( ! empty( $_attrs ) ) :
 					echo ' ' . $_attrs;
-endif; 
+endif;
 				?>
 	>
-	<?php 
+	<?php
 	if ( ! empty( $background_image ) ) :
 		the_block(
 			'image',
@@ -44,43 +44,43 @@ endif;
 				'size'     => wp_is_mobile() ? 'medium' : 'large',
 			)
 		);
-	endif; 
+	endif;
 	?>
-	<?php 
+	<?php
 	if ( ! empty( $before_header ) ) :
 		echo $before_header;
-endif; 
+endif;
 	?>
 	<?php if ( ! empty( $header ) ) : ?>
-	  <div class="default-section__header">
-		<div class="container default-section__container default-section__container--header">
-		  <div class="default-section__inner default-section__inner--header">
-			<?php echo $header; ?>
+	  <div class="wp-block-group default-section__header">
+		<div class="wp-block-group__inner-container container default-section__container default-section__container--header">
+		  <div class="wp-block-group default-section__inner default-section__inner--header">
+			<div class="wp-block-group__inner-content">
+				<?php echo $header; ?>
+			</div>
 		  </div>
 		</div>
 	  </div>
 	<?php endif; ?>
-	<?php 
+	<?php
 	if ( ! empty( $before_main ) ) :
 		echo $before_main;
-endif; 
+endif;
 	?>
-	<div class="default-section__main">
-	  <div class="container default-section__container default-section__container--main">
-		<div class="default-section__inner default-section__inner--main
-		<?php 
-		if ( $_enable_lazyload ) :
-			?>
-			 is-not-loaded js-main-content<?php endif; ?>">
-		  <?php
-			if ( $_enable_lazyload ) :
-				printf( '<noscript>%s</noscript>', $_content );
-		  else :
-			  echo $_content;
-		  endif;
-			?>
+	<div class="wp-block-group default-section__main">
+	  <div class="wp-block-group__inner-container container default-section__container default-section__container--main">
+		<div class="wp-block-group default-section__inner default-section__inner--main">
+			<div class="wp-block-group__inner-content<?php if ( $_enable_lazyload ) : ?>is-not-loaded js-main-content<?php endif; ?>">
+				<?php
+					if ( $_enable_lazyload ) :
+						printf( '<noscript>%s</noscript>', $_content );
+				else :
+					echo $_content;
+				endif;
+				?>
+			</div>
 		</div>
-		<?php 
+		<?php
 		if ( $_enable_lazyload ) :
 			the_block(
 				'loader',
@@ -88,28 +88,30 @@ endif;
 					'class' => $_lazyload_loader_class,
 				)
 			);
-		endif; 
+		endif;
 		?>
 	  </div>
 	</div>
-	<?php 
+	<?php
 	if ( ! empty( $after_main ) ) :
 		echo $after_main;
-endif; 
+	endif;
 	?>
 	<?php if ( ! empty( $footer ) ) : ?>
-	  <div class="default-section__footer">
-		<div class="container default-section__container default-section__container--footer">
-		  <div class="default-section__inner default-section__inner--footer">
-			<?php echo $footer; ?>
-		  </div>
+	  <div class="wp-block-group default-section__footer">
+		<div class="wp-block-group__inner-container container default-section__container default-section__container--footer">
+		  <div class="wp-block-group default-section__inner default-section__inner--footer">
+			<div class="wp-block-group__inner-container">
+				<?php echo $footer; ?>
+			</div>
+		</div>
 		</div>
 	  </div>
 	<?php endif; ?>
-	<?php 
+	<?php
 	if ( ! empty( $after_footer ) ) :
 		echo $after_footer;
-endif; 
+endif;
 	?>
   </<?php echo $_tag; ?>>
 <?php endif; ?>
