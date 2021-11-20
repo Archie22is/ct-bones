@@ -62,3 +62,20 @@ ul li > a,
 p > a {
 	text-decoration: underline;
 }
+
+.normal-text {
+	font-weight: var(--font-normal);
+}
+
+.bold-text,
+strong {
+	font-weight: var(--font-bold);
+}
+
+.list-reset {
+	@mixin list-reset;
+}
+
+.uppercase-text {
+	text-transform: uppercase;
+}
