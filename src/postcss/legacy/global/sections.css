@@ -4,6 +4,7 @@
 
 .section.has-background,
 .section-bg {
+	margin-top: 0;
 	padding: var(--section-space) 0;
 
 	& + .section {
