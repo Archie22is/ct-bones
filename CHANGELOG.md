@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.2.0 - 20/11/2021
+
+- Convert legacy button to core/button block
+- Add same spacing if any .section class has background
+- Remove top spacing if .section has background class
+
 ## 6.1.3 - 19/11/2021
 
 - Remove top spacing footer copyright

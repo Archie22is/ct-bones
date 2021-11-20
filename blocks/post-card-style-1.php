@@ -34,16 +34,16 @@
 	<?php endif; ?>
   </div>
   <div class="pt-05 post-card__footer">
-	<?php 
+	<?php
 	the_block(
 		'button',
 		array(
-			'class'  => 'rel post-card__button',
+			'class'  => 'rel d-inline-block post-card__button',
 			'url'    => get_permalink(),
 			'type'   => 'link',
 			'button' => __( 'Read more', 'ct-bones' ),
 		)
-	); 
+	);
 	?>
   </div>
 </article>
