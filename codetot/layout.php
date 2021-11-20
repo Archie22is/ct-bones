@@ -227,19 +227,19 @@ function codetot_layout_page_block_close_html() {
 	echo ob_get_clean();
 }
 
-function codetot_layout_archive_page_header_html() { ?>
-	<?php 
+function codetot_layout_archive_page_header_html() {
+
 	if ( ! is_front_page() ) :
 		$description = get_the_archive_description();
-		?>
-  <header class="mt-05 mb-1 page-header">
-		<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
-		<?php if ( ! empty( $description ) ) : ?>
-	  <div class="archive-description"><?php echo wp_kses_post( wpautop( $description ) ); ?></div>
-	<?php endif; ?>
-  </header><!-- .page-header -->
-	<?php endif; ?>
-	<?php 
+	?>
+	<header class="mt-05 mb-1 page-header">
+			<?php the_archive_title( '<h1 class="m0 page-title">', '</h1>' ); ?>
+			<?php if ( ! empty( $description ) ) : ?>
+		<div class="archive-description"><?php echo wp_kses_post( wpautop( $description ) ); ?></div>
+		<?php endif; ?>
+	</header><!-- .page-header -->
+	<?php
+	endif;
 }
 
 function codetot_layout_single_post_social_share_html() {
@@ -303,7 +303,7 @@ function codetot_render_footer_copyright_block() {
 		)
 	);
 
-	if ( ! $hide_footer_copyright && ! empty( $footer_copyright ) ) : 
+	if ( ! $hide_footer_copyright && ! empty( $footer_copyright ) ) :
 		?>
 	<div class="footer__bottom">
 	  <div class="container footer__container">
@@ -319,7 +319,7 @@ function codetot_render_footer_copyright_block() {
 		</div>
 	  </div>
 	</div>
-		<?php 
+		<?php
   endif;
 }
 
