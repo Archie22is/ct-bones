@@ -171,3 +171,9 @@
 	opacity: 0 !important;
 	visibility: hidden !important;
 }
+
+.mobile-only {
+	@media (--xs) {
+		display: none;
+	}
+}

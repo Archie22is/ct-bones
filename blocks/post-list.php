@@ -1,7 +1,7 @@
 <?php
 if ( ! empty( $query ) ) :
 
-	$_class  = 'post-list';
+	$_class  = 'section post-list';
 	$_class .= ! empty( $class ) ? ' ' . $class : '';
 
 	// Generate header

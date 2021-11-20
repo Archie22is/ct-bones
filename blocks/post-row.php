@@ -31,7 +31,7 @@ $category_html = ! empty( $category ) ? sprintf( '<a class="post-row__meta-link"
 	  </a>
 	</div>
 	<div class="f fdc pl-1 post-row__col post-row__col--content">
-	  <h3 class="w100 f post-row__title">
+	  <h3 class="w100 f m0 post-row__title">
 		<a class="large-text bold-text post-row__title-link" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 	  </h3>
 	  <p class="mt-05 post-row__meta">
@@ -48,7 +48,7 @@ $category_html = ! empty( $category ) ? sprintf( '<a class="post-row__meta-link"
 	  <?php
 		// Short Description
 		$excerpt = get_the_excerpt() ? wp_trim_words( get_the_excerpt(), $content_num_words, '...' ) : '';
-		if ( ! empty( $excerpt ) ) : 
+		if ( ! empty( $excerpt ) ) :
 			?>
 		<div class="mt-05 w100 post-row__description"><?php echo $excerpt; ?></div>
 		<?php endif; ?>

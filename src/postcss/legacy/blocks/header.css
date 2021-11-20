@@ -68,14 +68,22 @@
 	}
 }
 
-.header__menu {
-	@mixin list-reset;
-
+.header__nav {
 	display: none;
 
 	@media (--m) {
 		display: flex;
-		flex-wrap: wrap;
+	}
+}
+
+ul.header__menu {
+	@mixin list-reset;
+
+	display: flex;
+	flex-wrap: wrap;
+
+	& li > a {
+		text-decoration: none;
 	}
 
 	& > .menu-item {

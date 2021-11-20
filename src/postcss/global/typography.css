@@ -54,3 +54,28 @@ h6 {
 	overflow-wrap: break-word;
 	word-break: break-word;
 }
+
+cite > a,
+figcaption > a,
+ol li > a,
+ul li > a,
+p > a {
+	text-decoration: underline;
+}
+
+.normal-text {
+	font-weight: var(--font-normal);
+}
+
+.bold-text,
+strong {
+	font-weight: var(--font-bold);
+}
+
+.list-reset {
+	@mixin list-reset;
+}
+
+.uppercase-text {
+	text-transform: uppercase;
+}

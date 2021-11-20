@@ -1,16 +1,3 @@
-::-webkit-scrollbar {
-	width: 0.8rem;
-}
-
-::-webkit-scrollbar-thumb {
-	background: var(--dark);
-	border-radius: 4px;
-}
-
-::-webkit-scrollbar-track {
-	background: var(--light);
-}
-
 html {
 	-webkit-tap-highlight-color: transparent;
 	-webkit-font-smoothing: antialiased;
@@ -68,19 +55,6 @@ a {
 	}
 }
 
-.bold-text,
-strong {
-	font-weight: var(--font-bold);
-}
-
-.list-reset {
-	@mixin list-reset;
-}
-
 .label-text {
 	@mixin label-text;
-}
-
-.uppercase-text {
-	text-transform: uppercase;
 }
