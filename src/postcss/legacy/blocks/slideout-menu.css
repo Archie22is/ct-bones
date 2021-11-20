@@ -21,6 +21,10 @@
 		&:last-child {
 			border-bottom: 0;
 		}
+
+		& > a {
+			text-decoration: none;
+		}
 	}
 
 	& .sub-menu {
