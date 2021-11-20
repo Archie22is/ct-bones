@@ -6644,7 +6644,8 @@ https://flickity.metafizzy.co
 		height: 15px;
 		width: 15px;
 	}
-.gfield [type='number'],
+.gfield [type='password'],
+	.gfield [type='number'],
 	.gfield [type='text'],
 	.gfield [type='tel'],
 	.gfield [type='email'] {
