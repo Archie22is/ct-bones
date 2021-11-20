@@ -80,6 +80,61 @@ endif;
 	}
 }
 
+if ( ! function_exists( 'codetot_generate_grid_columns' ) ) {
+	function codetot_generate_grid_columns( $columns, $args = [] ) {
+		if ( ! is_array( $columns ) ) {
+			return '<!-- $columns is not an array -->';
+		}
+
+		$default_columns_settings = array(
+			'mobile' => 1,
+			'tablet' => 2,
+			'desktop' => 4
+		);
+
+		// Response columns
+		if ( !empty( $args['columns'] ) && is_array( $args['columns'] ) ) {
+			$column_settings = wp_parse_args($args['columns'], $default_columns_settings);
+		} else {
+			$column_settings = $default_columns_settings;
+		}
+
+		$_column_class = ['fw', 'block-columns', 'wp-block-columns'];
+
+		if ( !empty( $column_settings['mobile'] ) ) {
+			$_column_class[] = 'has-' . absint($column_settings['mobile']) . '-col-mobile';
+		}
+
+		if ( !empty( $column_settings['tablet'] ) ) {
+			$_column_class[] = 'has-' . absint($column_settings['tablet']) . '-col-tablet';
+		}
+
+		if ( !empty( $column_settings['desktop'] ) ) {
+			$_column_class[] = 'has-' . absint($column_settings['desktop']) . '-col-desktop';
+		}
+
+		ob_start(); ?>
+		<div class="<?php echo implode(' ', $_column_class); ?>">
+			<?php foreach ($columns as $column) :
+				$column_class = 'block-columns__col';
+
+				if ( !empty ($column['class']) ) {
+					$column_class .= ' ' . esc_attr( $column['class'] );
+				}
+
+				if ( ! empty ( $args['column_class'] ) ) {
+					$column_class .= ' ' . esc_attr( $args['column_class'] );
+				}
+				?>
+				<div class="<?php echo esc_attr( $column_class ); ?>">
+					<?php echo $column['content']; ?>
+				</div>
+			<?php endforeach; ?>
+		</div>
+		<?php return ob_get_clean();
+	}
+}
+
 if ( ! function_exists( 'codetot_build_grid_columns' ) ) {
 	/**
 	 * Generate HTML markup for grid columns
@@ -108,24 +163,24 @@ if ( ! function_exists( 'codetot_build_grid_columns' ) ) {
 
 		ob_start(); ?>
 	<div class="grid <?php echo $prefix_class; ?>__grid
-								<?php 
+								<?php
 								if ( ! empty( $grid_class ) ) :
 									echo ' ' . $grid_class;
-endif; 
+endif;
 								?>
 	">
 		<?php foreach ( $columns as $column ) : ?>
 		<div class="grid__col <?php echo $prefix_class; ?>__col
-										 <?php 
+										 <?php
 											if ( ! empty( $column_class ) ) :
 												echo ' ' . $column_class;
-endif; 
+endif;
 											?>
 		"
-			<?php 
+			<?php
 			if ( ! empty( $column_attributes ) && is_array( $column_attributes ) ) :
 				echo ' ' . $column_attributes;
-endif; 
+endif;
 			?>
 >
 			<?php echo $column; ?>

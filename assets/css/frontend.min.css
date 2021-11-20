@@ -362,6 +362,36 @@ h6 {
 	word-break: break-word;
 }
 
+cite > a,
+figcaption > a,
+ol li > a,
+ul li > a,
+p > a {
+	text-decoration: underline;
+}
+
+.normal-text {
+	font-weight: 400;
+	font-weight: var(--font-normal);
+}
+
+.bold-text,
+strong {
+	font-weight: 700;
+	font-weight: var(--font-bold);
+}
+
+.list-reset {
+	margin: 0;
+	padding: 0;
+	text-indent: 0;
+	list-style-type: none;
+}
+
+.uppercase-text {
+	text-transform: uppercase;
+}
+
 
 		.section.wp-block-group > .wp-block-group__inner-container, .section-bg.wp-block-group > .wp-block-group__inner-container {
 			margin: 0 auto;
@@ -478,6 +508,11 @@ h6 {
 	}
 		}
 
+.section {
+	margin-top: 2em;
+	margin-top: var(--section-space)
+}
+
 .section.wp-block-cover,
 	.section.wp-block-group {
 		margin-top: 2em;
@@ -492,12 +527,37 @@ h6 {
 			margin-top: var(--section-space);
 		}
 
-.section-bg.wp-block-cover,
+.section.wp-block-cover.has-background, .section.wp-block-group.has-background {
+			margin-top: 0;
+		}
+
+.section.has-background,
+.section-bg {
+	margin-top: 0;
+	padding: 2em 0;
+	padding: var(--section-space) 0
+}
+
+.section.has-background.wp-block-cover,
+	.section.has-background.wp-block-group,
+	.section-bg.wp-block-cover,
 	.section-bg.wp-block-group {
 		padding-top: 2em;
 		padding-top: var(--section-space);
 		padding-bottom: 2em;
 		padding-bottom: var(--section-space);
+	}
+
+.section.has-background + .section, .section-bg + .section {
+		margin-top: 2em;
+		margin-top: var(--section-space);
+	}
+
+@media (max-width: 587px) {
+
+.section--hide-mobile {
+		display: none
+}
 	}
 
 div.wp-block-columns {
@@ -862,6 +922,137 @@ blockquote.is-style-large.wp-block-quote > p {
 
     z-index: 1;
   }
+
+/** .block-cover rendered by PHP **/
+
+.block-cover__content > .wp-block-group__inner-container {
+		max-width: 782px;
+		max-width: var(--sm);
+	}
+
+.block-cover.has-text-align-center .block-cover__content > .wp-block-group__inner-container {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+/** Render by php **/
+
+.block-columns {
+	margin-left: calc(-1 * 10px);
+	margin-left: calc(-1 * var(--grid-gutter));
+	margin-right: calc(-1 * 10px);
+	margin-right: calc(-1 * var(--grid-gutter))
+}
+
+.block-columns .block-columns__col {
+		width: 100%;
+		margin: 20px 0 0 0;
+		margin: var(--column-space) 0 0 0;
+		padding: 0 10px;
+		padding: 0 var(--grid-gutter);
+	}
+
+@media (max-width: 1079px) {
+			.block-columns.has-1-col-tablet > .block-columns__col {
+				flex-basis: 100%;
+			}
+			.block-columns.has-2-col-tablet > .block-columns__col {
+				flex-basis: 50%;
+			}
+			.block-columns.has-3-col-tablet > .block-columns__col {
+				flex-basis: 33.33%;
+			}
+			.block-columns.has-4-col-tablet > .block-columns__col {
+				flex-basis: 25%;
+			}
+	}
+
+@media (max-width: 587px) {
+			.block-columns.has-1-col-mobile > .block-columns__col {
+				flex-basis: 100%;
+			}
+			.block-columns.has-2-col-mobile > .block-columns__col {
+				flex-basis: 50%;
+			}
+			.block-columns.has-3-col-mobile > .block-columns__col {
+				flex-basis: 33.33%;
+			}
+			.block-columns.has-4-col-mobile > .block-columns__col {
+				flex-basis: 25%;
+			}
+	}
+
+@media (min-width: 782px) {
+			.block-columns.has-1-col-desktop > .block-columns__col {
+				flex-basis: 100%;
+			}
+			.block-columns.has-2-col-desktop > .block-columns__col {
+				flex-basis: 50%;
+			}
+			.block-columns.has-3-col-desktop > .block-columns__col {
+				flex-basis: 33.33%;
+			}
+			.block-columns.has-4-col-desktop > .block-columns__col {
+				flex-basis: 25%;
+			}
+	}
+
+.back-to-top {
+	position: fixed;
+	bottom: 1em;
+	right: 1em;
+	display: none;
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	background-color: #1346af;
+	background-color: var(--primary);
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+	border-radius: 3px;
+	z-index: 10;
+	transition: all 0.3s;
+	border: 0
+}
+
+@media (min-width: 1080px) {
+
+.back-to-top {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0
+}
+
+		.back-to-top:hover {
+			background-color: #1e1e1e;
+			background-color: var(--dark);
+		}
+	}
+
+.back-to-top.back-to-top--visible {
+		opacity: 1;
+	}
+
+.back-to-top__icon {
+	width: 24px;
+	height: 24px
+}
+
+.back-to-top__icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+.back-to-top__icon svg {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		stroke: #fff;
+
+		stroke: var(--white);
+	}
 
 form[name='loginform'] .login-username,
 	form[name='loginform'] .login-password,

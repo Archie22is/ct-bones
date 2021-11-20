@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.2.1 - 21/11/2021
+
+- Convert hero image to native block, remove require ct-blocks plugin
+- Add new function generate grid class
+- Fix pagination style
+- Add search result count on search page
+- Change search result to post list
+- Limit search to only post
+- Fix widget link style
+- Fix image load on archive product page
+
 ## 6.2.0 - 20/11/2021
 
 - Convert legacy button to core/button block
