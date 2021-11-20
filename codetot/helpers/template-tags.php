@@ -133,7 +133,7 @@ if ( ! function_exists( 'ct_bones_post_thumbnail' ) ) :
 
 		if ( is_singular() ) :
 			?>
-			<?php 
+			<?php
 			the_block(
 				'image',
 				array(
@@ -141,7 +141,7 @@ if ( ! function_exists( 'ct_bones_post_thumbnail' ) ) :
 					'lazyload' => false,
 					'image'    => get_post_thumbnail_id(),
 				)
-			); 
+			);
 			?>
 
 		<?php else : ?>
@@ -264,98 +264,6 @@ if ( ! function_exists( 'codetot_logo_or_site_title' ) ) {
 		}
 
 	  echo $html; // phpcs:ignore
-	}
-}
-
-if ( ! function_exists( 'codetot_page_breadcrumbs' ) ) {
-	function codetot_page_breadcrumbs() {
-		the_block( 'breadcrumbs' );
-	}
-}
-
-if ( ! function_exists( 'codetot_page_header' ) ) {
-	/**
-	 * Display the post title
-	 */
-	function codetot_page_header() {
-		the_block(
-			'page-header',
-			array(
-				'title' => get_the_title(),
-			)
-		);
-	}
-}
-
-if ( ! function_exists( 'codetot_page_content' ) ) {
-	/**
-	 * Display the post content
-	 */
-	function codetot_page_content() {
-		ob_start();
-		the_content();
-
-		wp_link_pages(
-			array(
-				'before'      => '<div class="page-links">' . __( 'Pages:', 'ct-bones' ),
-				'after'       => '</div>',
-				'link_before' => '<span>',
-				'link_after'  => '</span>',
-			)
-		);
-
-		$content = ob_get_clean();
-
-		the_block(
-			'default-section',
-			array(
-				'class'   => 'section page-content',
-				'content' => $content,
-			)
-		);
-	}
-}
-
-if ( ! function_exists( 'codetot_display_comments' ) ) {
-	/**
-	 * Display comments
-	 */
-	function codetot_display_comments() {
-		if ( is_single() || is_page() ) {
-			ob_start();
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-		  endif;
-
-			$content = ob_get_clean();
-
-			the_block(
-				'default-section',
-				array(
-					'class'   => 'section page-comments',
-					'content' => $content,
-				)
-			);
-		}
-	}
-}
-
-if ( ! function_exists( 'codetot_is_product_archive' ) ) {
-	/**
-	 * Checks if the current page is a product archive
-	 *
-	 * @return boolean
-	 */
-	function codetot_is_product_archive() {
-		if ( ! class_exists( 'woocommerce' ) ) {
-			return false;
-		}
-
-		if ( is_product_taxonomy() || is_product_category() || is_product_tag() ) {
-			return true;
-		} else {
-			return false;
-		}
 	}
 }
 
