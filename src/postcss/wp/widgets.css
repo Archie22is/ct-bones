@@ -8,9 +8,13 @@
 		margin: 0;
 	}
 
+	& ol li > a,
+	& ul li > a {
+		text-decoration: none;
+	}
+
 	& a {
 		color: var(--dark);
-
 		&:hover {
 			color: var(--primary);
 		}
