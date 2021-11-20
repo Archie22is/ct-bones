@@ -34,16 +34,16 @@ $post_column = codetot_get_theme_mod( 'archive_post_column' ) ?? 3;
 
       $columns = [];
       while( $wp_query->have_posts() ) : $wp_query->the_post();
-        $columns[] = get_block( 'post-card' );
+        $columns[] = array(
+					'class' => 'f fdc',
+					'content' => get_block( 'post-card' )
+				);
       endwhile; wp_reset_postdata();
 
-      printf('<div class="mt-1 site-main__main-category default-section %s">', 'has-'. esc_attr($number_columns) . '-columns');
-      echo '<div class="container">';
-      echo codetot_build_grid_columns( $columns, 'post-grid', array(
-        'column_class' => 'f fdc default-section__col'
-      ) );
+      printf('<div class="mt-1 mb-2 site-main__main-category default-section %s">', 'has-'. esc_attr($number_columns) . '-columns');
+      echo '<div class="container site-main__container">';
+      echo codetot_generate_grid_columns( $columns );
       echo '</div>';
-      // the_block('pagination');
       echo '</div>';
 
     else :
