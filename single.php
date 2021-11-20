@@ -14,12 +14,12 @@ $enable_hero_image = codetot_get_theme_mod( 'extra_single_post_layout', 'pro' ) 
 
 if ( is_singular( 'post' ) && $enable_hero_image ) :
 	$categories    = get_the_category();
-	$category_html = '<ul class="hero-image__post-meta">';
+	$category_html = '<ul class="list-reset has-white-color has-text-color block-cover__list">';
 
 	if ( ! empty( $categories ) ) {
 		foreach ( $categories as $category ) :
 			$category_html .= sprintf(
-				'<li class="hero-image__post-meta__item"><a class="hero-image__post-meta__link" href="%1$s">%2$s</a></li>',
+				'<li class="block-cover__item"><a class="has-white-color has-text-color block-cover__list__link" href="%1$s">%2$s</a></li>',
 				get_term_link( $category, 'category' ),
 				$category->name
 			);
@@ -28,23 +28,17 @@ if ( is_singular( 'post' ) && $enable_hero_image ) :
 
 	$category_html .= '</ul>';
 
-	the_block(
-		'hero-image',
-		array(
-			'label'               => $category_html,
-			'title'               => $post->post_title,
-			'class'               => 'hero-image--single-post',
-			'image'               => get_post_thumbnail_id(),
-			'spacing'             => 'large',
-			'background_contract' => 'dark',
-			'content_alignment'   => 'center',
-			'overlay'             => '0.4',
-		)
-	);
+	ob_start();
+	echo $category_html;
+	printf('<h1 class="has-heading-1-font-size has-text-color has-white-color block-cover__title">' . esc_html($post->post_title) . '</h1>');
+	$content = ob_get_clean();
 
-	?>
-
-	<?php
+	get_template_part('template-parts/block', 'cover', array(
+		'lazy' => false,
+		'class' => 'has-text-align-center block-cover--single',
+		'image' => get_post_thumbnail_id(),
+		'content' => $content
+	));
 endif;
 the_block( 'breadcrumbs' );
 echo codetot_layout_page_block_open( 'page-block--page ' . $sidebar_layout, false );

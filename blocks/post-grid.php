@@ -13,17 +13,14 @@ $header = ! empty( $title ) ? codetot_build_content_block(
 $columns = array();
 while ( $query->have_posts() ) :
 	$query->the_post();
-	$columns[] = get_block( 'post-card' );
+	$columns[] = array(
+		'class' => 'f fdc post-grid__col',
+		'content' => get_block( 'post-card' )
+	);
 endwhile;
 wp_reset_postdata();
 
-$content = codetot_build_grid_columns(
-	$columns,
-	'post-grid',
-	array(
-		'column_class' => 'f fdc default-section__col',
-	)
-);
+$content = codetot_generate_grid_columns($columns);
 
 if ( ! empty( $query ) && $query->have_posts() ) :
 

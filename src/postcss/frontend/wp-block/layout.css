@@ -50,6 +50,8 @@
 }
 
 .section {
+	margin-top: var(--section-space);
+
 	&.wp-block-cover,
 	&.wp-block-group {
 		margin-top: var(--section-space);
@@ -58,14 +60,32 @@
 		& + .section-bg.wp-block-group {
 			margin-top: var(--section-space);
 		}
+
+		&.has-background {
+			margin-top: 0;
+		}
 	}
 }
 
+.section.has-background,
 .section-bg {
+	margin-top: 0;
+	padding: var(--section-space) 0;
+
 	&.wp-block-cover,
 	&.wp-block-group {
 		padding-top: var(--section-space);
 		padding-bottom: var(--section-space);
+	}
+
+	& + .section {
+		margin-top: var(--section-space);
+	}
+}
+
+.section--hide-mobile {
+	@media (--max-mobile) {
+		display: none;
 	}
 }
 

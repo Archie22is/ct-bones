@@ -8,15 +8,15 @@ if ( empty( $query ) ) {
 if ( $query->max_num_pages > 1 ) :
 	?>
 	<div class="pagination
-	<?php 
+	<?php
 	if ( ! empty( $class ) ) :
 		echo ' ' . $class;
-endif; 
+endif;
 	?>
 	" >
 	  <div class="container pagination__container">
 		<div class="pagination__list">
-		<?php 
+		<?php
 		echo paginate_links(
 			array(
 				'base'               => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
@@ -24,8 +24,10 @@ endif;
 				'current'            => max( 1, get_query_var( 'paged' ) ),
 				'total'              => $query->max_num_pages,
 				'before_page_number' => '<span class="screen-reader-text">' . $translated . '</span>',
-			) 
-		); 
+				'prev_text' => __('&#171;'),
+				'next_text' => __('&#187;'),
+			)
+		);
 		?>
 		</div>
 	  </div>

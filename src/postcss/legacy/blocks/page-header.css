@@ -1,5 +1,5 @@
-.page-header--no-container {
-	& .page-header__container {
+.section.wp-block-group.page-header--no-container {
+	& > .wp-block-group__inner-container {
 		max-width: 100%;
 		padding: 0;
 	}
@@ -9,7 +9,7 @@
 	text-align: left;
 
 	& .page-header__title {
-		@mixin h2;
+		@mixin h3;
 	}
 }
 
