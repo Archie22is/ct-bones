@@ -64,11 +64,11 @@ $post_column = codetot_get_theme_mod( 'archive_post_column' ) ?? 3;
 
     endif;
 
-    the_block( 'pagination' );
+		if ( $wp_query->max_num_pages > 1) :
+			the_block( 'pagination' );
+		endif;
 
   else :
-
-    ob_start();
 
     the_block( 'page-header' ,
 			array(
@@ -83,7 +83,7 @@ $post_column = codetot_get_theme_mod( 'archive_post_column' ) ?? 3;
     ));
 
   endif;
-  ?>
+?>
 
 </main><!-- #main -->
 
