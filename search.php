@@ -13,38 +13,22 @@ global $wp_query;
 $post_column = codetot_get_theme_mod( 'archive_post_column' ) ?? 3;
 ?>
 
-<main id="primary" class="site-main">
+<main id="primary" class="mb-2 site-main">
 
 	<?php
-	the_block( 'breadcrumbs' );
-
   if ( have_posts() ) :
     global $wp_query;
 
-		the_block(
-			'page-header',
-			array(
-				'class' => 'mt-1 page-header--search',
-				/* translators: %s: search query. */
-				'title' => sprintf(esc_html__('Search Results for: %s', 'ct-bones'), '<span>' . get_search_query() . '</span>')
-			)
-		);
-
     if ( ! class_exists( 'WooCommerce' ) ) :
 
-      $columns = [];
-      while( $wp_query->have_posts() ) : $wp_query->the_post();
-        $columns[] = array(
-					'class' => 'f fdc',
-					'content' => get_block( 'post-card' )
-				);
-      endwhile; wp_reset_postdata();
+			the_block('page-header', array(
+				'class' => 'section wp-block-group',
+				'title' => sprintf(esc_html__('Search Results for: %s', 'ct-bones'), '<span>' . get_search_query() . '</span>')
+			));
 
-      printf('<div class="mt-1 mb-2 site-main__main-category default-section %s">', 'has-'. esc_attr($number_columns) . '-columns');
-      echo '<div class="container site-main__container">';
-      echo codetot_generate_grid_columns( $columns );
-      echo '</div>';
-      echo '</div>';
+			the_block('post-list', array(
+				'query' => $wp_query
+			));
 
     else :
 
@@ -90,4 +74,5 @@ $post_column = codetot_get_theme_mod( 'archive_post_column' ) ?? 3;
 <?php do_action( 'codetot_sidebar' ); ?>
 
 <?php
+
 get_footer();
