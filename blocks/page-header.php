@@ -1,5 +1,5 @@
 <?php
-$_class    = 'section wp-block-group page-header';
+$_class    = 'page-header';
 $_class   .= ! empty( $alignment ) ? ' ' . esc_attr( $alignment ) : '';
 $_class   .= ! empty( $class ) ? ' ' . esc_attr( $class ) : '';
 
