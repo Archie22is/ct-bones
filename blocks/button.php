@@ -51,8 +51,20 @@ if ( ! empty( $icon_html ) ) {
 }
 
 if ( ! empty( $size ) ) {
-	error_log('The button is not support $size anymore.');
-	echo '<!-- The button is not support $size anymore. -->';
+	if ( in_array( $size, $button_sizes ) )  {
+		if ($size === 'small') {
+			$_class[] = ' has-heading-5-font-size';
+		} elseif ( $size === 'large' ) {
+			$_class[] = ' has-heading-6-font-size';
+		}
+	} elseif ( absint($size) ) {
+		$_class[] = ' has-heading-' . absint($size) . '-font-size';
+	} else {
+		error_log('The button has wrong $size.');
+		echo '<!-- The button has wrong $size. -->';
+	}
+
+	$_class[] = 'has-custom-font-size';
 }
 
 if ( ! empty( $type ) && in_array( $type, $button_types ) ) {
@@ -93,7 +105,7 @@ if ( ! empty( $type ) && in_array( $type, $button_types ) ) {
 
 		case 'outline-secondary':
 		case 'link-secondary':
-			$_link_class = array_merge($_link_class, ['has-primary-color', 'has-text-color']);
+			$_link_class = array_merge($_link_class, ['has-secondary-color', 'has-text-color']);
 			break;
 
 		default:
