@@ -6,6 +6,16 @@
 	@mixin button-style-secondary;
 }
 
+.wp-block-button__link {
+	font-size: 1rem;
+}
+
+.wp-block-button.has-custom-font-size {
+	& .wp-block-button__link {
+		font-size: inherit;
+	}
+}
+
 .wp-block-button {
 	&.is-style-link,
 	&.is-style-outline,
