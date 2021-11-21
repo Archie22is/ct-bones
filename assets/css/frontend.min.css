@@ -619,6 +619,14 @@ div.wp-block-columns {
   }
     }
 
+.wp-block-button__link {
+	font-size: 1rem;
+}
+
+.wp-block-button.has-custom-font-size .wp-block-button__link {
+		font-size: inherit;
+	}
+
 .wp-block-button.is-style-link .wp-block-button__link, .wp-block-button.is-style-outline .wp-block-button__link, .wp-block-button.is-style-fill .wp-block-button__link {
 			padding: 8px 15px;
 			display: inline-block;
@@ -945,7 +953,7 @@ blockquote.is-style-large.wp-block-quote > p {
 }
 
 .block-columns .block-columns__col {
-		width: 100%;
+		flex-basis: 100%;
 		margin: 20px 0 0 0;
 		margin: var(--column-space) 0 0 0;
 		padding: 0 10px;
