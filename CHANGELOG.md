@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.2.2 - 22/11/2021
+
+- Fix archive product image
+- Fix button style
+- Fix default new grid column width in mobile
+
 ## 6.2.1 - 21/11/2021
 
 - Convert hero image to native block, remove require ct-blocks plugin
