@@ -1,22 +1,22 @@
 @font-face {
-	font-family: "Poppins-Regular";
-	src: url("Poppins-Regular.otf") format("otf");
+	font-family: 'Poppins-Regular';
+	src: url('Poppins-Regular.otf') format('otf');
 	font-weight: 500;
 	font-style: normal;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: "Poppins-Regular";
-	src: url("Poppins-Regular.otf") format("otf");
+	font-family: 'Poppins-Regular';
+	src: url('Poppins-Regular.otf') format('otf');
 	font-weight: 700;
 	font-style: normal;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: "Poppins-Regular";
-	src: url("Poppins-Regular.otf") format("otf");
+	font-family: 'Poppins-Regular';
+	src: url('Poppins-Regular.otf') format('otf');
 	font-style: normal;
 	font-display: swap;
 }
