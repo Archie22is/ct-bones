@@ -180,6 +180,7 @@ function codetot_premium_fonts() {
 			'Segoe UI'              => 'Segoe UI',
 			'Sanomat Sans'          => 'Sanomat Sans',
 			'San Francisco Display' => 'San Francisco Display',
+			'Poppins' => 'Poppins'
 		)
 	);
 }
@@ -201,7 +202,6 @@ function codetot_google_fonts() {
 			'Oswald'          => sprintf( 'Google: %s', 'Oswald' ),
 			'Raleway'         => sprintf( 'Google: %s', 'Raleway' ),
 			'Nunito'          => sprintf( 'Google: %s', 'Nunito' ),
-			'Poppins'         => sprintf( 'Google: %s', 'Poppins' ),
 		)
 	);
 }
