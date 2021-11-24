@@ -1,7 +1,7 @@
 <?php
 $default_attr  = ' data-block="header"';
 $header_attr   = apply_filters( 'codetot_header_attributes', $default_attr );
-$enable_sticky = codetot_get_theme_mod( 'header_sticky_type' ) ?? 'jump-down';
+$enable_sticky = codetot_get_theme_mod( 'header_sticky_type' ) ?? '';
 $header_attr  .= ( $enable_sticky != 'none' ) ? ' data-sticky-header="' . $enable_sticky . '"' : '';
 $header_class  = function_exists( 'codetot_header_class' ) ? codetot_header_class() : 'header';
 ?>

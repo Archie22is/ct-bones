@@ -41,7 +41,7 @@ endif;
 				'image'    => $background_image,
 				'class'    => 'default-section__background-image',
 				'lazyload' => $_enable_lazyload,
-				'size'     => wp_is_mobile() ? 'medium' : 'large',
+				'size'     => 'medium',
 			)
 		);
 	endif;

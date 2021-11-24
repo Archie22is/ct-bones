@@ -6,6 +6,7 @@ $footer_text_contract = codetot_get_theme_mod( 'footer_text_contract' ) ?? 'ligh
 $footer_background    = codetot_get_theme_mod( 'footer_background_color' ) ?? 'transparent';
 
 $footer_class  = 'footer';
+$footer_class .= ' has-' . esc_attr($footer_text_contract) . '-contract';
 $footer_class .= ! empty( $footer_background ) ? ' bg-' . esc_attr( $footer_background ) : ' bg-transparent';
 $footer_class .= ! empty( $footer_widget_column ) ? ' footer--' . esc_html( $footer_widget_column ) . '-columns' : ' footer--3-columns';
 

@@ -141,7 +141,7 @@ class Codetot_Theme_Layout {
 		);
 
 		add_action( 'codetot_before_sidebar', 'codetot_layout_page_block_between_html', 10 );
-		add_action( 'codetot_footer', 'codetot_layout_page_block_close_html', 10 );
+		add_action( 'codetot_before_footer', 'codetot_layout_page_block_close_html', 10 );
 	}
 
 	public function generate_comments() {
