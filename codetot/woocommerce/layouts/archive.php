@@ -241,8 +241,6 @@ class Codetot_Woocommerce_Layout_Archive {
 		  $sidebar_layout = $this->product_category_sidebar;
 	  endif;
 
-	  var_dump('loaded');
-
 	  if ( is_shop() || is_product_category() || is_product_tag() ) :
 		  if ( in_array( $sidebar_layout, array( 'sidebar-left', 'sidebar-right' ) ) ) :
 			  echo '</div>'; // close .page-block__col--sidebar
