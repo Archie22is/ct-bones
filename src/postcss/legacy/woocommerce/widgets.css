@@ -113,6 +113,7 @@
 
 				& ~ ul.children {
 					max-height: max-content;
+					margin-top: 0;
 				}
 
 				& + a {

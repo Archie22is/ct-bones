@@ -11,14 +11,13 @@
 	transition: all 0.3s;
 
 	& li {
-		list-style: none;
-		font-size: 0.85rem;
-		font-weight: var(--font-normal);
-		margin-bottom: 0.5em;
-		border-bottom: 1px solid var(--border);
+		margin: 0 0 var(--element-space) 0;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 		padding-bottom: 0.25em;
 
 		&:last-child {
+			margin-bottom: 0;
+			padding-bottom: 0;
 			border-bottom: 0;
 		}
 
@@ -29,7 +28,6 @@
 
 	& .sub-menu {
 		& li {
-			font-weight: 500;
 			font-size: 0.875rem;
 			margin-bottom: 0.25em;
 			padding-bottom: 0.15em;
@@ -153,7 +151,42 @@
 
 		& > a {
 			display: block;
-			font-weight: var(--font-bold);
+			font-weight: var(--font-normal);
+		}
+	}
+
+	& .icon-toggle {
+		display: block;
+		position: relative;
+		width: 20px;
+		height: 20px;
+		cursor: pointer;
+
+		&::before {
+			content: '';
+			position: absolute;
+			height: 10px;
+			width: 2px;
+			top: 5px;
+			left: 9px;
+			background: var(--dark);
+			transition: all 0.3s;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			height: 2px;
+			width: 10px;
+			top: 9px;
+			left: 5px;
+			background: var(--dark);
+		}
+
+		&.is-active {
+			&::before {
+				transform: rotate(90deg);
+			}
 		}
 	}
 
@@ -161,41 +194,6 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
-
-		& > .icon-toggle {
-			display: block;
-			position: relative;
-			width: 20px;
-			height: 20px;
-			background: var(--primary);
-
-			&::before {
-				content: '';
-				position: absolute;
-				height: 10px;
-				width: 2px;
-				top: 5px;
-				left: 9px;
-				background: var(--white);
-				transition: all 0.3s;
-			}
-
-			&::after {
-				content: '';
-				position: absolute;
-				height: 2px;
-				width: 10px;
-				top: 9px;
-				left: 5px;
-				background: var(--white);
-			}
-
-			&.is-active {
-				&::before {
-					transform: rotate(90deg);
-				}
-			}
-		}
 
 		& > .sub-menu {
 			margin: 0;
@@ -215,44 +213,9 @@
 				flex-wrap: wrap;
 				justify-content: space-between;
 
-				& .icon-toggle {
-					display: block;
-					position: relative;
-					width: 20px;
-					height: 20px;
-					background: #1346af;
-					background: var(--primary);
-
-					&::before {
-						content: '';
-						position: absolute;
-						height: 10px;
-						width: 2px;
-						top: 5px;
-						left: 9px;
-						background: var(--white);
-						transition: all 0.3s;
-					}
-
-					&::after {
-						content: '';
-						position: absolute;
-						height: 2px;
-						width: 10px;
-						top: 9px;
-						left: 5px;
-						background: var(--white);
-					}
-
-					&.is-active {
-						&::before {
-							transform: rotate(90deg);
-						}
-					}
-				}
-
 				& > .sub-menu {
-					padding-left: 10px;
+					margin: 0;
+					padding: 0;
 					height: 0;
 					overflow: hidden;
 					width: 100%;
@@ -261,6 +224,8 @@
 
 				&.is-active {
 					& > .sub-menu {
+						margin-top: 10px;
+						padding-left: 10px;
 						height: auto;
 					}
 				}

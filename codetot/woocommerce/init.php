@@ -34,7 +34,7 @@ class Codetot_WooCommerce_Init {
 		add_action( 'after_setup_theme', array( $this, 'woocommerce_support' ) );
 		add_action( 'widgets_init', array( $this, 'register_woocommerce_sidebars' ) );
 
-		add_filter( 'woocommerce_product_add_to_cart_text', array( $this, 'update_add_to_cart_button_text' ) );
+		add_filter( 'woocommerce_product_add_to_cart_text', array( $this, 'update_add_to_cart_button_text' ), 10, 2 );
 
 		add_filter( 'woocommerce_breadcrumb_defaults', array( $this, 'breadcrumbs_container' ) );
 		add_action( 'pre_get_posts', array( $this, 'search_product_only' ) );
@@ -74,15 +74,6 @@ class Codetot_WooCommerce_Init {
 		add_theme_support( 'wc-product-gallery-zoom' );
 		add_theme_support( 'wc-product-gallery-lightbox' );
 		add_theme_support( 'wc-product-gallery-slider' );
-
-		add_filter(
-			'woocommerce_single_product_photoswipe_enabled',
-			function () {
-				if ( wp_is_mobile() ) {
-					return false;
-				}
-			}
-		);
 	}
 
 	public function register_woocommerce_sidebars() {
@@ -157,9 +148,7 @@ class Codetot_WooCommerce_Init {
 	  endif;
 	}
 
-	public function update_add_to_cart_button_text( $text ) {
-		global $product;
-
+	public function update_add_to_cart_button_text( $text, $product ) {
 		if ( $product->is_type( 'variable' ) ) {
 			$variations = $product->get_available_variations();
 
@@ -185,7 +174,7 @@ class Codetot_WooCommerce_Init {
 		  }
 		})(jQuery);
 	  </script>
-			<?php 
+			<?php
 endif;
 	}
 

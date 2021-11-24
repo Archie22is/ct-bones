@@ -145,7 +145,7 @@ class Codetot_Woocommerce_Layout_Product {
 		if ( $this->sidebar_layout !== 'no-sidebar' ) {
 			add_action( 'woocommerce_before_single_product', array( $this, 'page_block_open' ), 10 );
 			add_action( 'codetot_before_sidebar', array( $this, 'page_block_between' ), 1 );
-			add_action( 'codetot_footer', array( $this, 'page_block_close' ), 100 );
+			add_action( 'codetot_before_footer', array( $this, 'page_block_close' ), 100 );
 		}
 
 		if ( $this->enable_top_sidebar ) {
@@ -705,7 +705,7 @@ function codetot_woocommerce_single_meta() {
 	echo '<div class="mt-05 single-product-meta">';
 	global $product;
 	do_action( 'woocommerce_product_meta_start' );
-	echo wc_get_product_tag_list( $product->get_id(), ', ', '<div class="single-product-tag tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</div>' );
+	echo wc_get_product_tag_list( $product->get_id(), ', ', '<div class="mt-05 single-product-tag tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</div>' );
 	do_action( 'woocommerce_product_meta_end' );
 	echo '</div>';
 }
@@ -720,7 +720,7 @@ function codetot_render_product_sku_meta() {
 
 	if ( ( function_exists( 'wc_product_sku_enabled' ) && wc_product_sku_enabled() ) && ! empty( $product->get_sku() ) ) :
 		printf(
-			'<p class="product-meta product-meta--sku"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+			'<p class="mt-05 product-meta product-meta--sku"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
 			str_replace( ':', '', esc_html__( 'SKU: ', 'woocommerce' ) ),
 			$product->get_sku()
 		);
@@ -739,7 +739,7 @@ function codetot_render_product_weight_meta() {
 		$weight_unit = get_option( 'woocommerce_weight_unit' );
 
 		printf(
-			'<p class="product-meta product-meta--weight"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+			'<p class="mt-05 product-meta product-meta--weight"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
 			esc_html__( 'Weight', 'woocommerce' ),
 			esc_html($product->get_weight() . $weight_unit)
 		);
@@ -760,7 +760,7 @@ function codetot_render_product_stock_meta() {
 	if ( ! $hide_stock_status ) :
 
 		printf(
-			'<p class="product-meta product-meta--stock"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+			'<p class="mt-05 product-meta product-meta--stock"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
 			esc_html__( 'Stock', 'woocommerce' ),
 			$availability['class'] !== 'in-stock' ? esc_html( $availability['availability'] ) : esc_html__( 'In stock', 'woocommerce' )
 		);
@@ -802,7 +802,7 @@ function codetot_render_product_dimesion_meta() {
 		$dimesions_html = ob_get_clean();
 
 		printf(
-			'<p class="product-meta product-meta--dimesions"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
+			'<p class="mt-05 product-meta product-meta--dimesions"><span class="product-meta__label">%s:</span> <span class="product-meta__value">%s</span></p>',
 			esc_html__( 'Size', 'woocommerce' ),
 			$dimesions_html
 		);
