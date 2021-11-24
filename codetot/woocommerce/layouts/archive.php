@@ -39,10 +39,6 @@ class Codetot_Woocommerce_Layout_Archive {
 		$this->remove_default_hooks();
 		add_filter( 'woocommerce_pagination_args', array( $this, 'change_woocommerce_arrow_pagination' ) );
 
-		if ( is_shop() || is_product_category() || is_product_tag() ) :
-			$this->build_wrapper();
-	  endif;
-
 		$this->shop_sidebar             = codetot_get_theme_mod( 'shop_layout', 'woocommerce' ) ?? 'sidebar-left';
 		$this->product_category_sidebar = codetot_get_theme_mod( 'product_category_layout', 'woocommerce' ) ?? 'sidebar-left';
 
@@ -72,14 +68,16 @@ class Codetot_Woocommerce_Layout_Archive {
 	}
 
 	public function build_wrapper() {
-		add_action( 'codetot_product_archive_after_page_block_main', array( $this, 'archive_title' ), 10 );
-		add_action( 'codetot_product_archive_after_page_block_main', array( $this, 'top_product_category_content' ), 20 );
-		add_action( 'codetot_product_archive_after_page_block_main', 'codetot_archive_product_top_widget', 25 );
-		add_action( 'codetot_after_header', array( $this, 'breadcrumbs' ), 10 );
-		add_action( 'codetot_after_header', array( $this, 'page_block_open' ), 50 );
-		add_action( 'woocommerce_after_shop_loop', array( $this, 'bottom_product_category_content' ), 10 );
-		add_action( 'codetot_before_sidebar', array( $this, 'page_block_between' ), 20 );
-		add_action( 'codetot_footer', array( $this, 'page_block_close' ), 90 );
+		if ( is_shop() || is_product_category() || is_product_tag() ) :
+			add_action( 'codetot_product_archive_after_page_block_main', array( $this, 'archive_title' ), 10 );
+			add_action( 'codetot_product_archive_after_page_block_main', array( $this, 'top_product_category_content' ), 20 );
+			add_action( 'codetot_product_archive_after_page_block_main', 'codetot_archive_product_top_widget', 25 );
+			add_action( 'codetot_after_header', array( $this, 'breadcrumbs' ), 10 );
+			add_action( 'codetot_after_header', array( $this, 'page_block_open' ), 50 );
+			add_action( 'woocommerce_after_shop_loop', array( $this, 'bottom_product_category_content' ), 10 );
+			add_action( 'codetot_before_sidebar', array( $this, 'page_block_between' ), 20 );
+			add_action( 'codetot_before_footer', array( $this, 'page_block_close' ), 10 );
+		endif;
 	}
 
 	public function build_product_column() {
@@ -242,6 +240,8 @@ class Codetot_Woocommerce_Layout_Archive {
 	  elseif ( is_product_category() || is_product_tag() ) :
 		  $sidebar_layout = $this->product_category_sidebar;
 	  endif;
+
+	  var_dump('loaded');
 
 	  if ( is_shop() || is_product_category() || is_product_tag() ) :
 		  if ( in_array( $sidebar_layout, array( 'sidebar-left', 'sidebar-right' ) ) ) :
