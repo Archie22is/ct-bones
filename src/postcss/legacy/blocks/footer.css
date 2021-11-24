@@ -138,8 +138,7 @@
 	}
 }
 
-.footer.bg-brand,
-.footer.bg-dark {
+.footer.has-dark-contract {
 	& .footer__copyright-text,
 	& .footer__copyright-text a {
 		color: var(--light);
