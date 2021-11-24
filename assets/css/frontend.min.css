@@ -943,6 +943,10 @@ blockquote.is-style-large.wp-block-quote > p {
 			margin-right: auto;
 		}
 
+a.block-cover__list__link {
+	text-decoration: none;
+}
+
 /** Render by php **/
 
 .block-columns {
