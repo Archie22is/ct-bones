@@ -11,14 +11,13 @@
 	transition: all 0.3s;
 
 	& li {
-		list-style: none;
-		font-size: 0.85rem;
-		font-weight: var(--font-normal);
-		margin-bottom: 0.5em;
+		margin: 0 0 var(--element-space) 0;
 		border-bottom: 1px solid var(--border);
 		padding-bottom: 0.25em;
 
 		&:last-child {
+			margin-bottom: 0;
+			padding-bottom: 0;
 			border-bottom: 0;
 		}
 
@@ -29,7 +28,6 @@
 
 	& .sub-menu {
 		& li {
-			font-weight: 500;
 			font-size: 0.875rem;
 			margin-bottom: 0.25em;
 			padding-bottom: 0.15em;
@@ -153,7 +151,7 @@
 
 		& > a {
 			display: block;
-			font-weight: var(--font-bold);
+			font-weight: var(--font-normal);
 		}
 	}
 
@@ -252,7 +250,8 @@
 				}
 
 				& > .sub-menu {
-					padding-left: 10px;
+					margin: 0;
+					padding: 0;
 					height: 0;
 					overflow: hidden;
 					width: 100%;
@@ -261,6 +260,8 @@
 
 				&.is-active {
 					& > .sub-menu {
+						margin-top: 10px;
+						padding-left: 10px;
 						height: auto;
 					}
 				}
