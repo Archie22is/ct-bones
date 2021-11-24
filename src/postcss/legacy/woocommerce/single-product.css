@@ -496,6 +496,7 @@
 
 			& a {
 				display: inherit;
+				text-decoration: none;
 				transition: all 0.3s;
 			}
 
@@ -522,7 +523,7 @@
 
 .single-product-tag,
 .single-product-meta {
-	font-size: 0.9rem;
+	font-size: 0.875rem;
 
 	& .product-meta__value {
 		color: var(--primary);
@@ -536,10 +537,10 @@
 			text-decoration: underline;
 		}
 	}
-}
 
-.single-product-tag {
-	margin-top: 0.5em;
+	& .product-meta {
+		margin: 10px 0 0 0;
+	}
 }
 
 .variations_form {

@@ -220,11 +220,6 @@ if ( ! function_exists( 'codetot_header_class' ) ) {
 		$header_layout_number = str_replace( 'header-', '', $header_layout );
 		$class[]              = apply_filters( 'codetot_header_layout_classes', 'header--layout-' . $header_layout_number );
 
-		$enable_header_transparent = is_page() && function_exists( 'rwmb_meta' ) ? rwmb_meta( 'codetot_enable_header_transparent' ) : false;
-		if ( $enable_header_transparent ) {
-			$class[] = 'header--transparent';
-		}
-
 		$header_background_color = codetot_get_theme_mod( 'header_background_color' ) ?? 'white';
 		$class[]                 = ! empty( $header_background_color ) && $header_background_color !== 'bg-white' ? 'header--has-bg bg-' . esc_attr( $header_background_color ) : 'bg-white';
 

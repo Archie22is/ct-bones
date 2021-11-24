@@ -259,6 +259,7 @@
 .product__image {
 	@mixin abs-full;
 
+	margin: 0;
 	object-fit: cover;
 	transition: all 0.3s ease-in-out;
 }
