@@ -186,7 +186,7 @@ class Codetot_Related_Posts {
 		}
 
 		$post_query = new WP_Query( $post_args );
-		$class      = 'post-grid--related-posts default-section--no-container';
+		$class      = 'mb-2 post-grid--related-posts default-section--no-container';
 
 		if ( $post_query->have_posts() ) {
 			the_block(
