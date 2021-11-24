@@ -537,10 +537,10 @@
 			text-decoration: underline;
 		}
 	}
-}
 
-.single-product-tag {
-	margin-top: 0.5em;
+	& .product-meta {
+		margin: 10px 0 0 0;
+	}
 }
 
 .variations_form {
