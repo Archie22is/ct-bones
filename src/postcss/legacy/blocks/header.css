@@ -110,7 +110,7 @@ ul.header__menu {
 		& > a {
 			display: block;
 			color: var(--black);
-			padding: 1em 0;
+			padding: 15px 0;
 
 			&:hover {
 				color: var(--primary);
@@ -135,6 +135,14 @@ ul.header__menu {
 			height: 5px;
 		}
 
+		& .sub-menu {
+			@mixin fade-out;
+
+			position: absolute;
+			width: 250px;
+			box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.06);
+		}
+
 		@media (--m) {
 			& .menu-item {
 				margin-top: 0;
@@ -157,13 +165,8 @@ ul.header__menu {
 			}
 
 			& > .sub-menu {
-				@mixin fade-out;
-
-				position: absolute;
 				top: 100%;
 				left: 0;
-				width: 250px;
-				box-shadow: 0 0 6px 0 var(--primary-light);
 
 				& .menu-item-has-children {
 					position: relative;
@@ -184,13 +187,8 @@ ul.header__menu {
 					}
 
 					& > .sub-menu {
-						@mixin fade-out;
-
-						position: absolute;
 						top: 0;
 						left: 100%;
-						width: 250px;
-						box-shadow: 0 0 6px 0 var(--primary-light);
 					}
 
 					&:hover {
@@ -206,7 +204,7 @@ ul.header__menu {
 					transform: translateY(-50%) rotate(0);
 				}
 
-				& .sub-menu {
+				& > .sub-menu {
 					@mixin fade-in;
 				}
 			}
