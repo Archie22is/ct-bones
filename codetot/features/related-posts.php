@@ -195,6 +195,9 @@ class Codetot_Related_Posts {
 					'class' => $class,
 					'title' => esc_html__( 'Related posts', 'ct-bones' ),
 					'query' => $post_query,
+					'columns' => array(
+						'desktop' => absint( $post_args['posts_per_page'] )
+					)
 				)
 			);
 		}

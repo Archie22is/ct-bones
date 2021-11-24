@@ -1,7 +1,16 @@
 <?php
 $_class  = 'post-grid section';
 $_class .= ! empty( $class ) ? ' ' . $class : '';
-$_class .= ! empty( $columns ) ? ' has-' . $columns . '-columns' : ' has-3-columns';
+
+$_columns = array();
+if ( !empty($columns) && is_int($columns) ) {
+	$_columns['desktop'] = $columns;
+	error_log('Deprecated passing $columns as number to post-grid section.');
+}
+
+if ( !empty($columns) && is_array($columns)) {
+	$_columns = $columns;
+}
 
 $header = ! empty( $title ) ? codetot_build_content_block(
 	array(
@@ -20,7 +29,9 @@ while ( $query->have_posts() ) :
 endwhile;
 wp_reset_postdata();
 
-$content = codetot_generate_grid_columns($columns);
+$content = codetot_generate_grid_columns($columns, array(
+	'columns' => $_columns
+));
 
 if ( ! empty( $query ) && $query->have_posts() ) :
 
