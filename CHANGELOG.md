@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.2.3 - 24/11/2021
+
+- Fix default sticky header variable from Customizer
+- Remove link underline in block cover and breadcrumbs
+- Fix related posts layout and spacing
+- Deprecated support function `wp_is_mobile()`
+- Fix header menu spacing, reduce duplicate style
+- Fix slideout menu spacing, remove icon toggle background
+- Fix duplicate assets
+- Fix typography and spacing single product elements
+- Add new hook `codetot_before_footer` to close page block section
+- Fix footer dark contract css class
+- Fix fullwidth page template selection
+- Update poppin font for Vietnamese language
+
 ## 6.2.2 - 22/11/2021
 
 - Fix archive product image
