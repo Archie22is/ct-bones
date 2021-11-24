@@ -74,15 +74,6 @@ class Codetot_WooCommerce_Init {
 		add_theme_support( 'wc-product-gallery-zoom' );
 		add_theme_support( 'wc-product-gallery-lightbox' );
 		add_theme_support( 'wc-product-gallery-slider' );
-
-		add_filter(
-			'woocommerce_single_product_photoswipe_enabled',
-			function () {
-				if ( wp_is_mobile() ) {
-					return false;
-				}
-			}
-		);
 	}
 
 	public function register_woocommerce_sidebars() {
