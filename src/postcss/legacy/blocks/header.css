@@ -82,8 +82,18 @@ ul.header__menu {
 	display: flex;
 	flex-wrap: wrap;
 
-	& li > a {
+	& a {
 		text-decoration: none;
+	}
+
+	& .sub-menu {
+		@mixin list-reset;
+
+		background: var(--white);
+	}
+
+	& .icon-toggle {
+		background: var(--dark);
 	}
 
 	& > .menu-item {
@@ -119,11 +129,10 @@ ul.header__menu {
 			margin-right: 5px;
 		}
 
-		& .icon-toggle {
+		& > .icon-toggle {
 			clip-path: polygon(100% 0, 0 0, 50% 100%);
 			width: 10px;
 			height: 5px;
-			background: var(--black);
 		}
 
 		@media (--m) {
@@ -133,7 +142,7 @@ ul.header__menu {
 				& > a {
 					display: inherit;
 					padding: 6px 10px;
-					border-top: 1px solid var(--primary-light);
+					border-top: 1px solid rgba(0, 0, 0, 0.15);
 
 					&:hover {
 						color: var(--primary);
@@ -145,10 +154,6 @@ ul.header__menu {
 						border-top: unset;
 					}
 				}
-			}
-
-			& .sub-menu {
-				@mixin list-reset;
 			}
 
 			& > .sub-menu {
@@ -167,7 +172,6 @@ ul.header__menu {
 						clip-path: polygon(100% 0, 0 0, 50% 100%);
 						width: 10px;
 						height: 5px;
-						background: var(--black);
 						position: absolute;
 						top: 45%;
 						right: 8px;
@@ -190,16 +194,6 @@ ul.header__menu {
 					}
 
 					&:hover {
-						background: var(--black);
-
-						& > a {
-							color: var(--white);
-						}
-
-						& > .icon-toggle {
-							background: var(--white);
-						}
-
 						& > .sub-menu {
 							@mixin fade-in;
 						}
@@ -214,8 +208,6 @@ ul.header__menu {
 
 				& .sub-menu {
 					@mixin fade-in;
-
-					background: var(--white);
 				}
 			}
 		}
@@ -339,19 +331,30 @@ ul.header__menu {
 .header--dark-contract {
 	color: var(--white);
 
-	& a {
-		color: var(--white);
-	}
-
 	& svg {
 		fill: var(--white);
 	}
 
-	& .header__menu {
+	& ul.header__menu {
+		& .icon-toggle {
+			background: var(--white);
+		}
+
+		& .sub-menu {
+			background: var(--dark);
+		}
+
 		& > .menu-item-has-children {
-			& .icon-toggle {
-				background: var(--white);
+			& .sub-menu {
+				& > .menu-item > a {
+					color: var(--white);
+					border-color: rgba(255, 255, 255, 0.06);
+				}
 			}
+		}
+
+		& > .menu-item > a {
+			color: var(--white);
 		}
 	}
 }
@@ -534,19 +537,6 @@ ul.header__menu {
 	& .header__menu-icons__button svg,
 	& .header__mobile-button svg {
 		fill: var(--white);
-	}
-}
-
-.header--type-light,
-.header--type-transparent {
-	& .header__menu {
-		& > .menu-item-has-children {
-			& > a {
-				&::after {
-					background: var(--dark);
-				}
-			}
-		}
 	}
 }
 

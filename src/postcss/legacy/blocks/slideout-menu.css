@@ -12,7 +12,7 @@
 
 	& li {
 		margin: 0 0 var(--element-space) 0;
-		border-bottom: 1px solid var(--border);
+		border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 		padding-bottom: 0.25em;
 
 		&:last-child {
@@ -155,45 +155,45 @@
 		}
 	}
 
+	& .icon-toggle {
+		display: block;
+		position: relative;
+		width: 20px;
+		height: 20px;
+		cursor: pointer;
+
+		&::before {
+			content: '';
+			position: absolute;
+			height: 10px;
+			width: 2px;
+			top: 5px;
+			left: 9px;
+			background: var(--dark);
+			transition: all 0.3s;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			height: 2px;
+			width: 10px;
+			top: 9px;
+			left: 5px;
+			background: var(--dark);
+		}
+
+		&.is-active {
+			&::before {
+				transform: rotate(90deg);
+			}
+		}
+	}
+
 	& > .menu-item-has-children {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
-
-		& > .icon-toggle {
-			display: block;
-			position: relative;
-			width: 20px;
-			height: 20px;
-			background: var(--primary);
-
-			&::before {
-				content: '';
-				position: absolute;
-				height: 10px;
-				width: 2px;
-				top: 5px;
-				left: 9px;
-				background: var(--white);
-				transition: all 0.3s;
-			}
-
-			&::after {
-				content: '';
-				position: absolute;
-				height: 2px;
-				width: 10px;
-				top: 9px;
-				left: 5px;
-				background: var(--white);
-			}
-
-			&.is-active {
-				&::before {
-					transform: rotate(90deg);
-				}
-			}
-		}
 
 		& > .sub-menu {
 			margin: 0;
@@ -212,42 +212,6 @@
 				display: flex;
 				flex-wrap: wrap;
 				justify-content: space-between;
-
-				& .icon-toggle {
-					display: block;
-					position: relative;
-					width: 20px;
-					height: 20px;
-					background: #1346af;
-					background: var(--primary);
-
-					&::before {
-						content: '';
-						position: absolute;
-						height: 10px;
-						width: 2px;
-						top: 5px;
-						left: 9px;
-						background: var(--white);
-						transition: all 0.3s;
-					}
-
-					&::after {
-						content: '';
-						position: absolute;
-						height: 2px;
-						width: 10px;
-						top: 9px;
-						left: 5px;
-						background: var(--white);
-					}
-
-					&.is-active {
-						&::before {
-							transform: rotate(90deg);
-						}
-					}
-				}
 
 				& > .sub-menu {
 					margin: 0;
