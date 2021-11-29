@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Utilitis classes
+ *
+ * @param string $content
+ * @return void
+ */
 /**
  * Minify inline css
  *
@@ -51,7 +56,7 @@ function ct_bones_register_inline_script( $id, $content ) {
 }
 
 /**
- * Filter CSS variables to remove from inline css style
+ * Filter CSS variables to remove custom media from inline css style
  *
  * @param string $context
  * @return void|string
@@ -61,6 +66,21 @@ function ct_bones_filter_css_variables( $context ) {
 	$context = preg_replace( '/\s+/', '', $context );
 
 	return $context;
+}
+
+
+/**
+ * Check if child theme has font assets
+ *
+ * @param string $font
+ * @return void
+ */
+function ct_bones_is_child_font_css_file( $font ) {
+	$font_path = ct_bones_format_local_font_url( $font );
+
+	$child_theme_path = get_stylesheet_directory() . '/dynamic-assets/fonts/' . esc_attr( $font_path ) . '/font.css';
+
+	return file_exists( $child_theme_path );
 }
 
 /**
@@ -92,8 +112,20 @@ function ct_bones_format_google_font_url( $font_name ) {
  */
 function ct_bones_format_font_assets_path( $content, $font ) {
 	$font_path = ct_bones_format_local_font_url( $font );
+	$is_child_theme = ct_bones_is_child_font_css_file( $font );
+	$path = $is_child_theme ? get_stylesheet_directory_uri() : get_template_directory_uri();
 
-	return str_replace( 'url(\'', 'url(\'' . get_template_directory_uri() . '/dynamic-assets/fonts/' . $font_path . '/', $content );
+	return str_replace( 'url(\'', 'url(\'' . $path . '/dynamic-assets/fonts/' . $font_path . '/', $content );
+}
+
+function ct_bones_google_font_weight() {
+	return apply_filters('ct_bones_google_font_weights', array(
+		'300',
+		'400',
+		'500',
+		'600',
+		'700'
+	));
 }
 
 /**
@@ -104,20 +136,26 @@ function ct_bones_format_font_assets_path( $content, $font ) {
  */
 function ct_bones_get_google_fonts_css_inline( $font ) {
 	$font_path = ct_bones_format_google_font_url( $font );
+	$font_weights = ct_bones_google_font_weight();
+	$font_weighs_decoded = !empty($font_weights) && is_array($font_weights) ? implode(';', $font_weights) : '';
 
-	return "@import url('https://fonts.googleapis.com/css?family=" . esc_attr( $font_path ) . ":wght@300;400;500;600;700&display=swap');";
+	return "@import url('https://fonts.googleapis.com/css?family=" . esc_attr( $font_path ) . ":wght@" . $font_weighs_decoded . "&display=swap');";
 }
 
 /**
  * Get font CSS path
  *
  * @param string $font
- * @return void|string
+ * @return string
  */
 function ct_bones_get_local_font_url( $font ) {
 	$font_path = ct_bones_format_local_font_url( $font );
 
-	return get_template_directory() . '/dynamic-assets/fonts/' . esc_attr( $font_path ) . '/font.css';
+	if ( ct_bones_is_child_font_css_file( $font ) ) {
+		return get_stylesheet_directory() . '/dynamic-assets/fonts/' . esc_attr( $font_path ) . '/font.css';
+	} else {
+		return get_template_directory() . '/dynamic-assets/fonts/' . esc_attr( $font_path ) . '/font.css';
+	}
 }
 
 function ct_bones_get_font_scales_config() {
