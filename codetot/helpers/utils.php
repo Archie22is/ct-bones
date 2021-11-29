@@ -225,5 +225,5 @@ function ct_bones_get_color_schemas() {
 		);
 	}
 
-	return $output_colors;
+	return apply_filters('ct_bones_color_schemas', $output_colors);
 }
