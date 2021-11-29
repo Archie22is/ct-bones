@@ -36,6 +36,7 @@ class CT_Gutenberg_Init {
 		 $this->theme_version = $this->is_localhost() ? substr( sha1( rand() ), 0, 6 ) : CODETOT_VERSION;
 
 		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'load_admin_css_variables' ) );
 	}
 
 	function theme_supports() {
@@ -50,6 +51,19 @@ class CT_Gutenberg_Init {
 
 	function load_color_palette() {
 		return wp_parse_args( ct_bones_get_color_schemas(), ct_bones_get_default_colors() );
+	}
+
+	function load_admin_css_variables() {
+		$is_child_theme = is_child_theme();
+
+		$variables_file = $is_child_theme ? get_stylesheet_directory() . '/variables.css' : get_template_directory() . '/variables.css';
+		$file_content   = file_exists( $variables_file ) ? file_get_contents( $variables_file ) : '';
+
+		if ( ! empty( $file_content ) ) {
+			ct_bones_register_inline_style('ct-bones-admin-theme-variables', $file_content );
+		} else {
+			echo '/** No variables.css found **/';
+		}
 	}
 
 	function load_font_sizes() {
