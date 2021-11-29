@@ -891,6 +891,8 @@ blockquote.is-style-large.wp-block-quote > p {
 		left: 0;
 		width: 100%;
 		height: 100%;
+
+		margin: 0;
 	}
 
 .wp-block-embed.wp-has-aspect-ratio.wp-embed-aspect-4-3 .wp-block-embed__wrapper {
