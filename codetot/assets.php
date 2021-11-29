@@ -144,7 +144,7 @@ class Codetot_Assets {
 	}
 
 	public function custom_color_options_css_inline() {
-		 $variables_rows = $this->load_custom_color_options();
+		$variables_rows = $this->load_custom_color_options();
 		echo implode( '', $variables_rows );
 	}
 
