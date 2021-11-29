@@ -875,6 +875,8 @@ blockquote.is-style-large.wp-block-quote > p {
 
 .wp-block-embed {
 	width: 100%;
+	margin: 20px 0 0 0;
+	margin: var(--element-space) 0 0 0;
 }
 
 .wp-block-embed__wrapper {
