@@ -11,6 +11,8 @@
 .wp-block-embed.wp-has-aspect-ratio {
 	& iframe {
 		@mixin abs-full;
+
+		margin: 0;
 	}
 
 	&.wp-embed-aspect-4-3 {
