@@ -70,7 +70,7 @@ endif;
 	<div class="wp-block-group default-section__main">
 	  <div class="wp-block-group__inner-container container default-section__container default-section__container--main">
 		<div class="wp-block-group default-section__inner default-section__inner--main">
-			<div class="wp-block-group__inner-content<?php if ( $_enable_lazyload ) : ?>is-not-loaded js-main-content<?php endif; ?>">
+			<div class="wp-block-group__inner-content<?php if ( $_enable_lazyload ) : ?> is-not-loaded js-main-content<?php endif; ?>">
 				<?php
 					if ( $_enable_lazyload ) :
 						printf( '<noscript>%s</noscript>', $_content );
