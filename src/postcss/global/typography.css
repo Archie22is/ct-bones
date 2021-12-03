@@ -55,6 +55,10 @@ h6 {
 	word-break: break-word;
 }
 
+a {
+	text-decoration: none;
+}
+
 cite > a,
 figcaption > a,
 ol li > a,
