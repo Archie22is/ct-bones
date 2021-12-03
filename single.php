@@ -10,9 +10,10 @@
 get_header();
 
 $sidebar_layout    = codetot_get_theme_mod( 'post_layout' ) ?? 'right-sidebar';
+$hide_comments = codetot_get_theme_mod( 'hide_comments' ) ?? false;
 $enable_hero_image = codetot_get_theme_mod( 'extra_single_post_layout', 'pro' ) ?? 'none';
 
-if ( is_singular( 'post' ) && $enable_hero_image ) :
+if ( is_singular( 'post' ) && $enable_hero_image !== 'none') :
 	$categories    = get_the_category();
 	$category_html = '<ul class="list-reset has-white-color has-text-color block-cover__list">';
 
@@ -61,7 +62,7 @@ echo codetot_layout_page_block_open( 'page-block--page ' . $sidebar_layout, fals
 	endif;
 
 		// If comments are open or we have at least one comment, load up the comment template.
-		if ( comments_open() || get_comments_number() ) :
+		if (!$hide_comments && ( comments_open() || get_comments_number() )) :
 			comments_template();
 	endif;
 
