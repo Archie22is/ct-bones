@@ -247,7 +247,7 @@ function codetot_layout_single_post_social_share_html() {
 			'social-links',
 			array(
 				'class' => 'social-links--share',
-				'label' => __( 'Share', 'ct-theme' ),
+				'label' => __( 'Share', 'ct-bones' ),
 				'items' => codetot_get_share_post_links( $post ),
 			)
 		);

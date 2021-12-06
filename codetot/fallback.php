@@ -100,7 +100,7 @@ if ( ! function_exists( 'codetot_svg' ) ) {
 		if ( empty( $name ) ) {
 			return new WP_Error(
 				'404',
-				__( 'Missing svg file name', 'ct-blocks' )
+				__( 'Missing svg file name', 'ct-bones' )
 			);
 		}
 
