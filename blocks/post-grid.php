@@ -3,7 +3,8 @@ $_class  = 'post-grid section';
 $_class .= ! empty( $class ) ? ' ' . $class : '';
 
 $_columns = array();
-if ( !empty($columns) && is_int($columns) ) {
+
+if ( !empty($columns) && is_int( absint($columns) ) ) {
 	$_columns['desktop'] = $columns;
 	error_log('Deprecated passing $columns as number to post-grid section.');
 }
