@@ -1,7 +1,7 @@
 <?php
 add_action( 'widgets_init', 'related_posts_widget' );
 
-function related_posts_widget() { 
+function related_posts_widget() {
 	register_widget( 'Codetot_Related_Post_Widget' );
 }
 
@@ -43,7 +43,7 @@ class Codetot_Related_Post_Widget extends WP_Widget {
 		ob_start();
 		extract( $args );
 
-		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Related Posts', 'codetot' ) : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Related Posts', 'ct-bones' ) : $instance['title'], $instance, $this->id_base );
 		if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) ) {
 			$number = 10;
 		}
@@ -63,19 +63,19 @@ class Codetot_Related_Post_Widget extends WP_Widget {
 		if ( $query->have_posts() ) :
 			?>
 			<?php echo $before_widget; ?>
-			<?php 
+			<?php
 			if ( $title ) {
-				echo $before_title . $title . $after_title;} 
+				echo $before_title . $title . $after_title;}
 			?>
 			<div class="widget__list">
-				<?php 
+				<?php
 				while ( $query->have_posts() ) :
-					$query->the_post(); 
+					$query->the_post();
 					?>
 					<div class="w100 widget__item">
 						<span class="f widget__item-wrapper">
 							<a class="f widget__image-link" href="<?php the_permalink(); ?>">
-								<?php 
+								<?php
 								if ( has_post_thumbnail() ) :
 									echo get_the_post_thumbnail( get_the_id(), 'thumbnail' );
 								else :
