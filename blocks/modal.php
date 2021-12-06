@@ -35,16 +35,16 @@ if ( ! empty( $id ) && ! empty( $content ) ) :
 		</div>
 	  <?php endif; ?>
 	  <div class="modal__content js-content
-	  <?php 
+	  <?php
 		if ( isset( $lazyload ) ) :
 			echo ' is-not-loaded';
-endif; 
+endif;
 		?>
 		">
 		<?php echo $content; ?>
 	  </div>
 	  <?php if ( ! isset( $hide_close_button ) ) : ?>
-		<button class="modal__close-button <?php echo $_close_button_class; ?>" data-close-modal="<?php echo $id; ?>" aria-label="<?php _e( 'Close a modal', 'ct-blocks' ); ?>">
+		<button class="modal__close-button <?php echo $_close_button_class; ?>" data-close-modal="<?php echo $id; ?>" aria-label="<?php _e( 'Close a modal', 'ct-bones' ); ?>">
 			<?php codetot_svg( 'close', true ); ?>
 		</button>
 	  <?php endif; ?>

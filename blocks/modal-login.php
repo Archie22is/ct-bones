@@ -11,7 +11,7 @@ if ( ! empty( $content ) ) :
 			'class'              => 'modal--login',
 			'attributes'         => ' data-woocommerce-block="modal-login"',
 			'id'                 => 'modal-login',
-			'header'             => sprintf( '<p class="modal__title">%s</p>', esc_html__( 'Sign in', 'ct-blocks' ) ),
+			'header'             => sprintf( '<p class="modal__title">%s</p>', esc_html__( 'Sign in', 'ct-bones' ) ),
 			'content'            => $content,
 			'close_button_class' => 'js-close-account-modal',
 		)

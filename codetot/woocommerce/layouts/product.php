@@ -513,7 +513,7 @@ function codetot_render_bottom_product_gallery() {
 			the_block(
 				'button',
 				array(
-					'button'    => sprintf( _n( 'View more %s images', 'View more %s images', 'ct-bones', $more_count ), $more_count ),
+					'button'    => sprintf( _n( 'View more %s images', 'View more %s images', $more_count, 'ct-bones' ), $more_count ),
 					'type'      => 'outline-primary',
 					'icon_html' => $icon_svg,
 					'class'     => 'product-gallery__button',
