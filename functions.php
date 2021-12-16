@@ -59,7 +59,6 @@ require_once CODETOT_DIR . '/widgets/ct-recent-posts.php';
 require_once CODETOT_DIR . '/widgets/ct-related-posts.php';
 
 require_once CODETOT_DIR . '/features/back-to-top.php';
-require_once CODETOT_DIR . '/features/store-locator.php';
 require_once CODETOT_DIR . '/features/google-maps.php';
 require_once CODETOT_DIR . '/features/mega-menu.php';
 
@@ -96,7 +95,6 @@ if ( class_exists( 'WooCommerce' ) ) {
 	require_once CODETOT_DIR . '/woocommerce/features/modal-login.php';
 	require_once CODETOT_DIR . '/woocommerce/features/quick-view.php';
 	require_once CODETOT_DIR . '/woocommerce/features/countdown-price.php';
-	require_once CODETOT_DIR . '/woocommerce/features/global-guarantee-list.php';
 	require_once CODETOT_DIR . '/woocommerce/features/product-video.php';
 	require_once CODETOT_DIR . '/woocommerce/features/viewed-products.php';
 	require_once CODETOT_DIR . '/woocommerce/features/product-card-style.php';
