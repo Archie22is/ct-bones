@@ -154,3 +154,33 @@
 		}
 	}
 }
+
+.default-content {
+	&.is-dark-contract {
+		& .default-section__inner {
+			color: var(--white);
+		}
+
+		& .default-content__title {
+			color: var(--white);
+		}
+	}
+
+	&.is-content-alignment-left {
+		& .default-section__inner {
+			text-align: left;
+		}
+	}
+
+	&.is-content-alignment-center {
+		& .default-section__inner {
+			text-align: center;
+		}
+	}
+
+	&.is-content-alignment-right {
+		& .default-section__inner {
+			text-align: right;
+		}
+	}
+}
