@@ -6,6 +6,10 @@
 	}
 }
 
+.default-content__title {
+	margin-top: 0;
+}
+
 .default-section__description {
 	margin-top: 0.5em;
 }

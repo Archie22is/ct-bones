@@ -11,6 +11,7 @@
 }
 
 .post-card__title {
+	margin-top: 0;
 	font-size: inherit;
 
 	&:hover {
