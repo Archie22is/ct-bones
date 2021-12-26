@@ -173,6 +173,10 @@
 
 		& li {
 			display: inline-flex;
+
+			& > a {
+				text-decoration: none;
+			}
 		}
 
 		& .page-numbers:not(.prev):not(.next) {
