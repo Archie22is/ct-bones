@@ -3809,6 +3809,10 @@ a.cart-shortcode {
 }
 	}
 
+.default-content__title {
+	margin-top: 0;
+}
+
 .default-section__description {
 	margin-top: 0.5em;
 }
@@ -4046,6 +4050,7 @@ a.cart-shortcode {
 	}
 
 .post-card__title {
+	margin-top: 0;
 	font-size: inherit
 }
 
@@ -5097,6 +5102,7 @@ a.cart-shortcode {
 	}
 
 .widget__title {
+	margin-top: 0;
 	margin-bottom: 0.5em;
 	text-transform: uppercase;
 	font-weight: 700;
