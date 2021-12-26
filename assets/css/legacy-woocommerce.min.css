@@ -1411,8 +1411,12 @@ h3:empty {
 	}
 
 .woocommerce-pagination .page-numbers li {
-			display: inline-flex;
+			display: inline-flex
 		}
+
+.woocommerce-pagination .page-numbers li > a {
+				text-decoration: none;
+			}
 
 .woocommerce-pagination .page-numbers .page-numbers:not(.prev):not(.next) {
 			display: flex;

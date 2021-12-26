@@ -4023,6 +4023,28 @@ a.cart-shortcode {
 			   object-fit: cover;
 		}
 
+.default-content.is-dark-contract .default-section__inner {
+			color: #fff;
+			color: var(--white);
+		}
+
+.default-content.is-dark-contract .default-content__title {
+			color: #fff;
+			color: var(--white);
+		}
+
+.default-content.is-content-alignment-left .default-section__inner {
+			text-align: left;
+		}
+
+.default-content.is-content-alignment-center .default-section__inner {
+			text-align: center;
+		}
+
+.default-content.is-content-alignment-right .default-section__inner {
+			text-align: right;
+		}
+
 .section-header {
 	text-align: left;
 }
