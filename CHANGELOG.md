@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.2.4 - 26/12/2021
+
+- Fix spacing post card title
+- Move style default content to same ct-bones css
+
 ## 6.2.3 - 24/11/2021
 
 - Fix default sticky header variable from Customizer
