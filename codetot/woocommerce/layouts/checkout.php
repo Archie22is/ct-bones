@@ -23,11 +23,6 @@ class Codetot_Woocommerce_Layout_Checkout extends Codetot_Woocommerce_Layout {
 	private static $instance;
 
 	/**
-	 * @var string
-	 */
-	private $theme_environment;
-
-	/**
 	 * Get singleton instance.
 	 *
 	 * @return Codetot_Woocommerce_Layout_Checkout
