@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.2.5 - 05/01/2022
+
+- Move all checkout functions to public access for child theme removal if needed
+
 ## 6.2.4 - 26/12/2021
 
 - Fix spacing post card title
