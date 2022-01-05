@@ -23,11 +23,6 @@ class Codetot_Woocommerce_Layout_Checkout extends Codetot_Woocommerce_Layout {
 	private static $instance;
 
 	/**
-	 * @var string
-	 */
-	private $theme_environment;
-
-	/**
 	 * Get singleton instance.
 	 *
 	 * @return Codetot_Woocommerce_Layout_Checkout
@@ -48,16 +43,16 @@ class Codetot_Woocommerce_Layout_Checkout extends Codetot_Woocommerce_Layout {
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 		// remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 
-		add_action( 'woocommerce_before_checkout_form', array( $this, 'render_shop_steps' ), 20 );
+		add_action( 'woocommerce_before_checkout_form', 'ct_bones_render_checkout_steps', 20 );
 
 		// Layout
 		remove_action( 'woocommerce_before_checkout_form_cart_notices', 'woocommerce_output_all_notices', 10 );
-		add_action( 'woocommerce_checkout_before_customer_details', array( $this, 'page_block_open' ), 10 );
-		add_action( 'woocommerce_checkout_after_customer_details', array( $this, 'page_block_between' ), 40 );
-		add_action( 'woocommerce_after_checkout_form', array( $this, 'page_block_close' ), 90 );
+		add_action( 'woocommerce_checkout_before_customer_details', 'ct_bones_checkout_page_block_open', 10 );
+		add_action( 'woocommerce_checkout_after_customer_details', 'ct_bones_checkout_page_block_between', 40 );
+		add_action( 'woocommerce_after_checkout_form','ct_bones_checkout_page_block_close', 90 );
 
-		add_filter( 'woocommerce_default_address_fields', array( $this, 'update_fields_order' ) );
-		add_filter( 'woocommerce_checkout_fields', array( $this, 'update_placeholder_fields' ) );
+		add_filter( 'woocommerce_default_address_fields', 'ct_bones_checkout_update_fields_order' );
+		add_filter( 'woocommerce_checkout_fields', 'ct_bones_checkout_update_placeholder_fields' );
 
 		if ( is_checkout() ) {
 			add_action( 'codetot_page', array( $this, 'container_open' ), 1 );
@@ -73,7 +68,7 @@ class Codetot_Woocommerce_Layout_Checkout extends Codetot_Woocommerce_Layout {
 
 		// Sticky mobile checkout
 		add_filter( 'woocommerce_add_to_cart_fragments', array( $this, 'update_fragments' ) );
-		add_filter( 'woocommerce_after_checkout_form', array( $this, 'sticky_mobile_checkout_block' ), 100 );
+		add_filter( 'woocommerce_after_checkout_form', 'ct_bones_checkout_sticky_mobile_checkout', 100 );
 
 		// Move shipping section
 		// add_filter('woocommerce_cart_ready_to_calc_shipping', '__return_false');
@@ -91,33 +86,6 @@ class Codetot_Woocommerce_Layout_Checkout extends Codetot_Woocommerce_Layout {
 	public function container_close() {
 		echo '</div>';
 		echo '</div>';
-	}
-
-	public function page_block_open() {
-		echo '<div class="grid page-block__grid">';
-		echo '<div class="grid__col page-block__col page-block__col--main">';
-	}
-
-	public function page_block_between() {
-		echo '</div>';
-		echo '<div class="grid__col page-block__col page-block__col--sidebar">';
-	}
-
-	public function page_block_close() {
-		echo '</div>';
-		echo '</div>';
-	}
-
-	public function sticky_mobile_checkout_block() {
-		the_block( 'sticky-mobile-checkout' );
-	}
-
-	public function update_fields_order( $fields ) {
-		unset( $fields['company'] );
-		unset( $fields['address_2'] );
-		unset( $fields['postcode'] );
-
-		return $fields;
 	}
 
 	public function update_fragments( $fragments ) {
@@ -144,24 +112,6 @@ class Codetot_Woocommerce_Layout_Checkout extends Codetot_Woocommerce_Layout {
 		return $fragments;
 	}
 
-	public function update_placeholder_fields( $fields ) {
-		$fields['billing']['billing_first_name']['placeholder'] = esc_html__( 'First name', 'woocommerce' );
-		$fields['billing']['billing_last_name']['placeholder']  = esc_html__( 'Last name', 'woocommerce' );
-		$fields['billing']['billing_phone']['placeholder']      = esc_html__( 'Phone', 'woocommerce' );
-		$fields['billing']['billing_city']['placeholder']       = esc_html__( 'City', 'woocommerce' );
-		$fields['billing']['billing_email']['placeholder']      = esc_html__( 'Email', 'woocommerce' );
-
-		$fields['shipping']['shipping_first_name']['placeholder'] = esc_html__( 'First name', 'woocommerce' );
-		$fields['shipping']['shipping_last_name']['placeholder']  = esc_html__( 'Last name', 'woocommerce' );
-		$fields['shipping']['shipping_phone']['placeholder']      = esc_html__( 'Phone', 'woocommerce' );
-		$fields['shipping']['shipping_city']['placeholder']       = esc_html__( 'City', 'woocommerce' );
-
-		return $fields;
-	}
-
-	public function render_shop_steps() {
-		the_block( 'shop-steps' );
-	}
 
 	/**
 	 * @return bool
@@ -171,15 +121,69 @@ class Codetot_Woocommerce_Layout_Checkout extends Codetot_Woocommerce_Layout {
 	}
 }
 
+function ct_bones_checkout_sticky_mobile_checkout() {
+	the_block( 'sticky-mobile-checkout' );
+}
+
+function ct_bones_checkout_page_block_open() {
+	?>
+	<div class="grid page-block__grid">
+	<div class="grid__col page-block__col page-block__col--main">
+	<?php
+}
+
+function ct_bones_checkout_page_block_between() {
+	?>
+	</div>
+	<div class="grid__col page-block__col page-block__col--sidebar">
+	<?php
+}
+
+function ct_bones_checkout_page_block_close() {
+	?>
+	</div>
+	</div>
+	<?php
+}
+
+function ct_bones_checkout_update_placeholder_fields( $fields ) {
+	$fields['billing']['billing_first_name']['placeholder'] = esc_html__( 'First name', 'woocommerce' );
+	$fields['billing']['billing_last_name']['placeholder']  = esc_html__( 'Last name', 'woocommerce' );
+	$fields['billing']['billing_phone']['placeholder']      = esc_html__( 'Phone', 'woocommerce' );
+	$fields['billing']['billing_city']['placeholder']       = esc_html__( 'City', 'woocommerce' );
+	$fields['billing']['billing_email']['placeholder']      = esc_html__( 'Email', 'woocommerce' );
+
+	$fields['shipping']['shipping_first_name']['placeholder'] = esc_html__( 'First name', 'woocommerce' );
+	$fields['shipping']['shipping_last_name']['placeholder']  = esc_html__( 'Last name', 'woocommerce' );
+	$fields['shipping']['shipping_phone']['placeholder']      = esc_html__( 'Phone', 'woocommerce' );
+	$fields['shipping']['shipping_city']['placeholder']       = esc_html__( 'City', 'woocommerce' );
+
+	return $fields;
+}
+
+function ct_bones_checkout_update_fields_order( $fields ) {
+	unset( $fields['company'] );
+	unset( $fields['address_2'] );
+	unset( $fields['postcode'] );
+
+	return $fields;
+}
+
+function ct_bones_render_checkout_steps() {
+	the_block( 'shop-steps' );
+}
+
 function ct_bones_render_checkout_total_block() {
-	echo '<div class="checkout-total">';
-	the_block( 'checkout-total' );
-	echo '</div>';
+	?>
+	<div class="checkout-total">
+		<?php the_block( 'checkout-total' ); ?>
+	</div>
+	<?php
 }
 
 function ct_bones_render_order_review_title() {
 	?>
-	<h3 class="order-review__title"><?php echo esc_html__( 'Payment method:', 'woocommerce' ); ?></h3>
+	<h3 class="order-review__title"><?php esc_html_e( 'Payment method:', 'woocommerce' ); ?></h3>
 	<?php
 }
 
