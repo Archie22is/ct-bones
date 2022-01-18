@@ -58,7 +58,7 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout {
 						<?php codetot_svg( 'close', true ); ?>
 					</button>
 				</div>
-				<div class="widget_shopping_cart_content">
+				<div class="mini-cart__content">
 					<?php $this->codetot_mini_cart(); ?>
 				</div>
 			</div>
@@ -71,7 +71,7 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout {
 		$stock_quantity = $product->get_stock_quantity();
 		$product_price  = WC()->cart->get_product_price( $product );
 
-		ob_start(); 
+		ob_start();
 		?>
 		<span class="mini-cart__info">
 			<span class="mini-cart-quantity quantity">
@@ -104,7 +104,7 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout {
 						$product_name      = apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key );
 						$thumbnail         = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
 						$product_price     = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
-						$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key ); 
+						$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
 						?>
 						<li class="woocommerce-mini-cart-item mini_cart_item <?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key ) ); ?>">
 								<?php
@@ -119,7 +119,7 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout {
 										esc_attr( $_product->get_sku() )
 									),
 									$cart_item_key
-								); 
+								);
 								?>
 							<?php if ( empty( $product_permalink ) ) : ?>
 								<?php echo $thumbnail . $product_name; // phpcs:ignore
@@ -139,7 +139,7 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout {
 					}
 				}
 
-				do_action( 'woocommerce_mini_cart_contents' ); 
+				do_action( 'woocommerce_mini_cart_contents' );
 				?>
 			</ul>
 
@@ -150,7 +150,7 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout {
 				 *
 				 * @hooked woocommerce_widget_shopping_cart_subtotal - 10
 				 */
-				do_action( 'woocommerce_widget_shopping_cart_total' ); 
+				do_action( 'woocommerce_widget_shopping_cart_total' );
 				?>
 			</p>
 
@@ -199,8 +199,17 @@ class Codetot_Woocommerce_Mini_Cart extends Codetot_Woocommerce_Layout {
 		$mini_cart = ob_get_clean();
 
 		$fragments['.mini-cart__count'] = sprintf( '<span class="mini-cart__count">' . sprintf( _n( '%d', '%d', $woocommerce->cart->cart_contents_count, 'ct-bones' ), $woocommerce->cart->cart_contents_count ) . '</span>', $mini_cart );
-		return $fragments;
-	}
+
+		// Fragment mini-cart
+        ob_start(); ?>
+		<div class="mini-cart__content">
+			<?php $this->codetot_mini_cart(); ?>
+		</div>
+		<?php $fragments['.mini-cart__content'] = ob_get_clean();
+
+        return $fragments;
+
+    }
 }
 
 Codetot_Woocommerce_Mini_Cart::instance();
