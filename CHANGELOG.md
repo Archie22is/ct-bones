@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.2.6 - 29/01/2022
+
+- Fix button with prefix class 'is-style-fill'.
+- Add default 'text-center' css class to button.
+- Update npm package in package.json
+
 ## 6.2.5 - 05/01/2022
 
 - Move all checkout functions to public access for child theme removal if needed
