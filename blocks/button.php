@@ -17,10 +17,17 @@ $button_types = array(
 	'link-secondary',
 );
 
+$fill_button_types = [
+	'white',
+	'dark',
+	'primary',
+	'secondary'
+];
+
 /**
  * wrapper class
  */
-$_class  = ['wp-block-button'];
+$_class  = ['wp-block-button text-center'];
 
 /**
  * element class
@@ -71,7 +78,11 @@ if ( ! empty( $type ) && in_array( $type, $button_types ) ) {
 	$_raw_button_types = explode('-', $type);
 	$_formatted_button_type = $_raw_button_types[0];
 
-	$_class = array_merge( $_class, ['is-style-' . esc_attr($_formatted_button_type)] );
+	if ( in_array($type, $fill_button_types) ) {
+		$_class = array_merge( $_class, ['is-style-fill'] );
+	} else {
+		$_class = array_merge( $_class, ['is-style-' . esc_attr($_formatted_button_type)] );
+	}
 
 	switch ($type) {
 		case 'primary':
