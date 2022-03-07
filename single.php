@@ -15,7 +15,7 @@ $enable_hero_image = codetot_get_theme_mod( 'extra_single_post_layout', 'pro' ) 
 
 if ( is_singular( 'post' ) && $enable_hero_image !== 'none') :
 	$categories    = get_the_category();
-	$category_html = '<ul class="list-reset has-white-color has-text-color block-cover__list">';
+	$category_html = '<ul class="list-reset has-white-color has-text-color f fw block-cover__list">';
 
 	if ( ! empty( $categories ) ) {
 		foreach ( $categories as $category ) :
