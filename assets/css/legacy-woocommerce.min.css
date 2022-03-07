@@ -1994,22 +1994,15 @@ h3:empty {
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-start;
-		margin-top: 10px
+		margin: 10px -5px
 	}
 
 .woocommerce-product-gallery .flex-control-thumbs li {
 			display: block;
-			margin-right: 10px;
-			cursor: pointer
+			margin: 0;
+			padding: 0 5px;
+			cursor: pointer;
 		}
-
-.woocommerce-product-gallery .flex-control-thumbs li:first-child {
-				padding-left: 0;
-			}
-
-.woocommerce-product-gallery .flex-control-thumbs li:last-child {
-				margin-right: 0;
-			}
 
 .woocommerce-product-gallery .flex-control-thumbs img {
 			max-width: 100%;
@@ -2017,19 +2010,19 @@ h3:empty {
 		}
 
 .woocommerce-product-gallery--columns-2 .flex-control-thumbs li {
-		width: calc(50% - 10px);
+		width: calc(50% + 10px);
 	}
 
 .woocommerce-product-gallery--columns-3 .flex-control-thumbs li {
-		width: calc(33.33% - 10px);
+		width: calc(33.33% + 10px);
 	}
 
 .woocommerce-product-gallery--columns-4 .flex-control-thumbs li {
-		width: calc(25% - 10px);
+		width: calc(25% + 10px);
 	}
 
 .woocommerce-product-gallery--columns-5 .flex-control-thumbs li {
-		width: calc(20% - 10px);
+		width: calc(20% + 10px);
 	}
 
 @media (min-width: 588px) {
