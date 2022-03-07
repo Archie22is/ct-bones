@@ -1,8 +1,0 @@
-.container {
-	@mixin container;
-	@mixin container-from-s;
-}
-
-.container--fullwidth {
-	max-width: 100%;
-}
