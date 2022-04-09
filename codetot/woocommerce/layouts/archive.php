@@ -127,7 +127,7 @@ class Codetot_Woocommerce_Layout_Archive {
 		  $sidebar_layout = $this->product_category_sidebar;
 	  endif;
 
-	  $content = function_exists( 'get_field' ) && get_field( $field_name, 'product_cat_' . esc_attr( $obj->term_id ) );
+	  $content = function_exists( 'get_field' ) && get_field( $field_name, 'product_cat_' . esc_attr( $obj->term_id ) ) ? get_field( $field_name, 'product_cat_' . esc_attr( $obj->term_id ) ) : '';
 
 	  if ( ! empty( $content ) ) {
 		  ob_start();
@@ -139,16 +139,14 @@ class Codetot_Woocommerce_Layout_Archive {
 		  $_class = $class;
 
 		  if ( $sidebar_layout !== 'no-sidebar' ) {
-			  $_class .= ' message-block--no-container';
+			$_class .= ' expand-block--no-container';
 		  }
 
-        the_block(
-			'message-block',
-			array(
-				'class'   => $_class,
-				'content' => $html,
-			)
-		  );
+		the_block('expand-block', [
+			'class' => $_class,
+			'content' => $content,
+			'max_height' => apply_filters($field_name .'_product_category', 150)
+		]);
 	  }
 	}
 

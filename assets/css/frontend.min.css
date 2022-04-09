@@ -1088,6 +1088,47 @@ a.block-cover__list__link {
 		stroke: var(--white);
 	}
 
+.expand-block {
+	padding: 1em 0;
+}
+
+.expand-block__content {
+	position: relative;
+	overflow: hidden;
+	transition: height 0.3s ease
+}
+
+.expand-block__content::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 3em;
+		background: linear-gradient(
+			0deg,
+			rgba(255, 255, 255, 1) 0%,
+			rgba(255, 255, 255, 1) 50%,
+			rgba(255, 255, 255, 0) 100%
+		);
+	}
+
+.expand-block.is-content-visible .expand-block__content::after {
+			content: none;
+		}
+
+.expand-block.is-not-init .expand-block__content {
+		height: auto !important
+	}
+
+.expand-block.is-not-init .expand-block__content::after {
+			content: none;
+		}
+
+.expand-block.is-not-init .expand-block__footer {
+		display: none;
+	}
+
 form[name='loginform'] .login-username,
 	form[name='loginform'] .login-password,
 	form[name='loginform'] .login-remember {
