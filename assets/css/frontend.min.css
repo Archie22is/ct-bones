@@ -1117,6 +1117,10 @@ a.block-cover__list__link {
 			content: none;
 		}
 
+.expand-block.is-content-visible .expand-block__footer {
+		padding-top: 0.5em;
+	}
+
 .expand-block.is-not-init .expand-block__content {
 		height: auto !important
 	}
