@@ -49,7 +49,7 @@ export default el => {
 		on(
 			'click',
 			() => {
-				if ( hasClass(VISIBLE_CLASS, el) ) {
+				if (hasClass(VISIBLE_CLASS, el)) {
 					close()
 				} else {
 					open()
