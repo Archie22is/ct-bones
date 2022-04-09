@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.2.9
+
+- Change top and bottom product category content to expand block
+
+## 6.2.8
+
+- Fix product gallery thumbnails
+
+## 6.2.7
+
+- Fix items list on hero cover block
+
 ## 6.2.6 - 29/01/2022
 
 - Fix button with prefix class 'is-style-fill'.
