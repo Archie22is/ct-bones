@@ -29,6 +29,10 @@
 			content: none;
 		}
 	}
+
+	& .expand-block__footer {
+		padding-top: 0.5em;
+	}
 }
 
 .expand-block.is-not-init {
