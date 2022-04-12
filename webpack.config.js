@@ -67,7 +67,7 @@ module.exports = {
                   postcssPresetEnv({
 										importFrom: path.join(__dirname, 'src/postcss/variables.css'),
 										exportTo: 'variables.css',
-                    stage: 1,
+                    stage: 3,
                     features: {
                       'custom-media-queries': true,
                       'nesting-rules': true
