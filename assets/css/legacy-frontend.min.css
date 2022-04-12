@@ -4320,7 +4320,7 @@ a.cart-shortcode {
 
 @media (min-width: 1080px) {
 
-.pagination__list .page-numbers:not(.current):not(.prev):not(.next):hover {
+.pagination__list .page-numbers:not(.current, .prev, .next):hover {
 				background: #1e1e1e;
 				background: var(--dark);
 				color: #fff;
@@ -4961,14 +4961,14 @@ a.cart-shortcode {
 	.widget.widget_text .textwidget ul,
 	.widget.widget_text .textwidget p {
 		margin-top: 1em;
-		word-wrap: anywhere;
+		overflow-wrap: anywhere;
 	}
 
 .widget.widget_text .textwidget a {
 		color: #1346af;
 		color: var(--primary);
 		text-decoration: underline;
-		word-wrap: anywhere
+		overflow-wrap: anywhere
 	}
 
 .widget.widget_text .textwidget a:hover {
@@ -5802,14 +5802,14 @@ p.comment-form-title label, p.comment-form-author label, p.comment-form-email la
 	.comment-content ul,
 	.comment-content p {
 		margin-top: 1em;
-		word-wrap: anywhere;
+		overflow-wrap: anywhere;
 	}
 
 .comment-text .description a, .comment-content a {
 		color: #1346af;
 		color: var(--primary);
 		text-decoration: underline;
-		word-wrap: anywhere
+		overflow-wrap: anywhere
 	}
 
 .comment-text .description a:hover, .comment-content a:hover {
@@ -6140,7 +6140,7 @@ ol.comment-list .comment-author img {
 ol.comment-list .comment-author .fn {
 			margin-bottom: 0.5em;
 			line-height: 1.5;
-			word-wrap: anywhere;
+			overflow-wrap: anywhere;
 		}
 
 ol.comment-list .comment-author .says {
