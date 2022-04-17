@@ -70,7 +70,7 @@
 					position: fixed;
 					width: 100vw;
 					height: 100vh;
-					background-color: rgba(0,0,0,0.36863);
+					background-color: #0000005e;
 					top: calc((100vh - 100%) / -2);
 					left: calc((100vw - 100%) / -2);
 					z-index: 0;
@@ -117,7 +117,7 @@
 #poststuff #codetot-flexible-button .ct__block-list a:hover,
 				#poststuff #codetot-flexible-button .ct__block-list a.active {
 					border: 1px solid #0073aa;
-					background-color: rgba(19,70,175,0.05882);
+					background-color: #1346af0f;
 				}
 
 #poststuff #codetot-flexible-button .ct__block-list a > svg {
