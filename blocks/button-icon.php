@@ -47,11 +47,11 @@ if ( empty( $content ) ) {
 }
 
 if ( ! empty( $icon ) ) {
-	$content .= '<span class="">' . codetot_svg( $icon, false ) . '</span>';
+	$content .= '<span class="button__icon wp-block-button__icon">' . codetot_svg( $icon, false ) . '</span>';
 }
 
 if ( ! empty( $icon_html ) ) {
-	$content .= '<span class="">' . $icon_html . '</span>';
+	$content .= '<span class="button__icon wp-block-button__icon">' . $icon_html . '</span>';
 }
 
 if ( ! empty( $size ) ) {
