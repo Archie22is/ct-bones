@@ -40,7 +40,7 @@ $_attr .= ! empty( $target ) ? ' target="' . esc_html( $target ) . '"' : '';
 $_attr .= ! empty( $rel ) ? ' rel="' . esc_html( $rel ) . '"' : '';
 $_url    = ! empty( $url ) ? $url : '';
 
-$content = ! empty( $button ) ? sanitize_text_field( $button ) : '';
+$content = ! empty( $button ) ? '<span class="button__text wp-block-button__text">' . sanitize_text_field( $button ) . '</span>' : '';
 
 if ( empty( $content ) ) {
 	echo '<!-- Missing button text -->';
