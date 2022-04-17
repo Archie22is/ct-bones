@@ -358,7 +358,7 @@ h6 {
 .entry-content a {
 	color: #1346af;
 	color: var(--primary);
-	word-wrap: break-word;
+	overflow-wrap: break-word;
 	word-break: break-word;
 }
 

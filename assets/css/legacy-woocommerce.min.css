@@ -148,14 +148,14 @@ h3:empty {
 	.woocommerce-privacy-policy-text ul,
 	.woocommerce-privacy-policy-text p {
 		margin-top: 1em;
-		word-wrap: anywhere;
+		overflow-wrap: anywhere;
 	}
 
 .woocommerce-privacy-policy-text a {
 		color: #1346af;
 		color: var(--primary);
 		text-decoration: underline;
-		word-wrap: anywhere
+		overflow-wrap: anywhere
 	}
 
 .woocommerce-privacy-policy-text a:hover {
@@ -2142,14 +2142,14 @@ h3:empty {
 	.single-product-top .woocommerce-product-details__short-description ul,
 	.single-product-top .woocommerce-product-details__short-description p {
 		margin-top: 1em;
-		word-wrap: anywhere;
+		overflow-wrap: anywhere;
 	}
 
 .single-product-top .woocommerce-product-details__short-description a {
 		color: #1346af;
 		color: var(--primary);
 		text-decoration: underline;
-		word-wrap: anywhere
+		overflow-wrap: anywhere
 	}
 
 .single-product-top .woocommerce-product-details__short-description a:hover {
@@ -2665,14 +2665,14 @@ h3:empty {
 	.woocommerce-tabs .woocommerce-Tabs-panel--description ul,
 	.woocommerce-tabs .woocommerce-Tabs-panel--description p {
 		margin-top: 1em;
-		word-wrap: anywhere;
+		overflow-wrap: anywhere;
 	}
 
 .woocommerce-tabs .woocommerce-Tabs-panel--description a {
 		color: #1346af;
 		color: var(--primary);
 		text-decoration: underline;
-		word-wrap: anywhere
+		overflow-wrap: anywhere
 	}
 
 .woocommerce-tabs .woocommerce-Tabs-panel--description a:hover {
