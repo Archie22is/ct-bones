@@ -74,9 +74,9 @@ class Codetot_Woocommerce_Layout_Archive
 	public function build_wrapper()
 	{
 		if (is_shop() || is_product_category() || is_product_tag()) :
-			add_action('codetot_product_archive_after_page_block_main', array($this, 'archive_title'), 10);
+			add_action('codetot_product_archive_after_page_block_main', 'ct_bones_woocommerce_archive_title', 10);
 			add_action('codetot_product_archive_after_page_block_main', 'codetot_archive_product_top_widget', 25);
-			add_action('codetot_after_header', array($this, 'breadcrumbs'), 10);
+			add_action('codetot_after_header', 'ct_bones_woocommerce_breadcrumbs', 10);
 			add_action('codetot_after_header', array($this, 'page_block_open'), 50);
 			add_action('codetot_before_sidebar', array($this, 'page_block_between'), 20);
 			add_action('codetot_before_footer', array($this, 'page_block_close'), 10);
@@ -104,27 +104,6 @@ class Codetot_Woocommerce_Layout_Archive
 		add_action('woocommerce_after_shop_loop_item', array($this, 'loop_product_content_close'), 50);
 
 		add_action('codetot_archive_product_after_container', 'codetot_archive_product_mobile_filter_button', 5);
-	}
-
-	public function archive_title()
-	{
-		if (is_shop() || is_product_category() || is_product_tag()) {
-			$current_object = get_queried_object();
-
-			if (is_shop()) {
-				$title = $current_object->label;
-			} else {
-				$title = $current_object->name;
-			}
-
-			the_block(
-				'page-header',
-				array(
-					'class' => 'page-header--no-container page-header--archive',
-					'title' => $title,
-				)
-			);
-		}
 	}
 
 	public function top_product_category_content()
@@ -155,13 +134,6 @@ class Codetot_Woocommerce_Layout_Archive
 	public function loop_product_image_wrapper_close()
 	{
 		echo '</div>';
-	}
-
-	public function breadcrumbs()
-	{
-		if (is_shop() || is_product_category() || is_product_tag()) {
-			woocommerce_breadcrumb();
-		}
 	}
 
 	public function page_block_open()
@@ -474,5 +446,33 @@ function ct_bones_top_product_category_content() {
 function ct_bones_bottom_product_category_content() {
 	ct_bones_display_product_category_content('bottom_content', 'message-block--archive-bottom-content');
 }
+
+function ct_bones_woocommerce_archive_title() {
+	if (is_shop() || is_product_category() || is_product_tag()) {
+		$current_object = get_queried_object();
+
+		if (is_shop()) {
+			$title = $current_object->label;
+		} else {
+			$title = $current_object->name;
+		}
+
+		the_block(
+			'page-header',
+			array(
+				'class' => 'page-header--no-container page-header--archive',
+				'title' => $title,
+			)
+		);
+	}
+}
+
+function ct_bones_woocommerce_breadcrumbs()
+	{
+		if (is_shop() || is_product_category() || is_product_tag()) {
+			woocommerce_breadcrumb();
+		}
+	}
+
 
 Codetot_Woocommerce_Layout_Archive::instance();
