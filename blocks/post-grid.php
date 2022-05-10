@@ -5,7 +5,8 @@ $_class .= !empty($columns) ? ' has-' . $columns .'-columns': ' has-3-columns';
 $container = codetot_site_container();
 
 $header = !empty($title) ? codetot_build_content_block(array(
-  'title' => $title
+  'title' => $title,
+  'title_tag' => 'p'
 ), 'post-grid') : '';
 
 $columns = [];

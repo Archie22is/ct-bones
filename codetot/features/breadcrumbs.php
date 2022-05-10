@@ -14,7 +14,6 @@ function codetot_breadcrumbs($args = array())
 
   $breadcrumb = apply_filters('Codetot_Breadcrumb_object', null, $args);
 
-  if (!is_object($breadcrumb))
     $breadcrumb = new Codetot_Breadcrumb($args);
 
   return $breadcrumb->trail();
@@ -110,7 +109,7 @@ class Codetot_Breadcrumb
       'container' => 'nav',
       'before' => '',
       'after' => '',
-      'browse_tag' => 'h2',
+      'browse_tag' => 'p',
       'list_tag' => 'ul',
       'item_tag' => 'li',
       'show_on_front' => true,
