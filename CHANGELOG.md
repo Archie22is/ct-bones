@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## 6.3.2
+
+- Fix render outside class for related posts
+- Add default flex class to generate grid function
+- Fix SEO recommend for related post title
+
+## 6.3.1
+
+- Add button-icon
+- Add class for button-icon
+- Add css class for button text
+- Re-order archive product category layout for top_content, bottom_content
+- Move page title, breadcrumbs to single function for easy to remove
+
+## 6.3.0
+
+- Upgrade npm packages, fix stage build
+
 ## 6.2.9
 
 - Change top and bottom product category content to expand block
