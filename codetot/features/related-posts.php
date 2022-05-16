@@ -43,7 +43,7 @@ class Codetot_Related_Posts {
 
 		$this->query_type = codetot_get_theme_mod( 'related_posts_query_type' ) ?? 'category';
 
-		add_action( 'codetot_after_post', array( $this, 'render_section' ), 10 );
+		add_action( 'codetot_after_post', 'ct_bones_render_related_posts', 10 );
 	}
 
 	public function register_customizer_settings( $wp_customize ) {
@@ -174,7 +174,7 @@ class Codetot_Related_Posts {
 		return $post_args;
 	}
 
-	public function render_section() {
+	public function render_section($custom_class = '') {
 		if ( $this->query_type === 'none' ) {
 			return '';
 		}
@@ -188,6 +188,10 @@ class Codetot_Related_Posts {
 		$post_query = new WP_Query( $post_args );
 		$class      = 'mb-2 post-grid--related-posts default-section--no-container';
 
+		if ( !empty($custom_class) ) {
+			$class .= $custom_class;
+		}
+
 		if ( $post_query->have_posts() ) {
 			the_block(
 				'post-grid',
@@ -196,12 +200,18 @@ class Codetot_Related_Posts {
 					'title' => esc_html__( 'Related posts', 'ct-bones' ),
 					'query' => $post_query,
 					'columns' => apply_filters('ct_bones_related_posts_columns',array(
-						'desktop' => absint( $post_args['posts_per_page'] )
+						'mobile' => 3,
+						'tablet' => 3,
+						'desktop' => 3
 					))
 				)
 			);
 		}
 	}
+}
+
+function ct_bones_render_related_posts($custom_class = '') {
+	Codetot_Related_Posts::instance()->render_section($custom_class);
 }
 
 Codetot_Related_Posts::instance();

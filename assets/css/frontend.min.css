@@ -746,6 +746,10 @@ div.wp-block-columns {
 					background-color: var(--white);
 				}
 
+.wp-block-button.button-icon {
+	display: inline-flex;
+}
+
 table {
 	border-collapse: separate;
 	border-spacing: 0;
