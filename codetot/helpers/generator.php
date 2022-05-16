@@ -99,7 +99,7 @@ if ( ! function_exists( 'codetot_generate_grid_columns' ) ) {
 			$column_settings = $default_columns_settings;
 		}
 
-		$_column_class = ['fw', 'block-columns', 'wp-block-columns'];
+		$_column_class = ['f', 'fw', 'block-columns', 'wp-block-columns'];
 
 		if ( !empty( $column_settings['mobile'] ) ) {
 			$_column_class[] = 'has-' . absint($column_settings['mobile']) . '-col-mobile';
