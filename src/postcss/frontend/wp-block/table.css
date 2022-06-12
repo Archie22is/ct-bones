@@ -36,5 +36,5 @@ th {
 
 td {
 	font-size: 0.9em;
-	border-bottom: 2px solid var(--nv-text-color);
+	border-bottom: 2px solid var(--dark);
 }
