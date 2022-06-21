@@ -16,7 +16,8 @@ if ( !empty($columns) && is_array($columns)) {
 $header = ! empty( $title ) ? codetot_build_content_block(
 	array(
 		'title' => $title,
-		'title_tag' => 'p'
+		'title_tag' => $title_tag ?? 'p',
+		'title_class' => $title_class ?? ''
 	),
 	'post-grid'
 ) : '';
