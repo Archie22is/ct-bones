@@ -49,6 +49,7 @@ function codetot_archive_product_rating_html() {
 	$review_count       = $product->get_review_count();
 	$enable_star_rating = codetot_get_theme_mod( 'archive_product_star_rating', 'woocommerce' ) ?? false;
 	$svg_icon           = '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" color="#fdd836" height="14" width="14" xmlns="http://www.w3.org/2000/svg" style="color: rgb(253, 216, 54);"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>';
+	$percentage_width_style = !empty($average) ? sprintf( '%s%s', ( $average / 5 ) * 100, '%' ) : '';
 
 	if ( ! empty( $average ) || $enable_star_rating ) :
 		if ( $enable_star_rating && $average == 0 ) {
