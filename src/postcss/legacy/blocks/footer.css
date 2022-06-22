@@ -27,6 +27,12 @@
 			}
 		}
 	}
+
+	&.widget_product_categories {
+		& ul.product-categories > li {
+			border-bottom: 0;
+		}
+	}
 }
 
 .footer.bg-dark {
@@ -49,6 +55,7 @@
 		& .search-field {
 			color: var(--white);
 		}
+	}
 	}
 }
 
