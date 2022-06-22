@@ -1,7 +1,6 @@
 package.json
 package-lock.json
-assets/css/
-assets/js/
+assets/
 node_modules/
 .circleci/
 .github/
@@ -15,3 +14,5 @@ composer.json
 vendors/
 acf-json/*.json
 variables.css
+dynamic-assets/
+*.md
