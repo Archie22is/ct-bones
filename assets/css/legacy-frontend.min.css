@@ -3257,28 +3257,38 @@ a.cart-shortcode {
 		text-transform: uppercase;
 	}
 
-.widget--footer.widget_recent_entries ul, .widget--footer.widget_nav_menu ul {
+.widget--footer.widget_product_categories ul, .widget--footer.widget_recent_entries ul, .widget--footer.widget_nav_menu ul {
 			margin: 0;
 			padding: 0;
 			text-indent: 0;
 			list-style-type: none;
 		}
 
-.widget--footer.widget_recent_entries li, .widget--footer.widget_nav_menu li {
+.widget--footer.widget_product_categories li, .widget--footer.widget_recent_entries li, .widget--footer.widget_nav_menu li {
 			margin-top: 0.25em
 		}
 
-.widget--footer.widget_recent_entries li:first-child, .widget--footer.widget_nav_menu li:first-child {
+.widget--footer.widget_product_categories li:first-child, .widget--footer.widget_recent_entries li:first-child, .widget--footer.widget_nav_menu li:first-child {
 				margin-top: 0;
 			}
 
-.widget--footer.widget_recent_entries li a:hover, .widget--footer.widget_nav_menu li a:hover {
+.widget--footer.widget_product_categories li a:hover, .widget--footer.widget_recent_entries li a:hover, .widget--footer.widget_nav_menu li a:hover {
 					text-decoration: underline;
 				}
 
-.footer.bg-dark .widget_nav_menu ul li, .footer.bg-dark .widget_categories ul li, .footer.bg-dark .widget_recent_entries ul li {
+.footer.bg-dark .widget_product_categories ul li, .footer.bg-dark .widget_nav_menu ul li, .footer.bg-dark .widget_categories ul li, .footer.bg-dark .widget_recent_entries ul li {
 				border-color: rgba(255, 255, 255, 0.1);
 			}
+
+.footer.bg-dark .widget_search .search-form {
+			border-color: #f8f8f8;
+			border-color: var(--light);
+		}
+
+.footer.bg-dark .widget_search .search-field {
+			color: #fff;
+			color: var(--white);
+		}
 
 .footer__top {
 	padding: 2em 0;
@@ -3429,7 +3439,7 @@ a.cart-shortcode {
 			color: var(--white);
 		}
 
-.footer.has-dark-contract .widget--footer.widget_recent_entries a, .footer.has-dark-contract .widget--footer.widget_nav_menu a {
+.footer.has-dark-contract .widget--footer.widget_product_categories a, .footer.has-dark-contract .widget--footer.widget_recent_entries a, .footer.has-dark-contract .widget--footer.widget_nav_menu a {
 				color: #fff;
 				color: var(--white);
 			}
@@ -3477,16 +3487,6 @@ a.cart-shortcode {
 				color: #fff;
 				color: var(--white);
 			}
-
-.footer.bg-dark .widget_search .search-form {
-			border-color: #f8f8f8;
-			border-color: var(--light);
-		}
-
-.footer.bg-dark .widget_search .search-field {
-			color: #fff;
-			color: var(--white);
-		}
 
 /** Pages **/
 
